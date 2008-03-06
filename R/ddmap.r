@@ -10,53 +10,8 @@
 # When try used, should spit out informative warnings about where error occured (unless .quiet = TRUE)
 
 
-failwith <- function(default = NULL, f, ...) {
-  function(...) try_default(f(...), default)
-}
 
-colwise <- function(fun, ..., .try = FALSE, .if = function(x) TRUE) {
-  f <- if (.try) failwith(NA, fun) else fun
-  function(df) t(sapply(df[sapply(df, .if)], f, ...))
-  # function(df) laply(df, f, ..., .filter = .if, .try = TRUE)
-  
-}
-catcolwise <- function(fun, ..., .try = FALSE) {
-  colwise(fun, ..., .try = .try, .if = is.factor)
-}
-numcolwise <- function(fun, ..., .try = FALSE) {
-  colwise(fun, ..., .try = .try, .if = is.numeric)
-}
 
-is.discrete <- function(x) is.character(x) || is.factor(x)
-
-uniquecols <- function(df) {
-  col_is_unique <- function(x) is.discrete(x) && length(unique(x)) == 1
-  df[1, sapply(df, col_is_unique), drop=FALSE]
-}
-
-piece_labels <- function(df, split.vars, include = c("split", "unique", "none")) {
-  include <- match.arg(include)
-  
-  switch(include,
-    unique = uniquecols(df),
-    split = df[1, split.vars, drop=FALSE],
-    none = data.frame()
-  )  
-}
-
-combine_labels <- function(res, labels) {
-  if (is.null(res)) return(labels)
-  if (is.vector(res)) res <- data.frame(res)
-  
-  labels <- labels[, setdiff(names(labels), names(res))]
-  cbind(labels[rep(1, nrow(res)), ], res)
-  
-}
-
-unrowname <- function(x) {
-  rownames(x) <- NULL
-  x
-}
 
 # fun has type too: dd, ld, xa, aa, etc
 
