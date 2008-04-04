@@ -1,7 +1,7 @@
 colwise <- function(fun, ..., .try = FALSE, .if = function(x) TRUE) {
   f <- if (.try) failwith(NA, fun) else fun
-  function(df) t(sapply(df[sapply(df, .if)], f, ...))
-  # function(df) laply(df, f, ..., .filter = .if, .try = TRUE)
+  function(df) as.data.frame(sapply(Filter(.if, df), f, ...))
+  # function(df) aaply(df, Filter(.if, df)f, ..., .filter = .if, .try = TRUE)
   
 }
 
@@ -12,4 +12,26 @@ catcolwise <- function(fun, ..., .try = FALSE) {
 }
 numcolwise <- function(fun, ..., .try = FALSE) {
   colwise(fun, ..., .try = .try, .if = is.numeric)
+}
+
+# Aggregate multiple functions into a single function
+# Combine multiple functions to a single function returning a named vector of outputs
+# 
+# Each function should produce a single number as output
+# 
+# @arguments functions to combine
+# @keyword manip
+#X each(min, max)(1:10)
+#X each(length, mean, var)(rnorm(100))
+each <- function(...) {
+  fnames <- sapply(match.call()[-1], deparse)
+  fs <- list(...)
+  n <- length(fs)
+  
+  function(x, ...) {
+    results <- vector("numeric", length=n)
+    for(i in 1:n) results[[i]] <- fs[[i]](x, ...)
+    names(results) <- fnames
+    results
+  }
 }

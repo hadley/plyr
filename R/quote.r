@@ -1,11 +1,11 @@
-u <- function(...) {
-  structure(as.list(match.call()[-1]), class="uneval")
+"." <- function(...) {
+  structure(as.list(match.call()[-1]), class="quoted")
 }
 
-print.uneval <- function(x, ...) str(x)
-str.uneval <- function(object, ...) str(unclass(object), ...)
+print.quoted <- function(x, ...) str(x)
+str.quoted <- function(object, ...) str(unclass(object), ...)
 
-names.uneval <- function(x) {
+names.quoted <- function(x) {
   part_names <- make.names(x)
   user_names <- names(unclass(x))
 
@@ -16,7 +16,7 @@ names.uneval <- function(x) {
   part_names
 }
 
-evalu <- function(exprs,  envir = parent.frame(), enclos = if (is.list(envir) || is.pairlist(envir)) parent.frame() else baseenv()) {
+eval.quoted <- function(exprs,  envir = parent.frame(), enclos = if (is.list(envir) || is.pairlist(envir)) parent.frame() else baseenv()) {
 
   results <- lapply(exprs, function(x.) eval(x., envir, enclos))
   names(results) <- names(exprs)

@@ -1,13 +1,11 @@
 # Split objects into lists.
 # 
-# List (l)
-#   * recursive? 
-#   * way to work like mapply?  (kind of like a data.frame, list of lists of same length)
+# The resulting list should contain enough information to be able
+# to reconstruct the original, with appropriate labels etc.
 
-
+# Split a data frame by variables
 splitter_d <- function(data, vars = NULL) {
-  splits <- evalu(vars, data, parent.frame())
-
+  splits <- eval.quoted(vars, data, parent.frame())
   splitv <- interaction(splits, drop=TRUE)
   
   representative <- which(!duplicated(splitv))[order(unique(splitv))]
@@ -21,6 +19,7 @@ splitter_d <- function(data, vars = NULL) {
   )
 }
 
+# Split an array by margins
 splitter_a <- function(data, margins = 1) {
   dimensions <- lapply(dim(data), seq, from=1)
   dimensions[-margins] <- list(TRUE) 
@@ -32,13 +31,28 @@ splitter_a <- function(data, margins = 1) {
   )
   dim(pieces) <- dim(data)[margins]
   
+  split_labels <- as.data.frame(dimnames(data)[margins])
+  names(split_labels) <- names(indices)[margins]
+  
   structure(
     pieces,
     class = c("split", "list"),
-    split_type = "list",
-    split_labels = indices
+    split_type = "array",
+    split_labels = split_labels
   )
 }
 
 
+# Needs to print out essence of structure
 print.split <- function(x, ...) print(unclass(x))
+
+# Subset splits
+# Subset splits, ensuring that labels keep matching
+"[.split" <- function(x, i, ...) {
+  structure(
+    NextMethod(),
+    class = c("split", "list"),
+    split_type = attr(x, "split_type"),
+    split_labels = attr(x, "split_labels")[i, , drop = FALSE]
+  )
+}

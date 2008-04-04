@@ -1,0 +1,10 @@
+test_f_problems <- function() {
+  fs <- list(
+    function(x) rep(x, sample(10, 1)),
+    function(x) list(x),
+    function(x) if (x < 5) x else matrix(x, 2, 2)
+  )
+  
+  l_ply(fs, function(f) checkException(laply(1:10, f)))
+}
+

@@ -1,0 +1,13 @@
+Package: plyr
+Type: Package
+Title: Tools for splitting, applying and combining data.
+Version: 0.1
+Date: 2008-04-04
+Author: Hadley Wickham <h.wickham@gmail.com>
+Maintainer: Hadley Wickham <h.wickham@gmail.com>
+Description: 
+URL: http://had.co.nz/plyr
+Depends: R (>= 2.5.1), abind
+Suggests: RUnit
+License: MIT
+LazyData: true
