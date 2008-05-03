@@ -4,17 +4,17 @@
 # @arguments data frames to row bind together
 # @keyword manip
 rbind.fill <- function(...) {
-	dfs <- list(...)
-	if (length(dfs) == 0) return(list())
+  dfs <- list(...)
+  if (length(dfs) == 0) return(list())
 
-	all.names <- unique(unlist(lapply(dfs, names)))
-	do.call("rbind", compact(lapply(dfs, function(df) {
-		if (length(df) == 0 || nrow(df) == 0) return(NULL)
-		
- 		missing.vars <- setdiff(all.names, names(df))
-		if (length(missing.vars) > 0) df[, missing.vars] <- NA
-		df
-	})))
+  all.names <- unique(unlist(lapply(dfs, names)))
+  do.call("rbind", compact(lapply(dfs, function(df) {
+    if (length(df) == 0 || nrow(df) == 0) return(NULL)
+    
+     missing.vars <- setdiff(all.names, names(df))
+    if (length(missing.vars) > 0) df[, missing.vars] <- NA
+    df
+  })))
 }
 
 

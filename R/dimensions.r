@@ -18,7 +18,7 @@ vdim <- function(x) if (is.vector(x)) length(x) else dim(x)
 # @arguments array
 # @keyword internal 
 reduce <- function(x) {
-		do.call("[", c(list(x), lapply(dim(x), function(x) if (x==1) 1 else T), drop=TRUE))	
+    do.call("[", c(list(x), lapply(dim(x), function(x) if (x==1) 1 else T), drop=TRUE))  
 }
 
 dimnames2 <- function(x) {
