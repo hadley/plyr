@@ -1,4 +1,8 @@
 # To arrays  ----------------------------------------------------------------
+# aa = iapply
+# al -> ll -> la = iapply
+# ad -> dl -> la = iapply
+# la, da = ?  (but should hopefully match with aggregate)
 
 laply <-  function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode = FALSE, .progress = NULL) {
   f <- robustify(fun, .try = .try, .quiet = .quiet, .explode = .explode)
