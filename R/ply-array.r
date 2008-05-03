@@ -3,6 +3,10 @@
 # al -> ll -> la = iapply
 # ad -> dl -> la = iapply
 # la, da = ?  (but should hopefully match with aggregate)
+#
+# da(df, .(a), single.value) = 1 d
+# da(df, .(a, b), , single.value) = 2 d
+# da(df, .(a, b), vector)  = 3d
 
 laply <-  function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode = FALSE, .progress = NULL) {
   f <- robustify(fun, .try = .try, .quiet = .quiet, .explode = .explode)
