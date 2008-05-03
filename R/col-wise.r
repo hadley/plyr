@@ -14,7 +14,7 @@ colwise <- function(fun, .try = FALSE, .if = function(x) TRUE) {
   function(df, ...) laply(Filter(.if, df), f, ...)  
 }
 
-catcolwise <- function(fun, .try = FALSE) 
+catcolwise <- function(fun, .try = FALSE) {
   colwise(fun, .try = .try, .if = is.discrete)
 }
 numcolwise <- function(fun, .try = FALSE) {
