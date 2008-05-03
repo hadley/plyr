@@ -1,11 +1,9 @@
 colwise <- function(fun, ..., .try = FALSE, .if = function(x) TRUE) {
   f <- if (.try) failwith(NA, fun) else fun
-  function(df) as.data.frame(sapply(Filter(.if, df), f, ...))
-  # function(df) aaply(df, Filter(.if, df)f, ..., .filter = .if, .try = TRUE)
-  
+  function(df) laply(Filter(.if, df), f, ...)  
 }
 
-is.discrete <- function(x) is.character(x) || is.factor(x)
+is.discrete <- function(x) is.character(x) || is.factor(x) || is.logical(x)
 
 catcolwise <- function(fun, ..., .try = FALSE) {
   colwise(fun, ..., .try = .try, .if = is.discrete)
@@ -24,7 +22,7 @@ numcolwise <- function(fun, ..., .try = FALSE) {
 #X each(min, max)(1:10)
 #X each(length, mean, var)(rnorm(100))
 each <- function(...) {
-  fnames <- sapply(match.call()[-1], deparse)
+  fnames <- laply(match.call()[-1], deparse)
   fs <- list(...)
   n <- length(fs)
   

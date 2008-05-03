@@ -6,8 +6,6 @@ FILE <- (function() {
 })()$filename
 PATH <- dirname(FILE)
 
-
-
 source.with.err <- function(path) {
   tryCatch(source(path), error = function(x) {print(path); print(x)})
 }

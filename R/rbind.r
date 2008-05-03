@@ -24,5 +24,5 @@ rbind.fill <- function(...) {
 # @arguments list
 # @keyword manip 
 compact <- function(l) {
-  l[!sapply(l, is.null)]
+  l[!laply(l, is.null)]
 }

@@ -7,7 +7,7 @@ Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Description: 
 URL: http://had.co.nz/plyr
-Depends: R (>= 2.5.1), abind
+Depends: R (>= 2.7), abind
 Suggests: RUnit
 License: MIT
 LazyData: true

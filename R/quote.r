@@ -24,3 +24,18 @@ eval.quoted <- function(exprs,  envir = parent.frame(), enclos = if (is.list(env
   results
 }
 
+is.formula <- function(x) inherits(x, "formula")
+
+
+as.quoted <- function(x) UseMethod("as.quoted")
+as.quoted.call <- function(x) structure(as.list(x)[-1], class="quoted")
+as.quoted.character <- function(x) {
+  stopifnot(length(x) == 1)
+  lapply(strsplit(x, "~")[[1]], function(x) parse(text = x)[[1]])
+}
+as.quoted.formula <- function(x) as.quoted(deparse(x))
+
+
+all.equal.quoted <- function(target, current, ...) {
+  
+}

@@ -11,6 +11,7 @@
 #X f <- robustify(sqrt, .try = TRUE, .quiet = TRUE)
 #X f("a")
 robustify <- function(f, .try = FALSE, .quiet = FALSE, .explode = FALSE) {
+  if (is.character(f)) f <- match.fun(f)
   fun <- if (.explode) function(...) do.call(f, ...) else f
   if (.try) failwith(NULL, fun, quiet = .quiet) else fun
 }

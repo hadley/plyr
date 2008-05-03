@@ -31,9 +31,10 @@ splitter_a <- function(data, margins = 1) {
   )
   dim(pieces) <- dim(data)[margins]
   
-  split_labels <- as.data.frame(dimnames(data)[margins])
-  names(split_labels) <- names(indices)[margins]
-  
+  dnames <- dimnames2(data)
+  split_labels <- expand.grid(dnames[margins])
+  names(split_labels) <- names(dnames)[margins]    
+
   structure(
     pieces,
     class = c("split", "list"),

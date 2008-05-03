@@ -6,18 +6,22 @@ ldply <- function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode 
   data <- as.list(data)
   res <- llply(data, f, ..., .progress = .progress)
   
-  atomic <- sapply(res, is.atomic)
+  atomic <- laply(res, is.atomic)
   if (all(atomic)) {
-    ulength <- unique(sapply(res, length))
+    ulength <- unique(laply(res, length))
     if (length(ulength) != 1) stop("Results are not equal lengths")
     
-    resdf <- as.data.frame(do.call("rbind", res))
+    if (length(res) > 1) {
+      resdf <- as.data.frame(do.call("rbind", res))      
+    } else {
+      resdf <- data.frame(res[[1]])
+    }
     rows <- rep(1, length(res))
   } else {
     l_ply(res, function(x) if(!is.null(x) & !is.data.frame(x)) stop("Not a data.frame!"))
 
     resdf <- do.call("rbind.fill", res)
-    rows <- unname(sapply(res, function(x) if(is.null(x)) 0 else nrow(x)))
+    rows <- unname(laply(res, function(x) if(is.null(x)) 0 else nrow(x)))
   }
 
   labels <- attr(data, "split_labels")
