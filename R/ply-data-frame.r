@@ -26,7 +26,8 @@ ldply <- function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode 
 
   labels <- attr(data, "split_labels")
   if (!is.null(labels) && nrow(labels) == length(data)) {
-    resdf <- cbind(labels[rep(1:nrow(labels), rows), , drop=FALSE], resdf)
+    cols <- setdiff(names(labels), names(resdf))
+    resdf <- cbind(labels[rep(1:nrow(labels), rows), cols, drop=FALSE], resdf)
   }
   
   unrowname(resdf)
