@@ -33,6 +33,14 @@ ldply <- function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode 
   unrowname(resdf)
 }
 
+#X mean_rbi <- function(df) mean(df$rbi, na.rm=T)
+#X rbi <- ddply(baseball, .(year), mean_rbi)
+#X with(rbi, plot(year, V1, type="l"))
+#X
+#X ddply(baseball, .(year), numcolwise(mean), na.rm=TRUE)
+#X base2 <- ddply(baseball, .(id), function(df) {
+#X  transform(df, career_year = year - min(year) + 1)
+#X })
 ddply <- function(data, vars, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode = FALSE, .progress = NULL) {
   data <- as.data.frame(data)
   pieces <- splitter_d(data, vars)

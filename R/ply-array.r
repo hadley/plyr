@@ -22,6 +22,14 @@ laply <-  function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode
   reduce(abind(res, along = 0, force.array = TRUE))
 }
 
+#X daply(baseball, .(year), nrow)
+#X
+#X # Several different ways of summarising by variables that should not be 
+#X # included in the summary
+#X 
+#X daply(baseball[, c(2, 6:9)], .(year), mean)
+#X daply(baseball[, 6:9], .(baseball$year), mean)
+#X daply(baseball, .(year), function(df) mean(df[, 6:9]))
 daply <- function(data, vars, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode = FALSE, .progress = NULL) {
   data <- as.data.frame(data)
   pieces <- splitter_d(data, vars)
