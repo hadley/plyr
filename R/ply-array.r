@@ -24,6 +24,7 @@ laply <-  function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode
 
     res_dim <- vdim(res[[1]])
     res_index <- expand.grid(lapply(res_dim, seq_len))
+    res <- unlist(res)
   } else {
     res_index <- as.data.frame(matrix(0, 1, 0))
     res_dim <- numeric()
@@ -40,8 +41,12 @@ laply <-  function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode
     unlist(lapply(labels, function(x) length(unique(x)))),
     res_dim
   )
+  nint <- ninteraction(index)
+  overall <- order(nint)
+  n <- attr(nint, "n")
+  if (length(overall) < n) overall <- match(1:n, overall, nomatch = NA)
   
-  resa <- res[order(ninteraction(index))]        
+  resa <- res[overall]        
   attr(resa, "split_type") <- NULL
   attr(resa, "split_labels") <- NULL
   class(resa) <- class(resa)[2]
