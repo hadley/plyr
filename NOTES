@@ -1,0 +1,6 @@
+Code to produce baseball data:
+
+batting <- read.csv("~/Documents/teaching/2008-r-clinic/baseball/batting.csv", stringsAsFactors=FALSE)
+long <- names(which(table(batting$id) >= 15))
+baseball <- subset(batting, id %in% long)
+save(baseball, file="data/baseball.rda", compress=T)
