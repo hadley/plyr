@@ -18,13 +18,13 @@ vdim <- function(x) if (is.vector(x)) length(x) else dim(x)
 # @arguments array
 # @keyword internal 
 reduce <- function(x) {
-    do.call("[", c(list(x), lapply(dim(x), function(x) if (x==1) 1 else T), drop=TRUE))  
+  do.call("[", c(list(x), lapply(dim(x), function(x) if (x==1) 1 else T), drop=TRUE))  
 }
 
 dimnames2 <- function(x) {
   d <- dimnames(x)
   if (is.null(d)) d <- rep(list(NULL), dims(x))
-  null_names <- which(laply(d, is.null))
+  null_names <- which(unlist(llply(d, is.null)))
   d[null_names] <- llply(null_names, function(i) seq.int(vdim(x)[i]))
   
   if (is.null(names(d))) names(d) <- paste("X", 1:length(d), sep="")

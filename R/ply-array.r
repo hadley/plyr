@@ -23,7 +23,24 @@ laply <-  function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode
   dims <- unique(do.call("rbind", llply(res, vdim)))
   if (nrow(dims) != 1) stop("Results must have the same dimensions.")
   
-  reduce(abind(res, along = 0, force.array = TRUE))
+  labels <- attr(data, "split_labels")
+  
+  res_index <- expand.grid(lapply(vdim(res[[1]]), seq_len))
+  index <- cbind(
+    labels[rep(seq_len(nrow(labels)), each = nrow(res_index)), , drop = FALSE],
+    res_index[rep(seq_len(nrow(res_index)), nrow(labels)), , drop = FALSE]
+  )
+  
+  outdim <- c(
+    unlist(lapply(labels, function(x) length(unique(x)))),
+    vdim(res[[1]])
+  )
+  resa <- unlist(res)[order(ninteraction(index))]
+  dim(resa) <- outdim
+  dimnames(resa) <- c(lapply(labels, unique), rep(list(NULL), length(outdim) - ncol(labels)))
+  resa <- reduce(resa)
+  resa
+  # reduce(abind(res, along = 0, force.array = TRUE))
 }
 
 #X daply(baseball, .(year), nrow)
