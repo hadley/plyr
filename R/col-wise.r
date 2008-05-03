@@ -1,15 +1,15 @@
-colwise <- function(fun, ..., .try = FALSE, .if = function(x) TRUE) {
+colwise <- function(fun, .try = FALSE, .if = function(x) TRUE) {
   f <- if (.try) failwith(NA, fun) else fun
-  function(df) laply(Filter(.if, df), f, ...)  
+  function(df, ...) laply(Filter(.if, df), f, ...)  
 }
 
 is.discrete <- function(x) is.character(x) || is.factor(x) || is.logical(x)
 
-catcolwise <- function(fun, ..., .try = FALSE) {
-  colwise(fun, ..., .try = .try, .if = is.discrete)
+catcolwise <- function(fun, .try = FALSE) {
+  colwise(fun, .try = .try, .if = is.discrete)
 }
-numcolwise <- function(fun, ..., .try = FALSE) {
-  colwise(fun, ..., .try = .try, .if = is.numeric)
+numcolwise <- function(fun, .try = FALSE) {
+  colwise(fun, .try = .try, .if = is.numeric)
 }
 
 # Aggregate multiple functions into a single function
