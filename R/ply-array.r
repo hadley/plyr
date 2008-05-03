@@ -15,17 +15,22 @@ laply <-  function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode
   res <- llply(data, f, ..., .progress = .progress)
   
   atomic <- sapply(res, is.atomic)
-  if (any(!atomic)) stop("Results must be atomic")
-  
-  dlength <- unique(llply(res, dims))
-  if (length(dlength) != 1) stop("Results must have same number of dimensions.")
-  
-  dims <- unique(do.call("rbind", llply(res, vdim)))
-  if (nrow(dims) != 1) stop("Results must have the same dimensions.")
+  if (all(atomic)) {
+    dlength <- unique(llply(res, dims))
+    if (length(dlength) != 1) stop("Results must have same number of dimensions.")
+
+    dims <- unique(do.call("rbind", llply(res, vdim)))
+    if (nrow(dims) != 1) stop("Results must have the same dimensions.")    
+
+    res_dim <- vdim(res[[1]])
+    res_index <- expand.grid(lapply(res_dim, seq_len))
+  } else {
+    res_index <- as.data.frame(matrix(0, 1, 0))
+    res_dim <- numeric()
+  }
   
   labels <- attr(data, "split_labels")
   
-  res_index <- expand.grid(lapply(vdim(res[[1]]), seq_len))
   index <- cbind(
     labels[rep(seq_len(nrow(labels)), each = nrow(res_index)), , drop = FALSE],
     res_index[rep(seq_len(nrow(res_index)), nrow(labels)), , drop = FALSE]
@@ -33,14 +38,18 @@ laply <-  function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode
   
   outdim <- c(
     unlist(lapply(labels, function(x) length(unique(x)))),
-    vdim(res[[1]])
+    res_dim
   )
-  resa <- unlist(res)[order(ninteraction(index))]
+  
+  resa <- res[order(ninteraction(index))]        
+  attr(resa, "split_type") <- NULL
+  attr(resa, "split_labels") <- NULL
+  class(resa) <- class(resa)[2]
+  
   dim(resa) <- outdim
   dimnames(resa) <- c(lapply(labels, unique), rep(list(NULL), length(outdim) - ncol(labels)))
   resa <- reduce(resa)
   resa
-  # reduce(abind(res, along = 0, force.array = TRUE))
 }
 
 #X daply(baseball, .(year), nrow)
