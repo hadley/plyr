@@ -6,7 +6,7 @@ PATH <- dirname(FILE)
 source(file.path(PATH, "load.r"))
 
 testSuite <- defineTestSuite(
-  dirs=file.path(PATH, "test"),
+  dirs=file.path(PATH, "tests"),
   name=paste("plyr unit tests"),
   testFileRegexp = "\\.runit$",
   testFuncRegexp = "^test"
