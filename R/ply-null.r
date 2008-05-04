@@ -5,7 +5,7 @@
 l_ply <- function(data, fun = NULL, ..., .progress = "none") {
   if (is.character(fun)) fun <- match.fun(fun)
   
-  if (is.character(.progress) 
+  if (is.character(.progress)) 
     progress <- create_progress_bar(.progress)
   progress$init(length(data))
   
