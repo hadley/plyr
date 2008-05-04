@@ -22,7 +22,8 @@ reduce <- function(x) {
 }
 
 dimnames2 <- function(x) {
-  d <- dimnames(x)
+  d <- if (is.vector(x)) list(names(x)) else dimnames(x)
+  
   if (is.null(d)) d <- rep(list(NULL), dims(x))
   null_names <- which(unlist(llply(d, is.null)))
   d[null_names] <- llply(null_names, function(i) seq.int(vdim(x)[i]))

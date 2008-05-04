@@ -9,7 +9,6 @@
 # da(df, .(a, b), vector)  = 3d
 
 laply <-  function(data, fun = NULL, ..., .progress = "none") {
-  
   if (is.character(fun)) fun <- match.fun(fun)
     
   data <- as.list(data)
@@ -49,7 +48,6 @@ laply <-  function(data, fun = NULL, ..., .progress = "none") {
     in_labels <- lapply(labels, unique)
     in_dim <- sapply(in_labels, length)        
   }
-
   
   index <- cbind(
     labels[rep(seq_len(nrow(labels)), each = nrow(res_index)), , drop = FALSE],
@@ -84,6 +82,16 @@ daply <- function(data, vars, fun = NULL, ..., .progress = "none") {
   laply(pieces, fun, .progress = .progress)
 }
 
+#X aaply(ozone, 1, mean)
+#X aaply(ozone, 3, mean)
+#X aaply(ozone, c(1,2), mean)
+#X
+#X aaply(ozone, 1, each(min, max))
+#X aaply(ozone, 3, each(min, max))
+#X 
+#X standardise <- function(x) (x - min(x)) / (max(x) - min(x))
+#X aaply(ozone, 3, standardise)
+#X aaply(ozone, 1:2, standardise)
 aaply <- function(data, margins, fun = NULL, ..., .progress = "none") {
   pieces <- splitter_a(data, margins)
   

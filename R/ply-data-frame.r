@@ -4,9 +4,9 @@ ldply <- function(data, fun = NULL, ..., .progress = "none") {
   data <- as.list(data)
   res <- llply(data, fun, ..., .progress = .progress)
   
-  atomic <- laply(res, is.atomic)
+  atomic <- unlist(llply(res, is.atomic))
   if (all(atomic)) {
-    ulength <- unique(laply(res, length))
+    ulength <- unique(unlist(llply(res, length)))
     if (length(ulength) != 1) stop("Results are not equal lengths")
     
     if (length(res) > 1) {
@@ -46,6 +46,10 @@ ddply <- function(data, vars, fun = NULL, ..., .progress = "none") {
   ldply(pieces, fun, .progress = .progress)
 }
 
+#X adply(ozone, 1, mean)
+#X adply(ozone, 3, mean)
+#X adply(ozone, c(1,2), mean)
+#X adply(ozone, c(1,2), each(mean, max, min))
 adply <- function(data, margins, fun = NULL, ..., .progress = "none") {
   pieces <- splitter_a(data, margins)
   
