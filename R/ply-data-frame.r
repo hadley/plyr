@@ -1,10 +1,8 @@
 # To a data frame -----------------------------------------------------------
 
-ldply <- function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode = FALSE, .progress = NULL) {
-  f <- robustify(fun, .try = .try, .quiet = .quiet, .explode = .explode)
-    
+ldply <- function(data, fun = NULL, ..., .progress = NULL) {
   data <- as.list(data)
-  res <- llply(data, f, ..., .progress = .progress)
+  res <- llply(data, fun, ..., .progress = .progress)
   
   atomic <- laply(res, is.atomic)
   if (all(atomic)) {
@@ -41,15 +39,15 @@ ldply <- function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode 
 #X base2 <- ddply(baseball, .(id), function(df) {
 #X  transform(df, career_year = year - min(year) + 1)
 #X })
-ddply <- function(data, vars, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode = FALSE, .progress = NULL) {
+ddply <- function(data, vars, fun = NULL, ..., .progress = NULL) {
   data <- as.data.frame(data)
   pieces <- splitter_d(data, vars)
   
-  ldply(pieces, fun, .try = .try, .quiet = .quiet, .explode = .explode, .progress = .progress)
+  ldply(pieces, fun, .progress = .progress)
 }
 
-adply <- function(data, margins, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode = FALSE, .progress = NULL) {
+adply <- function(data, margins, fun = NULL, ..., .progress = NULL) {
   pieces <- splitter_a(data, margins)
   
-  ldply(pieces, fun, .try = .try, .quiet = .quiet, .explode = .explode, .progress = .progress)
+  ldply(pieces, fun, .progress = .progress)
 }

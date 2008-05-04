@@ -8,11 +8,11 @@
 # da(df, .(a, b), , single.value) = 2 d
 # da(df, .(a, b), vector)  = 3d
 
-laply <-  function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode = FALSE, .progress = NULL) {
-  f <- robustify(fun, .try = .try, .quiet = .quiet, .explode = .explode)
+laply <-  function(data, fun = NULL, ..., .progress = NULL) {
+  if (is.character(fun)) fun <- match.fun(fun)
     
   data <- as.list(data)
-  res <- llply(data, f, ..., .progress = .progress)
+  res <- llply(data, fun, ..., .progress = .progress)
   
   atomic <- sapply(res, is.atomic)
   if (all(atomic)) {
@@ -76,15 +76,15 @@ laply <-  function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode
 #X daply(baseball[, c(2, 6:9)], .(year), mean)
 #X daply(baseball[, 6:9], .(baseball$year), mean)
 #X daply(baseball, .(year), function(df) mean(df[, 6:9]))
-daply <- function(data, vars, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode = FALSE, .progress = NULL) {
+daply <- function(data, vars, fun = NULL, ..., .progress = NULL) {
   data <- as.data.frame(data)
   pieces <- splitter_d(data, vars)
   
-  laply(pieces, fun, .try = .try, .quiet = .quiet, .explode = .explode, .progress = .progress)
+  laply(pieces, fun, .progress = .progress)
 }
 
-aaply <- function(data, margins, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode = FALSE, .progress = NULL) {
+aaply <- function(data, margins, fun = NULL, ..., .progress = NULL) {
   pieces <- splitter_a(data, margins)
   
-  laply(pieces, fun, .try = .try, .quiet = .quiet, .explode = .explode, .progress = .progress)
+  laply(pieces, fun, .progress = .progress)
 }

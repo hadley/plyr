@@ -1,16 +1,16 @@
 # To lists -------------------------------------------------------------------
 
-llply <- function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode = FALSE, .progress = NULL) {
+llply <- function(data, fun = NULL, ..., .progress = NULL) {
   data <- as.list(data)
   if (is.null(fun)) return(data)
   
-  f <- robustify(fun, .try = .try, .quiet = .quiet, .explode = .explode)
+  if (is.character(fun)) fun <- match.fun(fun)
   
   if (is.null(.progress))  .progress <- progress_null()
 
   .progress$init(length(data))
   f2 <- function(...) {
-    res <- f(...)
+    res <- fun(...)
     .progress$step()
     res
   }
@@ -30,15 +30,15 @@ llply <- function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode 
 #X with(coef, plot(`(Intercept)`, year))
 #X qual <- ldply(models, function(mod) summary(mod)$r.squared )
 #X hist(qual)
-dlply <- function(data, vars, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode = FALSE, .progress = NULL) {
+dlply <- function(data, vars, fun = NULL, ..., .progress = NULL) {
   data <- as.data.frame(data)
   pieces <- splitter_d(data, vars)
   
-  llply(pieces, fun, .try = .try, .quiet = .quiet, .explode = .explode, .progress = .progress)
+  llply(pieces, fun, .progress = .progress)
 }
 
-alply <- function(data, margins, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode = FALSE, .progress = NULL) {
+alply <- function(data, margins, fun = NULL, ..., .progress = NULL) {
   pieces <- splitter_a(data, margins)
   
-  llply(pieces, fun, .try = .try, .quiet = .quiet, .explode = .explode, .progress = .progress)
+  llply(pieces, fun, .progress = .progress)
 }
