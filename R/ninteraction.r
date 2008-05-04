@@ -39,3 +39,16 @@ ninteraction <- function(vars, drop = FALSE) {
   attr(res, "n") <- n
   res
 }
+
+# Number of unique values
+# Calculate number of unique values of a variable as efficiently as possible.
+# 
+# @arguments vector
+# @keyword internal
+nunique <- function(x) {
+  if (is.factor(x)) {
+    length(levels(x))
+  } else {
+    length(unique(x))
+  }
+}
