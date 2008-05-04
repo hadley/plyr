@@ -16,6 +16,7 @@ laply <-  function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode
   
   atomic <- sapply(res, is.atomic)
   if (all(atomic)) {
+    # Atomics need to be same size
     dlength <- unique(llply(res, dims))
     if (length(dlength) != 1) stop("Results must have same number of dimensions.")
 
@@ -23,38 +24,48 @@ laply <-  function(data, fun = NULL, ..., .try = FALSE, .quiet = FALSE, .explode
     if (nrow(dims) != 1) stop("Results must have the same dimensions.")    
 
     res_dim <- vdim(res[[1]])
-    res_index <- expand.grid(lapply(res_dim, seq_len))
+    res_labels <- dimnames2(res[[1]])
+    res_index <- expand.grid(res_labels)
+
     res <- unlist(res)
   } else {
+    # Lists are degenerate case where every element is a singleton
     res_index <- as.data.frame(matrix(0, 1, 0))
     res_dim <- numeric()
+    res_labels <- NULL
+    
+    attr(res, "split_type") <- NULL
+    attr(res, "split_labels") <- NULL
+    class(res) <- class(res)[2]
   }
-  
+
   labels <- attr(data, "split_labels")
+  if (is.null(labels)) {
+    labels <- data.frame(X = seq_along(data))
+    in_labels <- list(NULL)
+    in_dim <- length(data)
+  } else {
+    in_labels <- lapply(labels, unique)
+    in_dim <- sapply(in_labels, length)        
+  }
+
   
   index <- cbind(
     labels[rep(seq_len(nrow(labels)), each = nrow(res_index)), , drop = FALSE],
     res_index[rep(seq_len(nrow(res_index)), nrow(labels)), , drop = FALSE]
   )
   
-  outdim <- c(
-    unlist(lapply(labels, function(x) length(unique(x)))),
-    res_dim
-  )
-  nint <- ninteraction(index)
-  overall <- order(nint)
-  n <- attr(nint, "n")
+  out_dim <- c(in_dim, res_dim)
+  out_labels <- c(in_labels, res_labels)
+  n <- prod(out_dim)
+
+  overall <- order(ninteraction(index))
   if (length(overall) < n) overall <- match(1:n, overall, nomatch = NA)
   
-  resa <- res[overall]        
-  attr(resa, "split_type") <- NULL
-  attr(resa, "split_labels") <- NULL
-  class(resa) <- class(resa)[2]
-  
-  dim(resa) <- outdim
-  dimnames(resa) <- c(lapply(labels, unique), rep(list(NULL), length(outdim) - ncol(labels)))
-  resa <- reduce(resa)
-  resa
+  out_array <- res[overall]  
+  dim(out_array) <- out_dim
+  dimnames(out_array) <- out_labels
+  reduce(out_array)
 }
 
 #X daply(baseball, .(year), nrow)

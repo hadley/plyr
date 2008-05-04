@@ -27,6 +27,6 @@ dimnames2 <- function(x) {
   null_names <- which(unlist(llply(d, is.null)))
   d[null_names] <- llply(null_names, function(i) seq.int(vdim(x)[i]))
   
-  if (is.null(names(d))) names(d) <- paste("X", 1:length(d), sep="")
+  # if (is.null(names(d))) names(d) <- paste("X", 1:length(d), sep="")
   d
 }
