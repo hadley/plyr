@@ -33,7 +33,8 @@ splitter_a <- function(data, margins = 1) {
   
   dnames <- dimnames2(data)
   split_labels <- expand.grid(dnames[margins])
-  names(split_labels) <- names(dnames)[margins]    
+  colnames <- names(dnames)[margins]
+  if (!is.null(colnames)) names(split_labels) <- colnames
 
   structure(
     pieces,
