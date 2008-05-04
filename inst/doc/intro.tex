@@ -9,52 +9,105 @@
 \hypersetup{colorlinks=true,linkcolor=slateblue,anchorcolor=slateblue,citecolor=slateblue,filecolor=slateblue,urlcolor=slateblue,bookmarksnumbered=true,pdfview=FitB}
 \usepackage{url}
 \usepackage[round,sectionbib]{natbib}
+\bibliographystyle{abbrvnat}
 \usepackage[small]{caption2}
 \usepackage[small]{titlesec}
 \renewcommand\familydefault{bch}
 
-\title{Introduction to plyr}
+\title{plyr: divide and conquer}
 \author{Hadley Wickham}
 \begin{document}
 \maketitle
 
 \begin{abstract}
-  plyr is a set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each pieces and then put all the pieces back together.  This paper describes the components that make up plyr.
+plyr is a set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each pieces and then put all the pieces back together.  This paper describes the components that make up plyr.  Includes a case study.
 \end{abstract}
 
 \section{Introduction}
 
-This avoids any ambiguity about what you'll get back from one of these functions.  
 
-divide and conquer, Divide and marriage before conquest, divide et impera
+Other work in R: doby, gdata (frameApply), scope, Spector's book
 
 \section{Input} 
 
+(Keep brief as possible. Maybe this and output should be in one big table.)
+
+The type of input determines the ways it can be split up:
+
+\begin{itemize}
+  \item data.frame, by variables
+  \item vector/matrix/array, by margins
+  \item list, by itself
+\end{itemize}
+
 \subsection{Data frames (d)}
+
+Split by variables.  .() notation
+
 \subsection{Arrays (a)}
+
+By margins.  Same as apply
+
 \subsection{Lists (l)}
 
 mply
 
 \section{Process}
 
+conditions on function
+
+how extra arguments are passed in
+
 explode/splat
+
 each
 colwise
 failwith
+
 progress bars
 
 \section{Output}
 
+Avoid any ambiguity about what you'll get back from one of these functions.  
+
+This strictness should also enable certain optimisations that are unavailable to apply and family.
+
 \subsection{Data frames (d)}
+
+Function needs to return atomic vector of fixed size or data.frame.
+
+Extra variable will be added according to splits.
+
 \subsection{Arrays (a)}
+
+Function needs to return atomic of vector/matrix/array of fixed size/shape, or a list.
+
+Each splitting criterion creates a new dimension.  Dimensions from function are added onto the end.  This ensures idempotency
+
 \subsection{Lists (l)}
+
+Not much to talk about.  dl -> ld will be labelled the same as dd.
+
 \subsection{Ignored (\_)}
 
-\section{Labels}
-
+Sometimes you are operating on a list purely for the side effects (e.g. plots, caching, output to screen/file).  A little more memory efficient than simply abandoning the output of *lply because it doesn't construct the intermediate storage.
 
 \section{Equivalence to existing R functions}
+
+\begin{itemize}
+  \item lapply $\to$ llply
+  \item sapply $\to$ laply, llply
+  \item apply  $\to$ aaply, alply
+  \item mapply $\to$ maply, mlply
+  \item by $\to$ dlply
+  \item aggregate $\to$ daply(, colwise(f))
+  \item tapply 
+  \item ave 
+  \item sweep
+  \item lapply(split(df, ...), f) $\to$ dlply
+  \item do.call("rbind", lapply(split(df, ...), f)) $\to$ ddply
+  \item HMisc functions
+\end{itemize}
 
 \begin{verbatim}
   * aggregate(mtcars, list(mtcars$cyl), median)
@@ -66,7 +119,7 @@ progress bars
     ddply(mtcars, .(cyl), p)  
 \end{verbatim}
 
-The cast function in the reshape package is essentially a wrapper around aaply.
+The cast function in the reshape package \citep{reshape} is a special case of aaply, which provides a number of nice labelling features.
 
 \section{Strategy}
 
@@ -74,5 +127,13 @@ Take a small dataset, that you can easily solve.
 
 \subsection{Case study: baseball data}
 
+Calculating stint.  
 
+Model for each player
+
+\section{Conclusion}
+
+% section conclusion (end)
+
+\bibliography{/Users/hadley/documents/phd/references}
 \end{document}
