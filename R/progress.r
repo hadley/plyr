@@ -1,4 +1,13 @@
-progress_null <- function() {
+# Create progress bar
+# Create progress bar object from text string.
+# 
+# @arguments type of progress bar to create
+# @arguments progress
+create_progress_bar <- function(name = "none") {
+  match.fun(paste("progress", name, sep="_"))()
+}
+
+progress_none <- function() {
   list(
     init = function(x) {},
     step = function()  {},
@@ -21,6 +30,7 @@ progress_txt <- function(style = 3, ...) {
 }
 
 progress_tk <- function(title = "plyr progress", ...) {
+  stopifnot(require("tcltk", quiet=TRUE))
   n <- 0
   tk <- NULL
   

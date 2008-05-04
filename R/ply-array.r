@@ -8,7 +8,8 @@
 # da(df, .(a, b), , single.value) = 2 d
 # da(df, .(a, b), vector)  = 3d
 
-laply <-  function(data, fun = NULL, ..., .progress = NULL) {
+laply <-  function(data, fun = NULL, ..., .progress = "none") {
+  
   if (is.character(fun)) fun <- match.fun(fun)
     
   data <- as.list(data)
@@ -76,14 +77,14 @@ laply <-  function(data, fun = NULL, ..., .progress = NULL) {
 #X daply(baseball[, c(2, 6:9)], .(year), mean)
 #X daply(baseball[, 6:9], .(baseball$year), mean)
 #X daply(baseball, .(year), function(df) mean(df[, 6:9]))
-daply <- function(data, vars, fun = NULL, ..., .progress = NULL) {
+daply <- function(data, vars, fun = NULL, ..., .progress = "none") {
   data <- as.data.frame(data)
   pieces <- splitter_d(data, vars)
   
   laply(pieces, fun, .progress = .progress)
 }
 
-aaply <- function(data, margins, fun = NULL, ..., .progress = NULL) {
+aaply <- function(data, margins, fun = NULL, ..., .progress = "none") {
   pieces <- splitter_a(data, margins)
   
   laply(pieces, fun, .progress = .progress)

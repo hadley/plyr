@@ -1,6 +1,6 @@
 # To a data frame -----------------------------------------------------------
 
-ldply <- function(data, fun = NULL, ..., .progress = NULL) {
+ldply <- function(data, fun = NULL, ..., .progress = "none") {
   data <- as.list(data)
   res <- llply(data, fun, ..., .progress = .progress)
   
@@ -39,14 +39,14 @@ ldply <- function(data, fun = NULL, ..., .progress = NULL) {
 #X base2 <- ddply(baseball, .(id), function(df) {
 #X  transform(df, career_year = year - min(year) + 1)
 #X })
-ddply <- function(data, vars, fun = NULL, ..., .progress = NULL) {
+ddply <- function(data, vars, fun = NULL, ..., .progress = "none") {
   data <- as.data.frame(data)
   pieces <- splitter_d(data, vars)
   
   ldply(pieces, fun, .progress = .progress)
 }
 
-adply <- function(data, margins, fun = NULL, ..., .progress = NULL) {
+adply <- function(data, margins, fun = NULL, ..., .progress = "none") {
   pieces <- splitter_a(data, margins)
   
   ldply(pieces, fun, .progress = .progress)

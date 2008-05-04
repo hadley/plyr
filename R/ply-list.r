@@ -1,23 +1,24 @@
 # To lists -------------------------------------------------------------------
 
-llply <- function(data, fun = NULL, ..., .progress = NULL) {
+llply <- function(data, fun = NULL, ..., .progress = "none") {
   data <- as.list(data)
   if (is.null(fun)) return(data)
   
   if (is.character(fun)) fun <- match.fun(fun)
   
-  if (is.null(.progress))  .progress <- progress_null()
+  if (is.character(.progress) 
+    progress <- create_progress_bar(.progress)
+  progress$init(length(data))
 
-  .progress$init(length(data))
   f2 <- function(...) {
     res <- fun(...)
-    .progress$step()
+    progress$step()
     res
   }
   
   result <- lapply(data, f2, ...)
   mostattributes(result) <- attributes(data)
-  .progress$term()
+  progress$term()
   
   result
 }
@@ -30,14 +31,14 @@ llply <- function(data, fun = NULL, ..., .progress = NULL) {
 #X with(coef, plot(`(Intercept)`, year))
 #X qual <- ldply(models, function(mod) summary(mod)$r.squared )
 #X hist(qual)
-dlply <- function(data, vars, fun = NULL, ..., .progress = NULL) {
+dlply <- function(data, vars, fun = NULL, ..., .progress = "none") {
   data <- as.data.frame(data)
   pieces <- splitter_d(data, vars)
   
   llply(pieces, fun, .progress = .progress)
 }
 
-alply <- function(data, margins, fun = NULL, ..., .progress = NULL) {
+alply <- function(data, margins, fun = NULL, ..., .progress = "none") {
   pieces <- splitter_a(data, margins)
   
   llply(pieces, fun, .progress = .progress)
