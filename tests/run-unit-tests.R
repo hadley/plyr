@@ -1,8 +1,13 @@
+library(RUnit)
+library(plyr)
+
 testSuite <- defineTestSuite(
-  name=paste("reshape unit tests"),
+  dirs=system.file("tests", package = "plyr"),
+  name=paste("plyr unit tests"),
   testFileRegexp = "\\.runit$",
-  dirs=path
+  testFuncRegexp = "^test"
 )
+
 tests <- runTestSuite(testSuite)
 printTextProtocol(tests, showDetails=TRUE)
 
