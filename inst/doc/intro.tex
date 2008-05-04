@@ -13,6 +13,7 @@
 \usepackage[small]{caption2}
 \usepackage[small]{titlesec}
 \renewcommand\familydefault{bch}
+\usepackage{slashbox}
 
 \title{plyr: divide and conquer}
 \author{Hadley Wickham}
@@ -25,74 +26,130 @@ plyr is a set of tools that solves a common set of problems: you need to break a
 
 \section{Introduction}
 
+The {\tt} plyr package provides tool for solving a common class of problems, where you break apart a big data structure, operate on each piece independently and then put all the pieces back together (possible in a different format to the original).  This paper introduces the {\tt ply} family of tools which generalise the {\tt apply} family to all combinations of input and output data structures for lists, data frames and arrays (including vectors and matrices).
 
-Other work in R: doby, gdata (frameApply), scope, Spector's book
+It requires R 2.7.0 or later.
 
-\section{Input} 
+In general, these tools provide a replacement for {\tt for} loops for a large set of problems that arise in practice.  The major assumption that they make is that each piece can be operated on independently, so if there is any dependence (e.g. recursive relationship) between the pieces then these tools are not appropriate.  These tools should be use to more clearly express the intent of your algorithm, rather than to speed up computation.  
 
-(Keep brief as possible. Maybe this and output should be in one big table.)
-
-The type of input determines the ways it can be split up:
+There are a number of other resources that also attempt to simplify this class of problems:
 
 \begin{itemize}
-  \item data.frame, by variables
-  \item vector/matrix/array, by margins
-  \item list, by itself
+  \item Base R:  apply functions, by, etc.  The equivalence between these function and plyr functions are described in Section~\ref{sec:equiv}.
+  
+  \item The {\tt doBy} package
+  \item The {\tt gdata} package
+  \item The {\tt scope} package
+  \item Data manipulation in R, by Phil Spector
+  \item Chapters in MASS, R intro?
+  
 \end{itemize}
+
+% Describe structure of paper and lead in to following sections
+
+The basic set of plyr functions are listed in Table~\ref{tbl:functions}.  They are named according to the type of input they process and the type of output that they produce.  The input type determines how input can be broken up, described in detail in Section~\ref{sec:input}.  The output type determines how the pieces are joined back together again, described in detail in Section~\ref{sec:output}.  The {\tt plyr} package also provides a number of helper functions for error recovery, splatting, column-wise processing, and reporting progress.  These are described in Section~\ref{sec:helpers}.
+
+\begin{table}
+  \begin{center}
+  \begin{tabular}{l|ccc}
+    
+     \backslashbox{{\bf to}}{{\bf from}} & array & data.frame & list \\
+     \hline
+     array      & aaply  & daply  & laply  \\
+     data.frame & adply  & ddply  & ldply  \\
+     list       & alply  & dlply  & llply  \\
+     nothing    & a\_ply & d\_ply & l\_ply \\
+    
+  \end{tabular}
+  \end{center}
+  \caption{The 12 key functions that make up {\tt plyr}.}
+  \label{tbl:functions}
+\end{table}
+
+Note that through this paper we will use array to refer to vectors (1d arrays) and matrices (2d arrays) as well.  
+
+Arguments to the ply functions are determined by the types of input and outut.  For this reason, it's useful to refer to a complete row or column of Table~\ref{tbl:functions}.  The notation we use for this is {\tt d*ply} to refer an entire row (fixed input) and {\tt *dply} for an entire column (fixed output).
+
+\section{Input} 
+\label{sec:input}
+
+For all {\tt ply} functions the first argument is the data to divide and conquer.  The second argument describes how to split up the data, and is different for each input type.  Arrays are split up by their dimensions, while data frames are split into groups based on combinations of variables.  Lists are assumed to be broken up already.  The splitting for data frames and arrays is described in more detail below.
 
 \subsection{Data frames (d)}
 
-Split by variables.  .() notation
+When operating on a data frame, you usually want to split it up into groups based on combinations variables in the data set.  For {\tt d*ply} you specify   which variables (or functions of variables) to use.  These variables are specified in a special way to highlight that they are computed first from the data frame, then the global environment (in which case it's your responsibility to ensure that their length is equal to the number of rows in the data frame).  
+
+\begin{itemize}
+  \item The interaction of multiple variables are taken: {\tt .(a, b, c)}
+  \item Functions of variables: {\tt .(round(a))}, {\tt .(a * b)}
+  \item Variables in the global environment {\tt .(anothervar)}
+\end{itemize}
 
 \subsection{Arrays (a)}
 
-By margins.  Same as apply
+The {\tt margins} argument of {\tt a*ply} describes how to slice up the array in the same way that {\tt apply} does.  For example, {\tt margins = 1} specifies that we want to break up the array by rows (the first index when subsetting), and {\tt margins = 2} by columns (the second index when subsetting).  You can also use combinations of margins.  For example, {\tt margins = 1:2} will split up by the first two dimensions.  For a 3d array, this will produce the columns in the z-direction.
+
+A special case of operating on arrays corresponds to the {\tt mapply} function of base R.  The plyr equivalents are named {\tt maply}, {\tt mdply}, {\tt mlply} and {\tt m\_ply}.  These default to working on the first dimension (i.e. row-wise) and automatically splat the function so that function is called not with a single list as input, but each column is passed as a separate argument to the function.  Compared to using {\tt mapply}, for the {\tt m*ply} functions you will need to {\tt cbind} the columns together first.  This will ensure that each argument has the same length, and allows the {\tt m*ply} functions to have the same argument order as all the other 
+
+\section{Output}
+\label{sec:output}
+
+Avoid any ambiguity about what you'll get back from one of these functions. This replaces the {\tt simplify} argument that many of the {\tt apply} functions in base R has, and means that you can depend on the output of each function being a given type (which makes programming with the results much easier).
+
+The output type also places some restrictions on what type of results the processing function should return.  Generally, the processing function should return the same type of output as the eventual output, but some other formats are accepted for convenience and are described below.  For any type, if the processing function returns {\tt NULL}, that slice will not be included in the output.
 
 \subsection{Lists (l)}
 
-mply
+Output to lists is the simplest format, each processed piece is returned as a list.  This list contains also stores the labels for each of these pieces should you use {\tt ldply} or {\tt laply} to further process the list.  This ensures that the labels are the same as if you had used {\tt aaply}, {\tt adply}, {\tt daply} or {\tt dply} directly.
 
-\section{Process}
+This makes it convenient to calculate complex objects once (e.g.\ models) and then extract pieces of interest, while still keeping the labels that allow you to match up the results to the original data.
 
-conditions on function
-
-how extra arguments are passed in
-
-explode/splat
-
-each
-colwise
-failwith
-
-progress bars
-
-\section{Output}
-
-Avoid any ambiguity about what you'll get back from one of these functions.  
-
-This strictness should also enable certain optimisations that are unavailable to apply and family.
+If the output is empty, then the output will be an empty list.
 
 \subsection{Data frames (d)}
 
-Function needs to return atomic vector of fixed size or data.frame.
+The processing functions should either return a data.frame, or a (named) atomic vector of fixed length, which will form the columns of the output.
 
-Extra variable will be added according to splits.
+If there are no results, the output will be an empty data frame.
+
+The output data frame will be supplemented with columns that identify the subset of the original dataset that each piece was computed from.  These columns make it easier to merge the old and new data.  If the input was a data frame, this will be the values of the splitting variables.  If the input was an array, this will be the dimension names.
 
 \subsection{Arrays (a)}
 
-Function needs to return atomic of vector/matrix/array of fixed size/shape, or a list.
+The processing function should return an atomic of array of fixed size/shape, or a list.  
 
 Each splitting criterion creates a new dimension.  Dimensions from function are added onto the end.  This ensures idempotency
 
-\subsection{Lists (l)}
-
-Not much to talk about.  dl -> ld will be labelled the same as dd.
+If the output is empty, then the result will be a logical vector of length 0.
 
 \subsection{Ignored (\_)}
 
-Sometimes you are operating on a list purely for the side effects (e.g. plots, caching, output to screen/file).  A little more memory efficient than simply abandoning the output of *lply because it doesn't construct the intermediate storage.
+Sometimes you are operating on a list purely for the side effects (e.g. plots, caching, output to screen/file).  This is a little more efficient than abandoning the output of {\tt *lply} because it doesn't store the intermediate results.
+
+\section{Helpers}
+\label{sec:helpers}
+
+The {\tt plyr} package also provides a number of helper function which take a function as input and return a modified function as output.
+
+\begin{itemize}
+  \item {\tt splat}
+  \item {\tt each}
+  \item {\tt colwise}
+  \item {\tt failwith}
+\end{itemize}
+
+Each ply function also has a {\tt progress} argument which allows you to monitor the progress of long running operations.  
+
+\begin{itemize}
+  \item {\tt "none"}, the default.  No progress bar is displayed.
+  \item {\tt "text"} provides a textual progress bar which.
+  \item {\tt "win"} and {\tt "tk"} provide graphical progress bars for Windows and systems with the tcl/tk package loaded.
+\end{itemize}
+
+The progress bars assume that processing each piece takes the same amount of time, so will not be 100\% accurate.  They should still be helpful though.
 
 \section{Equivalence to existing R functions}
+\label{sec:equiv}
 
 \begin{itemize}
   \item lapply $\to$ llply
@@ -101,9 +158,7 @@ Sometimes you are operating on a list purely for the side effects (e.g. plots, c
   \item mapply $\to$ maply, mlply
   \item by $\to$ dlply
   \item aggregate $\to$ daply(, colwise(f))
-  \item tapply 
-  \item ave 
-  \item sweep
+  \item tapply, ave, sweep $\to$ no direct correspondence
   \item lapply(split(df, ...), f) $\to$ dlply
   \item do.call("rbind", lapply(split(df, ...), f)) $\to$ ddply
   \item HMisc functions
@@ -133,7 +188,9 @@ Model for each player
 
 \section{Conclusion}
 
-% section conclusion (end)
+If slow, might want to look at the profr package to speed up.  
+
+However, it is my aim to eventually implement these functions in C for maximum speed and memory efficiency, so that they are competitive with the built in operations.  I also plan to investigate a connection to the {\tt papply} function to allow for easy parallelisation across multiple instances of R (particularly for multi-core machines).
 
 \bibliography{/Users/hadley/documents/phd/references}
 \end{document}
