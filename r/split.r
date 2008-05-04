@@ -21,6 +21,8 @@ splitter_d <- function(data, vars = NULL) {
 
 # Split an array by margins
 splitter_a <- function(data, margins = 1) {
+  if (!all(margins %in% seq_len(dims(data)))) stop("Invalid margin")
+  
   dimensions <- lapply(dim(data), seq, from=1)
   dimensions[-margins] <- list(TRUE) 
   indices <- expand.grid(dimensions, KEEP.OUT.ATTRS = FALSE)
