@@ -27,7 +27,8 @@ test_f_matrix <- function() {
 }
 
 checkEqualsSansNames <- function(x, y) {
-  dimnames(x) <- dimnames(y)
+  if (dims(x) > 1) dimnames(x) <- dimnames2(x)
+  if (dims(y) > 1) dimnames(y) <- dimnames2(y)
   checkEquals(x, y)
 }
 
