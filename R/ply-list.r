@@ -3,6 +3,7 @@
 llply <- function(data, fun = NULL, ..., .progress = "none") {
   data <- as.list(data)
   if (is.null(fun)) return(data)
+  if (length(data) == 0) return(list())
   
   if (is.character(fun)) fun <- match.fun(fun)
   

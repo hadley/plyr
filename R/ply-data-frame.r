@@ -3,6 +3,7 @@
 ldply <- function(data, fun = NULL, ..., .progress = "none") {
   data <- as.list(data)
   res <- llply(data, fun, ..., .progress = .progress)
+  if (length(res) == 0) return(data.frame())
   
   atomic <- unlist(llply(res, is.atomic))
   if (all(atomic)) {

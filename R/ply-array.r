@@ -6,6 +6,8 @@ laply <-  function(data, fun = NULL, ..., .progress = "none") {
   data <- as.list(data)
   res <- llply(data, fun, ..., .progress = .progress)
   
+  if (length(res) == 0) return(vector())
+  
   atomic <- sapply(res, is.atomic)
   if (all(atomic)) {
     # Atomics need to be same size
