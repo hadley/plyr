@@ -14,15 +14,10 @@ plyr functions are named according to the type of object they input (first lette
   * d_ply = from a data.frame, ignore output
   * and so on for llply, laply, ldply, l_ply, alply, aaply, adply, a_ply, dlply, daply, dply, d_ply
 
-This avoids any ambiguity about what you'll get back from one of these functions.  
+plyr also provides:
 
-
-  * aggregate(mtcars, list(mtcars$cyl), median) 
-    daply(mtcars, .(cyl), colwise(median))
-    daply(mtcars, .(cyl), colwise(median, .if = is.numeric))
-    
-  * p <- function(df) coef(lm(mpg ~ wt, data = df))
-    do.call("rbind", lapply(split(mtcars, mtcars$cyl), p))
-    ddply(mtcars, .(cyl), p)
+  * maply, mlply, mdply and m_ply, to perform a similar role to mapply
+  * colwise to turn functions that operate on a single vector of numbers into functions that operate on columns
+  * each to return a named vector containing the results of multiple functions
 
 The aim of this releases is to provide a consistent and useful set of tools for solving the split-apply-combine problem.  It is not particularly fast or memory efficient, but there is much potential for optimisation, particularly by rewriting important bits in C.
