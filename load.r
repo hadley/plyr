@@ -1,5 +1,4 @@
 # library(plyr)
-library(abind)
 
 FILE <- (function() {
   attr(body(sys.function()), "srcfile")

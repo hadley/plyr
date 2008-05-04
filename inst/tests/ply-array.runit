@@ -13,6 +13,7 @@ test_simple <- function() {
 }
 
 test_f_matrix <- function() {
+  library(abind)
   f <- function(x) matrix(x, 2, 2)
   m2d <- lapply(1:10, f)
   m3d <- abind(m2d, along = 0)
