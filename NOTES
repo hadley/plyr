@@ -4,3 +4,11 @@ batting <- read.csv("~/Documents/teaching/2008-r-clinic/baseball/batting.csv", s
 long <- names(which(table(batting$id) >= 15))
 baseball <- subset(batting, id %in% long)
 save(baseball, file="data/baseball.rda", compress=T)
+
+load("~/ggobi/papers/2007-glaciers-melt/data/de.rdata")
+
+de$lat <- round_any(de$lat, 0.1)
+de$long <- round_any(de$long, 0.1)
+ozone <- cast(de, lat ~ long ~ time, subset=variable=="ozone")
+ 
+save(ozone, file="data/ozone.rda", compress=T)
