@@ -4,3 +4,7 @@ unrowname <- function(x) {
   rownames(x) <- NULL
   x
 }
+
+reorder.character <- function(x, X, FUN = mean, ...) {
+  reorder(factor(x), X = X, FUN = FUN, ...)
+}

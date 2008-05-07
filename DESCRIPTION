@@ -9,5 +9,5 @@ Description:
 URL: http://had.co.nz/plyr
 Depends: R (>= 2.7)
 Suggests: RUnit, abind
-License: MIT
+License: GPL
 LazyData: true
