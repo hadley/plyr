@@ -9,9 +9,8 @@
 # @arguments function that tests columns for inclusion
 # @alias catcolwise
 # @alias numcolwise
-colwise <- function(fun, .try = FALSE, .if = function(x) TRUE) {
-  f <- if (.try) failwith(NA, fun) else fun
-  function(df, ...) laply(Filter(.if, df), f, ...)  
+colwise <- function(fun, .if = function(x) TRUE) {
+  function(df, ...) as.data.frame(t(aaply(Filter(.if, df), 2, fun, ...)))
 }
 
 catcolwise <- function(fun, .try = FALSE) {
