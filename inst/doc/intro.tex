@@ -26,28 +26,27 @@
 
 \section{Introduction}
 
-The {\tt plyr} package provides tools for solving a common class of problems, where you break apart a big data structure, operate on each piece independently and then put all the pieces back together (possibly in a different format to the original).  This paper introduces the {\tt ply} family of functions which generalise the {\tt apply} family, and include all combinations of input from and output to lists, data frames and arrays.
+The {\tt plyr} package provides tools for solving a common class of problems, where you break apart a big complicated data structure into small simple pieces, operate on each piece independently and then put all the pieces back together (possibly in a different format to the original).  This paper introduces the {\tt ply} family of functions which generalise the {\tt apply} family, and include all combinations of input from and output to lists, data frames and arrays.
 
-This paper describes version 0.1 of the package.  {\tt plyr} has no run-time dependencies, and requires R 2.7.0 or later.  To install it from within R, run {\tt install.packages("plyr")}.  Information about the latest version of the package, including updated version of this document, can be found online at  \url{http://had.co.nz/plyr}.  If you have any questions or comments about {\tt plyr}, please feel free to email me directly at \href{mailto:h.wickham@gmail.com}{h.wickham@gmail.com}.
+This paper describes version 0.1 of {\tt plyr}, which requires R 2.7.0 or later and has no run-time dependencies.  To install it from within R, run {\tt install.packages("plyr")}.  Information about the latest version of the package, including updated version of this document, can be found online at  \url{http://had.co.nz/plyr}.  If you have any questions or comments about {\tt plyr}, please feel free to email me directly at \href{mailto:h.wickham@gmail.com}{h.wickham@gmail.com}.
 
 In general, these tools provide a replacement for {\tt for} loops for a large set of practical problems.  The major assumption that they make is that each piece can be operated on independently, so if there is any dependence (e.g. recursive relationship) between the pieces then these tools are not appropriate.  It is not true that for loops are slow, but often they do not clearly express the intent of your algorithm, as you need a lot of extra housekeeping code. The tools of {\tt plyr} aim to eliminate this extra code and illuminate the key components of your computations.
 
- The {\tt plyr} package also provides a number of helper functions for error recovery, splatting, column-wise processing, and reporting progress. These are described in Section~\ref{sec:helpers}. Section~\ref{sec:strategy} discusses the general strategy that these functions support, including cases studies that explore long term professional baseball players and ozone measured over space and time.  Finally, Section~\ref{sec:equiv} maps existing R functions to their plyr counterparts and lists related packages, and Section~\ref{sec:future} describes future plans.
-
-% Note that through this paper we will use array to refer to vectors (1d arrays) and matrices (2d arrays) as well.  
+Section~\ref{sec:usage} introduces the {\tt plyr} family of tools and how to use them.  The {\tt plyr} package also provides a number of helper functions for error recovery, splatting, column-wise processing, and reporting progress. These are described in Section~\ref{sec:helpers}. Section~\ref{sec:strategy} discusses the general strategy that these functions support, including cases studies that explore long term professional baseball players and ozone measured over space and time.  Finally, Section~\ref{sec:equiv} maps existing R functions to their plyr counterparts and lists related packages, and Section~\ref{sec:future} describes future plans.
 
 \section{Usage}
+\label{sec:usage}
 
-Table~\ref{tbl:functions} lists the basic set of plyr functions.  Each function is named according to the type of input it processes and the type of output it produces.  The type of the input determines how it can be broken up, and the various possibilities described in detail in Section~\ref{sec:input}.  The output type determines how the pieces are joined back together again, as described in detail in Section~\ref{sec:output}. 
+Table~\ref{tbl:functions} lists the basic set of plyr functions.  Each function is named according to the type of input it processes and the type of output it produces.  The type of the input determines how it can be broken up, and the various possibilities described in detail in Section~\ref{sec:input}.  The output type determines how the pieces are joined back together again, as described in detail in Section~\ref{sec:output}.  Note that throughout this paper we will use array to refer to vectors (1d arrays) and matrices (2d arrays) as well.
 
 \begin{table}
   \begin{center}
   \begin{tabular}{l|ccc}
     
-     \backslashbox{{\bf to}}{{\bf from}} & array & data.frame & list \\
+     \backslashbox{{\bf to}}{{\bf from}} & array & data frame & list \\
      \hline
      array      & aaply  & daply  & laply  \\
-     data.frame & adply  & ddply  & ldply  \\
+     data frame & adply  & ddply  & ldply  \\
      list       & alply  & dlply  & llply  \\
      nothing    & a\_ply & d\_ply & l\_ply \\
     
@@ -59,7 +58,17 @@ Table~\ref{tbl:functions} lists the basic set of plyr functions.  Each function 
 
 Arguments to the ply functions are determined by the types of input and output.  For this reason, it's useful to refer to a complete row or column of Table~\ref{tbl:functions}.  The notation we use for this is {\tt d*ply} to refer an entire row (fixed input) and {\tt *dply} for an entire column (fixed output).
 
-The first argument, {\tt data}, for all {\tt ply} functions is the data, a list, data frame or array.  The second argument describes how to split up the data, and is different for each input type.  The third argument is the function to be applied to each piece.
+Plyr functions have either two or three main arguments, depending on the type of input:
+
+\begin{itemize}
+  \item {\tt a*ply(data., margins., .f, ..., progress. = "none")}
+  \item {\tt d*ply(data., variables., .f, ..., progress. = "none")}
+  \item {\tt l*ply(data., f., ..., progress. = "none")}
+\end{itemize}
+
+The first argument is the {\tt data} to be split up, processed and recombined.  For arrays and data frames, the second argument describes how to split up the data by {\tt margins} or by {\tt variables}.  The third argument is the function to be applied to each piece.  All further arguments are passed on to the processing function.  The {\tt .progress} argument controls displaying of a progress bar, and is described at the end of Section~\ref{sec:helpers}.
+
+Note that all {\tt plyr} arguments are suffixed with ``{\tt .}'' - this is to help prevent clashes with arguments in the processing function.  Recommended practice is to call {\tt **ply} functions with arguments specified by position, not name.
 
 \subsection{Input} 
 \label{sec:input}
@@ -150,15 +159,15 @@ The {\tt plyr} package also provides a number of helper function which take a fu
 
   \item {\tt each} takes a list of functions and produces a function that runs  each function on the inputs and returns a named vector of outputs.   For example, {\tt each(min, max)} is short hand for {\tt function(x) c(min = min(x), max = max(x))}.  Using each with a single function is useful if you want a named vector as output.
 
-  \item {\tt colwise} converts a function that work on vectors, to one that operates column-wise of data frame, returning a vector of results named according to the columns of the data frame.  For example, {\tt colwise(median)} is a function that computes the median of each column of a data.frame.  
+  \item {\tt colwise} converts a function that works on vectors, to one that operates column-wise of data frame, returning a data fram.  For example, {\tt colwise(median)} is a function that computes the median of each column of a data.frame.  
   
   The optional {\tt .if} argument specialises the function to only run on certain types of vector, e.g.\ {\tt .if = is.factor} or {\tt .if = is.numeric}.  These two restrictions are provided in the premade {\tt calcolwise} and {\tt numcolwise}.  
-  
-  If the additional argument {\tt .try} is {\tt TRUE}, then the function will be wrapped with {\tt failwith(NA, f, quiet = .quiet)}. 
   
   \item {\tt failwith} sets a default value to return if the function throws an error.  For example, {\tt failwith(NA, f)} will return an {\tt NA} whenever {\tt f} throws an error.  
   
   The optional {\tt quiet} argument suppresses any notice of the error when it is {\tt TRUE}.
+
+  \item {\tt e2f} converts an expression to a function.  This allows you to imitate {\tt replicate}.
 
 \end{itemize}
 
@@ -223,23 +232,30 @@ baseball <- subset(baseball, ab >= 25)
 
 % qplot(cyear, rbi / ab, data=baseball, group=id, geom="line", colour=I(alpha("black", 1/20)))
 
-To summarise the pattern across all players, we first need to figure out what the common patterns are.  A time series plot of rbi/ab is a good place to start.  We figure out how do this for Babe Ruth (shown), then write a function, and then use {\tt d\_ply} to save a plot for every player to a pdf.
+To summarise the pattern across all players, we first need to figure out what the common patterns are.  A time series plot of rbi/ab, runs per bat, is a good place to start.  We do this for Babe Ruth, as shown in Figure~\ref{fig:baberuth}, then write a function to do it for any player (taking care to ensure common scale limits) and then use {\tt d\_ply} to save a plot for every player to a pdf.  We use two tricks here: {\tt reorder} to sort the players in order of average rbi / ab, and {\tt failwith} to ensure that even if a single plot doesn't work we will still get output for the others.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=3in]{baberuth}
+  \caption{Runs per bat for Babe Ruth.}
+  \label{fig:baberuth}
+\end{figure}
 
 \begin{verbatim}
-  xlim <- range(baseball$cyear, na.rm=TRUE)
-  ylim <- range(baseball$rbi / baseball$ab, na.rm=TRUE)
-  plotpattern <- function(df) {
-    print(qplot(cyear, rbi / ab, data = df, geom="line", xlim = xlim, ylim = ylim ))
-  }
-  
-  pdf("paths.pdf", width=8, height=4)
-  d_ply(baseball, .(reorder(id, rbi / ab)), failwith(NA, plotpattern))
-  dev.off()
+qplot(cyear, rbi / ab, data=baberuth, geom="line")  
+
+xlim <- range(baseball$cyear, na.rm=TRUE)
+ylim <- range(baseball$rbi / baseball$ab, na.rm=TRUE)
+plotpattern <- function(df) {
+  print(qplot(cyear, rbi / ab, data = df, geom="line", xlim = xlim, ylim = ylim ))
+}
+
+pdf("paths.pdf", width=8, height=4)
+d_ply(baseball, .(reorder(id, rbi / ab)), failwith(NA, plotpattern))
+dev.off()
 \end{verbatim}
 
-Show Babe Ruth.  
-
-Flicking through the 1145 plots reveals that there doesn't seem to be much of a common pattern, although many players do seem to have a roughly linear trend with quite a bit of noise.  We'll start by fitting a linear model to each player and then exploring the results.  This time we'll skip doing it by hand and go directly to the function.  This is probably ok here, since it's a simple procedure.
+Flicking through the 1145 plots reveals that there doesn't seem to be much of a common pattern, although many players do seem to have a roughly linear trend with quite a bit of noise.  We'll start by fitting a linear model to each player and then exploring the results.  This time we'll skip doing it by hand and go directly to the function.
 
 \begin{verbatim}
 model <- function(df) {
@@ -249,7 +265,7 @@ model(baberuth)
 models <- dlply(baseball, .(id), model)
 \end{verbatim}
 
-Now we have a list of 1145 models, one for each player.  To do something interesting with these, we need to extract some summary statistics.  We'll extract the coefficients of the model (the slope and intercept).  It's also important to get some measure of model fit so we can ensure we're not drawing conclusions based on models that fit the data very poorly.  If we were going to go into more depth, it would be a good idea to look at the players that the model fits very poorly and come up with some better summaries.
+Now we have a list of 1145 models, one for each player.  To do something interesting with these, we need to extract some summary statistics.  We'll extract the coefficients of the model (the slope and intercept), and a measure of model fit so we can ensure we're not drawing conclusions based on models that fit the data very poorly, the R-squared.  The first few rows of {\tt coef} are shown in Table~\ref{tbl:coef}.
 
 \begin{verbatim}
 rsq <- function(x) summary(x)$r.squared
@@ -257,33 +273,64 @@ coef <- ldply(models, function(x) c(coef(x), rsq(x)))
 names(coef) <- c("id", "intercept", "slope", "rsquare")
 \end{verbatim}
 
-Plots
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lrrr}
+    \hline
+    id & intercept & slope & rsquare \\
+    \hline
+    aaronha01 & 0.18 & 0.00 & 0.00 \\
+    abernte02 & 0.00 &  & 0.00 \\
+    adairje01 & 0.09 & $-$0.00 & 0.01 \\
+    adamsba01 & 0.06 & 0.00 & 0.03 \\
+    adamsbo03 & 0.09 & $-$0.00 & 0.11 \\
+    adcocjo01 & 0.15 & 0.00 & 0.23 \\
+    \hline
+  \end{tabular}
+  \caption{The first few rows of the {\tt coef} data frame.  Note that the player ids from the original data have been preserved}
+  \label{tbl:coef}
+\end{table}
 
-\begin{verbatim}
-  ggplot(coef, aes(slope, intercept)) + scale_size() + geom_vline(size=0.5, colour="grey50") + geom_hline(size = 0.5, colour="grey50") + geom_point(aes(size = rsquare))
-  last_plot() + xlim(-0.01, 0.01) + ylim(-0.1, 0.25)
-\end{verbatim}
+Figure~\ref{fig:models-hist} displays the distribution of r-squared across the models.  The models generally do a very bad job of fitting the data!  
+Figure~\ref{fig:models} summarises these bad models.  These plots show a negative correlation between slope and intercept, and the particularly bad models have estimates for both values close to 0.  Reassuringly, there are no players in the bottom left quadrant with both negative slope and intercept.
 
-Reassuringly, there are no players in the bottom left quadrant with both negative slope and intercept
+% qplot(rsquare, data=coef, geom="histogram", binwidth=0.01)
+% ggsave(file = "models-hist.pdf", width=12, height=4)
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=6in]{models-hist}
+  \caption{Histogram of model r-squared with bin width of 0.05.  Most models fit very poorly!  The spike of models with a r-squared of 1 are players with only two data points, found by inspecting {\tt ldply(models[coef\$rsquare == 1], "[[", "model")}}
+  \label{fig:models-hist}
+\end{figure}
 
-% model2 <- function(df) {
-%   lm(rbi / ab ~ cyear + I(cyear ^ 2), data=df)
-% }
-% models2 <- dlply(baseball, .(id), model2)
-% coef <- ldply(models2, function(x) c(coef(x), rsq(x)))
-% names(coef) <- c("id", "intercept", "a", "b", "rsquare")
-% coef$peak <- with(coef, -a / (2 * b))
-% 
-% qplot(peak, data=coef, geom="histogram")
-% qplot(peak, data=subset(coef, peak > 0 & peak < 20), geom="histogram", binwidth=1)
-% qplot(peak, data=subset(coef, rsquare > 0.8), geom="histogram", binwidth=1)
-% 
-% qplot(a, b, data=coef, size=rsquare) + scale_size()
-% 
+% ggplot(coef, aes(slope, intercept)) + 
+%   geom_point(aes(size = rsquare)) +
+%   geom_vline(size=0.5, colour="grey50") + 
+%   geom_hline(size = 0.5, colour="grey50") + 
+%   scale_area()
+% ggsave(file = "models.pdf", width=6, height=6)
+% last_plot() + xlim(-0.01, 0.01) + ylim(-0.1, 0.25)
+% ggsave(file = "models-zoom.pdf", width=6, height=6)
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=3in]{models}
+    \includegraphics[width=3in]{models-zoom}
+  \caption{A scatterplot of model intercept and slope, with one point for each model (player).  The size of the points is proportion to the R-square of the model. Vertical and horizontal lines emphasis the x and y origins. }
+  \label{fig:models}
+\end{figure}
+
+This concludes the baseball player case study, which used used {\tt ddply}, {\tt d\_ply}, {\tt dlply} and {\tt ldply}.  Our statistical analysis was not very sophisticated, but the tools of {\tt plyr} made it very easy to work at the player level, and then combine results into a single summary.  
 
 \subsection{Case study: spatio-temporal ozone distribution}
 
-Standardisation/smoothing.
+Standardisation/smoothing.  \citep{hobbs:2007}
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=4in]{ozone-glyph}
+  \caption{Star glyphs showing variation in ozone over time at each spatial location.}
+  \label{fig:ozone-glyph}
+\end{figure}
 
 For many other types of operations, it is useful to convert this array structure to a data frame.  The {\tt melt} function in the {\tt reshape} package is one way to do that which preserves the dimension labels as much as possible.
 
@@ -318,8 +365,6 @@ Related functions {\tt tapply}, {\tt ave} and {\tt sweep} have no corresponding 
 There are a number of other resources that also attempt to simplify this class of problems:
 
 \begin{itemize}
-  \item Base R:  apply functions, by, etc.  The equivalence between these function and plyr functions are described in Section~\ref{sec:equiv}.
-  
   \item The {\tt doBy} package
   \item The {\tt gdata} package
   \item The {\tt scope} package
@@ -334,6 +379,8 @@ There are a number of other resources that also attempt to simplify this class o
 If slow, might want to look at the profr package to speed up.  
 
 However, it is my aim to eventually implement these functions in C for maximum speed and memory efficiency, so that they are competitive with the built in operations.  I also plan to investigate a connection to the {\tt papply} function to allow for easy parallelisation across multiple instances of R (particularly for multi-core machines).
+
+multir
 
 \bibliography{/Users/hadley/documents/phd/references}
 \end{document}
