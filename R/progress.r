@@ -20,7 +20,10 @@ progress_text <- function(style = 3, ...) {
   txt <- NULL
   
   list(
-    init = function(x) txt <<- txtProgressBar(max = x, style = style, ...),
+    init = function(x) {
+      txt <<- txtProgressBar(max = x, style = style, ...)
+      setTxtProgressBar(txt, 0)
+    },
     step = function() {
       n <<- n + 1
       setTxtProgressBar(txt, n)
@@ -35,7 +38,10 @@ progress_tk <- function(title = "plyr progress", ...) {
   tk <- NULL
   
   list(
-    init = function(x) tk <<- tkProgressBar(max = x, title = title, ...),
+    init = function(x) {
+      tk <<- tkProgressBar(max = x, title = title, ...)
+      setTkProgressBar(tk, 0)
+    },
     step = function() {
       n <<- n + 1
       setTkProgressBar(tk, n)
@@ -49,7 +55,10 @@ progress_win <- function(title = "plyr progress", ...) {
   win <- NULL
   
   list(
-    init = function(x) win <<- winProgressBar(max = x, title = title, ...),
+    init = function(x) {
+      win <<- winProgressBar(max = x, title = title, ...)
+      setWinProgressBar(win, 0)
+    },
     step = function() {
       n <<- n + 1
       setWinProgressBar(win, n)
