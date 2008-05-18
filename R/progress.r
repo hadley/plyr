@@ -15,7 +15,7 @@ progress_none <- function() {
   )
 }
 
-progress_txt <- function(style = 3, ...) {
+progress_text <- function(style = 3, ...) {
   n <- 0
   txt <- NULL
   
