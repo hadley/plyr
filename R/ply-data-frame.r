@@ -1,8 +1,8 @@
 # To a data frame -----------------------------------------------------------
 
-ldply <- function(data, fun = NULL, ..., .progress = "none") {
-  data <- as.list(data)
-  res <- llply(data, fun, ..., .progress = .progress)
+ldply <- function(data., fun. = NULL, ..., .progress = "none") {
+  data. <- as.list(data.)
+  res <- llply(data., fun., ..., .progress = .progress)
   if (length(res) == 0) return(data.frame())
   
   atomic <- unlist(llply(res, is.atomic))
@@ -23,8 +23,8 @@ ldply <- function(data, fun = NULL, ..., .progress = "none") {
     rows <- unname(laply(res, function(x) if(is.null(x)) 0 else nrow(x)))
   }
 
-  labels <- attr(data, "split_labels")
-  if (!is.null(labels) && nrow(labels) == length(data)) {
+  labels <- attr(data., "split_labels")
+  if (!is.null(labels) && nrow(labels) == length(data.)) {
     cols <- setdiff(names(labels), names(resdf))
     resdf <- cbind(labels[rep(1:nrow(labels), rows), cols, drop=FALSE], resdf)
   }
@@ -40,19 +40,19 @@ ldply <- function(data, fun = NULL, ..., .progress = "none") {
 #X base2 <- ddply(baseball, .(id), function(df) {
 #X  transform(df, career_year = year - min(year) + 1)
 #X })
-ddply <- function(data, vars, fun = NULL, ..., .progress = "none") {
-  data <- as.data.frame(data)
-  pieces <- splitter_d(data, vars)
+ddply <- function(data., variables., fun. = NULL, ..., .progress = "none") {
+  data. <- as.data.frame(data.)
+  pieces <- splitter_d(data., variables.)
   
-  ldply(pieces, fun, .progress = .progress)
+  ldply(pieces, fun., .progress = .progress)
 }
 
 #X adply(ozone, 1, mean)
 #X adply(ozone, 3, mean)
 #X adply(ozone, c(1,2), mean)
 #X adply(ozone, c(1,2), each(mean, max, min))
-adply <- function(data, margins, fun = NULL, ..., .progress = "none") {
-  pieces <- splitter_a(data, margins)
+adply <- function(data., margins., fun. = NULL, ..., .progress = "none") {
+  pieces <- splitter_a(data., margins.)
   
-  ldply(pieces, fun, .progress = .progress)
+  ldply(pieces, fun., .progress = .progress)
 }

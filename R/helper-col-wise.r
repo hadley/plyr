@@ -9,14 +9,14 @@
 # @arguments function that tests columns for inclusion
 # @alias catcolwise
 # @alias numcolwise
-colwise <- function(fun, .if = function(x) TRUE) {
-  function(df, ...) as.data.frame(t(aaply(Filter(.if, df), 2, fun, ...)))
+colwise <- function(fun., .if = function(x) TRUE) {
+  function(df, ...) as.data.frame(t(aaply(Filter(.if, df), 2, fun., ...)))
 }
 
-catcolwise <- function(fun, .try = FALSE) {
-  colwise(fun, .try = .try, .if = is.discrete)
+catcolwise <- function(fun., .try = FALSE) {
+  colwise(fun., .try = .try, .if = is.discrete)
 }
-numcolwise <- function(fun, .try = FALSE) {
-  colwise(fun, .try = .try, .if = is.numeric)
+numcolwise <- function(fun., .try = FALSE) {
+  colwise(fun., .try = .try, .if = is.numeric)
 }
 

@@ -1,10 +1,10 @@
 # To arrays  ----------------------------------------------------------------
 
-laply <-  function(data, fun = NULL, ..., .progress = "none") {
-  if (is.character(fun)) fun <- match.fun(fun)
+laply <-  function(data., fun. = NULL, ..., .progress = "none") {
+  if (is.character(fun.)) fun. <- match.fun(fun.)
     
-  data <- as.list(data)
-  res <- llply(data, fun, ..., .progress = .progress)
+  data. <- as.list(data.)
+  res <- llply(data., fun., ..., .progress = .progress)
   
   if (length(res) == 0) return(vector())
   
@@ -33,11 +33,11 @@ laply <-  function(data, fun = NULL, ..., .progress = "none") {
     class(res) <- class(res)[2]
   }
 
-  labels <- attr(data, "split_labels")
+  labels <- attr(data., "split_labels")
   if (is.null(labels)) {
-    labels <- data.frame(X = seq_along(data))
+    labels <- data.frame(X = seq_along(data.))
     in_labels <- list(NULL)
-    in_dim <- length(data)
+    in_dim <- length(data.)
   } else {
     in_labels <- lapply(labels, unique)
     in_dim <- sapply(in_labels, length)        
@@ -69,11 +69,11 @@ laply <-  function(data, fun = NULL, ..., .progress = "none") {
 #X daply(baseball[, c(2, 6:9)], .(year), mean)
 #X daply(baseball[, 6:9], .(baseball$year), mean)
 #X daply(baseball, .(year), function(df) mean(df[, 6:9]))
-daply <- function(data, vars, fun = NULL, ..., .progress = "none") {
-  data <- as.data.frame(data)
-  pieces <- splitter_d(data, vars)
+daply <- function(data., variables., fun. = NULL, ..., .progress = "none") {
+  data. <- as.data.frame(data.)
+  pieces <- splitter_d(data., variables.)
   
-  laply(pieces, fun, .progress = .progress)
+  laply(pieces, fun., .progress = .progress)
 }
 
 #X aaply(ozone, 1, mean)
@@ -86,8 +86,8 @@ daply <- function(data, vars, fun = NULL, ..., .progress = "none") {
 #X standardise <- function(x) (x - min(x)) / (max(x) - min(x))
 #X aaply(ozone, 3, standardise)
 #X aaply(ozone, 1:2, standardise)
-aaply <- function(data, margins, fun = NULL, ..., .progress = "none") {
-  pieces <- splitter_a(data, margins)
+aaply <- function(data., margins., fun. = NULL, ..., .progress = "none") {
+  pieces <- splitter_a(data., margins.)
   
-  laply(pieces, fun, .progress = .progress)
+  laply(pieces, fun., .progress = .progress)
 }
