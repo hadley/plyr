@@ -61,9 +61,9 @@ Arguments to the ply functions are determined by the types of input and output. 
 Plyr functions have either two or three main arguments, depending on the type of input:
 
 \begin{itemize}
-  \item {\tt a*ply(data., margins., .f, ..., progress. = "none")}
-  \item {\tt d*ply(data., variables., .f, ..., progress. = "none")}
-  \item {\tt l*ply(data., f., ..., progress. = "none")}
+  \item {\tt a*ply(data., margins., fun., ..., progress. = "none")}
+  \item {\tt d*ply(data., variables., fun., ..., progress. = "none")}
+  \item {\tt l*ply(data., fun., ..., progress. = "none")}
 \end{itemize}
 
 The first argument is the {\tt data} to be split up, processed and recombined.  For arrays and data frames, the second argument describes how to split up the data by {\tt margins} or by {\tt variables}.  The third argument is the function to be applied to each piece.  All further arguments are passed on to the processing function.  The {\tt .progress} argument controls displaying of a progress bar, and is described at the end of Section~\ref{sec:helpers}.
@@ -85,6 +85,19 @@ Note that all {\tt plyr} arguments are suffixed with ``{\tt .}'' - this is to he
 \subsubsection{In: array ({\tt a*ply})}
 
 The {\tt margins} argument of {\tt a*ply} describes how to slice up the array in the same way that {\tt apply} does.  For example, {\tt margins = 1} specifies that we want to break up the array by rows (the first index when subsetting), and {\tt margins = 2} by columns (the second index when subsetting).  You can also use combinations of margins.  For example, {\tt margins = 1:2} will split up by the first two dimensions.  For a 3d array, this will produce the columns in the z-direction.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width= 0.4 \textwidth]{split-matrix}
+  \caption{The four ways to split up a 2d matrix.  Original matrix shown at top left.  Blue indicates a single piece of the output.}
+  \label{fig:split-matrix}
+\end{figure}
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width= 0.5 \textwidth]{split-array}
+  \caption{The seven ways to split up a 3d array.  Original array shown at top left.  Blue indicates a single piece of the output.}
+  \label{fig:split-array}
+\end{figure}
 
 A special case of operating on arrays corresponds to the {\tt mapply} function of base R.  The plyr equivalents are named {\tt maply}, {\tt mdply}, {\tt mlply} and {\tt m\_ply}.  These default to working on the first dimension (i.e. row-wise) and automatically splat the function so that function is called not with a single list as input, but each column is passed as a separate argument to the function.  Compared to using {\tt mapply}, for the {\tt m*ply} functions you will need to {\tt cbind} the columns together first.  This will ensure that each argument has the same length, and allows the {\tt m*ply} functions to have the same argument order as all the other 
 
@@ -116,6 +129,22 @@ The output type also places some restrictions on what type of results the proces
 With array output the dimensionality is determined by the input splits.  A list will produce a single dimension, a data frame will have a dimension for each variable split on, and a array will have a dimension for each dimension that it was split on.  The processing function should return an atomic (i.e.\ {\tt is.atomic(x) == TRUE}) of array of fixed size/shape, or a list.  If atomic, the extra dimensions will added perpendicular to the original dimensions.  If a list, the output will be a list with dimensions.  
 
 Some examples should make this easier to understand:
+
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width= 0.5 \textwidth]{function-1d}
+  \caption{Results from outputs of various dimensionalty from a single value, shown top left.  Columns indicate input and rows output from function.}
+  \label{fig:function-1d}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width= 0.5 \textwidth]{function-2d}
+  \caption{Results from outputs of various dimensionalty from a 1d vector, shown top left.  Columns indicate input and rows output from function.}
+  \label{fig:function-2d}
+\end{figure}
+
 
 The dimnames of the array will be the same as the input, if an array, or the extracted from the subsets if a data frame.
 
