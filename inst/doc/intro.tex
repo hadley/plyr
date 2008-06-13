@@ -14,6 +14,7 @@
 \usepackage[small]{titlesec}
 \renewcommand\familydefault{bch}
 \usepackage{slashbox}
+\usepackage{booktabs}
 
 \title{plyr: divide and conquer}
 \author{Hadley Wickham}
@@ -26,30 +27,34 @@
 
 \section{Introduction}
 
-The {\tt plyr} package provides tools for solving a common class of problems, where you break apart a big complicated data structure into small simple pieces, operate on each piece independently and then put all the pieces back together (possibly in a different format to the original).  This paper introduces the {\tt ply} family of functions which generalise the {\tt apply} family, and include all combinations of input from and output to lists, data frames and arrays.
+The {\tt plyr} package provides tools for solving a common class of problems, where you break apart a big complicated data structure into small simple pieces, operate on each piece independently and then put all the pieces back together (possibly in a different format to the original).  This paper introduces the {\tt ply} family of functions which generalise the {\tt apply} family found in the base package, and include all combinations of input and output of lists, data frames and arrays.
 
-This paper describes version 0.1 of {\tt plyr}, which requires R 2.7.0 or later and has no run-time dependencies.  To install it from within R, run {\tt install.packages("plyr")}.  Information about the latest version of the package, including updated version of this document, can be found online at  \url{http://had.co.nz/plyr}.  If you have any questions or comments about {\tt plyr}, please feel free to email me directly at \href{mailto:h.wickham@gmail.com}{h.wickham@gmail.com}.
+This paper describes version 0.1 of {\tt plyr}, which requires R 2.7.0 or later and has no run-time dependencies.  To install it from within R, run {\tt install.packages("plyr")}.  Information about the latest version of the package can be found online at \url{http://had.co.nz/plyr}.  
 
-In general, these tools provide a replacement for {\tt for} loops for a large set of practical problems.  The major assumption that they make is that each piece can be operated on independently, so if there is any dependence (e.g. recursive relationship) between the pieces then these tools are not appropriate.  It is not true that for loops are slow, but often they do not clearly express the intent of your algorithm, as you need a lot of extra housekeeping code. The tools of {\tt plyr} aim to eliminate this extra code and illuminate the key components of your computations.
+% If you have any questions or comments about {\tt plyr}, please feel free to email me directly at \href{mailto:h.wickham@gmail.com}{h.wickham@gmail.com}.
 
-Section~\ref{sec:usage} introduces the {\tt plyr} family of tools and how to use them.  The {\tt plyr} package also provides a number of helper functions for error recovery, splatting, column-wise processing, and reporting progress. These are described in Section~\ref{sec:helpers}. Section~\ref{sec:strategy} discusses the general strategy that these functions support, including cases studies that explore long term professional baseball players and ozone measured over space and time.  Finally, Section~\ref{sec:equiv} maps existing R functions to their plyr counterparts and lists related packages, and Section~\ref{sec:future} describes future plans.
+In general, plyr provides a replacement for loops for a large set of practical problems.  The major assumption that the {\tt ply} functions make is that each piece can be operated on independently of the other pieces, so if there is any dependence between the pieces then you will need to use other tools.  The need to provide an alternative to loops does not come about because loops are slow (they are not!), but because they do not clearly express the intent of the algorithm, as important details are mixed in with unimportant book-keeping code. The tools of {\tt plyr} aim to eliminate this extra code and illuminate the key components of your computations.
+
+Section~\ref{sec:usage} introduces the {\tt plyr} family of tools and how to use them.  The {\tt plyr} package also provides a number of helper functions for error recovery, splatting, column-wise processing, and reporting progress,  described in Section~\ref{sec:helpers}. Section~\ref{sec:strategy} discusses the general strategy that these functions support, including cases studies that explore the performance of veteran baseball players and ozone measured over space and time.  Finally, Section~\ref{sec:equiv} maps existing R functions to their plyr counterparts and lists related packages.  Section~\ref{sec:future} describes future plans.
 
 \section{Usage}
 \label{sec:usage}
 
-Table~\ref{tbl:functions} lists the basic set of plyr functions.  Each function is named according to the type of input it processes and the type of output it produces.  The type of the input determines how it can be broken up, and the various possibilities described in detail in Section~\ref{sec:input}.  The output type determines how the pieces are joined back together again, as described in detail in Section~\ref{sec:output}.  Note that throughout this paper we will use array to refer to vectors (1d arrays) and matrices (2d arrays) as well.
+Table~\ref{tbl:functions} lists the basic set of plyr functions.  Each function is named according to the type of input it accepts and the type of output it produces.  The input type determines how the big data structure can be broken down into small pieces, and the output type determines how the pieces are joined back together again.  Breaking down input is described in Section~\ref{sec:input} and piecing together output is described in Section~\ref{sec:output}.
+
+{\bf NB}: In this paper, the term {\bf array} includes the special cases of vectors (1d arrays) and matrices (2d arrays) as well, and {\bf list-array} is used to refer to an array made out of a list (as opposed to an atomic vector, as is more usual).
 
 \begin{table}
   \begin{center}
-  \begin{tabular}{l|ccc}
-    
-     \backslashbox{{\bf to}}{{\bf from}} & array & data frame & list \\
-     \hline
-     array      & aaply  & daply  & laply  \\
-     data frame & adply  & ddply  & ldply  \\
-     list       & alply  & dlply  & llply  \\
-     nothing    & a\_ply & d\_ply & l\_ply \\
-    
+  \begin{tabular}{|l|ccc|}
+    \hline
+    \backslashbox{{\bf to}}{{\bf from}} & array & data frame & list \\
+    \hline
+    array      & aaply  & daply  & laply  \\
+    data frame & adply  & ddply  & ldply  \\
+    list       & alply  & dlply  & llply  \\
+    nothing    & a\_ply & d\_ply & l\_ply \\
+    \hline
   \end{tabular}
   \end{center}
   \caption{The 12 key functions that make up {\tt plyr}.  Arrays include matrices and vectors as special cases.}
@@ -134,7 +139,7 @@ Some examples should make this easier to understand:
 \begin{figure}[htbp]
   \centering
     \includegraphics[width= 0.5 \textwidth]{function-1d}
-  \caption{Results from outputs of various dimensionalty from a single value, shown top left.  Columns indicate input and rows output from function.}
+  \caption{Results from outputs of various dimensionalty from a single value, shown top left.  Columns indicate input and rows output from function.  The array in the bottom-right cell is 4d and so is not shown.}
   \label{fig:function-1d}
 \end{figure}
 
