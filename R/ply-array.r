@@ -14,11 +14,11 @@ laply <-  function(data., fun. = NULL, ..., .progress = "none") {
     dlength <- unique(llply(res, dims))
     if (length(dlength) != 1) stop("Results must have same number of dimensions.")
 
-    dims <- unique(do.call("rbind", llply(res, vdim)))
+    dims <- unique(do.call("rbind", llply(res, amv_dim)))
     if (nrow(dims) != 1) stop("Results must have the same dimensions.")    
 
-    res_dim <- vdim(res[[1]])
-    res_labels <- dimnames2(res[[1]])
+    res_dim <- amv_dim(res[[1]])
+    res_labels <- amv_dimnames(res[[1]])
     res_index <- expand.grid(res_labels)
 
     res <- unlist(res)
