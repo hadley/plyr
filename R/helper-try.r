@@ -23,7 +23,7 @@ try_default <- function(expr, default = NA, quiet = FALSE) {
   result
 }
 
-tryNULL <- function(expr) try_default(expr, NULL)
+tryNULL <- function(expr) try_default(expr, NULL, quiet = TRUE)
 
 
 # Apply with built in try
