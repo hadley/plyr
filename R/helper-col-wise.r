@@ -14,9 +14,9 @@ colwise <- function(fun., .if = function(x) TRUE) {
 }
 
 catcolwise <- function(fun., .try = FALSE) {
-  colwise(fun., .try = .try, .if = is.discrete)
+  colwise(fun., .if = is.discrete)
 }
 numcolwise <- function(fun., .try = FALSE) {
-  colwise(fun., .try = .try, .if = is.numeric)
+  colwise(fun., .if = is.numeric)
 }
 
