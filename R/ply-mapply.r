@@ -14,3 +14,8 @@ mlply <- function(data., fun. = NULL, ..., .progress = "none") {
   f <- splat(fun.)
   alply(data., margins. = 1, f, ..., .progress = .progress)
 }
+
+m_ply <- function(data., fun. = NULL, ..., .progress = "none") {
+  f <- splat(fun.)
+  a_ply(data., margins. = 1, f, ..., .progress = .progress)
+}
