@@ -3,6 +3,9 @@
 ldply <- function(data., fun. = NULL, ..., .progress = "none") {
   data. <- as.list(data.)
   res <- llply(data., fun., ..., .progress = .progress)
+  # Just want to treat as a list in here
+  attr(res, "split_labels") <- NULL
+  
   if (length(res) == 0) return(data.frame())
   
   atomic <- unlist(llply(res, is.atomic))
@@ -20,7 +23,7 @@ ldply <- function(data., fun. = NULL, ..., .progress = "none") {
     l_ply(res, function(x) if(!is.null(x) & !is.data.frame(x)) stop("Not a data.frame!"))
 
     resdf <- do.call("rbind.fill", res)
-    rows <- unname(laply(res, function(x) if(is.null(x)) 0 else nrow(x)))
+    rows <- laply(res, function(x) if(is.null(x)) 0 else nrow(x))
   }
 
   labels <- attr(data., "split_labels")

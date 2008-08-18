@@ -10,7 +10,12 @@
 # @alias catcolwise
 # @alias numcolwise
 colwise <- function(fun., .if = function(x) TRUE) {
-  function(df, ...) as.data.frame(t(aaply(Filter(.if, df), 2, fun., ...)))
+  function(df, ...) {
+    filtered <- Filter(.if, df)
+    df <- do.call("data.frame", alply(filtered, 2, fun., ...))
+    names(df) <- names(filtered)
+    df
+  }
 }
 
 catcolwise <- function(fun., .try = FALSE) {
