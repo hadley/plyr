@@ -1,10 +1,10 @@
 \documentclass[letterpage]{scrartcl}
 \usepackage[inner=3cm,top=2.5cm,outer=3.5cm]{geometry}
-\usepackage{fontspec} 
-\defaultfontfeatures{Mapping=tex-text}
-\setromanfont [Ligatures={Common}, Numbers={OldStyle}]{Hoefler Text}
-\setmonofont[Scale=MatchLowercase]{Inconsolata} 
-\setsansfont[Scale=MatchLowercase]{Optima Regular} 
+% \usepackage{fontspec} 
+% \defaultfontfeatures{Mapping=tex-text}
+% \setromanfont [Ligatures={Common}, Numbers={OldStyle}]{Hoefler Text}
+% \setmonofont[Scale=MatchLowercase]{Inconsolata} 
+% \setsansfont[Scale=MatchLowercase]{Optima Regular} 
 
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
@@ -26,7 +26,6 @@
 }
 \newcommand{\code}[1]{\lstinline!#1!}
 \newcommand{\f}[1]{\lstinline!#1()!}
-
 
 
 \title{plyr: divide and conquer}
@@ -55,19 +54,17 @@ Section~\ref{sec:usage} introduces the {\tt plyr} family of tools and how to use
 
 Table~\ref{tbl:functions} lists the basic set of plyr functions.  Each function is named according to the type of input it accepts and the type of output it produces.  The input type determines how the big data structure can be broken down into small pieces, and the output type determines how the pieces are joined back together again.  Breaking down input is described in Section~\ref{sec:input} and piecing together output is described in Section~\ref{sec:output}.
 
-{\bf NB}: In this paper, the term {\bf array} includes the special cases of vectors (1d arrays) and matrices (2d arrays) as well, and {\bf list-array} is used to refer to an array made out of a list (as opposed to an atomic vector, as is more usual).
+{\bf NB}: In this paper, the term {\bf array} includes the special cases of vectors (1d arrays) and matrices (2d arrays) as well, and the term {\bf list-array} refers to an array made out of a list, i.e.\ an list that has had dimensions imposed upon it with \code{dim}.   (as opposed to an atomic vector, as is more usual).
 
 \begin{table}
   \begin{center}
-  \begin{tabular}{|l|ccc|}
-    \hline
+  \begin{tabular}{l|ccc}
     \backslashbox{{\bf to}}{{\bf from}} & array & data frame & list \\
     \hline
-    array      & aaply  & daply  & laply  \\
-    data frame & adply  & ddply  & ldply  \\
-    list       & alply  & dlply  & llply  \\
-    nothing    & a\_ply & d\_ply & l\_ply \\
-    \hline
+    array      & \code{aaply} & \code{daply} & \code{laply} \\
+    data frame & \code{adply} & \code{ddply} & \code{ldply} \\
+    list       & \code{alply} & \code{dlply} & \code{llply} \\
+    nothing    & \code{a_ply} & \code{d_ply} & \code{l_ply} \\
   \end{tabular}
   \end{center}
   \caption{The 12 key functions of {\tt plyr}.  Arrays include matrices and vectors as special cases.}
@@ -134,9 +131,10 @@ The 3d case is a little more complicated.  We have three 2d slices, three 1d sli
   \label{fig:split-array}
 \end{figure}
 
-A special case of operating on arrays corresponds to the {\tt mapply} function of base R.  The plyr equivalents are named {\tt maply}, {\tt mdply}, {\tt mlply} and {\tt m\_ply}.  \f{mapply} takes multiple lists of parameters as input, and calls the processing function with a piece from each list as its parameters.  The input to \f{m*ply} is a little different: it is a list-array.
-
 These default to working on the first dimension (i.e. row-wise) and automatically splat the function so that function is called not with a single list as input, but each column is passed as a separate argument to the function.  Compared to using {\tt mapply}, for the {\tt m*ply} functions you will need to {\tt cbind} the columns together first.  This will ensure that each argument has the same length, and allows the {\tt m*ply} functions to have the same argument order as all the other 
+
+\paragraph{Special case: \code{m*ply}}  A special case of operating on arrays corresponds to the {\tt mapply} function of base R.  The plyr equivalents are named {\tt maply}, {\tt mdply}, {\tt mlply} and {\tt m\_ply}.  \f{mapply} takes multiple lists of parameters as input, and calls the processing function with a piece from each list as its parameters.  The input to \f{m*ply} is a little different: it is a list-array.
+
 
 \subsubsection{Input: data frame ({\tt d*ply})}
 
@@ -148,6 +146,12 @@ When operating on a data frame, you usually want to split it up into groups base
   \item Variables in the global environment {\tt .(anothervar)}
 \end{itemize}
 
+\subsubsection{Input: list (\code{l*ply})} 
+
+Processing lists is the simplest   
+
+\paragraph{Special case: \code{r*ply}}  A special case of operating on lists corresponds to \f{replicate} in base R.  
+
 \subsection{Output}
 \label{sec:output}
 
@@ -155,7 +159,7 @@ The output type defines how the pieces will be joined back together again, and h
 
 The input and output types are the same, except there is an additional output option, which discard the output.  This is useful for functions with side effects that make changes outside of R
 
-The output type also places some restrictions on what type of results the processing function should return.  Generally, the processing function should return the same type of data as the eventual output, (i.e.\ vectors, matrices and arrays for {\tt *aply} and data frames for {\tt *dply}) but some other formats are accepted for convenience and are described in Table~\ref{tbl:restrictions}.  
+The output type also places some restrictions on what type of results the processing function should return.  Generally, the processing function should return the same type of data as the eventual output, (i.e.\ vectors, matrices and arrays for {\tt *aply} and data frames for {\tt *dply}) but some other formats are accepted for convenience and are described in Table~\ref{tbl:restrictions}.  These are explained in more detail in the individual output type sections.
 
 \begin{table}
   \begin{center}
@@ -163,19 +167,16 @@ The output type also places some restrictions on what type of results the proces
     \toprule
     Output & Processing function restrictions & Null output \\
     \midrule
-     array & atomic array, or list & \f{logical} \\
-     data frame & data frame, or atomic vector & \f{data.frame}\\
-     list & none & list() \\
-     nothing & none  & NA \\
+     \code{*aply} & atomic array, or list & \f{logical} \\
+     \code{*dply} frame  & data frame, or atomic vector & \f{data.frame}\\
+     \code{*lply} & none & \f{list} \\
+     \code{*_ply} & none & \code{NA} \\
      \bottomrule  
   \end{tabular}
   \end{center}
-  \caption{caption}
+  \caption{Summary of processing function restrictions and null output values for all output types.  Explained in more detail in each output section. }
   \label{tbl:restrictions}
 \end{table}
-
-
-
 
 % For any type, if the processing function returns {\tt NULL}, that slice will not be included in the output.
 
@@ -190,7 +191,9 @@ With array output the dimensionality is determined by the input splits.
   
 \end{itemize}
 
-The processing function should return an atomic (i.e.\ {\tt is.atomic(x) == TRUE}) array of fixed size/shape, or a list.  If atomic, the extra dimensions will added perpendicular to the original dimensions.  If a list, the output will be a list with dimensions.  
+The processing function should return an atomic (i.e.\ logical, character, numeric or integer) array of fixed size/shape, or a list.  If atomic, the extra dimensions will added perpendicular to the original dimensions.  If a list, the output will be a list-array. If there are no results, {\tt adply} will return a logical vector of length 0.
+
+\f{*aply} also has a \code{drop.} argument.  When this is true, the default, any dimensions of length one will be dropped.  This is useful because in R, a vector of length three is not equivalent to a 3\,$\times$\,1 matrix or a 3\,$\times$\,1\,$\times$\,1 array.
 
 Figures~\ref{fig:function-1d} and \ref{fig:function-2d} illustrate 
 
@@ -208,16 +211,11 @@ Figures~\ref{fig:function-1d} and \ref{fig:function-2d} illustrate
   \label{fig:function-2d}
 \end{figure}
 
-
 The dimnames of the array will be the same as the input, if an array, or the extracted from the subsets if a data frame.
-
-If there are no results, {\tt adply} will return a logical vector of length 0.
 
 \subsubsection{Output: data frames ({\tt *dply})}
 
-The processing functions should either return a data.frame, or a (named) atomic vector of fixed length, which will form the columns of the output.
-
-If there are no results, {\tt *dply} will return an empty data frame.
+The processing functions should either return a data.frame, or a (named) atomic vector of fixed length, which will form the columns of the output. If there are no results, {\tt *dply} will return an empty data frame.
 
 The output data frame will be supplemented with columns that identify the subset of the original dataset that each piece was computed from.  These columns make it easier to merge the old and new data.  If the input was a data frame, this will be the values of the splitting variables.  If the input was an array, this will be the dimension names.
 
@@ -258,8 +256,6 @@ The {\tt plyr} package also provides a number of helper function which take a fu
   \item {\tt failwith} sets a default value to return if the function throws an error.  For example, {\tt failwith(NA, f)} will return an {\tt NA} whenever {\tt f} throws an error.  
   
   The optional {\tt quiet} argument suppresses any notice of the error when it is {\tt TRUE}.
-
-  \item {\tt e2f} converts an expression to a function.  This allows you to imitate {\tt replicate}.
 
 \end{itemize}
 
@@ -390,7 +386,7 @@ Figure~\ref{fig:models} summarises these bad models.  These plots show a negativ
 % ggsave(file = "models-hist.pdf", width=12, height=4)
 \begin{figure}[htbp]
   \centering
-    \includegraphics[width=6in]{models-hist}
+    \includegraphics[width=\textwidth]{models-hist}
   \caption{Histogram of model r-squared with bin width of 0.05.  Most models fit very poorly!  The spike of models with a r-squared of 1 are players with only two data points, found by inspecting {\tt ldply(models[coef\$rsquare == 1], "[[", "model")}}
   \label{fig:models-hist}
 \end{figure}
@@ -405,8 +401,8 @@ Figure~\ref{fig:models} summarises these bad models.  These plots show a negativ
 % ggsave(file = "models-zoom.pdf", width=6, height=6)
 \begin{figure}[htbp]
   \centering
-    \includegraphics[width=3in]{models}
-    \includegraphics[width=3in]{models-zoom}
+    \includegraphics[width=0.5\textwidth]{models}%
+    \includegraphics[width=0.5\textwidth]{models-zoom}
   \caption{A scatterplot of model intercept and slope, with one point for each model (player).  The size of the points is proportion to the R-square of the model. Vertical and horizontal lines emphasis the x and y origins. }
   \label{fig:models}
 \end{figure}
@@ -438,14 +434,16 @@ Avoid any ambiguity about what you'll get back from one of these functions. This
 \begin{table}[htpb]
   \begin{center}
   \begin{tabular}{llll}
+    \toprule
     base & from & to & plyr \\
-    \hline
-    apply     & a & a   & aaply \\
-    lapply    & l & l   & llply \\
-    sapply    & l & a   & laply \\
-    mapply    & a & a/l & maply / mlply \\
-    by        & d & l   & dlply \\
-    aggregate & d & d   & ddply + colwise \\
+    \midrule
+    \code{apply }    & a & a   & \code{aaply} \\
+    \code{lapply}    & l & l   & \code{llply} \\
+    \code{sapply}    & l & a   & \code{laply} \\
+    \code{mapply}    & a & a/l & \code{maply} / \code{mlply} \\
+    \code{by}        & d & l   & \code{dlply} \\
+    \code{aggregate} & d & d   & \code{ddply} + \code{colwise} \\
+    \bottomrule
   \end{tabular}
   \end{center}
   \caption{Mapping between apply functions and plyr functions.}
