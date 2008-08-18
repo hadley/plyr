@@ -1,7 +1,7 @@
 # To a data frame -----------------------------------------------------------
 
 ldply <- function(data., fun. = NULL, ..., .progress = "none") {
-  data. <- as.list(data.)
+  if (!is(data., "split")) data. <- as.list(data.)
   res <- llply(data., fun., ..., .progress = .progress)
   # Just want to treat as a list in here
   attr(res, "split_labels") <- NULL

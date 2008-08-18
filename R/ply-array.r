@@ -2,8 +2,8 @@
 
 laply <-  function(data., fun. = NULL, ..., .progress = "none") {
   if (is.character(fun.)) fun. <- match.fun(fun.)
-    
-  data. <- as.list(data.)
+  
+  if (!is(data., "split")) data. <- as.list(data.)
   res <- llply(data., fun., ..., .progress = .progress)
   
   if (length(res) == 0) return(vector())
@@ -11,8 +11,8 @@ laply <-  function(data., fun. = NULL, ..., .progress = "none") {
   atomic <- sapply(res, is.atomic)
   if (all(atomic)) {
     # Atomics need to be same size
-    dlength <- unique(llply(res, dims))
-    if (length(dlength) != 1) stop("Results must have same number of dimensions.")
+    dlength <- unique.default(llply(res, dims))
+    if (length(dlength) != 1) stop("Results must have the same number of dimensions.")
 
     dims <- unique(do.call("rbind", llply(res, amv_dim)))
     if (nrow(dims) != 1) stop("Results must have the same dimensions.")    
