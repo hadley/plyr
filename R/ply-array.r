@@ -1,6 +1,6 @@
 # To arrays  ----------------------------------------------------------------
 
-laply <-  function(data., fun. = NULL, ..., .progress = "none") {
+laply <-  function(data., fun. = NULL, ..., .progress = "none", drop. = TRUE) {
   if (is.character(fun.)) fun. <- match.fun(fun.)
   
   if (!is(data., "split")) data. <- as.list(data.)
@@ -48,7 +48,7 @@ laply <-  function(data., fun. = NULL, ..., .progress = "none") {
     res_index[rep(seq_len(nrow(res_index)), nrow(labels)), , drop = FALSE]
   )
   
-  out_dim <- c(in_dim, res_dim)
+  out_dim <- unname(c(in_dim, res_dim))
   out_labels <- c(in_labels, res_labels)
   n <- prod(out_dim)
 
@@ -58,7 +58,7 @@ laply <-  function(data., fun. = NULL, ..., .progress = "none") {
   out_array <- res[overall]  
   dim(out_array) <- out_dim
   dimnames(out_array) <- out_labels
-  reduce(out_array)
+  if (drop.) reduce(out_array) else out_array
 }
 
 #X daply(baseball, .(year), nrow)
@@ -69,11 +69,11 @@ laply <-  function(data., fun. = NULL, ..., .progress = "none") {
 #X daply(baseball[, c(2, 6:9)], .(year), mean)
 #X daply(baseball[, 6:9], .(baseball$year), mean)
 #X daply(baseball, .(year), function(df) mean(df[, 6:9]))
-daply <- function(data., variables., fun. = NULL, ..., .progress = "none") {
+daply <- function(data., variables., fun. = NULL, ..., .progress = "none", drop. = TRUE) {
   data. <- as.data.frame(data.)
   pieces <- splitter_d(data., variables.)
   
-  laply(pieces, fun., .progress = .progress)
+  laply(pieces, fun., .progress = .progress, drop. = drop.)
 }
 
 #X aaply(ozone, 1, mean)
@@ -86,8 +86,8 @@ daply <- function(data., variables., fun. = NULL, ..., .progress = "none") {
 #X standardise <- function(x) (x - min(x)) / (max(x) - min(x))
 #X aaply(ozone, 3, standardise)
 #X aaply(ozone, 1:2, standardise)
-aaply <- function(data., margins., fun. = NULL, ..., .progress = "none") {
+aaply <- function(data., margins., fun. = NULL, ..., .progress = "none", drop. = TRUE) {
   pieces <- splitter_a(data., margins.)
   
-  laply(pieces, fun., .progress = .progress)
+  laply(pieces, fun., .progress = .progress, drop. = drop.)
 }
