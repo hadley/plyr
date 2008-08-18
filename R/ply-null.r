@@ -2,7 +2,7 @@
 #  - purely for side effects (graphics, io, etc)
 #  - remember to print lattice and ggplot2 graphics
 
-l_ply <- function(data., fun. = NULL, ..., progress. = "none") {
+l_ply <- function(data., fun. = NULL, ..., progress. = "none", print. = FALSE) {
   if (is.character(fun.)) fun. <- match.fun(fun.)
   
   if (is.character(progress.)) 
@@ -11,7 +11,8 @@ l_ply <- function(data., fun. = NULL, ..., progress. = "none") {
   
   data. <- as.list(data.)
   for(i in seq_along(data.)) {
-    fun.(data.[[i]], ...)
+    x <- fun.(data.[[i]], ...)
+    print(x)
     progress$step()
   }
   
@@ -19,15 +20,15 @@ l_ply <- function(data., fun. = NULL, ..., progress. = "none") {
   invisible()
 }
 
-d_ply <- function(data., variables., fun. = NULL, ..., progress. = "none") {
+d_ply <- function(data., variables., fun. = NULL, ..., progress. = "none", print. = FALSE) {
   data. <- as.data.frame(data.)
   pieces <- splitter_d(data., variables.)
   
-  l_ply(pieces, fun., progress. = progress.)
+  l_ply(pieces, fun., progress. = progress., print. = print.)
 }
 
-a_ply <- function(data., margins., fun. = NULL, ..., progress. = "none") {
+a_ply <- function(data., margins., fun. = NULL, ..., progress. = "none", print. = FALSE) {
   pieces <- splitter_a(data., margins.)
   
-  l_ply(pieces, fun., progress. = progress.)
+  l_ply(pieces, fun., progress. = progress., print. = print.)
 }
