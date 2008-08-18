@@ -1,10 +1,10 @@
 # To arrays  ----------------------------------------------------------------
 
-laply <-  function(data., fun. = NULL, ..., .progress = "none", drop. = TRUE) {
+laply <-  function(data., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
   if (is.character(fun.)) fun. <- match.fun(fun.)
   
   if (!is(data., "split")) data. <- as.list(data.)
-  res <- llply(data., fun., ..., .progress = .progress)
+  res <- llply(data., fun., ..., progress. = progress.)
   
   if (length(res) == 0) return(vector())
   
@@ -69,11 +69,11 @@ laply <-  function(data., fun. = NULL, ..., .progress = "none", drop. = TRUE) {
 #X daply(baseball[, c(2, 6:9)], .(year), mean)
 #X daply(baseball[, 6:9], .(baseball$year), mean)
 #X daply(baseball, .(year), function(df) mean(df[, 6:9]))
-daply <- function(data., variables., fun. = NULL, ..., .progress = "none", drop. = TRUE) {
+daply <- function(data., variables., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
   data. <- as.data.frame(data.)
   pieces <- splitter_d(data., variables.)
   
-  laply(pieces, fun., .progress = .progress, drop. = drop.)
+  laply(pieces, fun., progress. = progress., drop. = drop.)
 }
 
 #X aaply(ozone, 1, mean)
@@ -86,8 +86,8 @@ daply <- function(data., variables., fun. = NULL, ..., .progress = "none", drop.
 #X standardise <- function(x) (x - min(x)) / (max(x) - min(x))
 #X aaply(ozone, 3, standardise)
 #X aaply(ozone, 1:2, standardise)
-aaply <- function(data., margins., fun. = NULL, ..., .progress = "none", drop. = TRUE) {
+aaply <- function(data., margins., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
   pieces <- splitter_a(data., margins.)
   
-  laply(pieces, fun., .progress = .progress, drop. = drop.)
+  laply(pieces, fun., progress. = progress., drop. = drop.)
 }

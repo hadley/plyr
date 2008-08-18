@@ -1,8 +1,8 @@
 # To a data frame -----------------------------------------------------------
 
-ldply <- function(data., fun. = NULL, ..., .progress = "none") {
+ldply <- function(data., fun. = NULL, ..., progress. = "none") {
   if (!is(data., "split")) data. <- as.list(data.)
-  res <- llply(data., fun., ..., .progress = .progress)
+  res <- llply(data., fun., ..., progress. = progress.)
   # Just want to treat as a list in here
   attr(res, "split_labels") <- NULL
   
@@ -43,19 +43,19 @@ ldply <- function(data., fun. = NULL, ..., .progress = "none") {
 #X base2 <- ddply(baseball, .(id), function(df) {
 #X  transform(df, career_year = year - min(year) + 1)
 #X })
-ddply <- function(data., variables., fun. = NULL, ..., .progress = "none") {
+ddply <- function(data., variables., fun. = NULL, ..., progress. = "none") {
   data. <- as.data.frame(data.)
   pieces <- splitter_d(data., variables.)
   
-  ldply(pieces, fun., .progress = .progress)
+  ldply(pieces, fun., progress. = progress.)
 }
 
 #X adply(ozone, 1, mean)
 #X adply(ozone, 3, mean)
 #X adply(ozone, c(1,2), mean)
 #X adply(ozone, c(1,2), each(mean, max, min))
-adply <- function(data., margins., fun. = NULL, ..., .progress = "none") {
+adply <- function(data., margins., fun. = NULL, ..., progress. = "none") {
   pieces <- splitter_a(data., margins.)
   
-  ldply(pieces, fun., .progress = .progress)
+  ldply(pieces, fun., progress. = progress.)
 }

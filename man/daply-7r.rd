@@ -6,13 +6,13 @@
 \description{
 X
 }
-\usage{daply(data, vars, fun = NULL, ..., .progress = "none")}
+\usage{daply(data, vars, fun = NULL, ..., progress. = "none")}
 \arguments{
 \item{data}{}
 \item{vars}{}
 \item{fun}{}
 \item{...}{}
-\item{.progress}{}
+\item{progress.}{}
 }
 
 \details{}

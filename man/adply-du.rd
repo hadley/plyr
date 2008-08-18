@@ -6,13 +6,13 @@
 \description{
 X adply(ozone, 3, mean)
 }
-\usage{adply(data, margins, fun = NULL, ..., .progress = "none")}
+\usage{adply(data, margins, fun = NULL, ..., progress. = "none")}
 \arguments{
 \item{data}{}
 \item{margins}{}
 \item{fun}{}
 \item{...}{}
-\item{.progress}{}
+\item{progress.}{}
 }
 
 \details{}
