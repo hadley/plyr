@@ -10,12 +10,17 @@
 each <- function(...) {
   fnames <- laply(match.call()[-1], deparse)
   fs <- list(...)
+
+  unames <- names(fs)
+  if (is.null(unames)) unames <- fnames
+  unames[unames == ""] <- fnames[unames == ""]
+  
   n <- length(fs)
   
   function(x, ...) {
     results <- vector("numeric", length=n)
     for(i in 1:n) results[[i]] <- fs[[i]](x, ...)
-    names(results) <- fnames
+    names(results) <- unames
     results
   }
 }
