@@ -26,7 +26,12 @@
 }
 \newcommand{\code}[1]{\lstinline!#1!}
 \newcommand{\f}[1]{\lstinline!#1()!}
+\usepackage{xspace}
+\newcommand{\plyr}{{\tt plyr}\xspace}
 
+\usepackage{multicol}
+\setlength\columnseprule{.4pt}
+\setlength{\columnsep}{2pc}
 
 \title{plyr: divide and conquer}
 \author{Hadley Wickham}
@@ -45,9 +50,90 @@ This paper describes version 0.1 of {\tt plyr}, which requires R 2.7.0 or later 
 
 % If you have any questions or comments about {\tt plyr}, please feel free to email me directly at \href{mailto:h.wickham@gmail.com}{h.wickham@gmail.com}.
 
-In general, plyr provides a replacement for loops for a large set of practical problems.  The major assumption that the {\tt ply} functions make is that each piece can be operated on independently of the other pieces, so if there is any dependence between the pieces then you will need to use other tools.  The need to provide an alternative to loops does not come about because loops are slow (they are not!), but because they do not clearly express the intent of the algorithm, as important details are mixed in with unimportant book-keeping code. The tools of {\tt plyr} aim to eliminate this extra code and illuminate the key components of your computations.
+In general, plyr provides a replacement for for loops for a large set of practical problems.  The major assumption that the {\tt ply} functions make is that each piece can be operated on independently of the other pieces, so if there is any dependence between the pieces then you will need to use other tools.  The need to provide an alternative to loops does not come about because loops are slow (they are not!), but because they do not clearly express the intent of the algorithm, as important details are mixed in with unimportant book-keeping code. The tools of {\tt plyr} aim to eliminate this extra code and illuminate the key components of your computations.
 
 Section~\ref{sec:usage} introduces the {\tt plyr} family of tools and how to use them.  The {\tt plyr} package also provides a number of helper functions for error recovery, splatting, column-wise processing, and reporting progress,  described in Section~\ref{sec:helpers}. Section~\ref{sec:strategy} discusses the general strategy that these functions support, including cases studies that explore the performance of veteran baseball players and ozone measured over space and time.  Finally, Section~\ref{sec:equiv} maps existing R functions to their plyr counterparts and lists related packages.  Section~\ref{sec:future} describes future plans.
+
+\section{Motivation}
+\label{sec:motivation}
+
+This section motivates the use of \plyr by previewing one of the case studies. Ozone measurements are stored in a 3d array: the first two dimensions are location and the third is time.  We want to remove seasonal effects, keeping the data in the same form.  We also want to keep the models in 2d array so we can reference a local model in a similar way to referencing a local time series.  Here I'll just use the code with little explanation, but hopefully you will get some hint of the succinctness of plyr for these tasks.  This is example is explained in more detail in Section~\ref{sub:ozone}.  
+
+\begin{verbatim}
+month.abbr <- c("Jan", "Feb", "Mar", "Apr", "May", 
+"Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+month <- factor(rep(month.abbr, length = 72), levels = month.abbr)
+
+deseasf <- function(value) rlm(value ~ month - 1)
+\end{verbatim}
+
+In base R, we can tackle this problem with for loops, or with the apply family of functions.  
+
+\raggedcolumns
+\begin{multicols}{2}
+
+\noindent For loops
+\begin{verbatim}
+models <- as.list(rep(NA, 24 * 24))
+dim(models) <- c(24, 24)
+
+deseas <- array(NA, c(24, 24, 74))
+
+for (i in seq_len(24)) {
+  for(j in seq_len(24)) {
+    mod <- deseasf(ozone[i, j, ])
+
+    models[[i, j]] <- mod
+    deseas[i, j, ] <- resid(mod)
+  }
+}
+
+\end{verbatim}
+\columnbreak
+
+\noindent Apply functions
+\begin{verbatim}
+models <- apply(ozone, 1:2, deseasf)
+resids <- unlist(lapply(models, resid))
+dim(resids) <- c(72, 24, 24)
+deseas <- aperm(resids, c(2, 3, 1))
+dimnames(deseas) <- dimnames(ozone)
+\end{verbatim}
+\end{multicols}
+
+The main disadvantage of the for loop is that there is lot of book-keeping code in there.  We need to create the output structure before filling them up, and the size of the array is hard coded in multiple places.  The apply functions (\f{apply} and \f{lapply}) simplify this task, but there's no way straightforward way to go from the 2d array of models to a 3d array of residuals. In \plyr, the code is much shorter because these details are taken care of:
+
+\begin{verbatim}
+models <- aaply(ozone, 1:2, deseasf)
+deseas <- aaply(models, 1:2, resid)
+\end{verbatim}
+
+Another way of storing the ozone data would be stored in a data frame with columns lat, long, time, month, and value.  \plyr has been written to work well with the three major R data structures: arrays, lists and data frames.  To repeat the deasonalisation task with this new data format, we first need to tweak our workhorse method:
+
+\begin{verbatim}
+deseasf_df <- function(df) {
+  rlm(value ~ month - 1, data = df)
+}
+\end{verbatim}
+
+Because data in this format is often ragged, there's no particular advantage to using the for loops here, and we'll use \f{split}, \f{lapply} and \f{mapply} to complete the task.  Here the split-apply-combine strategy maps closely to R functions: we split with \f{split}, apply with \f{lapply} and then combine the pieces into a single result with \f{rbind}.
+
+\begin{verbatim}
+pieces <- split(ozonedf, list(ozonedf$lat, ozonedf$long))
+models <- lapply(pieces, deseasf)
+
+results <- mapply(function(model, df) {
+  cbind(df[rep(1, 72), c("lat", "long")], resid(model))
+}, models, pieces)
+deseasdf <- do.call("rbind", results)
+\end{verbatim}
+
+Much of complication here is the labelling - we only needed to use \f{mapply} so we could match the original data up with the models. \plyr takes care of all the tricky labelling stuff for you, so it only takes two lines:
+
+\begin{verbatim}
+models <- dlply(ozone, .(lat, long), deseas_df)
+deseas <- ldply(models, resid)
+\end{verbatim}
 
 \section{Usage}
 \label{sec:usage}
@@ -83,7 +169,7 @@ Plyr functions have either two or three main arguments, depending on the type of
 
 The first argument is the {\tt data.} which will be split up, processed and recombined.  The second argument, \code{variables.} or \code{margins.} describes how to split up the input into pieces.  The third argument, \code{fun.}, is the processing function, and is applied to each piece in turn.  All further arguments are passed on to the processing function.  Note that arguments to the {\tt **ply} functions end in  ``{\tt .}'' - this is to prevent clashes with argument names in the processing function.
 
-The {\tt .progress} argument controls displaying of a progress bar, and is described at the end of Section~\ref{sec:helpers}.
+The {\tt progress.} argument controls displaying of a progress bar, and is described at the end of Section~\ref{sec:helpers}.
 
 \subsection{Input} 
 \label{sec:input}
@@ -141,16 +227,24 @@ These default to working on the first dimension (i.e. row-wise) and automaticall
 When operating on a data frame, you usually want to split it up into groups based on combinations variables in the data set.  For {\tt d*ply} you specify   which variables (or functions of variables) to use.  These variables are specified in a special way to highlight that they are computed first from the data frame, then the global environment (in which case it's your responsibility to ensure that their length is equal to the number of rows in the data frame).  
 
 \begin{itemize}
-  \item The interaction of multiple variables are taken: {\tt .(a, b, c)}
+  \item The interaction of multiple variables are taken: {\tt .(a, b, c)} breaks the data frame into the same groups that  \code{interaction(a, b, c)} would, but labels rows with all three variables.
+  
   \item Functions of variables: {\tt .(round(a))}, {\tt .(a * b)}
+  
   \item Variables in the global environment {\tt .(anothervar)}
+\end{itemize}
+
+You can override the default names by using a named list:
+\begin{itemize}
+  \item \code{.(first = a, second = b, third = c)}
+  \item \code{.(product = a * b)}
 \end{itemize}
 
 \subsubsection{Input: list (\code{l*ply})} 
 
 Processing lists is the simplest   
 
-\paragraph{Special case: \code{r*ply}}  A special case of operating on lists corresponds to \f{replicate} in base R.  
+\paragraph{Special case: \code{r*ply}}  A special case of operating on lists corresponds to \f{replicate} in base R, and is useful for drawing distributions of random numbers.  This is a little bit different to the other plyr methods.  Instead of the \code{data.} argument, it has \code{n.} the number of replications to run, and instead of a function it accepts a expression.  
 
 \subsection{Output}
 \label{sec:output}
@@ -259,7 +353,7 @@ The {\tt plyr} package also provides a number of helper function which take a fu
 
 \end{itemize}
 
-Each plyr function also has a {\tt .progress} argument which allows you to monitor the progress of long running operations.  There are four difference progress bars:
+Each plyr function also has a {\tt progress.} argument which allows you to monitor the progress of long running operations.  There are four difference progress bars:
 
 \begin{itemize}
   \item {\tt "none"}, the default.  No progress bar is displayed.
@@ -284,7 +378,7 @@ The progress bars assume that processing each piece takes the same amount of tim
 
 The following two case studies illustrate these techniques for a range of problems related to a data frame storing the batting records for long-term baseball players, and a 3d array representing space and time values of ozone.
 
-\subsection{Case study: baseball data}
+\subsection{Case study: baseball}
 
 The {\tt baseball} data set contains the batting records for all professional US players with 15 or more years of data.  The complete list of variables are described fully {\tt ?baseball}, but for this example we will focus on just four: {\tt id}, which identifies the player, {\tt year} the year of the record and {\tt rbi} the number of runs that the player made in the season, and {\tt} at bat, the number of times the player had an opportunity to hit the ball.
 
@@ -409,9 +503,10 @@ Figure~\ref{fig:models} summarises these bad models.  These plots show a negativ
 
 This concludes the baseball player case study, which used used {\tt ddply}, {\tt d\_ply}, {\tt dlply} and {\tt ldply}.  Our statistical analysis was not very sophisticated, but the tools of {\tt plyr} made it very easy to work at the player level, and then combine results into a single summary.  
 
-\subsection{Case study: spatio-temporal ozone distribution}
+\subsection{Case study: ozone}
+\label{sub:ozone}
 
-Standardisation/smoothing.  \citep{hobbs:2007}
+In this case study we will analyse a 3d array that records ozone levels over a 24\,$\times$\,24 spatial grid at 72 time points \citep{hobbs:2007}.  This produces a 24\,$\times$\,24\,$times$\,72 3d array, containing a total of 41\,472 data points.  Figure~\ref{fig:ozone-glyph} is one way of displaying this data.  Conditional on spatial location, each glyph shows the evolution of ozone levels for each of the 72 months (6 years).  The striking seasonal patterns make it difficult to see if there are any long-term changes.  In this case study, we will explore how to separate out and visualise the seasonal effects.
 
 \begin{figure}[htbp]
   \centering
@@ -420,7 +515,102 @@ Standardisation/smoothing.  \citep{hobbs:2007}
   \label{fig:ozone-glyph}
 \end{figure}
 
-For many other types of operations, it is useful to convert this array structure to a data frame.  The {\tt melt} function in the {\tt reshape} package is one way to do that which preserves the dimension labels as much as possible.
+
+Again we will start with the simplest case: a single time point.  We can display this in two ways: as a single line over time, or a line for each year over the months.  This second plot illustrates the striking seasonal variation at this time point.
+
+\begin{verbatim}
+value <- ozone[1, 1, ]
+
+time <- 1:72
+month.abbr <- c("Jan", "Feb", "Mar", "Apr", "May", 
+"Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+month <- factor(rep(month.abbr, length = 72), levels = month.abbr)
+year <- rep(1:6, each = 12)
+
+qplot(time, value, geom="line")
+qplot(month, value, geom="line", group = year)
+\end{verbatim}
+
+We are going to use a very crude method to remove the season variation: we'll look at the residuals from a robust linear model.
+
+\begin{verbatim}
+library(MASS)
+
+deseas <- rlm(value ~ month - 1)
+qplot(month, resid(deseas), geom="line", group = year)
+qplot(month, unname(coef(deseas)), geom="line", group = 1)
+
+\end{verbatim}
+
+We next turn this into a function and apply to all of the spatial locations:
+
+\begin{verbatim}
+source("ozone-map.r")
+deseasf <- function(value) rlm(value ~ month - 1)
+
+models <- alply(ozone, 1:2, deseasf)
+coefs <- laply(models, coef)
+deseas <- laply(models, resid)
+
+coef2 <- ldply(models, function(x) 
+  data.frame(month = factor(month.abbr, levels=month.abbr), coef = unname(coef(x)))
+)
+
+qplot(month, coef, data=coef2, geom="line", group=interaction(lat,long))
+
+qplot(long, lat, data=subset(coef2, month =="Jan"), fill = coef, geom="tile") + map
+
+coef_limits <- range(coef2$coef)
+coef_mid <- mean(coef2$coef)
+monthsurface <- function(mon) {
+  df <- subset(coef2, month == mon)
+  qplot(long, lat, data = df, fill = coef, geom="tile", main = mon) + 
+  scale_fill_gradient2(limits = coef_limits, midpoint = coef_mid) + map
+}
+
+pdf("~/desktop/ozone-animation.pdf", width=8, height=8)
+l_ply(month.abbr, monthsurface, print. = TRUE)
+dev.off()
+
+seassum <- ddply(coef2, .(lat, long), function(df) {
+  each(mean, sd)(df$coef)
+})
+qplot(long, lat, data=seassum, fill = sd, geom="tile")
+qplot(long, lat, data=seassum, fill = mean, geom="tile")
+qplot(mean, sd, data=seassum)
+\end{verbatim}
+
+\begin{verbatim}
+ozm <- melt(deseas)
+names(ozm) <- c("lat", "long", "time", "value")
+ozm[1:2] <- llply(ozm[1:2], function(x) as.numeric(as.character(x)))
+
+small_mult(ozm) + geom_line(aes(group = interaction(lat,long)))
+
+ozm <- melt(coef2)
+ozm[1:2] <- llply(ozm[1:2], function(x) as.numeric(as.character(x)))
+ozm$time <- as.numeric(ozm$month)
+
+small_mult(ozm) + geom_line(aes(group = interaction(lat,long)))
+
+\end{verbatim}
+
+
+For many other types of operations, it is useful to convert this array structure to a data frame.  The {\tt melt} function in the {\tt reshape} package is one way to do that which preserves the dimension labels as much as possible.  This is the power of plyr: you don't need to worry about whether your data is a list, data frame or array, you can use whatever feels most natural.
+
+\begin{verbatim}
+library(reshape)
+ozonem <- melt(ozone)
+
+models <- dlply(ozone, .(lat, long), deasf)
+coefs <- ldply(models, coef)
+deseas <- ldply(models, resid)
+
+\end{verbatim}
+
+\subsection{Other uses}
+
+Randomisation within groups.  Simulation.
 
 \section{Equivalence to existing R functions}
 \label{sec:equiv}
