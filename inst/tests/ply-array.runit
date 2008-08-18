@@ -28,8 +28,10 @@ test_f_matrix <- function() {
 }
 
 checkEqualsSansNames <- function(x, y) {
-  if (dims(x) > 1) dimnames(x) <- amv_dimnames(x)
-  if (dims(y) > 1) dimnames(y) <- amv_dimnames(y)
+  if (dims(x) > 1 && dims(x) == dims(y)) {
+    dimnames(x) <- amv_dimnames(x)
+    dimnames(y) <- amv_dimnames(x)
+  }
   checkEquals(x, y)
 }
 
