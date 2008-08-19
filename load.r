@@ -1,4 +1,4 @@
-library(plyr)
+library(plyr, warn.conflicts = FALSE)
 
 FILE <- (function() {
   attr(body(sys.function()), "srcfile")
