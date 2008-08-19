@@ -12,7 +12,7 @@ l_ply <- function(data., fun. = NULL, ..., progress. = "none", print. = FALSE) {
   data. <- as.list(data.)
   for(i in seq_along(data.)) {
     x <- fun.(data.[[i]], ...)
-    print(x)
+    if (print.) print(x)
     progress$step()
   }
   
