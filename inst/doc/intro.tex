@@ -38,9 +38,16 @@
 \begin{document}
 \maketitle
 
-% \begin{abstract}
-% plyr is a set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each pieces and then put all the pieces back together.  This paper describes the components that make up plyr.  It includes two case studies.
-% \end{abstract}
+% SET_DEFAULTS
+%   GG-WIDTH: 4  GG-HEIGHT: 4
+%   TEX-WIDTH: 0.5\textwidth
+%   INLINE: FALSE
+%   CACHE: TRUE
+%
+
+\begin{abstract}
+plyr is a set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each pieces and then put all the pieces back together.  This paper describes the components that make up plyr.  It includes two case studies.
+\end{abstract}
 
 \section{Introduction}
 
@@ -57,17 +64,21 @@ Section~\ref{sec:usage} introduces the {\tt plyr} family of tools and how to use
 \section{Motivation}
 \label{sec:motivation}
 
-This section motivates the use of \plyr by previewing one of the case studies. Ozone measurements are stored in a 3d array: the first two dimensions are location and the third is time.  We want to remove seasonal effects, keeping the data in the same form.  We also want to keep the models in 2d array so we can reference a local model in a similar way to referencing a local time series.  Here I'll just use the code with little explanation, but hopefully you will get some hint of the succinctness of plyr for these tasks.  This is example is explained in more detail in Section~\ref{sub:ozone}.  
+Why use \plyr?  Why not use for loops or the built-in apply functions?  This section compares \plyr code to base R code for an example that is explained in more detail in Section~\ref{sub:ozone}.  
+
+In this example we are going to remove seasonal affects from satellite measurements of ozone.  The ozone was measured on a 24\,$\times$\,24 grid, each month for six years, and is stored in a 24\,$\times$\,24\,$\times$\,72 3d array. A single location (\code{ozone[x, y, ]}) is a vector of 72 values, and we can crudely deasonalise it by looking at the residuals of a robust linear model:
 
 \begin{verbatim}
-month.abbr <- c("Jan", "Feb", "Mar", "Apr", "May", 
-"Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
-month <- factor(rep(month.abbr, length = 72), levels = month.abbr)
+one <- ozone[1, 1, ]
+
+month <- factor(rep(1:12, length = 72))
+model <- rlm(value ~ month - 1)
+deseasf <- resiud(model)
 
 deseasf <- function(value) rlm(value ~ month - 1)
 \end{verbatim}
 
-In base R, we can tackle this problem with for loops, or with the apply family of functions.  
+The challenge is now to apply this function to each location, assembling the results back into the same form as the input.  We also want to keep the intermediate models in a 2d array, so we can reference a local model (\code{model[1, 1]}) in a similar way to referencing a local time series (\code{ozone[1, 1, ]}).  In base R, we can tackle this problem with for loops, or with the apply family of functions:
 
 \raggedcolumns
 \begin{multicols}{2}
@@ -94,6 +105,7 @@ for (i in seq_len(24)) {
 \noindent Apply functions
 \begin{verbatim}
 models <- apply(ozone, 1:2, deseasf)
+
 resids <- unlist(lapply(models, resid))
 dim(resids) <- c(72, 24, 24)
 deseas <- aperm(resids, c(2, 3, 1))
@@ -101,14 +113,16 @@ dimnames(deseas) <- dimnames(ozone)
 \end{verbatim}
 \end{multicols}
 
-The main disadvantage of the for loop is that there is lot of book-keeping code in there.  We need to create the output structure before filling them up, and the size of the array is hard coded in multiple places.  The apply functions (\f{apply} and \f{lapply}) simplify this task, but there's no way straightforward way to go from the 2d array of models to a 3d array of residuals. In \plyr, the code is much shorter because these details are taken care of:
+The main disadvantage of the for loop is that there is lot of book-keeping code in there.  We need to create the output structure before filling them up, and the size of the array is hard coded in multiple places.  The apply functions (\f{apply} and \f{lapply}) simplify this task, but there's no straightforward way to go from the 2d array of models to a 3d array of residuals. In \plyr, the code is much shorter because these details are taken care of:
 
 \begin{verbatim}
 models <- aaply(ozone, 1:2, deseasf)
 deseas <- aaply(models, 1:2, resid)
 \end{verbatim}
 
-Another way of storing the ozone data would be stored in a data frame with columns lat, long, time, month, and value.  \plyr has been written to work well with the three major R data structures: arrays, lists and data frames.  To repeat the deasonalisation task with this new data format, we first need to tweak our workhorse method:
+You may be wondering what those function names mean.  All \plyr functions have a concise but informative naming scheme: the first two characters describe input and output data types.  Both of these functions input and output an {\bf a}rray.  Other data types are {\bf l}ists and {\bf d}ata frames.
+
+Instead of storing the ozone data in a 3d array, we could also store it in a data frame.  This type of format is more common if the data is ragged, irregular or incomplete, that is, we don't have measurements at every possible location for every possible time point.  Imagine the data frame is called \code{ozonedf} and has columns lat, long, time, month, and value.  To repeat the deasonalisation task with this new data format, we first need to tweak our workhorse method:
 
 \begin{verbatim}
 deseasf_df <- function(df) {
@@ -116,7 +130,7 @@ deseasf_df <- function(df) {
 }
 \end{verbatim}
 
-Because data in this format is often ragged, there's no particular advantage to using the for loops here, and we'll use \f{split}, \f{lapply} and \f{mapply} to complete the task.  Here the split-apply-combine strategy maps closely to R functions: we split with \f{split}, apply with \f{lapply} and then combine the pieces into a single result with \f{rbind}.
+Because the data could be ragged, it's much harder to use for loops here and  we'll use \f{split}, \f{lapply} and \f{mapply} to complete the task.  Here the split-apply-combine strategy maps closely to built-in R functions: we split with \f{split}, apply with \f{lapply} and then combine the pieces into a single result with \f{rbind}.
 
 \begin{verbatim}
 pieces <- split(ozonedf, list(ozonedf$lat, ozonedf$long))
@@ -128,12 +142,14 @@ results <- mapply(function(model, df) {
 deseasdf <- do.call("rbind", results)
 \end{verbatim}
 
-Much of complication here is the labelling - we only needed to use \f{mapply} so we could match the original data up with the models. \plyr takes care of all the tricky labelling stuff for you, so it only takes two lines:
+Much of the complication here is the labelling - we only needed to use \f{mapply} so we could match the original data up with the models. \plyr takes care of all the tricky labelling stuff for you, so it only takes two lines:
 
 \begin{verbatim}
 models <- dlply(ozone, .(lat, long), deseas_df)
 deseas <- ldply(models, resid)
 \end{verbatim}
+
+The following section described the plyr functions in more detail.  If your interest has been whetted by this example, you might want to skip ahead to page \pageref{sub:ozone} to learn more about this data.
 
 \section{Usage}
 \label{sec:usage}
@@ -515,32 +531,46 @@ In this case study we will analyse a 3d array that records ozone levels over a 2
   \label{fig:ozone-glyph}
 \end{figure}
 
+Again we will start with the simplest case: a single time point, from location (1, 1).  Figure~\ref{fig:ozone-ts} displays this in two ways: as a single line over time, or a line for each year over the months.  This second plot illustrates the striking seasonal variation at this time point.
 
-Again we will start with the simplest case: a single time point.  We can display this in two ways: as a single line over time, or a line for each year over the months.  This second plot illustrates the striking seasonal variation at this time point.
+% INTERWEAVE
+% 
+% value <- ozone[1, 1, ]
+% time <- 1:72
+% month.abbr <- c("Jan", "Feb", "Mar", "Apr", "May", 
+%  "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+% month <- factor(rep(month.abbr, length = 72), levels = month.abbr)
+% year <- rep(1:6, each = 12)
 
-\begin{verbatim}
-value <- ozone[1, 1, ]
+% FIGURE
+%  LABEL: ozone-ts 
+%  CAPTION: Two ways of displaying the seasonal changes.  (Left) A single time
+%  series over all six years and (right) a line for each year.
+% 
+% qplot(time, value, geom="line")
+% qplot(month, value, geom="line", group = year)
 
-time <- 1:72
-month.abbr <- c("Jan", "Feb", "Mar", "Apr", "May", 
-"Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
-month <- factor(rep(month.abbr, length = 72), levels = month.abbr)
-year <- rep(1:6, each = 12)
+We are going to use a quick and dirty method to remove the season variation: we'll look at the residuals from a robust linear model, predicting amount of ozone by month.  We also need to create a few time related variables:
 
-qplot(time, value, geom="line")
-qplot(month, value, geom="line", group = year)
-\end{verbatim}
+% INTERWEAVE
+% 
+% library(MASS)
+%
+% deseas <- rlm(value ~ month - 1)
 
-We are going to use a very crude method to remove the season variation: we'll look at the residuals from a robust linear model.
+% FIGURE
+%  LABEL: ozone-ts-desas
+%  CAPTION: Deasonalised ozone trends.  Compare to Figure~\ref{fig:ozone-ts}
+%
+% 
+% qplot(time, resid(deseas), geom="line")
+% qplot(month, resid(deseas), geom="line", group = year)
 
-\begin{verbatim}
-library(MASS)
-
-deseas <- rlm(value ~ month - 1)
-qplot(month, resid(deseas), geom="line", group = year)
-qplot(month, unname(coef(deseas)), geom="line", group = 1)
-
-\end{verbatim}
+% FIGURE
+%   LABEL: deseas-coef
+%   CAPTION: A plot of the coefficients of the model.
+% 
+% qplot(month, unname(coef(deseas)), geom="line", group = 1)
 
 We next turn this into a function and apply to all of the spatial locations:
 
