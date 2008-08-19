@@ -23,6 +23,4 @@ rbind.fill <- function(...) {
 # 
 # @arguments list
 # @keyword manip 
-compact <- function(l) {
-  l[!laply(l, is.null)]
-}
+compact <- function(l) Filter(Negate(is.null), l)
