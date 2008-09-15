@@ -45,6 +45,7 @@ ldply <- function(data., fun. = NULL, ..., progress. = "none") {
 #X })
 ddply <- function(data., variables., fun. = NULL, ..., progress. = "none") {
   data. <- as.data.frame(data.)
+  variables. <- as.quoted(variables.)
   pieces <- splitter_d(data., variables.)
   
   ldply(pieces, fun., progress. = progress.)

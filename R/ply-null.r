@@ -5,8 +5,7 @@
 l_ply <- function(data., fun. = NULL, ..., progress. = "none", print. = FALSE) {
   if (is.character(fun.)) fun. <- match.fun(fun.)
   
-  if (is.character(progress.)) 
-    progress <- create_progress_bar(progress.)
+  progress <- create_progress_bar(progress.)
   progress$init(length(data.))
   
   data. <- as.list(data.)
@@ -22,6 +21,7 @@ l_ply <- function(data., fun. = NULL, ..., progress. = "none", print. = FALSE) {
 
 d_ply <- function(data., variables., fun. = NULL, ..., progress. = "none", print. = FALSE) {
   data. <- as.data.frame(data.)
+  variables. <- as.quoted(variables.)
   pieces <- splitter_d(data., variables.)
   
   l_ply(pieces, fun., progress. = progress., print. = print.)

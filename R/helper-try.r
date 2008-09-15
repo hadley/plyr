@@ -1,4 +1,11 @@
-
+# Fail with
+# Modify a function so that it returns a default value when there is an error.
+# 
+# @arguments default value
+# @arguments function
+# @argument should all error messages be suppressed?
+# @value a function
+# @seealso \code{\link{try_default}}
 failwith <- function(default = NULL, f, quiet = FALSE) {
   function(...) try_default(f(...), default, quiet = quiet)
 }
@@ -22,7 +29,6 @@ try_default <- function(expr, default = NA, quiet = FALSE) {
   }
   result
 }
-
 tryNULL <- function(expr) try_default(expr, NULL, quiet = TRUE)
 
 

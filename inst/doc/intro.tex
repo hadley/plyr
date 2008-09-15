@@ -20,6 +20,7 @@
 \usepackage[small]{titlesec}
 \usepackage{slashbox}
 \usepackage{booktabs}
+\usepackage{alltt}
 \usepackage{listings}
 \lstset{
   basicstyle=\ttfamily,
@@ -44,6 +45,8 @@
 %   INLINE: FALSE
 %   CACHE: TRUE
 %
+
+% END
 
 \begin{abstract}
 plyr is a set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each pieces and then put all the pieces back together.  This paper describes the components that make up plyr.  It includes two case studies.
@@ -183,7 +186,9 @@ Plyr functions have either two or three main arguments, depending on the type of
   \item {\tt l*ply(data., fun., ..., progress. = "none")}
 \end{itemize}
 
-The first argument is the {\tt data.} which will be split up, processed and recombined.  The second argument, \code{variables.} or \code{margins.} describes how to split up the input into pieces.  The third argument, \code{fun.}, is the processing function, and is applied to each piece in turn.  All further arguments are passed on to the processing function.  Note that arguments to the {\tt **ply} functions end in  ``{\tt .}'' - this is to prevent clashes with argument names in the processing function.
+The first argument is the {\tt data.} which will be split up, processed and recombined.  The second argument, \code{variables.} or \code{margins.} describes how to split up the input into pieces.  The third argument, \code{fun.}, is the processing function, and is applied to each piece in turn.  All further arguments are passed on to the processing function.  If you omit \code{fun.} the individual pieces will not be modified, but the entire data structure will be converted from one type to another.
+
+Note that arguments to the {\tt **ply} functions end in  ``{\tt .}'' - this is to prevent clashes with argument names in the processing function.
 
 The {\tt progress.} argument controls displaying of a progress bar, and is described at the end of Section~\ref{sec:helpers}.
 
@@ -541,6 +546,8 @@ Again we will start with the simplest case: a single time point, from location (
 %  "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 % month <- factor(rep(month.abbr, length = 72), levels = month.abbr)
 % year <- rep(1:6, each = 12)
+\input{_include/c2d71cd30a5f537fc57fe5350efb948c.tex}
+% END
 
 % FIGURE
 %  LABEL: ozone-ts 
@@ -549,6 +556,8 @@ Again we will start with the simplest case: a single time point, from location (
 % 
 % qplot(time, value, geom="line")
 % qplot(month, value, geom="line", group = year)
+\input{_include/f175a54909fe54e7ce00a2a6823c75c5.tex}
+% END
 
 We are going to use a quick and dirty method to remove the season variation: we'll look at the residuals from a robust linear model, predicting amount of ozone by month.  We also need to create a few time related variables:
 
@@ -557,38 +566,62 @@ We are going to use a quick and dirty method to remove the season variation: we'
 % library(MASS)
 %
 % deseas <- rlm(value ~ month - 1)
+\input{_include/db58b8c3031d9ed8726a9842095330f6.tex}
+% END
 
 % FIGURE
 %  LABEL: ozone-ts-desas
-%  CAPTION: Deasonalised ozone trends.  Compare to Figure~\ref{fig:ozone-ts}
+%  CAPTION: Deasonalised ozone trends.  (Left) deasonalised trend over 
+%  six years.  (Right) Estimates of seasonal effects.  Compare to
+%  Figure~\ref{fig:ozone-ts}
 %
-% 
 % qplot(time, resid(deseas), geom="line")
-% qplot(month, resid(deseas), geom="line", group = year)
-
-% FIGURE
-%   LABEL: deseas-coef
-%   CAPTION: A plot of the coefficients of the model.
-% 
 % qplot(month, unname(coef(deseas)), geom="line", group = 1)
+\input{_include/d7b07b226f5f0abde882229141f50eb1.tex}
+% END
 
-We next turn this into a function and apply to all of the spatial locations:
+We next turn this into a function and apply fit model to all of the spatial locations.  This does take a little while, but we are fitting 576 models!  From those models we extract the deasonalised values (the residuals) and the seasonal coefficients.  Looking at the dimensionality we see that they're in the same format as the original data.
+
+% INTERWEAVE
+% 
+% deseasf <- function(value) rlm(value ~ month - 1)
+% 
+% models <- alply(ozone, 1:2, deseasf)
+% coefs <- laply(models, coef)
+% dimnames(coefs)[[3]] <- months.abbr
+% names(dimnames(coefs))[3] <- "month"
+% 
+% deseas <- laply(models, resid)
+% dimnames(deseas)[[3]] <- 1:72
+% names(dimnames(deseas))[3] <- "time"
+% 
+% dim(coefs)
+% dim(deseas)
+
+Figure~\ref{fig:glyph-deseas} and Figure~\ref{fig:glyph-coef} visualises these results with star glyph plots.  For plotting, it's more convenient to have the data in data frames.  There are few different ways to do this: we can convert from the 3d array to a data frame with \f{melt} from the reshape package, or use \f{ldply} instead of \f{laply}.  For this example, we'll use a combination of these techniques.  We'll convert the original array to a data frame, add on some useful columns, and then perform the same steps as above with this new format.
+
+% INTERWEAVE 
+% 
+% coefs_df <- melt(coefs)
+% levels(coefs_df$month) <- month.abbr
+% head(coefs_df)
+% deseas_df <- melt(deseas)
+% head(deseas_df)
+
+
 
 \begin{verbatim}
 source("ozone-map.r")
-deseasf <- function(value) rlm(value ~ month - 1)
 
-models <- alply(ozone, 1:2, deseasf)
-coefs <- laply(models, coef)
-deseas <- laply(models, resid)
+res <- 1.5
+coef_stars <- oz_stars(coefs_df, "month", "value")
+ggplot(coef_stars, aes(x = long + res * x, y = lat + res * y)) + map + geom_polygon(aes(group = interaction(long, lat)), fill=NA, colour="black")
 
-coef2 <- ldply(models, function(x) 
-  data.frame(month = factor(month.abbr, levels=month.abbr), coef = unname(coef(x)))
-)
+qplot(month, value, data=coefs_df, geom="line", group=interaction(lat,long))
+qplot(long, lat, data=subset(coefs_df, month =="Jan"), fill = value, 
+geom="tile") + map
 
-qplot(month, coef, data=coef2, geom="line", group=interaction(lat,long))
-
-qplot(long, lat, data=subset(coef2, month =="Jan"), fill = coef, geom="tile") + map
+qplot(long, lat, data=subset(coefs_df, month =="Jan"), size = value) + scale_area(to=c(2,6))
 
 coef_limits <- range(coef2$coef)
 coef_mid <- mean(coef2$coef)

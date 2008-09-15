@@ -12,6 +12,8 @@
 colwise <- function(fun., .if = function(x) TRUE) {
   function(df, ...) {
     filtered <- Filter(.if, df)
+    if (ncol(filtered) == 0) return(data.frame())
+    
     df <- do.call("data.frame", alply(filtered, 2, fun., ...))
     names(df) <- names(filtered)
     df

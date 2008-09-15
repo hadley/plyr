@@ -7,8 +7,8 @@ llply <- function(data., fun. = NULL, ..., progress. = "none") {
   
   if (is.character(fun.)) fun. <- match.fun(fun.)
   
-  if (is.character(progress.)) 
-    progress <- create_progress_bar(progress.)
+  progress <- create_progress_bar(progress.)
+  
   progress$init(length(data.))
 
   f2 <- function(...) {
@@ -34,6 +34,7 @@ llply <- function(data., fun. = NULL, ..., progress. = "none") {
 #X hist(qual)
 dlply <- function(data., variables., fun. = NULL, ..., progress. = "none") {
   data. <- as.data.frame(data.)
+  variables. <- as.quoted(variables.)
   pieces <- splitter_d(data., variables.)
   
   llply(pieces, fun., progress. = progress.)

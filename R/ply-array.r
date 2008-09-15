@@ -71,6 +71,7 @@ laply <-  function(data., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
 #X daply(baseball, .(year), function(df) mean(df[, 6:9]))
 daply <- function(data., variables., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
   data. <- as.data.frame(data.)
+  variables. <- as.quoted(variables.)
   pieces <- splitter_d(data., variables.)
   
   laply(pieces, fun., progress. = progress., drop. = drop.)

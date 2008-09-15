@@ -16,7 +16,11 @@ plyr functions are named according to the type of object they input (first lette
 
 plyr also provides:
 
-  * maply, mlply, mdply and m_ply, to perform a similar role to mapply
+  * m*ply which work in a similar way to mapply
+  * r*ply which work in a similar way to replicate
+  
+plyr also has a number of helper functions that operate on functions, returning functions
+  
   * colwise to turn functions that operate on a single vector of numbers into functions that operate on columns
   * each to return a named vector containing the results of multiple functions
 
