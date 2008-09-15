@@ -129,7 +129,7 @@ daply <- function(data., variables., fun. = NULL, ..., progress. = "none", drop.
   variables. <- as.quoted(variables.)
   pieces <- splitter_d(data., variables.)
   
-  laply(pieces, fun., progress. = progress., drop. = drop.)
+  laply(pieces, fun., ..., progress. = progress., drop. = drop.)
 }
 
 # Split array, apply function, and return results in an array
@@ -179,5 +179,5 @@ daply <- function(data., variables., fun. = NULL, ..., progress. = "none", drop.
 aaply <- function(data., margins., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
   pieces <- splitter_a(data., margins.)
   
-  laply(pieces, fun., progress. = progress., drop. = drop.)
+  laply(pieces, fun., ..., progress. = progress., drop. = drop.)
 }

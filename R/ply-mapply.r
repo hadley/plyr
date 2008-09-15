@@ -19,7 +19,12 @@
 # @arguments other arguments passed on to \code{fun.}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @value a data frame
+#X mdply(data.frame(mean = 1:5, sd = 1:5), rnorm, n = 2)
+#X mdply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 2)
+#X mdply(cbind(mean = 1:5, sd = 1:5), rnorm, n = 5)
 mdply <- function(data., fun. = NULL, ..., progress. = "none") {
+  if (is.matrix(data.) & !is.list(data.)) data. <- .matrix_to_df(data.)
+
   f <- splat(fun.)
   adply(data., margins. = 1, f, ..., progress. = progress.)
 }
@@ -44,14 +49,15 @@ mdply <- function(data., fun. = NULL, ..., progress. = "none") {
 # @arguments other arguments passed on to \code{fun.}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
-#X # Examples from ?mapply
-#X maply(cbind(1:4, 4:1), rep)
-#X maply(cbind(1:4, times = 4:1), rep)
+#X maply(cbind(mean = 1:5, sd = 1:5), rnorm, n = 5)
+#X maply(cbind(1:5, 1:5), rnorm, n = 5)
+#X maply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 5)
 maply <- function(data., fun. = NULL, ..., progress. = "none") {
+  if (is.matrix(data.) & !is.list(data.)) data. <- .matrix_to_df(data.)
+  
   f <- splat(fun.)
   aaply(data., margins. = 1, f, ..., progress. = progress.)
 }
-
 
 # Call function with arguments in array or data frame, returning a list
 # Call a multi-argument function with values taken from columns of an data frame or array, and combine results into a list
@@ -73,7 +79,15 @@ maply <- function(data., fun. = NULL, ..., progress. = "none") {
 # @arguments other arguments passed on to \code{fun.}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @value list of results
+#X mlply(cbind(1:4, 4:1), rep)
+#X mlply(cbind(1:4, times = 4:1), rep)
+#X 
+#X mlply(cbind(1:4, 4:1), seq)
+#X mlply(cbind(1:4, length = 4:1), seq)
+#X mlply(cbind(1:4, by = 4:1), seq, to = 20)
 mlply <- function(data., fun. = NULL, ..., progress. = "none") {
+  if (is.matrix(data.) & !is.list(data.)) data. <- .matrix_to_df(data.)
+
   f <- splat(fun.)
   alply(data., margins. = 1, f, ..., progress. = progress.)
 }
@@ -98,6 +112,16 @@ mlply <- function(data., fun. = NULL, ..., progress. = "none") {
 # @arguments other arguments passed on to \code{fun.}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 m_ply <- function(data., fun. = NULL, ..., progress. = "none") {
+  if (is.matrix(data.) & !is.list(data.)) data. <- .matrix_to_df(data.)
+
   f <- splat(fun.)
   a_ply(data., margins. = 1, f, ..., progress. = progress.)
+}
+
+.matrix_to_df <- function(data.) {
+  cnames <- colnames(data.)
+  if (is.null(cnames)) cnames <- rep("", ncol(data.))
+  data. <- as.data.frame(data.)
+  colnames(data.) <- cnames
+  data.  
 }

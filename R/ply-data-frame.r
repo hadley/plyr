@@ -100,7 +100,7 @@ ddply <- function(data., variables., fun. = NULL, ..., progress. = "none") {
   variables. <- as.quoted(variables.)
   pieces <- splitter_d(data., variables.)
   
-  ldply(pieces, fun., progress. = progress.)
+  ldply(pieces, fun., ..., progress. = progress.)
 }
 
 # Split array, apply function, and return results in a data frame
@@ -126,5 +126,5 @@ ddply <- function(data., variables., fun. = NULL, ..., progress. = "none") {
 adply <- function(data., margins., fun. = NULL, ..., progress. = "none") {
   pieces <- splitter_a(data., margins.)
   
-  ldply(pieces, fun., progress. = progress.)
+  ldply(pieces, fun., ..., progress. = progress.)
 }

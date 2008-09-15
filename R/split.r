@@ -65,10 +65,14 @@ splitter_a <- function(data, margins. = 1) {
   )
   dim(pieces) <- dim(data)[margins.]
   
-  dnames <- amv_dimnames(data)
-  split_labels <- expand.grid(dnames[margins.], KEEP.OUT.ATTRS = FALSE)
-  colnames <- names(dnames)[margins.]
-  if (!is.null(colnames)) names(split_labels) <- colnames
+  if (is.data.frame(data) & identical(margins., 1)) {
+    split_labels <- data
+  } else {
+    dnames <- amv_dimnames(data)
+    split_labels <- expand.grid(dnames[margins.], KEEP.OUT.ATTRS = FALSE)
+    colnames <- names(dnames)[margins.]
+    if (!is.null(colnames)) names(split_labels) <- colnames
+  }
 
   structure(
     pieces,
@@ -101,4 +105,12 @@ as.list.split <- function(x, ...) {
   attr(x, "split_labels") <- NULL
   class(x) <- setdiff(class(x), "split")
   x
+}
+
+# Print split
+# Don't print labels, so it appears like a regular list
+# 
+# @keywords internal
+print.split <- function(x, ...) {
+  print(as.list(x))
 }

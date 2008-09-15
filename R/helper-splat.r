@@ -13,5 +13,7 @@
 #X f <- function(mpg, wt, ...) data.frame(mw = mpg / wt)
 #X ddply(mtcars, .(cyl), splat(f))
 splat <- function(flat) {
-  function(...) do.call(flat, ...)
+  function(args, ...) {
+    do.call(flat, c(args, list(...)))
+  }
 }
