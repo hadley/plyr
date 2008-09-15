@@ -21,7 +21,7 @@
 # @arguments other arguments passed on to \code{fun.}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @arguments should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
-# @value if results are atomic with same type and dimensionality, an array; otherwise, a list-array (a list with dimensions)
+# @value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 # 
 #X laply(baseball, is.factor)
 #X # cf
@@ -114,7 +114,7 @@ laply <-  function(data., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
 # @arguments other arguments passed on to \code{fun.}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @arguments should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
-# @value if results are atomic with same type and dimensionality, an array; otherwise, a list-array (a list with dimensions)
+# @value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 # 
 #X daply(baseball, .(year), nrow)
 #X
@@ -158,7 +158,7 @@ daply <- function(data., variables., fun. = NULL, ..., progress. = "none", drop.
 # @arguments other arguments passed on to \code{fun.}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @arguments should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
-# @value if results are atomic with same type and dimensionality, an array; otherwise, a list-array (a list with dimensions)
+# @value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 #
 #X dim(ozone)
 #X aaply(ozone, 1, mean)

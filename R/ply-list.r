@@ -73,7 +73,7 @@ llply <- function(data., fun. = NULL, ..., progress. = "none") {
 # @arguments other arguments passed on to \code{fun.}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # 
-# @value if results are atomic with same type and dimensionality, an array; otherwise, a list-array (a list with dimensions)
+# @value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 # @value list of results
 #
 #X linmod <- function(df) lm(rbi ~ year, data = transform(df, year = year - min(year)))
