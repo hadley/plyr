@@ -1,12 +1,30 @@
 # Create progress bar
 # Create progress bar object from text string.
 # 
+# Progress bars give feedback on how apply step is proceeding.  This
+# is mainly useful for long running functions, as for short functions, the 
+# time taken up by splitting and combining may be on the same order (or 
+# longer) as the apply step.  Additionally, for short functions, the time
+# needed to update the progress bar can significantly slow down the process.
+# 
+# Note the that progress bar is approximate, and if the time taken by
+# individual function applications is highly non-uniform it may not be very
+# informative of the time left.
+# 
 # There are currently four types of progress bar:  "none", "text", "tk", and
-#  "win".  See the individual documentation for more details.
+# "win".  See the individual documentation for more details.  In plyr 
+# functions, these can either be specified by name, or you can create the
+# progress bar object yourself if you want more control over its apperance.
+# See the examples.
 # 
 # @arguments type of progress bar to create
 # @seealso \code{\link{progress_none}}, \code{\link{progress_text}}, \code{\link{progress_tk}}, \code{\link{progress_win}}
 # @keywords asdf
+# @keywords
+#X l_ply(1:1000, identity, progress. = "none")
+#X l_ply(1:1000, identity, progress. = "tk")
+#X l_ply(1:1000, identity, progress. = "text")
+#X l_ply(1:1000, identity, progress. = progress_text(char = "-"))
 create_progress_bar <- function(name = "none") {
   if (!is.character(name)) return(name)
   match.fun(paste("progress", name, sep="_"))()
@@ -55,7 +73,18 @@ progress_text <- function(style = 3, ...) {
   )
 }
 
-# Tk progress
+# Graphical progress bar, powered by Tk
+# A graphical progress bar displayed in a Tk window
+# 
+# This graphical progress will appear in a separate window.
+# 
+# @arguments window title
+# @arguments progress bar label (inside window)
+# @arguments other arguments passed on to \code{\link{tkProgressBar}}
+# @seealso \code{\link{tkProgressBar}} for the function that powers this progress bar
+#X l_ply(1:1000, identity, progress. = "tk")
+#X l_ply(1:1000, identity, progress. = progress_tk(width=400))
+#X l_ply(1:1000, identity, progress. = progress_tk(label=""))
 progress_tk <- function(title = "plyr progress", label = "Working...", ...) {
   stopifnot(require("tcltk", quiet=TRUE))
   n <- 0
@@ -74,6 +103,18 @@ progress_tk <- function(title = "plyr progress", label = "Working...", ...) {
   )
 }
 
+# Graphical progress bar, powered by Windows
+# A graphical progress bar displayed in a separate window
+# 
+# This graphical progress only works on Windows.
+# 
+# @arguments window title
+# @arguments other arguments passed on to \code{\link{winProgressBar}}
+# @seealso \code{\link{winProgressBar}} for the function that powers this progress bar
+#X if(exists("winProgressBar")) {
+#X l_ply(1:1000, identity, progress. = "win")
+#X l_ply(1:1000, identity, progress. = progress_win(title="Working...")
+#X }
 progress_win <- function(title = "plyr progress", ...) {
   n <- 0
   win <- NULL
