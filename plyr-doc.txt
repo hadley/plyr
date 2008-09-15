@@ -1,0 +1,38 @@
+Split list, apply function, and return results in a data frame
+For each element of a list, apply function then combine results into a data frame
+
+All plyr functions use the same split-apply-combine strategy: they split the input into simpler pieces, apply \code{fun.} to each piece, and then combine the pieces into a single data structure.  This function splits
+
+matrices, arrays and data frames by dimensions
+data frames by variable
+lists by elements
+
+and combines the result into a data frame
+and combines the result into an array
+and combines the result into a list
+and discards the output
+
+If there are no results, then this function will return
+
+a data frame with zero rows and columns (\code{data.frame()}).
+a vector of length 0 (\code{vector()}).
+a list of length 0  (\code{list()}).
+
+See \code{vignette("intro", "plyr")} for more details, description and case studies.
+
+@keyword manip
+
+@arguments matrix, array or data frame to be processed
+@arguments list to be processed
+@arguments data frame to be processed
+
+@arguments variables to split data frame by, as quoted variables, a formula or character vector
+@arguments a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions
+
+@arguments function to apply to each piece
+@arguments other arguments passed on to \code{fun.}
+@arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
+
+@value if results are atomic with same type and dimensionality, an array; otherwise, a list-array (a list with dimensions)
+@value list of results
+@value a data frame
