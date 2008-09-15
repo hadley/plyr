@@ -4,11 +4,11 @@
 \author{Hadley Wickham <h.wickham@gmail.com>}
 
 \description{
-Compute dimensions for a vector similarly to arrays
+Consistent dimensions for vectors, matrices and arrays.
 }
 \usage{amv_dim(x)}
 \arguments{
-\item{x}{array or vector}
+\item{x}{array, matrix or vector}
 }
 
 \details{}

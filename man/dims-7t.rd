@@ -1,6 +1,6 @@
 \name{dims}
 \alias{dims}
-\title{Dimensions}
+\title{Number of dimensions}
 \author{Hadley Wickham <h.wickham@gmail.com>}
 
 \description{
