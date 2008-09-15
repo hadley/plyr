@@ -1,4 +1,4 @@
-\name{"."}
+\name{.}
 \alias{.}
 \alias{quoted}
 \title{Quote variables}

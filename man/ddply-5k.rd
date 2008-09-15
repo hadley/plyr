@@ -1,18 +1,18 @@
-\name{rbi_sum}
-\alias{rbi_sum}
+\name{ddply}
+\alias{ddply}
 \title{Split data frame, apply function, and return results in a data frame}
 \author{Hadley Wickham <h.wickham@gmail.com>}
 
 \description{
 For each subset of a data frame, apply function then combine results into a  data frame
 }
-\usage{rbi_sum(df)}
+\usage{ddply(data., variables., fun. = NULL, ..., progress. = "none")}
 \arguments{
-\item{df}{data frame to be processed}
-\item{}{variables to split data frame by, as quoted variables, a formula or character vector}
-\item{}{function to apply to each piece}
-\item{}{other arguments passed on to \code{fun.}}
-\item{}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+\item{data.}{data frame to be processed}
+\item{variables.}{variables to split data frame by, as quoted variables, a formula or character vector}
+\item{fun.}{function to apply to each piece}
+\item{...}{other arguments passed on to \code{fun.}}
+\item{progress.}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
 }
 \value{a data frame}
 \details{All plyr functions use the same split-apply-combine strategy: they split the
@@ -29,21 +29,13 @@ length, it will be \code{rbind}ed together and converted to a data frame.
 Any other values will result in an error.
 
 See \code{vignette("intro", "plyr")} for more details, description and case
-studies.
+studies.}
 
-@keyword manip
-@arguments data frame to be processed
-@arguments variables to split data frame by, as quoted variables, a formula or character vector
-@arguments function to apply to each piece
-@arguments other arguments passed on to \code{fun.}
-@arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
-@value a data frame}
-
-\examples{rbi_sum <- function(df) mean(df$rbi, na.rm=T)
+\examples{mean_rbi <- function(df) mean(df$rbi, na.rm=TRUE)
 rbi <- ddply(baseball, .(year), mean_rbi)
 with(rbi, plot(year, V1, type="l"))
 
-mean_rbi <- function(rbi, ...) mean(rbi, na.rm=T)
+mean_rbi <- function(rbi, ...) mean(rbi, na.rm=TRUE)
 rbi <- ddply(baseball, .(year), splat(mean_rbi))
 
 ddply(baseball, .(year), numcolwise(mean), na.rm=TRUE)

@@ -84,12 +84,11 @@ ldply <- function(data., fun. = NULL, ..., progress. = "none") {
 # @arguments other arguments passed on to \code{fun.}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @value a data frame
-#
-#X rbi_sum <- function(df) mean(df$rbi, na.rm=T)
+#X mean_rbi <- function(df) mean(df$rbi, na.rm=TRUE)
 #X rbi <- ddply(baseball, .(year), mean_rbi)
 #X with(rbi, plot(year, V1, type="l"))
 #X 
-#X mean_rbi <- function(rbi, ...) mean(rbi, na.rm=T)
+#X mean_rbi <- function(rbi, ...) mean(rbi, na.rm=TRUE)
 #X rbi <- ddply(baseball, .(year), splat(mean_rbi))
 #X
 #X ddply(baseball, .(year), numcolwise(mean), na.rm=TRUE)

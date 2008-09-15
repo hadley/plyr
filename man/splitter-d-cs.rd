@@ -21,7 +21,7 @@ This is basically a thin wrapper around \code{\link{split}} which
 evaluates the variables in the context of the data, and includes enough
 information to reconstruct the labelling of the data frame after
 other operations.}
-\seealso{\code{\link{.}} for quoting variables, \code{\link{split}}}
+\seealso{\code{\link{"."}} for quoting variables, \code{\link{split}}}
 \examples{splitter_d(mtcars, .(cyl))
 splitter_d(mtcars, .(vs, am))
 splitter_d(mtcars, .(am, vs))}

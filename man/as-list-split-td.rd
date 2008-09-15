@@ -6,9 +6,10 @@
 \description{
 Strip off label related attributed to make a strip list as regular list
 }
-\usage{as.list.split(x)}
+\usage{as.list.split(x, ...)}
 \arguments{
 \item{x}{}
+\item{...}{}
 }
 
 \details{}

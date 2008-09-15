@@ -151,7 +151,6 @@ daply <- function(data., variables., fun. = NULL, ..., progress. = "none", drop.
 # studies.
 # 
 # @keyword manip
-# 
 # @arguments matrix, array or data frame to be processed
 # @arguments a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions
 # @arguments function to apply to each piece
@@ -167,7 +166,7 @@ daply <- function(data., variables., fun. = NULL, ..., progress. = "none", drop.
 #X aaply(ozone, c(1,2), mean)
 #X
 #X dim(aaply(ozone, c(1,2), mean))
-#X dim(aaply(ozone, c(1,2), mean), drop. = FALSE) 
+#X dim(aaply(ozone, c(1,2), mean, drop. = FALSE)) 
 #X
 #X aaply(ozone, 1, each(min, max))
 #X aaply(ozone, 3, each(min, max))

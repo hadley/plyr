@@ -1,18 +1,18 @@
-\name{linmod}
-\alias{linmod}
+\name{dlply}
+\alias{dlply}
 \title{Split data frame, apply function, and return results in a list}
 \author{Hadley Wickham <h.wickham@gmail.com>}
 
 \description{
 For each subset of a data frame, apply function then combine results into a  list
 }
-\usage{linmod(df)}
+\usage{dlply(data., variables., fun. = NULL, ..., progress. = "none")}
 \arguments{
-\item{df}{data frame to be processed}
-\item{}{variables to split data frame by, as quoted variables, a formula or character vector}
-\item{}{function to apply to each piece}
-\item{}{other arguments passed on to \code{fun.}}
-\item{}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+\item{data.}{data frame to be processed}
+\item{variables.}{variables to split data frame by, as quoted variables, a formula or character vector}
+\item{fun.}{function to apply to each piece}
+\item{...}{other arguments passed on to \code{fun.}}
+\item{progress.}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
 }
 \value{
  \item{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}
@@ -28,17 +28,7 @@ then this function will return a list of length 0  (\code{list()}).
 returned in a different format.
 
 See \code{vignette("intro", "plyr")} for more details, description and case
-studies.
-
-@keyword manip
-@arguments data frame to be processed
-@arguments variables to split data frame by, as quoted variables, a formula or character vector
-@arguments function to apply to each piece
-@arguments other arguments passed on to \code{fun.}
-@arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
-
-@value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
-@value list of results}
+studies.}
 
 \examples{linmod <- function(df) lm(rbi ~ year, data = transform(df, year = year - min(year)))
 models <- dlply(baseball, .(id), linmod)
@@ -46,6 +36,6 @@ models[[1]]
 
 coef <- ldply(models, coef)
 with(coef, plot(`(Intercept)`, year))
-qual <- ldply(models, function(mod) summary(mod)$r.squared)
+qual <- laply(models, function(mod) summary(mod)$r.squared)
 hist(qual)}
 \keyword{manip}

@@ -11,7 +11,7 @@
 # information to reconstruct the labelling of the data frame after 
 # other operations.
 # 
-# @seealso \code{\link{.}} for quoting variables, \code{\link{split}}
+# @seealso \code{\link{"."}} for quoting variables, \code{\link{split}}
 # @parameters data frame
 # @parameters a \link{quoted} list of variables, a formula, or character vector
 # @value a list of data.frames, with attributes that record split details
@@ -96,7 +96,7 @@ splitter_a <- function(data, margins. = 1) {
 # Strip off label related attributed to make a strip list as regular list
 # 
 # @keyword internal
-as.list.split <- function(x) {
+as.list.split <- function(x, ...) {
   attr(x, "split_type") <- NULL
   attr(x, "split_labels") <- NULL
   class(x) <- setdiff(class(x), "split")

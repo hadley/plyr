@@ -6,6 +6,8 @@
 # time taken up by splitting and combining may be on the same order (or 
 # longer) as the apply step.  Additionally, for short functions, the time
 # needed to update the progress bar can significantly slow down the process.
+# For the trivial examples below, using the tk progress bar slows things down
+# by a factor of a thousand.
 # 
 # Note the that progress bar is approximate, and if the time taken by
 # individual function applications is highly non-uniform it may not be very
@@ -37,7 +39,7 @@ create_progress_bar <- function(name = "none") {
 # understand - it does nothing!
 # 
 # @keywords internal
-#X l_ply(1:100, progress. = "none")
+#X l_ply(1:100, identity, progress. = "none")
 progress_none <- function() {
   list(
     init = function(x) {},
@@ -113,7 +115,7 @@ progress_tk <- function(title = "plyr progress", label = "Working...", ...) {
 # @seealso \code{\link{winProgressBar}} for the function that powers this progress bar
 #X if(exists("winProgressBar")) {
 #X l_ply(1:1000, identity, progress. = "win")
-#X l_ply(1:1000, identity, progress. = progress_win(title="Working...")
+#X l_ply(1:1000, identity, progress. = progress_win(title="Working..."))
 #X }
 progress_win <- function(title = "plyr progress", ...) {
   n <- 0
