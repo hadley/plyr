@@ -32,7 +32,7 @@
 #X ddply(mtcars, .(logcyl = log(cyl)), each(nrow, ncol))
 #X ddply(mtcars, .(vs + am), each(nrow, ncol))
 #X ddply(mtcars, .(vsam = vs + am), each(nrow, ncol))
-"." <- function(...) {
+. <- function(...) {
   structure(as.list(match.call()[-1]), class="quoted")
 }
 

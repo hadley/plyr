@@ -7,7 +7,7 @@
 \description{
 Create a list of unevaluated expressions for later evaluation
 }
-\usage{"."(...)}
+\usage{.(...)}
 \arguments{
 \item{...}{unevaluated expressions to be recorded.  Specify names if you want the set the names of the resultant variables}
 }

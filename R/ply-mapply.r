@@ -1,5 +1,3 @@
-# Mapply equivalent ---------------------------------------------------------
-
 mdply <- function(data., fun. = NULL, ..., progress. = "none") {
   f <- splat(fun.)
   adply(data., margins. = 1, f, ..., progress. = progress.)
