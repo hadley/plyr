@@ -50,7 +50,10 @@
 % END
 
 \begin{abstract}
-plyr is a set of tools for a common set of problems: you need to break a big problem down into manageable pieces, operate on each pieces and then put all the pieces back together.  I call this strategy ``split-apply-combine'' and the three components form..   This paper describes the components that make up plyr.  It includes two case studies.
+plyr is a set of tools for a common set of problems: you need to break a big problem down into manageable pieces, operate on each piece and then put all the pieces back together.  I call this strategy ``split-apply-combine'' and the three components form the basis for this paper and the \plyr package.   
+
+The paper concludes with two case studies using \plyr to operate on a 3d array of spatio-temporal dataset, and a large data frame of repeated observations.
+
 \end{abstract}
 
 \section{Introduction}
@@ -124,9 +127,9 @@ models <- aaply(ozone, 1:2, deseasf)
 deseas <- aaply(models, 1:2, resid)
 \end{verbatim}
 
-You may be wondering what those function names mean.  All \plyr functions have a concise but informative naming scheme: the first two characters describe input and output data types.  Both of these functions input and output an {\bf a}rray.  Other data types are {\bf l}ists and {\bf d}ata frames.
+You may be wondering what those function names mean.  All \plyr functions have a concise but informative naming scheme: the first two characters describe input and output data types.  Both of these functions input and output an {\bf a}rray.  Other data types are {\bf l}ists and {\bf d}ata frames.  Because \plyr caters for every combination of input and output data types in a consistent way, it is easy to use the data structure that feels most natural for a given problem.
 
-Instead of storing the ozone data in a 3d array, we could also store it in a data frame.  This type of format is more common if the data is ragged, irregular or incomplete, that is, we don't have measurements at every possible location for every possible time point.  Imagine the data frame is called \code{ozonedf} and has columns lat, long, time, month, and value.  To repeat the deasonalisation task with this new data format, we first need to tweak our workhorse method:
+For example, instead of storing the ozone data in a 3d array, we could also store it in a data frame.  This type of format is more common if the data is ragged, irregular or incomplete, where we don't have measurements at every possible location for every possible time point.  Imagine the data frame is called \code{ozonedf} and has columns lat, long, time, month, and value.  To repeat the deasonalisation task with this new data format, we first need to tweak our workhorse method:
 
 \begin{verbatim}
 deseasf_df <- function(df) {
@@ -153,14 +156,14 @@ models <- dlply(ozone, .(lat, long), deseas_df)
 deseas <- ldply(models, resid)
 \end{verbatim}
 
-The following section described the plyr functions in more detail.  If your interest has been whetted by this example, you might want to skip ahead to page \pageref{sub:ozone} to learn more about this data.
+The following section describes the \plyr functions in more detail.  If your interest has been whetted by this example, you might want to skip ahead to page \pageref{sub:ozone} to learn more about this data.
 
 \section{Usage}
 \label{sec:usage}
 
 Table~\ref{tbl:functions} lists the basic set of plyr functions.  Each function is named according to the type of input it accepts and the type of output it produces.  The input type determines how the big data structure can be broken down into small pieces, and the output type determines how the pieces are joined back together again.  Breaking down input is described in Section~\ref{sec:input} and piecing together output is described in Section~\ref{sec:output}.
 
-{\bf NB}: In this paper, the term {\bf array} includes the special cases of vectors (1d arrays) and matrices (2d arrays) as well, and the term {\bf list-array} refers to an array made out of a list, i.e.\ an list that has had dimensions imposed upon it with \code{dim}.   (as opposed to an atomic vector, as is more usual).
+{\bf NB}: In this paper, the term {\bf array} includes the special cases of vectors (1d arrays) and matrices (2d arrays) as well, and the term {\bf list-array} refers to an list with dimensions (as opposed to an atomic vector, as is more usual).  The common atomic vectors are logical, character, integer, and numeric.
 
 \begin{table}
   \begin{center}
@@ -179,7 +182,7 @@ Table~\ref{tbl:functions} lists the basic set of plyr functions.  Each function 
 
 The effects of the input and outputs types are orthogonal, so instead of having to learn all 12 functions individually, it is sufficient to learn the three types of input and four types of input.  For this reason, it's useful to refer to a complete row (common output type) or column (common input type) of Table~\ref{tbl:functions}.  The notation we use for this is {\tt d*ply} to refer an entire row (same input) and {\tt *dply} for an entire column (same output).
 
-Plyr functions have either two or three main arguments, depending on the type of input:
+The \code{**ply} functions have either two or three main arguments, depending on the type of input:
 
 \begin{itemize}
   \item {\tt a*ply(data., margins., fun., ..., progress. = "none")}
@@ -187,11 +190,9 @@ Plyr functions have either two or three main arguments, depending on the type of
   \item {\tt l*ply(data., fun., ..., progress. = "none")}
 \end{itemize}
 
-The first argument is the {\tt data.} which will be split up, processed and recombined.  The second argument, \code{variables.} or \code{margins.} describes how to split up the input into pieces.  The third argument, \code{fun.}, is the processing function, and is applied to each piece in turn.  All further arguments are passed on to the processing function.  If you omit \code{fun.} the individual pieces will not be modified, but the entire data structure will be converted from one type to another.
+The first argument is the {\tt data.} which will be split up, processed and recombined.  The second argument, \code{variables.} or \code{margins.}, describes how to split up the input into pieces.  The third argument, \code{fun.}, is the processing function, and is applied to each piece in turn.  All further arguments are passed on to the processing function.  If you omit \code{fun.} the individual pieces will not be modified, but the entire data structure will be converted from one type to another.  The {\tt progress.} argument controls displaying of a progress bar, and is described at the end of Section~\ref{sec:helpers}.
 
-Note that arguments to the {\tt **ply} functions end in  ``{\tt .}'' - this is to prevent clashes with argument names in the processing function.
-
-The {\tt progress.} argument controls displaying of a progress bar, and is described at the end of Section~\ref{sec:helpers}.
+Note that arguments to the {\tt **ply} functions end in  ``\code{.}''. This prevents name clashes with the argument of \code{fun.}.  
 
 \subsection{Input} 
 \label{sec:input}
@@ -199,12 +200,9 @@ The {\tt progress.} argument controls displaying of a progress bar, and is descr
 Each type of input has different rules for how to split it up, and are described in detail in the following section. In short:
 
 \begin{itemize}
-  \item \f{a*ply} : Arrays are sliced by dimension in to lower-d pieces. 
-  
-  \item \f{d*ply}: Data frames are split into pieces based on combinations of variables
-  
+  \item \f{a*ply}: Arrays are sliced by dimension in to lower-d pieces.
+  \item \f{d*ply}: Data frames are subsetted by combinations of variables.
   \item \f{l*ply}: Each element in a list is a piece.
-  
 \end{itemize}
 
 Technical note: The way the input can be split up is not actually determined by the type of the data structure, but the methods that it responds to.  An object split up by \f{a*ply} must respond to \f{dim} and accept multidimensonal indexing; by \f{d*ply}, must work with \f{split}, and must be coercible to an environment; by list, must work with \f{length} and \code{[[}.
@@ -325,16 +323,17 @@ All \code{*aply} functions have a \code{drop.} argument.  When this is true, the
 
 \subsubsection{Output: data frames ({\tt *dply})}
 
-When the output is a data frame, it will contain the results and additional columns that identify where in the original data each row came from.  These columns make it possible to merge the old and new data if you need to.  If the input was a data frame, there will be a column for variables used to split up the original data; if it was a list, a column for the names of the list; if an array, a column for the names of each splitting dimension.
-
-The processing functions should either return a data.frame, or a (named) atomic vector of fixed length, which will form the columns of the output. If there are no results, {\tt *dply} will return an empty data frame.  \plyr provides an \code{as.data.frame} method for functions which can be handy: \code{as.data.frame(mean)} will create a new function which outputs a data frame.
+When the output is a data frame, it will contain the results and additional columns that identify where in the original data each row came from.  These columns make it possible to merge the old and new data if you need to.  If the input was a data frame, there will be a column for variables used to split up the original data; if it was a list, a column for the names of the list; if an array, a column for the names of each splitting dimension.  Figure~\ref{fig:output-d} illustrates this for data frame input.
 
 \begin{figure}[htbp]
   \centering
     \includegraphics[width = 0.8 \textwidth]{output-d}
   \caption{Illustrating the output from using \f{ddply} on the example from Figure~\ref{fig:split-data-frame} with \f{nrow}.  Splitting variables shown above each example.  Note how the extra labelling columns are added so that you can identify to which subset the results apply.}
-  \label{fig:label}
+  \label{fig:output-d}
 \end{figure}
+
+The processing functions should either return a data.frame, or a (named) atomic vector of fixed length, which will form the columns of the output. If there are no results, {\tt *dply} will return an empty data frame.  \plyr provides an \code{as.data.frame} method for functions which can be handy: \code{as.data.frame(mean)} will create a new function which outputs a data frame.
+
 
 \subsubsection{Output: list ({\tt *lply})}
 
@@ -349,10 +348,10 @@ Sometimes you are operating on a list purely for the side effects (e.g. plots, c
 \section{Helpers}
 \label{sec:helpers}
 
-The {\tt plyr} package also provides a number of helper function which take a function (or functions) as input and return a modified function as output.  
+The \plyr package also provides a number of helper function which take a function (or functions) as input and return a modified function as output.  
 
 \begin{itemize}
-  \item {\tt splat} converts a function to use.  This is useful when you want to pass a function a row of data frame or array, and don't want to manually pull it apart in your function.  For example:
+  \item \f{splat} converts a function to use.  This is useful when you want to pass a function a row of data frame or array, and don't want to manually pull it apart in your function.  For example:
   
   \begin{verbatim}
     hp_per_cyl <- function(hp, cyl, ...) hp / cyl
@@ -362,17 +361,19 @@ The {\tt plyr} package also provides a number of helper function which take a fu
   
   Generally, splatted functions should have {\tt ...} as an argument, so you only need to specify the variables that you are interested in.  For more information on how splat works, see {\tt do.call}.  
   
-  {\tt splat} is applied to functions used in {\tt m*ply} by default.
+  \f{splat} is applied to functions used in {\tt m*ply} by default.
 
-  \item {\tt each} takes a list of functions and produces a function that runs  each function on the inputs and returns a named vector of outputs.   For example, {\tt each(min, max)} is short hand for {\tt function(x) c(min = min(x), max = max(x))}.  Using each with a single function is useful if you want a named vector as output.
+  \item \f{each} takes a list of functions and produces a function that runs  each function on the inputs and returns a named vector of outputs.   For example, {\tt each(min, max)} is short hand for {\tt function(x) c(min = min(x), max = max(x))}.  Using each with a single function is useful if you want a named vector as output.
 
-  \item {\tt colwise} converts a function that works on vectors, to one that operates column-wise of data frame, returning a data fram.  For example, {\tt colwise(median)} is a function that computes the median of each column of a data.frame.  
+  \item \f{colwise} converts a function that works on vectors, to one that operates column-wise of data frame, returning a data fram.  For example, {\tt colwise(median)} is a function that computes the median of each column of a data.frame.  
   
   The optional {\tt .if} argument specialises the function to only run on certain types of vector, e.g.\ {\tt .if = is.factor} or {\tt .if = is.numeric}.  These two restrictions are provided in the premade {\tt calcolwise} and {\tt numcolwise}.  
   
-  \item {\tt failwith} sets a default value to return if the function throws an error.  For example, {\tt failwith(NA, f)} will return an {\tt NA} whenever {\tt f} throws an error.  
+  \item \f{failwith} sets a default value to return if the function throws an error.  For example, {\tt failwith(NA, f)} will return an {\tt NA} whenever {\tt f} throws an error.  
   
   The optional {\tt quiet} argument suppresses any notice of the error when it is {\tt TRUE}.
+  
+  \item Given a function, \f{as.data.frame.function} creates a new function which coerces the output of the input function to a data frame.  This is useful when you are using \f{*dply} and the default column-wise output is not what you want.
 
 \end{itemize}
 
@@ -684,19 +685,19 @@ the functions provided by {\tt plyr}.  The built in R functions focus mainly on 
 
 Avoid any ambiguity about what you'll get back from one of these functions. This replaces the {\tt simplify} argument that many of the {\tt apply} functions in base R has, and means that you can depend on the output of each function being a given type (which makes programming with the results easier).
 
-
 \begin{table}[htpb]
   \begin{center}
   \begin{tabular}{llll}
     \toprule
-    base & from & to & plyr \\
+    Base function & Input & Output & \plyr function \\
     \midrule
-    \code{apply }    & a & a   & \code{aaply} \\
-    \code{lapply}    & l & l   & \code{llply} \\
-    \code{sapply}    & l & a   & \code{laply} \\
-    \code{mapply}    & a & a/l & \code{maply} / \code{mlply} \\
-    \code{by}        & d & l   & \code{dlply} \\
     \code{aggregate} & d & d   & \code{ddply} + \code{colwise} \\
+    \code{apply }    & a & a   & \code{aaply} \\
+    \code{by}        & d & l   & \code{dlply} \\
+    \code{lapply}    & l & l   & \code{llply} \\
+    \code{mapply}    & a & a/l & \code{maply} / \code{mlply} \\
+    \code{replicate} & r & a/l & \code{raply} / \code{rlply} \\
+    \code{sapply}    & l & a   & \code{laply} \\
     \bottomrule
   \end{tabular}
   \end{center}
@@ -709,22 +710,23 @@ Related functions {\tt tapply}, {\tt ave} and {\tt sweep} have no corresponding 
 There are a number of other resources that also attempt to simplify this class of problems:
 
 \begin{itemize}
-  \item The {\tt doBy} package
-  \item The {\tt gdata} package
-  \item The {\tt scope} package
-  \item Data manipulation in R, by Phil Spector
-  \item Chapters in MASS, R intro?
+  \item The {\tt doBy} \citep{doby} package provides versions of \code{order}, \code{sample}, \code{split}, \code{subset}, \code{summary} and \code{transform} that make it easy to perform each of these operations on subsets of data frames, joining the results back into a data frame.  These functions are rather like specialised version of \code{ddply} but they use a formula based interface, which particularly for \code{summary} makes it easy to only operate on selected columns. 
+  
+  \item The {\tt gdata} \citep{gdata} package which contains a XXX of helpful data manipulation functions including \code{frameApply} which works like \code{ddply} or \code{dlply} depending on function arguments.
+
+  \item The {\tt scope} \citep{scope} package which provides \code{scope}, \code{scoop}, \code{skim}, \code{score} and \code{probe} which provide a composable set of functions for operating symbolically on subsets of data frames.
   
 \end{itemize}
+
+Other resources that you might find useful are \citet{spector:2008}, an excellent introduction to many of the thorny problems encountered when manipulating data in R.  
 
 \section{Future plans}
 \label{sec:future}
 
-If slow, might want to look at the profr package to speed up.  
+The current major shortcoming of \plyr is speed and memory usage.  While theoretically it should be possible to do most of the operations without duplicating the input data set, currently \plyr makes at least one copy.  It is my aim to eventually implement these functions in C for maximum speed and memory efficiency, so that they are competitive with the built in operations.  
 
-However, it is my aim to eventually implement these functions in C for maximum speed and memory efficiency, so that they are competitive with the built in operations.  I also plan to investigate a connection to the {\tt papply} function to allow for easy parallelisation across multiple instances of R (particularly for multi-core machines).
+I am also interested in connecting with {\tt papply} \citep{papply} and related packages to make it easy to split up large tasks across multiple cores and multiple computers.
 
-multir
-
-\bibliography{/Users/hadley/documents/phd/references}
+% bibtool -x intro.aux > references.bib
+\bibliography{references}
 \end{document}
