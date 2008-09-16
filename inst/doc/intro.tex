@@ -225,7 +225,7 @@ The {\tt margins} argument of {\tt a*ply} describes which dimensions to slice al
 
 \begin{figure}[htbp]
   \centering
-    \includegraphics[width= 0.35 \textwidth]{split-matrix}
+    \includegraphics[width= 0.35 \textwidth]{input-a2}
   \caption{The four ways to split up a 2d matrix, labelled above by the dimensions that they slice up.  Original matrix shown at top left, with dimensions labelled.  Blue indicates a single piece of the output.}
   \label{fig:split-matrix}
 \end{figure}
@@ -234,7 +234,7 @@ The 3d case is a little more complicated.  We have three 2d slices, three 1d sli
 
 \begin{figure}[htbp]
   \centering
-    \includegraphics[width= \textwidth]{split-array}
+    \includegraphics[width= \textwidth]{input-a3}
   \caption{The eight ways to split up a 3d array, labelled above by the dimensions that they slice up.  Original array shown at top left, with dimensions labelled.  Blue indicates a single piece of the output.}
   \label{fig:split-array}
 \end{figure}
@@ -261,7 +261,7 @@ Figure~\ref{fig:split-data-frame} shows two examples of splitting up up a simple
 
 \begin{figure}[htbp]
   \centering
-    \includegraphics[width= \textwidth]{split-data-frame}
+    \includegraphics[width= \textwidth]{input-d}
   \caption{Two examples of splitting up a data frame by variables.  If the data frame was split up by both sex and age, there would only be one subset with more than one row: 13-year-old males.}
   \label{fig:split-data-frame}
 \end{figure}
@@ -311,14 +311,14 @@ All \code{*aply} functions have a \code{drop.} argument.  When this is true, the
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width= 0.45 \textwidth]{function-1d}
+  \includegraphics[width= 0.45 \textwidth]{output-a1}
   \caption{Results from outputs of various dimensionalty from a \textbf{single} value, shown top left.  Columns indicate input: (left) a vector of length two, and (right) a 2\x2 matrix.  Rows indicate the shape of a single processed piece: (top) a vector of length 3, (bottom) a 2\x2 matrix.  Extra dimensions are added perpendicular to existing ones.  The array in the bottom-right cell is 4d and so is not shown.}
   \label{fig:function-1d}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width= 0.45 \textwidth]{function-2d}
+  \includegraphics[width= 0.45 \textwidth]{output-a2}
   \caption{Results from outputs of various dimensionalty from a \textbf{1d vector}, shown top left.  Columns indicate input: (left) a 2\x3 matrix split by rows and (right) and 3\x2 matrix split by columns.  Rows indicate the shape of a single processed piece: (top) a single value, (middle) a vector of length 3, and (bottom) a 2\x2 matrix.}
   \label{fig:function-2d}
 \end{figure}
@@ -331,8 +331,8 @@ The processing functions should either return a data.frame, or a (named) atomic 
 
 \begin{figure}[htbp]
   \centering
-    \includegraphics[width = \textwidth]{output-d}
-  \caption{caption}
+    \includegraphics[width = 0.8 \textwidth]{output-d}
+  \caption{Illustrating the output from using \f{ddply} on the example from Figure~\ref{fig:split-data-frame} with \f{nrow}.  Splitting variables shown above each example.  Note how the extra labelling columns are added so that you can identify to which subset the results apply.}
   \label{fig:label}
 \end{figure}
 
