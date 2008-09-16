@@ -1,4 +1,4 @@
-\documentclass[letterpage]{scrartcl}
+\documentclass{scrartcl}
 \usepackage[inner=3cm,top=2.5cm,outer=3.5cm]{geometry}
 % \usepackage{fontspec} 
 % \defaultfontfeatures{Mapping=tex-text}
@@ -16,7 +16,7 @@
 \usepackage{url}
 \usepackage[round,sectionbib]{natbib}
 \bibliographystyle{abbrvnat}
-\usepackage[small]{caption2}
+\usepackage[small]{caption}
 \usepackage[small]{titlesec}
 \usepackage{slashbox}
 \usepackage{booktabs}
@@ -29,6 +29,7 @@
 \newcommand{\f}[1]{\lstinline!#1()!}
 \usepackage{xspace}
 \newcommand{\plyr}{{\tt plyr}\xspace}
+\newcommand{\x}{\,$\times$\,}
 
 \usepackage{multicol}
 \setlength\columnseprule{.4pt}
@@ -49,7 +50,7 @@
 % END
 
 \begin{abstract}
-plyr is a set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each pieces and then put all the pieces back together.  This paper describes the components that make up plyr.  It includes two case studies.
+plyr is a set of tools for a common set of problems: you need to break a big problem down into manageable pieces, operate on each pieces and then put all the pieces back together.  I call this strategy ``split-apply-combine'' and the three components form..   This paper describes the components that make up plyr.  It includes two case studies.
 \end{abstract}
 
 \section{Introduction}
@@ -69,7 +70,7 @@ Section~\ref{sec:usage} introduces the {\tt plyr} family of tools and how to use
 
 Why use \plyr?  Why not use for loops or the built-in apply functions?  This section compares \plyr code to base R code for an example that is explained in more detail in Section~\ref{sub:ozone}.  
 
-In this example we are going to remove seasonal affects from satellite measurements of ozone.  The ozone was measured on a 24\,$\times$\,24 grid, each month for six years, and is stored in a 24\,$\times$\,24\,$\times$\,72 3d array. A single location (\code{ozone[x, y, ]}) is a vector of 72 values, and we can crudely deasonalise it by looking at the residuals of a robust linear model:
+In this example we are going to remove seasonal affects from satellite measurements of ozone.  The ozone was measured on a 24\x24 grid, each month for six years, and is stored in a 24\x24\x72 3d array. A single location (\code{ozone[x, y, ]}) is a vector of 72 values, and we can crudely deasonalise it by looking at the residuals of a robust linear model:
 
 \begin{verbatim}
 one <- ozone[1, 1, ]
@@ -225,7 +226,7 @@ The {\tt margins} argument of {\tt a*ply} describes which dimensions to slice al
 \begin{figure}[htbp]
   \centering
     \includegraphics[width= 0.35 \textwidth]{split-matrix}
-  \caption{The four ways to split up a 2d matrix.  Original matrix shown at top left, with dimensions labelled.  Blue indicates a single piece of the output.}
+  \caption{The four ways to split up a 2d matrix, labelled above by the dimensions that they slice up.  Original matrix shown at top left, with dimensions labelled.  Blue indicates a single piece of the output.}
   \label{fig:split-matrix}
 \end{figure}
 
@@ -234,7 +235,7 @@ The 3d case is a little more complicated.  We have three 2d slices, three 1d sli
 \begin{figure}[htbp]
   \centering
     \includegraphics[width= \textwidth]{split-array}
-  \caption{The eight ways to split up a 3d array.  Original array shown at top left, with dimensions labelled.  Blue indicates a single piece of the output.}
+  \caption{The eight ways to split up a 3d array, labelled above by the dimensions that they slice up.  Original array shown at top left, with dimensions labelled.  Blue indicates a single piece of the output.}
   \label{fig:split-array}
 \end{figure}
 
@@ -248,22 +249,27 @@ These default to working on the first dimension (i.e. row-wise) and automaticall
 When operating on a data frame, you usually want to split it up into groups based on combinations variables in the data set.  For {\tt d*ply} you specify   which variables (or functions of variables) to use.  These variables are specified in a special way to highlight that they are computed first from the data frame, then the global environment (in which case it's your responsibility to ensure that their length is equal to the number of rows in the data frame).  
 
 \begin{itemize}
-  \item The interaction of multiple variables are taken: {\tt .(a, b, c)} breaks the data frame into the same groups that  \code{interaction(a, b, c)} would, but labels rows with all three variables.
+  \item \code{.(var1)} will split the data frame into groups defined by the value of the \code{var1} variable.  If you use multiple variables, {\tt .(a, b, c)}, the groups will be formed by the interaction of the variables, and output will be labelled with all three variables.  
   
-  \item Functions of variables: {\tt .(round(a))}, {\tt .(a * b)}
+  \item You can also use functions of variables: {\tt .(round(a))}, {\tt .(a * b)}.  If you are outputting to a data frame, these will get ugly names (produced by \f{make.names}), but you can override them by specifying names in the call: \code{.(product = a * b)}
   
-  \item Variables in the global environment {\tt .(anothervar)}
+  \item By default, \plyr will look in the data frame first, and then in the global environment {\tt .(anothervar)}.  However, you are encouraged to keep all related variables in the same data frame: this makes things much easier in the long run.
+  
 \end{itemize}
 
-You can override the default names by using a named list:
-\begin{itemize}
-  \item \code{.(first = a, second = b, third = c)}
-  \item \code{.(product = a * b)}
-\end{itemize}
+Figure~\ref{fig:split-data-frame} shows two examples of splitting up up a simple data frame.  Splitting up data frames is easier to understand (and to draw!) than splitting up arrays, because they're only 2 dimensional.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width= \textwidth]{split-data-frame}
+  \caption{Two examples of splitting up a data frame by variables.  If the data frame was split up by both sex and age, there would only be one subset with more than one row: 13-year-old males.}
+  \label{fig:split-data-frame}
+\end{figure}
+
 
 \subsubsection{Input: list (\code{l*ply})} 
 
-Processing lists is the simplest   
+Lists are the simplest type of input to deal with because they are already naturally divided into pieces: the elements of the list.  For this reason, the \code{l*ply} functions don't need an argument that describes how to break up the data structure.
 
 \paragraph{Special case: \code{r*ply}}  A special case of operating on lists corresponds to \f{replicate} in base R, and is useful for drawing distributions of random numbers.  This is a little bit different to the other plyr methods.  Instead of the \code{data.} argument, it has \code{n.} the number of replications to run, and instead of a function it accepts a expression.  
 
@@ -285,7 +291,7 @@ The output type also places some restrictions on what type of results the proces
      \code{*aply} & atomic array, or list & \f{logical} \\
      \code{*dply} frame  & data frame, or atomic vector & \f{data.frame}\\
      \code{*lply} & none & \f{list} \\
-     \code{*_ply} & none & \code{NA} \\
+     \code{*_ply} & none &  \\
      \bottomrule  
   \end{tabular}
   \end{center}
@@ -297,42 +303,38 @@ The output type also places some restrictions on what type of results the proces
 
 \subsubsection{Output: array ({\tt *aply})}
 
-With array output the dimensionality is determined by the input splits.  
+With array output the shape of the output array is determined by the input splits and the dimensionality of each individual result. Figures~\ref{fig:function-1d} and \ref{fig:function-2d} illustrate this pictorially for simple 1d and 2d cases.  For arrays, the pieces contribute to the output in the expected way; lists are related like a 1d array; and data frames get a dimension for each variable in the split.  The dimnames of the array will be the same as the input, if an array; or extracted from the subsets, if a data frame.
 
-\begin{itemize}
-  \item A list will produce a single dimension
-  \item a data frame will have a dimension for each variable split on
-  \item a array will have a dimension for each dimension that it was split on
-  
-\end{itemize}
+The processing function should return an atomic (i.e.\ logical, character, numeric or integer) array of fixed size/shape, or a list.  If atomic, the extra dimensions will added perpendicular to the original dimensions.  If a list, the output will be a list-array. If there are no results, {\tt *aply} will return a logical vector of length 0.  
 
-The processing function should return an atomic (i.e.\ logical, character, numeric or integer) array of fixed size/shape, or a list.  If atomic, the extra dimensions will added perpendicular to the original dimensions.  If a list, the output will be a list-array. If there are no results, {\tt adply} will return a logical vector of length 0.
-
-\f{*aply} also has a \code{drop.} argument.  When this is true, the default, any dimensions of length one will be dropped.  This is useful because in R, a vector of length three is not equivalent to a 3\,$\times$\,1 matrix or a 3\,$\times$\,1\,$\times$\,1 array.
-
-Figures~\ref{fig:function-1d} and \ref{fig:function-2d} illustrate 
+All \code{*aply} functions have a \code{drop.} argument.  When this is true, the default, any dimensions of length one will be dropped.  This is useful because in R, a vector of length three is not equivalent to a 3\x1 matrix or a 3\x1\x1 array.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width= 0.45 \textwidth]{function-1d}
-  \caption{Results from outputs of various dimensionalty from a single value, shown top left.  Columns indicate input: (left) a vector of length two, and (right) a 2$times$2 matrix.  Rows indicated the shape of a single processed piece: (top) a vector of length 3, (bottom) a 2$\times$2 matrix.  Extra dimensions are added perpendicular to existing ones.  The array in the bottom-right cell is 4d and so is not shown.}
+  \caption{Results from outputs of various dimensionalty from a \textbf{single} value, shown top left.  Columns indicate input: (left) a vector of length two, and (right) a 2\x2 matrix.  Rows indicate the shape of a single processed piece: (top) a vector of length 3, (bottom) a 2\x2 matrix.  Extra dimensions are added perpendicular to existing ones.  The array in the bottom-right cell is 4d and so is not shown.}
   \label{fig:function-1d}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width= 0.45 \textwidth]{function-2d}
-  \caption{Results from outputs of various dimensionalty from a 1d vector, shown top left.  Columns indicate input: (left) a 2$\times$3 matrix split by rows and (right) and 3$\times$2 matrix split by columns.  Rows indicate the shape of a single processed piece: (top) a single value, (middle) a vector of length 3, and (bottom) a 2$\times$2 matrix.}
+  \caption{Results from outputs of various dimensionalty from a \textbf{1d vector}, shown top left.  Columns indicate input: (left) a 2\x3 matrix split by rows and (right) and 3\x2 matrix split by columns.  Rows indicate the shape of a single processed piece: (top) a single value, (middle) a vector of length 3, and (bottom) a 2\x2 matrix.}
   \label{fig:function-2d}
 \end{figure}
 
-The dimnames of the array will be the same as the input, if an array, or the extracted from the subsets if a data frame.
-
 \subsubsection{Output: data frames ({\tt *dply})}
 
-The processing functions should either return a data.frame, or a (named) atomic vector of fixed length, which will form the columns of the output. If there are no results, {\tt *dply} will return an empty data frame.
+When the output is a data frame, it will contain the results and additional columns that identify where in the original data each row came from.  These columns make it possible to merge the old and new data if you need to.  If the input was a data frame, there will be a column for variables used to split up the original data; if it was a list, a column for the names of the list; if an array, a column for the names of each splitting dimension.
 
-The output data frame will be supplemented with columns that identify the subset of the original dataset that each piece was computed from.  These columns make it easier to merge the old and new data.  If the input was a data frame, this will be the values of the splitting variables.  If the input was an array, this will be the dimension names.
+The processing functions should either return a data.frame, or a (named) atomic vector of fixed length, which will form the columns of the output. If there are no results, {\tt *dply} will return an empty data frame.  \plyr provides an \code{as.data.frame} method for functions which can be handy: \code{as.data.frame(mean)} will create a new function which outputs a data frame.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width = \textwidth]{output-d}
+  \caption{caption}
+  \label{fig:label}
+\end{figure}
 
 \subsubsection{Output: list ({\tt *lply})}
 
@@ -527,7 +529,7 @@ This concludes the baseball player case study, which used used {\tt ddply}, {\tt
 \subsection{Case study: ozone}
 \label{sub:ozone}
 
-In this case study we will analyse a 3d array that records ozone levels over a 24\,$\times$\,24 spatial grid at 72 time points \citep{hobbs:2007}.  This produces a 24\,$\times$\,24\,$times$\,72 3d array, containing a total of 41\,472 data points.  Figure~\ref{fig:ozone-glyph} is one way of displaying this data.  Conditional on spatial location, each glyph shows the evolution of ozone levels for each of the 72 months (6 years).  The striking seasonal patterns make it difficult to see if there are any long-term changes.  In this case study, we will explore how to separate out and visualise the seasonal effects.
+In this case study we will analyse a 3d array that records ozone levels over a 24\x24 spatial grid at 72 time points \citep{hobbs:2007}.  This produces a 24\x24\,$times$\,72 3d array, containing a total of 41\,472 data points.  Figure~\ref{fig:ozone-glyph} is one way of displaying this data.  Conditional on spatial location, each glyph shows the evolution of ozone levels for each of the 72 months (6 years).  The striking seasonal patterns make it difficult to see if there are any long-term changes.  In this case study, we will explore how to separate out and visualise the seasonal effects.
 
 \begin{figure}[htbp]
   \centering
@@ -608,8 +610,6 @@ Figure~\ref{fig:glyph-deseas} and Figure~\ref{fig:glyph-coef} visualises these r
 % deseas_df <- melt(deseas)
 % head(deseas_df)
 
-
-
 \begin{verbatim}
 source("ozone-map.r")
 
@@ -658,8 +658,7 @@ small_mult(ozm) + geom_line(aes(group = interaction(lat,long)))
 
 \end{verbatim}
 
-
-For many other types of operations, it is useful to convert this array structure to a data frame.  The {\tt melt} function in the {\tt reshape} package is one way to do that which preserves the dimension labels as much as possible.  This is the power of plyr: you don't need to worry about whether your data is a list, data frame or array, you can use whatever feels most natural.
+For many other types of operations, it is useful to convert this array structure to a data frame.  The {\tt melt} function in the {\tt reshape} package is one way to do that which preserves the dimension labels as much as possible.  If the data is this format we need few changes to the above code:
 
 \begin{verbatim}
 library(reshape)
@@ -670,6 +669,8 @@ coefs <- ldply(models, coef)
 deseas <- ldply(models, resid)
 
 \end{verbatim}
+
+This is the power of plyr: you don't need to worry about whether your data is a list, data frame or array, you can use whatever feels most natural.
 
 \subsection{Other uses}
 
