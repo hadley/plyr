@@ -6,11 +6,6 @@ map <- c(
   scale_y_continuous("", limits = c(-22.2, 37.2))
 )
 
-# scale_x_continuous("", limits = c(-113.8, -56.2)),
-# scale_y_continuous("", limits = c(-21.2, 36.2))
-
-
-
 ozm <- melt(ozone)
 fac <- laply(ozm, is.factor)
 ozm[fac] <- llply(ozm[fac], function(x) as.numeric(as.character(x)))

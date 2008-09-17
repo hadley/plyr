@@ -43,6 +43,7 @@
 % library(plyr)
 % options(digits=3)
 % source("ozone-map.r")
+% brightblue <- rgb(102,204,255, max=255)
 
 % END
 
@@ -379,7 +380,7 @@ Each plyr function also has a {\tt progress.} argument which allows you to monit
 \begin{itemize}
   \item {\tt "none"}, the default.  No progress bar is displayed.
   \item {\tt "text"} provides a textual progress bar which.
-  \item {\tt "win"} and {\tt "tk"} provide graphical progress bars for Windows and systems with the tcl/tk package loaded.
+  \item {\tt "win"} and {\tt "tk"} provide graphical progress bars for Windows and systems with the tcl/tk package (the mac and most linux platforms).
 \end{itemize}
 
 The progress bars assume that processing each piece takes the same amount of time, so will not be 100\% accurate.
@@ -387,19 +388,23 @@ The progress bars assume that processing each piece takes the same amount of tim
 \section{Strategy}
 \label{sec:strategy}
 
+Having learned the basic structure and operation of the \plyr family of functions, you will now see some examples of using them in practice.  The following two case studies explore two data sets: a data frame of batting records from long-term baseball players, and a 3d array recording ozone measurements that vary over space and time.  Neither of these data studies do more than scratch the surface of possible analyses, but do show of a number of different ways to use \plyr.
 
+Both cases follow a similar process:
 
 \begin{enumerate}
   \item Extract a subset of the data for which it is easy to solve the problem
-  \item Solve the problem by hand, checking as you go
-  \item Write a function that encapsulates the solution
-  \item Use the appropriate ply function to split up the original data, apply the function and join the pieces back together.
+
+  \item Solve the problem by hand, checking results as you go.
+
+  \item Write a function that encapsulates the solution.
+
+  \item Use the appropriate \plyr function to split up the original data, apply the function to each piece and join the pieces back together.
   
 \end{enumerate}
 
-The following two case studies illustrate these techniques for a range of problems related to a data frame storing the batting records for long-term baseball players, and a 3d array representing space and time values of ozone.
+The code shown in this paper is necessarily abbreviated.  The data sets are large, and often only small subsets of the data are shown.  The code focuses on data manipulation, and much of the graphics code is omitted.  You are encouraged to experiment with the full code yourself
 
-The code shown focuses on data manipulation with \plyr functions - much of the code to produce the graphics is omitted to save space.  To see the full code look at ...
 
 \subsection{Case study: baseball}
 
@@ -409,74 +414,83 @@ The {\tt baseball} data set contains the batting records for all professional US
 
 What we'll explore is the performance of a batter over his career.  To get started, we need to calculate the careeryear, i.e. the number of years since the player started playing.  This is easy to do if we have a single player:
 
-\begin{verbatim}
-baberuth <- subset(baseball, id == "ruthba01")
-baberuth$cyear <- baberuth$year - min(baberuth$year) + 1
-\end{verbatim}
+% INTERWEAVE
+%   CAPTION: Base ball case study ============================================
+% 
+% baberuth <- subset(baseball, id == "ruthba01")
+% baberuth$cyear <- baberuth$year - min(baberuth$year) + 1
+\input{_include/ff2c421894dfb90d62f9e6d57e926b14.tex}
+% END
 
 To do this for all players, we first make a function:
 
-\begin{verbatim}
-calculate_cyear <- function(df) {
-  transform(df, 
-    cyear = year - min(year),
-    cpercent = (year - min(year)) / (max(year) - min(year))
-  )
-}
-\end{verbatim}
+% INTERWEAVE
+% 
+% calculate_cyear <- function(df) {
+%   transform(df, 
+%     cyear = year - min(year),
+%     cpercent = (year - min(year)) / (max(year) - min(year))
+%   )
+% }
+\input{_include/bf8d859eae1d017e33fe8d5218cb19be.tex}
+% END
 
 \noindent and then split up the whole data frame into people, run the function on each piece and join them back together into a data frame:
 
-% qplot(ab, data=baseball, geom="histogram", binwidth=10)
-% qplot(ab, data=subset(baseball, ab < 100), geom="histogram", binwidth=5)
-
-\begin{verbatim}
-baseball <- ddply(baseball, .(id), calculate_cyear)
-baseball <- subset(baseball, ab >= 25)
-\end{verbatim}
-
-% qplot(cyear, rbi / ab, data=baseball, group=id, geom="line", colour=I(alpha("black", 1/20)))
+% INTERWEAVE
+% 
+% baseball <- ddply(baseball, .(id), calculate_cyear)
+% baseball <- subset(baseball, ab >= 25)
+\input{_include/3dc0d1530075a5ae94694a9476d9f966.tex}
+% END
 
 To summarise the pattern across all players, we first need to figure out what the common patterns are.  A time series plot of rbi/ab, runs per bat, is a good place to start.  We do this for Babe Ruth, as shown in Figure~\ref{fig:baberuth}, then write a function to do it for any player (taking care to ensure common scale limits) and then use {\tt d\_ply} to save a plot for every player to a pdf.  We use two tricks here: {\tt reorder} to sort the players in order of average rbi / ab, and {\tt failwith} to ensure that even if a single plot doesn't work we will still get output for the others.
 
-\begin{figure}[htbp]
-  \centering
-    \includegraphics[width=3in]{baberuth}
-  \caption{Runs per bat for Babe Ruth.}
-  \label{fig:baberuth}
-\end{figure}
+% FIGURE
+%   GG-WIDTH: 12 GG-HEIGHT: 4 TEX-WIDTH: \textwidth
+%   LABEL: baberuth
+%   CAPTION: Runs per bat for Babe Ruth. 
+% 
+% qplot(cyear, rbi / ab, data=baberuth, geom="line")
+\input{_include/7484f12c326d0ce5a412ec35345ef882.tex}
+% END
 
-\begin{verbatim}
-qplot(cyear, rbi / ab, data=baberuth, geom="line")  
+% LISTING
+% 
+% xlim <- range(baseball$cyear, na.rm=TRUE)
+% ylim <- range(baseball$rbi / baseball$ab, na.rm=TRUE)
+% plotpattern <- function(df) {
+%   qplot(cyear, rbi / ab, data = df, geom="line", xlim = xlim, ylim = ylim)
+% }
+% 
+% pdf("paths.pdf", width=8, height=4)
+% d_ply(baseball, .(reorder(id, rbi / ab)), failwith(NA, plotpattern), 
+%   print. = TRUE)
+% dev.off()
+\input{_include/dfff4ec3a84bd86c256643332d593c48.tex}
+% END
 
-xlim <- range(baseball$cyear, na.rm=TRUE)
-ylim <- range(baseball$rbi / baseball$ab, na.rm=TRUE)
-plotpattern <- function(df) {
-  print(qplot(cyear, rbi / ab, data = df, geom="line", xlim = xlim, ylim = ylim ))
-}
+Flicking through the 1145 plots reveals few common patterns, although many players do seem to have a roughly linear trend with quite a bit of noise.  We'll start by fitting a linear model to each player and then exploring the results.  This time we'll skip doing it by hand and go directly to the function. (Not recommended in practice!)
 
-pdf("paths.pdf", width=8, height=4)
-d_ply(baseball, .(reorder(id, rbi / ab)), failwith(NA, plotpattern))
-dev.off()
-\end{verbatim}
-
-Flicking through the 1145 plots reveals that there doesn't seem to be much of a common pattern, although many players do seem to have a roughly linear trend with quite a bit of noise.  We'll start by fitting a linear model to each player and then exploring the results.  This time we'll skip doing it by hand and go directly to the function.
-
-\begin{verbatim}
-model <- function(df) {
-  lm(rbi / ab ~ cyear, data=df)
-}
-model(baberuth)
-models <- dlply(baseball, .(id), model)
-\end{verbatim}
+% INTERWEAVE
+% 
+% model <- function(df) {
+%   lm(rbi / ab ~ cyear, data=df)
+% }
+% model(baberuth)
+% models <- dlply(baseball, .(id), model)
+\input{_include/81803d4f4df3f16147993b76ce6174ec.tex}
+% END
 
 Now we have a list of 1145 models, one for each player.  To do something interesting with these, we need to extract some summary statistics.  We'll extract the coefficients of the model (the slope and intercept), and a measure of model fit so we can ensure we're not drawing conclusions based on models that fit the data very poorly, the R-squared.  The first few rows of {\tt coef} are shown in Table~\ref{tbl:coef}.
 
-\begin{verbatim}
-rsq <- function(x) summary(x)$r.squared
-coef <- ldply(models, function(x) c(coef(x), rsq(x)))
-names(coef) <- c("id", "intercept", "slope", "rsquare")
-\end{verbatim}
+% INTERWEAVE
+% 
+% rsq <- function(x) summary(x)$r.squared
+% coef <- ldply(models, function(x) c(coef(x), rsq(x)))
+% names(coef) <- c("id", "intercept", "slope", "rsquare")
+\input{_include/146ef1e51e7839764f74d70e6386aed2.tex}
+% END
 
 \begin{table}[ht]
   \centering
@@ -499,49 +513,46 @@ names(coef) <- c("id", "intercept", "slope", "rsquare")
 Figure~\ref{fig:models-hist} displays the distribution of r-squared across the models.  The models generally do a very bad job of fitting the data!  
 Figure~\ref{fig:models} summarises these bad models.  These plots show a negative correlation between slope and intercept, and the particularly bad models have estimates for both values close to 0.  Reassuringly, there are no players in the bottom left quadrant with both negative slope and intercept.
 
+% FIGURE
+%   GG-WIDTH: 12 GG-HEIGHT: 4  TEX-WIDTH: \textwidth
+%   LABEL: models-hist
+%   CAPTION: Histogram of model r-squared with bin width of 0.05.  Most models fit very poorly!  The spike of models with a r-squared of 1 are players with only two data points, found by inspecting {\tt ldply(models[coef\$rsquare == 1], "[[", "model")}
+% 
 % qplot(rsquare, data=coef, geom="histogram", binwidth=0.01)
-% ggsave(file = "models-hist.pdf", width=12, height=4)
-\begin{figure}[htbp]
-  \centering
-    \includegraphics[width=\textwidth]{models-hist}
-  \caption{Histogram of model r-squared with bin width of 0.05.  Most models fit very poorly!  The spike of models with a r-squared of 1 are players with only two data points, found by inspecting {\tt ldply(models[coef\$rsquare == 1], "[[", "model")}}
-  \label{fig:models-hist}
-\end{figure}
+\input{_include/328c24037d95b1b555731b02ade10231.tex}
+% END
 
+% FIGURE
+%   LABEL: models
+%   CAPTION: A scatterplot of model intercept and slope, with one point for each model (player).  The size of the points is proportion to the R-square of the model. Vertical and horizontal lines emphasis the x and y origins. 
+% 
 % ggplot(coef, aes(slope, intercept)) + 
 %   geom_point(aes(size = rsquare)) +
 %   geom_vline(size=0.5, colour="grey50") + 
 %   geom_hline(size = 0.5, colour="grey50") + 
 %   scale_area()
-% ggsave(file = "models.pdf", width=6, height=6)
 % last_plot() + xlim(-0.01, 0.01) + ylim(-0.1, 0.25)
-% ggsave(file = "models-zoom.pdf", width=6, height=6)
-\begin{figure}[htbp]
-  \centering
-    \includegraphics[width=0.5\textwidth]{models}%
-    \includegraphics[width=0.5\textwidth]{models-zoom}
-  \caption{A scatterplot of model intercept and slope, with one point for each model (player).  The size of the points is proportion to the R-square of the model. Vertical and horizontal lines emphasis the x and y origins. }
-  \label{fig:models}
-\end{figure}
+\input{_include/7214511f01718e3fb3b7ae0ccd53d52c.tex}
+% END
 
 This concludes the baseball player case study, which used used {\tt ddply}, {\tt d\_ply}, {\tt dlply} and {\tt ldply}.  Our statistical analysis was not very sophisticated, but the tools of {\tt plyr} made it very easy to work at the player level, and then combine results into a single summary.  
 
 \subsection{Case study: ozone}
 \label{sub:ozone}
 
-In this case study we will analyse a 3d array that records ozone levels over a 24\x24 spatial grid at 72 time points \citep{hobbs:2007}.  This produces a 24\x24\,$times$\,72 3d array, containing a total of 41\,472 data points.  Figure~\ref{fig:ozone-glyph} is one way of displaying this data.  Conditional on spatial location, each glyph shows the evolution of ozone levels for each of the 72 months (6 years).  The striking seasonal patterns make it difficult to see if there are any long-term changes.  In this case study, we will explore how to separate out and visualise the seasonal effects.
+In this case study we will analyse a 3d array that records ozone levels over a 24\x24 spatial grid at 72 time points \citep{hobbs:2007}.  This produces a 24\x24\x72 3d array, containing a total of 41\,472 data points.  Figure~\ref{fig:ozone-glyph} is one way of displaying this data.  Conditional on spatial location, each glyph shows the evolution of ozone levels for each of the 72 months (6 years).  The striking seasonal patterns make it difficult to see if there are any long-term changes.  In this case study, we will explore how to separate out and visualise the seasonal effects.
 
 % FIGURE
 %  TEX-WIDTH: \textwidth  GG-WIDTH: 8  GG-HEIGHT: 8
-%  LABEL: ozone-glyph
+%  LABEL: ozone-glyphs
 %  CAPTION: Star glyphs showing variation in ozone over time at each spatial
 %   location.
 %
 % ozstars <- make_stars(ozm, "time", "value")
 % res <- 1.2
 % ggplot(ozstars, aes(x = long + res * x, y = lat + res * y)) + map +
-%  geom_polygon(aes(group = interaction(long, lat)), fill=NA, colour="black")
-\input{_include/b7aa1f7d6b74881a725e5ee1a3c1792b.tex}
+%  geom_path(aes(group = interaction(long, lat)), fill=NA, colour="grey50")
+\input{_include/7802f6b631522bebf33a816812f4fa57.tex}
 % END
 
 Again we will start with the simplest case: a single time point, from location (1, 1).  Figure~\ref{fig:ozone-ts} displays this in two ways: as a single line over time, or a line for each year over the months.  This second plot illustrates the striking seasonal variation at this time point.  The following code sets up some useful variables.
@@ -564,7 +575,7 @@ Again we will start with the simplest case: a single time point, from location (
 % 
 % qplot(time, value, geom="line") 
 % qplot(month, value, geom="line", group = year)
-\input{_include/63b7326fa2c56a1b42d767ca7648c7eb.tex}
+\input{_include/f8008cc651940866b54fdbd813e79da0.tex}
 % END
 
 We are going to use a quick and dirty method to remove the seasonal variation: residuals from a robust linear model, predicting amount of ozone by month.  We could use a regular linear model, but then our seasonal estimates might be thrown off by an very unusual month.  Figure~\ref{fig:ozone-ts-deseas} shows the deseasonalised trend from location (1, 1)
@@ -588,7 +599,7 @@ We are going to use a quick and dirty method to remove the seasonal variation: r
 % qplot(time, resid(deseas1), geom="line") + geom_hline(colour="grey70")
 % qplot(month, unname(coef(deseas1)), geom="line", group = 1) + 
 %   geom_hline(colour="grey70")
-\input{_include/daf4796bd5365ed29fcdae7edf1e0f0e.tex}
+\input{_include/fa09a832c24b1135f0823f144baa155c.tex}
 % END
 
 We next turn this into a function and fit the model to each spatial location.  This does take a little while, but we are fitting 576 models!  From those models we extract the deasonalised values (the residuals) and the seasonal coefficients.  Looking at the dimensionality we see that they're in the same format as the original data.  We also carefully label the new dimensions.  This is important: just as data frames should have descriptive variable names, arrays should always have descriptive dimension labels.
@@ -608,7 +619,7 @@ We next turn this into a function and fit the model to each spatial location.  T
 % 
 % dim(coefs)
 % dim(deseas)
-\input{_include/20bc5f19f9ec08e48e08989140f945ae.tex}
+\input{_include/5877d0b25646ead7dcd3e859b3c5cfdd.tex}
 % END
 
 We now have a lot of data to try and understand: for each of the 576 locations we have 12 estimates of monthly effects, and 72 residuals.  There are many different ways we could visualise this data.  Figures~\ref{fig:glyph-deseas} and \ref{fig:glyph-coef} visualise these results with star glyph plots.  For plotting, it's more convenient to have the data in data frames.  There are few different ways to do this: we can convert from the 3d array to a data frame with \f{melt} from the reshape package, or use \f{ldply} instead of \f{laply}.  For this example, we'll use a combination of these techniques.  We'll convert the original array to a data frame, add on some useful columns, and then perform the same steps as above with this new format.  Notice how our effect labelling the dimensions pays off with useful columns in the data frame.
@@ -643,25 +654,29 @@ We now have a lot of data to try and understand: for each of the 576 locations w
 % res <- 1.2
 % ggplot(coef_stars, aes(x = long + res * x, y = lat + res * y, fill=avg)) +
 %  map + geom_polygon(aes(group = interaction(long, lat)), colour="grey50") +
-%  scale_fill_gradient(low="white", high=muted("red")) + 
+%  scale_fill_gradient(low=brightblue, high="yellow") + 
 %  opts(aspect.ratio = 1)
-\input{_include/89b6355349f8c2a53e879180252cdb1a.tex}
+\input{_include/f3ffe453afdf4060df51fa463afa4d5b.tex}
 % END
 
 % FIGURE
 %  TEX-WIDTH: \textwidth  GG-WIDTH: 8  GG-HEIGHT: 8
 %  LABEL: glyph-deseas
-%  CAPTION: Star glyphs showing deasonalised trends.  
+%  CAPTION: Star glyphs showing deasonalised trends.  This plot contains a lot
+%  of data---over 40,000 observations---and rewards detailed study.  Looking 
+%  at a printed version also helps as the resolution of a printer (600 dpi) is
+%  much higher than that of the screen (~100 dpi).
 %
 % deseas_stars <- make_stars(deseas_df, "time", "value")
 % res <- 1.2
 % ggplot(deseas_stars, aes(x = long + res * x, y = lat + res * y)) +
 %  map + geom_path(aes(group = interaction(long, lat)), 
-%                  colour="grey50", fill=NA)
-\input{_include/a9c5f88b0fbfd48fe28128bcbedafa68.tex}
+%                  colour="grey50", fill=NA) +
+%  opts(aspect.ratio = 1)
+\input{_include/8de972705a5004289e3c56130df188d3.tex}
 % END
 
-The star glyphs show temporal patterns conditioned on location.  We can also look at spatial pattern conditional on time.  One way to do this is to draw tile plots where each cell of the 24\x24 grid is coloured according to its value.  The following code sets up a function with constant scales to do that.  Figure~\ref{fig:tile-coef} shows the spatial variation of seasonal coefficients for January and July.  We could do the same thing for the values themselves, but we'd probably want to make an animation rather than looking at all 72 plots individually.
+The star glyphs show temporal patterns conditioned on location.  We can also look at spatial pattern conditional on time.  One way to do this is to draw tile plots where each cell of the 24\x24 grid is coloured according to its value.  The following code sets up a function with constant scales to do that.  Figure~\ref{fig:tile-coef} shows the spatial variation of seasonal coefficients for January and July.  
 
 % INTERWEAVE
 % 
@@ -671,10 +686,12 @@ The star glyphs show temporal patterns conditioned on location.  We can also loo
 %   df <- subset(coefs_df, month == mon)
 %   qplot(long, lat, data = df, fill = value, geom="tile") + 
 %   scale_fill_gradient(limits = coef_limits, 
-%     low="white", high=muted("red")) + map
+%     low=brightblue, high="yellow") + map + opts(aspect.ratio = 1)
 % }
-\input{_include/c979e53c6bf9ac0cd44dde3ff8d7f09d.tex}
+\input{_include/30b021ed9a36f8078a9a1cbe153ab694.tex}
 % END
+
+We could do the same thing for the values themselves, but we'd probably want to make an animation rather than looking at all 72 plots individually.  The \code{*_ply} functions are useful for making animations because we are only calling the plotting function for its side effects, not because we're interested in its value.  For \code{lattice} and \code{ggplot} graphics we need to use the \code{print.} argument to ensure that the plots are rendered.
 
 \begin{verbatim}
 pdf("ozone-animation.pdf", width=8, height=8)
@@ -688,28 +705,43 @@ dev.off()
 % 
 % monthsurface("Jan")
 % monthsurface("Jul")
-\input{_include/662f197eb2e529baa3efb7ab38593510.tex}
+\input{_include/cf436bab0269fb70bb0a63cf30485fbb.tex}
 % END
 
 \subsection{Other uses}
 
-With \plyr, randomisation within groups and simulation becomes trivial.  For example to 
+The \f{transform} and \f{subset} functions work will in combination with \plyr.  Transform makes it very easy to perform randomisation within groups.  For example, if we wanted to break the dependence between ozone values and time within each spatial location, we could do:
 
 \begin{verbatim}
-ddply(mtcars, .(cyl), transform, mpg = sample(mpg))  
+ddply(coefs_df, .(lat, long), transform, time = sample(time))  
 \end{verbatim}
 
-For simulations, \f{mdply} can be very useful, because it's easy to generate a grid of parameter values and then evaluate them.
+\noident This technique is useful for performing block bootstrapping and other related permutation tests.  Scaling variables within a group is also trivial:
+
+\begin{verbatim}
+ddply(coefs_df, .(lat, long), transform, value = scale(value))  
+\end{verbatim}
+
+If we wanted to extract the observation in each group with the lowest value ozone of ozone, it's just as easy:
+
+\begin{verbatim}
+ddply(coefs_df, .(lat, long), subset, value == min(value))  
+\end{verbatim}
+
+\noindent 
+
+For simulations, \f{mdply} can be very useful, because it's easy to generate a grid of parameter values and then evaluate them.  This can also be useful when testing many possible combinations to input to a function.
 
 \begin{verbatim}
 mdply(expand.grid(mean = 1:5, sd = 1:5), as.data.frame(rnorm), n = 10)
 \end{verbatim}
 
-\section{Equivalence to existing R functions}
+\section{Related worked}
 \label{sec:equiv}
 
-Table~\ref{tbl:equiv} describes the equivalent between functions in base R and 
-the functions provided by {\tt plyr}.  The built in R functions focus mainly on arrays and lists, not data frames, and most provide an argument to determine whether an array or list should be returned if possible (usually called \code{simplify}).  The ambiguity of the output type can make programming with these functions tricky. The syntax is also less consistent than plyr, for example, {\tt mapply} takes a function as the first argument rather than the input data.  Compared to {\tt aaply}, {\tt aaply} returns the new dimensions first rather than last, which means it is not idempotent.  For \code{apply}, {\tt aaply(x, a, identity) == aperm(x, a)} regardless of the value of {\tt a}. 
+There are a number of other approaches to solving the problems that \plyr solves.  You can always use loops, but loops create a lot of book-keeping code that obscures the intent of your algorithm.  This section describes other high-level approaches similar to \plyr.
+
+Table~\ref{tbl:equiv} describes the equivalent between functions in base R and the functions provided by {\tt plyr}. The built-in R functions focus mainly on arrays and lists, not data frames, and most attempt to return an atomic data structure if possible, and if not, a list. This ambiguity of the output type can make programming against these functions tricky. Compared to {\tt aaply}, {\tt aaply} returns the new dimensions first, rather than last, which means it is not idempotent when used with the \code{identity} function. For \code{aaply}, {\tt aaply(x, a, identity) == aperm(x, a)} regardless of the value of {\tt a}.
 
 \begin{table}[htpb]
   \begin{center}
@@ -718,7 +750,7 @@ the functions provided by {\tt plyr}.  The built in R functions focus mainly on 
     Base function & Input & Output & \plyr function \\
     \midrule
     \code{aggregate} & d & d   & \code{ddply} + \code{colwise} \\
-    \code{apply }    & a & a   & \code{aaply} \\
+    \code{apply}     & a & a/l & \code{aaply} / \code{alply} \\
     \code{by}        & d & l   & \code{dlply} \\
     \code{lapply}    & l & l   & \code{llply} \\
     \code{mapply}    & a & a/l & \code{maply} / \code{mlply} \\
@@ -727,18 +759,18 @@ the functions provided by {\tt plyr}.  The built in R functions focus mainly on 
     \bottomrule
   \end{tabular}
   \end{center}
-  \caption{Mapping between apply functions and plyr functions.}
+  \caption{Mapping between apply functions and \plyr functions.}
   \label{tbl:equiv}
 \end{table}
 
-Related functions {\tt tapply}, {\tt ave} and {\tt sweep} have no corresponding function in {\tt plyr}, and still remain useful. {\tt merge} is also for combining summaries with the original data.  The cast function in the reshape package \citep{reshape} is closely related to {\tt aaply}.  There are a number of other packages that also attempt to simplify this class of problems:
+Related functions {\tt tapply}, {\tt ave} and {\tt sweep} have no corresponding function in {\tt plyr}, and remain useful. {\tt merge} is useful for combining summaries with the original data.  The cast function in the reshape package \citep{reshape} is closely related to {\tt aaply}.  There are also packages that attempt to simplify this class of problem:
 
 \begin{itemize}
-  \item The {\tt doBy} \citep{doby} package provides versions of \code{order}, \code{sample}, \code{split}, \code{subset}, \code{summary} and \code{transform} that make it easy to perform each of these operations on subsets of data frames, joining the results back into a data frame.  These functions are rather like specialised version of \code{ddply} but they use a formula based interface, which particularly for \code{summary} makes it easy to only operate on selected columns. 
+  \item The {\tt doBy} \citep{doby} package provides versions of \code{order}, \code{sample}, \code{split}, \code{subset}, \code{summary} and \code{transform} that make it easy to perform each of these operations on subsets of data frames, joining the results back into a data frame.  These functions are rather like specialised version of \code{ddply} but they use a formula based interface, which, particularly for \code{summary}, makes it easy to only operate on selected columns. 
   
-  \item The {\tt gdata} \citep{gdata} package which contains a bundle of helpful data manipulation functions including \code{frameApply} which works like \code{ddply} or \code{dlply} depending on function arguments.
+  \item The {\tt gdata} \citep{gdata} package contains a bundle of helpful data manipulation functions, including \code{frameApply} which works like \code{ddply} or \code{dlply} depending on its arguments.
 
-  \item The {\tt scope} \citep{scope} package which provides \code{scope}, \code{scoop}, \code{skim}, \code{score} and \code{probe} which provide a composable set of functions for operating symbolically on subsets of data frames.
+  \item The {\tt scope} \citep{scope} package provides \code{scope}, \code{scoop}, \code{skim}, \code{score} and \code{probe} which provide a composable set of functions for operating symbolically on subsets of data frames.
   
 \end{itemize}
 
