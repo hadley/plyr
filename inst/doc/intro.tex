@@ -1,12 +1,5 @@
 \documentclass{scrartcl}
 \usepackage[inner=3cm,top=2.5cm,outer=3.5cm]{geometry}
-% \usepackage{fontspec} 
-% \defaultfontfeatures{Mapping=tex-text}
-% \setromanfont [Ligatures={Common}, Numbers={OldStyle}]{Hoefler Text}
-% \setmonofont[Scale=MatchLowercase]{Inconsolata} 
-% \setsansfont[Scale=MatchLowercase]{Optima Regular} 
-
-\usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \DeclareGraphicsExtensions{.png,.pdf}
 \usepackage{hyperref}
@@ -46,6 +39,10 @@
 %   INLINE: FALSE
 %   CACHE: TRUE
 %
+% library(ggplot2)
+% library(plyr)
+% options(digits=3)
+% source("ozone-map.r")
 
 % END
 
@@ -79,8 +76,8 @@ In this example we are going to remove seasonal affects from satellite measureme
 one <- ozone[1, 1, ]
 
 month <- factor(rep(1:12, length = 72))
-model <- rlm(value ~ month - 1)
-deseasf <- resiud(model)
+model <- rlm(one ~ month - 1)
+deseasf <- resid(model)
 
 deseasf <- function(value) rlm(value ~ month - 1)
 \end{verbatim}
@@ -163,7 +160,7 @@ The following section describes the \plyr functions in more detail.  If your int
 
 Table~\ref{tbl:functions} lists the basic set of plyr functions.  Each function is named according to the type of input it accepts and the type of output it produces.  The input type determines how the big data structure can be broken down into small pieces, and the output type determines how the pieces are joined back together again.  Breaking down input is described in Section~\ref{sec:input} and piecing together output is described in Section~\ref{sec:output}.
 
-{\bf NB}: In this paper, the term {\bf array} includes the special cases of vectors (1d arrays) and matrices (2d arrays) as well, and the term {\bf list-array} refers to an list with dimensions (as opposed to an atomic vector, as is more usual).  The common atomic vectors are logical, character, integer, and numeric.
+{\bf NB}: In this paper, the term {\bf array} includes the special cases of vectors (1d arrays) and matrices (2d arrays) as well, and the term {\bf list-array} refers to an list with dimensions (as opposed to an atomic vector, as is more usual).  The common atomic vectors are logical, character, integer, and numeric.  Dimension labels refer to the output of \f{dimnames}, or for 2d structures, the special cases of \f{rownames} and \f{colnames}.
 
 \begin{table}
   \begin{center}
@@ -402,6 +399,8 @@ The progress bars assume that processing each piece takes the same amount of tim
 
 The following two case studies illustrate these techniques for a range of problems related to a data frame storing the batting records for long-term baseball players, and a 3d array representing space and time values of ozone.
 
+The code shown focuses on data manipulation with \plyr functions - much of the code to produce the graphics is omitted to save space.  To see the full code look at ...
+
 \subsection{Case study: baseball}
 
 The {\tt baseball} data set contains the batting records for all professional US players with 15 or more years of data.  The complete list of variables are described fully {\tt ?baseball}, but for this example we will focus on just four: {\tt id}, which identifies the player, {\tt year} the year of the record and {\tt rbi} the number of runs that the player made in the season, and {\tt} at bat, the number of times the player had an opportunity to hit the ball.
@@ -532,24 +531,30 @@ This concludes the baseball player case study, which used used {\tt ddply}, {\tt
 
 In this case study we will analyse a 3d array that records ozone levels over a 24\x24 spatial grid at 72 time points \citep{hobbs:2007}.  This produces a 24\x24\,$times$\,72 3d array, containing a total of 41\,472 data points.  Figure~\ref{fig:ozone-glyph} is one way of displaying this data.  Conditional on spatial location, each glyph shows the evolution of ozone levels for each of the 72 months (6 years).  The striking seasonal patterns make it difficult to see if there are any long-term changes.  In this case study, we will explore how to separate out and visualise the seasonal effects.
 
-\begin{figure}[htbp]
-  \centering
-    \includegraphics[width=4in]{ozone-glyph}
-  \caption{Star glyphs showing variation in ozone over time at each spatial location.}
-  \label{fig:ozone-glyph}
-\end{figure}
+% FIGURE
+%  TEX-WIDTH: \textwidth  GG-WIDTH: 8  GG-HEIGHT: 8
+%  LABEL: ozone-glyph
+%  CAPTION: Star glyphs showing variation in ozone over time at each spatial
+%   location.
+%
+% ozstars <- make_stars(ozm, "time", "value")
+% res <- 1.2
+% ggplot(ozstars, aes(x = long + res * x, y = lat + res * y)) + map +
+%  geom_polygon(aes(group = interaction(long, lat)), fill=NA, colour="black")
+\input{_include/b7aa1f7d6b74881a725e5ee1a3c1792b.tex}
+% END
 
-Again we will start with the simplest case: a single time point, from location (1, 1).  Figure~\ref{fig:ozone-ts} displays this in two ways: as a single line over time, or a line for each year over the months.  This second plot illustrates the striking seasonal variation at this time point.
+Again we will start with the simplest case: a single time point, from location (1, 1).  Figure~\ref{fig:ozone-ts} displays this in two ways: as a single line over time, or a line for each year over the months.  This second plot illustrates the striking seasonal variation at this time point.  The following code sets up some useful variables.
 
 % INTERWEAVE
 % 
 % value <- ozone[1, 1, ]
-% time <- 1:72
+% time <- 1:72 / 12
 % month.abbr <- c("Jan", "Feb", "Mar", "Apr", "May", 
 %  "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 % month <- factor(rep(month.abbr, length = 72), levels = month.abbr)
 % year <- rep(1:6, each = 12)
-\input{_include/c2d71cd30a5f537fc57fe5350efb948c.tex}
+\input{_include/391488ec2a797370752f139d59e364d2.tex}
 % END
 
 % FIGURE
@@ -557,41 +562,44 @@ Again we will start with the simplest case: a single time point, from location (
 %  CAPTION: Two ways of displaying the seasonal changes.  (Left) A single time
 %  series over all six years and (right) a line for each year.
 % 
-% qplot(time, value, geom="line")
+% qplot(time, value, geom="line") 
 % qplot(month, value, geom="line", group = year)
-\input{_include/f175a54909fe54e7ce00a2a6823c75c5.tex}
+\input{_include/63b7326fa2c56a1b42d767ca7648c7eb.tex}
 % END
 
-We are going to use a quick and dirty method to remove the season variation: we'll look at the residuals from a robust linear model, predicting amount of ozone by month.  We also need to create a few time related variables:
+We are going to use a quick and dirty method to remove the seasonal variation: residuals from a robust linear model, predicting amount of ozone by month.  We could use a regular linear model, but then our seasonal estimates might be thrown off by an very unusual month.  Figure~\ref{fig:ozone-ts-deseas} shows the deseasonalised trend from location (1, 1)
 
 % INTERWEAVE
 % 
 % library(MASS)
 %
-% deseas <- rlm(value ~ month - 1)
-\input{_include/db58b8c3031d9ed8726a9842095330f6.tex}
+% deseas1 <- rlm(value ~ month - 1)
+% summary(deseas1)
+% coef(deseas1)
+\input{_include/92fb5ebeb33446470d8560688780b4cd.tex}
 % END
 
 % FIGURE
-%  LABEL: ozone-ts-desas
+%  LABEL: ozone-ts-deseas
 %  CAPTION: Deasonalised ozone trends.  (Left) deasonalised trend over 
 %  six years.  (Right) Estimates of seasonal effects.  Compare to
 %  Figure~\ref{fig:ozone-ts}
 %
-% qplot(time, resid(deseas), geom="line")
-% qplot(month, unname(coef(deseas)), geom="line", group = 1)
-\input{_include/d7b07b226f5f0abde882229141f50eb1.tex}
+% qplot(time, resid(deseas1), geom="line") + geom_hline(colour="grey70")
+% qplot(month, unname(coef(deseas1)), geom="line", group = 1) + 
+%   geom_hline(colour="grey70")
+\input{_include/daf4796bd5365ed29fcdae7edf1e0f0e.tex}
 % END
 
-We next turn this into a function and apply fit model to all of the spatial locations.  This does take a little while, but we are fitting 576 models!  From those models we extract the deasonalised values (the residuals) and the seasonal coefficients.  Looking at the dimensionality we see that they're in the same format as the original data.
+We next turn this into a function and fit the model to each spatial location.  This does take a little while, but we are fitting 576 models!  From those models we extract the deasonalised values (the residuals) and the seasonal coefficients.  Looking at the dimensionality we see that they're in the same format as the original data.  We also carefully label the new dimensions.  This is important: just as data frames should have descriptive variable names, arrays should always have descriptive dimension labels.
 
 % INTERWEAVE
 % 
 % deseasf <- function(value) rlm(value ~ month - 1)
-% 
 % models <- alply(ozone, 1:2, deseasf)
+% 
 % coefs <- laply(models, coef)
-% dimnames(coefs)[[3]] <- months.abbr
+% dimnames(coefs)[[3]] <- month.abbr
 % names(dimnames(coefs))[3] <- "month"
 % 
 % deseas <- laply(models, resid)
@@ -600,90 +608,108 @@ We next turn this into a function and apply fit model to all of the spatial loca
 % 
 % dim(coefs)
 % dim(deseas)
+\input{_include/20bc5f19f9ec08e48e08989140f945ae.tex}
+% END
 
-Figure~\ref{fig:glyph-deseas} and Figure~\ref{fig:glyph-coef} visualises these results with star glyph plots.  For plotting, it's more convenient to have the data in data frames.  There are few different ways to do this: we can convert from the 3d array to a data frame with \f{melt} from the reshape package, or use \f{ldply} instead of \f{laply}.  For this example, we'll use a combination of these techniques.  We'll convert the original array to a data frame, add on some useful columns, and then perform the same steps as above with this new format.
+We now have a lot of data to try and understand: for each of the 576 locations we have 12 estimates of monthly effects, and 72 residuals.  There are many different ways we could visualise this data.  Figures~\ref{fig:glyph-deseas} and \ref{fig:glyph-coef} visualise these results with star glyph plots.  For plotting, it's more convenient to have the data in data frames.  There are few different ways to do this: we can convert from the 3d array to a data frame with \f{melt} from the reshape package, or use \f{ldply} instead of \f{laply}.  For this example, we'll use a combination of these techniques.  We'll convert the original array to a data frame, add on some useful columns, and then perform the same steps as above with this new format.  Notice how our effect labelling the dimensions pays off with useful columns in the data frame.
 
 % INTERWEAVE 
 % 
 % coefs_df <- melt(coefs)
+% coefs_df <- ddply(coefs_df, .(lat, long), transform, 
+%  avg = mean(value),
+%  std = value / max(value)
+% )
 % levels(coefs_df$month) <- month.abbr
 % head(coefs_df)
+% 
 % deseas_df <- melt(deseas)
 % head(deseas_df)
+%  
+\input{_include/a621e1fa5bfdf2b9d0aa0ee08b57d3dc.tex}
+% END
+
+
+% FIGURE
+%  TEX-WIDTH: \textwidth  GG-WIDTH: 8  GG-HEIGHT: 8
+%  LABEL: glyph-coef
+%  CAPTION: Star glyphs showing seasonal variation.  Estimates of seasonal
+%  effects are standardised to have the same maximum at each location to make 
+%  it easier to compare the general pattern.  The glyph colours give the 
+%  overall average ozone measurement.  Note the strong spatial correlation:
+%  nearby glyphs have similar shapes.
+%
+% coef_stars <- make_stars(coefs_df, "month", "std")
+% res <- 1.2
+% ggplot(coef_stars, aes(x = long + res * x, y = lat + res * y, fill=avg)) +
+%  map + geom_polygon(aes(group = interaction(long, lat)), colour="grey50") +
+%  scale_fill_gradient(low="white", high=muted("red")) + 
+%  opts(aspect.ratio = 1)
+\input{_include/89b6355349f8c2a53e879180252cdb1a.tex}
+% END
+
+% FIGURE
+%  TEX-WIDTH: \textwidth  GG-WIDTH: 8  GG-HEIGHT: 8
+%  LABEL: glyph-deseas
+%  CAPTION: Star glyphs showing deasonalised trends.  
+%
+% deseas_stars <- make_stars(deseas_df, "time", "value")
+% res <- 1.2
+% ggplot(deseas_stars, aes(x = long + res * x, y = lat + res * y)) +
+%  map + geom_path(aes(group = interaction(long, lat)), 
+%                  colour="grey50", fill=NA)
+\input{_include/a9c5f88b0fbfd48fe28128bcbedafa68.tex}
+% END
+
+The star glyphs show temporal patterns conditioned on location.  We can also look at spatial pattern conditional on time.  One way to do this is to draw tile plots where each cell of the 24\x24 grid is coloured according to its value.  The following code sets up a function with constant scales to do that.  Figure~\ref{fig:tile-coef} shows the spatial variation of seasonal coefficients for January and July.  We could do the same thing for the values themselves, but we'd probably want to make an animation rather than looking at all 72 plots individually.
+
+% INTERWEAVE
+% 
+% coef_limits <- range(coefs_df$value)
+% coef_mid <- mean(coefs_df$value)
+% monthsurface <- function(mon) {
+%   df <- subset(coefs_df, month == mon)
+%   qplot(long, lat, data = df, fill = value, geom="tile") + 
+%   scale_fill_gradient(limits = coef_limits, 
+%     low="white", high=muted("red")) + map
+% }
+\input{_include/c979e53c6bf9ac0cd44dde3ff8d7f09d.tex}
+% END
 
 \begin{verbatim}
-source("ozone-map.r")
-
-res <- 1.5
-coef_stars <- oz_stars(coefs_df, "month", "value")
-ggplot(coef_stars, aes(x = long + res * x, y = lat + res * y)) + map + geom_polygon(aes(group = interaction(long, lat)), fill=NA, colour="black")
-
-qplot(month, value, data=coefs_df, geom="line", group=interaction(lat,long))
-qplot(long, lat, data=subset(coefs_df, month =="Jan"), fill = value, 
-geom="tile") + map
-
-qplot(long, lat, data=subset(coefs_df, month =="Jan"), size = value) + scale_area(to=c(2,6))
-
-coef_limits <- range(coef2$coef)
-coef_mid <- mean(coef2$coef)
-monthsurface <- function(mon) {
-  df <- subset(coef2, month == mon)
-  qplot(long, lat, data = df, fill = coef, geom="tile", main = mon) + 
-  scale_fill_gradient2(limits = coef_limits, midpoint = coef_mid) + map
-}
-
-pdf("~/desktop/ozone-animation.pdf", width=8, height=8)
+pdf("ozone-animation.pdf", width=8, height=8)
 l_ply(month.abbr, monthsurface, print. = TRUE)
 dev.off()
-
-seassum <- ddply(coef2, .(lat, long), function(df) {
-  each(mean, sd)(df$coef)
-})
-qplot(long, lat, data=seassum, fill = sd, geom="tile")
-qplot(long, lat, data=seassum, fill = mean, geom="tile")
-qplot(mean, sd, data=seassum)
 \end{verbatim}
 
-\begin{verbatim}
-ozm <- melt(deseas)
-names(ozm) <- c("lat", "long", "time", "value")
-ozm[1:2] <- llply(ozm[1:2], function(x) as.numeric(as.character(x)))
-
-small_mult(ozm) + geom_line(aes(group = interaction(lat,long)))
-
-ozm <- melt(coef2)
-ozm[1:2] <- llply(ozm[1:2], function(x) as.numeric(as.character(x)))
-ozm$time <- as.numeric(ozm$month)
-
-small_mult(ozm) + geom_line(aes(group = interaction(lat,long)))
-
-\end{verbatim}
-
-For many other types of operations, it is useful to convert this array structure to a data frame.  The {\tt melt} function in the {\tt reshape} package is one way to do that which preserves the dimension labels as much as possible.  If the data is this format we need few changes to the above code:
-
-\begin{verbatim}
-library(reshape)
-ozonem <- melt(ozone)
-
-models <- dlply(ozone, .(lat, long), deasf)
-coefs <- ldply(models, coef)
-deseas <- ldply(models, resid)
-
-\end{verbatim}
-
-This is the power of plyr: you don't need to worry about whether your data is a list, data frame or array, you can use whatever feels most natural.
+% FIGURE
+%  LABEL: tile-coef
+%  CAPTION: Tile plots of coefficients for January (left) and July (right).  
+% 
+% monthsurface("Jan")
+% monthsurface("Jul")
+\input{_include/662f197eb2e529baa3efb7ab38593510.tex}
+% END
 
 \subsection{Other uses}
 
-Randomisation within groups.  Simulation.
+With \plyr, randomisation within groups and simulation becomes trivial.  For example to 
+
+\begin{verbatim}
+ddply(mtcars, .(cyl), transform, mpg = sample(mpg))  
+\end{verbatim}
+
+For simulations, \f{mdply} can be very useful, because it's easy to generate a grid of parameter values and then evaluate them.
+
+\begin{verbatim}
+mdply(expand.grid(mean = 1:5, sd = 1:5), as.data.frame(rnorm), n = 10)
+\end{verbatim}
 
 \section{Equivalence to existing R functions}
 \label{sec:equiv}
 
 Table~\ref{tbl:equiv} describes the equivalent between functions in base R and 
-the functions provided by {\tt plyr}.  The built in R functions focus mainly on arrays and lists, not data frames, and most provide an argument to determine whether an array or list should be returned.  The syntax is also less consistent than plyr, for example, {\tt mapply} takes a function as the first argument rather than the input data.  Compared to {\tt apply}, {\tt aaply} returns the dimensions in a different order so as to be idempotent - i.e.\ {\tt apply(x, a, function(x) x) == x} for all {\tt a}. 
-
-Avoid any ambiguity about what you'll get back from one of these functions. This replaces the {\tt simplify} argument that many of the {\tt apply} functions in base R has, and means that you can depend on the output of each function being a given type (which makes programming with the results easier).
+the functions provided by {\tt plyr}.  The built in R functions focus mainly on arrays and lists, not data frames, and most provide an argument to determine whether an array or list should be returned if possible (usually called \code{simplify}).  The ambiguity of the output type can make programming with these functions tricky. The syntax is also less consistent than plyr, for example, {\tt mapply} takes a function as the first argument rather than the input data.  Compared to {\tt aaply}, {\tt aaply} returns the new dimensions first rather than last, which means it is not idempotent.  For \code{apply}, {\tt aaply(x, a, identity) == aperm(x, a)} regardless of the value of {\tt a}. 
 
 \begin{table}[htpb]
   \begin{center}
@@ -705,20 +731,18 @@ Avoid any ambiguity about what you'll get back from one of these functions. This
   \label{tbl:equiv}
 \end{table}
 
-Related functions {\tt tapply}, {\tt ave} and {\tt sweep} have no corresponding function in {\tt plyr}, and still remain useful. {\tt merge} is also for combining summaries with the original data.  The cast function in the reshape package \citep{reshape} is closely related to {\tt aaply}.
-
-There are a number of other resources that also attempt to simplify this class of problems:
+Related functions {\tt tapply}, {\tt ave} and {\tt sweep} have no corresponding function in {\tt plyr}, and still remain useful. {\tt merge} is also for combining summaries with the original data.  The cast function in the reshape package \citep{reshape} is closely related to {\tt aaply}.  There are a number of other packages that also attempt to simplify this class of problems:
 
 \begin{itemize}
   \item The {\tt doBy} \citep{doby} package provides versions of \code{order}, \code{sample}, \code{split}, \code{subset}, \code{summary} and \code{transform} that make it easy to perform each of these operations on subsets of data frames, joining the results back into a data frame.  These functions are rather like specialised version of \code{ddply} but they use a formula based interface, which particularly for \code{summary} makes it easy to only operate on selected columns. 
   
-  \item The {\tt gdata} \citep{gdata} package which contains a XXX of helpful data manipulation functions including \code{frameApply} which works like \code{ddply} or \code{dlply} depending on function arguments.
+  \item The {\tt gdata} \citep{gdata} package which contains a bundle of helpful data manipulation functions including \code{frameApply} which works like \code{ddply} or \code{dlply} depending on function arguments.
 
   \item The {\tt scope} \citep{scope} package which provides \code{scope}, \code{scoop}, \code{skim}, \code{score} and \code{probe} which provide a composable set of functions for operating symbolically on subsets of data frames.
   
 \end{itemize}
 
-Other resources that you might find useful are \citet{spector:2008}, an excellent introduction to many of the thorny problems encountered when manipulating data in R.  
+You might also find \citet{spector:2008} to be useful.  It is an excellent introduction to many of the thorny problems encountered when manipulating data in R.
 
 \section{Future plans}
 \label{sec:future}
