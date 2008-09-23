@@ -4,7 +4,9 @@
 \title{Yearly batting records for all major league baseball players}
 \description{
 
-This data frame contains batting statistics collected from  \url{http://www.baseball-databank.org/}.  There are a total of 21,699 records, covering 1,228 players from 1871 to 2007.  See the baseball case study in the introductory vignette (\code{vignette("intro", "plyr")}) for more details, and example of how you might explore this data.
+This data frame contains batting statistics for a subset of players collected from \url{http://www.baseball-databank.org/}. There are a total of 21,699 records, covering 1,228 players from 1871 to 2007. Only players with more 15 seasons of play are included.
+
+See the baseball case study in the introductory vignette (\code{vignette("intro", "plyr")}) for more details, and example of how you might explore this data.
 
 Variables:
 
@@ -30,7 +32,6 @@ Variables:
 \item sh, sacrifice hits
 \item sf, sacrifice flies
 \item gidp, ground into double play
-
 
 }
 \usage{data(baseball)}

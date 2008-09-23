@@ -4,9 +4,9 @@
 \title{Monthly ozone measurements over Central America}
 \description{
 
-This data set is a subset of the data from the 2006 ASA Data expo challenge, \url{http://stat-computing.org/dataexpo/2006/}.  The data are monthly ozone averages on a very coarse 24 by 24 grid covering Central America, from Jan 1995 to Dec 2000.
+This data set is a subset of the data from the 2006 ASA Data expo challenge, \url{http://stat-computing.org/dataexpo/2006/}.  The data are monthly ozone averages on a very coarse 24 by 24 grid covering Central America, from Jan 1995 to Dec 2000.  The data is stored in a 3d area with the first two dimensions representing latitude and longitude, and the third representing time.  
 
-The data is stored in a 3d area with the first two dimensions representing latitude and longitude, and the third representing time.  See the ozone case study in the introductory vignette (\code{vignette("intro", "plyr")}) for more details, including maps of the region.
+See the ozone case study in the introductory vignette (\code{vignette("intro", "plyr")}) for more details, including maps of the region.
 
 }
 \usage{data(ozone)}

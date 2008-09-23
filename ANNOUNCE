@@ -9,15 +9,15 @@ plyr is a set of tools that solves a common set of problems: you need to break a
 plyr functions are named according to the type of object they input (first letter) and output (second letter):
 
   * llply = from a list to a list
-  * alply = from an array to a list
+  * alply = from an array (or vector, or matrix) to a list
   * ldply = from a list to a data.frame
   * d_ply = from a data.frame, ignore output
   * and so on for llply, laply, ldply, l_ply, alply, aaply, adply, a_ply, dlply, daply, dply, d_ply
 
 plyr also provides:
 
-  * m*ply which work in a similar way to mapply
-  * r*ply which work in a similar way to replicate
+  * m*ply which works in a similar way to mapply
+  * r*ply which works in a similar way to replicate
   
 plyr also has a number of helper functions that operate on functions, returning functions
   
