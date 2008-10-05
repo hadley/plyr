@@ -25,7 +25,7 @@
 # @value a data frame
 ldply <- function(data., fun. = NULL, ..., progress. = "none") {
   if (!is(data., "split")) data. <- as.list(data.)
-  res <- llply(data., fun., ..., progress. = progress.)
+  res <- llply(data. = data., fun. = fun., ..., progress. = progress.)
   # Just want to treat as a list in here
   attr(res, "split_labels") <- NULL
   
@@ -100,7 +100,7 @@ ddply <- function(data., variables., fun. = NULL, ..., progress. = "none") {
   variables. <- as.quoted(variables.)
   pieces <- splitter_d(data., variables.)
   
-  ldply(pieces, fun., ..., progress. = progress.)
+  ldply(data. = pieces, fun. = fun., ..., progress. = progress.)
 }
 
 # Split array, apply function, and return results in a data frame
@@ -126,5 +126,5 @@ ddply <- function(data., variables., fun. = NULL, ..., progress. = "none") {
 adply <- function(data., margins., fun. = NULL, ..., progress. = "none") {
   pieces <- splitter_a(data., margins.)
   
-  ldply(pieces, fun., ..., progress. = progress.)
+  ldply(data. = pieces, fun. = fun., ..., progress. = progress.)
 }

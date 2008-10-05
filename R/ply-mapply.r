@@ -26,7 +26,7 @@ mdply <- function(data., fun. = NULL, ..., progress. = "none") {
   if (is.matrix(data.) & !is.list(data.)) data. <- .matrix_to_df(data.)
 
   f <- splat(fun.)
-  adply(data., margins. = 1, f, ..., progress. = progress.)
+  adply(data. = data., margins. = 1, fun. = f, ..., progress. = progress.)
 }
 
 # Call function with arguments in array or data frame, returning an array
@@ -56,7 +56,7 @@ maply <- function(data., fun. = NULL, ..., progress. = "none") {
   if (is.matrix(data.) & !is.list(data.)) data. <- .matrix_to_df(data.)
   
   f <- splat(fun.)
-  aaply(data., margins. = 1, f, ..., progress. = progress.)
+  aaply(data. = data., margins. = 1, fun. = f, ..., progress. = progress.)
 }
 
 # Call function with arguments in array or data frame, returning a list
@@ -89,7 +89,7 @@ mlply <- function(data., fun. = NULL, ..., progress. = "none") {
   if (is.matrix(data.) & !is.list(data.)) data. <- .matrix_to_df(data.)
 
   f <- splat(fun.)
-  alply(data., margins. = 1, f, ..., progress. = progress.)
+  alply(data. = data., margins. = 1, fun. = f, ..., progress. = progress.)
 }
 
 # Call function with arguments in array or data frame, discarding results
@@ -115,7 +115,7 @@ m_ply <- function(data., fun. = NULL, ..., progress. = "none") {
   if (is.matrix(data.) & !is.list(data.)) data. <- .matrix_to_df(data.)
 
   f <- splat(fun.)
-  a_ply(data., margins. = 1, f, ..., progress. = progress.)
+  a_ply(data. = data., margins. = 1, fun. = f, ..., progress. = progress.)
 }
 
 .matrix_to_df <- function(data.) {

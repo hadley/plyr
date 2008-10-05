@@ -19,7 +19,7 @@
 #X hist(laply(mods, function(x) summary(x)$r.squared))
 rlply <- function(n., expr., progress. = "none") {
   f <- eval.parent(substitute(function(...) expr.))
-  llply(seq_len(n.), f, progress. = progress.)
+  llply(data. = seq_len(n.), fun. = f, progress. = progress.)
 }
 
 # Replicate expression and return results in a data frame
@@ -44,7 +44,7 @@ rlply <- function(n., expr., progress. = "none") {
 #X rdply(20, each(mean, var)(runif(100)))
 rdply <- function(n., expr., progress. = "none") {
   f <- eval.parent(substitute(function(...) expr.))
-  ldply(seq_len(n.), f, progress. = progress.)
+  ldply(data. = seq_len(n.), fun. = f, progress. = progress.)
 }
 
 
@@ -78,7 +78,7 @@ rdply <- function(n., expr., progress. = "none") {
 #X hist(raply(1000, mean(rexp(1000))))
 raply <- function(n., expr., progress. = "none") {
   f <- eval.parent(substitute(function(...) expr.))
-  laply(seq_len(n.), f, progress. = progress.)
+  laply(data. = seq_len(n.), fun. = f, progress. = progress.)
 }
 
 # Replicate expression and discard results
@@ -100,5 +100,5 @@ raply <- function(n., expr., progress. = "none") {
 #X r_ply(10, plot(runif(50)))
 r_ply <- function(n., expr., progress. = "none", print. = FALSE) {
   f <- eval.parent(substitute(function(...) expr.))
-  l_ply(seq_len(n.), f, progress. = progress., print. = print.)
+  l_ply(data. = seq_len(n.), fun. = f, progress. = progress., print. = print.)
 }

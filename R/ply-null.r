@@ -58,7 +58,7 @@ d_ply <- function(data., variables., fun. = NULL, ..., progress. = "none", print
   variables. <- as.quoted(variables.)
   pieces <- splitter_d(data., variables.)
   
-  l_ply(pieces, fun., progress. = progress., print. = print.)
+  l_ply(data. = pieces, fun. = fun., progress. = progress., print. = print.)
 }
 
 # Split array, apply function, and discard results
@@ -84,5 +84,5 @@ d_ply <- function(data., variables., fun. = NULL, ..., progress. = "none", print
 a_ply <- function(data., margins., fun. = NULL, ..., progress. = "none", print. = FALSE) {
   pieces <- splitter_a(data., margins.)
   
-  l_ply(pieces, fun., progress. = progress., print. = print.)
+  l_ply(data. = pieces, fun. = fun., progress. = progress., print. = print.)
 }

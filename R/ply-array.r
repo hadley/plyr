@@ -35,7 +35,7 @@ laply <-  function(data., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
   if (is.character(fun.)) fun. <- match.fun(fun.)
   
   if (!is(data., "split")) data. <- as.list(data.)
-  res <- llply(data., fun., ..., progress. = progress.)
+  res <- llply(data. = data., fun. = fun., ..., progress. = progress.)
   
   if (length(res) == 0) return(vector())
   
@@ -129,7 +129,7 @@ daply <- function(data., variables., fun. = NULL, ..., progress. = "none", drop.
   variables. <- as.quoted(variables.)
   pieces <- splitter_d(data., variables.)
   
-  laply(pieces, fun., ..., progress. = progress., drop. = drop.)
+  laply(data. = pieces, fun. = fun., ..., progress. = progress., drop. = drop.)
 }
 
 # Split array, apply function, and return results in an array
@@ -179,5 +179,5 @@ daply <- function(data., variables., fun. = NULL, ..., progress. = "none", drop.
 aaply <- function(data., margins., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
   pieces <- splitter_a(data., margins.)
   
-  laply(pieces, fun., ..., progress. = progress., drop. = drop.)
+  laply(data. = pieces, fun. = fun., ..., progress. = progress., drop. = drop.)
 }
