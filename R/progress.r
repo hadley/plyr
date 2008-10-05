@@ -82,8 +82,8 @@ progress_text <- function(style = 3, ...) {
 # 
 # @arguments window title
 # @arguments progress bar label (inside window)
-# @arguments other arguments passed on to \code{\link{tkProgressBar}}
-# @seealso \code{\link{tkProgressBar}} for the function that powers this progress bar
+# @arguments other arguments passed on to \code{\link[tcltk]{tkProgressBar}}
+# @seealso \code{\link[tcltk]{tkProgressBar}} for the function that powers this progress bar
 #X l_ply(1:1000, identity, progress. = "tk")
 #X l_ply(1:1000, identity, progress. = progress_tk(width=400))
 #X l_ply(1:1000, identity, progress. = progress_tk(label=""))
@@ -111,8 +111,8 @@ progress_tk <- function(title = "plyr progress", label = "Working...", ...) {
 # This graphical progress only works on Windows.
 # 
 # @arguments window title
-# @arguments other arguments passed on to \code{\link{winProgressBar}}
-# @seealso \code{\link{winProgressBar}} for the function that powers this progress bar
+# @arguments other arguments passed on to \code{\link[utils]{winProgressBar}}
+# @seealso \code{\link[utils]{winProgressBar}} for the function that powers this progress bar
 #X if(exists("winProgressBar")) {
 #X l_ply(1:1000, identity, progress. = "win")
 #X l_ply(1:1000, identity, progress. = progress_win(title="Working..."))

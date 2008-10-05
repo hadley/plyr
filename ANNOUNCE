@@ -5,7 +5,7 @@ plyr is a set of tools that solves a common set of problems: you need to break a
   * progress bars to keep track of long running operations
   * built-in error recovery 
   * the choice of passing chunks as rows or as variables
-  
+
 plyr functions are named according to the type of object they input (first letter) and output (second letter):
 
   * llply = from a list to a list
@@ -24,4 +24,8 @@ plyr also has a number of helper functions that operate on functions, returning 
   * colwise to turn functions that operate on a single vector of numbers into functions that operate on columns
   * each to return a named vector containing the results of multiple functions
 
-The aim of this releases is to provide a consistent and useful set of tools for solving the split-apply-combine problem.  It is not particularly fast or memory efficient, but there is much potential for optimisation, particularly by rewriting important bits in C.
+You can find out more at http://had.co.nz/plyr/, including a 20 page introductory guide, http://had.co.nz/plyr/plyr-intro.pdf.
+
+Regards,
+
+Hadley
