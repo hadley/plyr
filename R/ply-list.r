@@ -33,6 +33,7 @@ llply <- function(data., fun. = NULL, ..., progress. = "none") {
   if (length(data.) == 0) return(list())
   
   if (is.character(fun.)) fun. <- match.fun(fun.)
+  if (!is.function(fun.)) stop("fun. is not a function.")
   
   progress <- create_progress_bar(progress.)
   

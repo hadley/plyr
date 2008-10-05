@@ -33,6 +33,7 @@
 #X laply(seq_len(10), matrix, nrow = 2, ncol = 2)
 laply <-  function(data., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
   if (is.character(fun.)) fun. <- match.fun(fun.)
+  if (!is.function(fun.)) stop("fun. is not a function.")
   
   if (!is(data., "split")) data. <- as.list(data.)
   res <- llply(data. = data., fun. = fun., ..., progress. = progress.)
