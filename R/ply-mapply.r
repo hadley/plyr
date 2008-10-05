@@ -121,7 +121,7 @@ m_ply <- function(data., fun. = NULL, ..., progress. = "none") {
 .matrix_to_df <- function(data.) {
   cnames <- colnames(data.)
   if (is.null(cnames)) cnames <- rep("", ncol(data.))
-  data. <- as.data.frame(data.)
+  data. <- as.data.frame(data., stringsAsFactors = FALSE)
   colnames(data.) <- cnames
   data.  
 }
