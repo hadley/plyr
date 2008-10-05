@@ -1,0 +1,4 @@
+plyr 0.1.1 (2008-XX-XX) ---------------------------------------------------
+
+  * return informative error if fun. is not a function
+  * use full names in all internal calls to avoid argument name clashes
