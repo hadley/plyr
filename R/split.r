@@ -18,8 +18,8 @@
 #X splitter_d(mtcars, .(cyl))
 #X splitter_d(mtcars, .(vs, am))
 #X splitter_d(mtcars, .(am, vs))
-splitter_d <- function(data, variables. = NULL) {
-  splits <- eval.quoted(variables., data, parent.frame())
+splitter_d <- function(data, .variables = NULL) {
+  splits <- eval.quoted(.variables, data, parent.frame())
   splitv <- interaction(splits, drop=TRUE)
   
   representative <- which(!duplicated(splitv))[order(unique(splitv))]
@@ -33,7 +33,7 @@ splitter_d <- function(data, variables. = NULL) {
   )
 }
 
-# Split an array by margins.
+# Split an array by .margins
 # Split a 2d or higher data structure into lower-d pieces based
 # 
 # This is the workhorse of the \code{a*ply} functions.  Given a >1 d 
@@ -52,25 +52,25 @@ splitter_d <- function(data, variables. = NULL) {
 # @value a list of lower-d slices, with attributes that record split details
 #X splitter_a(mtcars, 1)
 #X splitter_a(mtcars, 2)
-splitter_a <- function(data, margins. = 1) {
-  if (!all(margins. %in% seq_len(dims(data)))) stop("Invalid margin")
+splitter_a <- function(data, .margins = 1) {
+  if (!all(.margins %in% seq_len(dims(data)))) stop("Invalid margin")
   
   dimensions <- lapply(dim(data), seq, from=1)
-  dimensions[-margins.] <- list(TRUE) 
+  dimensions[-.margins] <- list(TRUE) 
   indices <- expand.grid(dimensions, KEEP.OUT.ATTRS = FALSE)
   names(indices) <- paste("X", 1:ncol(indices), sep="")
   
   pieces <- lapply(1:nrow(indices), 
     function(i) do.call("[",c(list(data), unname(indices[i, ,drop=TRUE]), drop=TRUE))
   )
-  dim(pieces) <- dim(data)[margins.]
+  dim(pieces) <- dim(data)[.margins]
   
-  if (is.data.frame(data) & identical(margins., 1)) {
+  if (is.data.frame(data) & identical(.margins, 1)) {
     split_labels <- data
   } else {
     dnames <- amv_dimnames(data)
-    split_labels <- expand.grid(dnames[margins.], KEEP.OUT.ATTRS = FALSE)
-    colnames <- names(dnames)[margins.]
+    split_labels <- expand.grid(dnames[.margins], KEEP.OUT.ATTRS = FALSE)
+    colnames <- names(dnames)[.margins]
     if (!is.null(colnames)) names(split_labels) <- colnames
   }
 

@@ -15,7 +15,7 @@ A graphical progress bar displayed in a separate window
 \details{This graphical progress only works on Windows.}
 \seealso{\code{\link[utils]{winProgressBar}} for the function that powers this progress bar}
 \examples{if(exists("winProgressBar")) {
-l_ply(1:1000, identity, progress. = "win")
-l_ply(1:1000, identity, progress. = progress_win(title="Working..."))
+l_ply(1:1000, identity, .progress = "win")
+l_ply(1:1000, identity, .progress = progress_win(title="Working..."))
 }}
 

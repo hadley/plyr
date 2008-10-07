@@ -6,9 +6,9 @@
 \description{
 A purely numerical interaction function that powers \code{aaply}.
 }
-\usage{ninteraction(variables., drop = FALSE)}
+\usage{ninteraction(.variables, drop = FALSE)}
 \arguments{
-\item{variables.}{}
+\item{.variables}{}
 \item{drop}{}
 }
 

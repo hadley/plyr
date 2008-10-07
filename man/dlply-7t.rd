@@ -6,20 +6,20 @@
 \description{
 For each subset of a data frame, apply function then combine results into a  list
 }
-\usage{dlply(data., variables., fun. = NULL, ..., progress. = "none")}
+\usage{dlply(.data, .variables, .fun = NULL, ..., .progress = "none")}
 \arguments{
-\item{data.}{data frame to be processed}
-\item{variables.}{variables to split data frame by, as quoted variables, a formula or character vector}
-\item{fun.}{function to apply to each piece}
-\item{...}{other arguments passed on to \code{fun.}}
-\item{progress.}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+\item{.data}{data frame to be processed}
+\item{.variables}{variables to split data frame by, as quoted variables, a formula or character vector}
+\item{.fun}{function to apply to each piece}
+\item{...}{other arguments passed on to \code{.fun}}
+\item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
 }
 \value{
  \item{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}
  \item{list of results}
 }
 \details{All plyr functions use the same split-apply-combine strategy: they split the
-input into simpler pieces, apply \code{fun.} to each piece, and then combine
+input into simpler pieces, apply \code{.fun} to each piece, and then combine
 the pieces into a single data structure.  This function splits data frames
 by variables and combines the result into a list.  If there are no results,
 then this function will return a list of length 0  (\code{list()}).

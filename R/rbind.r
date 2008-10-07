@@ -15,8 +15,8 @@ rbind.fill <- function(...) {
   do.call("rbind", compact(lapply(dfs, function(df) {
     if (length(df) == 0 || nrow(df) == 0) return(NULL)
     
-    missing.variables. <- setdiff(all.names, names(df))
-    if (length(missing.variables.) > 0) df[, missing.variables.] <- NA
+    missing..variables <- setdiff(all.names, names(df))
+    if (length(missing..variables) > 0) df[, missing..variables] <- NA
     df
   })))
 }

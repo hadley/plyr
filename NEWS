@@ -1,4 +1,5 @@
 plyr 0.1.1 (2008-XX-XX) ---------------------------------------------------
 
-  * return informative error if fun. is not a function
+  * argument names now start with . (instead of ending with it) - this should prevent name clashes with arguments of the called function 
+  * return informative error if .fun is not a function
   * use full names in all internal calls to avoid argument name clashes

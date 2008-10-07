@@ -16,6 +16,6 @@ A textual progress bar
 platforms.  It is a thin wrapper around the built-in
 \code{\link{setTxtProgressBar}} and can be customised in the same way.}
 
-\examples{l_ply(1:1000, identity, progress. = "text")
-l_ply(1:1000, identity, progress. = progress_text(char = "-"))}
+\examples{l_ply(1:1000, identity, .progress = "text")
+l_ply(1:1000, identity, .progress = progress_text(char = "-"))}
 

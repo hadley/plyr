@@ -6,11 +6,11 @@
 \description{
 Evalulate expression n times then combine results into an array
 }
-\usage{raply(n., expr., progress. = "none")}
+\usage{raply(.n, .expr, .progress = "none")}
 \arguments{
-\item{n.}{number of times to evaluate the expression}
-\item{expr.}{expression to evaluation}
-\item{progress.}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+\item{.n}{number of times to evaluate the expression}
+\item{.expr}{expression to evaluation}
+\item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
 }
 \value{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}
 \details{This function runs an expression multiple times, and combines the

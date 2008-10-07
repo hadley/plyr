@@ -6,18 +6,18 @@
 \description{
 For each subset of data frame, apply function then combine results into an array
 }
-\usage{daply(data., variables., fun. = NULL, ..., progress. = "none", drop. = TRUE)}
+\usage{daply(.data, .variables, .fun = NULL, ..., .progress = "none", drop. = TRUE)}
 \arguments{
-\item{data.}{data frame to be processed}
-\item{variables.}{function to apply to each piece}
-\item{fun.}{variables to split data frame by, as quoted variables, a formula or character vector}
-\item{...}{other arguments passed on to \code{fun.}}
-\item{progress.}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+\item{.data}{data frame to be processed}
+\item{.variables}{function to apply to each piece}
+\item{.fun}{variables to split data frame by, as quoted variables, a formula or character vector}
+\item{...}{other arguments passed on to \code{.fun}}
+\item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
 \item{drop.}{should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}}
 }
 \value{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}
 \details{All plyr functions use the same split-apply-combine strategy: they split the
-input into simpler pieces, apply \code{fun.} to each piece, and then combine
+input into simpler pieces, apply \code{.fun} to each piece, and then combine
 the pieces into a single data structure.  This function splits data frames
 by variable and combines the result into an array.  If there are no results,
 then this function will return a vector of length 0 (\code{vector()}).
@@ -32,7 +32,7 @@ studies.
 @arguments data frame to be processed
 @arguments function to apply to each piece
 @arguments variables to split data frame by, as quoted variables, a formula or character vector
-@arguments other arguments passed on to \code{fun.}
+@arguments other arguments passed on to \code{.fun}
 @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 @arguments should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
 @value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}

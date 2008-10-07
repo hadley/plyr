@@ -6,12 +6,12 @@
 \description{
 Evalulate expression n times then discard results
 }
-\usage{r_ply(n., expr., progress. = "none", print. = FALSE)}
+\usage{r_ply(.n, .expr, .progress = "none", .print = FALSE)}
 \arguments{
-\item{n.}{number of times to evaluate the expression}
-\item{expr.}{expression to evaluation}
-\item{progress.}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
-\item{print.}{}
+\item{.n}{number of times to evaluate the expression}
+\item{.expr}{expression to evaluation}
+\item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+\item{.print}{}
 }
 
 \details{This function runs an expression multiple times, discarding the results.

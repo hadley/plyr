@@ -2,7 +2,7 @@
 # For each element of a list, apply function then combine results into an array
 # 
 # All plyr functions use the same split-apply-combine strategy: they split the
-# input into simpler pieces, apply \code{fun.} to each piece, and then combine
+# input into simpler pieces, apply \code{.fun} to each piece, and then combine
 # the pieces into a single data structure.  This function splits lists by
 # elements and combines the result into an array.  If there are no results,
 # then this function will return a vector of length 0 (\code{vector()}).
@@ -18,7 +18,7 @@
 # @keyword manip
 # @arguments input list
 # @arguments function to apply to each piece
-# @arguments other arguments passed on to \code{fun.}
+# @arguments other arguments passed on to \code{.fun}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @arguments should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
 # @value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
@@ -31,12 +31,12 @@
 #X laply(seq_len(10), identity)
 #X laply(seq_len(10), rep, times = 4)
 #X laply(seq_len(10), matrix, nrow = 2, ncol = 2)
-laply <-  function(data., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
-  if (is.character(fun.)) fun. <- match.fun(fun.)
-  if (!is.function(fun.)) stop("fun. is not a function.")
+laply <-  function(.data, .fun = NULL, ..., .progress = "none", drop. = TRUE) {
+  if (is.character(.fun)) .fun <- match.fun(.fun)
+  if (!is.function(.fun)) stop(".fun is not a function.")
   
-  if (!is(data., "split")) data. <- as.list(data.)
-  res <- llply(data. = data., fun. = fun., ..., progress. = progress.)
+  if (!is(.data, "split")) .data <- as.list(.data)
+  res <- llply(.data = .data, .fun = .fun, ..., .progress = .progress)
   
   if (length(res) == 0) return(vector())
   
@@ -65,11 +65,11 @@ laply <-  function(data., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
     class(res) <- class(res)[2]
   }
 
-  labels <- attr(data., "split_labels")
+  labels <- attr(.data, "split_labels")
   if (is.null(labels)) {
-    labels <- data.frame(X = seq_along(data.))
+    labels <- data.frame(X = seq_along(.data))
     in_labels <- list(NULL)
-    in_dim <- length(data.)
+    in_dim <- length(.data)
   } else {
     in_labels <- lapply(labels, unique)
     in_dim <- sapply(in_labels, length)        
@@ -97,7 +97,7 @@ laply <-  function(data., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
 # For each subset of data frame, apply function then combine results into an array
 # 
 # All plyr functions use the same split-apply-combine strategy: they split the
-# input into simpler pieces, apply \code{fun.} to each piece, and then combine
+# input into simpler pieces, apply \code{.fun} to each piece, and then combine
 # the pieces into a single data structure.  This function splits data frames
 # by variable and combines the result into an array.  If there are no results,
 # then this function will return a vector of length 0 (\code{vector()}).
@@ -112,7 +112,7 @@ laply <-  function(data., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
 # @arguments data frame to be processed
 # @arguments function to apply to each piece
 # @arguments variables to split data frame by, as quoted variables, a formula or character vector
-# @arguments other arguments passed on to \code{fun.}
+# @arguments other arguments passed on to \code{.fun}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @arguments should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
 # @value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
@@ -125,19 +125,19 @@ laply <-  function(data., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
 #X daply(baseball[, c(2, 6:9)], .(year), mean)
 #X daply(baseball[, 6:9], .(baseball$year), mean)
 #X daply(baseball, .(year), function(df) mean(df[, 6:9]))
-daply <- function(data., variables., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
-  data. <- as.data.frame(data.)
-  variables. <- as.quoted(variables.)
-  pieces <- splitter_d(data., variables.)
+daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", drop. = TRUE) {
+  .data <- as.data.frame(.data)
+  .variables <- as.quoted(.variables)
+  pieces <- splitter_d(.data, .variables)
   
-  laply(data. = pieces, fun. = fun., ..., progress. = progress., drop. = drop.)
+  laply(.data = pieces, .fun = .fun, ..., .progress = .progress, drop. = drop.)
 }
 
 # Split array, apply function, and return results in an array
 # For each slice of an array, apply function then combine results into an array
 # 
 # All plyr functions use the same split-apply-combine strategy: they split the
-# input into simpler pieces, apply \code{fun.} to each piece, and then combine
+# input into simpler pieces, apply \code{.fun} to each piece, and then combine
 # the pieces into a single data structure.  This function splits matrices,
 # arrays and data frames by dimensions and combines the result into an array.
 # If there are no results, then this function will return a vector of length 0 (\code{vector()}).
@@ -155,7 +155,7 @@ daply <- function(data., variables., fun. = NULL, ..., progress. = "none", drop.
 # @arguments matrix, array or data frame to be processed
 # @arguments a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions
 # @arguments function to apply to each piece
-# @arguments other arguments passed on to \code{fun.}
+# @arguments other arguments passed on to \code{.fun}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @arguments should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
 # @value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
@@ -177,8 +177,8 @@ daply <- function(data., variables., fun. = NULL, ..., progress. = "none", drop.
 #X aaply(ozone, 1:2, standardise)
 #X  
 #X aaply(ozone, 1:2, diff)
-aaply <- function(data., margins., fun. = NULL, ..., progress. = "none", drop. = TRUE) {
-  pieces <- splitter_a(data., margins.)
+aaply <- function(.data, .margins, .fun = NULL, ..., .progress = "none", drop. = TRUE) {
+  pieces <- splitter_a(.data, .margins)
   
-  laply(data. = pieces, fun. = fun., ..., progress. = progress., drop. = drop.)
+  laply(.data = pieces, .fun = .fun, ..., .progress = .progress, drop. = drop.)
 }

@@ -6,11 +6,11 @@
 \description{
 Evalulate expression n times then combine results into a data frame
 }
-\usage{rdply(n., expr., progress. = "none")}
+\usage{rdply(.n, .expr, .progress = "none")}
 \arguments{
-\item{n.}{number of times to evaluate the expression}
-\item{expr.}{expression to evaluation}
-\item{progress.}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+\item{.n}{number of times to evaluate the expression}
+\item{.expr}{expression to evaluation}
+\item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
 }
 \value{a data frame}
 \details{This function runs an expression multiple times, and combines the

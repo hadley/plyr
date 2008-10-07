@@ -71,10 +71,10 @@ eval.quoted <- function(exprs,  envir = parent.frame(), enclos = if (is.list(env
 }
 
 # Convert input to quoted variables
-# Convert characters, formulas and calls to quoted variables.
+# Convert characters, formulas and calls to quoted .variables
 # 
 # This method is called by default on all plyr functions that take a 
-# \code{variables.} argument, so that equivalent forms can be used anywhere.
+# \code{.variables} argument, so that equivalent forms can be used anywhere.
 # 
 # Currently conversions exist for character vectors, formulas and 
 # call objects.

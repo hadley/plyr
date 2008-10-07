@@ -10,12 +10,12 @@ A graphical progress bar displayed in a Tk window
 \arguments{
 \item{title}{window title}
 \item{label}{progress bar label (inside window)}
-\item{...}{other arguments passed on to \code{\link{tkProgressBar}}}
+\item{...}{other arguments passed on to \code{\link[tcltk]{tkProgressBar}}}
 }
 
 \details{This graphical progress will appear in a separate window.}
-\seealso{\code{\link{tkProgressBar}} for the function that powers this progress bar}
-\examples{l_ply(1:1000, identity, progress. = "tk")
-l_ply(1:1000, identity, progress. = progress_tk(width=400))
-l_ply(1:1000, identity, progress. = progress_tk(label=""))}
+\seealso{\code{\link[tcltk]{tkProgressBar}} for the function that powers this progress bar}
+\examples{l_ply(1:1000, identity, .progress = "tk")
+l_ply(1:1000, identity, .progress = progress_tk(width=400))
+l_ply(1:1000, identity, .progress = progress_tk(label=""))}
 

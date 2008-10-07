@@ -17,9 +17,9 @@
 #
 #X mods <- rlply(100, lm(y ~ x, data=data.frame(x=rnorm(100), y=rnorm(100))))
 #X hist(laply(mods, function(x) summary(x)$r.squared))
-rlply <- function(n., expr., progress. = "none") {
-  f <- eval.parent(substitute(function(...) expr.))
-  llply(data. = seq_len(n.), fun. = f, progress. = progress.)
+rlply <- function(.n, .expr, .progress = "none") {
+  f <- eval.parent(substitute(function(...) .expr))
+  llply(.data = seq_len(.n), .fun = f, .progress = .progress)
 }
 
 # Replicate expression and return results in a data frame
@@ -42,9 +42,9 @@ rlply <- function(n., expr., progress. = "none") {
 #X
 #X rdply(20, mean(runif(100)))
 #X rdply(20, each(mean, var)(runif(100)))
-rdply <- function(n., expr., progress. = "none") {
-  f <- eval.parent(substitute(function(...) expr.))
-  ldply(data. = seq_len(n.), fun. = f, progress. = progress.)
+rdply <- function(.n, .expr, .progress = "none") {
+  f <- eval.parent(substitute(function(...) .expr))
+  ldply(.data = seq_len(.n), .fun = f, .progress = .progress)
 }
 
 
@@ -76,9 +76,9 @@ rdply <- function(n., expr., progress. = "none") {
 #X hist(raply(1000, mean(rexp(10))))
 #X hist(raply(1000, mean(rexp(100))))
 #X hist(raply(1000, mean(rexp(1000))))
-raply <- function(n., expr., progress. = "none") {
-  f <- eval.parent(substitute(function(...) expr.))
-  laply(data. = seq_len(n.), fun. = f, progress. = progress.)
+raply <- function(.n, .expr, .progress = "none") {
+  f <- eval.parent(substitute(function(...) .expr))
+  laply(.data = seq_len(.n), .fun = f, .progress = .progress)
 }
 
 # Replicate expression and discard results
@@ -98,7 +98,7 @@ raply <- function(n., expr., progress. = "none") {
 # @argument automatically print each result? (default: \code{FALSE})
 # 
 #X r_ply(10, plot(runif(50)))
-r_ply <- function(n., expr., progress. = "none", print. = FALSE) {
-  f <- eval.parent(substitute(function(...) expr.))
-  l_ply(data. = seq_len(n.), fun. = f, progress. = progress., print. = print.)
+r_ply <- function(.n, .expr, .progress = "none", .print = FALSE) {
+  f <- eval.parent(substitute(function(...) .expr))
+  l_ply(.data = seq_len(.n), .fun = f, .progress = .progress, .print = .print)
 }

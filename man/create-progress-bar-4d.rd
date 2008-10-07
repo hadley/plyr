@@ -29,8 +29,8 @@ functions, these can either be specified by name, or you can create the
 progress bar object yourself if you want more control over its apperance.
 See the examples.}
 \seealso{\code{\link{progress_none}}, \code{\link{progress_text}}, \code{\link{progress_tk}}, \code{\link{progress_win}}}
-\examples{l_ply(1:1000, identity, progress. = "none")
-l_ply(1:1000, identity, progress. = "tk")
-l_ply(1:1000, identity, progress. = "text")
-l_ply(1:1000, identity, progress. = progress_text(char = "-"))}
+\examples{l_ply(1:1000, identity, .progress = "none")
+l_ply(1:1000, identity, .progress = "tk")
+l_ply(1:1000, identity, .progress = "text")
+l_ply(1:1000, identity, .progress = progress_text(char = "-"))}
 

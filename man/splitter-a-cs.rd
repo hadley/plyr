@@ -1,15 +1,15 @@
 \name{splitter_a}
 \alias{splitter_a}
-\title{Split an array by margins.}
+\title{Split an array by .margins}
 \author{Hadley Wickham <h.wickham@gmail.com>}
 
 \description{
 Split a 2d or higher data structure into lower-d pieces based
 }
-\usage{splitter_a(data, margins. = 1)}
+\usage{splitter_a(data, .margins = 1)}
 \arguments{
 \item{data}{}
-\item{margins.}{}
+\item{.margins}{}
 }
 \value{a list of lower-d slices, with attributes that record split details}
 \details{This is the workhorse of the \code{a*ply} functions.  Given a >1 d

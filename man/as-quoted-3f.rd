@@ -8,7 +8,7 @@
 \author{Hadley Wickham <h.wickham@gmail.com>}
 
 \description{
-Convert characters, formulas and calls to quoted variables.
+Convert characters, formulas and calls to quoted .variables
 }
 \usage{as.quoted(x)}
 \arguments{
@@ -16,7 +16,7 @@ Convert characters, formulas and calls to quoted variables.
 }
 \value{a list of quoted variables}
 \details{This method is called by default on all plyr functions that take a
-\code{variables.} argument, so that equivalent forms can be used anywhere.
+\code{.variables} argument, so that equivalent forms can be used anywhere.
 
 Currently conversions exist for character vectors, formulas and
 call objects.}

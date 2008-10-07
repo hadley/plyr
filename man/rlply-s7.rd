@@ -6,11 +6,11 @@
 \description{
 Evalulate expression n times then combine results into a list
 }
-\usage{rlply(n., expr., progress. = "none")}
+\usage{rlply(.n, .expr, .progress = "none")}
 \arguments{
-\item{n.}{number of times to evaluate the expression}
-\item{expr.}{expression to evaluation}
-\item{progress.}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+\item{.n}{number of times to evaluate the expression}
+\item{.expr}{expression to evaluation}
+\item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
 }
 \value{list of results}
 \details{This function runs an expression multiple times, and combines the
