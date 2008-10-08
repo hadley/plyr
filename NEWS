@@ -1,4 +1,4 @@
-plyr 0.1.1 (2008-XX-XX) ---------------------------------------------------
+plyr 0.1.1 (2008-10-08) ---------------------------------------------------
 
   * argument names now start with . (instead of ending with it) - this should prevent name clashes with arguments of the called function 
   * return informative error if .fun is not a function
