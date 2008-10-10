@@ -98,7 +98,7 @@ as.quoted.character <- function(x) {
 as.quoted.formula <- function(x) {
   simplify <- function(x) {
     if (length(x) == 2 && x[[1]] == as.name("~")) {
-      return(x[[2]])
+      return(simplify(x[[2]]))
     }
     if (length(x) < 3) return(list(x))
     op <- x[[1]]; a <- x[[2]]; b <- x[[3]]
@@ -112,7 +112,10 @@ as.quoted.formula <- function(x) {
     }
   }
 
-  simplify(x)
+  structure(
+    simplify(x),
+    class = "quoted"
+  )
 }
 as.quoted.quoted <- function(x) x
 
