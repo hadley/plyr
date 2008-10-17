@@ -28,7 +28,7 @@
 #X llply(x, mean)
 #X llply(x, quantile, probs = 1:3/4)
 llply <- function(.data, .fun = NULL, ..., .progress = "none") {
-  if (!is(.data, "split")) .data <- as.list(.data)
+  if (!inherits(.data, "split")) .data <- as.list(.data)
   if (is.null(.fun)) return(.data)
   if (length(.data) == 0) return(list())
   

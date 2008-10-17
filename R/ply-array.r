@@ -35,7 +35,7 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", drop. = TRUE) {
   if (is.character(.fun)) .fun <- match.fun(.fun)
   if (!is.function(.fun)) stop(".fun is not a function.")
   
-  if (!is(.data, "split")) .data <- as.list(.data)
+  if (!inherits(.data, "split")) .data <- as.list(.data)
   res <- llply(.data = .data, .fun = .fun, ..., .progress = .progress)
   
   if (length(res) == 0) return(vector())

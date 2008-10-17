@@ -24,7 +24,7 @@
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @value a data frame
 ldply <- function(.data, .fun = NULL, ..., .progress = "none") {
-  if (!is(.data, "split")) .data <- as.list(.data)
+  if (!inherits(.data, "split")) .data <- as.list(.data)
   res <- llply(.data = .data, .fun = .fun, ..., .progress = .progress)
   # Just want to treat as a list in here
   attr(res, "split_labels") <- NULL
