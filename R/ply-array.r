@@ -16,6 +16,7 @@
 # studies.
 # 
 # @keyword manip
+# @alias list_to_array
 # @arguments input list
 # @arguments function to apply to each piece
 # @arguments other arguments passed on to \code{.fun}

@@ -1,5 +1,6 @@
 \name{laply}
 \alias{laply}
+\alias{list_to_array}
 \title{Split list, apply function, and return results in an array}
 \author{Hadley Wickham <h.wickham@gmail.com>}
 
@@ -30,6 +31,7 @@ See \code{vignette("intro", "plyr")} for more details, description and case
 studies.
 
 @keyword manip
+@alias list_to_array
 @arguments input list
 @arguments function to apply to each piece
 @arguments other arguments passed on to \code{.fun}

@@ -1,5 +1,6 @@
 \name{ldply}
 \alias{ldply}
+\alias{list_to_dataframe}
 \title{Split list, apply function, and return results in a data frame}
 \author{Hadley Wickham <h.wickham@gmail.com>}
 

@@ -9,7 +9,7 @@ Evalulate expression n times then combine results into a list
 \usage{rlply(.n, .expr, .progress = "none")}
 \arguments{
 \item{.n}{number of times to evaluate the expression}
-\item{.expr}{expression to evaluation}
+\item{.expr}{expression to evaluate}
 \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
 }
 \value{list of results}
@@ -23,7 +23,7 @@ studies.
 
 @keyword manip
 @arguments number of times to evaluate the expression
-@arguments expression to evaluation
+@arguments expression to evaluate
 @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 @value list of results}
 
