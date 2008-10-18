@@ -38,7 +38,12 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", drop. = TRUE) {
   if (!inherits(.data, "split")) .data <- as.list(.data)
   res <- llply(.data = .data, .fun = .fun, ..., .progress = .progress)
   
+  list_to_array(res, attr(.data, "split_labels"), drop.)
+}
+
+list_to_array <- function(res, labels, drop.) {
   if (length(res) == 0) return(vector())
+  n <- length(res)
   
   atomic <- sapply(res, is.atomic)
   if (all(atomic)) {
@@ -65,11 +70,10 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", drop. = TRUE) {
     class(res) <- class(res)[2]
   }
 
-  labels <- attr(.data, "split_labels")
   if (is.null(labels)) {
-    labels <- data.frame(X = seq_along(.data))
+    labels <- data.frame(X = seq_len(n))
     in_labels <- list(NULL)
-    in_dim <- length(.data)
+    in_dim <- n
   } else {
     in_labels <- lapply(labels, unique)
     in_dim <- sapply(in_labels, length)        

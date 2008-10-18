@@ -29,6 +29,10 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none") {
   # Just want to treat as a list in here
   attr(res, "split_labels") <- NULL
   
+  list_to_dataframe(res, attr(.data, "split_labels"))
+}
+
+list_to_dataframe <- function(res, labels) { 
   if (length(res) == 0) return(data.frame())
   
   atomic <- unlist(llply(res, is.atomic))
@@ -49,8 +53,7 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none") {
     rows <- laply(res, function(x) if(is.null(x)) 0 else nrow(x))
   }
 
-  labels <- attr(.data, "split_labels")
-  if (!is.null(labels) && nrow(labels) == length(.data)) {
+  if (!is.null(labels) && nrow(labels) == length(res)) {
     cols <- setdiff(names(labels), names(resdf))
     resdf <- cbind(labels[rep(1:nrow(labels), rows), cols, drop=FALSE], resdf)
   }

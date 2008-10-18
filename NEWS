@@ -1,5 +1,6 @@
 plyr 0.1.2 (2008-XX-XX) ---------------------------------------------------
 
+  * r*ply now work with ...
   * use inherits instead of is so method package doesn't need to be loaded
   * fix bug with using formulas
 
