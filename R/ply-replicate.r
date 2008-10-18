@@ -99,7 +99,7 @@ rdply <- function(.n, .expr, .progress = "none") {
 #X hist(raply(1000, mean(rexp(10))))
 #X hist(raply(1000, mean(rexp(100))))
 #X hist(raply(1000, mean(rexp(1000))))
-raply <- function(.n, .expr, .progress = "none", drop. = TRUE) {
+raply <- function(.n, .expr, .progress = "none", .drop = TRUE) {
   if (is.function(.expr)) {
     f <- .expr
   } else {
@@ -107,7 +107,7 @@ raply <- function(.n, .expr, .progress = "none", drop. = TRUE) {
   }
   
   res <- rlply(.n = .n, .expr = f, .progress = .progress)
-  list_to_array(res, NULL, drop.)
+  list_to_array(res, NULL, .drop)
 }
 
 # Replicate expression and discard results

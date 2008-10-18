@@ -6,13 +6,13 @@
 \description{
 For each element of a list, apply function then combine results into an array
 }
-\usage{laply(.data, .fun = NULL, ..., .progress = "none", drop. = TRUE)}
+\usage{laply(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE)}
 \arguments{
 \item{.data}{input list}
 \item{.fun}{function to apply to each piece}
 \item{...}{other arguments passed on to \code{.fun}}
 \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
-\item{drop.}{should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}}
+\item{.drop}{should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}}
 }
 \value{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}
 \details{All plyr functions use the same split-apply-combine strategy: they split the

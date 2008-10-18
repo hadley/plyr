@@ -31,17 +31,17 @@
 #X laply(seq_len(10), identity)
 #X laply(seq_len(10), rep, times = 4)
 #X laply(seq_len(10), matrix, nrow = 2, ncol = 2)
-laply <-  function(.data, .fun = NULL, ..., .progress = "none", drop. = TRUE) {
+laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
   if (is.character(.fun)) .fun <- match.fun(.fun)
   if (!is.function(.fun)) stop(".fun is not a function.")
   
   if (!inherits(.data, "split")) .data <- as.list(.data)
   res <- llply(.data = .data, .fun = .fun, ..., .progress = .progress)
   
-  list_to_array(res, attr(.data, "split_labels"), drop.)
+  list_to_array(res, attr(.data, "split_labels"), .drop)
 }
 
-list_to_array <- function(res, labels, drop.) {
+list_to_array <- function(res, labels, .drop) {
   if (length(res) == 0) return(vector())
   n <- length(res)
   
@@ -94,7 +94,7 @@ list_to_array <- function(res, labels, drop.) {
   out_array <- res[overall]  
   dim(out_array) <- out_dim
   dimnames(out_array) <- out_labels
-  if (drop.) reduce(out_array) else out_array
+  if (.drop) reduce(out_array) else out_array
 }
 
 # Split data frame, apply function, and return results in an array
@@ -129,12 +129,12 @@ list_to_array <- function(res, labels, drop.) {
 #X daply(baseball[, c(2, 6:9)], .(year), mean)
 #X daply(baseball[, 6:9], .(baseball$year), mean)
 #X daply(baseball, .(year), function(df) mean(df[, 6:9]))
-daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", drop. = TRUE) {
+daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
   .data <- as.data.frame(.data)
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables)
   
-  laply(.data = pieces, .fun = .fun, ..., .progress = .progress, drop. = drop.)
+  laply(.data = pieces, .fun = .fun, ..., .progress = .progress, .drop = .drop)
 }
 
 # Split array, apply function, and return results in an array
@@ -166,12 +166,12 @@ daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", drop.
 #
 #X dim(ozone)
 #X aaply(ozone, 1, mean)
-#X aaply(ozone, 1, mean, drop. = FALSE)
+#X aaply(ozone, 1, mean, .drop = FALSE)
 #X aaply(ozone, 3, mean)
 #X aaply(ozone, c(1,2), mean)
 #X
 #X dim(aaply(ozone, c(1,2), mean))
-#X dim(aaply(ozone, c(1,2), mean, drop. = FALSE)) 
+#X dim(aaply(ozone, c(1,2), mean, .drop = FALSE)) 
 #X
 #X aaply(ozone, 1, each(min, max))
 #X aaply(ozone, 3, each(min, max))
@@ -181,8 +181,8 @@ daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", drop.
 #X aaply(ozone, 1:2, standardise)
 #X  
 #X aaply(ozone, 1:2, diff)
-aaply <- function(.data, .margins, .fun = NULL, ..., .progress = "none", drop. = TRUE) {
+aaply <- function(.data, .margins, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
   pieces <- splitter_a(.data, .margins)
   
-  laply(.data = pieces, .fun = .fun, ..., .progress = .progress, drop. = drop.)
+  laply(.data = pieces, .fun = .fun, ..., .progress = .progress, .drop = .drop)
 }
