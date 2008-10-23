@@ -115,8 +115,8 @@ list_to_array <- function(res, labels, .drop) {
 # 
 # @keyword manip
 # @arguments data frame to be processed
-# @arguments function to apply to each piece
 # @arguments variables to split data frame by, as quoted variables, a formula or character vector
+# @arguments function to apply to each piece
 # @arguments other arguments passed on to \code{.fun}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @arguments should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
