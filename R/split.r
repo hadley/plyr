@@ -60,8 +60,12 @@ splitter_a <- function(data, .margins = 1) {
   indices <- expand.grid(dimensions, KEEP.OUT.ATTRS = FALSE)
   names(indices) <- paste("X", 1:ncol(indices), sep="")
   
+  subs <- if (is.list(data) && !is.array(data) && !is.data.frame(data)) "[[" else "["
+  
   pieces <- lapply(1:nrow(indices), 
-    function(i) do.call("[",c(list(data), unname(indices[i, ,drop=TRUE]), drop=TRUE))
+    function(i) do.call(subs,
+      c(list(data), unname(indices[i, ,drop=TRUE]), drop=TRUE)
+    )
   )
   dim(pieces) <- dim(data)[.margins]
   
