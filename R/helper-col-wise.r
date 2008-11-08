@@ -5,7 +5,6 @@
 # on discrete and numeric variables respectively
 # 
 # @arguments function
-# @arguments should the function with wrapped with \code{\link{failwith}(NA)} 
 # @arguments function that tests columns for inclusion
 # @alias catcolwise
 # @alias numcolwise

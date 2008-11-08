@@ -11,8 +11,7 @@ Turn a function that operates on a vector into a function that operates column-w
 \usage{colwise(.fun, .if = function(x) TRUE)}
 \arguments{
 \item{.fun}{function}
-\item{.if}{should the function with wrapped with \code{\link{failwith}(NA)}}
-\item{}{function that tests columns for inclusion}
+\item{.if}{function that tests columns for inclusion}
 }
 
 \details{\code{catcolwise} and \code{numcolwise} provide version that only operate
