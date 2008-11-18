@@ -4,7 +4,7 @@
 # @arguments list of input data
 # @arguments a data frame of labels, one row for each element of res
 # @keywords internal
-list_to_dataframe <- function(res, labels = NULLS) { 
+list_to_dataframe <- function(res, labels = NULL) { 
   if (length(res) == 0) return(data.frame())
   
   atomic <- unlist(llply(res, is.atomic))

@@ -18,7 +18,6 @@
 # studies.
 # 
 # @keyword manip
-# @alias list_to_dataframe
 # @arguments list to be processed
 # @arguments function to apply to each piece
 # @arguments other arguments passed on to \code{.fun}

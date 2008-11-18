@@ -2,7 +2,7 @@ plyr 0.1.2 (2008-XX-XX) ---------------------------------------------------
 
   * a*ply now works correctly with array-lists
   * drop. -> .drop
-  * r*ply now work with ...
+  * r*ply now works with ...
   * use inherits instead of is so method package doesn't need to be loaded
   * fix bug with using formulas
 
