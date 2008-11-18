@@ -20,7 +20,8 @@
 #X splitter_d(mtcars, .(am, vs))
 splitter_d <- function(data, .variables = NULL) {
   splits <- eval.quoted(.variables, data, parent.frame())
-  splitv <- interaction(splits, drop=TRUE)
+  factors <- llply(splits, factor, exclude = NULL)
+  splitv <- interaction(factors, drop=TRUE)
   
   representative <- which(!duplicated(splitv))[order(unique(splitv))]
   split_labels <- data.frame(lapply(splits, function(x) x[representative]))
