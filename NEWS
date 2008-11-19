@@ -1,8 +1,8 @@
-plyr 0.1.3 (2008-XX-XX) ---------------------------------------------------
+plyr 0.1.3 (2008-11-19) ---------------------------------------------------
 
 Fixed problem where when splitting by a variable that contained missing values, missing combinations would be drop, and labels wouldn't match up
 
-plyr 0.1.2 (2008-11-19) ---------------------------------------------------
+plyr 0.1.2 (2008-11-18) ---------------------------------------------------
 
   * a*ply now works correctly with array-lists
   * drop. -> .drop
