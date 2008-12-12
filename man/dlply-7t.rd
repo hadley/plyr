@@ -6,13 +6,14 @@
 \description{
 For each subset of a data frame, apply function then combine results into a  list
 }
-\usage{dlply(.data, .variables, .fun = NULL, ..., .progress = "none")}
+\usage{dlply(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE)}
 \arguments{
 \item{.data}{data frame to be processed}
 \item{.variables}{variables to split data frame by, as quoted variables, a formula or character vector}
 \item{.fun}{function to apply to each piece}
 \item{...}{other arguments passed on to \code{.fun}}
 \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+\item{.drop}{}
 }
 \value{
  \item{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}

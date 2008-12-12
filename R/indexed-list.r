@@ -7,6 +7,7 @@
 # @alias length.indexed_list
 # @alias names.indexed_list
 # @alias as.list.indexed_list
+# @alias [[.indexed_list
 indexed_list <- function(env, index) {
   structure(
     list(env = env, index = index),
@@ -15,13 +16,14 @@ indexed_list <- function(env, index) {
 }
 
 length.indexed_list <- function(x) length(x$index)
+
 "[[.indexed_list" <- function(x, i) {
   x$env$data[x$index[[i]], ]
 }
 
 names.indexed_list <- function(x) names(x$index)
 
-as.list.indexed_list <- function(x) {
+as.list.indexed_list <- function(x, ...) {
   n <- length(x)
   out <- vector("list", n)
   for(i in seq_len(n)) {

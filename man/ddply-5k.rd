@@ -6,13 +6,14 @@
 \description{
 For each subset of a data frame, apply function then combine results into a  data frame
 }
-\usage{ddply(.data, .variables, .fun = NULL, ..., .progress = "none")}
+\usage{ddply(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE)}
 \arguments{
 \item{.data}{data frame to be processed}
 \item{.variables}{variables to split data frame by, as quoted variables, a formula or character vector}
 \item{.fun}{function to apply to each piece}
 \item{...}{other arguments passed on to \code{.fun}}
 \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+\item{.drop}{}
 }
 \value{a data frame}
 \details{All plyr functions use the same split-apply-combine strategy: they split the

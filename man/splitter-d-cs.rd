@@ -6,10 +6,11 @@
 \description{
 Split a data frame into pieces based on variable contained in that data frame
 }
-\usage{splitter_d(data, .variables = NULL)}
+\usage{splitter_d(data, .variables = NULL, drop = TRUE)}
 \arguments{
 \item{data}{}
 \item{.variables}{}
+\item{drop}{}
 }
 \value{a list of data.frames, with attributes that record split details}
 \details{This is the workhorse of the \code{d*ply} functions.  Based on the variables
