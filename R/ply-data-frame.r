@@ -26,8 +26,7 @@
 ldply <- function(.data, .fun = NULL, ..., .progress = "none") {
   if (!inherits(.data, "split")) .data <- as.list(.data)
   res <- llply(.data = .data, .fun = .fun, ..., .progress = .progress)
-  # Just want to treat as a list in here
-  attr(res, "split_labels") <- NULL
+
   
   list_to_dataframe(res, attr(.data, "split_labels"))
 }
@@ -69,10 +68,10 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none") {
 #X base2 <- ddply(baseball, .(id), function(df) {
 #X  transform(df, career_year = year - min(year) + 1)
 #X })
-ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none") {
+ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
   .data <- as.data.frame(.data)
   .variables <- as.quoted(.variables)
-  pieces <- splitter_d(.data, .variables)
+  pieces <- splitter_d(.data, .variables, drop = .drop)
   
   ldply(.data = pieces, .fun = .fun, ..., .progress = .progress)
 }

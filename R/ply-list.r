@@ -39,14 +39,19 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none") {
   
   progress$init(length(.data))
 
-  f2 <- function(...) {
-    res <- .fun(...)
+  n <- length(.data)
+  result <- vector("list", n)
+
+  for(i in seq_len(n)) {
+    res <- .fun(.data[[i]], ...)
+    if (!is.null(res)) result[[i]] <- res
     progress$step()
-    res
   }
   
-  result <- lapply(.data, f2, ...)
-  mostattributes(result) <- attributes(.data)
+  attributes(result)[c("split_type", "split_labels")] <-
+    attributes(.data)[c("split_type", "split_labels")]
+  names(result) <- names(.data)
+  dim(result) <- dim(.data)
   progress$term()
   
   result
@@ -83,10 +88,10 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none") {
 #X with(coef, plot(`(Intercept)`, year))
 #X qual <- laply(models, function(mod) summary(mod)$r.squared)
 #X hist(qual)
-dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none") {
+dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
   .data <- as.data.frame(.data)
   .variables <- as.quoted(.variables)
-  pieces <- splitter_d(.data, .variables)
+  pieces <- splitter_d(.data, .variables, drop = .drop)
   
   llply(.data = pieces, .fun = .fun, ..., .progress = .progress)
 }

@@ -18,17 +18,26 @@
 #X splitter_d(mtcars, .(cyl))
 #X splitter_d(mtcars, .(vs, am))
 #X splitter_d(mtcars, .(am, vs))
-splitter_d <- function(data, .variables = NULL) {
+splitter_d <- function(data, .variables = NULL, drop = TRUE) {
   splits <- eval.quoted(.variables, data, parent.frame())
-  factors <- llply(splits, factor, exclude = NULL)
-  splitv <- interaction(factors, drop=TRUE)
+  factors <- llply(splits, addNA, ifany = TRUE)
+  splitv <- addNA(interaction(factors, drop = drop), ifany = TRUE)
   
-  representative <- which(!duplicated(splitv))[order(unique(splitv))]
-  split_labels <- data.frame(lapply(splits, function(x) x[representative]))
-  
+  if (drop) {
+    # Need levels which occur in data
+    representative <- which(!duplicated(splitv))[order(unique(splitv))]
+    split_labels <- data.frame(lapply(splits, function(x) x[representative]))    
+  } else {
+    # Need all combinations of levels
+    factor_levels <- lapply(factors, levels)
+    split_labels <- expand.grid(factor_levels)
+  }
+
+  index <- tapply(1:nrow(data), splitv, c)
+  il <- indexed_list(environment(), index)
   structure(
-    split(data, splitv),
-    class = c("split", "list"),
+    il,
+    class = c("indexed_list", "split", "list"),
     split_type = "data.frame",
     split_labels = split_labels
   )

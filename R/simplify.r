@@ -22,7 +22,7 @@ list_to_dataframe <- function(res, labels = NULL) {
     l_ply(res, function(x) if(!is.null(x) & !is.data.frame(x)) stop("Not a data.frame!"))
 
     resdf <- do.call("rbind.fill", res)
-    rows <- laply(res, function(x) if(is.null(x)) 0 else nrow(x))
+    rows <- unlist(llply(res, function(x) if(is.null(x)) 0 else nrow(x)))
   }
 
   if (!is.null(labels) && nrow(labels) == length(res)) {
