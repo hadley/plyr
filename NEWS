@@ -1,3 +1,6 @@
+plyr 0.1.5 (2008-XX-XX) ---------------------------------------------------
+
+
 plyr 0.1.4 (2008-12-12) ---------------------------------------------------
 
  * Greatly improved speed (> 10x faster) and memory usage (50%) for splitting data frames with many combinations
