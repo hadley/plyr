@@ -25,8 +25,6 @@ then this function will return a vector of length 0 (\code{vector()}).
 \code{daply} with a function that operates column-wise is similar to
 \code{\link{aggregate}}.
 
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.
 
 @keyword manip
 @arguments data frame to be processed

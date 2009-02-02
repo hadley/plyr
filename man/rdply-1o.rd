@@ -18,9 +18,7 @@ result into a data frame.  If there are no results, then this function
 returns a data frame with zero rows and columns (\code{data.frame()}).
 This function is equivalent to \code{\link{replicate}}, but will always
 return results as a data frame.
-
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.}
+}
 
 \examples{
 rdply(20, mean(runif(100)))

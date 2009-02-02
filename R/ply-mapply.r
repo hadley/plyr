@@ -10,8 +10,6 @@
 # results, then this function will return a data frame with zero rows and
 # columns (\code{data.frame()}).
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments matrix or data frame to use as source of arguments
@@ -40,8 +38,6 @@ mdply <- function(.data, .fun = NULL, ..., .progress = "none") {
 # This function combines the result into an array.  If there are no results,
 # then this function will return a vector of length 0 (\code{vector()}).
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments matrix or data frame to use as source of arguments
@@ -70,8 +66,6 @@ maply <- function(.data, .fun = NULL, ..., .progress = "none") {
 # This function combines the result into a list.  If there are no results,
 # then this function will return a list of length 0  (\code{list()}).
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments matrix or data frame to use as source of arguments
@@ -103,8 +97,6 @@ mlply <- function(.data, .fun = NULL, ..., .progress = "none") {
 # This function combines the result into a list.  If there are no results,
 # then this function will return a list of length 0  (\code{list()}).
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments matrix or data frame to use as source of arguments

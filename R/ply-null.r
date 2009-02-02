@@ -7,8 +7,6 @@
 # elements and discards the output.  This is useful for functions that you are 
 # calling purely for their side effects like display plots and saving output.
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments list to be processed
@@ -44,8 +42,6 @@ l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE) {
 # are calling purely for their side effects like display plots and saving
 # output.
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments data frame to be processed
@@ -72,8 +68,6 @@ d_ply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .prin
 # useful for functions that you are calling purely for their side effects like
 # display plots and saving output.
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments matrix, array or data frame to be processed

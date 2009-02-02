@@ -28,9 +28,7 @@ data frame - in that case pieces will be combined with
 \code{\link{rbind.fill}}.  If \code{.fun} returns an atomic vector of fixed
 length, it will be \code{rbind}ed together and converted to a data frame.
 Any other values will result in an error.
-
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.}
+}
 
 \examples{mean_rbi <- function(df) mean(df$rbi, na.rm=TRUE)
 rbi <- ddply(baseball, .(year), mean_rbi)

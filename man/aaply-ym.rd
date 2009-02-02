@@ -28,8 +28,6 @@ those dimensions are added on to the highest dimensions, rather than the
 lowest dimensions.  This makes \code{aaply} idempotent, so that
 \code{apply(input, X, identity)} is equivalent to \code{aperm(input, X)}.
 
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.
 
 @keyword manip
 @arguments matrix, array or data frame to be processed

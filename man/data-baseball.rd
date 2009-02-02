@@ -6,8 +6,6 @@
 
 This data frame contains batting statistics for a subset of players collected from \url{http://www.baseball-databank.org/}. There are a total of 21,699 records, covering 1,228 players from 1871 to 2007. Only players with more 15 seasons of play are included.
 
-See the baseball case study in the introductory vignette (\code{vignette("intro", "plyr")}) for more details, and example of how you might explore this data.
-
 Variables:
 
 \item id, unique player id

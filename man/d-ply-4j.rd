@@ -22,9 +22,7 @@ the pieces into a single data structure.  This function splits data frames
 by variable and discards the output.  This is useful for functions that you
 are calling purely for their side effects like display plots and saving
 output.
-
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.}
+}
 
 \examples{}
 \keyword{manip}

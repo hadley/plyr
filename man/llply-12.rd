@@ -23,8 +23,6 @@ this function will return a list of length 0  (\code{list()}).
 \code{llply} is equivalent to \code{\link{lapply}} except that it will
 preserve labels and can display a progress bar.
 
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.
 
 @keyword manip
 @arguments list to be processed

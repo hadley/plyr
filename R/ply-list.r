@@ -10,8 +10,6 @@
 # \code{llply} is equivalent to \code{\link{lapply}} except that it will 
 # preserve labels and can display a progress bar.
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments list to be processed
@@ -69,8 +67,6 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none") {
 # \code{dlply} is similar to \code{\link{by}} except that the results are 
 # returned in a different format.
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments data frame to be processed
@@ -109,8 +105,6 @@ dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 # \code{alply} is somewhat similar to \code{\link{apply}} for cases where the
 # results are not atomic.
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments matrix, array or data frame to be processed

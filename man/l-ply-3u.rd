@@ -20,9 +20,7 @@ input into simpler pieces, apply \code{.fun} to each piece, and then combine
 the pieces into a single data structure.  This function splits lists by
 elements and discards the output.  This is useful for functions that you are
 calling purely for their side effects like display plots and saving output.
-
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.}
+}
 
 \examples{}
 \keyword{manip}

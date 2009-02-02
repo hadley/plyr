@@ -18,8 +18,6 @@ Evalulate expression n times then discard results
 This function is equivalent to \code{\link{replicate}}, but never returns
 anything
 
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.
 
 @keyword manip
 @arguments number of times to evaluate the expression

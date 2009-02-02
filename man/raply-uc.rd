@@ -20,8 +20,6 @@ returns a vector of length 0 (\code{vector(0)}).
 This function is equivalent to \code{\link{replicate}}, but will always
 return results as a vector, matrix or array.
 
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.
 
 @keyword manip
 @arguments number of times to evaluate the expression

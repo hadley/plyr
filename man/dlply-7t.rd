@@ -27,9 +27,7 @@ then this function will return a list of length 0  (\code{list()}).
 
 \code{dlply} is similar to \code{\link{by}} except that the results are
 returned in a different format.
-
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.}
+}
 
 \examples{linmod <- function(df) lm(rbi ~ year, data = transform(df, year = year - min(year)))
 models <- dlply(baseball, .(id), linmod)

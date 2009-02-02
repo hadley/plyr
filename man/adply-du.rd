@@ -21,9 +21,7 @@ the pieces into a single data structure. This function splits matrices,
 arrays and data frames by dimensions and combines the result into a data
 frame. If there are no results, then this function will return a data frame
 with zero rows and columns (\code{data.frame()}).
-
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.}
+}
 
 \examples{}
 \keyword{manip}

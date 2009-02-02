@@ -14,8 +14,6 @@
 # length, it will be \code{rbind}ed together and converted to a data frame.
 # Any other values will result in an error.
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments list to be processed
@@ -47,8 +45,6 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none") {
 # length, it will be \code{rbind}ed together and converted to a data frame.
 # Any other values will result in an error.
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments data frame to be processed
@@ -86,8 +82,6 @@ ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 # frame. If there are no results, then this function will return a data frame
 # with zero rows and columns (\code{data.frame()}).
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments matrix, array or data frame to be processed

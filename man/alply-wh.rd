@@ -25,8 +25,6 @@ If there are no results, then this function will return a list of length 0
 \code{alply} is somewhat similar to \code{\link{apply}} for cases where the
 results are not atomic.
 
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.
 
 @keyword manip
 @arguments matrix, array or data frame to be processed

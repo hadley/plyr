@@ -26,8 +26,6 @@ it will always return an array, and the output is transposed with respect
 \code{sapply} - each element of the list corresponds to a column, not a
 row.
 
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.
 
 @keyword manip
 @arguments input list

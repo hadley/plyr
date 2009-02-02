@@ -18,8 +18,6 @@ result into a list.  If there are no results, then this function will return
 a list of length 0  (\code{list()}). This function is equivalent to
 \code{\link{replicate}}, but will always return results as a list.
 
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.
 
 @keyword manip
 @arguments number of times to evaluate the expression

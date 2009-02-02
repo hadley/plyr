@@ -21,9 +21,7 @@ and \code{.fun} wrapped in \code{\link{splat}}.
 
 This function combines the result into a list.  If there are no results,
 then this function will return a list of length 0  (\code{list()}).
-
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.}
+}
 
 \examples{mlply(cbind(1:4, 4:1), rep)
 mlply(cbind(1:4, times = 4:1), rep)

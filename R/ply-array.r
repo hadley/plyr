@@ -12,8 +12,6 @@
 # \code{sapply} - each element of the list corresponds to a column, not a 
 # row.  
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments input list
@@ -54,8 +52,6 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
 # \code{daply} with a function that operates column-wise is similar to
 # \code{\link{aggregate}}. 
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments data frame to be processed
@@ -97,8 +93,6 @@ daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 # lowest dimensions.  This makes \code{aaply} idempotent, so that
 # \code{apply(input, X, identity)} is equivalent to \code{aperm(input, X)}.
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments matrix, array or data frame to be processed

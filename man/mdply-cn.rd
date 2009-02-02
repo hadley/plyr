@@ -22,9 +22,7 @@ and \code{.fun} wrapped in \code{\link{splat}}.
 This function combines the result into a data frame.  If there are no
 results, then this function will return a data frame with zero rows and
 columns (\code{data.frame()}).
-
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.}
+}
 
 \examples{mdply(data.frame(mean = 1:5, sd = 1:5), rnorm, n = 2)
 mdply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 2)

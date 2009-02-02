@@ -21,9 +21,7 @@ and \code{.fun} wrapped in \code{\link{splat}}.
 
 This function combines the result into an array.  If there are no results,
 then this function will return a vector of length 0 (\code{vector()}).
-
-See \code{vignette("intro", "plyr")} for more details, description and case
-studies.}
+}
 
 \examples{maply(cbind(mean = 1:5, sd = 1:5), rnorm, n = 5)
 maply(cbind(1:5, 1:5), rnorm, n = 5)

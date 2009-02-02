@@ -6,8 +6,6 @@
 # a list of length 0  (\code{list()}). This function is equivalent to
 # \code{\link{replicate}}, but will always return results as a list.
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments number of times to evaluate the expression
@@ -46,8 +44,6 @@ rlply <- function(.n, .expr, .progress = "none") {
 # This function is equivalent to \code{\link{replicate}}, but will always
 # return results as a data frame.
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments number of times to evaluate the expression
@@ -80,8 +76,6 @@ rdply <- function(.n, .expr, .progress = "none") {
 # This function is equivalent to \code{\link{replicate}}, but will always
 # return results as a vector, matrix or array.
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments number of times to evaluate the expression
@@ -117,8 +111,6 @@ raply <- function(.n, .expr, .progress = "none", .drop = TRUE) {
 # This function is equivalent to \code{\link{replicate}}, but never returns
 # anything
 # 
-# See \code{vignette("intro", "plyr")} for more details, description and case
-# studies.
 # 
 # @keyword manip
 # @arguments number of times to evaluate the expression
