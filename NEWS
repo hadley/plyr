@@ -1,4 +1,4 @@
-plyr 0.1.5 (2008-XX-XX) ---------------------------------------------------
+plyr 0.1.5 (2008-02-23) ---------------------------------------------------
 
 * colwise now accepts a quoted list as its second argument.  This allows you to specify the names of columns to work on: colwise(mean, .(lat, long))
 * d_ply and a_ply now correctly pass ... to the function
