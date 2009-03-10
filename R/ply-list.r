@@ -26,30 +26,34 @@
 #X llply(x, mean)
 #X llply(x, quantile, probs = 1:3/4)
 llply <- function(.data, .fun = NULL, ..., .progress = "none") {
-  if (!inherits(.data, "split")) .data <- as.list(.data)
-  if (is.null(.fun)) return(.data)
-  if (length(.data) == 0) return(list())
+  pieces <- if (inherits(data, "split")) .data else as.list(.data)
+  if (is.null(.fun)) return(pieces)
+  if (length(pieces) == 0) return(list())
   
   if (is.character(.fun)) .fun <- match.fun(.fun)
   if (!is.function(.fun)) stop(".fun is not a function.")
   
   progress <- create_progress_bar(.progress)
   
-  progress$init(length(.data))
+  progress$init(length(pieces))
 
-  n <- length(.data)
+  n <- length(pieces)
   result <- vector("list", n)
 
   for(i in seq_len(n)) {
-    res <- .fun(.data[[i]], ...)
+    res <- .fun(pieces[[i]], ...)
     if (!is.null(res)) result[[i]] <- res
     progress$step()
   }
   
   attributes(result)[c("split_type", "split_labels")] <-
-    attributes(.data)[c("split_type", "split_labels")]
-  names(result) <- names(.data)
-  dim(result) <- dim(.data)
+    attributes(pieces)[c("split_type", "split_labels")]
+  names(result) <- names(pieces)
+
+  # Only set dimension if not null, otherwise names are removed
+  if (!is.null(dim(pieces))) {
+    dim(result) <- dim(pieces)    
+  }
   progress$term()
   
   result

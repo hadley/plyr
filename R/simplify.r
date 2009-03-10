@@ -25,6 +25,11 @@ list_to_dataframe <- function(res, labels = NULL) {
     rows <- unlist(llply(res, function(x) if(is.null(x)) 0 else nrow(x)))
   }
 
+  # If no labels supplied, use list names
+  if (is.null(labels) && !is.null(names(res))) {
+    labels <- data.frame(id = names(res))
+  }
+
   if (!is.null(labels) && nrow(labels) == length(res)) {
     cols <- setdiff(names(labels), names(resdf))
     resdf <- cbind(labels[rep(1:nrow(labels), rows), cols, drop=FALSE], resdf)
