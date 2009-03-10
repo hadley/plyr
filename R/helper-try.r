@@ -6,7 +6,17 @@
 # @argument should all error messages be suppressed?
 # @value a function
 # @seealso \code{\link{try_default}}
+#X \dontrun{
+#X f <- function(x) if (x == 1) stop("Error!") else 1
+#X f(1)
+#X f(2)
+#X }
+#X
+#X safef <- failwith(NULL, f)
+#X safef(1)
+#X safef(2) 
 failwith <- function(default = NULL, f, quiet = FALSE) {
+  f <- match.fun(f)
   function(...) try_default(f(...), default, quiet = quiet)
 }
 
