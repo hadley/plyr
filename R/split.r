@@ -18,29 +18,49 @@
 #X splitter_d(mtcars, .(cyl))
 #X splitter_d(mtcars, .(vs, am))
 #X splitter_d(mtcars, .(am, vs))
+#X
+#X mtcars$cyl2 <- factor(mtcars$cyl, levels = c(2, 4, 6, 8, 10))
+#X splitter_d(mtcars, .(cyl2), drop = TRUE)
+#X splitter_d(mtcars, .(cyl2), drop = FALSE)
+#X
+#X mtcars$cyl3 <- ifelse(mtcars$vs == 1, NA, mtcars$cyl)
+#X splitter_d(mtcars, .(cyl3))
+#X splitter_d(mtcars, .(cyl3, vs))
+#X splitter_d(mtcars, .(cyl3, vs), drop = FALSE)
 splitter_d <- function(data, .variables = NULL, drop = TRUE) {
   splits <- eval.quoted(.variables, data, parent.frame())
   factors <- llply(splits, addNA, ifany = TRUE)
   splitv <- addNA(interaction(factors, drop = drop), ifany = TRUE)
-  
-  if (drop) {
-    # Need levels which occur in data
-    representative <- which(!duplicated(splitv))[order(unique(splitv))]
-    split_labels <- data.frame(lapply(splits, function(x) x[representative]))    
-  } else {
-    # Need all combinations of levels
-    factor_levels <- lapply(factors, levels)
-    split_labels <- expand.grid(factor_levels)
-  }
+  split_labels <- split_labels(splits, drop = drop)
 
-  index <- tapply(1:nrow(data), splitv, c)
+  index <- tapply(1:nrow(data), splitv, list)
+  # Remove missing values.  These when occur drop = FALSE and 
+  # factor levels do not occur in the data
+  index <- lapply(index, Filter, f = Negate(is.na))
   il <- indexed_list(environment(), index)
+  
   structure(
     il,
     class = c("indexed_list", "split", "list"),
     split_type = "data.frame",
     split_labels = split_labels
   )
+}
+
+split_labels <- function(splits, drop) {
+  factors <- llply(splits, addNA, ifany = TRUE)
+  splitv <- addNA(interaction(factors, drop = drop), ifany = TRUE)
+  
+  if (drop) {
+    # Need levels which occur in data
+    representative <- which(!duplicated(splitv))[order(unique(splitv))]
+    data.frame(lapply(splits, function(x) x[representative]))    
+  } else {
+    # Need all combinations of levels
+    factor_levels <- lapply(factors, levels)
+    names(factor_levels) <- names(splits)
+    expand.grid(factor_levels)
+  }
 }
 
 # Split an array by .margins
@@ -95,7 +115,6 @@ splitter_a <- function(data, .margins = 1) {
     split_labels = split_labels
   )
 }
-
 
 # Subset splits
 # Subset splits, ensuring that labels keep matching
