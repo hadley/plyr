@@ -26,18 +26,17 @@
 #X llply(x, mean)
 #X llply(x, quantile, probs = 1:3/4)
 llply <- function(.data, .fun = NULL, ..., .progress = "none") {
-  pieces <- if (inherits(data, "split")) .data else as.list(.data)
+  pieces <- if (inherits(.data, "split")) .data else as.list(.data)
   if (is.null(.fun)) return(pieces)
-  if (length(pieces) == 0) return(list())
+  n <- length(pieces)
+  if (n == 0) return(list())
   
   if (is.character(.fun)) .fun <- match.fun(.fun)
   if (!is.function(.fun)) stop(".fun is not a function.")
   
   progress <- create_progress_bar(.progress)
-  
-  progress$init(length(pieces))
+  progress$init(n)
 
-  n <- length(pieces)
   result <- vector("list", n)
 
   for(i in seq_len(n)) {
