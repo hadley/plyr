@@ -27,7 +27,7 @@ list_to_dataframe <- function(res, labels = NULL) {
 
   # If no labels supplied, use list names
   if (is.null(labels) && !is.null(names(res))) {
-    labels <- data.frame(id = names(res))
+    labels <- data.frame(.id = names(res))
   }
 
   if (!is.null(labels) && nrow(labels) == length(res)) {
