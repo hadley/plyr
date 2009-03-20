@@ -85,7 +85,7 @@ split_labels <- function(splits, drop) {
 splitter_a <- function(data, .margins = 1) {
   if (!all(.margins %in% seq_len(dims(data)))) stop("Invalid margin")
   
-  dimensions <- lapply(dim(data), seq, from=1)
+  dimensions <- lapply(amv_dim(data), seq, from=1)
   dimensions[-.margins] <- list(TRUE) 
   indices <- expand.grid(dimensions, KEEP.OUT.ATTRS = FALSE)
   names(indices) <- paste("X", 1:ncol(indices), sep="")
