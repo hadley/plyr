@@ -54,10 +54,12 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
   if (all(atomic)) {
     # Atomics need to be same size
     dlength <- unique.default(llply(res, dims))
-    if (length(dlength) != 1) stop("Results must have the same number of dimensions.")
+    if (length(dlength) != 1) 
+      stop("Results must have the same number of dimensions.")
 
     dims <- unique(do.call("rbind", llply(res, amv_dim)))
-    if (nrow(dims) != 1) stop("Results must have the same dimensions.")    
+    if (nrow(dims) != 1) 
+      stop("Results must have the same dimensions.")    
 
     res_dim <- amv_dim(res[[1]])
     res_labels <- amv_dimnames(res[[1]])
@@ -85,7 +87,7 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
   }
   
   index <- cbind(
-    labels[rep(seq_len(nrow(labels)), each = nrow(res_index)), , drop = FALSE],
+    labels[rep(seq_len(nrow(labels)), each = nrow(res_index)), ,drop = FALSE],
     res_index[rep(seq_len(nrow(res_index)), nrow(labels)), , drop = FALSE]
   )
   

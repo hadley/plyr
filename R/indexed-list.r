@@ -18,7 +18,7 @@ indexed_list <- function(env, index) {
 length.indexed_list <- function(x) length(x$index)
 
 "[[.indexed_list" <- function(x, i) {
-  x$env$data[x$index[[i]], ]
+  x$env$data[x$index[[i]], , drop = FALSE]
 }
 
 names.indexed_list <- function(x) names(x$index)

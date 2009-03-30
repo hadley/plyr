@@ -40,7 +40,8 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none") {
   result <- vector("list", n)
 
   for(i in seq_len(n)) {
-    res <- .fun(pieces[[i]], ...)
+    piece <- pieces[[i]]
+    res <- .fun(piece, ...)
     if (!is.null(res)) result[[i]] <- res
     progress$step()
   }
