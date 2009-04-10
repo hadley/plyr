@@ -4,6 +4,7 @@ plyr 0.1.6 (2008-XX-XX) ---------------------------------------------------
 * failwith now accepts a function name, as well as a function itself
 * fix typo that was causing a 50% speed penalty for d*ply
 * aaply now works with vectors
+* fix bug in daply which prevented it from working correctly when data frame was split by multiple variables
 
 plyr 0.1.5 (2008-02-23) ---------------------------------------------------
 

@@ -95,8 +95,12 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
   out_labels <- c(in_labels, res_labels)
   n <- prod(out_dim)
 
-  overall <- order(ninteraction(index))
-  if (length(overall) < n) overall <- match(1:n, overall, nomatch = NA)
+  overall <- ninteraction(index)
+  if (length(overall) < n) {
+    overall <- match(1:n, overall, nomatch = NA)
+  } else {
+    overall <- order(overall)
+  }
   
   out_array <- res[overall]  
   dim(out_array) <- out_dim
