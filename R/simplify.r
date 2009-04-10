@@ -13,7 +13,7 @@ list_to_dataframe <- function(res, labels = NULL) {
     if (length(ulength) != 1) stop("Results are not equal lengths")
     
     if (length(res) > 1) {
-      resdf <- as.data.frame(do.call("rbind", res))      
+      resdf <- as.data.frame(do.call("rbind", res))
     } else {
       resdf <- data.frame(res[[1]])
     }

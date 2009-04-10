@@ -2,9 +2,11 @@ plyr 0.1.6 (2008-XX-XX) ---------------------------------------------------
 
 * use list names where present
 * failwith now accepts a function name, as well as a function itself
+* each now accepts function names, as well as a functions
 * fix typo that was causing a 50% speed penalty for d*ply
 * aaply now works with vectors
 * fix bug in daply which prevented it from working correctly when data frame was split by multiple variables
+* all ply functions deal more elegantly when given function names: can supply a vector of function names, and name is used as label in output
 
 plyr 0.1.5 (2008-02-23) ---------------------------------------------------
 

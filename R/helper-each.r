@@ -10,6 +10,11 @@
 each <- function(...) {
   fnames <- laply(match.call()[-1], deparse)
   fs <- list(...)
+  
+  # Find function names and replace with function objects
+  char <- laply(fs, is.character)
+  fnames[char] <- fs[char]
+  fs[char] <- llply(fs[char], match.fun)
 
   unames <- names(fs)
   if (is.null(unames)) unames <- fnames

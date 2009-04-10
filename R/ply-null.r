@@ -15,7 +15,7 @@
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @argument automatically print each result? (default: \code{FALSE})
 l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE) {
-  if (is.character(.fun)) .fun <- match.fun(.fun)
+  if (is.character(.fun)) .fun <- do.call("each", as.list(.fun))
   if (!is.function(.fun)) stop(".fun is not a function.")
   
   progress <- create_progress_bar(.progress)

@@ -24,7 +24,6 @@
 ldply <- function(.data, .fun = NULL, ..., .progress = "none") {
   if (!inherits(.data, "split")) .data <- as.list(.data)
   res <- llply(.data = .data, .fun = .fun, ..., .progress = .progress)
-
   
   list_to_dataframe(res, attr(.data, "split_labels"))
 }
@@ -53,9 +52,14 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none") {
 # @arguments other arguments passed on to \code{.fun}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @value a data frame
+#X 
+#X ddply(baseball, .(year), "nrow") 
+#X ddply(baseball, .(lg), c("nrow", "ncol")) 
+#X 
 #X mean_rbi <- function(df) mean(df$rbi, na.rm=TRUE)
 #X rbi <- ddply(baseball, .(year), mean_rbi)
 #X with(rbi, plot(year, V1, type="l"))
+#X rbi <- ddply(baseball, .(year), "mean_rbi")
 #X 
 #X mean_rbi <- function(rbi, ...) mean(rbi, na.rm=TRUE)
 #X rbi <- ddply(baseball, .(year), splat(mean_rbi))

@@ -30,7 +30,7 @@
 #X laply(seq_len(10), rep, times = 4)
 #X laply(seq_len(10), matrix, nrow = 2, ncol = 2)
 laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
-  if (is.character(.fun)) .fun <- match.fun(.fun)
+  if (is.character(.fun)) .fun <- do.call("each", as.list(.fun))
   if (!is.function(.fun)) stop(".fun is not a function.")
   
   if (!inherits(.data, "split")) .data <- as.list(.data)

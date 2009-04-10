@@ -31,7 +31,7 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none") {
   n <- length(pieces)
   if (n == 0) return(list())
   
-  if (is.character(.fun)) .fun <- match.fun(.fun)
+  if (is.character(.fun)) .fun <- do.call("each", as.list(.fun))
   if (!is.function(.fun)) stop(".fun is not a function.")
   
   progress <- create_progress_bar(.progress)
