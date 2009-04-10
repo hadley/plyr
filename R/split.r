@@ -30,7 +30,8 @@
 splitter_d <- function(data, .variables = NULL, drop = TRUE) {
   splits <- eval.quoted(.variables, data, parent.frame())
   factors <- llply(splits, addNA, ifany = TRUE)
-  splitv <- addNA(interaction(factors, drop = drop), ifany = TRUE)
+  splitv <- addNA(interaction(factors, drop = drop, lex.order = TRUE), 
+    ifany = TRUE)
   split_labels <- split_labels(splits, drop = drop)
 
   index <- tapply(1:nrow(data), splitv, list)
@@ -49,7 +50,8 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
 
 split_labels <- function(splits, drop) {
   factors <- llply(splits, addNA, ifany = TRUE)
-  splitv <- addNA(interaction(factors, drop = drop), ifany = TRUE)
+  splitv <- addNA(interaction(factors, drop = drop, lex.order = TRUE), 
+    ifany = TRUE)
   
   if (drop) {
     # Need levels which occur in data
