@@ -21,7 +21,7 @@ list_to_dataframe <- function(res, labels = NULL) {
   } else {
     l_ply(res, function(x) if(!is.null(x) & !is.data.frame(x)) stop("Not a data.frame!"))
 
-    resdf <- do.call("rbind.fill", res)
+    resdf <- rbind.fill(res)
     rows <- unlist(llply(res, function(x) if(is.null(x)) 0 else nrow(x)))
   }
 

@@ -7,20 +7,37 @@
 # @arguments data frames to row bind together
 # @keyword manip
 #X rbind.fill(mtcars[c("mpg", "wt")], mtcars[c("wt", "cyl")])
+#X 
+#X bplayer <- split(baseball, baseball$id)
+#X system.time(b1 <- do.call("rbind", bplayer))
+#X rownames(b1) <- NULL
+#X system.time(b2 <- rbind.fill(bplayer))
+#X stopifnot(all.equal(b1, b2))
 rbind.fill <- function(...) {
   dfs <- list(...)
   if (length(dfs) == 0) return(list())
-
-  all.names <- unique(unlist(lapply(dfs, names)))
-  do.call("rbind", compact(lapply(dfs, function(df) {
-    if (length(df) == 0 || nrow(df) == 0) return(NULL)
+  if (is.list(dfs[[1]]) && !is.data.frame(dfs[[1]])) {
+    dfs <- dfs[[1]]
+  }
+  
+  rows <- unlist(lapply(dfs, nrow))
+  n <- sum(rows)
+  
+  output <- list()
+  pos <- matrix(cumsum(rbind(1, rows - 1)), ncol = 2, byrow = T)
+  # head(cbind(pos, pos[,2] - pos[,1] + 1, rows))
+  
+  for(i in rev(seq_along(rows))) {
+    rng <- pos[i, 1]:pos[i, 2]
+    df <- dfs[[i]]
     
-    missing..variables <- setdiff(all.names, names(df))
-    if (length(missing..variables) > 0) df[, missing..variables] <- NA
-    df
-  })))
+    for(var in names(df)) {
+      output[[var]][rng] <- df[[var]]
+    }
+  }
+  
+  as.data.frame(output, stringsAsFactors = FALSE)
 }
-
 
 # Compact list
 # Remove all NULL entries from a list
