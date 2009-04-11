@@ -8,10 +8,26 @@
 # @alias names.indexed_array
 # @alias length.indexed_array
 indexed_array <- function(env, index) {
-  if (is.list(env$data) && !is.data.frame(env$data)) { # && !is.array(data) 
-    subs <- c("[[", "]]")
+  exact <- all(laply(index, is.numeric))
+
+  # Situations that should use [
+  #   * data.frame
+  #   * normal array
+  #   * normal vector
+  #   * list-array with inexact indexing
+  # 
+  # Situations that should use [[
+  #   * list
+  #   * list-array with exact indexing
+  
+  if (is.list(env$data)) {
+    if (is.data.frame(env$data) || (is.array(env$data) && !exact)) {
+      subs <- c("[", "]")
+    } else {
+      subs <- c("[[", "]]")    
+    }
   } else {
-    subs <- c("[", "]")
+    subs <- c("[", "]")    
   }
   
   structure(
