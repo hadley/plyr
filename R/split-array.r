@@ -17,6 +17,10 @@
 # @value a list of lower-d slices, with attributes that record split details
 #X splitter_a(mtcars, 1)
 #X splitter_a(mtcars, 2)
+#X
+#X splitter_a(ozone, 2)
+#X splitter_a(ozone, 3)
+#X splitter_a(ozone, 1:2)
 splitter_a <- function(data, .margins = 1) {
   if (!all(.margins %in% seq_len(dims(data)))) stop("Invalid margin")
   
@@ -24,7 +28,6 @@ splitter_a <- function(data, .margins = 1) {
   dimensions[-.margins] <- list(TRUE) 
   indices <- expand.grid(dimensions, KEEP.OUT.ATTRS = FALSE)
   names(indices) <- paste("X", 1:ncol(indices), sep="")
-  
   
   il <- indexed_array(environment(), indices)
   

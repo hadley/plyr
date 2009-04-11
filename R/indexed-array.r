@@ -5,6 +5,7 @@
 # @argument list of indices
 # @keywords internal
 # @alias [[.indexed_array
+# @alias names.indexed_array
 # @alias length.indexed_array
 indexed_array <- function(env, index) {
   if (is.list(env$data) && !is.data.frame(env$data)) { # && !is.array(data) 
@@ -31,3 +32,5 @@ length.indexed_array <- function(x) nrow(x$index)
     sep = "")
   eval(parse(text = call))
 }
+
+names.indexed_array <- function(x) rownames(x$index)

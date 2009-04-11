@@ -15,5 +15,13 @@ Modify a function so that it returns a default value when there is an error.
 \value{a function}
 \details{}
 \seealso{\code{\link{try_default}}}
-\examples{}
+\examples{f <- function(x) if (x == 1) stop("Error!") else 1
+\dontrun{
+f(1)
+f(2)
+}
+
+safef <- failwith(NULL, f)
+safef(1)
+safef(2) }
 

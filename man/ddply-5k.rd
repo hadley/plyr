@@ -30,9 +30,14 @@ length, it will be \code{rbind}ed together and converted to a data frame.
 Any other values will result in an error.
 }
 
-\examples{mean_rbi <- function(df) mean(df$rbi, na.rm=TRUE)
+\examples{
+ddply(baseball, .(year), "nrow") 
+ddply(baseball, .(lg), c("nrow", "ncol")) 
+
+mean_rbi <- function(df) mean(df$rbi, na.rm=TRUE)
 rbi <- ddply(baseball, .(year), mean_rbi)
 with(rbi, plot(year, V1, type="l"))
+rbi <- ddply(baseball, .(year), "mean_rbi")
 
 mean_rbi <- function(rbi, ...) mean(rbi, na.rm=TRUE)
 rbi <- ddply(baseball, .(year), splat(mean_rbi))

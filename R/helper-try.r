@@ -6,8 +6,8 @@
 # @argument should all error messages be suppressed?
 # @value a function
 # @seealso \code{\link{try_default}}
-#X \dontrun{
 #X f <- function(x) if (x == 1) stop("Error!") else 1
+#X \dontrun{
 #X f(1)
 #X f(2)
 #X }

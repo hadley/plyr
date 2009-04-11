@@ -12,8 +12,8 @@
 # other operations.
 # 
 # @seealso \code{\link{.}} for quoting variables, \code{\link{split}}
-# @parameters data frame
-# @parameters a \link{quoted} list of variables, a formula, or character vector
+# @arguments data frame
+# @arguments a \link{quoted} list of variables, a formula, or character vector
 # @value a list of data.frames, with attributes that record split details
 #X splitter_d(mtcars, .(cyl))
 #X splitter_d(mtcars, .(vs, am))
@@ -48,6 +48,12 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
   )
 }
 
+# Generate labels for split data frame
+# Create data frame giving labels for split data frame.
+# 
+# @arguments list of variables to split up by
+# @argument whether all possible combinations should be considered, or only those present in the data
+# @keywords internal
 split_labels <- function(splits, drop) {
   factors <- llply(splits, addNA, ifany = TRUE)
   splitv <- addNA(interaction(factors, drop = drop, lex.order = TRUE), 

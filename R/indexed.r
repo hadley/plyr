@@ -9,7 +9,14 @@ as.list.indexed <- function(x, ...) {
     out[[i]] <- x[[i]]
   }
   
-  mostattributes(out) <- attributes(x)
   class(out) <- c("split", "list")
   out
+}
+
+print.indexed <- function(x, ...) {
+  print(as.list(x))
+}
+
+"[.indexed" <- function(x, ...) {
+  as.list(x)[...]
 }

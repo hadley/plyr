@@ -8,6 +8,8 @@
 # @alias names.indexed
 # @alias as.list.indexed
 # @alias [[.indexed_df
+# @alias [.indexed 
+# @alias print.indexed
 indexed_df <- function(env, index) {
   structure(
     list(env = env, index = index),

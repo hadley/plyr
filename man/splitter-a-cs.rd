@@ -24,5 +24,9 @@ also includes enough information to recreate the split from attributes on
 the list of pieces.}
 
 \examples{splitter_a(mtcars, 1)
-splitter_a(mtcars, 2)}
+splitter_a(mtcars, 2)
+
+splitter_a(ozone, 2)
+splitter_a(ozone, 3)
+splitter_a(ozone, 1:2)}
 
