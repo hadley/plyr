@@ -50,7 +50,7 @@ colwise <- function(.fun, .cols = function(x) TRUE) {
     filtered <- filter(df)
     if (ncol(filtered) == 0) return(data.frame())
     
-    df <- as.data.frame(llply(filtered, .fun, ...))
+    df <- as.data.frame(lapply(filtered, .fun, ...))
     names(df) <- names(filtered)
     df
   }
