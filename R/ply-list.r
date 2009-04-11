@@ -44,7 +44,7 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none") {
     
     res <- try(.fun(piece, ...))
     if (inherits(res, "try-error")) {
-      piece <- capture.output(print.default(piece))
+      piece <- paste(capture.output(print(piece)), collapse = "\n")
       stop("with piece ", i, ": \n", piece, call. = FALSE)
     }
     
