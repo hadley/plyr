@@ -1,4 +1,11 @@
-plyr is a set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each pieces and then put all the pieces back together.  It's already possible to do this with split and the apply functions, but plyr just makes it all a bit easier with:
+plyr is a set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each pieces and then put all the pieces back together.  This is useful if you want to:
+
+  * fit the same model to subsets of a data frame
+  * quickly calculate summary statistics for each group
+  * perform group-wise transformations like scaling or standardising
+  * eliminate for-loops in your code
+
+It's already possible to do this with split and the apply functions, but plyr just makes it all a bit easier with:
 
   * consistent names, arguments and outputs
   * input from and output to data.frames, matrices and lists
