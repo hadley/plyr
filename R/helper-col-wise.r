@@ -46,10 +46,11 @@ colwise <- function(.fun, .cols = function(x) TRUE) {
   }
   
   function(df, ...) {
+    stopifnot(is.data.frame(df))
     filtered <- filter(df)
     if (ncol(filtered) == 0) return(data.frame())
     
-    df <- do.call("data.frame", alply(filtered, 2, .fun, ...))
+    df <- as.data.frame(llply(filtered, .fun, ...))
     names(df) <- names(filtered)
     df
   }

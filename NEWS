@@ -12,6 +12,7 @@ Speed-ups
 * massive speed ups for splitting large arrays
 * fixed typo that was causing a 50% speed penalty for d*ply
 * rewritten rbind.fill is considerably (> 4x) faster for many data frames
+* colwise about twice as fast
 
 Bug fixes:
 
