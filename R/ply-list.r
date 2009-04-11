@@ -41,7 +41,13 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none") {
 
   for(i in seq_len(n)) {
     piece <- pieces[[i]]
-    res <- .fun(piece, ...)
+    
+    res <- try(.fun(piece, ...))
+    if (inherits(res, "try-error")) {
+      piece <- capture.output(print.default(piece))
+      stop("with piece ", i, ": \n", piece, call. = FALSE)
+    }
+    
     if (!is.null(res)) result[[i]] <- res
     progress$step()
   }

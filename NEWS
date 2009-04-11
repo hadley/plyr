@@ -9,6 +9,7 @@ plyr 0.1.6 (2008-XX-XX) ---------------------------------------------------
 * all ply functions deal more elegantly when given function names: can supply a vector of function names, and name is used as label in output
 * ddply: first variable now varies slowest as you'd expect
 * massive speed ups for splitting large arrays, in a similar way to data frames
+* first attempt at informative error messages
 
 plyr 0.1.5 (2008-02-23) ---------------------------------------------------
 
