@@ -1,38 +1,15 @@
-plyr is a set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each pieces and then put all the pieces back together.  This is useful if you want to:
+plyr is a set of tools for a common set of problems: you need to break down a big data structure into manageable pieces, operate on each piece and then put all the pieces back together.  For example, you might want to:
 
   * fit the same model to subsets of a data frame
   * quickly calculate summary statistics for each group
   * perform group-wise transformations like scaling or standardising
   * eliminate for-loops in your code
 
-It's already possible to do this with split and the apply functions, but plyr just makes it all a bit easier with:
+It's already possible to do this with built-in functions (like split and the apply functions), but plyr just makes it all a bit easier with:
 
-  * consistent names, arguments and outputs
+  * absolutely consistent names, arguments and outputs
   * input from and output to data.frames, matrices and lists
   * progress bars to keep track of long running operations
-  * built-in error recovery 
-  * the choice of passing chunks as rows or as variables
+  * built-in error recovery, and informative error messages
 
-plyr functions are named according to the type of object they input (first letter) and output (second letter):
-
-  * llply = from a list to a list
-  * alply = from an array (or vector, or matrix) to a list
-  * ldply = from a list to a data.frame
-  * d_ply = from a data.frame, ignore output
-  * and so on for llply, laply, ldply, l_ply, alply, aaply, adply, a_ply, dlply, daply, dply, d_ply
-
-plyr also provides:
-
-  * m*ply which works in a similar way to mapply
-  * r*ply which works in a similar way to replicate
-  
-plyr also has a number of helper functions that operate on functions, returning functions
-  
-  * colwise to turn functions that operate on a single vector of numbers into functions that operate on columns
-  * each to return a named vector containing the results of multiple functions
-
-You can find out more at http://had.co.nz/plyr/, including a 20 page introductory guide, http://had.co.nz/plyr/plyr-intro.pdf.
-
-Regards,
-
-Hadley
+You can find out more at http://had.co.nz/plyr/, including a 20 page introductory guide, http://had.co.nz/plyr/plyr-intro.pdf.  You can ask questions about plyr (and data-manipulation in general) on the plyr mailing list.  Sign up at http://groups.google.com/group/manipulatr
