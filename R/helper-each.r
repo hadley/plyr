@@ -21,11 +21,21 @@ each <- function(...) {
   unames[unames == ""] <- fnames[unames == ""]
   
   n <- length(fs)
+  proto <- NULL
   
   function(x, ...) {
-    results <- vector("numeric", length=n)
-    for(i in 1:n) results[[i]] <- fs[[i]](x, ...)
-    names(results) <- unames
-    results
+    
+    # Construct prtotype for output on first call
+    if (is.null(proto)) {
+      result <<- vector("list", length = n)
+      names(result) <- unames
+      
+      for(i in 1:n) result[[i]] <- fs[[i]](x, ...)
+      proto <<- list_to_vector(result)
+    } else {
+      for(i in 1:n) proto[[i]] <- fs[[i]](x, ...)      
+    }
+    proto
+    
   }
 }
