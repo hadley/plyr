@@ -42,7 +42,7 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
   
   structure(
     il,
-    class = c("indexed", "indexed_df", "split", "list"),
+    class = c(class(il), "split", "list"),
     split_type = "data.frame",
     split_labels = split_labels
   )

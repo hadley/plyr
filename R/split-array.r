@@ -1,4 +1,3 @@
-
 # Split an array by .margins
 # Split a 2d or higher data structure into lower-d pieces based
 # 
@@ -26,16 +25,8 @@ splitter_a <- function(data, .margins = 1) {
   indices <- expand.grid(dimensions, KEEP.OUT.ATTRS = FALSE)
   names(indices) <- paste("X", 1:ncol(indices), sep="")
   
-  # && !is.array(data) 
-  subs <- if (is.list(data) && !is.data.frame(data)) "[[" else "["
   
-  browser()
-  pieces <- lapply(1:nrow(indices), 
-    function(i) do.call(subs,
-      c(list(data), unname(indices[i, ,drop=TRUE]), drop=TRUE)
-    )
-  )
-  dim(pieces) <- dim(data)[.margins]
+  il <- indexed_array(environment(), indices)
   
   if (is.data.frame(data) & identical(.margins, 1)) {
     split_labels <- data
@@ -46,10 +37,9 @@ splitter_a <- function(data, .margins = 1) {
     if (!is.null(colnames)) names(split_labels) <- colnames
   }
 
-
   structure(
-    pieces,
-    class = c("split", "list"),
+    il,
+    class = c(class(il), "split", "list"),
     split_type = "array",
     split_labels = split_labels
   )
