@@ -25,13 +25,14 @@
 #X
 #X llply(x, mean)
 #X llply(x, quantile, probs = 1:3/4)
-llply <- function(.data, .fun = NULL, ..., .progress = "none") {
+llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE) {
   pieces <- if (inherits(.data, "split")) .data else as.list(.data)
   if (is.null(.fun)) return(pieces)
   n <- length(pieces)
   if (n == 0) return(list())
   
-  if (is.character(.fun)) .fun <- do.call("each", as.list(.fun))
+  if (is.character(.fun)) .fun <- match.fun(.fun)  
+  # .fun <- do.call("each", as.list(.fun))
   if (!is.function(.fun)) stop(".fun is not a function.")
   
   progress <- create_progress_bar(.progress)
@@ -42,10 +43,15 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none") {
   for(i in seq_len(n)) {
     piece <- pieces[[i]]
     
-    res <- try(.fun(piece, ...))
-    if (inherits(res, "try-error")) {
-      piece <- paste(capture.output(print(piece)), collapse = "\n")
-      stop("with piece ", i, ": \n", piece, call. = FALSE)
+    # Display informative error messages, if desired
+    if (.inform) {
+      res <- try(.fun(piece, ...))
+      if (inherits(res, "try-error")) {
+        piece <- paste(capture.output(print(piece)), collapse = "\n")
+        stop("with piece ", i, ": \n", piece, call. = FALSE)
+      }      
+    } else {
+      res <- .fun(piece, ...)
     }
     
     if (!is.null(res)) result[[i]] <- res

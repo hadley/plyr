@@ -5,7 +5,7 @@ Improvements:
 * all ply functions deal more elegantly when given function names: can supply a vector of function names, and name is used as label in output
 * failwith and each now work with function names as well as functions (i.e. "nrow" instead of nrow)
 * l*ply will use list names where present
-* error messages now give you information about where the error actual occred in your data structure - hopefully this will make problems easier to track down
+* if .inform is TRUE, error messages will give you information about where errors within your data - hopefully this will make problems easier to track down
 
 Speed-ups
 
