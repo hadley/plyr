@@ -15,4 +15,4 @@ Reduce/simplify a list of homogenous objects to a data frame
 \details{}
 
 \examples{}
-
+\keyword{internal}

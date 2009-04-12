@@ -27,16 +27,7 @@ always return an array, and when the function returns >1 d data structures,
 those dimensions are added on to the highest dimensions, rather than the
 lowest dimensions.  This makes \code{aaply} idempotent, so that
 \code{apply(input, X, identity)} is equivalent to \code{aperm(input, X)}.
-
-
-@keyword manip
-@arguments matrix, array or data frame to be processed
-@arguments a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions
-@arguments function to apply to each piece
-@arguments other arguments passed on to \code{.fun}
-@arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
-@arguments should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
-@value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}
+}
 
 \examples{dim(ozone)
 aaply(ozone, 1, mean)

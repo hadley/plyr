@@ -97,7 +97,6 @@ mlply <- function(.data, .fun = NULL, ..., .progress = "none") {
 # This function combines the result into a list.  If there are no results,
 # then this function will return a list of length 0  (\code{list()}).
 # 
-# 
 # @keyword manip
 # @arguments matrix or data frame to use as source of arguments
 # @arguments function to be called with varying arguments

@@ -1,7 +1,7 @@
 # Numerical interaction
 # A purely numerical interaction function that powers \code{aaply}.
 # 
-# @keywords internal
+# @keyword internal
 ninteraction <- function(.variables, drop = FALSE) {  
   if (length(.variables) == 0) {
     res <- structure(rep.int(1L, nrow(.variables)), n = 1L)

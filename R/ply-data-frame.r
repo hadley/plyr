@@ -52,7 +52,6 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none") {
 # @arguments other arguments passed on to \code{.fun}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @value a data frame
-#X 
 #X ddply(baseball, .(year), "nrow") 
 #X ddply(baseball, .(lg), c("nrow", "ncol")) 
 #X 
@@ -85,7 +84,6 @@ ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 # arrays and data frames by dimensions and combines the result into a data
 # frame. If there are no results, then this function will return a data frame
 # with zero rows and columns (\code{data.frame()}).
-# 
 # 
 # @keyword manip
 # @arguments matrix, array or data frame to be processed

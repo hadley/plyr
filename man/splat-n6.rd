@@ -12,7 +12,10 @@ Wraps a function in do.call
 }
 \value{a function}
 \details{This is useful when you want to pass a function a row of data frame or
-array, and don't want to manually pull it apart in your function.}
+array, and don't want to manually pull it apart in your function.
+
+@arguments function to splat
+@value a function}
 
 \examples{hp_per_cyl <- function(hp, cyl, ...) hp / cyl
 splat(hp_per_cyl)(mtcars[1,])

@@ -2,7 +2,7 @@
 # Subset splits
 # Subset splits, ensuring that labels keep matching
 # 
-# @keywords internal
+# @keyword internal
 "[.split" <- function(x, i, ...) {
   structure(
     NextMethod(),
@@ -26,7 +26,7 @@ as.list.split <- function(x, ...) {
 # Print split
 # Don't print labels, so it appears like a regular list
 # 
-# @keywords internal
+# @keyword internal
 print.split <- function(x, ...) {
   print(as.list(x))
 }

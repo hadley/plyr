@@ -15,4 +15,4 @@ A purely numerical interaction function that powers \code{aaply}.
 \details{}
 
 \examples{}
-
+\keyword{internal}

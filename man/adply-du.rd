@@ -20,8 +20,7 @@ input into simpler pieces, apply \code{.fun} to each piece, and then combine
 the pieces into a single data structure. This function splits matrices,
 arrays and data frames by dimensions and combines the result into a data
 frame. If there are no results, then this function will return a data frame
-with zero rows and columns (\code{data.frame()}).
-}
+with zero rows and columns (\code{data.frame()}).}
 
 \examples{}
 \keyword{manip}

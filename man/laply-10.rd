@@ -25,15 +25,7 @@ then this function will return a vector of length 0 (\code{vector()}).
 it will always return an array, and the output is transposed with respect
 \code{sapply} - each element of the list corresponds to a column, not a
 row.
-
-
-@keyword manip
-@arguments input list
-@arguments function to apply to each piece
-@arguments other arguments passed on to \code{.fun}
-@arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
-@arguments should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
-@value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}
+}
 
 \examples{laply(baseball, is.factor)
 # cf

@@ -21,4 +21,4 @@ Create a indexed list, a space efficient way of indexing into a large data frame
 \details{}
 
 \examples{}
-
+\keyword{internal}

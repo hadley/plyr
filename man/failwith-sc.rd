@@ -24,4 +24,4 @@ f(2)
 safef <- failwith(NULL, f)
 safef(1)
 safef(2) }
-
+\keyword{debugging}

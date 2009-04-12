@@ -33,4 +33,4 @@ See the examples.}
 l_ply(1:1000, identity, .progress = "tk")
 l_ply(1:1000, identity, .progress = "text")
 l_ply(1:1000, identity, .progress = progress_text(char = "-"))}
-
+\keyword{utilities}

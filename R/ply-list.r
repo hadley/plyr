@@ -17,7 +17,6 @@
 # @arguments other arguments passed on to \code{.fun}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @value list of results
-# 
 #X llply(llply(mtcars, round), table)
 #X llply(baseball, summary)
 #X # Examples from ?lapply
@@ -129,7 +128,6 @@ dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 # @arguments other arguments passed on to \code{.fun}
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @value list of results
-# 
 #X alply(ozone, 3, quantile)
 #X alply(ozone, 3, function(x) table(round(x)))
 alply <- function(.data, .margins, .fun = NULL, ..., .progress = "none") {

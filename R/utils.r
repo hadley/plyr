@@ -11,7 +11,7 @@ is.discrete <- function(x) is.factor(x) || is.character(x) || is.logical(x)
 # Un-rowname
 # Strip rownames from an object
 # 
-# @keywords internal
+# @keyword internal
 unrowname <- function(x) {
   rownames(x) <- NULL
   x

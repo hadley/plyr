@@ -53,7 +53,7 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
 # 
 # @arguments list of variables to split up by
 # @argument whether all possible combinations should be considered, or only those present in the data
-# @keywords internal
+# @keyword internal
 split_labels <- function(splits, drop) {
   factors <- llply(splits, addNA, ifany = TRUE)
   splitv <- addNA(interaction(factors, drop = drop, lex.order = TRUE), 

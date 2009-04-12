@@ -3,7 +3,7 @@
 # 
 # @arguments environment containing data frame
 # @argument list of indices
-# @keywords internal
+# @keyword internal
 # @alias [[.indexed_array
 # @alias names.indexed_array
 # @alias length.indexed_array

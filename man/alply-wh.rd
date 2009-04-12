@@ -24,15 +24,7 @@ If there are no results, then this function will return a list of length 0
 
 \code{alply} is somewhat similar to \code{\link{apply}} for cases where the
 results are not atomic.
-
-
-@keyword manip
-@arguments matrix, array or data frame to be processed
-@arguments a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions
-@arguments function to apply to each piece
-@arguments other arguments passed on to \code{.fun}
-@arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
-@value list of results}
+}
 
 \examples{alply(ozone, 3, quantile)
 alply(ozone, 3, function(x) table(round(x)))}

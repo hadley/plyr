@@ -6,6 +6,7 @@
 # 
 # @arguments function to splat
 # @value a function
+# 
 #X hp_per_cyl <- function(hp, cyl, ...) hp / cyl
 #X splat(hp_per_cyl)(mtcars[1,])
 #X splat(hp_per_cyl)(mtcars)

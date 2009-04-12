@@ -10,7 +10,7 @@
 # \code{laply} is very similar in spirit to \code{\link{sapply}} except that
 # it will always return an array, and the output is transposed with respect
 # \code{sapply} - each element of the list corresponds to a column, not a 
-# row.  
+# row.
 # 
 # 
 # @keyword manip
@@ -20,7 +20,6 @@
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @arguments should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
 # @value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
-# 
 #X laply(baseball, is.factor)
 #X # cf
 #X ldply(baseball, is.factor)
@@ -52,7 +51,6 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
 # \code{daply} with a function that operates column-wise is similar to
 # \code{\link{aggregate}}. 
 # 
-# 
 # @keyword manip
 # @arguments data frame to be processed
 # @arguments variables to split data frame by, as quoted variables, a formula or character vector
@@ -61,7 +59,6 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @arguments should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
 # @value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
-# 
 #X daply(baseball, .(year), nrow)
 #X
 #X # Several different ways of summarising by variables that should not be 
@@ -102,7 +99,6 @@ daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 # @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
 # @arguments should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
 # @value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
-#
 #X dim(ozone)
 #X aaply(ozone, 1, mean)
 #X aaply(ozone, 1, mean, .drop = FALSE)

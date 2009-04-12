@@ -6,12 +6,13 @@
 \description{
 For each element of a list, apply function then combine results into a list
 }
-\usage{llply(.data, .fun = NULL, ..., .progress = "none")}
+\usage{llply(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE)}
 \arguments{
 \item{.data}{list to be processed}
 \item{.fun}{function to apply to each piece}
 \item{...}{other arguments passed on to \code{.fun}}
 \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+\item{.inform}{}
 }
 \value{list of results}
 \details{All plyr functions use the same split-apply-combine strategy: they split the
@@ -22,14 +23,7 @@ this function will return a list of length 0  (\code{list()}).
 
 \code{llply} is equivalent to \code{\link{lapply}} except that it will
 preserve labels and can display a progress bar.
-
-
-@keyword manip
-@arguments list to be processed
-@arguments function to apply to each piece
-@arguments other arguments passed on to \code{.fun}
-@arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
-@value list of results}
+}
 
 \examples{llply(llply(mtcars, round), table)
 llply(baseball, summary)

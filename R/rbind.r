@@ -54,6 +54,10 @@ rbind.fill <- function(...) {
 # @keyword manip 
 compact <- function(l) Filter(Negate(is.null), l)
 
+# Convert list to data frame
+# Works like cbind, but crams everything into a column
+# 
+# @keyword internal
 as_df <- function(output) {
   if (length(output) == 0) return(data.frame())
   # Convert list to data.frame

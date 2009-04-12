@@ -21,8 +21,7 @@
 # 
 # @arguments type of progress bar to create
 # @seealso \code{\link{progress_none}}, \code{\link{progress_text}}, \code{\link{progress_tk}}, \code{\link{progress_win}}
-# @keywords asdf
-# @keywords
+# @keyword utilities
 #X l_ply(1:1000, identity, .progress = "none")
 #X l_ply(1:1000, identity, .progress = "tk")
 #X l_ply(1:1000, identity, .progress = "text")
@@ -38,7 +37,7 @@ create_progress_bar <- function(name = "none") {
 # This the default progress bar used by plyr functions.  It's very simple to
 # understand - it does nothing!
 # 
-# @keywords internal
+# @keyword internal
 #X l_ply(1:100, identity, .progress = "none")
 progress_none <- function() {
   list(

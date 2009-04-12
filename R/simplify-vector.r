@@ -2,7 +2,7 @@
 # Reduce/simplify a list of homogenous objects to a vector
 # 
 # @arguments list of input data
-# @keywords internal
+# @keyword internal
 list_to_vector <- function(res) {
   if (length(res) == 0) return(vector())
   n <- length(res)

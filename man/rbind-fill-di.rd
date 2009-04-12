@@ -14,5 +14,11 @@
 \details{This is a minor enhancement to \code{\link{rbind}} which adds in columns
 that are not present in all inputs.}
 
-\examples{rbind.fill(mtcars[c("mpg", "wt")], mtcars[c("wt", "cyl")])}
+\examples{rbind.fill(mtcars[c("mpg", "wt")], mtcars[c("wt", "cyl")])
+
+bplayer <- split(baseball, baseball$id)
+system.time(b1 <- do.call("rbind", bplayer))
+rownames(b1) <- NULL
+system.time(b2 <- rbind.fill(bplayer))
+stopifnot(all.equal(b1, b2))}
 \keyword{manip}

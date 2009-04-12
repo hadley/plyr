@@ -15,4 +15,4 @@ A progress bar that does nothing
 understand - it does nothing!}
 
 \examples{l_ply(1:100, identity, .progress = "none")}
-
+\keyword{internal}

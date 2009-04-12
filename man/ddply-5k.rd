@@ -30,8 +30,7 @@ length, it will be \code{rbind}ed together and converted to a data frame.
 Any other values will result in an error.
 }
 
-\examples{
-ddply(baseball, .(year), "nrow") 
+\examples{ddply(baseball, .(year), "nrow") 
 ddply(baseball, .(lg), c("nrow", "ncol")) 
 
 mean_rbi <- function(df) mean(df$rbi, na.rm=TRUE)

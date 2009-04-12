@@ -20,8 +20,7 @@ are just a convenient wrapper around \code{a*ply} with \code{margins = 1}
 and \code{.fun} wrapped in \code{\link{splat}}.
 
 This function combines the result into a list.  If there are no results,
-then this function will return a list of length 0  (\code{list()}).
-}
+then this function will return a list of length 0  (\code{list()}).}
 
 \examples{}
 \keyword{manip}

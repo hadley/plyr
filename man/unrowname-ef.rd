@@ -14,4 +14,4 @@ Strip rownames from an object
 \details{}
 
 \examples{}
-
+\keyword{internal}

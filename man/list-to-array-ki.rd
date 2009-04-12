@@ -16,4 +16,4 @@ Reduce/simplify a list of homogenous objects to an array
 \details{}
 
 \examples{}
-
+\keyword{internal}
