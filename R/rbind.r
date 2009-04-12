@@ -21,22 +21,30 @@ rbind.fill <- function(...) {
   }
   
   rows <- unlist(lapply(dfs, nrow))
-  n <- sum(rows)
   
   output <- list()
+
+  # Set up factors
+  factors <- names(dfs[[1]])[laply(dfs[[1]], is.factor)]
+  for(var in factors) {
+    all <- llply(dfs, function(df) levels(df[[var]]))
+    output[[var]] <- factor(levels = unique(unlist(all)))
+  }
+
+  # Compute start and end positions for each matrix
   pos <- matrix(cumsum(rbind(1, rows - 1)), ncol = 2, byrow = T)
-  # head(cbind(pos, pos[,2] - pos[,1] + 1, rows))
   
-  for(i in rev(seq_along(rows))) {
+  # Do in reverse so first step expands to largest size
+  for(i in rev(seq_along(rows))) { 
     rng <- pos[i, 1]:pos[i, 2]
     df <- dfs[[i]]
     
     for(var in names(df)) {
-      output[[var]][rng] <- df[[var]]
+      if (length(df[[var]]) > 0) output[[var]][rng] <- df[[var]]
     }
   }
   
-  as.data.frame(output, stringsAsFactors = FALSE)
+  as_df(output)
 }
 
 # Compact list
@@ -45,3 +53,16 @@ rbind.fill <- function(...) {
 # @arguments list
 # @keyword manip 
 compact <- function(l) Filter(Negate(is.null), l)
+
+as_df <- function(output) {
+  if (length(output) == 0) return(data.frame())
+  # Convert list to data.frame
+  #  Complication necessary to support stamp from reshape, which may
+  #  have columns containing data frames
+  
+  df <- data.frame(matrix(ncol = 0, nrow = length(output[[1]])))
+  for(var in names(output)) {
+    df[var] <- output[var]
+  }
+  df  
+}
