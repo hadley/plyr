@@ -4,6 +4,7 @@ Improvements:
 
 * all ply functions deal more elegantly when given function names: can supply a vector of function names, and name is used as label in output
 * failwith and each now work with function names as well as functions (i.e. "nrow" instead of nrow)
+* each now accepts a list of functions or a vector of function names
 * l*ply will use list names where present
 * if .inform is TRUE, error messages will give you information about where errors within your data - hopefully this will make problems easier to track down
 

@@ -6,10 +6,20 @@
 # @arguments functions to combine
 # @keyword manip
 #X each(min, max)(1:10)
+#X each("min", "max")(1:10)
+#X each(c("min", "max"))(1:10)
+#X each(c(min, max))(1:10)
 #X each(length, mean, var)(rnorm(100))
 each <- function(...) {
   fnames <- laply(match.call()[-1], deparse)
   fs <- list(...)
+  if (length(fs[[1]]) > 1) {
+    fs <- fs[[1]]
+    
+    # Jump through hoops to work out names
+    snames <- as.list(match.call()[2])[[1]]
+    fnames <- unlist(lapply(as.list(snames)[-1], deparse))
+  }
   
   # Find function names and replace with function objects
   char <- laply(fs, is.character)
