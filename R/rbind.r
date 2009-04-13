@@ -43,6 +43,12 @@ rbind.fill <- function(...) {
       if (length(df[[var]]) > 0) output[[var]][rng] <- df[[var]]
     }
   }
+
+  # Ensure all variables are the same length.  They might not be if the 
+  # last data frame does not contain all rows.
+  for(var in names(output)) {
+    length(output[[var]]) <- sum(rows)
+  }
   
   as_df(output)
 }
