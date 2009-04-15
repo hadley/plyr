@@ -12,4 +12,6 @@ It's already possible to do this with built-in functions (like split and the app
   * progress bars to keep track of long running operations
   * built-in error recovery, and informative error messages
 
+Some considerable effort has been put into making plyr fast and memory efficient, and in most cases it is faster than the built-in functions.
+
 You can find out more at http://had.co.nz/plyr/, including a 20 page introductory guide, http://had.co.nz/plyr/plyr-intro.pdf.  You can ask questions about plyr (and data-manipulation in general) on the plyr mailing list.  Sign up at http://groups.google.com/group/manipulatr

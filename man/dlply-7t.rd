@@ -15,10 +15,7 @@ For each subset of a data frame, apply function then combine results into a  lis
 \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
 \item{.drop}{}
 }
-\value{
- \item{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}
- \item{list of results}
-}
+\value{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}
 \details{All plyr functions use the same split-apply-combine strategy: they split the
 input into simpler pieces, apply \code{.fun} to each piece, and then combine
 the pieces into a single data structure.  This function splits data frames

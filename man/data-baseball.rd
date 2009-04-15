@@ -8,6 +8,7 @@ This data frame contains batting statistics for a subset of players collected fr
 
 Variables:
 
+\itemize{
 \item id, unique player id
 \item year, year of data
 \item stint
@@ -30,7 +31,7 @@ Variables:
 \item sh, sacrifice hits
 \item sf, sacrifice flies
 \item gidp, ground into double play
-
+}
 }
 \usage{data(baseball)}
 \format{A 21699 x 22 data frame}
