@@ -33,19 +33,28 @@ each <- function(...) {
   n <- length(fs)
   proto <- NULL
   
-  function(x, ...) {
-    
-    # Construct prtotype for output on first call
-    if (is.null(proto)) {
-      result <<- vector("list", length = n)
-      names(result) <- unames
-      
-      for(i in 1:n) result[[i]] <- fs[[i]](x, ...)
-      proto <<- list_to_vector(result)
-    } else {
-      for(i in 1:n) proto[[i]] <- fs[[i]](x, ...)      
+  if (n == 1) {
+    # If there is only one function, things are simple.  We just
+    # need to name the output, if appopriate. 
+    function(x, ...) {
+      res <- fs[[1]](x, ...)
+      if (length(res) == 1) names(res) <- unames
+      res
     }
-    proto
-    
+  } else {
+    function(x, ...) {
+      # For n > 1 things are a little tricky
+      # Construct prtotype for output on first call
+      if (is.null(proto)) {
+        result <<- vector("list", length = n)
+        names(result) <- unames
+
+        for(i in 1:n) result[[i]] <- fs[[i]](x, ...)
+        proto <<- list_to_vector(result)
+      } else {
+        for(i in 1:n) proto[[i]] <- fs[[i]](x, ...)      
+      }
+      proto
+    }  
   }
 }
