@@ -47,21 +47,22 @@ rbind.fill <- function(...) {
   # Compute start and end positions for each matrix
   pos <- matrix(cumsum(rbind(1, rows - 1)), ncol = 2, byrow = T)
   
-  # Do in reverse so first step expands to largest size
-  for(i in rev(seq_along(rows))) { 
+  for(i in seq_along(rows)) { 
     rng <- pos[i, 1]:pos[i, 2]
     df <- dfs[[i]]
     
     for(var in names(df)) {
       if (length(df[[var]]) > 0) {
-        output[[var]][rng] <- df[[var]]
-        
         if (!var %in% seen) {
-          length(output[[var]]) <- nrows
-          attributes(output[[var]]) <- attributes(df[[var]])
           
+          output[[var]] <- rep(df[[var]], length.out = nrows)
+          output[[var]][] <- NA
+
           seen <- c(seen, var)
         }
+
+        output[[var]][rng] <- df[[var]]
+        
       }
     }
   }
