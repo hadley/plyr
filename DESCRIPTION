@@ -1,7 +1,7 @@
 Package: plyr
 Type: Package
 Title: Tools for splitting, applying and combining data
-Version: 0.1.7
+Version: 0.1.8
 Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Description: plyr is a set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each pieces and then put all the pieces back together.  For example, you might want to fit a model to each spatial location or time point in your study, summarise data by panels or collapse high-dimensional arrays to simpler summary statistics.
