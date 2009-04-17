@@ -42,7 +42,8 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
     in_labels <- list(NULL)
     in_dim <- n
   } else {
-    in_labels <- lapply(labels, unique)
+    in_labels <- lapply(labels, 
+      function(x) if(is.factor(x)) levels(x) else unique(x))
     in_dim <- sapply(in_labels, length)        
   }
   
