@@ -1,4 +1,4 @@
-plyr 0.1.8 (2008-XX-XX) ---------------------------------------------------
+plyr 0.1.8 (2008-04-20) ---------------------------------------------------
 
 * made rbind a little faster (~20%) using an idea from Richard Raubertas
 * daply now works correctly when splitting variables that contain empty factor levels
