@@ -29,7 +29,7 @@ rbind.fill <- function(...) {
     dfs <- dfs[[1]]
   }
   
-  rows <- unlist(lapply(dfs, nrow))
+  rows <- unlist(lapply(dfs, function(x) nulldefault(nrow(x), 0)))
   nrows <- sum(rows)
   
   output <- list()
@@ -65,7 +65,9 @@ rbind.fill <- function(...) {
         
       }
     }
-  }
+  }  
+  browser()
+  
 
   as_df(output)
 }
