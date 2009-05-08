@@ -10,8 +10,9 @@ list_to_vector <- function(res) {
   
   atomic <- sapply(res, is.atomic)
   if (all(atomic)) {
+    numeric <- all(unlist(lapply(res, is.numeric)))    
     classes <- unique(lapply(res, class))
-    if (length(classes) == 1) {
+    if (numeric || length(classes) == 1) {
       res <- unlist(res)
     }
   } 
