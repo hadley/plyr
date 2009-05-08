@@ -108,7 +108,7 @@ as.quoted.formula <- function(x) {
     } else if (op == as.name("-")) {
       c(simplify(a), bquote(-.(x), list(x=simplify(b))))
     } else {
-      x
+      list(x)
     }
   }
 
