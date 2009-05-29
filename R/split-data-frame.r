@@ -67,6 +67,6 @@ split_labels <- function(splits, drop) {
     # Need all combinations of levels
     factor_levels <- lapply(factors, levels)
     names(factor_levels) <- names(splits)
-    expand.grid(factor_levels)
+    rev(expand.grid(rev(factor_levels)))
   }
 }
