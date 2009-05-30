@@ -63,7 +63,9 @@ names.quoted <- function(x) {
 # @value a list
 # @keyword internal
 eval.quoted <- function(exprs,  envir = parent.frame(), enclos = if (is.list(envir) || is.pairlist(envir)) parent.frame() else baseenv()) {
-
+  
+  if (is.numeric(exprs)) return(envir[exprs])
+  
   results <- lapply(exprs, function(x.) eval(x., envir, enclos))
   names(results) <- names(exprs)
   
@@ -85,6 +87,8 @@ eval.quoted <- function(exprs,  envir = parent.frame(), enclos = if (is.list(env
 # @alias as.quoted.character
 # @alias as.quoted.formula
 # @alias as.quoted.quoted
+# @alias c.quoted
+# @alais as.quoted.NULL
 #X as.quoted(c("a", "b", "log(d)"))
 #X as.quoted(a ~ b + log(d))
 as.quoted <- function(x) UseMethod("as.quoted")
@@ -93,6 +97,11 @@ as.quoted.character <- function(x) {
   structure(
     lapply(x, function(x) parse(text = x)[[1]]), 
     class="quoted"
+  )
+}
+as.quoted.numeric <- function(x) {
+  structure(x, 
+    class=c("quoted", "numeric")
   )
 }
 as.quoted.formula <- function(x) {
@@ -118,6 +127,11 @@ as.quoted.formula <- function(x) {
   )
 }
 as.quoted.quoted <- function(x) x
+as.quoted.NULL <- function(x) structure(list(), class = "quoted")
+
+c.quoted <- function(..., recursive = FALSE) {
+  structure(NextMethod("c"), class = "quoted")
+}
 
 # Is a formula?
 # Checks if argument is a formula

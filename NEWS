@@ -3,6 +3,7 @@ plyr 0.1.9 (2008-XX-XX) ---------------------------------------------------
 * fix bug in rbind.fill when NULLs present in list
 * improve each to recognise when all elements are numeric
 * fix labelling bug in d*ply when .drop = FALSE
+* additional methods for quoted objects
 
 plyr 0.1.8 (2008-04-20) ---------------------------------------------------
 
