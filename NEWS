@@ -4,6 +4,7 @@ plyr 0.1.9 (2008-XX-XX) ---------------------------------------------------
 * improve each to recognise when all elements are numeric
 * fix labelling bug in d*ply when .drop = FALSE
 * additional methods for quoted objects
+* add summarise helper - this function is like transform, but creates a new data frame rather than reusing the old (thanks to Brendan O'Connor for the neat idea)
 
 plyr 0.1.8 (2008-04-20) ---------------------------------------------------
 
