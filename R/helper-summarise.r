@@ -8,14 +8,16 @@
 # 
 # @arguments The data frame to be summarised
 # @arguments Further arguments of the form var = value
+# @keyword manip
+# @alias summarize
 #X summarise(baseball, 
 #X  duration = max(year) - min(year), 
 #X  nteams = length(unique(team)))
 #X ddply(baseball, "id", summarise, 
 #X  duration = max(year) - min(year), 
 #X  nteams = length(unique(team)))
-summarize <- summarise <- function(`_data`, ...) {
- eval(substitute(data.frame(...)), `_data`, parent.frame())
+summarise <- function(.data, ...) {
+ eval(substitute(data.frame(...)), .data, parent.frame())
 }
-
+summarize <- summarise
 # Alternative names: tally? sketch? abstract? abbreviate?

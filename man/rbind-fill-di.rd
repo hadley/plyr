@@ -20,5 +20,14 @@ bplayer <- split(baseball, baseball$id)
 system.time(b1 <- do.call("rbind", bplayer))
 rownames(b1) <- NULL
 system.time(b2 <- rbind.fill(bplayer))
-stopifnot(all.equal(b1, b2))}
+stopifnot(all.equal(b1, b2))
+
+a <- data.frame(a = factor(letters[1:3]), b = 1:3, c = date())
+b <- data.frame(a = factor(letters[3:5]), 
+d = as.Date(c("2008-01-01", "2009-01-01", "2010-01-01")))
+ab1 <- rbind.fill(a, b)[, letters[1:4]]
+ab2 <- rbind.fill(b, a)[c(4:6, 1:3), letters[1:4]]
+ab2$a <- factor(ab2$a, levels(ab1$a))
+rownames(ab2) <- NULL
+stopifnot(all.equal(ab1, ab2))}
 \keyword{manip}

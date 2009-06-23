@@ -87,6 +87,8 @@ eval.quoted <- function(exprs,  envir = parent.frame(), enclos = if (is.list(env
 # @alias as.quoted.character
 # @alias as.quoted.formula
 # @alias as.quoted.quoted
+# @alias as.quoted.NULL
+# @alias as.quoted.numeric
 # @alias c.quoted
 # @alais as.quoted.NULL
 #X as.quoted(c("a", "b", "log(d)"))

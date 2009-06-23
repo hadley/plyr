@@ -1,4 +1,4 @@
-plyr 0.1.9 (2008-XX-XX) ---------------------------------------------------
+plyr 0.1.9 (2008-06-23) ---------------------------------------------------
 
 * fix bug in rbind.fill when NULLs present in list
 * improve each to recognise when all elements are numeric

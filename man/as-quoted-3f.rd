@@ -4,6 +4,9 @@
 \alias{as.quoted.character}
 \alias{as.quoted.formula}
 \alias{as.quoted.quoted}
+\alias{as.quoted.NULL}
+\alias{as.quoted.numeric}
+\alias{c.quoted}
 \title{Convert input to quoted variables}
 \author{Hadley Wickham <h.wickham@gmail.com>}
 
