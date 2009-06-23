@@ -18,4 +18,4 @@ summarize <- summarise <- function(`_data`, ...) {
  eval(substitute(data.frame(...)), `_data`, parent.frame())
 }
 
-# Alternative names: tally?
+# Alternative names: tally? sketch? abstract? abbreviate?
