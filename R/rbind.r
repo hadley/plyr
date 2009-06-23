@@ -35,7 +35,7 @@ rbind.fill <- function(...) {
   output <- list()
   seen <- character()
   
-  vars <- unique(unlist(llply(dfs, names)))
+  vars <- unique(unlist(llply(dfs, base::names)))
 
   # Set up factors
   factors <- names(dfs[[1]])[laply(dfs[[1]], is.factor)]
