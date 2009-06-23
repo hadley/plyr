@@ -1,4 +1,6 @@
-plyr 0.1.9 (2008-06-23) ---------------------------------------------------
+plyr 0.1.10 (2009-XX-X) ---------------------------------------------------
+
+plyr 0.1.9 (2009-06-23) ---------------------------------------------------
 
 * fix bug in rbind.fill when NULLs present in list
 * improve each to recognise when all elements are numeric
@@ -6,16 +8,16 @@ plyr 0.1.9 (2008-06-23) ---------------------------------------------------
 * additional methods for quoted objects
 * add summarise helper - this function is like transform, but creates a new data frame rather than reusing the old (thanks to Brendan O'Connor for the neat idea)
 
-plyr 0.1.8 (2008-04-20) ---------------------------------------------------
+plyr 0.1.8 (2009-04-20) ---------------------------------------------------
 
 * made rbind a little faster (~20%) using an idea from Richard Raubertas
 * daply now works correctly when splitting variables that contain empty factor levels
 
-plyr 0.1.7 (2008-04-15) ---------------------------------------------------
+plyr 0.1.7 (2009-04-15) ---------------------------------------------------
 
 Ensure that rbind.fill copies attributes.
 
-plyr 0.1.6 (2008-04-15) ---------------------------------------------------
+plyr 0.1.6 (2009-04-15) ---------------------------------------------------
 
 Improvements:
 
@@ -39,7 +41,7 @@ Bug fixes:
 * ddply: first variable now varies slowest as you'd expect
 
 
-plyr 0.1.5 (2008-02-23) ---------------------------------------------------
+plyr 0.1.5 (2009-02-23) ---------------------------------------------------
 
 * colwise now accepts a quoted list as its second argument.  This allows you to specify the names of columns to work on: colwise(mean, .(lat, long))
 * d_ply and a_ply now correctly pass ... to the function
