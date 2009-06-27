@@ -26,7 +26,7 @@
 #X llply(x, quantile, probs = 1:3/4)
 llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE) {
   pieces <- if (inherits(.data, "split")) .data else as.list(.data)
-  if (is.null(.fun)) return(pieces)
+  if (is.null(.fun)) return(as.list(pieces))
   n <- length(pieces)
   if (n == 0) return(list())
   
