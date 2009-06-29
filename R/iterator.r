@@ -42,4 +42,4 @@ new_iterator <- function(nextElem, ...) {
   structure(list(nextElem=nextElem, ...), class=c('abstractiter', 'iter'))
 }
 
-is.iterator <- function(x) inherits(x, "iterator")
+is.iterator <- function(x) inherits(x, "iter")
