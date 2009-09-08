@@ -17,7 +17,7 @@
 #X  duration = max(year) - min(year), 
 #X  nteams = length(unique(team)))
 summarise <- function(.data, ...) {
- eval(substitute(data.frame(...)), .data, parent.frame())
+ as.data.frame(eval(substitute(list(...)), .data, parent.frame()))
 }
 summarize <- summarise
 # Alternative names: tally? sketch? abstract? abbreviate?
