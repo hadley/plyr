@@ -66,5 +66,5 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
   out_array <- res[overall]  
   dim(out_array) <- out_dim
   dimnames(out_array) <- out_labels
-  if (.drop) reduce(out_array) else out_array
+  if (.drop) reduce_dim(out_array) else out_array
 }

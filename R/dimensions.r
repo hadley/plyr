@@ -38,7 +38,7 @@ amv_dimnames <- function(x) {
 # 
 # @arguments array
 # @keyword internal 
-reduce <- function(x) {
+reduce_dim <- function(x) {
   do.call("[", c(list(x), lapply(dim(x), function(x) if (x==1) 1 else T), drop=TRUE))  
 }
 

@@ -1,6 +1,6 @@
 plyr 0.1.10 (2009-XX-X) ---------------------------------------------------
 
-
+* rename internal function reduce to reduce_dim to better reflect what it does and avoid conflicts with other packages
 * tweaks to splitter_d so now much faster when many combinations of the factors do not occur in the data (using ninteraction instead of interaction)
 * ninteraction now preserves NAs
 * leaving .fun as NULL now always returns list (thanks to Stavros Macrakis for the bug report)
