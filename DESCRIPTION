@@ -7,6 +7,6 @@ Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Description: plyr is a set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each pieces and then put all the pieces back together.  For example, you might want to fit a model to each spatial location or time point in your study, summarise data by panels or collapse high-dimensional arrays to simpler summary statistics.
 URL: http://had.co.nz/plyr
 Depends: R (>= 2.8)
-Suggests: RUnit, abind, tcltk
-License: GPL
+Suggests: abind, tcltk
+License: R
 LazyData: true
