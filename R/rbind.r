@@ -55,7 +55,7 @@ rbind.fill <- function(...) {
     
     for(var in names(df)) {
       if (length(df[[var]]) > 0) {
-        if (!var %in% seen) {
+        if (!any(var == seen)) {
           
           output[[var]] <- rep(df[[var]], length.out = nrows)
           output[[var]][] <- NA
