@@ -29,15 +29,21 @@
 #X splitter_d(mtcars, .(cyl3, vs), drop = FALSE)
 splitter_d <- function(data, .variables = NULL, drop = TRUE) {
   splits <- eval.quoted(.variables, data, parent.frame())
-  factors <- llply(splits, addNA, ifany = TRUE)
-  splitv <- addNA(interaction(factors, drop = drop, lex.order = TRUE), 
-    ifany = TRUE)
+  
+  splitv <- ninteraction(splits, drop = drop)
   split_labels <- split_labels(splits, drop = drop)
 
   index <- tapply(1:nrow(data), splitv, list)
-  # Remove missing values.  These when occur drop = FALSE and 
-  # factor levels do not occur in the data
-  index <- lapply(index, Filter, f = Negate(is.na))
+
+  if (drop == FALSE) {
+    # ensure that all values occur in index.
+    all <- seq_len(attr(splitv,"n"))
+    missing <- as.character(setdiff(all, names(index)))
+ 
+    index[missing] <- rep(list(integer()), length(missing))
+    index <- index[order(names(index))]
+  }
+  
   il <- indexed_df(environment(), index)
   
   structure(
@@ -55,15 +61,15 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
 # @argument whether all possible combinations should be considered, or only those present in the data
 # @keyword internal
 split_labels <- function(splits, drop) {
-  factors <- llply(splits, addNA, ifany = TRUE)
-  splitv <- addNA(interaction(factors, drop = drop, lex.order = TRUE), 
-    ifany = TRUE)
   
   if (drop) {
+    splitv <- ninteraction(splits, drop = drop)
+
     # Need levels which occur in data
     representative <- which(!duplicated(splitv))[order(unique(splitv))]
     data.frame(lapply(splits, function(x) x[representative]))    
   } else {
+    factors <- llply(splits, addNA, ifany = TRUE)
     # Need all combinations of levels
     factor_levels <- lapply(factors, levels)
     names(factor_levels) <- names(splits)

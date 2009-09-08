@@ -8,8 +8,11 @@ ninteraction <- function(.variables, drop = FALSE) {
     return(res)
   }
   
+  # Special case for single variable
   if (length(.variables) == 1) {
-    f <- as.factor(.variables[[1]])
+    var <- .variables[[1]]
+    
+    f <- addNA(as.factor(var), ifany = TRUE)
     res <- structure(as.integer(f), n = nunique(f))
     return(res)
   }
@@ -17,6 +20,7 @@ ninteraction <- function(.variables, drop = FALSE) {
   # Convert to factors, if necessary
   not_factor <- !unlist(lapply(.variables, is.factor))
   .variables[not_factor] <- llply(.variables[not_factor], factor, exclude=NULL)
+  .variables <- llply(.variables, addNA, ifany = TRUE)
   
   # Calculate dimensions
 
