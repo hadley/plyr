@@ -28,25 +28,43 @@ rbind.fill <- function(...) {
   if (is.list(dfs[[1]]) && !is.data.frame(dfs[[1]])) {
     dfs <- dfs[[1]]
   }
+  dfs <- compact(dfs)
   
-  rows <- unlist(lapply(dfs, function(x) if(is.null(x)) 0 else nrow(x)))
+  # About 6 times faster than using nrow
+  rows <- unlist(lapply(dfs, .row_names_info, 2L))
   nrows <- sum(rows)
   
-  output <- list()
-  seen <- character()
+  # Build up output template -------------------------------------------------
+  vars <- unique(unlist(lapply(dfs, base::names)))   # ~ 125,000/s
+  output <- rep(list(rep(NA, nrows)), length(vars))  # ~ 70,000,000/s
+  names(output) <- vars
   
-  vars <- unique(unlist(llply(dfs, base::names)))
+  seen <- rep(FALSE, length(output))
+  names(seen) <- vars
+    
+  for(df in dfs) {    
+    if (all(seen)) break  # Quit as soon as all done
 
-  # Set up factors
-  factors <- names(dfs[[1]])[laply(dfs[[1]], is.factor)]
-  for(var in factors) {
-    all <- llply(dfs, function(df) levels(df[[var]]))
-    output[[var]] <- factor(levels = unique(unlist(all)))
-    length(output[[var]]) <- nrows
-    seen <- c(seen, var)
+    matching <- intersect(names(df), vars[!seen])
+    for(var in matching) {
+      value <- df[[var]]
+      if (is.factor(value))
+        output[[var]] <- factor(value)
+      else {
+        class(output[[var]]) <- class(value)
+      }
+    }
+    seen[matching] <- TRUE
   }
 
-  # Compute start and end positions for each matrix
+  # Set up factors
+  factors <- names(output)[unlist(lapply(output, is.factor))]
+  for(var in factors) {
+    all <- llply(dfs, function(df) levels(df[[var]]))
+    levels(output[[var]]) <- unique(unlist(all))
+  }
+  
+  # Compute start and end positions for each data frame
   pos <- matrix(cumsum(rbind(1, rows - 1)), ncol = 2, byrow = T)
   
   for(i in seq_along(rows)) { 
@@ -54,22 +72,11 @@ rbind.fill <- function(...) {
     df <- dfs[[i]]
     
     for(var in names(df)) {
-      if (length(df[[var]]) > 0) {
-        if (!any(var == seen)) {
-          
-          output[[var]] <- rep(df[[var]], length.out = nrows)
-          output[[var]][] <- NA
-
-          seen <- c(seen, var)
-        }
-
-        output[[var]][rng] <- df[[var]]
-        
-      }
+      output[[var]][rng] <- df[[var]]
     }
   }  
   
-  as_df(output[vars])
+  as_df(output)
 }
 
 # Compact list
