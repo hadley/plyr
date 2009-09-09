@@ -17,7 +17,16 @@
 #X  duration = max(year) - min(year), 
 #X  nteams = length(unique(team)))
 summarise <- function(.data, ...) {
- as.data.frame(eval(substitute(list(...)), .data, parent.frame()))
+  as.data.frame(eval(substitute(list(...)), .data, parent.frame()))
 }
 summarize <- summarise
 # Alternative names: tally? sketch? abstract? abbreviate?
+
+
+# system.time(ddply(baseball, "id", summarise, duration = max(year) - min(year), nteams = length(unique(team))))
+
+quickdf <- function(list) {
+  structure(list, 
+    class = "data.frame",
+    row.names = seq_along(list[[1]]))
+}
