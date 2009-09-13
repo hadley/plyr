@@ -1,5 +1,6 @@
 plyr 0.1.10 (2009-XX-X) ---------------------------------------------------
 
+* new helper method: arrange, for reordering a data frame.  
 * another rewrite of rbind.fill to increase speed
 * speed up rbind.fill by ~20% by using all instead of %in% 
 * rename internal function reduce to reduce_dim to better reflect what it does and avoid conflicts with other packages
