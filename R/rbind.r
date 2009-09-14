@@ -51,7 +51,7 @@ rbind.fill <- function(...) {
   }
   
   # Compute start and end positions for each data frame
-  pos <- matrix(cumsum(rbind(1, rows - 1)), ncol = 2, byrow = T)
+  pos <- matrix(cumsum(rbind(1, rows - 1)), ncol = 2, byrow = TRUE)
   
   for(i in seq_along(rows)) { 
     rng <- pos[i, 1]:pos[i, 2]

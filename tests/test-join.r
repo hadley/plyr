@@ -16,7 +16,7 @@ rownames(bsmall) <- NULL
 first <- ddply(bsmall, "id", summarise, first = min(year))
 
 test_that("results consistent with merge", {  
-  b2 <- merge(bsmall, first, by = "id", all.x = T)
+  b2 <- merge(bsmall, first, by = "id", all.x = TRUE)
   b3 <- join(bsmall, first, by = "id")
   
   b2 <- arrange(b2, id, year, stint)

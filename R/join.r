@@ -14,7 +14,7 @@
 #' @keywords manip
 #' @examples
 #' first <- ddply(baseball, "id", summarise, first = min(year))
-#' system.time(b2 <- merge(baseball, first, by = "id", all.x = T))
+#' system.time(b2 <- merge(baseball, first, by = "id", all.x = TRUE))
 #' system.time(b3 <- join(baseball, first, by = "id"))
 join <- function(x, y, by = intersect(names(x), names(y)), type = "left") {
   type <- match.arg(type, c("left", "right", "inner", "full"))

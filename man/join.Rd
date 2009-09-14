@@ -15,5 +15,5 @@ would use a sql join.}
 \item{by}{character vector of variable names to join by}
 \item{join}{type of join: left (default), right, inner or full.}}
 \examples{first <- ddply(baseball, "id", summarise, first = min(year))
-system.time(b2 <- merge(baseball, first, by = "id", all.x = T))
+system.time(b2 <- merge(baseball, first, by = "id", all.x = TRUE))
 system.time(b3 <- join(baseball, first, by = "id"))}
