@@ -11,6 +11,6 @@ anything}
 \arguments{\item{.n}{number of times to evaluate the expression}
 \item{.expr}{expression to evaluate}
 \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
-\item{automatically}{print each result? (default: \code{FALSE})}}
+\item{.print}{automatically print each result? (default: \code{FALSE})}}
 \examples{r_ply(10, plot(runif(50)))
 r_ply(25, hist(runif(1000)))}

@@ -14,7 +14,7 @@
 #' @seealso \code{\link{.}} for quoting variables, \code{\link{split}}
 #' @param data data frame
 #' @param .variables a \link{quoted} list of variables, a formula, or character vector
-#' @param .drop drop unnused factor levels?
+#' @param drop drop unnused factor levels?
 #' @return a list of data.frames, with attributes that record split details
 #' @examples
 #' splitter_d(mtcars, .(cyl))
@@ -35,7 +35,6 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
   splitv <- ninteraction(splits, drop = drop)
   split_labels <- split_labels(splits, drop = drop)
 
-  browser()
   index <- tapply(1:nrow(data), splitv, list)
 
   if (!drop) {

@@ -9,6 +9,7 @@
 #' @param row.names necessary to match the generic, but not used
 #' @param optional necessary to match the generic, but not used
 #' @param ... necessary to match the generic, but not used
+#' @method as.data.frame function
 as.data.frame.function <- function(x, row.names, optional, ...) {
   name <- deparse(substitute(x))
   function(...) data.frame(value = x(...))

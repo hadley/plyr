@@ -13,7 +13,7 @@
 #' @param .fun function to apply to each piece
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
-#' @param automatically print each result? (default: \code{FALSE})
+#' @param .print automatically print each result? (default: \code{FALSE})
 l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE) {
   if (is.character(.fun)) .fun <- do.call("each", as.list(.fun))
   if (!is.function(.fun)) stop(".fun is not a function.")
@@ -49,7 +49,7 @@ l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE) {
 #' @param .fun function to apply to each piece
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
-#' @param automatically print each result? (default: \code{FALSE})
+#' @param .print automatically print each result? (default: \code{FALSE})
 d_ply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .print = FALSE) {
   .data <- as.data.frame(.data)
   .variables <- as.quoted(.variables)
@@ -75,7 +75,7 @@ d_ply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .prin
 #' @param .fun function to apply to each piece
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
-#' @param automatically print each result? (default: \code{FALSE})
+#' @param .print automatically print each result? (default: \code{FALSE})
 a_ply <- function(.data, .margins, .fun = NULL, ..., .progress = "none", .print = FALSE) {
   pieces <- splitter_a(.data, .margins)
   

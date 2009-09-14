@@ -17,6 +17,7 @@
 #' @param ... unevaluated expressions to be recorded.  Specify names if you want the set the names of the resultant variables
 #' @return list of symbol and language primitives
 #' @aliases . quoted
+#' @name quoted
 #' @examples
 #' .(a, b, c)
 #' .(first = a, second = b, third = c)
@@ -41,12 +42,14 @@
 #' Display the \code{\link{str}}ucture of quoted variables
 #' 
 #' @keywords internal
+#' @method print quoted
 print.quoted <- function(x, ...) str(x)
 
 #' Compute names of quoted variables
 #' Figure out names of quoted variables, using specified names if they exist, otherwise using \code{\link{make.names}} on the values.
 #' 
 #' @keywords internal
+#' @method names quoted
 names.quoted <- function(x) {
   part_names <- make.names(x)
   user_names <- names(unclass(x))
@@ -86,6 +89,7 @@ eval.quoted <- function(exprs,  envir = parent.frame(), enclos = if (is.list(env
 #' @seealso \code{\link{.}}
 #' @aliases as.quoted.call as.quoted.character as.quoted.formula
 #'  as.quoted.quoted as.quoted.NULL as.quoted.numeric c.quoted as.quoted
+#' @param x input to quote
 #' @examples
 #' as.quoted(c("a", "b", "log(d)"))
 #' as.quoted(a ~ b + log(d))

@@ -1,4 +1,4 @@
-\name{.}
+\name{quoted}
 \title{Quote variables...}
 \usage{.(...)}
 \description{Quote variables

@@ -14,4 +14,4 @@ calling purely for their side effects like display plots and saving output.}
 \item{.fun}{function to apply to each piece}
 \item{...}{other arguments passed on to \code{.fun}}
 \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
-\item{automatically}{print each result? (default: \code{FALSE})}}
+\item{.print}{automatically print each result? (default: \code{FALSE})}}

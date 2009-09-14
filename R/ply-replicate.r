@@ -81,6 +81,7 @@ rdply <- function(.n, .expr, .progress = "none") {
 #' @param .expr expression to evaluate
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
+#' @param .drop should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
 #' @examples
 #' raply(100, mean(runif(100)))
 #' raply(100, each(mean, var)(runif(100)))
@@ -114,7 +115,7 @@ raply <- function(.n, .expr, .progress = "none", .drop = TRUE) {
 #' @param .n number of times to evaluate the expression
 #' @param .expr expression to evaluate
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
-#' @param automatically print each result? (default: \code{FALSE})
+#' @param .print automatically print each result? (default: \code{FALSE})
 #' @examples
 #' r_ply(10, plot(runif(50)))
 #' r_ply(25, hist(runif(1000)))

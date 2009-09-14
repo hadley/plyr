@@ -13,7 +13,8 @@ return results as a vector, matrix or array.}
 \value{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}
 \arguments{\item{.n}{number of times to evaluate the expression}
 \item{.expr}{expression to evaluate}
-\item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}}
+\item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+\item{.drop}{should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}}}
 \examples{raply(100, mean(runif(100)))
 raply(100, each(mean, var)(runif(100)))
 

@@ -5,3 +5,4 @@
 \description{Reduce dimensions
 Remove extraneous dimensions}
 \keyword{internal}
+\arguments{\item{x}{array}}

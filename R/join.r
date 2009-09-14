@@ -10,7 +10,7 @@
 #' @param x data frame
 #' @param y data frame
 #' @param by character vector of variable names to join by
-#' @param join type of join: left (default), right, inner or full.
+#' @param type type of join: left (default), right, inner or full.
 #' @keywords manip
 #' @examples
 #' first <- ddply(baseball, "id", summarise, first = min(year))

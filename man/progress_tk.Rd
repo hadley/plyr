@@ -7,7 +7,7 @@ A graphical progress bar displayed in a Tk window}
 \details{This graphical progress will appear in a separate window.}
 \seealso{\code{\link[tcltk]{tkProgressBar}} for the function that powers this progress bar}
 \arguments{\item{title}{window title}
-\item{lable}{progress bar label (inside window)}
+\item{label}{progress bar label (inside window)}
 \item{...}{other arguments passed on to \code{\link[tcltk]{tkProgressBar}}}}
 \examples{l_ply(1:1000, identity, .progress = "tk")
 l_ply(1:1000, identity, .progress = progress_tk(width=400))

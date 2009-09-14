@@ -21,6 +21,8 @@ Any other values will result in an error.}
 \arguments{\item{.data}{data frame to be processed}
 \item{.variables}{variables to split data frame by, as quoted variables, a formula or character vector}
 \item{.fun}{function to apply to each piece}
+\item{.drop}{should combinations of variables that do not appear in the 
+data be preserved (FALSE) or dropped (TRUE, default)}
 \item{...}{other arguments passed on to \code{.fun}}
 \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}}
 \examples{ddply(baseball, .(year), "nrow") 

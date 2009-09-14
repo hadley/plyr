@@ -84,7 +84,7 @@ progress_text <- function(style = 3, ...) {
 #' This graphical progress will appear in a separate window.
 #' 
 #' @param title window title
-#' @param lable progress bar label (inside window)
+#' @param label progress bar label (inside window)
 #' @param ... other arguments passed on to \code{\link[tcltk]{tkProgressBar}}
 #' @seealso \code{\link[tcltk]{tkProgressBar}} for the function that powers this progress bar
 #' @examples

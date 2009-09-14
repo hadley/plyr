@@ -18,5 +18,6 @@ call objects.}
 \alias{as.quoted.numeric}
 \alias{c.quoted}
 \alias{as.quoted}
+\arguments{\item{x}{input to quote}}
 \examples{as.quoted(c("a", "b", "log(d)"))
 as.quoted(a ~ b + log(d))}

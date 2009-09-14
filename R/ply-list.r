@@ -16,6 +16,9 @@
 #' @param .fun function to apply to each piece
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
+#' @param .inform produce informative error messages?  This is turned off by
+#'   by default because it substantially slows processing speed, but is very
+#'   useful for debugging
 #' @return list of results
 #' @examples
 #' llply(llply(mtcars, round), table)
@@ -90,6 +93,8 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE) 
 #' @param .fun function to apply to each piece
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
+#' @param .drop should combinations of variables that do not appear in the 
+#'   data be preserved (FALSE) or dropped (TRUE, default)
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 #' @examples
 #' linmod <- function(df) lm(rbi ~ year, data = transform(df, year = year - min(year)))

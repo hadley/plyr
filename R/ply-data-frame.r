@@ -49,6 +49,8 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none") {
 #' @param .data data frame to be processed
 #' @param .variables variables to split data frame by, as quoted variables, a formula or character vector
 #' @param .fun function to apply to each piece
+#' @param .drop should combinations of variables that do not appear in the 
+#'   data be preserved (FALSE) or dropped (TRUE, default)
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @return a data frame

@@ -17,7 +17,10 @@ preserve labels and can display a progress bar.}
 \arguments{\item{.data}{list to be processed}
 \item{.fun}{function to apply to each piece}
 \item{...}{other arguments passed on to \code{.fun}}
-\item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}}
+\item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+\item{.inform}{produce informative error messages?  This is turned off by
+by default because it substantially slows processing speed, but is very
+useful for debugging}}
 \examples{llply(llply(mtcars, round), table)
 llply(baseball, summary)
 # Examples from ?lapply

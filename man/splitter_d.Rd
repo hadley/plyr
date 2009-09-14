@@ -17,7 +17,7 @@ other operations.}
 \value{a list of data.frames, with attributes that record split details}
 \arguments{\item{data}{data frame}
 \item{.variables}{a \link{quoted} list of variables, a formula, or character vector}
-\item{.drop}{drop unnused factor levels?}}
+\item{drop}{drop unnused factor levels?}}
 \examples{splitter_d(mtcars, .(cyl))
 splitter_d(mtcars, .(vs, am))
 splitter_d(mtcars, .(am, vs))
