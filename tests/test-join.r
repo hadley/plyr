@@ -35,7 +35,17 @@ test_that("order is preserved", {
   expect_that(bsmall$stint, equals(b3$stint))  
 })
 
+test_that("rownames are preserved", {
+  b3 <- join(bsmall, first, by = "id")
+  expect_that(rownames(b3), equals(rownames(bsmall)))
+  
+})
+
 test_that("duplicated keys are an error", {
   
+  
+})
+
+test_that("left join preserves y", {
   
 })

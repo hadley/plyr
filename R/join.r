@@ -48,7 +48,9 @@ join <- function(x, y, by = intersect(names(x), names(y)), type = "left") {
     cbind(x[x.match, , drop = FALSE], y[y.match, new.cols, drop = FALSE])
   } else if (type == "left") {
     y.match <- match(keys$x, keys$y)
-    cbind(x, y[y.match, new.cols, drop = FALSE])
+    res <- cbind(x, y[y.match, new.cols, drop = FALSE])
+    rownames(res) <- rownames(x)
+    res
   } else if (type == "right") {
     if (any(duplicated(keys$y))) {
       stop("Duplicated key in y", call. = FALSE)
