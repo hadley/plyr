@@ -1,9 +1,10 @@
-# Combine objects by row, filling in missing columns
-# \code{rbind}s a list of data frames filling missing columns with NA 
-# 
-# This is a minor enhancement to \code{\link{rbind}} which adds in columns
-# that are not present in all inputs.
-# 
+#' Combine objects by row, filling in missing columns.
+#' \code{rbind}s a list of data frames filling missing columns with NA.
+#' 
+#' This is an enhancement to \code{\link{rbind}} which adds in columns
+#' that are not present in all inputs, accepts a list of data frames, and 
+#' operates substantially faster
+#' 
 #' @param ... data frames to row bind together
 #' @keywords manip
 #' @examples
