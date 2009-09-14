@@ -55,18 +55,13 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none") {
 #X ddply(baseball, .(year), "nrow") 
 #X ddply(baseball, .(lg), c("nrow", "ncol")) 
 #X 
-#X mean_rbi <- function(df) mean(df$rbi, na.rm=TRUE)
-#X rbi <- ddply(baseball, .(year), mean_rbi)
-#X with(rbi, plot(year, V1, type="l"))
-#X rbi <- ddply(baseball, .(year), "mean_rbi")
-#X 
-#X mean_rbi <- function(rbi, ...) mean(rbi, na.rm=TRUE)
-#X rbi <- ddply(baseball, .(year), splat(mean_rbi))
+#X rbi <- ddply(baseball, .(year), summarise, 
+#X   mean_rbi = mean(rbi, na.rm = TRUE))
+#X with(rbi, plot(year, mean_rbi, type="l"))
 #X
-#X ddply(baseball, .(year), numcolwise(mean), na.rm=TRUE)
-#X base2 <- ddply(baseball, .(id), function(df) {
-#X  transform(df, career_year = year - min(year) + 1)
-#X })
+#X base2 <- ddply(baseball, .(id), transform, 
+#X  career_year = year - min(year) + 1
+#X )
 ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
   .data <- as.data.frame(.data)
   .variables <- as.quoted(.variables)
