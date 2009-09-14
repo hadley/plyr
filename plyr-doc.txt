@@ -20,19 +20,19 @@ a list of length 0  (\code{list()}).
 
 See \code{vignette("intro", "plyr")} for more details, description and case studies.
 
-@keyword manip
+@keywords manip
 
-@arguments matrix, array or data frame to be processed
-@arguments list to be processed
-@arguments data frame to be processed
+@param matrix, array or data frame to be processed
+@param list to be processed
+@param data frame to be processed
 
-@arguments variables to split data frame by, as quoted variables, a formula or character vector
-@arguments a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions
+@param variables to split data frame by, as quoted variables, a formula or character vector
+@param a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions
 
-@arguments function to apply to each piece
-@arguments other arguments passed on to \code{.fun}
-@arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
+@param function to apply to each piece
+@param other arguments passed on to \code{.fun}
+@param name of the progress bar to use, see \code{\link{create_progress_bar}}
 
-@value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
-@value list of results
-@value a data frame
+@return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
+@return list of results
+@return a data frame

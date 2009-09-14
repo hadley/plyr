@@ -1,15 +1,16 @@
-# Aggregate multiple functions into a single function
-# Combine multiple functions to a single function returning a named vector of outputs
-# 
-# Each function should produce a single number as output
-# 
-# @arguments functions to combine
-# @keyword manip
-#X each(min, max)(1:10)
-#X each("min", "max")(1:10)
-#X each(c("min", "max"))(1:10)
-#X each(c(min, max))(1:10)
-#X each(length, mean, var)(rnorm(100))
+#' Aggregate multiple functions into a single function
+#' Combine multiple functions to a single function returning a named vector of outputs
+#' 
+#' Each function should produce a single number as output
+#' 
+#' @param ... functions to combine
+#' @keywords manip
+#' @examples
+#' each(min, max)(1:10)
+#' each("min", "max")(1:10)
+#' each(c("min", "max"))(1:10)
+#' each(c(min, max))(1:10)
+#' each(length, mean, var)(rnorm(100))
 each <- function(...) {
   fnames <- laply(match.call()[-1], deparse)
   fs <- list(...)

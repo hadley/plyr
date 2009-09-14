@@ -1,12 +1,11 @@
-# An indexed array
-# Create a indexed array, a space efficient way of indexing into a large array
-# 
-# @arguments environment containing data frame
-# @argument list of indices
-# @keyword internal
-# @alias [[.indexed_array
-# @alias names.indexed_array
-# @alias length.indexed_array
+#' An indexed array
+#' Create a indexed array, a space efficient way of indexing into a large array
+#' 
+#' @param env environment containing data frame
+#' @param index list of indices
+#' @keywords internal
+#' @aliases indexex_array [[.indexed_array names.indexed_array
+#'   length.indexed_array
 indexed_array <- function(env, index) {
   exact <- all(laply(index, is.numeric))
 

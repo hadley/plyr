@@ -1,15 +1,11 @@
-# An indexed list
-# Create a indexed list, a space efficient way of indexing into a large data frame
-# 
-# @arguments environment containing data frame
-# @argument list of indices
-# @keyword internal
-# @alias length.indexed
-# @alias names.indexed
-# @alias as.list.indexed
-# @alias [[.indexed_df
-# @alias [.indexed 
-# @alias print.indexed
+#' An indexed list
+#' Create a indexed list, a space efficient way of indexing into a large data frame
+#' 
+#' @param env environment containing data frame
+#' @param index list of indices
+#' @keywords internal
+#' @aliases indexed_df length.indexed names.indexed as.list.indexed
+#'   [[.indexed_df [.indexed print.indexed
 indexed_df <- function(env, index) {
   structure(
     list(env = env, index = index),

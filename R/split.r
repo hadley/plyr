@@ -1,8 +1,11 @@
 
-# Subset splits
-# Subset splits, ensuring that labels keep matching
-# 
-# @keyword internal
+#' Subset splits
+#' Subset splits, ensuring that labels keep matching
+#' 
+#' @keywords internal
+#' @param x split object
+#' @param i index
+#' @param ... unused
 "[.split" <- function(x, i, ...) {
   structure(
     NextMethod(),
@@ -12,10 +15,12 @@
   )
 }
 
-# Convert split list to regular list
-# Strip off label related attributed to make a strip list as regular list
-# 
-# @keyword internal
+#' Convert split list to regular list
+#' Strip off label related attributed to make a strip list as regular list
+#' 
+#' @keywords internal
+#' @param x object to convert to a list
+#' @param ... unused
 as.list.split <- function(x, ...) {
   attr(x, "split_type") <- NULL
   attr(x, "split_labels") <- NULL
@@ -23,10 +28,12 @@ as.list.split <- function(x, ...) {
   x
 }
 
-# Print split
-# Don't print labels, so it appears like a regular list
-# 
-# @keyword internal
+#' Print split
+#' Don't print labels, so it appears like a regular list
+#' 
+#' @keywords internal
+#' @param x object to print
+#' @param ... unused
 print.split <- function(x, ...) {
   print(as.list(x))
 }

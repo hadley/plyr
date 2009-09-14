@@ -4,9 +4,24 @@ Title: Tools for splitting, applying and combining data
 Version: 0.1.10
 Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
-Description: plyr is a set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each pieces and then put all the pieces back together.  For example, you might want to fit a model to each spatial location or time point in your study, summarise data by panels or collapse high-dimensional arrays to simpler summary statistics.
+Description: plyr is a set of tools that solves a common set of
+    problems: you need to break a big problem down into manageable
+    pieces, operate on each pieces and then put all the pieces back
+    together.  For example, you might want to fit a model to each
+    spatial location or time point in your study, summarise data by
+    panels or collapse high-dimensional arrays to simpler summary
+    statistics.
 URL: http://had.co.nz/plyr
 Depends: R (>= 2.8)
-Suggests: abind, tcltk
-License: R
+Suggests: RUnit, abind, tcltk
+License: GPL
 LazyData: true
+Collate: 'dimensions.r' 'helper-arrange.r' 'helper-col-wise.r'
+    'helper-data-frame.r' 'helper-defaults.r' 'helper-each.r'
+    'helper-splat.r' 'helper-summarise.r' 'helper-try.r'
+    'indexed-array.r' 'indexed-data-frame.r' 'indexed.r' 'iterator.r'
+    'join.r' 'ninteraction.r' 'ply-array.r' 'ply-data-frame.r'
+    'ply-iterator.r' 'ply-list.r' 'ply-mapply.r' 'ply-null.r'
+    'ply-replicate.r' 'progress.r' 'quote.r' 'rbind.r'
+    'simplify-array.r' 'simplify-data-frame.r' 'simplify-vector.r'
+    'split-array.r' 'split-data-frame.r' 'split.r' 'utils.r'

@@ -1,8 +1,8 @@
-# List to vector
-# Reduce/simplify a list of homogenous objects to a vector
-# 
-# @arguments list of input data
-# @keyword internal
+#' List to vector
+#' Reduce/simplify a list of homogenous objects to a vector
+#' 
+#' @param res list of input data
+#' @keywords internal
 list_to_vector <- function(res) {
   n <- length(res)
   if (n == 0) return(vector())

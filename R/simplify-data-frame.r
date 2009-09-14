@@ -1,9 +1,9 @@
-# List to data frame
-# Reduce/simplify a list of homogenous objects to a data frame
-# 
-# @arguments list of input data
-# @arguments a data frame of labels, one row for each element of res
-# @keyword internal
+#' List to data frame
+#' Reduce/simplify a list of homogenous objects to a data frame
+#' 
+#' @param res list of input data
+#' @param labels a data frame of labels, one row for each element of res
+#' @keywords internal
 list_to_dataframe <- function(res, labels = NULL) { 
   if (length(res) == 0) return(data.frame())
   

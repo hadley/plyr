@@ -4,8 +4,10 @@
 # This is a minor enhancement to \code{\link{rbind}} which adds in columns
 # that are not present in all inputs.
 # 
-# @arguments data frames to row bind together
-# @keyword manip
+#' @param ... data frames to row bind together
+#' @keywords manip
+#' @examples
+#' rbind.fill(mtcars[c("mpg", "wt")], mtcars[c("wt", "cyl")])
 rbind.fill <- function(...) {
   dfs <- list(...)
   if (length(dfs) == 0) return(list())
@@ -63,17 +65,18 @@ rbind.fill <- function(...) {
   as_df(output)
 }
 
-# Compact list
-# Remove all NULL entries from a list
-# 
-# @arguments list
-# @keyword manip 
+#' Compact list
+#' Remove all NULL entries from a list
+#' 
+#' @param l list
+#' @keywords manip 
 compact <- function(l) Filter(Negate(is.null), l)
 
-# Convert list to data frame
-# Works like cbind, but crams everything into a column
-# 
-# @keyword internal
+#' Convert list to data frame
+#' Works like cbind, but crams everything into a column
+#' 
+#' @param output output list to turn into a data frame
+#' @keywords internal
 as_df <- function(output) {
   if (length(output) == 0) return(data.frame())
   # Convert list to data.frame

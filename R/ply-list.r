@@ -1,29 +1,30 @@
-# Split list, apply function, and return results in a list
-# For each element of a list, apply function then combine results into a list
-# 
-# All plyr functions use the same split-apply-combine strategy: they split the
-# input into simpler pieces, apply \code{.fun} to each piece, and then combine
-# the pieces into a single data structure.  This function splits lists by
-# elements and combines the result into a list.  If there are no results, then
-# this function will return a list of length 0  (\code{list()}).
-# 
-# \code{llply} is equivalent to \code{\link{lapply}} except that it will 
-# preserve labels and can display a progress bar.
-# 
-# 
-# @keyword manip
-# @arguments list to be processed
-# @arguments function to apply to each piece
-# @arguments other arguments passed on to \code{.fun}
-# @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
-# @value list of results
-#X llply(llply(mtcars, round), table)
-#X llply(baseball, summary)
-#X # Examples from ?lapply
-#X x <- list(a = 1:10, beta = exp(-3:3), logic = c(TRUE,FALSE,FALSE,TRUE))
-#X
-#X llply(x, mean)
-#X llply(x, quantile, probs = 1:3/4)
+#' Split list, apply function, and return results in a list
+#' For each element of a list, apply function then combine results into a list
+#' 
+#' All plyr functions use the same split-apply-combine strategy: they split the
+#' input into simpler pieces, apply \code{.fun} to each piece, and then combine
+#' the pieces into a single data structure.  This function splits lists by
+#' elements and combines the result into a list.  If there are no results, then
+#' this function will return a list of length 0  (\code{list()}).
+#' 
+#' \code{llply} is equivalent to \code{\link{lapply}} except that it will 
+#' preserve labels and can display a progress bar.
+#' 
+#' 
+#' @keywords manip
+#' @param .data list to be processed
+#' @param .fun function to apply to each piece
+#' @param ... other arguments passed on to \code{.fun}
+#' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
+#' @return list of results
+#' @examples
+#' llply(llply(mtcars, round), table)
+#' llply(baseball, summary)
+#' # Examples from ?lapply
+#' x <- list(a = 1:10, beta = exp(-3:3), logic = c(TRUE,FALSE,FALSE,TRUE))
+#'
+#' llply(x, mean)
+#' llply(x, quantile, probs = 1:3/4)
 llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE) {
   pieces <- if (inherits(.data, "split")) .data else as.list(.data)
   if (is.null(.fun)) return(as.list(pieces))
@@ -70,34 +71,35 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE) 
   result
 }
 
-# Split data frame, apply function, and return results in a list
-# For each subset of a data frame, apply function then combine results into a  list
-# 
-# All plyr functions use the same split-apply-combine strategy: they split the
-# input into simpler pieces, apply \code{.fun} to each piece, and then combine
-# the pieces into a single data structure.  This function splits data frames
-# by variables and combines the result into a list.  If there are no results,
-# then this function will return a list of length 0  (\code{list()}).
-# 
-# \code{dlply} is similar to \code{\link{by}} except that the results are 
-# returned in a different format.
-# 
-# 
-# @keyword manip
-# @arguments data frame to be processed
-# @arguments variables to split data frame by, as quoted variables, a formula or character vector
-# @arguments function to apply to each piece
-# @arguments other arguments passed on to \code{.fun}
-# @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
-# @value if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
-#X linmod <- function(df) lm(rbi ~ year, data = transform(df, year = year - min(year)))
-#X models <- dlply(baseball, .(id), linmod)
-#X models[[1]]
-#X
-#X coef <- ldply(models, coef)
-#X with(coef, plot(`(Intercept)`, year))
-#X qual <- laply(models, function(mod) summary(mod)$r.squared)
-#X hist(qual)
+#' Split data frame, apply function, and return results in a list
+#' For each subset of a data frame, apply function then combine results into a  list
+#' 
+#' All plyr functions use the same split-apply-combine strategy: they split the
+#' input into simpler pieces, apply \code{.fun} to each piece, and then combine
+#' the pieces into a single data structure.  This function splits data frames
+#' by variables and combines the result into a list.  If there are no results,
+#' then this function will return a list of length 0  (\code{list()}).
+#' 
+#' \code{dlply} is similar to \code{\link{by}} except that the results are 
+#' returned in a different format.
+#' 
+#' 
+#' @keywords manip
+#' @param .data data frame to be processed
+#' @param .variables variables to split data frame by, as quoted variables, a formula or character vector
+#' @param .fun function to apply to each piece
+#' @param ... other arguments passed on to \code{.fun}
+#' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
+#' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
+#' @examples
+#' linmod <- function(df) lm(rbi ~ year, data = transform(df, year = year - min(year)))
+#' models <- dlply(baseball, .(id), linmod)
+#' models[[1]]
+#'
+#' coef <- ldply(models, coef)
+#' with(coef, plot(`(Intercept)`, year))
+#' qual <- laply(models, function(mod) summary(mod)$r.squared)
+#' hist(qual)
 dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
   .data <- as.data.frame(.data)
   .variables <- as.quoted(.variables)
@@ -106,29 +108,30 @@ dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
   llply(.data = pieces, .fun = .fun, ..., .progress = .progress)
 }
 
-# Split array, apply function, and return results in a list
-# For each slice of an array, apply function then combine results into a list
-# 
-# All plyr functions use the same split-apply-combine strategy: they split the
-# input into simpler pieces, apply \code{.fun} to each piece, and then combine
-# the pieces into a single data structure.  This function splits matrices,
-# arrays and data frames by dimensions and combines the result into a list. 
-# If there are no results, then this function will return a list of length 0 
-# (\code{list()}).
-# 
-# \code{alply} is somewhat similar to \code{\link{apply}} for cases where the
-# results are not atomic.
-# 
-# 
-# @keyword manip
-# @arguments matrix, array or data frame to be processed
-# @arguments a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions
-# @arguments function to apply to each piece
-# @arguments other arguments passed on to \code{.fun}
-# @arguments name of the progress bar to use, see \code{\link{create_progress_bar}}
-# @value list of results
-#X alply(ozone, 3, quantile)
-#X alply(ozone, 3, function(x) table(round(x)))
+#' Split array, apply function, and return results in a list
+#' For each slice of an array, apply function then combine results into a list
+#' 
+#' All plyr functions use the same split-apply-combine strategy: they split the
+#' input into simpler pieces, apply \code{.fun} to each piece, and then combine
+#' the pieces into a single data structure.  This function splits matrices,
+#' arrays and data frames by dimensions and combines the result into a list. 
+#' If there are no results, then this function will return a list of length 0 
+#' (\code{list()}).
+#' 
+#' \code{alply} is somewhat similar to \code{\link{apply}} for cases where the
+#' results are not atomic.
+#' 
+#' 
+#' @keywords manip
+#' @param .data matrix, array or data frame to be processed
+#' @param .margins a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions
+#' @param .fun function to apply to each piece
+#' @param ... other arguments passed on to \code{.fun}
+#' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
+#' @return list of results
+#' @examples
+#' alply(ozone, 3, quantile)
+#' alply(ozone, 3, function(x) table(round(x)))
 alply <- function(.data, .margins, .fun = NULL, ..., .progress = "none") {
   pieces <- splitter_a(.data, .margins)
   

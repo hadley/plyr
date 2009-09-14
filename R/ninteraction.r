@@ -1,7 +1,9 @@
-# Numerical interaction
-# A purely numerical interaction function that powers \code{aaply}.
-# 
-# @keyword internal
+#' Numerical interaction
+#' A purely numerical interaction function that powers \code{aaply}.
+#' 
+#' @param .variables list of variables
+#' @param drop drop unusued factor levels?
+#' @keywords internal
 ninteraction <- function(.variables, drop = FALSE) {  
   if (length(.variables) == 0) {
     res <- structure(rep.int(1L, nrow(.variables)), n = 1L)
@@ -48,11 +50,11 @@ ninteraction <- function(.variables, drop = FALSE) {
   res
 }
 
-# Number of unique values
-# Calculate number of unique values of a variable as efficiently as possible.
-# 
-# @arguments vector
-# @keyword internal
+#' Number of unique values
+#' Calculate number of unique values of a variable as efficiently as possible.
+#' 
+#' @param x vector
+#' @keywords internal
 nunique <- function(x) {
   if (is.factor(x)) {
     length(levels(x))

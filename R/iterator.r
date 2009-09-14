@@ -1,4 +1,3 @@
-library(iterators)
 icanhasnext <- function(iterator) {
   # If already has hasNext function return iterator unchanged
   if (!is.null(iterator$hasNext)) return(iterator)
