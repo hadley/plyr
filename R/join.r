@@ -46,21 +46,31 @@ join <- function(x, y, by = intersect(names(x), names(y)), type = "left") {
     x.match <- match(keys$y, keys$x, 0)
     y.match <- match(keys$x, keys$y, 0)
     cbind(x[x.match, , drop = FALSE], y[y.match, new.cols, drop = FALSE])
+
   } else if (type == "left") {
     y.match <- match(keys$x, keys$y)
-    res <- cbind(x, y[y.match, new.cols, drop = FALSE])
-    rownames(res) <- rownames(x)
-    res
+    y.matched <- y[y.match, new.cols, drop = FALSE]
+    rownames(y.matched) <- NULL
+    cbind(x, y.matched)
+
   } else if (type == "right") {
     if (any(duplicated(keys$y))) {
       stop("Duplicated key in y", call. = FALSE)
     }
     
     x.match <- match(keys$y, keys$x)
-    cbind(x[x.match, , drop = FALSE], y[, new.cols, drop = FALSE])
+    x.matched <- x[x.match, , drop = FALSE]
+    rownames(x.matched) <- NULL
+    cbind(x.matched, y[, new.cols, drop = FALSE])
+    
   } else if (type == "full") {
     stop("Not implemented yet")
   }
+}
+
+copy_rownames <- function(to, from) {
+  rownames(to) <- rownames(from)
+  to
 }
 
 join.keys <- function(x, y, by) {
