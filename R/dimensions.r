@@ -37,7 +37,7 @@ amv_dimnames <- function(x) {
 #' Remove extraneous dimensions
 #' 
 #' @arguments array
-#' @keyword internal 
+#' @keywords internal 
 reduce_dim <- function(x) {
   do.call("[", c(list(x), lapply(dim(x), function(x) if (x==1) 1 else T), drop=TRUE))  
 }

@@ -5,4 +5,5 @@
 \description{Compact list
 Remove all NULL entries from a list}
 \keyword{manip}
+\keyword{internal}
 \arguments{\item{l}{list}}

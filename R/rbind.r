@@ -69,7 +69,7 @@ rbind.fill <- function(...) {
 #' Remove all NULL entries from a list
 #' 
 #' @param l list
-#' @keywords manip 
+#' @keywords manip internal 
 compact <- function(l) Filter(Negate(is.null), l)
 
 #' Convert list to data frame
