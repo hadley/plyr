@@ -35,13 +35,13 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
 
   index <- tapply(1:nrow(data), splitv, list)
 
-  if (drop == FALSE) {
+  if (!drop) {
     # ensure that all values occur in index.
     all <- seq_len(attr(splitv,"n"))
-    missing <- as.character(setdiff(all, names(index)))
+    missing <- setdiff(all, names(index))
  
     index[missing] <- rep(list(integer()), length(missing))
-    index <- index[order(names(index))]
+    index <- index[order(as.numeric(names(index)))]
   }
   
   il <- indexed_df(environment(), index)
