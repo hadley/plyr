@@ -4,3 +4,4 @@
 \usage{reduce_dim(x)}
 \description{Reduce dimensions
 Remove extraneous dimensions}
+\keyword{internal}
