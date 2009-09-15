@@ -15,5 +15,7 @@ needing a \code{tryCatch} to detect completion.}
 \alias{is.iterator}
 \alias{icanhasnext}
 \arguments{\item{iterator}{iterator to add \code{hasNext} capability to}}
-\examples{it <- icanhasnext(icount(3))
-while(it$hasNext()) print(it$nextElem())}
+\examples{if (require("iterators")) {
+it <- icanhasnext(icount(3))
+while(it$hasNext()) print(it$nextElem())
+}}

@@ -12,8 +12,10 @@
 #'   icanhasnext
 #' @param iterator iterator to add \code{hasNext} capability to
 #' @examples
-#' it <- icanhasnext(icount(3))
-#' while(it$hasNext()) print(it$nextElem())
+#' if (require("iterators")) {
+#'  it <- icanhasnext(icount(3))
+#'  while(it$hasNext()) print(it$nextElem())
+#' }
 icanhasnext <- function(iterator) {
   # If already has hasNext function return iterator unchanged
   if (!is.null(iterator$hasNext)) return(iterator)

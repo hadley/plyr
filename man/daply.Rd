@@ -13,8 +13,14 @@ then this function will return a vector of length 0 (\code{vector()}).
 \code{daply} with a function that operates column-wise is similar to
 \code{\link{aggregate}}.}
 \keyword{manip}
-\value{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
-daply(baseball, .(year), nrow)
+\value{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}
+\arguments{\item{.data}{data frame to be processed}
+\item{.variables}{variables to split data frame by, as quoted variables, a formula or character vector}
+\item{.fun}{function to apply to each piece}
+\item{...}{other arguments passed on to \code{.fun}}
+\item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+\item{.drop}{should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}}}
+\examples{daply(baseball, .(year), nrow)
 
 # Several different ways of summarising by variables that should not be 
 # included in the summary
@@ -22,9 +28,3 @@ daply(baseball, .(year), nrow)
 daply(baseball[, c(2, 6:9)], .(year), mean)
 daply(baseball[, 6:9], .(baseball$year), mean)
 daply(baseball, .(year), function(df) mean(df[, 6:9]))}
-\arguments{\item{.data}{data frame to be processed}
-\item{.variables}{variables to split data frame by, as quoted variables, a formula or character vector}
-\item{.fun}{function to apply to each piece}
-\item{...}{other arguments passed on to \code{.fun}}
-\item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
-\item{.drop}{should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}}}

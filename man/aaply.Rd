@@ -16,8 +16,14 @@ those dimensions are added on to the highest dimensions, rather than the
 lowest dimensions.  This makes \code{aaply} idempotent, so that
 \code{apply(input, X, identity)} is equivalent to \code{aperm(input, X)}.}
 \keyword{manip}
-\value{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
-dim(ozone)
+\value{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}
+\arguments{\item{.data}{matrix, array or data frame to be processed}
+\item{.margins}{a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions}
+\item{.fun}{function to apply to each piece}
+\item{...}{other arguments passed on to \code{.fun}}
+\item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+\item{.drop}{should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}}}
+\examples{dim(ozone)
 aaply(ozone, 1, mean)
 aaply(ozone, 1, mean, .drop = FALSE)
 aaply(ozone, 3, mean)
@@ -34,9 +40,3 @@ aaply(ozone, 3, standardise)
 aaply(ozone, 1:2, standardise)
 
 aaply(ozone, 1:2, diff)}
-\arguments{\item{.data}{matrix, array or data frame to be processed}
-\item{.margins}{a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions}
-\item{.fun}{function to apply to each piece}
-\item{...}{other arguments passed on to \code{.fun}}
-\item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
-\item{.drop}{should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}}}

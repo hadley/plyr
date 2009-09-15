@@ -60,6 +60,7 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .drop should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
+#' @examples
 #' daply(baseball, .(year), nrow)
 #'
 #' # Several different ways of summarising by variables that should not be 
@@ -100,6 +101,7 @@ daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .drop should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
+#' @examples
 #' dim(ozone)
 #' aaply(ozone, 1, mean)
 #' aaply(ozone, 1, mean, .drop = FALSE)
