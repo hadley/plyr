@@ -1,4 +1,5 @@
 #' Call function with arguments in array or data frame, returning a data frame
+#'
 #' Call a multi-argument function with values taken from columns of an data frame or array, and combine results into a data frame
 #' 
 #' The \code{m*ply} functions are the \code{plyr} version of \code{mapply},
@@ -17,6 +18,7 @@
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @return a data frame
+#' @examples
 #' mdply(data.frame(mean = 1:5, sd = 1:5), rnorm, n = 2)
 #' mdply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 2)
 #' mdply(cbind(mean = 1:5, sd = 1:5), rnorm, n = 5)

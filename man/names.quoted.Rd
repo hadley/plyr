@@ -2,6 +2,10 @@
 \alias{names.quoted}
 \title{Compute names of quoted variables...}
 \usage{\method{names}{quoted} (x)}
-\description{Compute names of quoted variables
-Figure out names of quoted variables, using specified names if they exist, otherwise using \code{\link{make.names}} on the values.}
+
+\description{
+  Compute names of quoted variables Figure out names of quoted
+  variables, using specified names if they exist, otherwise using
+  \code{\link{make.names}} on the values.
+}
 \keyword{internal}

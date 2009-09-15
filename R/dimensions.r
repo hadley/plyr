@@ -1,7 +1,7 @@
 #' Number of dimensions
 #' Number of dimensions of an array or vector
 #' 
-#' @param x array 
+#' @param x array
 #' @keywords internal
 dims <- function(x) length(amv_dim(x))
 

@@ -2,7 +2,11 @@
 \alias{amv_dim}
 \title{Dimensions...}
 \usage{amv_dim(x)}
-\description{Dimensions
-Consistent dimensions for vectors, matrices and arrays.}
+
+\description{
+  Dimensions Consistent dimensions for vectors, matrices and arrays.
+}
 \keyword{internal}
-\arguments{\item{x}{array, matrix or vector}}
+\arguments{
+  \item{x}{array, matrix or vector}
+}

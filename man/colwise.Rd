@@ -1,16 +1,23 @@
 \name{colwise}
 \title{Column-wise function.}
 \usage{colwise(.fun, .cols=true)}
-\description{Column-wise function.
-Turn a function that operates on a vector into a function that operates
-column-wise on a data.frame.}
-\details{\code{catcolwise} and \code{numcolwise} provide version that only operate
-on discrete and numeric variables respectively.}
+
+\description{
+  Column-wise function. Turn a function that operates on a vector into
+  a function that operates column-wise on a data.frame.
+}
+
+\details{
+  \code{catcolwise} and \code{numcolwise} provide version that only
+  operate on discrete and numeric variables respectively.
+}
 \alias{colwise}
 \alias{catcolwise}
 \alias{numcolwise}
-\arguments{\item{.fun}{function}
-\item{.cols}{either function that tests columns for inclusion, or a quoted object giving which columns to process}}
+\arguments{
+  \item{.fun}{function}
+  \item{.cols}{either function that tests columns for inclusion, or a quoted object giving which columns to process}
+}
 \examples{# Count number of missing values
 nmissing <- function(x) sum(is.na(x))
 
