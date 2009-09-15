@@ -21,8 +21,8 @@ unrowname <- function(x) {
 
 #' Function that always returns true
 #' 
-#' @params ... all input ignored
-#' @value \code{TRUE}
+#' @param ... all input ignored
+#' @return \code{TRUE}
 #' @keywords internal
 #' @seealso \code{\link{colwise}} which uses it
 true <- function(...) TRUE

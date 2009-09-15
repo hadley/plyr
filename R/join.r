@@ -33,8 +33,7 @@ join <- function(x, y, by = intersect(names(x), names(y)), type = "left") {
 
   } else if (type == "left") {
     y.match <- match(keys$x, keys$y)
-    y.matched <- y[y.match, new.cols, drop = FALSE]
-    rownames(y.matched) <- NULL
+    y.matched <- unrowname(y[y.match, new.cols, drop = FALSE])
     cbind(x, y.matched)
 
   } else if (type == "right") {
@@ -43,8 +42,7 @@ join <- function(x, y, by = intersect(names(x), names(y)), type = "left") {
     }
     
     x.match <- match(keys$y, keys$x)
-    x.matched <- x[x.match, , drop = FALSE]
-    rownames(x.matched) <- NULL
+    x.matched <- unrowname(x[x.match, , drop = FALSE])
     cbind(x.matched, y[, new.cols, drop = FALSE])
     
   } else if (type == "full") {
