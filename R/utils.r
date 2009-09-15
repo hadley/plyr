@@ -18,3 +18,11 @@ unrowname <- function(x) {
   rownames(x) <- NULL
   x
 }
+
+#' Function that always returns true
+#' 
+#' @params ... all input ignored
+#' @value \code{TRUE}
+#' @keywords internal
+#' @seealso \code{\link{colwise}} which uses it
+true <- function(...) TRUE

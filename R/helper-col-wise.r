@@ -64,5 +64,3 @@ numcolwise <- function(.fun, .try = FALSE) {
   colwise(.fun, is.numeric)
 }
 
-
-true <- function(x) TRUE
