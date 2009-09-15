@@ -14,6 +14,7 @@ Description: plyr is a set of tools that solves a common set of
 URL: http://had.co.nz/plyr
 Depends: R (>= 2.8)
 Suggests: RUnit, abind, tcltk
+Enhances: iterator
 License: GPL
 LazyData: true
 Collate: 'dimensions.r' 'helper-arrange.r' 'helper-col-wise.r'
