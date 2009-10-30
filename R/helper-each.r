@@ -33,6 +33,7 @@ each <- function(...) {
   
   n <- length(fs)
   proto <- NULL
+  result <- NULL
   
   if (n == 1) {
     # If there is only one function, things are simple.  We just
