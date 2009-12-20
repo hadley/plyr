@@ -18,3 +18,8 @@ test_that("Factors are concatenated correctly", {
   expect_that(concat(a, b, c), equals(abc))
   expect_that(concat(a, concat(b, c)), equals(abc))
 })
+
+test_that("First argument can be a list", {
+  expect_that(concat(list(1, 2, 3)), equals(1:3))
+  expect_that(concat(list("a", "b", "c")), equals(letters[1:3]))
+})

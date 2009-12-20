@@ -10,6 +10,10 @@
 concat <- function(...) {
   vectors <- compact(list(...))
   
+  if (is.list(vectors[[1]])) {
+    vectors <- compact(vectors[[1]])
+  }
+  
   classes <- lapply(vectors, class)
   class <- unique(classes)
   if (length(class) > 1) {
