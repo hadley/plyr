@@ -42,7 +42,7 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
     all <- seq_len(attr(splitv,"n"))
     missing <- setdiff(all, names(index))
  
-    index[missing] <- rep(list(integer()), length(missing))
+    index[as.character(missing)] <- rep(list(integer()), length(missing))
     index <- index[order(as.numeric(names(index)))]
   }
   
