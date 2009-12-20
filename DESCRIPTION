@@ -15,7 +15,7 @@ URL: http://had.co.nz/plyr
 Depends: R (>= 2.8)
 Suggests: RUnit, abind, tcltk
 Enhances: iterator
-License: GPL
+License: GPL-2
 LazyData: true
 Collate: 'dimensions.r' 'helper-arrange.r' 'helper-col-wise.r'
     'helper-data-frame.r' 'helper-defaults.r' 'helper-each.r'
