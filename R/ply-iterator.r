@@ -10,6 +10,12 @@
 #' @param .iterator iterator object
 #' @param .fun function to apply to each piece
 #' @param ... other arguments passed on to \code{.fun}
+#' @examples
+#' if(require("iterators")) {
+#'   baseball_id <- isplit2(baseball, baseball$id)
+#'   liply(baseball_id, summarise, mean_rbi = mean(rbi, na.rm = TRUE))
+#'   system.time(dlply(baseball, "id", summarise, mean_rbi = mean(rbi)))
+#' }
 liply <- function(.iterator, .fun = NULL, ...) {
   stopifnot(is.iterator(.iterator))
   if (is.null(.fun)) return(as.list(.iterator))
@@ -37,4 +43,16 @@ liply <- function(.iterator, .fun = NULL, ...) {
   length(result) <- i
   
   result
+}
+
+#' Split iterator that returns values, not indices
+#'
+#' @keywords internal
+isplit2 <- function (x, f, drop = FALSE, ...)  {
+  it <- isplit(seq_len(nrow(x)), f, drop = drop, ...)
+  nextEl <- function() {
+    i <- nextElem(it)
+    x[i$value, , drop = FALSE]
+  }
+  new_iterator(nextEl)
 }
