@@ -66,11 +66,18 @@ names.quoted <- function(x) {
 #' 
 #' @return a list
 #' @keywords internal
-eval.quoted <- function(exprs,  envir = parent.frame(), enclos = if (is.list(envir) || is.pairlist(envir)) parent.frame() else baseenv()) {
+#' @param expr quoted object to evalution
+#' @param try if TRUE, return \code{NULL} if evaluation unsuccesful
+eval.quoted <- function(exprs,  envir = parent.frame(), enclos = if (is.list(envir) || is.pairlist(envir)) parent.frame() else baseenv(), try = FALSE) {
   
   if (is.numeric(exprs)) return(envir[exprs])
   
-  results <- lapply(exprs, function(x.) eval(x., envir, enclos))
+  if (try) {
+    results <- lapply(exprs, failwith(NULL, eval, quiet = TRUE), 
+      envir = envir, enclos = enclos)
+  } else {
+    results <- lapply(exprs, eval, envir = envir, enclos = enclos)
+    }
   names(results) <- names(exprs)
   
   results
@@ -89,6 +96,7 @@ eval.quoted <- function(exprs,  envir = parent.frame(), enclos = if (is.list(env
 #' @seealso \code{\link{.}}
 #' @aliases as.quoted.call as.quoted.character as.quoted.formula
 #'  as.quoted.quoted as.quoted.NULL as.quoted.numeric c.quoted as.quoted
+#'  [.quoted
 #' @param x input to quote
 #' @examples
 #' as.quoted(c("a", "b", "log(d)"))
@@ -133,6 +141,10 @@ as.quoted.NULL <- function(x) structure(list(), class = "quoted")
 
 c.quoted <- function(..., recursive = FALSE) {
   structure(NextMethod("c"), class = "quoted")
+}
+
+"[.quoted" <- function(x, i, ...) {
+  structure(NextMethod("["), class = "quoted")
 }
 
 #' Is a formula?
