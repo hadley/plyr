@@ -17,6 +17,8 @@ rbind.fill <- function(...) {
   }
   dfs <- compact(dfs)
   
+  if (length(dfs) == 1) return(dfs[[1]])
+  
   # About 6 times faster than using nrow
   rows <- unlist(lapply(dfs, .row_names_info, 2L))
   nrows <- sum(rows)
@@ -35,9 +37,9 @@ rbind.fill <- function(...) {
     matching <- intersect(names(df), vars[!seen])
     for(var in matching) {
       value <- df[[var]]
-      if (is.factor(value))
-        output[[var]] <- factor(value)
-      else {
+      if (is.factor(value)) {
+        output[[var]] <- factor(output[[var]])
+      } else {
         class(output[[var]]) <- class(value)
       }
     }
@@ -47,7 +49,7 @@ rbind.fill <- function(...) {
   # Set up factors
   factors <- names(output)[unlist(lapply(output, is.factor))]
   for(var in factors) {
-    all <- llply(dfs, function(df) levels(df[[var]]))
+    all <- unique(lapply(dfs, function(df) levels(df[[var]])))
     levels(output[[var]]) <- unique(unlist(all))
   }
   
