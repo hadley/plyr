@@ -46,3 +46,16 @@ test_that("idempotent function equivalent to permutation",  {
   expect_that(aaperm(c(2, 3)), is_equivalent_to(aperm(a, c(2, 3, 1))))
   expect_that(aaperm(c(1, 3)), is_equivalent_to(aperm(a, c(1, 3, 2))))
 })
+
+# Test contributed by Baptiste Auguie
+test_that("single column data frames work when treated as an array", {
+  foo <- function(a="a", b="b", c="c", ...){
+    paste(a, b, c, sep="")
+  }
+
+  df <- data.frame(b=1:2)
+  res <- adply(df, 1, splat(foo))
+  
+  expect_that(res$b, equals(df$b))
+  expect_that(as.character(res$V1), equals(c("a1c", "a2c")))
+})
