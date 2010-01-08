@@ -15,7 +15,7 @@ list_to_dataframe <- function(res, labels = NULL) {
     if (length(res) > 1) {
       resdf <- as.data.frame(do.call("rbind", res))
     } else {
-      resdf <- data.frame(res[[1]])
+      resdf <- as.data.frame(res[[1]])
     }
     rows <- rep(1, length(res))
   } else {
