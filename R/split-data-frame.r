@@ -13,7 +13,7 @@
 #' 
 #' @seealso \code{\link{.}} for quoting variables, \code{\link{split}}
 #' @param data data frame
-#' @param .variables a \link{quoted} list of variables, a formula, or character vector
+#' @param .variables a \link{quoted} list of variables, a formula, or character vector.  \code{NULL} will not split the data
 #' @param drop drop unnused factor levels?
 #' @return a list of data.frames, with attributes that record split details
 #' @examples
@@ -30,10 +30,15 @@
 #' splitter_d(mtcars, .(cyl3, vs))
 #' splitter_d(mtcars, .(cyl3, vs), drop = FALSE)
 splitter_d <- function(data, .variables = NULL, drop = TRUE) {
-  splits <- eval.quoted(.variables, data, parent.frame())
-  
-  splitv <- ninteraction(splits, drop = drop)
-  split_labels <- split_labels(splits, drop = drop)
+  if (length(.variables) == 0) {
+    splitv <- rep(1, nrow(data))
+    split_labels <- NULL
+  } else {
+    splits <- eval.quoted(.variables, data, parent.frame())
+
+    splitv <- ninteraction(splits, drop = drop)
+    split_labels <- split_labels(splits, drop = drop)
+  }
 
   index <- tapply(1:nrow(data), splitv, list)
 
