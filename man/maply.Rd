@@ -21,13 +21,13 @@
   (\code{vector()}).
 }
 \keyword{manip}
-\value{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
-maply(cbind(mean = 1:5, sd = 1:5), rnorm, n = 5)
-maply(cbind(1:5, 1:5), rnorm, n = 5)
-maply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 5)}
+\value{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}
 \arguments{
   \item{.data}{matrix or data frame to use as source of arguments}
   \item{.fun}{function to be called with varying arguments}
   \item{...}{other arguments passed on to \code{.fun}}
   \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
 }
+\examples{maply(cbind(mean = 1:5, sd = 1:5), rnorm, n = 5)
+maply(cbind(1:5, 1:5), rnorm, n = 5)
+maply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 5)}

@@ -23,7 +23,7 @@
 \value{a list of data.frames, with attributes that record split details}
 \arguments{
   \item{data}{data frame}
-  \item{.variables}{a \link{quoted} list of variables, a formula, or character vector}
+  \item{.variables}{a \link{quoted} list of variables, a formula, or character vector.  \code{NULL} will not split the data}
   \item{drop}{drop unnused factor levels?}
 }
 \examples{splitter_d(mtcars, .(cyl))

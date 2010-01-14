@@ -18,11 +18,11 @@ Enhances: iterator
 License: GPL-2
 LazyData: true
 Collate: 'dimensions.r' 'helper-arrange.r' 'helper-col-wise.r'
-    'helper-data-frame.r' 'helper-defaults.r' 'helper-each.r'
-    'helper-splat.r' 'helper-summarise.r' 'helper-try.r'
-    'indexed-array.r' 'indexed-data-frame.r' 'indexed.r' 'iterator.r'
-    'join.r' 'ninteraction.r' 'ply-array.r' 'ply-data-frame.r'
-    'ply-iterator.r' 'ply-list.r' 'ply-mapply.r' 'ply-null.r'
-    'ply-replicate.r' 'progress.r' 'quote.r' 'rbind.r'
+    'helper-concat.r' 'helper-data-frame.r' 'helper-defaults.r'
+    'helper-each.r' 'helper-splat.r' 'helper-summarise.r'
+    'helper-try.r' 'indexed-array.r' 'indexed-data-frame.r' 'indexed.r'
+    'iterator.r' 'join.r' 'ninteraction.r' 'ply-array.r'
+    'ply-data-frame.r' 'ply-iterator.r' 'ply-list.r' 'ply-mapply.r'
+    'ply-null.r' 'ply-replicate.r' 'progress.r' 'quote.r' 'rbind.r'
     'simplify-array.r' 'simplify-data-frame.r' 'simplify-vector.r'
     'split-array.r' 'split-data-frame.r' 'split.r' 'utils.r'

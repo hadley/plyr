@@ -25,6 +25,7 @@
 \alias{as.quoted.numeric}
 \alias{c.quoted}
 \alias{as.quoted}
+\alias{[.quoted}
 \arguments{
   \item{x}{input to quote}
 }
