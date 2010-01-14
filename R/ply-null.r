@@ -14,6 +14,7 @@
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .print automatically print each result? (default: \code{FALSE})
+#' @export
 l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE) {
   if (is.character(.fun)) .fun <- do.call("each", as.list(.fun))
   if (!is.function(.fun)) stop(".fun is not a function.")
@@ -50,6 +51,7 @@ l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE) {
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .print automatically print each result? (default: \code{FALSE})
+#' @export
 d_ply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .print = FALSE) {
   .data <- as.data.frame(.data)
   .variables <- as.quoted(.variables)
@@ -76,6 +78,7 @@ d_ply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .prin
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .print automatically print each result? (default: \code{FALSE})
+#' @export
 a_ply <- function(.data, .margins, .fun = NULL, ..., .progress = "none", .print = FALSE) {
   pieces <- splitter_a(.data, .margins)
   

@@ -6,6 +6,7 @@
 #' 
 #' @param flat function to splat
 #' @return a function
+#' @export
 #' @examples
 #' hp_per_cyl <- function(hp, cyl, ...) hp / cyl
 #' splat(hp_per_cyl)(mtcars[1,])

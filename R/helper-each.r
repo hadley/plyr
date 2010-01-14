@@ -5,6 +5,7 @@
 #' 
 #' @param ... functions to combine
 #' @keywords manip
+#' @export
 #' @examples
 #' each(min, max)(1:10)
 #' each("min", "max")(1:10)

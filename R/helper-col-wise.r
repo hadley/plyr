@@ -8,6 +8,7 @@
 #' @param .fun function
 #' @param .cols either function that tests columns for inclusion, or a quoted object giving which columns to process
 #' @aliases colwise catcolwise numcolwise
+#' @export colwise numcolwise catcolwise
 #' @examples
 #' # Count number of missing values
 #' nmissing <- function(x) sum(is.na(x))
@@ -60,6 +61,7 @@ colwise <- function(.fun, .cols = true) {
 catcolwise <- function(.fun, .try = FALSE) {
   colwise(.fun, is.discrete)
 }
+
 numcolwise <- function(.fun, .try = FALSE) {
   colwise(.fun, is.numeric)
 }

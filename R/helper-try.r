@@ -7,6 +7,7 @@
 #' @return a function
 #' @seealso \code{\link{try_default}}
 #' @keywords debugging
+#' @export
 #' @examples
 #' f <- function(x) if (x == 1) stop("Error!") else 1
 #' \dontrun{

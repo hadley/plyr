@@ -6,7 +6,7 @@
 #' 
 #' Zero length input are silently dropped.
 #' 
-#' @params ... set of vectors to combine
+#' @param ... set of vectors to combine
 concat <- function(...) {
   vectors <- compact(list(...))
   

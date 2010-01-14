@@ -20,6 +20,7 @@
 #'   by default because it substantially slows processing speed, but is very
 #'   useful for debugging
 #' @return list of results
+#' @export
 #' @examples
 #' llply(llply(mtcars, round), table)
 #' llply(baseball, summary)
@@ -96,6 +97,7 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE) 
 #' @param .drop should combinations of variables that do not appear in the 
 #'   data be preserved (FALSE) or dropped (TRUE, default)
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
+#' @export
 #' @examples
 #' linmod <- function(df) lm(rbi ~ year, data = transform(df, year = year - min(year)))
 #' models <- dlply(baseball, .(id), linmod)
@@ -128,6 +130,7 @@ dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' 
 #' 
 #' @keywords manip
+#' @export
 #' @param .data matrix, array or data frame to be processed
 #' @param .margins a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions
 #' @param .fun function to apply to each piece

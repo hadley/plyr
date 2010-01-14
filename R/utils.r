@@ -3,6 +3,7 @@
 #' 
 #' @param x vector to test
 #' @keywords internal
+#' @export
 #' @examples
 #' is.discrete(1:10)
 #' is.discrete(c("a", "b", "c"))
@@ -14,6 +15,7 @@ is.discrete <- function(x) is.factor(x) || is.character(x) || is.logical(x)
 #' 
 #' @keywords internal
 #' @param x data frame
+#' @export
 unrowname <- function(x) {
   rownames(x) <- NULL
   x
@@ -25,4 +27,5 @@ unrowname <- function(x) {
 #' @return \code{TRUE}
 #' @keywords internal
 #' @seealso \code{\link{colwise}} which uses it
+#' @export
 true <- function(...) TRUE

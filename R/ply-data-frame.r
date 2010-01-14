@@ -21,6 +21,7 @@
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @return a data frame
+#' @export
 ldply <- function(.data, .fun = NULL, ..., .progress = "none") {
   if (!inherits(.data, "split")) .data <- as.list(.data)
   res <- llply(.data = .data, .fun = .fun, ..., .progress = .progress)
@@ -54,6 +55,7 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none") {
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @return a data frame
+#' @export
 #' @examples
 #' ddply(baseball, .(year), "nrow") 
 #' ddply(baseball, .(lg), c("nrow", "ncol")) 
@@ -90,6 +92,7 @@ ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @return a data frame
+#' @export
 adply <- function(.data, .margins, .fun = NULL, ..., .progress = "none") {
   pieces <- splitter_a(.data, .margins)
   

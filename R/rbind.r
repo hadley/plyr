@@ -7,6 +7,7 @@
 #' 
 #' @param ... data frames to row bind together
 #' @keywords manip
+#' @export
 #' @examples
 #' rbind.fill(mtcars[c("mpg", "wt")], mtcars[c("wt", "cyl")])
 rbind.fill <- function(...) {
@@ -73,6 +74,7 @@ rbind.fill <- function(...) {
 #' 
 #' @param l list
 #' @keywords manip internal 
+#' @export
 compact <- function(l) Filter(Negate(is.null), l)
 
 #' Convert list to data frame

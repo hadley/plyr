@@ -9,6 +9,7 @@
 #' @param ... expressions evaluated in the context of \code{df} and then fed
 #'   to \code{\link{order}}
 #' @keywords manip
+#' @export
 #' @examples
 #' mtcars[with(mtcars, order(cyl, disp)), ]
 #' arrange(mtcars, cyl, disp)

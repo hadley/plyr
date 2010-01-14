@@ -12,6 +12,7 @@
 #' @param by character vector of variable names to join by
 #' @param type type of join: left (default), right, inner or full.
 #' @keywords manip
+#' @export
 #' @examples
 #' first <- ddply(baseball, "id", summarise, first = min(year))
 #' system.time(b2 <- merge(baseball, first, by = "id", all.x = TRUE))

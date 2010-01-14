@@ -10,6 +10,7 @@
 #' @param .iterator iterator object
 #' @param .fun function to apply to each piece
 #' @param ... other arguments passed on to \code{.fun}
+#' @export
 #' @examples
 #' if(require("iterators")) {
 #'   baseball_id <- isplit2(baseball, baseball$id)

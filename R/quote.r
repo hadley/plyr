@@ -17,6 +17,7 @@
 #' @param ... unevaluated expressions to be recorded.  Specify names if you want the set the names of the resultant variables
 #' @return list of symbol and language primitives
 #' @aliases . quoted
+#' @export
 #' @name quoted
 #' @examples
 #' .(a, b, c)
@@ -68,6 +69,7 @@ names.quoted <- function(x) {
 #' @keywords internal
 #' @param expr quoted object to evalution
 #' @param try if TRUE, return \code{NULL} if evaluation unsuccesful
+#' @export
 eval.quoted <- function(exprs,  envir = parent.frame(), enclos = if (is.list(envir) || is.pairlist(envir)) parent.frame() else baseenv(), try = FALSE) {
   
   if (is.numeric(exprs)) return(envir[exprs])
@@ -101,6 +103,7 @@ eval.quoted <- function(exprs,  envir = parent.frame(), enclos = if (is.list(env
 #' @examples
 #' as.quoted(c("a", "b", "log(d)"))
 #' as.quoted(a ~ b + log(d))
+#' @export
 as.quoted <- function(x) UseMethod("as.quoted")
 as.quoted.call <- function(x) structure(as.list(x)[-1], class="quoted")
 as.quoted.character <- function(x) {
@@ -151,4 +154,5 @@ c.quoted <- function(..., recursive = FALSE) {
 #' Checks if argument is a formula
 #' 
 #' @keywords internal
+#' @export
 is.formula <- function(x) inherits(x, "formula")

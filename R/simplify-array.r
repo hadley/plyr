@@ -1,4 +1,3 @@
-
 #' List to array
 #' Reduce/simplify a list of homogenous objects to an array
 #' 

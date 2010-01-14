@@ -12,6 +12,7 @@ plyr 0.1.10 (2009-XX-X) ---------------------------------------------------
 * concatenate function that works like c but does not discard attributes.
 * list_to_dataframe is more consistent when processing a single data frame
 * d*ply accepts NULL for splitting variables, indicating that the data should not be split
+* NAMESPACE: plyr no longer exports internal functions which were causing clashes with other packages
 
 plyr 0.1.9 (2009-06-23) ---------------------------------------------------
 

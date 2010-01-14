@@ -10,6 +10,7 @@
 #' @param ... further arguments of the form var = value
 #' @keywords manip
 #' @aliases summarise summarize
+#' @export summarise summarize
 #' @examples
 #' summarise(baseball, 
 #'  duration = max(year) - min(year), 
