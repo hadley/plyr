@@ -66,31 +66,5 @@ rbind.fill <- function(...) {
     }
   }  
   
-  as_df(output)
-}
-
-#' Compact list
-#' Remove all NULL entries from a list
-#' 
-#' @param l list
-#' @keywords manip internal 
-#' @export
-compact <- function(l) Filter(Negate(is.null), l)
-
-#' Convert list to data frame
-#' Works like cbind, but crams everything into a column
-#' 
-#' @param output output list to turn into a data frame
-#' @keywords internal
-as_df <- function(output) {
-  if (length(output) == 0) return(data.frame())
-  # Convert list to data.frame
-  #  Complication necessary to support stamp from reshape, which may
-  #  have columns containing data frames
-  
-  df <- data.frame(matrix(ncol = 0, nrow = length(output[[1]])))
-  for(var in names(output)) {
-    df[var] <- output[var]
-  }
-  df  
+  quick_df(output)
 }

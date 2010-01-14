@@ -1,3 +1,6 @@
+# Utilities are simple one or two line functions that don't deserve their own
+# files
+
 #' Determine if a vector is discrete
 #' A discrete vector is a factor or a character vector
 #' 
@@ -29,3 +32,24 @@ unrowname <- function(x) {
 #' @seealso \code{\link{colwise}} which uses it
 #' @export
 true <- function(...) TRUE
+
+#' Compact list
+#' Remove all NULL entries from a list
+#' 
+#' @param l list
+#' @keywords manip internal 
+#' @export
+compact <- function(l) Filter(Negate(is.null), l)
+
+#' Number of unique values
+#' Calculate number of unique values of a variable as efficiently as possible.
+#' 
+#' @param x vector
+#' @keywords internal
+nunique <- function(x) {
+  if (is.factor(x)) {
+    length(levels(x))
+  } else {
+    length(unique(x))
+  }
+}
