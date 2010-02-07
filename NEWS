@@ -1,19 +1,23 @@
-plyr 0.1.10 (2009-XX-X) ---------------------------------------------------
+plyr 0.1.10 (2010-XX-X) ---------------------------------------------------
 
-* scoping bug in each fixed, thanks to Yasuhisa Yoshida for the bug report
-* new helper method: arrange, for reordering a data frame.  
-* another rewrite of rbind.fill to increase speed
-* speed up rbind.fill by ~20% by using all instead of %in% 
-* rename internal function reduce to reduce_dim to better reflect what it does and avoid conflicts with other packages
+* arrange: a new helper method for reordering a data frame. 
+* desc makes it easy to sort any vector in descending order
+* d*ply now accepts NULL for splitting variables, indicating that the data should not be split
+* plyr no longer exports internal functions, many of which were causing clashes with other packages
+
+Speed improvements
+
+* another rewrite of rbind.fill to increase speed 
 * tweaks to splitter_d so now much faster when many combinations of the factors do not occur in the data (using ninteraction instead of interaction)
+
+Bug fixes:
+
+* each: scoping bug fixed, thanks to Yasuhisa Yoshida for the bug report
 * ninteraction now preserves NAs
-* leaving .fun as NULL now always returns list (thanks to Stavros Macrakis for the bug report)
-* splitter_d: fixed bug when .drop = FALSE
-* concatenate function that works like c but does not discard attributes.
+* splitter_d: fixed ordering bug when .drop = FALSE
 * list_to_dataframe is more consistent when processing a single data frame
-* d*ply accepts NULL for splitting variables, indicating that the data should not be split
-* NAMESPACE: plyr no longer exports internal functions which were causing clashes with other packages
-* desc function to make it easy to sort any vector in descending order
+* leaving .fun as NULL now always returns list (thanks to Stavros Macrakis for the bug report)
+
 
 plyr 0.1.9 (2009-06-23) ---------------------------------------------------
 
