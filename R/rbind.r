@@ -66,5 +66,5 @@ rbind.fill <- function(...) {
     }
   }  
   
-  quick_df(output)
+  quickdf(output)
 }

@@ -12,7 +12,7 @@
 #' @param ... other arguments passed on to \code{.fun}
 #' @export
 #' @examples
-#' if(require("iterators")) {
+#' if(require("itertools")) {
 #'   baseball_id <- isplit2(baseball, baseball$id)
 #'   liply(baseball_id, summarise, mean_rbi = mean(rbi, na.rm = TRUE))
 #'   system.time(dlply(baseball, "id", summarise, mean_rbi = mean(rbi)))

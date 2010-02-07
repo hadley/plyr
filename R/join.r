@@ -4,7 +4,7 @@
 #' If needed, rows from y will be added to the bottom.  
 #' 
 #' Join is about four times faster than merge, but it achieves this speed
-#' by being less flexible, and is design for the types of problems where you 
+#' by being less flexible, and is designed for the types of problems where you 
 #' would use a sql join.
 #' 
 #' @param x data frame
@@ -32,7 +32,7 @@ join <- function(x, y, by = intersect(names(x), names(y)), type = "left") {
     y.match <- match(keys$x, keys$y, 0)
     cbind(x[x.match, , drop = FALSE], y[y.match, new.cols, drop = FALSE])
 
-  } else if (type == "left") {
+  } else if (type == "left") {    
     y.match <- match(keys$x, keys$y)
     y.matched <- unrowname(y[y.match, new.cols, drop = FALSE])
     cbind(x, y.matched)
@@ -47,7 +47,7 @@ join <- function(x, y, by = intersect(names(x), names(y)), type = "left") {
     cbind(x.matched, y[, new.cols, drop = FALSE])
     
   } else if (type == "full") {
-    stop("Not implemented yet")
+    stop("Not yet implemented")
   }
 }
 
