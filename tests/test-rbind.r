@@ -33,3 +33,8 @@ test_that("columns are in expected order", {
   
   
 })
+
+
+# bplayer <- split(baseball, baseball$id)
+# system.time(do.call("rbind", bplayer))
+# system.time(do.call("rbind.fill", bplayer))
