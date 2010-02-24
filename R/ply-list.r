@@ -30,7 +30,11 @@
 #' llply(x, mean)
 #' llply(x, quantile, probs = 1:3/4)
 llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE) {
-  pieces <- if (inherits(.data, "split") && !is.list(.data)) .data else as.list(.data)
+  if (inherits(.data, "split")) {
+    pieces <- .data
+  } else {
+    pieces <- if (!is.list(.data)) as.list(.data) else .data
+  }
   if (is.null(.fun)) return(as.list(pieces))
   n <- length(pieces)
   if (n == 0) return(list())
