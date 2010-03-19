@@ -12,7 +12,7 @@
   it useful for factors and dates etc.  This function does not perform
   coercion so all objects should be of the same type.
 
-  Zero length input are silently dropped.
+  Zero length inputs are silently dropped.
 }
 \arguments{
   \item{...}{set of vectors to combine}

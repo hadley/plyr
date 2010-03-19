@@ -20,4 +20,5 @@
 to \code{\link{order}}}
 }
 \examples{mtcars[with(mtcars, order(cyl, disp)), ]
-arrange(mtcars, cyl, disp)}
+arrange(mtcars, cyl, disp)
+arrange(mtcars, cyl, desc(disp))}

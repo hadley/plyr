@@ -12,8 +12,8 @@
   used. If needed, rows from y will be added to the bottom.
 
   Join is about four times faster than merge, but it achieves this
-  speed by being less flexible, and is design for the types of problems
-  where you would use a sql join.
+  speed by being less flexible, and is designed for the types of
+  problems where you would use a sql join.
 }
 \keyword{manip}
 \arguments{

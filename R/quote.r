@@ -17,7 +17,7 @@
 #' @param ... unevaluated expressions to be recorded.  Specify names if you want the set the names of the resultant variables
 #' @return list of symbol and language primitives
 #' @aliases . quoted
-#' @export
+#' @export .
 #' @name quoted
 #' @examples
 #' .(a, b, c)
