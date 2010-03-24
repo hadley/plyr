@@ -45,6 +45,7 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE) 
   
   progress <- create_progress_bar(.progress)
   progress$init(n)
+  on.exit(progress$term())
 
   result <- vector("list", n)
 
@@ -74,7 +75,6 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE) 
   if (!is.null(dim(pieces))) {
     dim(result) <- dim(pieces)    
   }
-  progress$term()
   
   result
 }

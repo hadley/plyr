@@ -21,6 +21,7 @@ l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE) {
   
   progress <- create_progress_bar(.progress)
   progress$init(length(.data))
+  on.exit(progress$term())
   
   .data <- as.list(.data)
   for(i in seq_along(.data)) {
@@ -29,7 +30,6 @@ l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE) {
     progress$step()
   }
   
-  progress$term()
   invisible()
 }
 

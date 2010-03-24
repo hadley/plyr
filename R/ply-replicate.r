@@ -27,11 +27,12 @@ rlply <- function(.n, .expr, .progress = "none") {
   result <- vector("list", length = .n)
 
   progress$init(.n)
+  on.exit(progress$term())
+
   for(i in seq_len(.n)) {
     result[[i]] <- f()
     progress$step()
   }
-  progress$term()
   
   result
 }
@@ -133,11 +134,11 @@ r_ply <- function(.n, .expr, .progress = "none", .print = FALSE) {
   progress <- create_progress_bar(.progress)  
 
   progress$init(.n)
+  on.exit(progress$term())
+
   for(i in seq_len(.n)) {
     f()
     progress$step()
   }
   progress$term()
-
-  invisible()
 }
