@@ -46,6 +46,7 @@ Improvements:
 * each now accepts a list of functions or a vector of function names
 * l*ply will use list names where present
 * if .inform is TRUE, error messages will give you information about where errors within your data - hopefully this will make problems easier to track down
+* d*ply no longer converts splitting variables to factors when drop = T (thanks to bug report from Charlotte Wickham)
 
 Speed-ups
 
