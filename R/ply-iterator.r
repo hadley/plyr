@@ -18,10 +18,10 @@
 #'   system.time(dlply(baseball, "id", summarise, mean_rbi = mean(rbi)))
 #' }
 liply <- function(.iterator, .fun = NULL, ...) {
-  stopifnot(is.iterator(.iterator))
+  stopifnot(iterator::is.iterator(.iterator))
   if (is.null(.fun)) return(as.list(.iterator))
   
-  iterator <- icanhasnext(.iterator)
+  iterator <- iterator::icanhasnext(.iterator)
   
   if (is.character(.fun)) .fun <- each(.fun)
   if (!is.function(.fun)) stop(".fun is not a function.")
@@ -50,10 +50,10 @@ liply <- function(.iterator, .fun = NULL, ...) {
 #'
 #' @keywords internal
 isplit2 <- function (x, f, drop = FALSE, ...)  {
-  it <- isplit(seq_len(nrow(x)), f, drop = drop, ...)
+  it <- iterator::isplit(seq_len(nrow(x)), f, drop = drop, ...)
   nextEl <- function() {
-    i <- nextElem(it)
+    i <- iterator::nextElem(it)
     x[i$value, , drop = FALSE]
   }
-  new_iterator(nextEl)
+  iterator::new_iterator(nextEl)
 }
