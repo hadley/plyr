@@ -100,6 +100,14 @@ eval.quoted <- function(exprs,  envir = parent.frame(), enclos = if (is.list(env
 #'  as.quoted.quoted as.quoted.NULL as.quoted.numeric c.quoted as.quoted
 #'  [.quoted
 #' @param x input to quote
+#' @S3method as.quoted call
+#' @S3method as.quoted character
+#' @S3method as.quoted formula
+#' @S3method as.quoted quoted
+#' @S3method as.quoted NULL
+#' @S3method as.quoted numeric
+#' @S3method "[" quoted
+#' @S3method c quoted
 #' @examples
 #' as.quoted(c("a", "b", "log(d)"))
 #' as.quoted(a ~ b + log(d))
