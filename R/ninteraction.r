@@ -21,8 +21,9 @@ ninteraction <- function(.variables, drop = FALSE) {
   
   # Convert to factors, if necessary
   not_factor <- !unlist(lapply(.variables, is.factor))
-  .variables[not_factor] <- llply(.variables[not_factor], factor, exclude=NULL)
-  .variables <- llply(.variables, addNA, ifany = TRUE)
+  .variables[not_factor] <- lapply(.variables[not_factor], factor,
+    exclude=NULL)
+  .variables <- lapply(.variables, addNA, ifany = TRUE)
   
   # Calculate dimensions
 

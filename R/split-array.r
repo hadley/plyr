@@ -36,7 +36,8 @@ splitter_a <- function(data, .margins = 1) {
     split_labels <- data
   } else {
     dnames <- amv_dimnames(data)
-    split_labels <- expand.grid(dnames[.margins], KEEP.OUT.ATTRS = FALSE)
+    split_labels <- expand.grid(dnames[.margins], KEEP.OUT.ATTRS = FALSE,
+      stringsAsFactors = getOption("stringsAsFactors"))
     colnames <- names(dnames)[.margins]
     if (!is.null(colnames)) names(split_labels) <- colnames
   }
