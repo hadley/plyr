@@ -76,10 +76,8 @@ split_labels <- function(splits, drop) {
     representative <- which(!duplicated(splitv))[order(unique(splitv))]
     data.frame(lapply(splits, function(x) x[representative]))    
   } else {
-    factors <- llply(splits, addNA, ifany = TRUE)
-    # Need all combinations of levels
-    factor_levels <- lapply(factors, levels)
-    names(factor_levels) <- names(splits)
-    rev(expand.grid(rev(factor_levels)))
+    unique_values <- llply(splits, function(x) sort(unique(x)))
+    names(unique_values) <- names(splits)
+    rev(expand.grid(rev(unique_values)))
   }
 }
