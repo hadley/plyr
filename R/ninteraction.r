@@ -55,14 +55,14 @@ ninteraction <- id
 #' Numeric id for a vector
 #' @keywords internal
 id_var <- function(x, drop = TRUE) {
-  if (drop && is.factor(x)) x <- factor(x)
-  id <- as.numeric(addNA(as.factor(x), ifany = TRUE))
-
   if (is.factor(x)) {
+    if (drop) x <- factor(x)
+
+    id <- as.numeric(addNA(x, ifany = TRUE))
     n <- length(levels(x))
   } else {
-    n <- max(x)
+    id <- as.numeric(addNA(factor(x), ifany = TRUE))
+    n <- max(id)
   }
-
   structure(id, n = n)
 }
