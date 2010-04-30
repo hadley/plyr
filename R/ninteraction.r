@@ -22,7 +22,7 @@ id <- function(.variables, drop = FALSE) {
 
   # Special case for single variable
   if (length(.variables) == 1) {
-    id_var(.variables[[1]], drop = drop)
+    return(id_var(.variables[[1]], drop = drop))
   }
 
   # Calculate individual ids
