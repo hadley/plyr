@@ -61,8 +61,13 @@ id_var <- function(x, drop = TRUE) {
     id <- as.numeric(addNA(x, ifany = TRUE))
     n <- length(levels(x))
   } else {
-    id <- as.numeric(addNA(factor(x), ifany = TRUE))
+    levels <- sort(unique(x))
+    id <- match(x, levels)
     n <- max(id)
   }
   structure(id, n = n)
+}
+
+ordered_unique <- function(x) {
+  sort(unique(x))
 }
