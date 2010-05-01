@@ -59,7 +59,7 @@ id_var <- function(x, drop = TRUE) {
     id <- as.numeric(addNA(x, ifany = TRUE))
     n <- length(levels(x))
   } else {
-    levels <- sort(unique(x))
+    levels <- sort(unique(x), na.last = TRUE)
     id <- match(x, levels)
     n <- max(id)
   }

@@ -51,3 +51,7 @@ test_that("grids are correctly ranked", {
   expect_that(ninteraction(df, drop = T), is_equivalent_to(1:20))
 })
 
+test_that("NAs are placed last", {
+  expect_that(id_var(c(NA, 1)), is_equivalent_to(c(2, 1)))
+})
+
