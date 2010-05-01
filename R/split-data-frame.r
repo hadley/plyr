@@ -39,18 +39,10 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
     splitv <- ninteraction(splits, drop = drop)
     split_labels <- split_labels(splits, drop = drop)
   }
-
-  index <- tapply(1:nrow(data), splitv, list)
-
-  if (!drop) {
-    # ensure that all values occur in index.
-    all <- seq_len(attr(splitv,"n"))
-    missing <- setdiff(all, names(index))
- 
-    index[as.character(missing)] <- rep(list(integer()), length(missing))
-    index <- index[order(as.numeric(names(index)))]
-  }
   
+  index <- split_indices(seq_along(splitv), as.integer(splitv), 
+    attr(splitv, "n"))
+
   il <- indexed_df(environment(), index)
   
   structure(
