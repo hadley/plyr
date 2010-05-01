@@ -26,7 +26,7 @@ id <- function(.variables, drop = FALSE) {
   }
 
   # Calculate individual ids
-  ids <- lapply(.variables, id_var)
+  ids <- lapply(.variables, id_var, drop = drop)
 
   # Calculate dimensions
   ndistinct <- unlist(lapply(ids, attr, "n"))
@@ -45,7 +45,7 @@ id <- function(.variables, drop = FALSE) {
   # browser()
 
   if (drop) {
-    res <- id_var(res)
+    res <- id_var(res, drop = TRUE)
   }
 
   res
@@ -54,7 +54,7 @@ ninteraction <- id
 
 #' Numeric id for a vector
 #' @keywords internal
-id_var <- function(x, drop = TRUE) {
+id_var <- function(x, drop = FALSE) {
   if (is.factor(x) && !drop) {
     id <- as.numeric(addNA(x, ifany = TRUE))
     n <- length(levels(x))
