@@ -6,7 +6,7 @@ bench <- function(name, expr) {
   }
 
   out <- data.frame(
-    file = .bench_path,
+    file = basename(.bench_path),
     name = name,
     time = Sys.time(),
     sha = git_sha(),
