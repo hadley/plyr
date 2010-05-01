@@ -67,7 +67,3 @@ id_var <- function(x, drop = TRUE) {
   }
   structure(id, n = n)
 }
-
-ordered_unique <- function(x) {
-  sort(unique(x))
-}
