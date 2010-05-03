@@ -19,6 +19,6 @@
 #'  duration = max(year) - min(year), 
 #'  nteams = length(unique(team)))
 summarise <- function(.data, ...) {
-  as.data.frame(eval(substitute(list(...)), .data, parent.frame()))
+  quickdf(eval(substitute(list(...)), .data, parent.frame()))
 }
 summarize <- summarise
