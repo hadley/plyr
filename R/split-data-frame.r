@@ -43,7 +43,7 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
   index <- split_indices(seq_along(splitv), as.integer(splitv), 
     attr(splitv, "n"))
 
-  il <- indexed_df(environment(), index)
+  il <- indexed_df(data, index)
   
   structure(
     il,

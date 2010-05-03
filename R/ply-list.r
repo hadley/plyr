@@ -112,7 +112,7 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE) 
 #' qual <- laply(models, function(mod) summary(mod)$r.squared)
 #' hist(qual)
 dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
-  .data <- as.data.frame(.data)
+  # .data <- as.data.frame(.data)
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables, drop = .drop)
   
