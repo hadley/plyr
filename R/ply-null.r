@@ -53,7 +53,6 @@ l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE) {
 #' @param .print automatically print each result? (default: \code{FALSE})
 #' @export
 d_ply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .print = FALSE) {
-  .data <- as.data.frame(.data)
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables)
   

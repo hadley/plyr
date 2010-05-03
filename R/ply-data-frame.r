@@ -68,7 +68,6 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none") {
 #'  career_year = year - min(year) + 1
 #' )
 ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
-  .data <- as.data.frame(.data)
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables, drop = .drop)
   
