@@ -16,7 +16,7 @@ rbind.fill <- function(...) {
   if (is.list(dfs[[1]]) && !is.data.frame(dfs[[1]])) {
     dfs <- dfs[[1]]
   }
-  dfs <- compact(dfs)
+  dfs <- Filter(Negate(empty), dfs)
   
   if (length(dfs) == 1) return(dfs[[1]])
   
@@ -40,6 +40,9 @@ rbind.fill <- function(...) {
       value <- df[[var]]
       if (is.factor(value)) {
         output[[var]] <- factor(output[[var]])
+      } else if (is.list(value)) {
+        output[[var]] <- vector("list", nrows)
+      } else if (is.array(value)) {
       } else {
         class(output[[var]]) <- class(value)
       }
@@ -62,6 +65,7 @@ rbind.fill <- function(...) {
     df <- dfs[[i]]
     
     for(var in names(df)) {
+      if (is.list(output[[var]])) browser()
       output[[var]][rng] <- df[[var]]
     }
   }  

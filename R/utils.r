@@ -1,6 +1,3 @@
-# Utilities are simple one or two line functions that don't deserve their own
-# files
-
 #' Determine if a vector is discrete
 #' A discrete vector is a factor or a character vector
 #' 
@@ -52,4 +49,14 @@ nunique <- function(x) {
   } else {
     length(unique(x))
   }
+}
+
+#' Check if a data frame is empty
+#' Empty if it's null or it has 0 rows or columns
+#' 
+#' @params df data frame to check
+#' @keywords internal
+#' @export
+empty <- function(df) {
+  (is.null(df) || nrow(df) == 0 || ncol(df) == 0)
 }
