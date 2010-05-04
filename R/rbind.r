@@ -65,7 +65,6 @@ rbind.fill <- function(...) {
     df <- dfs[[i]]
     
     for(var in names(df)) {
-      if (is.list(output[[var]])) browser()
       output[[var]][rng] <- df[[var]]
     }
   }  
