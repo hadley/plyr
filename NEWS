@@ -1,8 +1,14 @@
 plyr 1.0 (2010-XX-X) ---------------------------------------------------
 
-* count: a version of table that returns data frames immediately and that is much much faster for high-dimensional data.
-* arrange: a new helper method for reordering a data frame. 
+New functions:
+
+* count, a version of table that returns data frames immediately and that is much much faster for high-dimensional data.
+* arrange, a new helper method for reordering a data frame. 
 * desc makes it easy to sort any vector in descending order
+* join, works like merge but is about 4x times faster with a somewhat simpler syntax that draws from SQL terminology
+
+New features:
+
 * d*ply now accepts NULL for splitting variables, indicating that the data should not be split
 * plyr no longer exports internal functions, many of which were causing clashes with other packages
 
