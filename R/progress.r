@@ -119,8 +119,8 @@ progress_tk <- function(title = "plyr progress", label = "Working...", ...) {
 #' This graphical progress only works on Windows.
 #' 
 #' @param title window title
-#' @param ... other arguments passed on to \code{\link[utils]{winProgressBar}}
-#' @seealso \code{\link[utils]{winProgressBar}} for the function that powers this progress bar
+#' @param ... other arguments passed on to \code{winProgressBar}
+#' @seealso \code{winProgressBar} for the function that powers this progress bar
 #' @export
 #' @examples
 #' if(exists("winProgressBar")) {
