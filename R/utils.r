@@ -54,7 +54,7 @@ nunique <- function(x) {
 #' Check if a data frame is empty
 #' Empty if it's null or it has 0 rows or columns
 #' 
-#' @params df data frame to check
+#' @param df data frame to check
 #' @keywords internal
 #' @export
 empty <- function(df) {

@@ -2,13 +2,13 @@
 #' Equivalent to \code{as.data.frame(table(x))}, but does not include
 #' combinations with zero counts.
 #'
-#' Count is speed competitive with \code{\link{table} for single variables,
+#' Count is speed competitive with \code{\link{table}} for single variables,
 #' but it really comes into its own when summarising multiple dimensions that
 #' are not crossed. 
 #'
 #' @param data data frame to be processed
 #' @param variables variables to count unique values of
-#' @value a data frame with label and freq columns
+#' @return a data frame with label and freq columns
 #' @keywords manip
 #' @export
 #' @examples

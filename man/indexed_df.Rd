@@ -1,6 +1,6 @@
 \name{indexed_df}
 \title{An indexed list...}
-\usage{indexed_df(env, index)}
+\usage{indexed_df(data, index)}
 
 \description{
   An indexed list Create a indexed list, a space efficient way of

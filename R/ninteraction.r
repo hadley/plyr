@@ -13,7 +13,7 @@
 #'   possibilities
 #' @keywords internal
 #' @seealso \code{\link{id_var}}
-#' @alias id ninteraction
+#' @aliases id ninteraction
 id <- function(.variables, drop = FALSE) {
   if (length(.variables) == 0) {
     res <- structure(rep.int(1L, nrow(.variables)), n = 1L)
