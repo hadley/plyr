@@ -1,4 +1,4 @@
-plyr 0.1.10 (2010-XX-X) ---------------------------------------------------
+plyr 1.0 (2010-XX-X) ---------------------------------------------------
 
 * count: a version of table that returns data frames immediately and that is much much faster for high-dimensional data.
 * arrange: a new helper method for reordering a data frame. 
