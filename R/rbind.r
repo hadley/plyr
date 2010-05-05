@@ -1,12 +1,17 @@
-#' Combine objects by row, filling in missing columns.
+#' Combine data.frames by row, filling in missing columns.
 #' \code{rbind}s a list of data frames filling missing columns with NA.
 #' 
 #' This is an enhancement to \code{\link{rbind}} which adds in columns
 #' that are not present in all inputs, accepts a list of data frames, and 
 #' operates substantially faster.
+#'
+#' Column names and types in the output will appear in the order in which 
+#' they were encoutered. No checking is performed to ensure that each column
+#' is of consistent type in the inputs.
 #' 
-#' @param ... data frames to row bind together
+#' @param ... input data frames to row bind together
 #' @keywords manip
+#' @return a single data frame
 #' @export
 #' @examples
 #' rbind.fill(mtcars[c("mpg", "wt")], mtcars[c("wt", "cyl")])
@@ -20,11 +25,35 @@ rbind.fill <- function(...) {
   
   if (length(dfs) == 1) return(dfs[[1]])
   
-  # About 6 times faster than using nrow
+  # Calculate rows in output
+  # Using .row_names_info directly is about 6 times faster than using nrow
   rows <- unlist(lapply(dfs, .row_names_info, 2L))
   nrows <- sum(rows)
   
-  # Build up output template -------------------------------------------------
+  # Generate output template
+  output <- output_template(dfs, nrows)
+  
+  # Compute start and end positions for each data frame
+  pos <- matrix(cumsum(rbind(1, rows - 1)), ncol = 2, byrow = TRUE)
+  
+  # Copy inputs into output
+  for(i in seq_along(rows)) { 
+    rng <- pos[i, 1]:pos[i, 2]
+    df <- dfs[[i]]
+    
+    for(var in names(df)) {
+      if (!is.matrix(output[[var]])) {
+        output[[var]][rng] <- df[[var]]
+      } else {
+        output[[var]][rng, ] <- df[[var]]
+      }
+    }
+  } 
+  
+  quickdf(output)
+}
+
+output_template <- function(dfs, nrows) {
   vars <- unique(unlist(lapply(dfs, base::names)))   # ~ 125,000/s
   output <- vector("list", length(vars))
   names(output) <- vars
@@ -74,21 +103,5 @@ rbind.fill <- function(...) {
     output[[var]] <- array(vec, c(nrows, width))
   }
   
-  # Compute start and end positions for each data frame
-  pos <- matrix(cumsum(rbind(1, rows - 1)), ncol = 2, byrow = TRUE)
-  
-  for(i in seq_along(rows)) { 
-    rng <- pos[i, 1]:pos[i, 2]
-    df <- dfs[[i]]
-    
-    for(var in names(df)) {
-      if (!is.matrix(output[[var]])) {
-        output[[var]][rng] <- df[[var]]
-      } else {
-        output[[var]][rng, ] <- df[[var]]
-      }
-    }
-  } 
-  
-  quickdf(output)
+  output
 }
