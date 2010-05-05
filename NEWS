@@ -11,6 +11,7 @@ New features:
 
 * d*ply now accepts NULL for splitting variables, indicating that the data should not be split
 * plyr no longer exports internal functions, many of which were causing clashes with other packages
+* rbind.fill now works with data frame columns that are lists or matrices.
 
 Speed improvements
 

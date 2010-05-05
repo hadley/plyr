@@ -6,9 +6,10 @@
 #' @param list list to convert to data frame
 #' @keywords internal
 quickdf <- function(list) {
-  lengths <- unlist(lapply(list, length))
-  stopifnot(length(unique(lengths)) == 1)
+  rows <- unlist(lapply(list, NROW))
+  stopifnot(length(unique(rows)) == 1)
+  
   structure(list, 
     class = "data.frame",
-    row.names = seq_along(list[[1]]))
+    row.names = seq_len(rows))
 }

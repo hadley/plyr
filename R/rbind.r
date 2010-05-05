@@ -3,7 +3,7 @@
 #' 
 #' This is an enhancement to \code{\link{rbind}} which adds in columns
 #' that are not present in all inputs, accepts a list of data frames, and 
-#' operates substantially faster
+#' operates substantially faster.
 #' 
 #' @param ... data frames to row bind together
 #' @keywords manip
@@ -26,35 +26,52 @@ rbind.fill <- function(...) {
   
   # Build up output template -------------------------------------------------
   vars <- unique(unlist(lapply(dfs, base::names)))   # ~ 125,000/s
-  output <- rep(list(rep(NA, nrows)), length(vars))  # ~ 70,000,000/s
+  output <- vector("list", length(vars))
   names(output) <- vars
   
   seen <- rep(FALSE, length(output))
   names(seen) <- vars
+  
+  is_matrix <- seen
+  is_factor <- seen
     
   for(df in dfs) {    
-    if (all(seen)) break  # Quit as soon as all done
-
     matching <- intersect(names(df), vars[!seen])
     for(var in matching) {
       value <- df[[var]]
-      if (is.factor(value)) {
-        output[[var]] <- factor(output[[var]])
+      if (is.vector(value) && is.atomic(value)) {
+        output[[var]] <- rep(NA, nrows)
+      } else if (is.factor(value)) {
+        output[[var]] <- factor(rep(NA, nrows))
+        is_factor[var] <- TRUE
       } else if (is.list(value)) {
         output[[var]] <- vector("list", nrows)
-      } else if (is.array(value)) {
+      } else if (is.matrix(value)) {
+        is_matrix[var] <- TRUE
       } else {
+        output[[var]] <- rep(NA, nrows)
         class(output[[var]]) <- class(value)
       }
     }
+
     seen[matching] <- TRUE
+    if (all(seen)) break  # Quit as soon as all done
   }
 
   # Set up factors
-  factors <- names(output)[unlist(lapply(output, is.factor))]
-  for(var in factors) {
+  for(var in vars[is_factor]) {
     all <- unique(lapply(dfs, function(df) levels(df[[var]])))
     levels(output[[var]]) <- unique(unlist(all))
+  }
+
+  # Set up matrices
+  for(var in vars[is_matrix]) {
+    width <- unique(unlist(lapply(dfs, function(df) ncol(df[[var]]))))
+    if (length(width) > 1) 
+      stop("Matrix variable ", var, " has inconsistent widths")
+    
+    vec <- rep(NA, nrows * width)
+    output[[var]] <- array(vec, c(nrows, width))
   }
   
   # Compute start and end positions for each data frame
@@ -65,9 +82,13 @@ rbind.fill <- function(...) {
     df <- dfs[[i]]
     
     for(var in names(df)) {
-      output[[var]][rng] <- df[[var]]
+      if (!is.matrix(output[[var]])) {
+        output[[var]][rng] <- df[[var]]
+      } else {
+        output[[var]][rng, ] <- df[[var]]
+      }
     }
-  }  
+  } 
   
   quickdf(output)
 }
