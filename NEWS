@@ -1,5 +1,6 @@
 plyr 0.1.10 (2010-XX-X) ---------------------------------------------------
 
+* count: a version of table that returns data frames immediately and that is much much faster for high-dimensional data.
 * arrange: a new helper method for reordering a data frame. 
 * desc makes it easy to sort any vector in descending order
 * d*ply now accepts NULL for splitting variables, indicating that the data should not be split
@@ -7,6 +8,7 @@ plyr 0.1.10 (2010-XX-X) ---------------------------------------------------
 
 Speed improvements
 
+* experimental immutable data frame (idata.frame) that vastly speeds up subsetting.
 * another rewrite of rbind.fill to increase speed 
 * tweaks to splitter_d so now much faster when many combinations of the factors do not occur in the data (using ninteraction instead of interaction)
 
