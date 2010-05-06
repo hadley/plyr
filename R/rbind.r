@@ -17,12 +17,13 @@
 #' rbind.fill(mtcars[c("mpg", "wt")], mtcars[c("wt", "cyl")])
 rbind.fill <- function(...) {
   dfs <- list(...)
-  if (length(dfs) == 0) return(list())
+  if (length(dfs) == 0) return()
   if (is.list(dfs[[1]]) && !is.data.frame(dfs[[1]])) {
     dfs <- dfs[[1]]
   }
   dfs <- Filter(Negate(empty), dfs)
   
+  if (length(dfs) == 0) return()
   if (length(dfs) == 1) return(dfs[[1]])
   
   # Calculate rows in output
