@@ -11,10 +11,10 @@
 \details{
   This graphical progress only works on Windows.
 }
-\seealso{\code{\link[utils]{winProgressBar}} for the function that powers this progress bar}
+\seealso{\code{winProgressBar} for the function that powers this progress bar}
 \arguments{
   \item{title}{window title}
-  \item{...}{other arguments passed on to \code{\link[utils]{winProgressBar}}}
+  \item{...}{other arguments passed on to \code{winProgressBar}}
 }
 \examples{if(exists("winProgressBar")) {
 l_ply(1:1000, identity, .progress = "win")

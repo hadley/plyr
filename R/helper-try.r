@@ -50,6 +50,7 @@ tryNULL <- function(expr) try_default(expr, NULL, quiet = TRUE)
 #' Uses compact, lapply and tryNULL
 #' 
 #' @keywords internal
+#' @export
 tryapply <- function(list, fun, ...) {
   compact(lapply(list, function(x) tryNULL(fun(x, ...))))
 }
