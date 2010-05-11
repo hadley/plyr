@@ -16,7 +16,7 @@
 #' arrange(mtcars, cyl, desc(disp))
 arrange <- function(df, ...) {
   ord <- eval(substitute(order(...)), df, parent.frame())
-  df[ord, ]
+  unrowname(df[ord, ])
 }
 
 #' Descending order
