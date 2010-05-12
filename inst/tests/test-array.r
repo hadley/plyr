@@ -32,19 +32,20 @@ test_that("array binding is correct", {
 })
 
 test_that("idempotent function equivalent to permutation",  {  
-  a <- array(1:60, c(3,4,5))
-  
-  aaperm <- function(i) aaply(a, i, force)
-  
-  expect_that(aaperm(1), is_equivalent_to(a))
-  expect_that(aaperm(1:2), is_equivalent_to(a))
-  expect_that(aaperm(1:3), is_equivalent_to(a))
-  
-  expect_that(aaperm(2), is_equivalent_to(aperm(a, c(2,1,3))))
-  expect_that(aaperm(3), is_equivalent_to(aperm(a, c(3,1,2))))
+  x <- array(1:24, 2:4, 
+    dimnames = list(LETTERS[1:2], letters[24:26], letters[1:4]))
 
-  expect_that(aaperm(c(2, 3)), is_equivalent_to(aperm(a, c(2, 3, 1))))
-  expect_that(aaperm(c(1, 3)), is_equivalent_to(aperm(a, c(1, 3, 2))))
+  perms <- unique(alply(as.matrix(subset(expand.grid(x=0:3,y=0:3,z=0:3), (x+y+z)>0 & !any(duplicated(setdiff(c(x,y,z), 0))))), 1, function(x) setdiff(x, 0)))
+
+  aperms <- llply(perms, function(perm) aperm(x, unique(c(perm, 1:3))))
+  aaplys <- llply(perms, function(perm) aaply(x, perm, identity))
+
+  for(i in seq_along(res_aperm)) {
+    expect_that(dim(aaplys[[i]]), equals(dim(aperms[[i]])))
+    expect_that(unname(dimnames(aaplys[[i]])), equals(dimnames(aperms[[i]])))
+    expect_that(aaplys[[i]], is_equivalent_to(dimnames(aperms[[i]])))
+  }
+
 })
 
 # Test contributed by Baptiste Auguie

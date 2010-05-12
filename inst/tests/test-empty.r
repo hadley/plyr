@@ -16,3 +16,11 @@ test_that("empty data frames returns itself", {
   df <- data.frame(x = numeric(0), a = numeric(0))
   expect_that(dlply(df, "a", identity), equals(df))
 })
+
+test_that("aaply with empty results returns a logical vector", {
+  num <- aaply(matrix(0,2,2), 2, function(x) numeric(0))
+  nul <- aaply(matrix(0,2,2), 2, function(x) NULL)
+  
+  expect_that(num, equals(logical()))
+  expect_that(nul, equals(logical()))
+})
