@@ -17,6 +17,10 @@
 #' count(baseball, "stint")
 #' count(count(baseball, c("id", "year")), "freq")
 count <- function(df, vars = NULL, drop = TRUE) {
+  if (is.vector(df)) {
+    df <- data.frame(x = df)
+  }
+  
   if (!is.null(vars)) {
     vars <- as.quoted(vars)
     df <- quickdf(eval.quoted(vars, df))
