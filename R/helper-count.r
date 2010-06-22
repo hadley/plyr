@@ -16,7 +16,7 @@
 #' count(baseball, "lg")
 #' count(baseball, "stint")
 #' count(count(baseball, c("id", "year")), "freq")
-count <- function(df, vars = NULL, drop = TRUE) {
+count <- function(df, vars = NULL) {
   if (is.vector(df)) {
     df <- data.frame(x = df)
   }
