@@ -7,4 +7,4 @@
 #' indices into groups, as used by \code{\link{splitter_d}}
 #' @useDynLib plyr
 split_indices <- function(x, f, n = max(f))
-  .Call("split_indices", x, f, n)
+  .Call("split_indices", x, f, as.integer(n))
