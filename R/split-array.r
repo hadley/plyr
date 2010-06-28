@@ -26,8 +26,9 @@ splitter_a <- function(data, .margins = 1) {
   if (!all(.margins %in% seq_len(dims(data)))) stop("Invalid margin")
   
   dimensions <- lapply(amv_dim(data), seq, from=1)
-  dimensions[-.margins] <- list(TRUE) 
-  indices <- expand.grid(dimensions, KEEP.OUT.ATTRS = FALSE)
+  dimensions[-.margins] <- list("") 
+  indices <- expand.grid(dimensions, KEEP.OUT.ATTRS = FALSE,
+    stringsAsFactors = FALSE)
   names(indices) <- paste("X", 1:ncol(indices), sep="")
   
   il <- indexed_array(environment(), indices)
@@ -41,6 +42,7 @@ splitter_a <- function(data, .margins = 1) {
     colnames <- names(dnames)[.margins]
     if (!is.null(colnames)) names(split_labels) <- colnames
   }
+
 
   structure(
     il,

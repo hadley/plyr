@@ -23,6 +23,7 @@
 #' mdply(data.frame(mean = 1:5, sd = 1:5), rnorm, n = 2)
 #' mdply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 2)
 #' mdply(cbind(mean = 1:5, sd = 1:5), rnorm, n = 5)
+#' mdply(cbind(mean = 1:5, sd = 1:5), as.data.frame(rnorm), n = 5)
 mdply <- function(.data, .fun = NULL, ..., .progress = "none") {
   if (is.matrix(.data) & !is.list(.data)) .data <- .matrix_to_df(.data)
 
@@ -51,8 +52,8 @@ mdply <- function(.data, .fun = NULL, ..., .progress = "none") {
 #' @export
 #' @examples
 #' maply(cbind(mean = 1:5, sd = 1:5), rnorm, n = 5)
-#' maply(cbind(1:5, 1:5), rnorm, n = 5)
 #' maply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 5)
+#' maply(cbind(1:5, 1:5), rnorm, n = 5)
 maply <- function(.data, .fun = NULL, ..., .progress = "none") {
   if (is.matrix(.data) & !is.list(.data)) .data <- .matrix_to_df(.data)
   
