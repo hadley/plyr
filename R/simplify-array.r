@@ -27,7 +27,7 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
     res_labels <- amv_dimnames(res[[1]])
     res_index <- expand.grid(res_labels)
 
-    res <- unlist(res)
+    res <- unname(unlist(res))
   } else {
     # Lists are degenerate case where every element is a singleton
     res_index <- as.data.frame(matrix(0, 1, 0))
@@ -49,16 +49,18 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
     in_dim <- sapply(in_labels, length)        
   }
   
-  index <- cbind(
+  # Generate data frame that describe result indices as they are currently
+  index <- unrowname(cbind(
     labels[rep(seq_len(nrow(labels)), each = nrow(res_index)), ,drop = FALSE],
     res_index[rep(seq_len(nrow(res_index)), nrow(labels)), , drop = FALSE]
-  )
-  
+  ))
+  # Need to be order in the opposite direction in the result
+  overall <- ninteraction(rev(index))
+
   out_dim <- unname(c(in_dim, res_dim))
   out_labels <- c(in_labels, res_labels)
   n <- prod(out_dim)
 
-  overall <- ninteraction(index)
   if (length(overall) < n) {
     overall <- match(1:n, overall, nomatch = NA)
   } else {

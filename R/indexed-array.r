@@ -8,7 +8,7 @@
 #' @aliases indexed_array [[.indexed_array names.indexed_array
 #'   length.indexed_array
 indexed_array <- function(env, index) {
-  exact <- all(laply(index, is.numeric))
+  exact <- all(unlist(llply(index, is.numeric)))
 
   # Situations that should use [
   #   * data.frame

@@ -37,12 +37,16 @@ splitter_a <- function(data, .margins = 1) {
     split_labels <- data
   } else {
     dnames <- amv_dimnames(data)
-    split_labels <- expand.grid(dnames[.margins], KEEP.OUT.ATTRS = FALSE,
-      stringsAsFactors = getOption("stringsAsFactors"))
-    colnames <- names(dnames)[.margins]
-    if (!is.null(colnames)) names(split_labels) <- colnames
+    
+    raw <- mapply("[", dnames[.margins], indices[.margins], SIMPLIFY = FALSE)
+    split_labels <- data.frame(raw)
+    
+    if (!is.null(names(dnames))) {
+      names(split_labels) <- names(dnames)[.margins]
+    } else {
+      names(split_labels) <- paste("X", seq_along(.margins), sep = "")
+    }
   }
-
 
   structure(
     il,

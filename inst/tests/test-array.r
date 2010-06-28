@@ -50,11 +50,13 @@ test_that("idempotent function equivalent to permutation",  {
 
   aperms <- llply(perms, function(perm) aperm(x, unique(c(perm, 1:3))))
   aaplys <- llply(perms, function(perm) aaply(x, perm, identity))
+  
+  # which(mapply(function(x, y) !identical(unname(x), unname(y)), aaplys, aperms))
 
   for(i in seq_along(aperms)) {
     expect_that(dim(aaplys[[i]]), equals(dim(aperms[[i]])))
     expect_that(unname(dimnames(aaplys[[i]])), equals(dimnames(aperms[[i]])))
-    expect_that(aaplys[[i]], is_equivalent_to(dimnames(aperms[[i]])))
+    expect_that(aaplys[[i]], is_equivalent_to(aperms[[i]]))
   }
 
 })
