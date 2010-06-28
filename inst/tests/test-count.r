@@ -3,7 +3,7 @@ context("Count")
 
 count_f <- function(...) count(...)$freq
 table_f <- function(...) { 
-  x <- unname(as.numeric(table(...)))
+  x <- unname(as.numeric(table(rev(...))))
   x[x != 0]
 }
 

@@ -41,9 +41,10 @@ test_that("array binding is correct", {
   expect_that(laply(1:10, f), is_equivalent_to(m4d))
 })
 
+# Basis of test contributed by anonymous reviewer.
 test_that("idempotent function equivalent to permutation",  {  
-  x <- array(1:24, 2:4, 
-    dimnames = list(LETTERS[1:2], letters[24:26], letters[1:4]))
+  x <- array(1:24, 4:2, 
+    dimnames = list(LETTERS[1:4], letters[24:26], letters[1:2]))
 
   perms <- unique(alply(as.matrix(subset(expand.grid(x=0:3,y=0:3,z=0:3), (x+y+z)>0 & !any(duplicated(setdiff(c(x,y,z), 0))))), 1, function(x) setdiff(x, 0)))
 

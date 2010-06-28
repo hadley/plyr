@@ -26,7 +26,7 @@ id <- function(.variables, drop = FALSE) {
   }
 
   # Calculate individual ids
-  ids <- lapply(.variables, id_var, drop = drop)
+  ids <- rev(lapply(.variables, id_var, drop = drop))
 
   # Calculate dimensions
   ndistinct <- unlist(lapply(ids, attr, "n"))

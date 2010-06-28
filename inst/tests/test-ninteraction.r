@@ -45,7 +45,7 @@ test_that("for vector + constant, equivalent to rank", {
 })
 
 test_that("grids are correctly ranked", {
-  df <- expand.grid(1:10, 1:2)
+  df <- rev(expand.grid(1:10, 1:2))
 
   expect_that(ninteraction(df), is_equivalent_to(1:20))
   expect_that(ninteraction(df, drop = T), is_equivalent_to(1:20))
