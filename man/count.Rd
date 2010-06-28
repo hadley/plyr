@@ -1,7 +1,7 @@
 \name{count}
 \alias{count}
 \title{Count the number of occurences...}
-\usage{count(df, vars, drop=TRUE)}
+\usage{count(df, vars)}
 
 \description{
   Count the number of occurences Equivalent to

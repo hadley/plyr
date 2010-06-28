@@ -8,7 +8,7 @@
 #' @param margins a character vector of variable names to margin over.  Can be
 #'   any variable name in \code{col} or \code{row}, \code{"grand_row"} or
 #'   \code{"grand_col"}.  If \code{TRUE} will compute all possible margins.
-#' @manip internal
+#' @keywords manip internal
 #' @return list of margining combinations, or \code{NULL} if none. These are
 #'   the combinations of variables that should have their values set to 
 #'   `(all)`
