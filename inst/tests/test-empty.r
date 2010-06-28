@@ -14,7 +14,8 @@ test_that("empty lists return a list", {
 
 test_that("empty data frames returns itself", {
   df <- data.frame(x = numeric(0), a = numeric(0))
-  expect_that(dlply(df, "a", identity), equals(df))
+  expect_that(ddply(df, "a", identity), equals(df))
+  expect_that(dlply(df, "a", identity), equals(list(df)))
 })
 
 test_that("aaply with empty results returns a logical vector", {
