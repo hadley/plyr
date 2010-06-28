@@ -1,7 +1,7 @@
 \name{split_indices}
 \alias{split_indices}
 \title{Split indices.}
-\usage{split_indices(index, group, n=max(f))}
+\usage{split_indices(index, group, n=max(group))}
 
 \description{
   Split indices. An optimised version of split for the special case of

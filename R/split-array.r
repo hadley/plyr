@@ -15,13 +15,14 @@
 #' @param data >1d data structure (matrix, data.frame or array)
 #' @param .margins a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns
 #' @return a list of lower-d slices, with attributes that record split details
+#' @keywords internal
 #' @examples
-#' splitter_a(mtcars, 1)
-#' splitter_a(mtcars, 2)
+#' plyr:::splitter_a(mtcars, 1)
+#' plyr:::splitter_a(mtcars, 2)
 #'
-#' splitter_a(ozone, 2)
-#' splitter_a(ozone, 3)
-#' splitter_a(ozone, 1:2)
+#' plyr:::splitter_a(ozone, 2)
+#' plyr:::splitter_a(ozone, 3)
+#' plyr:::splitter_a(ozone, 1:2)
 splitter_a <- function(data, .margins = 1) {
   if (!all(.margins %in% seq_len(dims(data)))) stop("Invalid margin")
   

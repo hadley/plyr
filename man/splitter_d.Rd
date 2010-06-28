@@ -21,20 +21,21 @@
 }
 \seealso{\code{\link{.}} for quoting variables, \code{\link{split}}}
 \value{a list of data.frames, with attributes that record split details}
+\keyword{internal}
 \arguments{
   \item{data}{data frame}
   \item{.variables}{a \link{quoted} list of variables, a formula, or character vector.  \code{NULL} will not split the data}
   \item{drop}{drop unnused factor levels?}
 }
-\examples{splitter_d(mtcars, .(cyl))
-splitter_d(mtcars, .(vs, am))
-splitter_d(mtcars, .(am, vs))
+\examples{plyr:::splitter_d(mtcars, .(cyl))
+plyr:::splitter_d(mtcars, .(vs, am))
+plyr:::splitter_d(mtcars, .(am, vs))
 
 mtcars$cyl2 <- factor(mtcars$cyl, levels = c(2, 4, 6, 8, 10))
-splitter_d(mtcars, .(cyl2), drop = TRUE)
-splitter_d(mtcars, .(cyl2), drop = FALSE)
+plyr:::splitter_d(mtcars, .(cyl2), drop = TRUE)
+plyr:::splitter_d(mtcars, .(cyl2), drop = FALSE)
 
 mtcars$cyl3 <- ifelse(mtcars$vs == 1, NA, mtcars$cyl)
-splitter_d(mtcars, .(cyl3))
-splitter_d(mtcars, .(cyl3, vs))
-splitter_d(mtcars, .(cyl3, vs), drop = FALSE)}
+plyr:::splitter_d(mtcars, .(cyl3))
+plyr:::splitter_d(mtcars, .(cyl3, vs))
+plyr:::splitter_d(mtcars, .(cyl3, vs), drop = FALSE)}

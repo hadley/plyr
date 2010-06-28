@@ -29,5 +29,5 @@
   \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
 }
 \examples{maply(cbind(mean = 1:5, sd = 1:5), rnorm, n = 5)
-maply(cbind(1:5, 1:5), rnorm, n = 5)
-maply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 5)}
+maply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 5)
+maply(cbind(1:5, 1:5), rnorm, n = 5)}

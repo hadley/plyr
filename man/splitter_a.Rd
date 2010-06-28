@@ -21,13 +21,14 @@
   attributes on the list of pieces.
 }
 \value{a list of lower-d slices, with attributes that record split details}
+\keyword{internal}
 \arguments{
   \item{data}{>1d data structure (matrix, data.frame or array)}
   \item{.margins}{a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns}
 }
-\examples{splitter_a(mtcars, 1)
-splitter_a(mtcars, 2)
+\examples{plyr:::splitter_a(mtcars, 1)
+plyr:::splitter_a(mtcars, 2)
 
-splitter_a(ozone, 2)
-splitter_a(ozone, 3)
-splitter_a(ozone, 1:2)}
+plyr:::splitter_a(ozone, 2)
+plyr:::splitter_a(ozone, 3)
+plyr:::splitter_a(ozone, 1:2)}
