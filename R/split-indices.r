@@ -7,5 +7,8 @@
 #' @param n largest integer (may not appear in index)
 #' @useDynLib plyr
 #' @keywords internal manip
-split_indices <- function(index, group, n = max(group))
+split_indices <- function(index, group, n = max(group)) {
+  if (length(index) == 0) return(integer())
   .Call("split_indices", index, group, as.integer(n))
+}
+  

@@ -10,6 +10,16 @@ test_that("incorrect result dimensions raise errors", {
   expect_that(laply(1:10, fs[[2]]), throws_error("same number"))
 })
 
+test_that("results must have positive dimensions", {
+  expect_that(
+    aaply(matrix(0,2,2), 2, function(x) numeric(0)),
+    throws_error("one or more dimensions"))
+    
+  expect_that(
+    aaply(matrix(0,2,2), 2, function(x) NULL),
+    throws_error("one or more dimensions"))
+})
+
 
 test_that("simple operations equivalent to vectorised form", {
   expect_that(laply(1:10, mean), is_equivalent_to(1:10))

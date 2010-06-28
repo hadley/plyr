@@ -25,7 +25,7 @@
 splitter_a <- function(data, .margins = 1) {
   if (!all(.margins %in% seq_len(dims(data)))) stop("Invalid margin")
   
-  dimensions <- lapply(amv_dim(data), seq, from=1)
+  dimensions <- lapply(amv_dim(data), seq_len)
   dimensions[-.margins] <- list("") 
   indices <- expand.grid(dimensions, KEEP.OUT.ATTRS = FALSE,
     stringsAsFactors = FALSE)

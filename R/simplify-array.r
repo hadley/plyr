@@ -17,8 +17,11 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
       stop("Results must have the same number of dimensions.")
 
     dims <- unique(do.call("rbind", llply(res, amv_dim)))
+
+    if (is.null(dims) || !all(dims > 0))
+      stop("Results must have one or more dimensions.", call. = FALSE)
     if (nrow(dims) != 1) 
-      stop("Results must have the same dimensions.")    
+      stop("Results must have the same dimensions.", call. = FALSE)
 
     res_dim <- amv_dim(res[[1]])
     res_labels <- amv_dimnames(res[[1]])

@@ -55,6 +55,8 @@ ninteraction <- id
 #' Numeric id for a vector.
 #' @keywords internal
 id_var <- function(x, drop = FALSE) {
+  if (length(x) == 0) return(x)
+  
   if (is.factor(x) && !drop) {
     id <- as.numeric(addNA(x, ifany = TRUE))
     n <- length(levels(x))
