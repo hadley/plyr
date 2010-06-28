@@ -1,4 +1,4 @@
-#' Quote variables
+#' Quote variables.
 #' Create a list of unevaluated expressions for later evaluation
 #' 
 #' This function is similar to \code{\link{~}} in that it is used to
@@ -39,14 +39,14 @@
   structure(as.list(match.call()[-1]), class="quoted")
 }
 
-#' Print quoted variables
+#' Print quoted variables.
 #' Display the \code{\link{str}}ucture of quoted variables
 #' 
 #' @keywords internal
 #' @method print quoted
 print.quoted <- function(x, ...) str(x)
 
-#' Compute names of quoted variables
+#' Compute names of quoted variables.
 #' Figure out names of quoted variables, using specified names if they exist, otherwise using \code{\link{make.names}} on the values.
 #' 
 #' @keywords internal
@@ -62,7 +62,7 @@ names.quoted <- function(x) {
   part_names
 }
 
-#' Evaluate a quoted list of variables 
+#' Evaluate a quoted list of variables.
 #' Evaluates quoted variables in specified environment
 #' 
 #' @return a list
@@ -85,7 +85,7 @@ eval.quoted <- function(exprs,  envir = parent.frame(), enclos = if (is.list(env
   results
 }
 
-#' Convert input to quoted variables
+#' Convert input to quoted variables.
 #' Convert characters, formulas and calls to quoted .variables
 #' 
 #' This method is called by default on all plyr functions that take a 

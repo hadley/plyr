@@ -1,10 +1,10 @@
 \name{splat}
 \alias{splat}
-\title{`Splat' arguments to a function...}
+\title{`Splat' arguments to a function.}
 \usage{splat(flat)}
 
 \description{
-  `Splat' arguments to a function Wraps a function in do.call
+  `Splat' arguments to a function. Wraps a function in do.call
 }
 
 \details{

@@ -1,10 +1,10 @@
 \name{count}
 \alias{count}
-\title{Count the number of occurences...}
+\title{Count the number of occurences.}
 \usage{count(df, vars)}
 
 \description{
-  Count the number of occurences Equivalent to
+  Count the number of occurences. Equivalent to
   \code{as.data.frame(table(x))}, but does not include combinations
   with zero counts.
 }
@@ -17,8 +17,8 @@
 \value{a data frame with label and freq columns}
 \keyword{manip}
 \arguments{
-  \item{data}{data frame to be processed}
-  \item{variables}{variables to count unique values of}
+  \item{df}{data frame to be processed}
+  \item{vars}{variables to count unique values of}
 }
 \examples{count(baseball, "id")
 count(baseball, "lg")

@@ -1,10 +1,10 @@
 \name{daply}
 \alias{daply}
-\title{Split data frame, apply function, and return results in an array...}
+\title{Split data frame, apply function, and return results in an array.}
 \usage{daply(.data, .variables, .fun, ..., .progress="none", .drop=TRUE)}
 
 \description{
-  Split data frame, apply function, and return results in an array For
+  Split data frame, apply function, and return results in an array. For
   each subset of data frame, apply function then combine results into
   an array
 }

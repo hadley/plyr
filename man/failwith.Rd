@@ -1,11 +1,11 @@
 \name{failwith}
 \alias{failwith}
-\title{Fail with...}
+\title{Fail with specified value.}
 \usage{failwith(default, f, quiet=FALSE)}
 
 \description{
-  Fail with Modify a function so that it returns a default value when
-  there is an error.
+  Fail with specified value. Modify a function so that it returns a
+  default value when there is an error.
 }
 \value{a function}
 \seealso{\code{\link{try_default}}}

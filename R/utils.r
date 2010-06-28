@@ -1,4 +1,4 @@
-#' Determine if a vector is discrete
+#' Determine if a vector is discrete.
 #' A discrete vector is a factor or a character vector
 #' 
 #' @param x vector to test
@@ -10,7 +10,7 @@
 #' is.discrete(factor(c("a", "b", "c")))
 is.discrete <- function(x) is.factor(x) || is.character(x) || is.logical(x)
 
-#' Un-rowname
+#' Un-rowname.
 #' Strip rownames from an object
 #' 
 #' @keywords internal
@@ -21,7 +21,7 @@ unrowname <- function(x) {
   x
 }
 
-#' Function that always returns true
+#' Function that always returns true.
 #' 
 #' @param ... all input ignored
 #' @return \code{TRUE}
@@ -30,7 +30,7 @@ unrowname <- function(x) {
 #' @export
 true <- function(...) TRUE
 
-#' Compact list
+#' Compact list.
 #' Remove all NULL entries from a list
 #' 
 #' @param l list
@@ -38,7 +38,7 @@ true <- function(...) TRUE
 #' @export
 compact <- function(l) Filter(Negate(is.null), l)
 
-#' Number of unique values
+#' Number of unique values.
 #' Calculate number of unique values of a variable as efficiently as possible.
 #' 
 #' @param x vector
@@ -51,7 +51,7 @@ nunique <- function(x) {
   }
 }
 
-#' Check if a data frame is empty
+#' Check if a data frame is empty.
 #' Empty if it's null or it has 0 rows or columns
 #' 
 #' @param df data frame to check

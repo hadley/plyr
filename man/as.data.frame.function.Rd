@@ -1,10 +1,10 @@
 \name{as.data.frame.function}
 \alias{as.data.frame.function}
-\title{Make a function return a data frame...}
+\title{Make a function return a data frame.}
 \usage{\method{as.data.frame}{function} (x, row.names, optional, ...)}
 
 \description{
-  Make a function return a data frame Create a new function that
+  Make a function return a data frame. Create a new function that
   returns the existing function wrapped in a data.frame
 }
 

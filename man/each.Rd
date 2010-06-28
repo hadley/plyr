@@ -1,10 +1,10 @@
 \name{each}
 \alias{each}
-\title{Aggregate multiple functions into a single function...}
+\title{Aggregate multiple functions into a single function.}
 \usage{each(...)}
 
 \description{
-  Aggregate multiple functions into a single function Combine multiple
+  Aggregate multiple functions into a single function. Combine multiple
   functions to a single function returning a named vector of outputs
 }
 

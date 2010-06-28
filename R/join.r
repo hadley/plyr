@@ -51,7 +51,7 @@ join <- function(x, y, by = intersect(names(x), names(y)), type = "left") {
   }
 }
 
-#' Join keys
+#' Join keys.
 #' Given two data frames, create a unique key for each row.  
 #'
 #' @param x data frame

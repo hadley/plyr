@@ -1,10 +1,10 @@
 \name{progress_win}
 \alias{progress_win}
-\title{Graphical progress bar, powered by Windows...}
+\title{Graphical progress bar, powered by Windows.}
 \usage{progress_win(title="plyr progress", ...)}
 
 \description{
-  Graphical progress bar, powered by Windows A graphical progress bar
+  Graphical progress bar, powered by Windows. A graphical progress bar
   displayed in a separate window
 }
 

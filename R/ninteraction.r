@@ -52,7 +52,7 @@ id <- function(.variables, drop = FALSE) {
 }
 ninteraction <- id
 
-#' Numeric id for a vector
+#' Numeric id for a vector.
 #' @keywords internal
 id_var <- function(x, drop = FALSE) {
   if (is.factor(x) && !drop) {

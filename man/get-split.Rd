@@ -1,9 +1,9 @@
 \name{get-split}
-\title{Subset splits...}
+\title{Subset splits.}
 \usage{\method{[}{split} (x, i, ...)}
 
 \description{
-  Subset splits Subset splits, ensuring that labels keep matching
+  Subset splits. Subset splits, ensuring that labels keep matching
 }
 \keyword{internal}
 \alias{[.split}

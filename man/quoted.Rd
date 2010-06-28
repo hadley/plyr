@@ -1,9 +1,9 @@
 \name{quoted}
-\title{Quote variables...}
+\title{Quote variables.}
 \usage{.(...)}
 
 \description{
-  Quote variables Create a list of unevaluated expressions for later
+  Quote variables. Create a list of unevaluated expressions for later
   evaluation
 }
 

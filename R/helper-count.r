@@ -1,4 +1,4 @@
-#' Count the number of occurences
+#' Count the number of occurences.
 #' Equivalent to \code{as.data.frame(table(x))}, but does not include
 #' combinations with zero counts.
 #'
@@ -6,8 +6,8 @@
 #' but it really comes into its own when summarising multiple dimensions that
 #' are not crossed. 
 #'
-#' @param data data frame to be processed
-#' @param variables variables to count unique values of
+#' @param df data frame to be processed
+#' @param vars variables to count unique values of
 #' @return a data frame with label and freq columns
 #' @keywords manip
 #' @export

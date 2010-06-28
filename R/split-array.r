@@ -1,4 +1,4 @@
-#' Split an array by .margins
+#' Split an array by .margins.
 #' Split a 2d or higher data structure into lower-d pieces based
 #' 
 #' This is the workhorse of the \code{a*ply} functions.  Given a >1 d 

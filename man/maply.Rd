@@ -1,11 +1,11 @@
 \name{maply}
 \alias{maply}
-\title{Call function with arguments in array or data frame, returning an array...}
+\title{Call function with arguments in array or data frame, returning an array.}
 \usage{maply(.data, .fun, ..., .progress="none")}
 
 \description{
   Call function with arguments in array or data frame, returning an
-  array Call a multi-argument function with values taken from columns
+  array. Call a multi-argument function with values taken from columns
   of an data frame or array, and combine results into an array
 }
 

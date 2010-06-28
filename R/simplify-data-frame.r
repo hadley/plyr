@@ -1,4 +1,4 @@
-#' List to data frame
+#' List to data frame.
 #' Reduce/simplify a list of homogenous objects to a data frame
 #' 
 #' @param res list of input data

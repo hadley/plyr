@@ -1,10 +1,10 @@
 \name{rdply}
 \alias{rdply}
-\title{Replicate expression and return results in a data frame...}
+\title{Replicate expression and return results in a data frame.}
 \usage{rdply(.n, .expr, .progress="none")}
 
 \description{
-  Replicate expression and return results in a data frame Evalulate
+  Replicate expression and return results in a data frame. Evalulate
   expression n times then combine results into a data frame
 }
 

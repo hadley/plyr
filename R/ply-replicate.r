@@ -1,4 +1,4 @@
-#' Replicate expression and return results in a list
+#' Replicate expression and return results in a list.
 #' Evalulate expression n times then combine results into a list
 #' 
 #' This function runs an expression multiple times, and combines the 
@@ -37,7 +37,7 @@ rlply <- function(.n, .expr, .progress = "none") {
   result
 }
 
-#' Replicate expression and return results in a data frame
+#' Replicate expression and return results in a data frame.
 #' Evalulate expression n times then combine results into a data frame
 #' 
 #' This function runs an expression multiple times, and combines the 
@@ -70,7 +70,7 @@ rdply <- function(.n, .expr, .progress = "none") {
 }
 
 
-#' Replicate expression and return results in a array
+#' Replicate expression and return results in a array.
 #' Evalulate expression n times then combine results into an array
 #' 
 #' This function runs an expression multiple times, and combines the 
@@ -108,7 +108,7 @@ raply <- function(.n, .expr, .progress = "none", .drop = TRUE) {
   list_to_array(res, NULL, .drop)
 }
 
-#' Replicate expression and discard results
+#' Replicate expression and discard results.
 #' Evalulate expression n times then discard results
 #' 
 #' This function runs an expression multiple times, discarding the results. 

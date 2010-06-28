@@ -1,10 +1,10 @@
 \name{aaply}
 \alias{aaply}
-\title{Split array, apply function, and return results in an array...}
+\title{Split array, apply function, and return results in an array.}
 \usage{aaply(.data, .margins, .fun, ..., .progress="none", .drop=TRUE)}
 
 \description{
-  Split array, apply function, and return results in an array For each
+  Split array, apply function, and return results in an array. For each
   slice of an array, apply function then combine results into an array
 }
 

@@ -1,10 +1,10 @@
 \name{dlply}
 \alias{dlply}
-\title{Split data frame, apply function, and return results in a list...}
+\title{Split data frame, apply function, and return results in a list.}
 \usage{dlply(.data, .variables, .fun, ..., .progress="none", .drop=TRUE)}
 
 \description{
-  Split data frame, apply function, and return results in a list For
+  Split data frame, apply function, and return results in a list. For
   each subset of a data frame, apply function then combine results into
   a list
 }

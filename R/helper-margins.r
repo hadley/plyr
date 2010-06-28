@@ -1,4 +1,4 @@
-#' Margin variables
+#' Figure out margining variables.
 #' Given the variables that form the rows and columns, and a set of desired
 #' margins, works out which ones are possible. Variables that can't be
 #' margined over are dropped silently.
@@ -58,9 +58,18 @@ margins <- function(rows = NULL, cols = NULL, margins = NULL) {
   margin_vars[!duplicates]
 }
 
-#' Add margins to a data frame
+#' Add margins to a data frame.
 #'
-#' Rownames are silently stripped.
+#' Rownames are silently stripped. All margining variables will be converted
+#' to factors.
+#'
+#' @param df input data frame
+#' @param rows names of row margins
+#' @param cols names of column margins
+#' @param margins Either \code{TRUE} to compute all margins, or a character
+#'   vector of margin names, which may include any name in \code{rows} or
+#'   \code{cols}, or \code{"grand_row"} or \code{"grand_col"}.
+#' @export
 add_margins <- function(df, rows = NULL, cols = NULL, margins = TRUE) {
   margin_vars <- margins(rows, cols, margins)
   

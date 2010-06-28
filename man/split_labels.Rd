@@ -1,10 +1,10 @@
 \name{split_labels}
 \alias{split_labels}
-\title{Generate labels for split data frame...}
+\title{Generate labels for split data frame.}
 \usage{split_labels(splits, drop)}
 
 \description{
-  Generate labels for split data frame Create data frame giving labels
+  Generate labels for split data frame. Create data frame giving labels
   for split data frame.
 }
 \keyword{internal}

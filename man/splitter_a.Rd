@@ -4,7 +4,7 @@
 \usage{splitter_a(data, .margins=1)}
 
 \description{
-  Split an array by .margins Split a 2d or higher data structure into
+  Split an array by .margins. Split a 2d or higher data structure into
   lower-d pieces based
 }
 

@@ -1,10 +1,10 @@
 \name{laply}
 \alias{laply}
-\title{Split list, apply function, and return results in an array...}
+\title{Split list, apply function, and return results in an array.}
 \usage{laply(.data, .fun, ..., .progress="none", .drop=TRUE)}
 
 \description{
-  Split list, apply function, and return results in an array For each
+  Split list, apply function, and return results in an array. For each
   element of a list, apply function then combine results into an array
 }
 

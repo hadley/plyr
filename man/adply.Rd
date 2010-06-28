@@ -1,10 +1,10 @@
 \name{adply}
 \alias{adply}
-\title{Split array, apply function, and return results in a data frame...}
+\title{Split array, apply function, and return results in a data frame.}
 \usage{adply(.data, .margins, .fun, ..., .progress="none")}
 
 \description{
-  Split array, apply function, and return results in a data frame For
+  Split array, apply function, and return results in a data frame. For
   each slice of an array, apply function then combine results into a
   data frame
 }

@@ -1,10 +1,10 @@
 \name{llply}
 \alias{llply}
-\title{Split list, apply function, and return results in a list...}
+\title{Split list, apply function, and return results in a list.}
 \usage{llply(.data, .fun, ..., .progress="none", .inform=FALSE)}
 
 \description{
-  Split list, apply function, and return results in a list For each
+  Split list, apply function, and return results in a list. For each
   element of a list, apply function then combine results into a list
 }
 

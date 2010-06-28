@@ -1,10 +1,10 @@
 \name{list_to_dataframe}
 \alias{list_to_dataframe}
-\title{List to data frame...}
+\title{List to data frame.}
 \usage{list_to_dataframe(res, labels)}
 
 \description{
-  List to data frame Reduce/simplify a list of homogenous objects to a
+  List to data frame. Reduce/simplify a list of homogenous objects to a
   data frame
 }
 \keyword{internal}

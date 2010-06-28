@@ -1,4 +1,4 @@
-#' `Splat' arguments to a function
+#' `Splat' arguments to a function.
 #' Wraps a function in do.call 
 #' 
 #' This is useful when you want to pass a function a row of data frame or

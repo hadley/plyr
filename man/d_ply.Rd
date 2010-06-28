@@ -1,11 +1,11 @@
 \name{d_ply}
 \alias{d_ply}
-\title{Split data frame, apply function, and discard results...}
+\title{Split data frame, apply function, and discard results.}
 \usage{d_ply(.data, .variables, .fun, ..., .progress="none", .print=FALSE)}
 
 \description{
-  Split data frame, apply function, and discard results For each subset
-  of a data frame, apply function and discard results
+  Split data frame, apply function, and discard results. For each
+  subset of a data frame, apply function and discard results
 }
 
 \details{

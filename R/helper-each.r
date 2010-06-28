@@ -1,4 +1,4 @@
-#' Aggregate multiple functions into a single function
+#' Aggregate multiple functions into a single function.
 #' Combine multiple functions to a single function returning a named vector of outputs
 #' 
 #' Each function should produce a single number as output

@@ -1,10 +1,10 @@
 \name{true}
 \alias{true}
-\title{Function that always returns true...}
+\title{Function that always returns true.}
 \usage{true(...)}
 
 \description{
-  Function that always returns true
+  Function that always returns true.
 }
 \value{\code{TRUE}}
 \keyword{internal}

@@ -1,11 +1,11 @@
 \name{a_ply}
 \alias{a_ply}
-\title{Split array, apply function, and discard results...}
+\title{Split array, apply function, and discard results.}
 \usage{a_ply(.data, .margins, .fun, ..., .progress="none", .print=FALSE)}
 
 \description{
-  Split array, apply function, and discard results For each slice of an
-  array, apply function and discard results
+  Split array, apply function, and discard results. For each slice of
+  an array, apply function and discard results
 }
 
 \details{

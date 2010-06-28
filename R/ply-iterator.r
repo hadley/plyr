@@ -10,7 +10,6 @@
 #' @param .iterator iterator object
 #' @param .fun function to apply to each piece
 #' @param ... other arguments passed on to \code{.fun}
-#' @export
 #' @examples
 #' if(require("itertools")) {
 #'   baseball_id <- isplit2(baseball, baseball$id)
@@ -46,7 +45,7 @@ liply <- function(.iterator, .fun = NULL, ...) {
   result
 }
 
-#' Split iterator that returns values, not indices
+#' Split iterator that returns values, not indices.
 #'
 #' @keywords internal
 isplit2 <- function (x, f, drop = FALSE, ...)  {

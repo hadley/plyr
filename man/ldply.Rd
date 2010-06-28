@@ -1,10 +1,10 @@
 \name{ldply}
 \alias{ldply}
-\title{Split list, apply function, and return results in a data frame...}
+\title{Split list, apply function, and return results in a data frame.}
 \usage{ldply(.data, .fun, ..., .progress="none")}
 
 \description{
-  Split list, apply function, and return results in a data frame For
+  Split list, apply function, and return results in a data frame. For
   each element of a list, apply function then combine results into a
   data frame
 }

@@ -1,9 +1,9 @@
 \name{as.quoted}
-\title{Convert input to quoted variables...}
+\title{Convert input to quoted variables.}
 \usage{as.quoted(x)}
 
 \description{
-  Convert input to quoted variables Convert characters, formulas and
+  Convert input to quoted variables. Convert characters, formulas and
   calls to quoted .variables
 }
 

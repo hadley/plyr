@@ -1,4 +1,4 @@
-#' Fail with
+#' Fail with specified value.
 #' Modify a function so that it returns a default value when there is an error.
 #' 
 #' @param default default value
@@ -46,7 +46,7 @@ try_default <- function(expr, default, quiet = FALSE) {
 tryNULL <- function(expr) try_default(expr, NULL, quiet = TRUE)
 
 
-#' Apply with built in try
+#' Apply with built in try.
 #' Uses compact, lapply and tryNULL
 #' 
 #' @keywords internal

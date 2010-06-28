@@ -1,11 +1,11 @@
 \name{r_ply}
 \alias{r_ply}
-\title{Replicate expression and discard results...}
+\title{Replicate expression and discard results.}
 \usage{r_ply(.n, .expr, .progress="none", .print=FALSE)}
 
 \description{
-  Replicate expression and discard results Evalulate expression n times
-  then discard results
+  Replicate expression and discard results. Evalulate expression n
+  times then discard results
 }
 
 \details{

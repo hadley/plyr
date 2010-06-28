@@ -92,25 +92,25 @@ idata.frame <- function(df) {
     class = c("idf", "environment"))
 }
 
-#' Immutable df names
+#' Immutable df names.
 #' @method names idf
 #' @keywords internal
 names.idf <- function(x) x$`_cols`
 
-#' Immutable df dimensions
+#' Immutable df dimensions.
 #' @method dim idf
 #' @keywords internal
 dim.idf <- function(x) c(length(x$`_rows`), length(x$`_cols`))
 
 
-#' Convert immutable df to regular data frame
+#' Convert immutable df to regular data frame.
 #' @method as.data.frame idf
 #' @keywords internal
 as.data.frame.idf <- function(x, ...) {
   x$`_data`[x$`_rows`, x$`_cols`]
 }
 
-#' Extract single column from immutable data frame
+#' Extract single column from immutable data frame.
 #' @method [[ idf
 #' @keywords internal
 "[[.idf" <- function(x, i) {

@@ -1,12 +1,12 @@
 \name{mlply}
 \alias{mlply}
-\title{Call function with arguments in array or data frame, returning a list...}
+\title{Call function with arguments in array or data frame, returning a list.}
 \usage{mlply(.data, .fun, ..., .progress="none")}
 
 \description{
-  Call function with arguments in array or data frame, returning a list
-  Call a multi-argument function with values taken from columns of an
-  data frame or array, and combine results into a list
+  Call function with arguments in array or data frame, returning a
+  list. Call a multi-argument function with values taken from columns
+  of an data frame or array, and combine results into a list
 }
 
 \details{

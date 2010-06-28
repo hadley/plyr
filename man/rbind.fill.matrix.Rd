@@ -1,10 +1,10 @@
 \name{rbind.fill.matrix}
 \alias{rbind.fill.matrix}
-\title{Bind matrices by row, and fill missing columns with NA...}
+\title{Bind matrices by row, and fill missing columns with NA.}
 \usage{rbind.fill.matrix(...)}
 
 \description{
-  Bind matrices by row, and fill missing columns with NA
+  Bind matrices by row, and fill missing columns with NA.
 }
 
 \details{

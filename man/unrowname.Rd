@@ -1,10 +1,10 @@
 \name{unrowname}
 \alias{unrowname}
-\title{Un-rowname...}
+\title{Un-rowname.}
 \usage{unrowname(x)}
 
 \description{
-  Un-rowname Strip rownames from an object
+  Un-rowname. Strip rownames from an object
 }
 \keyword{internal}
 \arguments{

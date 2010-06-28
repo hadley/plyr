@@ -1,10 +1,10 @@
 \name{defaults}
 \alias{defaults}
-\title{Set defaults...}
+\title{Set defaults.}
 \usage{defaults(x, y)}
 
 \description{
-  Set defaults Convient method for combining a list of values with
+  Set defaults. Convient method for combining a list of values with
   their defaults.
 }
 \keyword{manip}

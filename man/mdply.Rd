@@ -1,11 +1,11 @@
 \name{mdply}
 \alias{mdply}
-\title{Call function with arguments in array or data frame, returning a data frame...}
+\title{Call function with arguments in array or data frame, returning a data frame.}
 \usage{mdply(.data, .fun, ..., .progress="none")}
 
 \description{
   Call function with arguments in array or data frame, returning a data
-  frame
+  frame.
 }
 
 \details{

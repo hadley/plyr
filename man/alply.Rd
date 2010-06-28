@@ -1,10 +1,10 @@
 \name{alply}
 \alias{alply}
-\title{Split array, apply function, and return results in a list...}
+\title{Split array, apply function, and return results in a list.}
 \usage{alply(.data, .margins, .fun, ..., .progress="none")}
 
 \description{
-  Split array, apply function, and return results in a list For each
+  Split array, apply function, and return results in a list. For each
   slice of an array, apply function then combine results into a list
 }
 

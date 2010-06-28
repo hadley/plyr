@@ -1,12 +1,12 @@
 \name{m_ply}
 \alias{m_ply}
-\title{Call function with arguments in array or data frame, discarding results...}
+\title{Call function with arguments in array or data frame, discarding results.}
 \usage{m_ply(.data, .fun, ..., .progress="none")}
 
 \description{
   Call function with arguments in array or data frame, discarding
-  results Call a multi-argument function with values taken from columns
-  of an data frame or array, and discard results
+  results. Call a multi-argument function with values taken from
+  columns of an data frame or array, and discard results
 }
 
 \details{

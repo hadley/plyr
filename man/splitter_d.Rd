@@ -1,10 +1,10 @@
 \name{splitter_d}
 \alias{splitter_d}
-\title{Split a data frame by variables...}
+\title{Split a data frame by variables.}
 \usage{splitter_d(data, .variables, drop=TRUE)}
 
 \description{
-  Split a data frame by variables Split a data frame into pieces based
+  Split a data frame by variables. Split a data frame into pieces based
   on variable contained in that data frame
 }
 

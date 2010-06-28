@@ -1,10 +1,10 @@
 \name{desc}
 \alias{desc}
-\title{Descending order...}
+\title{Descending order.}
 \usage{desc(x)}
 
 \description{
-  Descending order
+  Descending order.
 }
 
 \details{

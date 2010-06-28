@@ -1,10 +1,11 @@
 \name{amv_dimnames}
 \alias{amv_dimnames}
-\title{Dimension names...}
+\title{Dimension names.}
 \usage{amv_dimnames(x)}
 
 \description{
-  Dimension names Consistent dimnames for vectors, matrices and arrays.
+  Dimension names. Consistent dimnames for vectors, matrices and
+  arrays.
 }
 
 \details{

@@ -1,12 +1,13 @@
 \name{margins}
 \alias{margins}
-\title{Margin variables...}
+\title{Figure out margining variables.}
 \usage{margins(rows, cols, margins)}
 
 \description{
-  Margin variables Given the variables that form the rows and columns,
-  and a set of desired margins, works out which ones are possible.
-  Variables that can't be margined over are dropped silently.
+  Figure out margining variables. Given the variables that form the
+  rows and columns, and a set of desired margins, works out which ones
+  are possible. Variables that can't be margined over are dropped
+  silently.
 }
 \keyword{manip}
 \keyword{internal}

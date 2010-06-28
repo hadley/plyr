@@ -1,11 +1,11 @@
 \name{l_ply}
 \alias{l_ply}
-\title{Split list, apply function, and discard results...}
+\title{Split list, apply function, and discard results.}
 \usage{l_ply(.data, .fun, ..., .progress="none", .print=FALSE)}
 
 \description{
-  Split list, apply function, and discard results For each element of a
-  list, apply function and discard results
+  Split list, apply function, and discard results. For each element of
+  a list, apply function and discard results
 }
 
 \details{

@@ -19,7 +19,7 @@ arrange <- function(df, ...) {
   unrowname(df[ord, ])
 }
 
-#' Descending order
+#' Descending order.
 #'
 #' Transform a vector into a format that will be sorted in descending order.
 #'

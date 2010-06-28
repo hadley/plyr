@@ -1,10 +1,10 @@
 \name{rlply}
 \alias{rlply}
-\title{Replicate expression and return results in a list...}
+\title{Replicate expression and return results in a list.}
 \usage{rlply(.n, .expr, .progress="none")}
 
 \description{
-  Replicate expression and return results in a list Evalulate
+  Replicate expression and return results in a list. Evalulate
   expression n times then combine results into a list
 }
 

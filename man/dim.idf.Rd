@@ -1,9 +1,9 @@
 \name{dim.idf}
 \alias{dim.idf}
-\title{Immutable df dimensions...}
+\title{Immutable df dimensions.}
 \usage{\method{dim}{idf} (x)}
 
 \description{
-  Immutable df dimensions
+  Immutable df dimensions.
 }
 \keyword{internal}

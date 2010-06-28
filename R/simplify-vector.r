@@ -1,4 +1,4 @@
-#' List to vector
+#' List to vector.
 #' Reduce/simplify a list of homogenous objects to a vector
 #' 
 #' @param res list of input data

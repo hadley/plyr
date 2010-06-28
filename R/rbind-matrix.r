@@ -1,4 +1,4 @@
-#' Bind matrices by row, and fill missing columns with NA
+#' Bind matrices by row, and fill missing columns with NA.
 #'
 #' The matrices are bound together using their column names or the column
 #' indices (in that order of precedence.) Numeric columns may be converted to

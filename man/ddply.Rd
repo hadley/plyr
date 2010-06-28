@@ -1,10 +1,10 @@
 \name{ddply}
 \alias{ddply}
-\title{Split data frame, apply function, and return results in a data frame...}
+\title{Split data frame, apply function, and return results in a data frame.}
 \usage{ddply(.data, .variables, .fun, ..., .progress="none", .drop=TRUE)}
 
 \description{
-  Split data frame, apply function, and return results in a data frame
+  Split data frame, apply function, and return results in a data frame.
   For each subset of a data frame, apply function then combine results
   into a data frame
 }
