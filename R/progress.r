@@ -30,7 +30,14 @@
 #' l_ply(1:1000, identity, .progress = progress_text(char = "-"))
 create_progress_bar <- function(name = "none") {
   if (!is.character(name)) return(name)
-  match.fun(paste("progress", name, sep="_"))()
+  name <- paste("progress", name, sep="_")
+  
+  if (!exists(name, mode = "function")) {
+    warning("Cannot find progress bar ", name, call. = FALSE)
+    progress_none()
+  } else {
+    match.fun(name)()
+  }
 }
 
 #' Null progress bar
