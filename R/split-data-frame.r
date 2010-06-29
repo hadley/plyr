@@ -37,7 +37,7 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
   } else {
     splits <- eval.quoted(.variables, data, parent.frame())
 
-    splitv <- ninteraction(splits, drop = drop)
+    splitv <- id(splits, drop = drop)
     split_labels <- split_labels(splits, drop = drop)
   }
   
@@ -64,7 +64,7 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
 split_labels <- function(splits, drop) {
   
   if (drop) {
-    splitv <- ninteraction(splits, drop = drop)
+    splitv <- id(splits, drop = drop)
 
     # Need levels which occur in data
     representative <- which(!duplicated(splitv))[order(unique(splitv))]

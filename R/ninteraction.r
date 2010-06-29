@@ -14,6 +14,7 @@
 #' @keywords internal
 #' @seealso \code{\link{id_var}}
 #' @aliases id ninteraction
+#' @export
 id <- function(.variables, drop = FALSE) {
   if (length(.variables) == 0) {
     res <- structure(rep.int(1L, nrow(.variables)), n = 1L)

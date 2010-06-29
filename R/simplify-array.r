@@ -55,7 +55,7 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
     res_index[rep(seq_len(nrow(res_index)), nrow(labels)), , drop = FALSE]
   ))
   # Need to be order in the opposite direction in the result
-  overall <- ninteraction(rev(index))
+  overall <- id(rev(index))
 
   out_dim <- unname(c(in_dim, res_dim))
   out_labels <- c(in_labels, res_labels)
