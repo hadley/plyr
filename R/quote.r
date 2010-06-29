@@ -43,6 +43,7 @@
 #' Display the \code{\link{str}}ucture of quoted variables
 #' 
 #' @keywords internal
+#' @S3method print quoted
 #' @method print quoted
 print.quoted <- function(x, ...) str(x)
 
@@ -50,6 +51,7 @@ print.quoted <- function(x, ...) str(x)
 #' Figure out names of quoted variables, using specified names if they exist, otherwise using \code{\link{make.names}} on the values.
 #' 
 #' @keywords internal
+#' @S3method names quoted
 #' @method names quoted
 names.quoted <- function(x) {
   part_names <- make.names(x)
