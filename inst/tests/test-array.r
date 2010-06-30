@@ -70,6 +70,6 @@ test_that("single column data frames work when treated as an array", {
   df <- data.frame(b=1:2)
   res <- adply(df, 1, splat(foo))
   
-  expect_that(res$b, equals(df$b))
+  expect_that(res$X1, equals(1:2))
   expect_that(as.character(res$V1), equals(c("a1c", "a2c")))
 })

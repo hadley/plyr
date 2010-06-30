@@ -33,20 +33,20 @@ splitter_a <- function(data, .margins = 1) {
   names(indices) <- paste("X", 1:ncol(indices), sep="")
   
   il <- indexed_array(environment(), indices)
-  
-  if (is.data.frame(data) & identical(.margins, 1)) {
-    split_labels <- data
+
+  if (is.data.frame(data)) {
+    dnames <- list(seq_len(nrow(data)), names(data))
   } else {
     dnames <- amv_dimnames(data)
-    
-    raw <- mapply("[", dnames[.margins], indices[.margins], SIMPLIFY = FALSE)
-    split_labels <- data.frame(raw)
-    
-    if (!is.null(names(dnames))) {
-      names(split_labels) <- names(dnames)[.margins]
-    } else {
-      names(split_labels) <- paste("X", seq_along(.margins), sep = "")
-    }
+  }
+  
+  raw <- mapply("[", dnames[.margins], indices[.margins], SIMPLIFY = FALSE)
+  split_labels <- data.frame(raw, stringsAsFactors = FALSE)
+  
+  if (!is.null(names(dnames))) {
+    names(split_labels) <- names(dnames)[.margins]
+  } else {
+    names(split_labels) <- paste("X", seq_along(.margins), sep = "")
   }
 
   structure(

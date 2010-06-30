@@ -13,9 +13,9 @@ list_to_dataframe <- function(res, labels = NULL) {
     if (length(ulength) != 1) stop("Results are not equal lengths")
     
     if (length(res) > 1) {
-      resdf <- as.data.frame(do.call("rbind", res))
+      resdf <- as.data.frame(do.call("rbind", res), stringsAsFactors = FALSE)
     } else {
-      resdf <- as.data.frame(res[[1]])
+      resdf <- as.data.frame(res[[1]], stringsAsFactors = FALSE)
     }
     rows <- rep(1, length(res))
   } else {
@@ -27,7 +27,7 @@ list_to_dataframe <- function(res, labels = NULL) {
 
   # If no labels supplied, use list names
   if (is.null(labels) && !is.null(names(res))) {
-    labels <- data.frame(.id = names(res))
+    labels <- data.frame(.id = names(res), stringsAsFactors = FALSE)
   }
 
   if (!is.null(labels) && nrow(labels) == length(res)) {
