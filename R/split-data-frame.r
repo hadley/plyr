@@ -68,10 +68,11 @@ split_labels <- function(splits, drop) {
 
     # Need levels which occur in data
     representative <- which(!duplicated(splitv))[order(unique(splitv))]
-    data.frame(lapply(splits, function(x) x[representative]))    
+    data.frame(lapply(splits, function(x) x[representative]),
+      stringsAsFactors = FALSE)
   } else {
     unique_values <- llply(splits, function(x) sort(unique(x)))
     names(unique_values) <- names(splits)
-    rev(expand.grid(rev(unique_values)))
+    rev(expand.grid(rev(unique_values), stringsAsFactors = FALSE))
   }
 }
