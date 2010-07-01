@@ -17,6 +17,10 @@
 #' first <- ddply(baseball, "id", summarise, first = min(year))
 #' system.time(b2 <- merge(baseball, first, by = "id", all.x = TRUE))
 #' system.time(b3 <- join(baseball, first, by = "id"))
+#'
+#' b2 <- arrange(b2, id, year, stint)
+#' b3 <- arrange(b3, id, year, stint)
+#' stopifnot(all.equal(b2, b3))
 join <- function(x, y, by = intersect(names(x), names(y)), type = "left") {
   type <- match.arg(type, c("left", "right", "inner", "full"))
   
@@ -60,13 +64,7 @@ join <- function(x, y, by = intersect(names(x), names(y)), type = "left") {
 #' @keywords internal
 join.keys <- function(x, y, by) {
   joint <- rbind.fill(x[by], y[by])
-  
-  factors <- sapply(joint, is.factor)
-  joint[!factors] <- lapply(joint[!factors], function(x) {
-    factor(x, levels = unique(x))
-  })
-  
-  keys <- ninteraction(joint)
+  keys <- id(joint)
   
   list(
     x = keys[1:nrow(x)],
