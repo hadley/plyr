@@ -1,5 +1,5 @@
-\name{[.idf}
-\alias{[.idf}
+\name{get1-idf}
+\alias{get1-idf}
 \title{Immutable df subsetting...}
 \usage{\method{[}{idf} (x, i, j, drop=TRUE)}
 

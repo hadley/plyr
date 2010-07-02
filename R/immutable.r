@@ -39,6 +39,7 @@ idata.frame <- function(df) {
 
 #' Immutable df subsetting
 #' @method [ idf
+#' @name get1-idf
 #' @keywords internal
 "[.idf" <- function(x, i, j, drop = TRUE) { 
   # Single column special cases
@@ -113,6 +114,7 @@ as.data.frame.idf <- function(x, ...) {
 #' Extract single column from immutable data frame.
 #' @method [[ idf
 #' @keywords internal
+#' @name get2-idf
 "[[.idf" <- function(x, i) {
   if (is.numeric(i)) {
     i <- names(x)[i]
