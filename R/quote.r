@@ -104,6 +104,7 @@ eval.quoted <- function(exprs,  envir = parent.frame(), enclos = if (is.list(env
 #' @param x input to quote
 #' @S3method as.quoted call
 #' @S3method as.quoted character
+#' @S3method as.quoted factor
 #' @S3method as.quoted formula
 #' @S3method as.quoted quoted
 #' @S3method as.quoted name
@@ -153,7 +154,7 @@ as.quoted.formula <- function(x) {
 as.quoted.quoted <- function(x) x
 as.quoted.NULL <- function(x) structure(list(), class = "quoted")
 as.quoted.name <- function(x) structure(list(x), class = "quoted")
-
+as.quoted.factor <- function(x) as.quoted(as.character(x))
 c.quoted <- function(..., recursive = FALSE) {
   structure(NextMethod("c"), class = "quoted")
 }
