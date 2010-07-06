@@ -21,7 +21,7 @@
   \item{...}{other arguments passed on to \code{.fun}}
 }
 \examples{if(require("itertools")) {
-baseball_id <- isplit2(baseball, baseball$id)
+baseball_id <- plyr:::isplit2(baseball, baseball$id)
 liply(baseball_id, summarise, mean_rbi = mean(rbi, na.rm = TRUE))
 system.time(dlply(baseball, "id", summarise, mean_rbi = mean(rbi)))
 }}
