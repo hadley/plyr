@@ -51,10 +51,10 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
   
   # Generate data frame that describe result indices as they are currently
   index <- unrowname(cbind(
-    labels[rep(seq_len(nrow(labels)), each = nrow(res_index)), ,drop = FALSE],
+    .id = rep(seq_len(nrow(labels)), each = nrow(res_index)),
     res_index[rep(seq_len(nrow(res_index)), nrow(labels)), , drop = FALSE]
   ))
-  # Need to be order in the opposite direction in the result
+  # Need to be ordered in the opposite direction in the result
   overall <- id(rev(index))
 
   out_dim <- unname(c(in_dim, res_dim))

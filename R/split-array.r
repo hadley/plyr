@@ -31,6 +31,11 @@ splitter_a <- function(data, .margins = 1) {
   indices <- expand.grid(dimensions, KEEP.OUT.ATTRS = FALSE,
     stringsAsFactors = FALSE)
   names(indices) <- paste("X", 1:ncol(indices), sep="")
+
+  # Ensure indices are ordered in the way in which they should appear in the
+  # output - last margin varies fastest
+  ord <- do.call(order, indices[rev(.margins)])
+  indices <- unrowname(indices[ord, , drop = FALSE])
   
   il <- indexed_array(environment(), indices)
 
