@@ -1,5 +1,6 @@
 plyr 1.1 (2010-XX-XX) ---------------------------------------------------
 
+* *dply deals more gracefully with the case when all results are NULL (fixes #10)
 
 plyr 1.0 (2010-07-02) ---------------------------------------------------
 

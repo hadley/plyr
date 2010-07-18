@@ -24,3 +24,17 @@ test_that("empty data frames returns empty object", {
   expect_that(dlply(df, "a", identity), equals(list()))
   expect_that(daply(df, "a", identity), equals(logical()))
 })
+
+test_that("empty data frame results returns empty object", {
+  df <- data.frame(a = 1:10)
+  expect_that(
+    ddply(df, "a", function(x) NULL),
+    equals(data.frame()))
+  expect_that(
+    dlply(df, "a", function(x) NULL), 
+    equals(rep(list(NULL), 10), check.attributes = FALSE))
+  expect_that(
+    daply(df, "a", function(x) NULL),
+    throws_error("must have one or more dimensions"))
+  
+})
