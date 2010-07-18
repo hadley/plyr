@@ -14,13 +14,20 @@
   Join is about four times faster than merge, but it achieves this
   speed by being less flexible, and is designed for the types of
   problems where you would use a sql join.
+
+  The four join types return: \itemize{ \item \code{inner}: only rows
+  with matching keys in both x and y \item \code{left}: all rows in x,
+  adding matching columns from y \item \code{right}: all rows in y,
+  adding matching columns from x \item \code{full}: all rows in x with
+  matching columns in y, then the rows of y that don't match x. }
 }
 \keyword{manip}
 \arguments{
   \item{x}{data frame}
   \item{y}{data frame}
   \item{by}{character vector of variable names to join by}
-  \item{type}{type of join: left (default), right, inner or full.}
+  \item{type}{type of join: left (default), right, inner or full.  See 
+details for more information.}
 }
 \examples{first <- ddply(baseball, "id", summarise, first = min(year))
 system.time(b2 <- merge(baseball, first, by = "id", all.x = TRUE))

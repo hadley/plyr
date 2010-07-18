@@ -6,11 +6,21 @@
 #' Join is about four times faster than merge, but it achieves this speed
 #' by being less flexible, and is designed for the types of problems where you 
 #' would use a sql join.
+#'
+#' The four join types return:
+#' \itemize{
+#'  \item \code{inner}:  only rows with matching keys in both x and y
+#'  \item \code{left}:   all rows in x, adding matching columns from y
+#'  \item \code{right}:  all rows in y, adding matching columns from x
+#'  \item \code{full}:   all rows in x with matching columns in y, then the
+#'    rows of y that don't match x.
+#' }
 #' 
 #' @param x data frame
 #' @param y data frame
 #' @param by character vector of variable names to join by
-#' @param type type of join: left (default), right, inner or full.
+#' @param type type of join: left (default), right, inner or full.  See 
+#'  details for more information.
 #' @keywords manip
 #' @export
 #' @examples
@@ -51,7 +61,14 @@ join <- function(x, y, by = intersect(names(x), names(y)), type = "left") {
     cbind(x.matched, y[, new.cols, drop = FALSE])
     
   } else if (type == "full") {
-    stop("Not yet implemented")
+    # x with matching y's then any unmatched ys
+
+    y.match <- match(keys$x, keys$y)
+    y.matched <- unrowname(y[y.match, new.cols, drop = FALSE])
+
+    y.unmatch <- is.na(match(keys$y, keys$x))
+    
+    rbind.fill(cbind(x, y.matched), y[y.unmatch, , drop = FALSE])
   }
 }
 

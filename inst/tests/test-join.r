@@ -49,3 +49,15 @@ test_that("duplicated keys are an error", {
 test_that("left join preserves y", {
   
 })
+
+test_that("full merge preserves x and y", {
+  a <- data.frame(x = 1:10, a = 1:10)
+  b <- data.frame(x = 11:15, b = 1:5)
+  
+  ab <- join(a, b, by = "x", type = "full")
+  expect_that(names(ab), equals(c("x", "a", "b")))
+  expect_that(ab$x, equals(1:15))
+  expect_that(ab$a, equals(c(1:10, rep(NA, 5))))
+  expect_that(ab$b, equals(c(rep(NA, 10), 1:5)))
+    
+})
