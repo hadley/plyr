@@ -1,6 +1,11 @@
 length.indexed <- function(x) length(x$index)
 
-names.indexed <- function(x) names(x$index)
+names.indexed <- function(x) {
+  labels <- attr(x, "split_labels")
+  labels[] <- lapply(labels, as.character)
+  
+  do.call(paste, c(labels, list(sep = ".")))
+}
 
 as.list.indexed <- function(x, ...) {
   n <- length(x)
@@ -8,7 +13,7 @@ as.list.indexed <- function(x, ...) {
   for(i in seq_len(n)) {
     out[[i]] <- x[[i]]
   }
-  
+  names(out) <- names(x)
   class(out) <- c("split", "list")
   out
 }
