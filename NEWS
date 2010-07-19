@@ -1,4 +1,4 @@
-plyr 1.1 (2010-XX-XX) ---------------------------------------------------
+plyr 1.1 (2010-07-19) ---------------------------------------------------
 
 * *dply deals more gracefully with the case when all results are NULL (fixes #10)
 * *aply correctly orders output regardless of dimension names (fixes #11)

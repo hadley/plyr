@@ -10,17 +10,22 @@
 #' @param .iterator iterator object
 #' @param .fun function to apply to each piece
 #' @param ... other arguments passed on to \code{.fun}
+#' @export
 #' @examples
-#' if(require("itertools")) {
-#'   baseball_id <- isplit2(baseball, baseball$id)
-#'   liply(baseball_id, summarise, mean_rbi = mean(rbi, na.rm = TRUE))
+#' if(require("iterators")) {
 #'   system.time(dlply(baseball, "id", summarise, mean_rbi = mean(rbi)))
+#'   system.time({
+#'     baseball_id <- isplit2(baseball, baseball$id)
+#'     liply(baseball_id, summarise, mean_rbi = mean(rbi, na.rm = TRUE))
+#'   })
+#'   # Iterators get used up:
+#'   liply(baseball_id, summarise, mean_rbi = mean(rbi, na.rm = TRUE))
 #' }
 liply <- function(.iterator, .fun = NULL, ...) {
-  stopifnot(iterator::is.iterator(.iterator))
+  stopifnot(inherits(.iterator, "iter"))
   if (is.null(.fun)) return(as.list(.iterator))
   
-  iterator <- iterator::icanhasnext(.iterator)
+  iterator <- itertools::ihasNext(.iterator)
   
   if (is.character(.fun)) .fun <- each(.fun)
   if (!is.function(.fun)) stop(".fun is not a function.")
@@ -28,8 +33,8 @@ liply <- function(.iterator, .fun = NULL, ...) {
   result <- vector("list", 50)
   i <- 0
 
-  while(iterator$hasNext()) {
-    piece <- iterator$nextElem()
+  while(itertools::hasNext(iterator)) {
+    piece <- iterators::nextElem(iterator)
     res <- .fun(piece, ...)
     
     # Double length of vector when necessary.  Gives O(n ln n) performance
@@ -48,11 +53,12 @@ liply <- function(.iterator, .fun = NULL, ...) {
 #' Split iterator that returns values, not indices.
 #'
 #' @keywords internal
+#' @export
 isplit2 <- function (x, f, drop = FALSE, ...)  {
-  it <- iterator::isplit(seq_len(nrow(x)), f, drop = drop, ...)
+  it <- iterators::isplit(seq_len(nrow(x)), f, drop = drop, ...)
   nextEl <- function() {
-    i <- iterator::nextElem(it)
+    i <- iterators::nextElem(it)
     x[i$value, , drop = FALSE]
   }
-  iterator::new_iterator(nextEl)
+  structure(list(nextElem = nextEl), class = c("abstractiter", "iter"))
 }
