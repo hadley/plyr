@@ -1,6 +1,7 @@
 plyr 1.2 (2010-XX-XX) ---------------------------------------------------
 
 * llply gains .parallel argument that when set to true will apply parallel functions in parallel using foreach package
+* llply: in serial case, for loop replaced with custom C function that takes about 40% less time (or about 20% less time than lapply)
 
 plyr 1.1 (2010-07-19) ---------------------------------------------------
 

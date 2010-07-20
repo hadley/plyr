@@ -75,7 +75,7 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
     }
     result <- foreach(i = seq_len(n)) %dopar% do.ply(i)
   } else {
-    result <- lapply(seq_len(n), do.ply)
+    result <- loop_apply(n, do.ply)
   }
   
   attributes(result)[c("split_type", "split_labels")] <-
