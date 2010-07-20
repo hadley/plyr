@@ -40,7 +40,6 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE) 
   if (n == 0) return(list())
   
   if (is.character(.fun)) .fun <- each(.fun)
-  # .fun <- each(.fun)
   if (!is.function(.fun)) stop(".fun is not a function.")
   
   progress <- create_progress_bar(.progress)
@@ -48,8 +47,7 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE) 
   on.exit(progress$term())
 
   result <- vector("list", n)
-
-  for(i in seq_len(n)) {
+  do.ply <- function(i) {
     piece <- pieces[[i]]
     
     # Display informative error messages, if desired
@@ -62,10 +60,10 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE) 
     } else {
       res <- .fun(piece, ...)
     }
-    
-    if (!is.null(res)) result[[i]] <- res
     progress$step()
+    res
   }
+  result <- lapply(seq_len(n), do.ply)
   
   attributes(result)[c("split_type", "split_labels")] <-
     attributes(pieces)[c("split_type", "split_labels")]
