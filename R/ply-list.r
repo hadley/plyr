@@ -19,6 +19,8 @@
 #' @param .inform produce informative error messages?  This is turned off by
 #'   by default because it substantially slows processing speed, but is very
 #'   useful for debugging
+#' @param .parallel if \code{TRUE}, apply function in parallel, using parallel 
+#'   backend provided by foreach
 #' @return list of results
 #' @export
 #' @examples
@@ -29,7 +31,7 @@
 #'
 #' llply(x, mean)
 #' llply(x, quantile, probs = 1:3/4)
-llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE) {
+llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, .parallel = FALSE) {
   if (inherits(.data, "split")) {
     pieces <- .data
   } else {
@@ -63,7 +65,18 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE) 
     progress$step()
     res
   }
-  result <- lapply(seq_len(n), do.ply)
+  if (.parallel) {
+    if (!require("foreach")) {
+      stop("foreach package required for parallel plyr operation", 
+        call. = FALSE)
+    }
+    if (getDoParWorkers() == 1) {
+      warning("No parallel backend registered", call. = TRUE)
+    }
+    result <- foreach(i = seq_len(n)) %dopar% do.ply(i)
+  } else {
+    result <- lapply(seq_len(n), do.ply)
+  }
   
   attributes(result)[c("split_type", "split_labels")] <-
     attributes(pieces)[c("split_type", "split_labels")]

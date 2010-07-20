@@ -1,7 +1,8 @@
 \name{llply}
 \alias{llply}
 \title{Split list, apply function, and return results in a list.}
-\usage{llply(.data, .fun, ..., .progress="none", .inform=FALSE)}
+\usage{llply(.data, .fun, ..., .progress="none", .inform=FALSE,
+    .parallel=FALSE)}
 
 \description{
   Split list, apply function, and return results in a list. For each
@@ -29,6 +30,8 @@
   \item{.inform}{produce informative error messages?  This is turned off by
 by default because it substantially slows processing speed, but is very
 useful for debugging}
+  \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 
+backend provided by foreach}
 }
 \examples{llply(llply(mtcars, round), table)
 llply(baseball, summary)
