@@ -1,10 +1,10 @@
-#' Split indices.
-#' An optimised version of split for the special case of splitting row
-#' indices into groups, as used by \code{\link{splitter_d}}
+#' Loop apply
+#' An optimised version of lapply for the special case of operating on 
+#' \code{seq_len(n)}
 #'
-#' @param index integer indices
-#' @param group integer groups
-#' @param n largest integer (may not appear in index)
+#' @param n length of sequence
+#' @param f function to apply to each integer
+#' @param env environment in which to evaluate function
 #' @useDynLib plyr
 #' @keywords internal manip
 loop_apply <- function(n, f, env = parent.frame()) {
