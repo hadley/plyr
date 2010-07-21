@@ -1,7 +1,8 @@
 \name{ddply}
 \alias{ddply}
 \title{Split data frame, apply function, and return results in a data frame.}
-\usage{ddply(.data, .variables, .fun, ..., .progress="none", .drop=TRUE)}
+\usage{ddply(.data, .variables, .fun, ..., .progress="none", .drop=TRUE,
+    .parallel=FALSE)}
 
 \description{
   Split data frame, apply function, and return results in a data frame.
@@ -33,6 +34,8 @@
 data be preserved (FALSE) or dropped (TRUE, default)}
   \item{...}{other arguments passed on to \code{.fun}}
   \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+  \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 
+backend provided by foreach}
 }
 \examples{ddply(baseball, .(year), "nrow") 
 ddply(baseball, .(lg), c("nrow", "ncol")) 

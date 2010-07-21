@@ -1,7 +1,7 @@
 \name{alply}
 \alias{alply}
 \title{Split array, apply function, and return results in a list.}
-\usage{alply(.data, .margins, .fun, ..., .progress="none")}
+\usage{alply(.data, .margins, .fun, ..., .progress="none", .parallel=FALSE)}
 
 \description{
   Split array, apply function, and return results in a list. For each
@@ -27,6 +27,8 @@
   \item{.fun}{function to apply to each piece}
   \item{...}{other arguments passed on to \code{.fun}}
   \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+  \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 
+backend provided by foreach}
 }
 \examples{alply(ozone, 3, quantile)
 alply(ozone, 3, function(x) table(round(x)))}

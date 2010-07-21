@@ -29,6 +29,8 @@
   \item{.fun}{function to be called with varying arguments}
   \item{...}{other arguments passed on to \code{.fun}}
   \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+  \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 
+backend provided by foreach}
 }
 \examples{mdply(data.frame(mean = 1:5, sd = 1:5), rnorm, n = 2)
 mdply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 2)

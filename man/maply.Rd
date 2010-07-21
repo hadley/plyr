@@ -1,7 +1,7 @@
 \name{maply}
 \alias{maply}
 \title{Call function with arguments in array or data frame, returning an array.}
-\usage{maply(.data, .fun, ..., .progress="none")}
+\usage{maply(.data, .fun, ..., .progress="none", .parallel=FALSE)}
 
 \description{
   Call function with arguments in array or data frame, returning an
@@ -27,6 +27,8 @@
   \item{.fun}{function to be called with varying arguments}
   \item{...}{other arguments passed on to \code{.fun}}
   \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+  \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 
+backend provided by foreach}
 }
 \examples{maply(cbind(mean = 1:5, sd = 1:5), rnorm, n = 5)
 maply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 5)

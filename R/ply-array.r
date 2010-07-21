@@ -19,6 +19,8 @@
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .drop should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
+#' @param .parallel if \code{TRUE}, apply function in parallel, using parallel 
+#'   backend provided by foreach
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 #' @export
 #' @examples
@@ -30,12 +32,13 @@
 #' laply(seq_len(10), identity)
 #' laply(seq_len(10), rep, times = 4)
 #' laply(seq_len(10), matrix, nrow = 2, ncol = 2)
-laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
+laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE, .parallel = FALSE) {
   if (is.character(.fun)) .fun <- do.call("each", as.list(.fun))
   if (!is.function(.fun)) stop(".fun is not a function.")
   
   if (!inherits(.data, "split")) .data <- as.list(.data)
-  res <- llply(.data = .data, .fun = .fun, ..., .progress = .progress)
+  res <- llply(.data = .data, .fun = .fun, ..., 
+    .progress = .progress, .parallel = .parallel)
   
   list_to_array(res, attr(.data, "split_labels"), .drop)
 }
@@ -60,6 +63,8 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .drop should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
+#' @param .parallel if \code{TRUE}, apply function in parallel, using parallel 
+#'   backend provided by foreach
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 #' @export
 #' @examples
@@ -71,11 +76,12 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
 #' daply(baseball[, c(2, 6:9)], .(year), mean)
 #' daply(baseball[, 6:9], .(baseball$year), mean)
 #' daply(baseball, .(year), function(df) mean(df[, 6:9]))
-daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
+daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE, .parallel = FALSE) {
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables)
   
-  laply(.data = pieces, .fun = .fun, ..., .progress = .progress, .drop = .drop)
+  laply(.data = pieces, .fun = .fun, ..., 
+    .progress = .progress, .drop = .drop, .parallel = .parallel)
 }
 
 #' Split array, apply function, and return results in an array.
@@ -101,6 +107,8 @@ daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .drop should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
+#' @param .parallel if \code{TRUE}, apply function in parallel, using parallel 
+#'   backend provided by foreach
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 #' @export
 #' @examples
@@ -121,8 +129,9 @@ daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' aaply(ozone, 1:2, standardise)
 #'  
 #' aaply(ozone, 1:2, diff)
-aaply <- function(.data, .margins, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
+aaply <- function(.data, .margins, .fun = NULL, ..., .progress = "none", .drop = TRUE, .parallel = FALSE) {
   pieces <- splitter_a(.data, .margins)
   
-  laply(.data = pieces, .fun = .fun, ..., .progress = .progress, .drop = .drop)
+  laply(.data = pieces, .fun = .fun, ..., 
+    .progress = .progress, .drop = .drop, .parallel = .parallel)
 }

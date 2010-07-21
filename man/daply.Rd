@@ -1,7 +1,8 @@
 \name{daply}
 \alias{daply}
 \title{Split data frame, apply function, and return results in an array.}
-\usage{daply(.data, .variables, .fun, ..., .progress="none", .drop=TRUE)}
+\usage{daply(.data, .variables, .fun, ..., .progress="none", .drop=TRUE,
+    .parallel=FALSE)}
 
 \description{
   Split data frame, apply function, and return results in an array. For
@@ -29,6 +30,8 @@
   \item{...}{other arguments passed on to \code{.fun}}
   \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
   \item{.drop}{should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}}
+  \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 
+backend provided by foreach}
 }
 \examples{daply(baseball, .(year), nrow)
 

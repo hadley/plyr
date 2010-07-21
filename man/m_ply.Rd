@@ -1,7 +1,7 @@
 \name{m_ply}
 \alias{m_ply}
 \title{Call function with arguments in array or data frame, discarding results.}
-\usage{m_ply(.data, .fun, ..., .progress="none")}
+\usage{m_ply(.data, .fun, ..., .progress="none", .parallel=FALSE)}
 
 \description{
   Call function with arguments in array or data frame, discarding
@@ -26,4 +26,6 @@
   \item{.fun}{function to be called with varying arguments}
   \item{...}{other arguments passed on to \code{.fun}}
   \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+  \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 
+backend provided by foreach}
 }

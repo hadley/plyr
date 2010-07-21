@@ -1,7 +1,7 @@
 \name{laply}
 \alias{laply}
 \title{Split list, apply function, and return results in an array.}
-\usage{laply(.data, .fun, ..., .progress="none", .drop=TRUE)}
+\usage{laply(.data, .fun, ..., .progress="none", .drop=TRUE, .parallel=FALSE)}
 
 \description{
   Split list, apply function, and return results in an array. For each
@@ -29,6 +29,8 @@
   \item{...}{other arguments passed on to \code{.fun}}
   \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
   \item{.drop}{should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}}
+  \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 
+backend provided by foreach}
 }
 \examples{laply(baseball, is.factor)
 # cf

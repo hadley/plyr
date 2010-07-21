@@ -1,7 +1,8 @@
 \name{dlply}
 \alias{dlply}
 \title{Split data frame, apply function, and return results in a list.}
-\usage{dlply(.data, .variables, .fun, ..., .progress="none", .drop=TRUE)}
+\usage{dlply(.data, .variables, .fun, ..., .progress="none", .drop=TRUE,
+    .parallel=FALSE)}
 
 \description{
   Split data frame, apply function, and return results in a list. For
@@ -30,6 +31,8 @@
   \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
   \item{.drop}{should combinations of variables that do not appear in the 
 data be preserved (FALSE) or dropped (TRUE, default)}
+  \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 
+backend provided by foreach}
 }
 \examples{linmod <- function(df) lm(rbi ~ year, data = transform(df, year = year - min(year)))
 models <- dlply(baseball, .(id), linmod)

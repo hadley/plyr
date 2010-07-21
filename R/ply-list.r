@@ -111,6 +111,8 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .drop should combinations of variables that do not appear in the 
 #'   data be preserved (FALSE) or dropped (TRUE, default)
+#' @param .parallel if \code{TRUE}, apply function in parallel, using parallel 
+#'   backend provided by foreach
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 #' @export
 #' @examples
@@ -122,11 +124,12 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
 #' with(coef, plot(`(Intercept)`, year))
 #' qual <- laply(models, function(mod) summary(mod)$r.squared)
 #' hist(qual)
-dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE) {
+dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE, .parallel = FALSE) {
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables, drop = .drop)
   
-  llply(.data = pieces, .fun = .fun, ..., .progress = .progress)
+  llply(.data = pieces, .fun = .fun, ..., 
+    .progress = .progress, .parallel = .parallel)
 }
 
 #' Split array, apply function, and return results in a list.
@@ -150,12 +153,15 @@ dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' @param .fun function to apply to each piece
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
+#' @param .parallel if \code{TRUE}, apply function in parallel, using parallel 
+#'   backend provided by foreach
 #' @return list of results
 #' @examples
 #' alply(ozone, 3, quantile)
 #' alply(ozone, 3, function(x) table(round(x)))
-alply <- function(.data, .margins, .fun = NULL, ..., .progress = "none") {
+alply <- function(.data, .margins, .fun = NULL, ..., .progress = "none", .parallel = FALSE) {
   pieces <- splitter_a(.data, .margins)
   
-  llply(.data = pieces, .fun = .fun, ..., .progress = .progress)
+  llply(.data = pieces, .fun = .fun, ..., 
+    .progress = .progress, .parallel = .parallel)
 }

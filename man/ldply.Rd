@@ -1,7 +1,7 @@
 \name{ldply}
 \alias{ldply}
 \title{Split list, apply function, and return results in a data frame.}
-\usage{ldply(.data, .fun, ..., .progress="none")}
+\usage{ldply(.data, .fun, ..., .progress="none", .parallel=FALSE)}
 
 \description{
   Split list, apply function, and return results in a data frame. For
@@ -30,4 +30,6 @@
   \item{.fun}{function to apply to each piece}
   \item{...}{other arguments passed on to \code{.fun}}
   \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+  \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 
+backend provided by foreach}
 }
