@@ -12,7 +12,7 @@ Description: plyr is a set of tools that solves a common set of
     panels or collapse high-dimensional arrays to simpler summary
     statistics.
 URL: http://had.co.nz/plyr
-Suggests: RUnit, abind, tcltk, testthat (>= 0.2)
+Suggests: abind, testthat (>= 0.2), tcltk, foreach
 Imports: itertools, iterators
 License: MIT
 LazyData: true
