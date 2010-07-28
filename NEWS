@@ -20,6 +20,10 @@ plyr 1.2 (2010-XX-XX) ---------------------------------------------------
   #  user  system elapsed 
   # 0.020   0.011   1.038 
 
+* llply: for simple lists and vectors, with no progress bar, no extra info,
+  and no parallelisation, llply calls lapply directly to avoid all the
+  overhead associated with those unused extra features
+
 * llply: in serial case, for loop replaced with custom C function that takes
   about 40% less time (or about 20% less time than lapply). Note that as a
   whole, llply still has much more overhead than lapply.

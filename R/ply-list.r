@@ -32,17 +32,22 @@
 #' llply(x, mean)
 #' llply(x, quantile, probs = 1:3/4)
 llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, .parallel = FALSE) {
+  if (is.null(.fun)) return(as.list(.data))
+  if (is.character(.fun)) .fun <- each(.fun)
+  if (!is.function(.fun)) stop(".fun is not a function.")
+
   if (inherits(.data, "split")) {
     pieces <- .data
   } else {
+    # This special case can be done much faster with lapply, so do it.
+    if (.progress == "none" && !.inform && !.parallel) {
+      return(lapply(.data, .fun))
+    }
     pieces <- as.list(.data)
   }
-  if (is.null(.fun)) return(as.list(pieces))
+
   n <- length(pieces)
   if (n == 0) return(list())
-  
-  if (is.character(.fun)) .fun <- each(.fun)
-  if (!is.function(.fun)) stop(".fun is not a function.")
   
   progress <- create_progress_bar(.progress)
   progress$init(n)
@@ -51,7 +56,7 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
   result <- vector("list", n)
   do.ply <- function(i) {
     piece <- pieces[[i]]
-    
+
     # Display informative error messages, if desired
     if (.inform) {
       res <- try(.fun(piece, ...))
