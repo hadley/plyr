@@ -41,7 +41,7 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
   } else {
     # This special case can be done much faster with lapply, so do it.
     if (.progress == "none" && !.inform && !.parallel) {
-      return(lapply(.data, .fun))
+      return(lapply(.data, .fun, ...))
     }
     pieces <- as.list(.data)
   }
