@@ -79,6 +79,7 @@ join <- function(x, y, by = intersect(names(x), names(y)), type = "left") {
 #' @param y data frame
 #' @param by character vector of variable names to join by
 #' @keywords internal
+#' @export
 join.keys <- function(x, y, by) {
   joint <- rbind.fill(x[by], y[by])
   keys <- id(joint)
