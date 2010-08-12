@@ -45,26 +45,24 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
     in_dim <- n
   } else {
     in_labels <- lapply(labels, 
-      function(x) if(is.factor(x)) levels(x) else unique(x))
+      function(x) if(is.factor(x)) levels(x) else sort(unique(x)))
     in_dim <- sapply(in_labels, length)        
+    
   }
   
-  # Generate data frame that describe result indices as they are currently
-  index <- unrowname(cbind(
-    .id = rep(seq_len(nrow(labels)), each = nrow(res_index)),
-    res_index[rep(seq_len(nrow(res_index)), nrow(labels)), , drop = FALSE]
-  ))
-  # Need to be ordered in the opposite direction in the result
-  overall <- id(rev(index))
-
+  # Work out where each result should go in the new array  
+  index_old <- rep(id(rev(labels)), each = nrow(res_index))
+  index_new <- rep(id(rev(res_index)), nrow(labels))
+  index <- (index_new - 1) * prod(in_dim) + index_old
+  
   out_dim <- unname(c(in_dim, res_dim))
   out_labels <- c(in_labels, res_labels)
   n <- prod(out_dim)
 
-  if (length(overall) < n) {
-    overall <- match(1:n, overall, nomatch = NA)
+  if (length(index) < n) {
+    overall <- match(1:n, index, nomatch = NA)
   } else {
-    overall <- order(overall)
+    overall <- order(index)
   }
   
   out_array <- res[overall]  

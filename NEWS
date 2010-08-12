@@ -1,5 +1,8 @@
 plyr 1.2 (2010-XX-XX) ---------------------------------------------------
 
+* list_to_array works correct even when there are missing values in the array.  
+  This is particularly important for daply.
+
 * melt function moved from reshape to plyr - I've made this move because melt
   fits naturally into the philosophy of data manipulation espoused by plyr. It
   is the most commonly used method from reshape, and is useful without cast.
