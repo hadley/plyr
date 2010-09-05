@@ -38,7 +38,7 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
     splits <- eval.quoted(.variables, data, parent.frame())
 
     splitv <- id(splits, drop = drop)
-    split_labels <- split_labels(splits, drop = drop)
+    split_labels <- split_labels(splits, drop = drop, id = splitv)
   }
   
   index <- split_indices(seq_along(splitv), as.integer(splitv), 
@@ -61,15 +61,12 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
 #' @param whether all possible combinations should be considered, or only those present in the data
 #' @keywords internal
 #' @export
-split_labels <- function(splits, drop) {
+split_labels <- function(splits, drop, id = id(splits, drop = TRUE)) {
   
   if (drop) {
-    splitv <- id(splits, drop = drop)
-
     # Need levels which occur in data
-    representative <- which(!duplicated(splitv))[order(unique(splitv))]
-    data.frame(lapply(splits, function(x) x[representative]),
-      stringsAsFactors = FALSE)
+    representative <- which(!duplicated(id))[order(unique(id))]
+    quickdf(lapply(splits, function(x) x[representative]))
   } else {
     unique_values <- llply(splits, function(x) sort(unique(x)))
     names(unique_values) <- names(splits)
