@@ -1,5 +1,9 @@
 plyr 1.2 (2010-XX-XX) ---------------------------------------------------
 
+* new vaggregate (vector aggregate) function, which is equivalent to tapply,
+  but much faster for large vectors, since it avoids the overhead of copying
+  the data into a list.
+
 * list_to_array works correct even when there are missing values in the array.  
   This is particularly important for daply.
 
