@@ -9,14 +9,14 @@
 #' @export
 vaggregate <- function(.value, .group, .fun, ..., .default = NULL, .n = max(group)) {
   if (is.null(.default)) {
-    .default <- fun.aggregate(.value[0])
+    .default <- .fun(.value[0])
   }
   
   fun <- function(i) {
     if (length(i) == 0) return(.default)
-    fun.aggregate(.value[i], ...)
+    .fun(.value[i], ...)
   }
 
-  indices <- split_indices(seq_along(value), overall, .n)
-  vapply(indicies, fun , fill)
+  indices <- split_indices(seq_along(.value), .group, .n)
+  vapply(indices, fun, .default)
 }
