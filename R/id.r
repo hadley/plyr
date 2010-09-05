@@ -17,8 +17,7 @@
 #' @export
 id <- function(.variables, drop = FALSE) {
   if (length(.variables) == 0) {
-    res <- structure(rep.int(1L, nrow(.variables)), n = 1L)
-    return(res)
+    return(structure(1L, n = 1))
   }
 
   # Special case for single variable
@@ -56,7 +55,7 @@ ninteraction <- id
 #' Numeric id for a vector.
 #' @keywords internal
 id_var <- function(x, drop = FALSE) {
-  if (length(x) == 0) return(x)
+  if (length(x) == 0) return(structure(integer(), n = 0))
   
   if (is.factor(x) && !drop) {
     id <- as.numeric(addNA(x, ifany = TRUE))

@@ -62,6 +62,7 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
 #' @keywords internal
 #' @export
 split_labels <- function(splits, drop, id = id(splits, drop = TRUE)) {
+  if (length(splits) == 0) return(data.frame())
   
   if (drop) {
     # Need levels which occur in data
