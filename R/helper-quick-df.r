@@ -5,6 +5,7 @@
 #'
 #' @param list list to convert to data frame
 #' @keywords internal
+#' @export
 quickdf <- function(list) {
   rows <- unique(unlist(lapply(list, NROW)))
   stopifnot(length(rows) == 1)
