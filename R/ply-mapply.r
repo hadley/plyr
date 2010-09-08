@@ -16,6 +16,8 @@
 #' @param .data matrix or data frame to use as source of arguments
 #' @param .fun function to be called with varying arguments
 #' @param ... other arguments passed on to \code{.fun}
+#' @param .expand should output be 1d (expand = FALSE), with an element for
+#'   each row; or nd (expand = TRUE), with a dimension for each variable.
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .parallel if \code{TRUE}, apply function in parallel, using parallel 
 #'   backend provided by foreach
@@ -26,11 +28,12 @@
 #' mdply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 2)
 #' mdply(cbind(mean = 1:5, sd = 1:5), rnorm, n = 5)
 #' mdply(cbind(mean = 1:5, sd = 1:5), as.data.frame(rnorm), n = 5)
-mdply <- function(.data, .fun = NULL, ..., .progress = "none") {
+mdply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none", .parallel = FALSE) {
   if (is.matrix(.data) & !is.list(.data)) .data <- .matrix_to_df(.data)
 
   f <- splat(.fun)
-  adply(.data = .data, .margins = 1, .fun = f, ..., .progress = .progress)
+  adply(.data = .data, .margins = 1, .fun = f, ..., 
+    .expand = .expand, .progress = .progress, .parallel = .parallel)
 }
 
 #' Call function with arguments in array or data frame, returning an array.
@@ -49,6 +52,8 @@ mdply <- function(.data, .fun = NULL, ..., .progress = "none") {
 #' @param .data matrix or data frame to use as source of arguments
 #' @param .fun function to be called with varying arguments
 #' @param ... other arguments passed on to \code{.fun}
+#' @param .expand should output be 1d (expand = FALSE), with an element for
+#'   each row; or nd (expand = TRUE), with a dimension for each variable.
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .parallel if \code{TRUE}, apply function in parallel, using parallel 
 #'   backend provided by foreach
@@ -58,11 +63,12 @@ mdply <- function(.data, .fun = NULL, ..., .progress = "none") {
 #' maply(cbind(mean = 1:5, sd = 1:5), rnorm, n = 5)
 #' maply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 5)
 #' maply(cbind(1:5, 1:5), rnorm, n = 5)
-maply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE) {
+maply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none", .parallel = FALSE) {
   if (is.matrix(.data) & !is.list(.data)) .data <- .matrix_to_df(.data)
   
   f <- splat(.fun)
-  aaply(.data = .data, .margins = 1, .fun = f, ..., .progress = .progress)
+  aaply(.data = .data, .margins = 1, .fun = f, ..., 
+    .expand = .expand, .progress = .progress, .parallel = .parallel)
 }
 
 #' Call function with arguments in array or data frame, returning a list.
@@ -81,6 +87,8 @@ maply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE
 #' @param .data matrix or data frame to use as source of arguments
 #' @param .fun function to be called with varying arguments
 #' @param ... other arguments passed on to \code{.fun}
+#' @param .expand should output be 1d (expand = FALSE), with an element for
+#'   each row; or nd (expand = TRUE), with a dimension for each variable.
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .parallel if \code{TRUE}, apply function in parallel, using parallel 
 #'   backend provided by foreach
@@ -93,12 +101,12 @@ maply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE
 #' mlply(cbind(1:4, 4:1), seq)
 #' mlply(cbind(1:4, length = 4:1), seq)
 #' mlply(cbind(1:4, by = 4:1), seq, to = 20)
-mlply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE) {
+mlply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none", .parallel = FALSE) {
   if (is.matrix(.data) & !is.list(.data)) .data <- .matrix_to_df(.data)
 
   f <- splat(.fun)
   alply(.data = .data, .margins = 1, .fun = f, ..., 
-    .progress = .progress, .parallel = .parallel)
+    .expand = .expand, .progress = .progress, .parallel = .parallel)
 }
 
 #' Call function with arguments in array or data frame, discarding results.
@@ -116,16 +124,18 @@ mlply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE
 #' @param .data matrix or data frame to use as source of arguments
 #' @param .fun function to be called with varying arguments
 #' @param ... other arguments passed on to \code{.fun}
+#' @param .expand should output be 1d (expand = FALSE), with an element for
+#'   each row; or nd (expand = TRUE), with a dimension for each variable.
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .parallel if \code{TRUE}, apply function in parallel, using parallel 
 #'   backend provided by foreach
 #' @export
-m_ply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE) {
+m_ply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none", .parallel = FALSE) {
   if (is.matrix(.data) & !is.list(.data)) .data <- .matrix_to_df(.data)
 
   f <- splat(.fun)
   a_ply(.data = .data, .margins = 1, .fun = f, ..., 
-    .progress = .progress, .parallel = .parallel)
+    .expand = .expand, .progress = .progress, .parallel = .parallel)
 }
 
 .matrix_to_df <- function(.data) {

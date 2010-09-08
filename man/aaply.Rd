@@ -1,8 +1,8 @@
 \name{aaply}
 \alias{aaply}
 \title{Split array, apply function, and return results in an array.}
-\usage{aaply(.data, .margins, .fun, ..., .progress="none", .drop=TRUE,
-    .parallel=FALSE)}
+\usage{aaply(.data, .margins, .fun, ..., .expand=TRUE, .progress="none",
+    .drop=TRUE, .parallel=FALSE)}
 
 \description{
   Split array, apply function, and return results in an array. For each
@@ -31,6 +31,9 @@
   \item{.margins}{a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions}
   \item{.fun}{function to apply to each piece}
   \item{...}{other arguments passed on to \code{.fun}}
+  \item{.expand}{if \code{.data} is a data frame, should output be 1d 
+(expand = FALSE), with an element for each row; or nd (expand = TRUE),
+with a dimension for each variable.}
   \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
   \item{.drop}{should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}}
   \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 

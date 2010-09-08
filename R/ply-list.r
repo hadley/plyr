@@ -157,6 +157,9 @@ dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' @param .margins a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions
 #' @param .fun function to apply to each piece
 #' @param ... other arguments passed on to \code{.fun}
+#' @param .expand if \code{.data} is a data frame, should output be 1d 
+#'   (expand = FALSE), with an element for each row; or nd (expand = TRUE),
+#'    with a dimension for each variable.
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .parallel if \code{TRUE}, apply function in parallel, using parallel 
 #'   backend provided by foreach
@@ -164,8 +167,8 @@ dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' @examples
 #' alply(ozone, 3, quantile)
 #' alply(ozone, 3, function(x) table(round(x)))
-alply <- function(.data, .margins, .fun = NULL, ..., .progress = "none", .parallel = FALSE) {
-  pieces <- splitter_a(.data, .margins)
+alply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .parallel = FALSE) {
+  pieces <- splitter_a(.data, .margins, .expand)
   
   llply(.data = pieces, .fun = .fun, ..., 
     .progress = .progress, .parallel = .parallel)

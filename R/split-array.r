@@ -13,7 +13,11 @@
 #' the list of pieces.
 #' 
 #' @param data >1d data structure (matrix, data.frame or array)
-#' @param .margins a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns
+#' @param .margins a vector giving the subscripts to split up \code{data} by. 
+#    1 splits up by rows, 2 by columns and c(1,2) by rows and columns
+#' @param .expand if splitting a dataframe by row, should output be 1d 
+#'   (expand = FALSE), with an element for each row; or nd (expand = TRUE), 
+#'   with a dimension for each variable.
 #' @return a list of lower-d slices, with attributes that record split details
 #' @keywords internal
 #' @examples
@@ -23,7 +27,8 @@
 #' plyr:::splitter_a(ozone, 2)
 #' plyr:::splitter_a(ozone, 3)
 #' plyr:::splitter_a(ozone, 1:2)
-splitter_a <- function(data, .margins = 1) {
+splitter_a <- function(data, .margins = 1L, .expand = TRUE) {
+  .margins <- as.integer(.margins)
   if (!all(.margins %in% seq_len(dims(data)))) stop("Invalid margin")
   
   dimensions <- lapply(amv_dim(data), seq_len)
@@ -39,19 +44,23 @@ splitter_a <- function(data, .margins = 1) {
   
   il <- indexed_array(environment(), indices)
 
-  if (is.data.frame(data)) {
-    dnames <- list(seq_len(nrow(data)), names(data))
-  } else {
-    dnames <- amv_dimnames(data)
-  }
-  
-  raw <- mapply("[", dnames[.margins], indices[.margins], SIMPLIFY = FALSE)
-  split_labels <- data.frame(raw, stringsAsFactors = FALSE)
-  
-  if (!is.null(names(dnames))) {
-    names(split_labels) <- names(dnames)[.margins]
-  } else {
-    names(split_labels) <- paste("X", seq_along(.margins), sep = "")
+  if (is.data.frame(data) && .expand && identical(.margins, 1L)) {
+    split_labels <- data
+  } else { 
+    if (is.data.frame(data)) {
+      dnames <- list(seq_len(nrow(data)), names(data))      
+    } else {
+      dnames <- amv_dimnames(data)
+    }
+
+    raw <- mapply("[", dnames[.margins], indices[.margins], SIMPLIFY = FALSE)
+    split_labels <- data.frame(raw, stringsAsFactors = FALSE)
+
+    if (!is.null(names(dnames))) {
+      names(split_labels) <- names(dnames)[.margins]
+    } else {
+      names(split_labels) <- paste("X", seq_along(.margins), sep = "")
+    } 
   }
 
   structure(

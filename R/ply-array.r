@@ -105,6 +105,9 @@ daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' @param .margins a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions
 #' @param .fun function to apply to each piece
 #' @param ... other arguments passed on to \code{.fun}
+#' @param .expand if \code{.data} is a data frame, should output be 1d 
+#'   (expand = FALSE), with an element for each row; or nd (expand = TRUE),
+#'    with a dimension for each variable.
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .drop should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
 #' @param .parallel if \code{TRUE}, apply function in parallel, using parallel 
@@ -129,8 +132,8 @@ daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' aaply(ozone, 1:2, standardise)
 #'  
 #' aaply(ozone, 1:2, diff)
-aaply <- function(.data, .margins, .fun = NULL, ..., .progress = "none", .drop = TRUE, .parallel = FALSE) {
-  pieces <- splitter_a(.data, .margins)
+aaply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .drop = TRUE, .parallel = FALSE) {
+  pieces <- splitter_a(.data, .margins, .expand)
   
   laply(.data = pieces, .fun = .fun, ..., 
     .progress = .progress, .drop = .drop, .parallel = .parallel)

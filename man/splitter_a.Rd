@@ -1,7 +1,7 @@
 \name{splitter_a}
 \alias{splitter_a}
 \title{Split an array by...}
-\usage{splitter_a(data, .margins=1)}
+\usage{splitter_a(data, .margins=1, .expand=TRUE)}
 
 \description{
   Split an array by .margins. Split a 2d or higher data structure into
@@ -24,7 +24,10 @@
 \keyword{internal}
 \arguments{
   \item{data}{>1d data structure (matrix, data.frame or array)}
-  \item{.margins}{a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns}
+  \item{.margins}{a vector giving the subscripts to split up \code{data} by.}
+  \item{.expand}{if splitting a dataframe by row, should output be 1d 
+(expand = FALSE), with an element for each row; or nd (expand = TRUE), 
+with a dimension for each variable.}
 }
 \examples{plyr:::splitter_a(mtcars, 1)
 plyr:::splitter_a(mtcars, 2)

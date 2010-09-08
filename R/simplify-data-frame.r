@@ -37,6 +37,10 @@ list_to_dataframe <- function(res, labels = NULL) {
   }
 
   if (!is.null(labels) && nrow(labels) == length(res)) {
+    missing_names <- names(labels) == ""
+    names(labels)[missing_names] <- paste("X", seq_len(sum(missing_names)),
+       sep = "")
+    
     cols <- setdiff(names(labels), names(resdf))
     resdf <- cbind(labels[rep(1:nrow(labels), rows), cols, drop=FALSE], resdf)
   }

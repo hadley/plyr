@@ -1,5 +1,9 @@
 plyr 1.2 (2010-XX-XX) ---------------------------------------------------
 
+* a*ply and m*ply gain an .expand argument that controls whether data frames
+  produce a single output dimension (one element for each row), or an output
+  dimension for variable
+
 * new vaggregate (vector aggregate) function, which is equivalent to tapply,
   but much faster for large vectors, since it avoids the overhead of copying
   the data into a list.
