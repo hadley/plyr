@@ -61,7 +61,7 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
 #' @param whether all possible combinations should be considered, or only those present in the data
 #' @keywords internal
 #' @export
-split_labels <- function(splits, drop, id = id(splits, drop = TRUE)) {
+split_labels <- function(splits, drop, id = plyr::id(splits, drop = TRUE)) {
   if (length(splits) == 0) return(data.frame())
   
   if (drop) {
