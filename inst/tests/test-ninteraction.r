@@ -55,8 +55,7 @@ test_that("NAs are placed last", {
   expect_that(plyr:::id_var(c(NA, 1)), is_equivalent_to(c(2, 1)))
 })
 
-test_that("zero length input gives zero length output", {
-  expect_that(id(character()), equals(integer()))
-  
+test_that("zero length input gives single number", {
+  expect_that(id(character()), is_equivalent_to(1))  
 })
 
