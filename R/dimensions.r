@@ -22,6 +22,7 @@ amv_dim <- function(x) if (is.vector(x)) length(x) else dim(x)
 #' 
 #' @param x array, matrix or vector
 #' @keywords internal 
+#' @export
 amv_dimnames <- function(x) {
   d <- if (is.vector(x)) list(names(x)) else dimnames(x)
   

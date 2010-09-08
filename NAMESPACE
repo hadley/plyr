@@ -1,3 +1,4 @@
+export(amv_dimnames)
 export(arrange)
 export(desc)
 export(colwise, numcolwise, catcolwise)
