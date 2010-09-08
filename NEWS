@@ -31,6 +31,8 @@ plyr 1.2 (2010-XX-XX) ---------------------------------------------------
   about 40% less time (or about 20% less time than lapply). Note that as a
   whole, llply still has much more overhead than lapply.
 
+This work has been generously supported by bd.com.
+
 plyr 1.1 (2010-07-19) ---------------------------------------------------
 
 * *dply deals more gracefully with the case when all results are NULL (fixes #10)
@@ -57,6 +59,8 @@ Speed improvements
   10-fold speed ups. See examples in ?idata.frame to see how to use it.
 * rbind.fill rewritten again to increase speed and work with more data types
 * d*ply now much faster with nested groups
+
+This work has been generously supported by bd.com.
 
 New features:
 
