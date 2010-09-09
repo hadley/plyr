@@ -1,16 +1,7 @@
-plyr 1.2 (2010-XX-XX) ---------------------------------------------------
+Version 1.2 (2010-XX-XX) 
+------------------------------------------------------------------------------
 
-* move round_any out of reshape and into plyr.
-
-* a*ply and m*ply gain an .expand argument that controls whether data frames
-  produce a single output dimension (one element for each row), or an output
-  dimension for variable
-
-* new vaggregate (vector aggregate) function, which is equivalent to tapply,
-  but much faster (~ 10x), since it avoids copying the data.
-
-* list_to_array works correct even when there are missing values in the array.  
-  This is particularly important for daply.
+NEW FEATURES
 
 * l*ply, d*ply, a*ply and m*ply all gain a .parallel argument that when TRUE,
   apply functions in parallel using a parallel backend registered with the
@@ -28,6 +19,19 @@ plyr 1.2 (2010-XX-XX) ---------------------------------------------------
   #  user  system elapsed 
   # 0.020   0.011   1.038 
 
+  This work has been generously supported by BD (Becton Dickinson).
+
+MINOR CHANGES
+
+* move round_any out of reshape and into plyr.
+
+* a*ply and m*ply gain an .expand argument that controls whether data frames
+  produce a single output dimension (one element for each row), or an output
+  dimension for variable
+
+* new vaggregate (vector aggregate) function, which is equivalent to tapply,
+  but much faster (~ 10x), since it avoids copying the data.
+
 * llply: for simple lists and vectors, with no progress bar, no extra info,
   and no parallelisation, llply calls lapply directly to avoid all the
   overhead associated with those unused extra features
@@ -36,15 +40,21 @@ plyr 1.2 (2010-XX-XX) ---------------------------------------------------
   about 40% less time (or about 20% less time than lapply). Note that as a
   whole, llply still has much more overhead than lapply.
 
-This work has been generously supported by bd.com.
+BUG FIXES
 
-plyr 1.1 (2010-07-19) ---------------------------------------------------
+* list_to_array works correct even when there are missing values in the array.  
+  This is particularly important for daply.
+
+Version 1.1 (2010-07-19)
+------------------------------------------------------------------------------
+
 
 * *dply deals more gracefully with the case when all results are NULL (fixes #10)
 * *aply correctly orders output regardless of dimension names (fixes #11)
 * join gains type = "full" which preserves all x and y rows
 
-plyr 1.0 (2010-07-02) ---------------------------------------------------
+Version 1.0 (2010-07-02)
+------------------------------------------------------------------------------
 
 New functions:
 
@@ -65,7 +75,8 @@ Speed improvements
 * rbind.fill rewritten again to increase speed and work with more data types
 * d*ply now much faster with nested groups
 
-This work has been generously supported by bd.com.
+  This work has been generously supported by BD (Becton Dickinson).
+  
 
 New features:
 
@@ -92,7 +103,9 @@ Bug fixes:
   uninformative error
 * splitter_d: fixed ordering bug when .drop = FALSE
 
-plyr 0.1.9 (2009-06-23) ---------------------------------------------------
+Version 0.1.9 (2009-06-23)
+------------------------------------------------------------------------------
+
 
 * fix bug in rbind.fill when NULLs present in list
 * improve each to recognise when all elements are numeric
@@ -100,16 +113,21 @@ plyr 0.1.9 (2009-06-23) ---------------------------------------------------
 * additional methods for quoted objects
 * add summarise helper - this function is like transform, but creates a new data frame rather than reusing the old (thanks to Brendan O'Connor for the neat idea)
 
-plyr 0.1.8 (2009-04-20) ---------------------------------------------------
+Version 0.1.8 (2009-04-20)
+------------------------------------------------------------------------------
+
 
 * made rbind a little faster (~20%) using an idea from Richard Raubertas
 * daply now works correctly when splitting variables that contain empty factor levels
 
-plyr 0.1.7 (2009-04-15) ---------------------------------------------------
+Version 0.1.7 (2009-04-15)
+------------------------------------------------------------------------------
 
-Ensure that rbind.fill copies attributes.
+ * Version that rbind.fill copies attributes.
 
-plyr 0.1.6 (2009-04-15) ---------------------------------------------------
+Version 0.1.6 (2009-04-15)
+------------------------------------------------------------------------------
+
 
 Improvements:
 
@@ -134,21 +152,25 @@ Bug fixes:
 * ddply: first variable now varies slowest as you'd expect
 
 
-plyr 0.1.5 (2009-02-23) ---------------------------------------------------
+Version 0.1.5 (2009-02-23)
+------------------------------------------------------------------------------
 
 * colwise now accepts a quoted list as its second argument.  This allows you to specify the names of columns to work on: colwise(mean, .(lat, long))
 * d_ply and a_ply now correctly pass ... to the function
 
-plyr 0.1.4 (2008-12-12) ---------------------------------------------------
+Version 0.1.4 (2008-12-12)
+------------------------------------------------------------------------------
 
  * Greatly improved speed (> 10x faster) and memory usage (50%) for splitting data frames with many combinations
  * Splitting variables containing missing values now handled consistently
 
-plyr 0.1.3 (2008-11-19) ---------------------------------------------------
+Version 0.1.3 (2008-11-19)
+------------------------------------------------------------------------------
 
-Fixed problem where when splitting by a variable that contained missing values, missing combinations would be drop, and labels wouldn't match up
+* Fixed problem where when splitting by a variable that contained missing values, missing combinations would be drop, and labels wouldn't match up
 
-plyr 0.1.2 (2008-11-18) ---------------------------------------------------
+Version 0.1.2 (2008-11-18)
+------------------------------------------------------------------------------
 
   * a*ply now works correctly with array-lists
   * drop. -> .drop
@@ -156,7 +178,8 @@ plyr 0.1.2 (2008-11-18) ---------------------------------------------------
   * use inherits instead of is so method package doesn't need to be loaded
   * fix bug with using formulas
 
-plyr 0.1.1 (2008-10-08) ---------------------------------------------------
+Version 0.1.1 (2008-10-08)
+------------------------------------------------------------------------------
 
   * argument names now start with . (instead of ending with it) - this should prevent name clashes with arguments of the called function 
   * return informative error if .fun is not a function
