@@ -36,16 +36,16 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
   if (is.character(.fun)) .fun <- each(.fun)
   if (!is.function(.fun)) stop(".fun is not a function.")
 
-  if (inherits(.data, "split")) {
-    pieces <- .data
-  } else {
+  if (!inherits(.data, "split")) {
     # This special case can be done much faster with lapply, so do it.
-    if (.progress == "none" && !.inform && !.parallel) {
-      return(lapply(.data, .fun, ...))
-    }
-    pieces <- as.list(.data)
+    fast_path <- .progress == "none" && !.inform && !.parallel
+    if (fast_path) return(lapply(.data, .fun, ...))    
+    
+    pieces <- if (!is.list(.data)) as.list(.data) else .data
+  } else {
+    pieces <- .data
   }
-
+  
   n <- length(pieces)
   if (n == 0) return(list())
   
