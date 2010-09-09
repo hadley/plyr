@@ -36,9 +36,9 @@ id <- function(.variables, drop = FALSE) {
   combs <- c(1, cumprod(ndistinct[-p]))
 
   mat <- do.call("cbind", ids)
-  res <- c((mat - 1L) %*% combs + 1L)
+  res <- as.integer(c((mat - 1L) %*% combs + 1L))
   attr(res, "n") <- n
-
+  
   # vdf <- data.frame(.variables)
   # names(vdf) <- paste("X", 1:ncol(vdf), sep="")
   # vdf$i <- res
@@ -56,9 +56,10 @@ ninteraction <- id
 #' @keywords internal
 id_var <- function(x, drop = FALSE) {
   if (length(x) == 0) return(structure(integer(), n = 0))
+  if (!is.null(attr(x, "n")) && !drop) return(x)
   
   if (is.factor(x) && !drop) {
-    id <- as.numeric(addNA(x, ifany = TRUE))
+    id <- as.integer(addNA(x, ifany = TRUE))
     n <- length(levels(x))
   } else {
     levels <- sort(unique(x), na.last = TRUE)
