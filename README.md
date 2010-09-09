@@ -12,7 +12,7 @@ It's already possible to do this with base R functions (like split and the apply
   * convenient parallelisation through the foreach package
   * input from and output to data.frames, matrices and lists
   * progress bars to keep track of long running operations
-  * built-in errxor recovery, and informative error messages
+  * built-in error recovery, and informative error messages
   * labels that are maintained across all transformations
 
 Considerable effort has been put into making plyr fast and memory efficient, and in many cases plyr is as fast as, or faster than, the built-in functions.

@@ -11,7 +11,7 @@ Description: plyr is a set of tools that solves a common set of
     spatial location or time point in your study, summarise data by
     panels or collapse high-dimensional arrays to simpler summary
     statistics. The development of plyr has been generously supported
-    by bd.com.
+    by BD (Becton Dickinson).
 URL: http://had.co.nz/plyr
 Suggests: abind, testthat (>= 0.2), tcltk, foreach
 Imports: itertools, iterators

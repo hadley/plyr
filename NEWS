@@ -1,10 +1,10 @@
-Version 1.2 (2010-XX-XX) 
+Version 1.2 (2010-09-09)
 ------------------------------------------------------------------------------
 
 NEW FEATURES
 
 * l*ply, d*ply, a*ply and m*ply all gain a .parallel argument that when TRUE,
-  apply functions in parallel using a parallel backend registered with the
+  applies functions in parallel using a parallel backend registered with the
   foreach package:
 
   x <- seq_len(20)
@@ -23,22 +23,22 @@ NEW FEATURES
 
 MINOR CHANGES
 
-* move round_any out of reshape and into plyr.
-
 * a*ply and m*ply gain an .expand argument that controls whether data frames
   produce a single output dimension (one element for each row), or an output
-  dimension for variable
+  dimension for each variable.
 
 * new vaggregate (vector aggregate) function, which is equivalent to tapply,
   but much faster (~ 10x), since it avoids copying the data.
 
 * llply: for simple lists and vectors, with no progress bar, no extra info,
   and no parallelisation, llply calls lapply directly to avoid all the
-  overhead associated with those unused extra features
+  overhead associated with those unused extra features.
 
 * llply: in serial case, for loop replaced with custom C function that takes
   about 40% less time (or about 20% less time than lapply). Note that as a
   whole, llply still has much more overhead than lapply.
+
+* round_any now lives in plyr instead of reshape
 
 BUG FIXES
 
@@ -48,9 +48,12 @@ BUG FIXES
 Version 1.1 (2010-07-19)
 ------------------------------------------------------------------------------
 
+* *dply deals more gracefully with the case when all results are NULL 
+  (fixes #10)
 
-* *dply deals more gracefully with the case when all results are NULL (fixes #10)
-* *aply correctly orders output regardless of dimension names (fixes #11)
+* *aply correctly orders output regardless of dimension names 
+  (fixes #11)
+
 * join gains type = "full" which preserves all x and y rows
 
 Version 1.0 (2010-07-02)
