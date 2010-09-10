@@ -37,11 +37,14 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
   if (!is.function(.fun)) stop(".fun is not a function.")
 
   if (!inherits(.data, "split")) {
+    pieces <- as.list(.data)
+
     # This special case can be done much faster with lapply, so do it.
     fast_path <- .progress == "none" && !.inform && !.parallel
-    if (fast_path) return(lapply(.data, .fun, ...))    
+    if (fast_path) {
+      return(structure(lapply(pieces, .fun, ...), dim = dim(pieces)))
+    }
     
-    pieces <- if (!is.list(.data)) as.list(.data) else .data
   } else {
     pieces <- .data
   }
