@@ -1,7 +1,7 @@
 Package: plyr
 Type: Package
 Title: Tools for splitting, applying and combining data
-Version: 1.2.1
+Version: 1.3
 Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Description: plyr is a set of tools that solves a common set of
@@ -13,6 +13,7 @@ Description: plyr is a set of tools that solves a common set of
     statistics. The development of plyr has been generously supported
     by BD (Becton Dickinson).
 URL: http://had.co.nz/plyr
+Depends: R (>= 2.11.0)
 Suggests: abind, testthat (>= 0.2), tcltk, foreach
 Imports: itertools, iterators
 License: MIT
