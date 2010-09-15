@@ -36,7 +36,7 @@ id <- function(.variables, drop = FALSE) {
   combs <- c(1, cumprod(ndistinct[-p]))
 
   mat <- do.call("cbind", ids)
-  res <- as.integer(c((mat - 1L) %*% combs + 1L))
+  res <- c((mat - 1L) %*% combs + 1L)
   attr(res, "n") <- n
   
   # vdf <- data.frame(.variables)
@@ -46,9 +46,10 @@ id <- function(.variables, drop = FALSE) {
 
   if (drop) {
     res <- id_var(res, drop = TRUE)
+  } else {
+    as.integer(res)
   }
 
-  res
 }
 ninteraction <- id
 
