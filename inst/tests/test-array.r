@@ -79,7 +79,7 @@ test_that("aaply equivalent to apply with correct permutation", {
   expect_that(rowMeans(a), equals(aaply(a, 1, mean), check.attr = FALSE))
   expect_that(colMeans(a), equals(aaply(a, 2, mean), check.attr = FALSE))
   
-  b <- structure(a, dimnames = plyr:::amv_dimnames(a))
+  b <- structure(a, dimnames = amv_dimnames(a))
   expect_that(rowMeans(a), equals(aaply(a, 1, mean), check.attr = FALSE))
   expect_that(colMeans(a), equals(aaply(a, 2, mean), check.attr = FALSE))  
 })

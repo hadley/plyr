@@ -52,7 +52,7 @@ test_that("grids are correctly ranked", {
 })
 
 test_that("NAs are placed last", {
-  expect_that(plyr:::id_var(c(NA, 1)), is_equivalent_to(c(2, 1)))
+  expect_that(id_var(c(NA, 1)), is_equivalent_to(c(2, 1)))
 })
 
 test_that("zero length input gives single number", {
