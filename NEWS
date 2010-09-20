@@ -1,7 +1,9 @@
 Version 1.3 (2010-XX-XX)
 ------------------------------------------------------------------------------
 
+* m_ply no longer possesses .parallel argument (mistakenly added)
 * ldply (and hence adply and ddply) now correctly passes on .parallel argument
+  (Fixes #16)
 
 Version 1.2.1 (2010-09-10)
 ------------------------------------------------------------------------------

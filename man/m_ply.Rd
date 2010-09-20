@@ -1,8 +1,7 @@
 \name{m_ply}
 \alias{m_ply}
 \title{Call function with arguments in array or data frame, discarding results.}
-\usage{m_ply(.data, .fun, ..., .expand=TRUE, .progress="none",
-    .parallel=FALSE)}
+\usage{m_ply(.data, .fun, ..., .expand=TRUE, .progress="none")}
 
 \description{
   Call function with arguments in array or data frame, discarding
@@ -29,6 +28,4 @@
   \item{.expand}{should output be 1d (expand = FALSE), with an element for
 each row; or nd (expand = TRUE), with a dimension for each variable.}
   \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
-  \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 
-backend provided by foreach}
 }

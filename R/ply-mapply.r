@@ -127,10 +127,8 @@ mlply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none", .
 #' @param .expand should output be 1d (expand = FALSE), with an element for
 #'   each row; or nd (expand = TRUE), with a dimension for each variable.
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
-#' @param .parallel if \code{TRUE}, apply function in parallel, using parallel 
-#'   backend provided by foreach
 #' @export
-m_ply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none", .parallel = FALSE) {
+m_ply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none") {
   if (is.matrix(.data) & !is.list(.data)) .data <- .matrix_to_df(.data)
 
   f <- splat(.fun)
