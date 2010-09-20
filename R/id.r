@@ -45,11 +45,10 @@ id <- function(.variables, drop = FALSE) {
   # browser()
 
   if (drop) {
-    res <- id_var(res, drop = TRUE)
+    id_var(res, drop = TRUE)
   } else {
-    as.integer(res)
+    structure(as.integer(res), n = attr(res, "n"))
   }
-
 }
 ninteraction <- id
 
