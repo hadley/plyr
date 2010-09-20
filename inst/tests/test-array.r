@@ -80,8 +80,8 @@ test_that("aaply equivalent to apply with correct permutation", {
   expect_that(colMeans(a), equals(aaply(a, 2, mean), check.attr = FALSE))
   
   b <- structure(a, dimnames = amv_dimnames(a))
-  expect_that(rowMeans(a), equals(aaply(a, 1, mean), check.attr = FALSE))
-  expect_that(colMeans(a), equals(aaply(a, 2, mean), check.attr = FALSE))  
+  expect_that(rowMeans(b), equals(aaply(b, 1, mean), check.attr = FALSE))
+  expect_that(colMeans(b), equals(aaply(b, 2, mean), check.attr = FALSE))  
 })
 
 test_that("array reconstruction correct with missing cells", {
