@@ -10,6 +10,10 @@ quickdf <- function(list) {
   rows <- unique(unlist(lapply(list, NROW)))
   stopifnot(length(rows) == 1)
   
+  if (is.null(names(list))) {
+    names(list) <- paste("X", seq_along(list), sep = "")
+  }
+  
   structure(list, 
     class = "data.frame",
     row.names = seq_len(rows))

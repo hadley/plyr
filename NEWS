@@ -1,6 +1,8 @@
 Version 1.3 (2010-XX-XX)
 ------------------------------------------------------------------------------
 
+* quickdf now adds names if missing
+
 * arrays with names should be sorted correctly once again (also fixed a bug in
   the test case that prevented me from catching this automatically)
 
