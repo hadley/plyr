@@ -32,6 +32,7 @@ failwith <- function(default = NULL, f, quiet = FALSE) {
 #' @param default default value in case of error
 #' @param quiet should errors be printed (TRUE) or ignored (FALSE, default)
 #' @aliases try_default tryNULL
+#' @export
 #' @keywords internal
 #' @seealso \code{\link{tryapply}}
 try_default <- function(expr, default, quiet = FALSE) {
