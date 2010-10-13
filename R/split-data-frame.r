@@ -34,6 +34,7 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
   if (length(.variables) == 0) {
     splitv <- rep(1, nrow(data))
     split_labels <- NULL
+    attr(splitv, "n") <- max(splitv)
   } else {
     splits <- eval.quoted(.variables, data, parent.frame())
 
