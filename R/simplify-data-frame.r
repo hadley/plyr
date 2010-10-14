@@ -22,6 +22,7 @@ list_to_dataframe <- function(res, labels = NULL) {
       resdf <- as.data.frame(do.call("rbind", res), stringsAsFactors = FALSE)
     } else {
       resdf <- as.data.frame(res[[1]], stringsAsFactors = FALSE)
+      resdf <- t(resdf) # since the dimnames are switched
     }
     rows <- rep(1, length(res))
   } else if (all(df)) {
