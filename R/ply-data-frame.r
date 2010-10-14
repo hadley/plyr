@@ -75,9 +75,15 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE
 ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE, .parallel = FALSE) {
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables, drop = .drop)
-  
-  ldply(.data = pieces, .fun = .fun, ..., 
-    .progress = .progress, .parallel = .parallel)
+  if(0 %in% dim(.data)){
+    .fun <- as.character(match.call()$.fun)
+    lb <- c(as.character(.variables), .fun)
+
+    structure(rep(0, length(lb)), names=lb, class="data.frame")
+  } else {
+    ldply(.data = pieces, .fun = .fun, ..., 
+          .progress = .progress, .parallel = .parallel)
+  }
 }
 
 #' Split array, apply function, and return results in a data frame.
