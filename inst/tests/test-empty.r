@@ -20,9 +20,8 @@ test_that("empty lists return an empty object", {
 
 test_that("empty data frames returns empty object", {
   df <- data.frame(x = numeric(0), a = numeric(0))
-  expect_that(ddply(df, "a", identity), equals(data.frame()))
-  expect_that(dlply(df, "a", identity), equals(list()))
-  expect_that(daply(df, "a", identity), equals(logical()))
+  expect_that(length(names(ddply(df, "a", identity))) > 0, is_true())
+  expect_that(nrow(ddply(df, "a", identity)), equals(0))
 })
 
 test_that("empty data frame results returns empty object", {
