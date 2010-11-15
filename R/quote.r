@@ -48,13 +48,15 @@
 print.quoted <- function(x, ...) str(x)
 
 #' Compute names of quoted variables.
-#' Figure out names of quoted variables, using specified names if they exist, otherwise using \code{\link{make.names}} on the values.
+#' Figure out names of quoted variables, using specified names if they exist,
+#' otherwise converting the values to character strings.  This may create 
+#' variable names that can only be accessed using \code{``}.
 #' 
 #' @keywords internal
 #' @S3method names quoted
 #' @method names quoted
 names.quoted <- function(x) {
-  part_names <- make.names(x)
+  part_names <- lapply(x, as.character)
   user_names <- names(unclass(x))
 
   if (!is.null(user_names)) {

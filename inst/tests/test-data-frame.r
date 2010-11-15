@@ -33,3 +33,14 @@ test_that("character vectors not change to factors", {
   expect_that(plyed$x, is_a("character"))
   expect_that(plyed$y, is_a("character"))  
 })
+
+
+# Bug report contributed by Thomas P Harte <THarte@tiaa-cref.org>
+test_that("column names not changed", {
+  d1 <- data.frame(`--WEIRD`=1:5, a = letters[1:5], `-b` = 1:5, 
+    check.names = FALSE)
+  d2 <- ddply(d1, .("--WEIRD"), force) 
+  expect_that(names(d2), equals(names(d1)))
+  
+  
+})
