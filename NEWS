@@ -1,4 +1,4 @@
-Version 1.3 (2010-XX-XX)
+Version 1.3 (2010-12-28)
 ------------------------------------------------------------------------------
 
 NEW FEATURES
@@ -20,10 +20,10 @@ BUG FIXES
 * `arrays` with names should be sorted correctly once again (also fixed a bug
   in the test case that prevented me from catching this automatically)
 
-* m_ply no longer possesses .parallel argument (mistakenly added)
+* `m_ply` no longer possesses .parallel argument (mistakenly added)
 
-* ldply (and hence adply and ddply) now correctly passes on .parallel argument
-  (Fixes #16)
+* `ldply` (and hence `adply` and `ddply`) now correctly passes on .parallel
+  argument (Fixes #16)
 
 * `id` uses a better strategy for converting to integers, making it possible
   to use for cases with larger potential numbers of combinations
