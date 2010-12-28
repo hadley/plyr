@@ -124,7 +124,7 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 #' @export
 #' @examples
-#' linmod <- function(df) lm(rbi ~ year, data = transform(df, year = year - min(year)))
+#' linmod <- function(df) lm(rbi ~ year, data = mutate(df, year = year - min(year)))
 #' models <- dlply(baseball, .(id), linmod)
 #' models[[1]]
 #'

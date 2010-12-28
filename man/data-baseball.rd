@@ -43,9 +43,9 @@ baberuth <- subset(baseball, id == "ruthba01")
 baberuth$cyear <- baberuth$year - min(baberuth$year) + 1
 
 calculate_cyear <- function(df) {
-  transform(df, 
+  mutate(df, 
     cyear = year - min(year),
-    cpercent = (year - min(year)) / (max(year) - min(year))
+    cpercent = cyear / (max(year) - min(year))
   )
 }
 

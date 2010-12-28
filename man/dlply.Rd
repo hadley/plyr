@@ -35,7 +35,7 @@ data be preserved (FALSE) or dropped (TRUE, default)}
   \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 
 backend provided by foreach}
 }
-\examples{linmod <- function(df) lm(rbi ~ year, data = transform(df, year = year - min(year)))
+\examples{linmod <- function(df) lm(rbi ~ year, data = mutate(df, year = year - min(year)))
 models <- dlply(baseball, .(id), linmod)
 models[[1]]
 

@@ -1,6 +1,11 @@
 Version 1.3 (2010-XX-XX)
 ------------------------------------------------------------------------------
 
+* new function `mutate` that works like transform to add new columns or
+  overwrite existing columns, but computes new columns iteratively so later
+  transformations can use columns created by earlier transformations. (It's
+  also about 10x faster) (Fixes #21)
+
 * split column names are no longer coerced to valid R names.
 
 * quickdf now adds names if missing
