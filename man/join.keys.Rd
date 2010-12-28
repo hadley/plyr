@@ -4,7 +4,8 @@
 \usage{join.keys(x, y, by)}
 
 \description{
-  Join keys. Given two data frames, create a unique key for each row.
+  Join keys. Given two data frames, create a unique key for
+  each row.
 }
 \keyword{internal}
 \arguments{

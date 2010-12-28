@@ -5,20 +5,23 @@
     .parallel=FALSE)}
 
 \description{
-  Split list, apply function, and return results in a list. For each
-  element of a list, apply function then combine results into a list
+  Split list, apply function, and return results in a list.
+  For each element of a list, apply function then combine
+  results into a list
 }
 
 \details{
-  All plyr functions use the same split-apply-combine strategy: they
-  split the input into simpler pieces, apply \code{.fun} to each piece,
-  and then combine the pieces into a single data structure.  This
-  function splits lists by elements and combines the result into a
-  list.  If there are no results, then this function will return a list
-  of length 0 (\code{list()}).
+  All plyr functions use the same split-apply-combine
+  strategy: they split the input into simpler pieces, apply
+  \code{.fun} to each piece, and then combine the pieces
+  into a single data structure.  This function splits lists
+  by elements and combines the result into a list.  If
+  there are no results, then this function will return a
+  list of length 0 (\code{list()}).
 
-  \code{llply} is equivalent to \code{\link{lapply}} except that it
-  will preserve labels and can display a progress bar.
+  \code{llply} is equivalent to \code{\link{lapply}} except
+  that it will preserve labels and can display a progress
+  bar.
 }
 \keyword{manip}
 \value{list of results}

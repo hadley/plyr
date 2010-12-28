@@ -1,24 +1,27 @@
 \name{alply}
 \alias{alply}
 \title{Split array, apply function, and return results in a list.}
-\usage{alply(.data, .margins, .fun, ..., .expand=TRUE, .progress="none",
-    .parallel=FALSE)}
+\usage{alply(.data, .margins, .fun, ..., .expand=TRUE,
+    .progress="none", .parallel=FALSE)}
 
 \description{
-  Split array, apply function, and return results in a list. For each
-  slice of an array, apply function then combine results into a list
+  Split array, apply function, and return results in a
+  list. For each slice of an array, apply function then
+  combine results into a list
 }
 
 \details{
-  All plyr functions use the same split-apply-combine strategy: they
-  split the input into simpler pieces, apply \code{.fun} to each piece,
-  and then combine the pieces into a single data structure.  This
-  function splits matrices, arrays and data frames by dimensions and
-  combines the result into a list.  If there are no results, then this
-  function will return a list of length 0 (\code{list()}).
+  All plyr functions use the same split-apply-combine
+  strategy: they split the input into simpler pieces, apply
+  \code{.fun} to each piece, and then combine the pieces
+  into a single data structure.  This function splits
+  matrices, arrays and data frames by dimensions and
+  combines the result into a list.  If there are no
+  results, then this function will return a list of length
+  0 (\code{list()}).
 
-  \code{alply} is somewhat similar to \code{\link{apply}} for cases
-  where the results are not atomic.
+  \code{alply} is somewhat similar to \code{\link{apply}}
+  for cases where the results are not atomic.
 }
 \keyword{manip}
 \value{list of results}

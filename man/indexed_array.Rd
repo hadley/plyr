@@ -3,8 +3,8 @@
 \usage{indexed_array(env, index)}
 
 \description{
-  An indexed array. Create a indexed array, a space efficient way of
-  indexing into a large array.
+  An indexed array. Create a indexed array, a space
+  efficient way of indexing into a large array.
 }
 \keyword{internal}
 \alias{indexed_array}

@@ -4,9 +4,9 @@
 \usage{split_indices(index, group, n=max(group))}
 
 \description{
-  Split indices. An optimised version of split for the special case of
-  splitting row indices into groups, as used by
-  \code{\link{splitter_d}}
+  Split indices. An optimised version of split for the
+  special case of splitting row indices into groups, as
+  used by \code{\link{splitter_d}}
 }
 \keyword{internal}
 \keyword{manip}

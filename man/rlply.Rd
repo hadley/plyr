@@ -4,15 +4,17 @@
 \usage{rlply(.n, .expr, .progress="none")}
 
 \description{
-  Replicate expression and return results in a list. Evalulate
-  expression n times then combine results into a list
+  Replicate expression and return results in a list.
+  Evalulate expression n times then combine results into a
+  list
 }
 
 \details{
-  This function runs an expression multiple times, and combines the
-  result into a list.  If there are no results, then this function will
-  return a list of length 0 (\code{list()}). This function is
-  equivalent to \code{\link{replicate}}, but will always return results
+  This function runs an expression multiple times, and
+  combines the result into a list.  If there are no
+  results, then this function will return a list of length
+  0 (\code{list()}). This function is equivalent to
+  \code{\link{replicate}}, but will always return results
   as a list.
 }
 \keyword{manip}

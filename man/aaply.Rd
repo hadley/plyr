@@ -1,27 +1,31 @@
 \name{aaply}
 \alias{aaply}
 \title{Split array, apply function, and return results in an array.}
-\usage{aaply(.data, .margins, .fun, ..., .expand=TRUE, .progress="none",
-    .drop=TRUE, .parallel=FALSE)}
+\usage{aaply(.data, .margins, .fun, ..., .expand=TRUE,
+    .progress="none", .drop=TRUE, .parallel=FALSE)}
 
 \description{
-  Split array, apply function, and return results in an array. For each
-  slice of an array, apply function then combine results into an array
+  Split array, apply function, and return results in an
+  array. For each slice of an array, apply function then
+  combine results into an array
 }
 
 \details{
-  All plyr functions use the same split-apply-combine strategy: they
-  split the input into simpler pieces, apply \code{.fun} to each piece,
-  and then combine the pieces into a single data structure.  This
-  function splits matrices, arrays and data frames by dimensions and
-  combines the result into an array. If there are no results, then this
-  function will return a vector of length 0 (\code{vector()}).
+  All plyr functions use the same split-apply-combine
+  strategy: they split the input into simpler pieces, apply
+  \code{.fun} to each piece, and then combine the pieces
+  into a single data structure.  This function splits
+  matrices, arrays and data frames by dimensions and
+  combines the result into an array. If there are no
+  results, then this function will return a vector of
+  length 0 (\code{vector()}).
 
-  This function is very similar to \code{\link{apply}}, except that it
-  will always return an array, and when the function returns >1 d data
-  structures, those dimensions are added on to the highest dimensions,
-  rather than the lowest dimensions.  This makes \code{aaply}
-  idempotent, so that \code{apply(input, X, identity)} is equivalent to
+  This function is very similar to \code{\link{apply}},
+  except that it will always return an array, and when the
+  function returns >1 d data structures, those dimensions
+  are added on to the highest dimensions, rather than the
+  lowest dimensions.  This makes \code{aaply} idempotent,
+  so that \code{apply(input, X, identity)} is equivalent to
   \code{aperm(input, X)}.
 }
 \keyword{manip}

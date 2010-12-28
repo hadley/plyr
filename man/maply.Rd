@@ -5,21 +5,22 @@
     .parallel=FALSE)}
 
 \description{
-  Call function with arguments in array or data frame, returning an
-  array. Call a multi-argument function with values taken from columns
-  of an data frame or array, and combine results into an array
+  Call function with arguments in array or data frame,
+  returning an array. Call a multi-argument function with
+  values taken from columns of an data frame or array, and
+  combine results into an array
 }
 
 \details{
   The \code{m*ply} functions are the \code{plyr} version of
-  \code{mapply}, specialised according to the type of output they
-  produce.  These functions are just a convenient wrapper around
-  \code{a*ply} with \code{margins = 1} and \code{.fun} wrapped in
-  \code{\link{splat}}.
+  \code{mapply}, specialised according to the type of
+  output they produce.  These functions are just a
+  convenient wrapper around \code{a*ply} with \code{margins
+  = 1} and \code{.fun} wrapped in \code{\link{splat}}.
 
-  This function combines the result into an array.  If there are no
-  results, then this function will return a vector of length 0
-  (\code{vector()}).
+  This function combines the result into an array.  If
+  there are no results, then this function will return a
+  vector of length 0 (\code{vector()}).
 }
 \keyword{manip}
 \value{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}

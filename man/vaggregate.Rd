@@ -1,21 +1,24 @@
 \name{vaggregate}
 \alias{vaggregate}
 \title{Vector aggregate.}
-\usage{vaggregate(.value, .group, .fun, ..., .default, .n=nlevels(.group))}
+\usage{vaggregate(.value, .group, .fun, ..., .default,
+    .n=nlevels(.group))}
 
 \description{
   Vector aggregate.
 }
 
 \details{
-  This function is somewhat similar to \code{tapply}, but is designed
-  for use in conjunction with \code{id}. It is simpler in that it only
-  accepts a single grouping vector (use \code{\link{id}} if you have
-  more) and uses \code{\link{vapply}} internally, using the
+  This function is somewhat similar to \code{tapply}, but
+  is designed for use in conjunction with \code{id}. It is
+  simpler in that it only accepts a single grouping vector
+  (use \code{\link{id}} if you have more) and uses
+  \code{\link{vapply}} internally, using the
   \code{.default} value as the template.
 
-  \code{vaggregate} should be faster than \code{tapply} in most
-  situations because it avoids making a copy of the data.
+  \code{vaggregate} should be faster than \code{tapply} in
+  most situations because it avoids making a copy of the
+  data.
 }
 \arguments{
   \item{.value}{vector of values to aggregate}

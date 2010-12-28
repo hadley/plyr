@@ -4,8 +4,8 @@
 \usage{list_to_vector(res)}
 
 \description{
-  List to vector. Reduce/simplify a list of homogenous objects to a
-  vector
+  List to vector. Reduce/simplify a list of homogenous
+  objects to a vector
 }
 \keyword{internal}
 \arguments{

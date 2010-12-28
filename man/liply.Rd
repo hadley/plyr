@@ -8,11 +8,12 @@
 }
 
 \details{
-  Because iterators do not have known length, \code{liply} starts by
-  allocating an output list of length 50, and then doubles that length
-  whenever it runs out of space.  This gives O(n ln n) performance
-  rather than the O(n ^ 2) performance from the naive strategy of
-  growing the list each time.
+  Because iterators do not have known length, \code{liply}
+  starts by allocating an output list of length 50, and
+  then doubles that length whenever it runs out of space.
+  This gives O(n ln n) performance rather than the O(n ^ 2)
+  performance from the naive strategy of growing the list
+  each time.
 }
 \keyword{manip}
 \arguments{

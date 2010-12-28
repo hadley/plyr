@@ -4,21 +4,22 @@
 \usage{m_ply(.data, .fun, ..., .expand=TRUE, .progress="none")}
 
 \description{
-  Call function with arguments in array or data frame, discarding
-  results. Call a multi-argument function with values taken from
-  columns of an data frame or array, and discard results
+  Call function with arguments in array or data frame,
+  discarding results. Call a multi-argument function with
+  values taken from columns of an data frame or array, and
+  discard results
 }
 
 \details{
   The \code{m*ply} functions are the \code{plyr} version of
-  \code{mapply}, specialised according to the type of output they
-  produce.  These functions are just a convenient wrapper around
-  \code{a*ply} with \code{margins = 1} and \code{.fun} wrapped in
-  \code{\link{splat}}.
+  \code{mapply}, specialised according to the type of
+  output they produce.  These functions are just a
+  convenient wrapper around \code{a*ply} with \code{margins
+  = 1} and \code{.fun} wrapped in \code{\link{splat}}.
 
-  This function combines the result into a list.  If there are no
-  results, then this function will return a list of length 0
-  (\code{list()}).
+  This function combines the result into a list.  If there
+  are no results, then this function will return a list of
+  length 0 (\code{list()}).
 }
 \keyword{manip}
 \arguments{

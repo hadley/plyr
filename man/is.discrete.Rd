@@ -4,8 +4,8 @@
 \usage{is.discrete(x)}
 
 \description{
-  Determine if a vector is discrete. A discrete vector is a factor or a
-  character vector
+  Determine if a vector is discrete. A discrete vector is a
+  factor or a character vector
 }
 \keyword{internal}
 \arguments{

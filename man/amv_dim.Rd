@@ -4,7 +4,8 @@
 \usage{amv_dim(x)}
 
 \description{
-  Dimensions. Consistent dimensions for vectors, matrices and arrays.
+  Dimensions. Consistent dimensions for vectors, matrices
+  and arrays.
 }
 \keyword{internal}
 \arguments{

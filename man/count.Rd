@@ -5,14 +5,14 @@
 
 \description{
   Count the number of occurences. Equivalent to
-  \code{as.data.frame(table(x))}, but does not include combinations
-  with zero counts.
+  \code{as.data.frame(table(x))}, but does not include
+  combinations with zero counts.
 }
 
 \details{
-  Count is speed competitive with \code{\link{table}} for single
-  variables, but it really comes into its own when summarising multiple
-  dimensions that are not crossed.
+  Count is speed competitive with \code{\link{table}} for
+  single variables, but it really comes into its own when
+  summarising multiple dimensions that are not crossed.
 }
 \value{a data frame with label and freq columns}
 \keyword{manip}

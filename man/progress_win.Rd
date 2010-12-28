@@ -4,8 +4,8 @@
 \usage{progress_win(title="plyr progress", ...)}
 
 \description{
-  Graphical progress bar, powered by Windows. A graphical progress bar
-  displayed in a separate window
+  Graphical progress bar, powered by Windows. A graphical
+  progress bar displayed in a separate window
 }
 
 \details{

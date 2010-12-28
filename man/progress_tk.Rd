@@ -4,8 +4,8 @@
 \usage{progress_tk(title="plyr progress", label="Working...", ...)}
 
 \description{
-  Graphical progress bar, powered by Tk. A graphical progress bar
-  displayed in a Tk window
+  Graphical progress bar, powered by Tk. A graphical
+  progress bar displayed in a Tk window
 }
 
 \details{

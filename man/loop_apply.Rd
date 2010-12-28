@@ -4,8 +4,8 @@
 \usage{loop_apply(n, f, env=parent.frame())}
 
 \description{
-  Loop apply An optimised version of lapply for the special case of
-  operating on \code{seq_len(n)}
+  Loop apply An optimised version of lapply for the special
+  case of operating on \code{seq_len(n)}
 }
 \keyword{internal}
 \keyword{manip}

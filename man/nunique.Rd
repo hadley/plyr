@@ -4,8 +4,8 @@
 \usage{nunique(x)}
 
 \description{
-  Number of unique values. Calculate number of unique values of a
-  variable as efficiently as possible.
+  Number of unique values. Calculate number of unique
+  values of a variable as efficiently as possible.
 }
 \keyword{internal}
 \arguments{

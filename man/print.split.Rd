@@ -4,7 +4,8 @@
 \usage{\method{print}{split} (x, ...)}
 
 \description{
-  Print split. Don't print labels, so it appears like a regular list
+  Print split. Don't print labels, so it appears like a
+  regular list
 }
 \keyword{internal}
 \arguments{

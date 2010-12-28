@@ -4,17 +4,18 @@
 \usage{rdply(.n, .expr, .progress="none")}
 
 \description{
-  Replicate expression and return results in a data frame. Evalulate
-  expression n times then combine results into a data frame
+  Replicate expression and return results in a data frame.
+  Evalulate expression n times then combine results into a
+  data frame
 }
 
 \details{
-  This function runs an expression multiple times, and combines the
-  result into a data frame.  If there are no results, then this
-  function returns a data frame with zero rows and columns
-  (\code{data.frame()}). This function is equivalent to
-  \code{\link{replicate}}, but will always return results as a data
-  frame.
+  This function runs an expression multiple times, and
+  combines the result into a data frame.  If there are no
+  results, then this function returns a data frame with
+  zero rows and columns (\code{data.frame()}). This
+  function is equivalent to \code{\link{replicate}}, but
+  will always return results as a data frame.
 }
 \keyword{manip}
 \value{a data frame}

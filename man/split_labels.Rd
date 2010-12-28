@@ -1,11 +1,12 @@
 \name{split_labels}
 \alias{split_labels}
 \title{Generate labels for split data frame.}
-\usage{split_labels(splits, drop, id=plyr::id(splits, drop = TRUE))}
+\usage{split_labels(splits, drop, id=plyr::id(splits, drop =
+    TRUE))}
 
 \description{
-  Generate labels for split data frame. Create data frame giving labels
-  for split data frame.
+  Generate labels for split data frame. Create data frame
+  giving labels for split data frame.
 }
 \keyword{internal}
 \arguments{

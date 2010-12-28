@@ -4,14 +4,14 @@
 \usage{r_ply(.n, .expr, .progress="none", .print=FALSE)}
 
 \description{
-  Replicate expression and discard results. Evalulate expression n
-  times then discard results
+  Replicate expression and discard results. Evalulate
+  expression n times then discard results
 }
 
 \details{
-  This function runs an expression multiple times, discarding the
-  results.  This function is equivalent to \code{\link{replicate}}, but
-  never returns anything
+  This function runs an expression multiple times,
+  discarding the results.  This function is equivalent to
+  \code{\link{replicate}}, but never returns anything
 }
 \keyword{manip}
 \arguments{

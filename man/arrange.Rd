@@ -8,10 +8,11 @@
 }
 
 \details{
-  This function completes the subsetting, transforming and ordering
-  triad with a function that works in a similar way to
-  \code{\link{subset}} and \code{\link{transform}} but for reordering a
-  data frame by its columns. This saves a lot of typing!
+  This function completes the subsetting, transforming and
+  ordering triad with a function that works in a similar
+  way to \code{\link{subset}} and \code{\link{transform}}
+  but for reordering a data frame by its columns. This
+  saves a lot of typing!
 }
 \keyword{manip}
 \arguments{

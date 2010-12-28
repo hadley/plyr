@@ -4,8 +4,9 @@
 \usage{each(...)}
 
 \description{
-  Aggregate multiple functions into a single function. Combine multiple
-  functions to a single function returning a named vector of outputs
+  Aggregate multiple functions into a single function.
+  Combine multiple functions to a single function returning
+  a named vector of outputs
 }
 
 \details{

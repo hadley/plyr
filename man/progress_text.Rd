@@ -8,10 +8,10 @@
 }
 
 \details{
-  This progress bar displays a textual progress bar that works on all
-  platforms.  It is a thin wrapper around the built-in
-  \code{\link{setTxtProgressBar}} and can be customised in the same
-  way.
+  This progress bar displays a textual progress bar that
+  works on all platforms.  It is a thin wrapper around the
+  built-in \code{\link{setTxtProgressBar}} and can be
+  customised in the same way.
 }
 \arguments{
   \item{style}{style of text bar, see Details section of \code{\link{txtProgressBar}}}

@@ -1,25 +1,26 @@
 \name{daply}
 \alias{daply}
 \title{Split data frame, apply function, and return results in an array.}
-\usage{daply(.data, .variables, .fun, ..., .progress="none", .drop=TRUE,
-    .parallel=FALSE)}
+\usage{daply(.data, .variables, .fun, ..., .progress="none",
+    .drop=TRUE, .parallel=FALSE)}
 
 \description{
-  Split data frame, apply function, and return results in an array. For
-  each subset of data frame, apply function then combine results into
-  an array
+  Split data frame, apply function, and return results in
+  an array. For each subset of data frame, apply function
+  then combine results into an array
 }
 
 \details{
-  All plyr functions use the same split-apply-combine strategy: they
-  split the input into simpler pieces, apply \code{.fun} to each piece,
-  and then combine the pieces into a single data structure.  This
-  function splits data frames by variable and combines the result into
-  an array.  If there are no results, then this function will return a
+  All plyr functions use the same split-apply-combine
+  strategy: they split the input into simpler pieces, apply
+  \code{.fun} to each piece, and then combine the pieces
+  into a single data structure.  This function splits data
+  frames by variable and combines the result into an array.
+  If there are no results, then this function will return a
   vector of length 0 (\code{vector()}).
 
-  \code{daply} with a function that operates column-wise is similar to
-  \code{\link{aggregate}}.
+  \code{daply} with a function that operates column-wise is
+  similar to \code{\link{aggregate}}.
 }
 \keyword{manip}
 \value{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}

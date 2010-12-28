@@ -4,16 +4,17 @@
 \usage{l_ply(.data, .fun, ..., .progress="none", .print=FALSE)}
 
 \description{
-  Split list, apply function, and discard results. For each element of
-  a list, apply function and discard results
+  Split list, apply function, and discard results. For each
+  element of a list, apply function and discard results
 }
 
 \details{
-  All plyr functions use the same split-apply-combine strategy: they
-  split the input into simpler pieces, apply \code{.fun} to each piece,
-  and then combine the pieces into a single data structure.  This
-  function splits lists by elements and discards the output.  This is
-  useful for functions that you are calling purely for their side
+  All plyr functions use the same split-apply-combine
+  strategy: they split the input into simpler pieces, apply
+  \code{.fun} to each piece, and then combine the pieces
+  into a single data structure.  This function splits lists
+  by elements and discards the output.  This is useful for
+  functions that you are calling purely for their side
   effects like display plots and saving output.
 }
 \keyword{manip}

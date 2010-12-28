@@ -3,13 +3,15 @@
 \usage{colwise(.fun, .cols=true)}
 
 \description{
-  Column-wise function. Turn a function that operates on a vector into
-  a function that operates column-wise on a data.frame.
+  Column-wise function. Turn a function that operates on a
+  vector into a function that operates column-wise on a
+  data.frame.
 }
 
 \details{
-  \code{catcolwise} and \code{numcolwise} provide version that only
-  operate on discrete and numeric variables respectively.
+  \code{catcolwise} and \code{numcolwise} provide version
+  that only operate on discrete and numeric variables
+  respectively.
 }
 \alias{colwise}
 \alias{catcolwise}

@@ -3,15 +3,16 @@
 \usage{summarise(.data, ...)}
 
 \description{
-  Summarise a data frame. Create a new data frame that summarises an
-  existing data frame.
+  Summarise a data frame. Create a new data frame that
+  summarises an existing data frame.
 }
 
 \details{
-  Summarise works in an analagous way to transform, except instead of
-  adding columns to an existing data frame, it creates a new one.  This
-  is particularly useful in conjunction with \code{\link{ddply}} as it
-  makes it easy to perform group-wise summaries.
+  Summarise works in an analagous way to transform, except
+  instead of adding columns to an existing data frame, it
+  creates a new one.  This is particularly useful in
+  conjunction with \code{\link{ddply}} as it makes it easy
+  to perform group-wise summaries.
 }
 \keyword{manip}
 \alias{summarise}

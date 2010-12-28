@@ -1,23 +1,24 @@
 \name{adply}
 \alias{adply}
 \title{Split array, apply function, and return results in a data frame.}
-\usage{adply(.data, .margins, .fun, ..., .expand=TRUE, .progress="none",
-    .parallel=FALSE)}
+\usage{adply(.data, .margins, .fun, ..., .expand=TRUE,
+    .progress="none", .parallel=FALSE)}
 
 \description{
-  Split array, apply function, and return results in a data frame. For
-  each slice of an array, apply function then combine results into a
-  data frame
+  Split array, apply function, and return results in a data
+  frame. For each slice of an array, apply function then
+  combine results into a data frame
 }
 
 \details{
-  All plyr functions use the same split-apply-combine strategy: they
-  split the input into simpler pieces, apply \code{.fun} to each piece,
-  and then combine the pieces into a single data structure. This
-  function splits matrices, arrays and data frames by dimensions and
-  combines the result into a data frame. If there are no results, then
-  this function will return a data frame with zero rows and columns
-  (\code{data.frame()}).
+  All plyr functions use the same split-apply-combine
+  strategy: they split the input into simpler pieces, apply
+  \code{.fun} to each piece, and then combine the pieces
+  into a single data structure. This function splits
+  matrices, arrays and data frames by dimensions and
+  combines the result into a data frame. If there are no
+  results, then this function will return a data frame with
+  zero rows and columns (\code{data.frame()}).
 }
 \keyword{manip}
 \value{a data frame}

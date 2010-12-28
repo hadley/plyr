@@ -1,22 +1,24 @@
 \name{a_ply}
 \alias{a_ply}
 \title{Split array, apply function, and discard results.}
-\usage{a_ply(.data, .margins, .fun, ..., .expand=TRUE, .progress="none",
-    .print=FALSE)}
+\usage{a_ply(.data, .margins, .fun, ..., .expand=TRUE,
+    .progress="none", .print=FALSE)}
 
 \description{
-  Split array, apply function, and discard results. For each slice of
-  an array, apply function and discard results
+  Split array, apply function, and discard results. For
+  each slice of an array, apply function and discard
+  results
 }
 
 \details{
-  All plyr functions use the same split-apply-combine strategy: they
-  split the input into simpler pieces, apply \code{.fun} to each piece,
-  and then combine the pieces into a single data structure.  This
-  function splits matrices, arrays and data frames by dimensions and
-  discards the output.  This is useful for functions that you are
-  calling purely for their side effects like display plots and saving
-  output.
+  All plyr functions use the same split-apply-combine
+  strategy: they split the input into simpler pieces, apply
+  \code{.fun} to each piece, and then combine the pieces
+  into a single data structure.  This function splits
+  matrices, arrays and data frames by dimensions and
+  discards the output.  This is useful for functions that
+  you are calling purely for their side effects like
+  display plots and saving output.
 }
 \keyword{manip}
 \arguments{

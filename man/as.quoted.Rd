@@ -3,17 +3,17 @@
 \usage{as.quoted(x)}
 
 \description{
-  Convert input to quoted variables. Convert characters, formulas and
-  calls to quoted .variables
+  Convert input to quoted variables. Convert characters,
+  formulas and calls to quoted .variables
 }
 
 \details{
-  This method is called by default on all plyr functions that take a
-  \code{.variables} argument, so that equivalent forms can be used
-  anywhere.
+  This method is called by default on all plyr functions
+  that take a \code{.variables} argument, so that
+  equivalent forms can be used anywhere.
 
-  Currently conversions exist for character vectors, formulas and call
-  objects.
+  Currently conversions exist for character vectors,
+  formulas and call objects.
 }
 \value{a list of quoted variables}
 \seealso{\code{\link{.}}}

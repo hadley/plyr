@@ -1,25 +1,29 @@
 \name{laply}
 \alias{laply}
 \title{Split list, apply function, and return results in an array.}
-\usage{laply(.data, .fun, ..., .progress="none", .drop=TRUE, .parallel=FALSE)}
+\usage{laply(.data, .fun, ..., .progress="none", .drop=TRUE,
+    .parallel=FALSE)}
 
 \description{
-  Split list, apply function, and return results in an array. For each
-  element of a list, apply function then combine results into an array
+  Split list, apply function, and return results in an
+  array. For each element of a list, apply function then
+  combine results into an array
 }
 
 \details{
-  All plyr functions use the same split-apply-combine strategy: they
-  split the input into simpler pieces, apply \code{.fun} to each piece,
-  and then combine the pieces into a single data structure.  This
-  function splits lists by elements and combines the result into an
-  array.  If there are no results, then this function will return a
+  All plyr functions use the same split-apply-combine
+  strategy: they split the input into simpler pieces, apply
+  \code{.fun} to each piece, and then combine the pieces
+  into a single data structure.  This function splits lists
+  by elements and combines the result into an array.  If
+  there are no results, then this function will return a
   vector of length 0 (\code{vector()}).
 
-  \code{laply} is very similar in spirit to \code{\link{sapply}} except
-  that it will always return an array, and the output is transposed
-  with respect \code{sapply} - each element of the list corresponds to
-  a column, not a row.
+  \code{laply} is very similar in spirit to
+  \code{\link{sapply}} except that it will always return an
+  array, and the output is transposed with respect
+  \code{sapply} - each element of the list corresponds to a
+  column, not a row.
 }
 \keyword{manip}
 \value{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}

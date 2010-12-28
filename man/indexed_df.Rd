@@ -3,8 +3,8 @@
 \usage{indexed_df(data, index)}
 
 \description{
-  An indexed data frame. Create a indexed list, a space efficient way
-  of indexing into a large data frame
+  An indexed data frame. Create a indexed list, a space
+  efficient way of indexing into a large data frame
 }
 \keyword{internal}
 \alias{indexed_df}

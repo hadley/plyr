@@ -4,8 +4,8 @@
 \usage{defaults(x, y)}
 
 \description{
-  Set defaults. Convient method for combining a list of values with
-  their defaults.
+  Set defaults. Convient method for combining a list of
+  values with their defaults.
 }
 \keyword{manip}
 \arguments{
