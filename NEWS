@@ -1,20 +1,24 @@
 Version 1.3 (2010-XX-XX)
 ------------------------------------------------------------------------------
 
+NEW FEATURES
+
 * new function `mutate` that works like transform to add new columns or
   overwrite existing columns, but computes new columns iteratively so later
   transformations can use columns created by earlier transformations. (It's
   also about 10x faster) (Fixes #21)
 
+BUG FIXES
+
 * split column names are no longer coerced to valid R names.
 
-* quickdf now adds names if missing
+* `quickdf` now adds names if missing
 
-* summarise preserves variable names if explicit names not provided (Fixes
+* `summarise` preserves variable names if explicit names not provided (Fixes
   #17)
 
-* arrays with names should be sorted correctly once again (also fixed a bug in
-  the test case that prevented me from catching this automatically)
+* `arrays` with names should be sorted correctly once again (also fixed a bug
+  in the test case that prevented me from catching this automatically)
 
 * m_ply no longer possesses .parallel argument (mistakenly added)
 
@@ -22,7 +26,7 @@ Version 1.3 (2010-XX-XX)
   (Fixes #16)
 
 * `id` uses a better strategy for converting to integers, making it possible
-   to use for cases with larger potential numbers of combinations
+  to use for cases with larger potential numbers of combinations
 
 Version 1.2.1 (2010-09-10)
 ------------------------------------------------------------------------------
