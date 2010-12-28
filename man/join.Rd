@@ -11,10 +11,13 @@
   Unlike merge, preserves the order of x no matter what join type is
   used. If needed, rows from y will be added to the bottom.
 
-  Join is about four times faster than merge, but it achieves this
-  speed by being less flexible, and is designed for the types of
-  problems where you would use a sql join.
+  Join is about four times faster than merge, but it achieves this speed
+  by assuming unique keys: if several rows share the same matching key,
+  only the first one will be matched.  Join will silently drop duplicate
+  keys.
 
+  Join like merge is designed for the types of problems where you would
+  use a sql join.
   The four join types return: \itemize{ \item \code{inner}: only rows
   with matching keys in both x and y \item \code{left}: all rows in x,
   adding matching columns from y \item \code{right}: all rows in y,
