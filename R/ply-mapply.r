@@ -133,7 +133,7 @@ m_ply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none") {
 
   f <- splat(.fun)
   a_ply(.data = .data, .margins = 1, .fun = f, ..., 
-    .expand = .expand, .progress = .progress, .parallel = .parallel)
+    .expand = .expand, .progress = .progress)
 }
 
 .matrix_to_df <- function(.data) {
