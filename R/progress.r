@@ -69,8 +69,8 @@ progress_none <- function() {
 #' @param ... other arugments passed on to \code{\link{txtProgressBar}}
 #' @export
 #' @examples
-#' l_ply(1:1000, identity, .progress = "text")
-#' l_ply(1:1000, identity, .progress = progress_text(char = "-"))
+#' l_ply(1:100, identity, .progress = "text")
+#' l_ply(1:100, identity, .progress = progress_text(char = "-"))
 progress_text <- function(style = 3, ...) {
   n <- 0
   txt <- NULL
@@ -99,9 +99,9 @@ progress_text <- function(style = 3, ...) {
 #' @seealso \code{\link[tcltk]{tkProgressBar}} for the function that powers this progress bar
 #' @export
 #' @examples
-#' l_ply(1:1000, identity, .progress = "tk")
-#' l_ply(1:1000, identity, .progress = progress_tk(width=400))
-#' l_ply(1:1000, identity, .progress = progress_tk(label=""))
+#' l_ply(1:100, identity, .progress = "tk")
+#' l_ply(1:100, identity, .progress = progress_tk(width=400))
+#' l_ply(1:100, identity, .progress = progress_tk(label=""))
 progress_tk <- function(title = "plyr progress", label = "Working...", ...) {
   stopifnot(require("tcltk", quiet=TRUE))
   n <- 0
@@ -131,8 +131,8 @@ progress_tk <- function(title = "plyr progress", label = "Working...", ...) {
 #' @export
 #' @examples
 #' if(exists("winProgressBar")) {
-#' l_ply(1:1000, identity, .progress = "win")
-#' l_ply(1:1000, identity, .progress = progress_win(title="Working..."))
+#' l_ply(1:100, identity, .progress = "win")
+#' l_ply(1:100, identity, .progress = progress_win(title="Working..."))
 #' }
 progress_win <- function(title = "plyr progress", ...) {
   n <- 0

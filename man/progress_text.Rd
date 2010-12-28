@@ -17,5 +17,5 @@
   \item{style}{style of text bar, see Details section of \code{\link{txtProgressBar}}}
   \item{...}{other arugments passed on to \code{\link{txtProgressBar}}}
 }
-\examples{l_ply(1:1000, identity, .progress = "text")
-l_ply(1:1000, identity, .progress = progress_text(char = "-"))}
+\examples{l_ply(1:100, identity, .progress = "text")
+l_ply(1:100, identity, .progress = progress_text(char = "-"))}

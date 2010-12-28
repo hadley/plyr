@@ -17,6 +17,6 @@
   \item{...}{other arguments passed on to \code{winProgressBar}}
 }
 \examples{if(exists("winProgressBar")) {
-l_ply(1:1000, identity, .progress = "win")
-l_ply(1:1000, identity, .progress = progress_win(title="Working..."))
+l_ply(1:100, identity, .progress = "win")
+l_ply(1:100, identity, .progress = progress_win(title="Working..."))
 }}
