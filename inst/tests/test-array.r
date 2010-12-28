@@ -96,3 +96,29 @@ test_that("array reconstruction correct with missing cells", {
   
   expect_that(da, equals(m, check.attributes = FALSE))
 })
+
+
+set_dimnames <- function(x, nm) {
+  dimnames(x) <- nm
+  x
+}
+
+test_that("array names do not affect output", {
+  base <- array(1:48, dim = c(12, 4))
+  arrays <- list(
+    none = base,
+    numeric = set_dimnames(base, list(R = 1:12, C = 1:4)),
+    numeric_rev = set_dimnames(base, list(R = 12:1, C = 4:1)),
+    alpha = set_dimnames(base, list(R = letters[1:12], C = LETTERS[1:4])),
+    alpha_rev = set_dimnames(base, list(R = letters[12:1], C = LETTERS[4:1]))
+  ) 
+
+  for(name in names(arrays)) {
+    array <- arrays[[name]]
+    expect_that(aaply(array, 1, sum), 
+      equals(rowSums(array), check.attributes = FALSE), info = name)
+    expect_that(aaply(array, 2, sum), 
+      equals(colSums(array), check.attributes = FALSE), info = name)
+  }
+  
+})

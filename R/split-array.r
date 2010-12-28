@@ -51,13 +51,10 @@ splitter_a <- function(data, .margins = 1L, .expand = TRUE) {
       dnames <- list(seq_len(nrow(data)), names(data))      
     } else {
       dnames <- amv_dimnames(data)
+      dnames <- lapply(dnames, function(x) factor(x, levels = x))
     }
 
     raw <- mapply("[", dnames[.margins], indices[.margins], SIMPLIFY = FALSE)
-    # Try and convert to numeric, if applicable
-    char <- vapply(raw, is.character, logical(1))
-    raw[char] <- lapply(raw[char], type.convert, as.is = TRUE)
-
     split_labels <- data.frame(raw, stringsAsFactors = FALSE)
 
     if (!is.null(names(dnames))) {
