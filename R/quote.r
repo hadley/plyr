@@ -56,7 +56,7 @@ print.quoted <- function(x, ...) str(x)
 #' @S3method names quoted
 #' @method names quoted
 names.quoted <- function(x) {
-  part_names <- lapply(x, as.character)
+  part_names <- unlist(lapply(x, as.character))
   user_names <- names(unclass(x))
 
   if (!is.null(user_names)) {
