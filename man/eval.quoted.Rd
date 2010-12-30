@@ -1,9 +1,7 @@
 \name{eval.quoted}
 \alias{eval.quoted}
 \title{Evaluate a quoted list of variables.}
-\usage{eval.quoted(exprs, envir=parent.frame(), enclos=if
-    (is.list(envir) || is.pairlist(envir)) parent.frame()
-    else baseenv(), try=FALSE)}
+\usage{eval.quoted(exprs, envir, enclos, try=FALSE)}
 
 \description{
   Evaluate a quoted list of variables. Evaluates quoted

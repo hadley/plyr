@@ -1,6 +1,6 @@
 \name{quoted}
 \title{Quote variables.}
-\usage{.(...)}
+\usage{.(..., _env=parent.frame())}
 
 \description{
   Quote variables. Create a list of unevaluated expressions
@@ -26,6 +26,7 @@
 \value{list of symbol and language primitives}
 \alias{.}
 \alias{quoted}
+\alias{is.quoted}
 \arguments{
   \item{...}{unevaluated expressions to be recorded.  Specify names if you want the set the names of the resultant variables}
 }

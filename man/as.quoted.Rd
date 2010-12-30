@@ -1,6 +1,6 @@
 \name{as.quoted}
 \title{Convert input to quoted variables.}
-\usage{as.quoted(x)}
+\usage{as.quoted(x, env=parent.frame())}
 
 \description{
   Convert input to quoted variables. Convert characters,
