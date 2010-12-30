@@ -39,7 +39,7 @@ test_that("character vectors not change to factors", {
 test_that("column names not changed", {
   d1 <- data.frame(`--WEIRD`=1:5, a = letters[1:5], `-b` = 1:5, 
     check.names = FALSE)
-  d2 <- ddply(d1, .("--WEIRD"), force) 
+  d2 <- ddply(d1, .(`--WEIRD`), force) 
   expect_that(names(d2), equals(names(d1)))
   
   
