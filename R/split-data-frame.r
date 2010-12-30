@@ -36,7 +36,7 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
     split_labels <- NULL
     attr(splitv, "n") <- max(splitv)
   } else {
-    splits <- eval.quoted(.variables, data, parent.frame())
+    splits <- eval.quoted(.variables, data)
 
     splitv <- id(splits, drop = drop)
     split_labels <- split_labels(splits, drop = drop, id = splitv)
