@@ -14,7 +14,10 @@
 #' \code{\link{as.quoted.character}} to convert strings to the appropriate
 #' data structure.
 #' 
-#' @param ... unevaluated expressions to be recorded.  Specify names if you want the set the names of the resultant variables
+#' @param ... unevaluated expressions to be recorded.  Specify names if you
+#'   want the set the names of the resultant variables
+#' @param .env environment in which unbound symbols in \code{...} should be
+#'   evaluated.  Defaults to the environment in which \code{.} was executed.
 #' @return list of symbol and language primitives
 #' @aliases . quoted is.quoted
 #' @export . is.quoted
@@ -35,8 +38,8 @@
 #' ddply(mtcars, .(logcyl = log(cyl)), each(nrow, ncol))
 #' ddply(mtcars, .(vs + am), each(nrow, ncol))
 #' ddply(mtcars, .(vsam = vs + am), each(nrow, ncol))
-. <- function(..., `_env` = parent.frame()) {
-  structure(as.list(match.call()[-1]), env = `_env`, class="quoted")
+. <- function(..., .env = parent.frame()) {
+  structure(as.list(match.call()[-1]), env = .env, class="quoted")
 }
 
 is.quoted <- function(x) inherits(x, "quoted")
@@ -109,6 +112,9 @@ eval.quoted <- function(exprs, envir = NULL, enclos = NULL, try = FALSE) {
 #'  as.quoted.quoted as.quoted.NULL as.quoted.numeric c.quoted as.quoted
 #'  [.quoted
 #' @param x input to quote
+#' @param env environment in which unbound symbols in expression should be
+#'   evaluated. Defaults to the environment in which \code{as.quoted} was 
+#'   executed.
 #' @S3method as.quoted call
 #' @S3method as.quoted character
 #' @S3method as.quoted factor

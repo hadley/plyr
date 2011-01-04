@@ -28,6 +28,9 @@
 \alias{[.quoted}
 \arguments{
   \item{x}{input to quote}
+  \item{env}{environment in which unbound symbols in expression should be
+evaluated. Defaults to the environment in which \code{as.quoted} was 
+executed.}
 }
 \examples{as.quoted(c("a", "b", "log(d)"))
 as.quoted(a ~ b + log(d))}

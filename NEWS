@@ -6,6 +6,10 @@ Version 1.4 (2011-01-03)
 
 * Really fix bug in `names.quoted`
 
+* `.` now captures the environment in which it was evaluated. This should fix
+  an esoteric class of bugs which no-one probably ever encountered, but will
+  form the basis for an improved version of `ggplot2::aes`.
+
 Version 1.3.1 (2010-12-30)
 ------------------------------------------------------------------------------
 

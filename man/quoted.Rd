@@ -1,6 +1,6 @@
 \name{quoted}
 \title{Quote variables.}
-\usage{.(..., _env=parent.frame())}
+\usage{.(..., .env=parent.frame())}
 
 \description{
   Quote variables. Create a list of unevaluated expressions
@@ -28,7 +28,10 @@
 \alias{quoted}
 \alias{is.quoted}
 \arguments{
-  \item{...}{unevaluated expressions to be recorded.  Specify names if you want the set the names of the resultant variables}
+  \item{...}{unevaluated expressions to be recorded.  Specify names if you
+want the set the names of the resultant variables}
+  \item{.env}{environment in which unbound symbols in \code{...} should be
+evaluated.  Defaults to the environment in which \code{.} was executed.}
 }
 \examples{.(a, b, c)
 .(first = a, second = b, third = c)
