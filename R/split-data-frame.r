@@ -70,8 +70,13 @@ split_labels <- function(splits, drop, id = plyr::id(splits, drop = TRUE)) {
     representative <- which(!duplicated(id))[order(unique(id))]
     quickdf(lapply(splits, function(x) x[representative]))
   } else {
-    unique_values <- llply(splits, function(x) sort(unique(x)))
+    unique_values <- llply(splits, ulevels)
     names(unique_values) <- names(splits)
     rev(expand.grid(rev(unique_values), stringsAsFactors = FALSE))
   }
+}
+
+ulevels <- function(x) {
+  if (is.factor(x)) return(levels(x))
+  sort(unique(x))
 }

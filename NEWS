@@ -1,6 +1,11 @@
 Version 1.5 (2011-XX-XX)
 ------------------------------------------------------------------------------
 
+* `split_labels` correctly preserves empty factor levels, which means that
+  `drop = FALSE` should work in more places. Use `base::droplevels` to remove
+  levels that don't occur in the data, and `drop = T` to remove combinations
+  of levels that don't occur.
+
 * `rbind.fill` preserves missing factor levels
 
 Version 1.4 (2011-01-03)
