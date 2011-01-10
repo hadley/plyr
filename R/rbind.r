@@ -91,7 +91,8 @@ output_template <- function(dfs, nrows) {
   # Set up factors
   for(var in vars[is_factor]) {
     all <- unique(lapply(dfs, function(df) levels(df[[var]])))
-    levels(output[[var]]) <- unique(unlist(all))
+    output[[var]] <- factor(output[[var]], levels = unique(unlist(all)),
+      exclude = NULL)
   }
 
   # Set up matrices

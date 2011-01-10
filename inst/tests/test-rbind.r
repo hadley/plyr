@@ -49,3 +49,10 @@ test_that("matrices are preserved", {
   
   expect_that(ab1, equals(ab2))
 })
+
+test_that("missing levels in factors preserved", {
+  f <- addNA(factor(c("a", "b", NA)))
+  df1 <- data.frame(a = f)
+  df2 <- data.frame(b = f)
+  rbind.fill(df1, df2)
+})
