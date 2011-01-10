@@ -31,9 +31,9 @@ The current version of plyr is __1.4__ and is available from (CRAN)[http://cran.
 
     install.packages("plyr")
 
-## Documentation<
+## Documentation
 
-The best place to start is the introductory guide: [plyr: divide and conquer](plyr-intro-090510.pdf)</a>.  (Updated May 10, 2009).
+The best place to start is the introductory guide: [plyr: divide and conquer](plyr-intro-090510.pdf).  (Updated May 10, 2009).
 
 ## Mailing list
 
@@ -47,4 +47,4 @@ You must be a member to post messages, but anyone can [read the archived discuss
 
 ## Get involved
 
-If you've discovered any bugs in the plyr package, or you have thought of a killer new feature, please email me: [h.wickham@gmail.com](mailto:h.wickham@gmail.com.
+If you've discovered any bugs in the plyr package, or you have thought of a killer new feature, please email me: [h.wickham@gmail.com](mailto:h.wickham@gmail.com).
