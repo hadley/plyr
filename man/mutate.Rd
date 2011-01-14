@@ -19,7 +19,8 @@
   large data frames.
 }
 \seealso{\code{\link{subset}}, \code{\link{summarise}},
-\code{\link{arrange}}}
+\code{\link{arrange}}.  For another somewhat different approach to
+solving the same problem, see \code{\link{within}}.}
 \arguments{
   \item{.data}{the data frame to transform}
   \item{...}{named parameters giving definitions of new columns.}

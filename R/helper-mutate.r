@@ -11,7 +11,8 @@
 #' @param .data the data frame to transform
 #' @param ... named parameters giving definitions of new columns.
 #' @seealso \code{\link{subset}}, \code{\link{summarise}},
-#'   \code{\link{arrange}}
+#'   \code{\link{arrange}}.  For another somewhat different approach to
+#'   solving the same problem, see \code{\link{within}}.
 #' @export
 #' @examples
 #' # Examples from transform
