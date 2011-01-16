@@ -1,6 +1,10 @@
 Version 1.5 (2011-XX-XX)
 ------------------------------------------------------------------------------
 
+* new `match_df` function makes it easy to subset a data frame to only contain
+  values matching another data frame. Inspired by
+  http://stackoverflow.com/questions/4693849
+
 * `split_labels` correctly preserves empty factor levels, which means that
   `drop = FALSE` should work in more places. Use `base::droplevels` to remove
   levels that don't occur in the data, and `drop = T` to remove combinations
