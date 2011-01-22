@@ -20,6 +20,6 @@ match_df <- function(x, y, on = NULL) {
   }
   
   keys <- join.keys(x, y, on)
-  x[match(keys$x, keys$y, nomatch = 0), ]
+  x[keys$x %in% keys$y, ]
 }
 
