@@ -16,7 +16,7 @@
 match_df <- function(x, y, on = NULL) {
   if (is.null(on)) {
     on <- intersect(names(x), names(y))
-    message("Matching on: ", str_c(on, collapse = ", "))
+    message("Matching on: ", paste(on, collapse = ", "))
   }
   
   keys <- join.keys(x, y, on)
