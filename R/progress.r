@@ -20,6 +20,7 @@
 #' See the examples.
 #' 
 #' @param name type of progress bar to create
+#' @param ... other arguments passed onto progress bar function
 #' @seealso \code{\link{progress_none}}, \code{\link{progress_text}}, \code{\link{progress_tk}}, \code{\link{progress_win}}
 #' @keywords utilities
 #' @export
@@ -28,7 +29,7 @@
 #' l_ply(1:1000, identity, .progress = "tk")
 #' l_ply(1:1000, identity, .progress = "text")
 #' l_ply(1:1000, identity, .progress = progress_text(char = "-"))
-create_progress_bar <- function(name = "none") {
+create_progress_bar <- function(name = "none", ...) {
   if (!is.character(name)) return(name)
   name <- paste("progress", name, sep="_")
   
@@ -36,7 +37,7 @@ create_progress_bar <- function(name = "none") {
     warning("Cannot find progress bar ", name, call. = FALSE)
     progress_none()
   } else {
-    match.fun(name)()
+    match.fun(name)(...)
   }
 }
 

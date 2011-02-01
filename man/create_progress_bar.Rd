@@ -1,7 +1,7 @@
 \name{create_progress_bar}
 \alias{create_progress_bar}
 \title{Create progress bar.}
-\usage{create_progress_bar(name="none")}
+\usage{create_progress_bar(name="none", ...)}
 
 \description{
   Create progress bar. Create progress bar object from text
@@ -35,6 +35,7 @@
 \keyword{utilities}
 \arguments{
   \item{name}{type of progress bar to create}
+  \item{...}{other arguments passed onto progress bar function}
 }
 \examples{l_ply(1:1000, identity, .progress = "none")
 l_ply(1:1000, identity, .progress = "tk")
