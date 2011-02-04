@@ -1,6 +1,8 @@
 Version 1.5 (2011-XX-XX)
 ------------------------------------------------------------------------------
 
+* `**ply` now works when passed a list of functions
+
 * new `match_df` function makes it easy to subset a data frame to only contain
   values matching another data frame. Inspired by
   http://stackoverflow.com/questions/4693849
