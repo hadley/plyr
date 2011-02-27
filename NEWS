@@ -1,6 +1,8 @@
 Version 1.5 (2011-XX-XX)
 ------------------------------------------------------------------------------
 
+* `rename` moved in from reshape, and rewritten
+
 * `rbind` now correctly maintains POSIXct tzone attributes
 
 * `**ply` now works when passed a list of functions
