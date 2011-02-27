@@ -56,3 +56,20 @@ test_that("missing levels in factors preserved", {
   df2 <- data.frame(b = f)
   rbind.fill(df1, df2)
 })
+
+test_that("time zones are preserved", {
+  dstart <- "2011-01-01 00:01"
+  dstop <- "2011-01-02 04:15"
+
+  get_tz <- function(x) attr(as.POSIXlt(x), "tz")
+
+  tzs <- c("", "CET", "UTC")
+  for(tz in tzs) {
+    start <- data.frame(x = as.POSIXct(dstart, tz = tz))
+    end <- data.frame(x = as.POSIXct(dstop, tz = tz))
+    
+    both <- rbind.fill(start, end)
+    expect_that(get_tz(both$x)[1], equals(tz), label = tz)
+  }
+
+})

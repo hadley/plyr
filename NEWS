@@ -1,6 +1,8 @@
 Version 1.5 (2011-XX-XX)
 ------------------------------------------------------------------------------
 
+* `rbind` now correctly maintains POSIXct tzone attributes
+
 * `**ply` now works when passed a list of functions
 
 * new `match_df` function makes it easy to subset a data frame to only contain
