@@ -1,32 +1,37 @@
 Version 1.5 (2011-XX-XX)
 ------------------------------------------------------------------------------
 
-* removed `defaults` function - this is better implemented as the base
-  `modifyList` function.
+NEW FEATURES
 
 * new `strip_splits` function removes splitting variables from the data frames
   returned by `ddply`.
 
-* `join` now implements joins in a more SQL like way, returning all possible
-   matches, not just the first one.  It is still a (little) faster than merge.
-   The previous behaviour is accessible with `match = "first"`.
-
-* `rename` moved in from reshape, and rewritten
-
-* `rbind` now correctly maintains POSIXct tzone attributes
-
-* `**ply` now works when passed a list of functions
+* `rename` moved in from reshape, and rewritten.
 
 * new `match_df` function makes it easy to subset a data frame to only contain
   values matching another data frame. Inspired by
-  http://stackoverflow.com/questions/4693849
+  http://stackoverflow.com/questions/4693849.
+
+BUG FIXES
+
+* `**ply` now works when passed a list of functions
+
+* `join` now implements joins in a more SQL like way, returning all possible
+  matches, not just the first one. It is still a (little) faster than merge.
+  The previous behaviour is accessible with `match = "first"`.
+
+* `rbind.fill` now correctly maintains POSIXct tzone attributes and preserves
+  missing factor levels
 
 * `split_labels` correctly preserves empty factor levels, which means that
   `drop = FALSE` should work in more places. Use `base::droplevels` to remove
   levels that don't occur in the data, and `drop = T` to remove combinations
   of levels that don't occur.
 
-* `rbind.fill` preserves missing factor levels
+DEPRECATED FUNCTIONS
+
+* removed `defaults` function - this is better implemented as the base
+  `modifyList` function.
 
 Version 1.4 (2011-01-03)
 ------------------------------------------------------------------------------
