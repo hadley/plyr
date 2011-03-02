@@ -1,6 +1,10 @@
 Version 1.5 (2011-XX-XX)
 ------------------------------------------------------------------------------
 
+* `join` now implements joins in a more SQL like way, returning all possible
+   matches, not just the first one.  It is still a (little) faster than merge.
+   The previous behaviour is accessible with `match = "first"`.
+
 * `rename` moved in from reshape, and rewritten
 
 * `rbind` now correctly maintains POSIXct tzone attributes

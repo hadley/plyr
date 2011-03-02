@@ -1,12 +1,5 @@
 context("Join")
 
-a <- data.frame(a = 1:10, b = letters[1:10])
-a_even <- a[seq(2, 10, by = 2), ]
-a_odd <- a[seq(1, 9, by = 2), ]
-b <- data.frame(a = 1:10, c = LETTERS[1:10])
-b_even <- b[seq(2, 10, by = 2), ]
-b_odd <- b[seq(1, 9, by = 2), ]
-
 # Create smaller subset of baseball data (for speed)
 bsmall <- subset(baseball, id %in% sample(unique(baseball$id), 20))[, 1:5]
 bsmall$id <- factor(bsmall$id)
@@ -18,13 +11,14 @@ first <- ddply(bsmall, "id", summarise, first = min(year))
 test_that("results consistent with merge", {  
   b2 <- merge(bsmall, first, by = "id", all.x = TRUE)
   b3 <- join(bsmall, first, by = "id")
+  b4 <- join(first, bsmall, by = "id")[names(b3)]
   
   b2 <- arrange(b2, id, year, stint)
   b3 <- arrange(b3, id, year, stint)
-  rownames(b2) <- NULL
-  rownames(b3) <- NULL
+  b4 <- arrange(b4, id, year, stint)
   
   expect_that(b2, equals(b3))
+  expect_that(b2, equals(b4))
 })
 
 test_that("order is preserved", {
@@ -38,16 +32,19 @@ test_that("order is preserved", {
 test_that("rownames are preserved", {
   b3 <- join(bsmall, first, by = "id")
   expect_that(rownames(b3), equals(rownames(bsmall)))
-  
 })
 
-test_that("duplicated keys are an error", {
+test_that("duplicated keys are duplicated", {
+  x <- data.frame(a = c("a", "b"), b = c("a", "b"))
+  y <- data.frame(a = c("a", "a"), z = c(1, 2))
   
+  left <- join(x, y, by = "a")
+  expect_that(nrow(left), equals(3))
+  expect_that(left$z, equals(c(1, 2, NA)))
   
-})
-
-test_that("left join preserves y", {
-  
+  inner <- join(x, y, by = "a", type = "inner")
+  expect_that(nrow(inner), equals(2))
+  expect_that(inner$z, equals(c(1, 2)))
 })
 
 test_that("full merge preserves x and y", {
@@ -58,6 +55,5 @@ test_that("full merge preserves x and y", {
   expect_that(names(ab), equals(c("x", "a", "b")))
   expect_that(ab$x, equals(1:15))
   expect_that(ab$a, equals(c(1:10, rep(NA, 5))))
-  expect_that(ab$b, equals(c(rep(NA, 10), 1:5)))
-    
+  expect_that(ab$b, equals(c(rep(NA, 10), 1:5)))    
 })
