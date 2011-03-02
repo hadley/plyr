@@ -1,6 +1,9 @@
 Version 1.5 (2011-XX-XX)
 ------------------------------------------------------------------------------
 
+* removed `defaults` function - this is better implemented as the base
+  `modifyList` function.
+
 * new `strip_splits` function removes splitting variables from the data frames
   returned by `ddply`.
 
