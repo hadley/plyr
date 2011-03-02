@@ -16,9 +16,9 @@
 \seealso{\code{\link{join}} to combine the columns from both x and y}
 \arguments{
   \item{x}{data frame to subset.}
-  \item{match}{data frame defining matching rows.}
-  \item{on}{variables to match on - by default all variables common to both
-data frames will be used.}
+  \item{y}{data frame defining matching rows.}
+  \item{on}{variables to match on - by default will use all variables common
+to both data frames.}
 }
 \examples{longterm <- subset(count(baseball, "id"), freq > 25)
 bb_longterm <- match_df(baseball, longterm)}

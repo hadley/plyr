@@ -4,9 +4,9 @@
 #' and want to subset the original data by a characteristic of the subset.
 #'
 #' @param x data frame to subset.
-#' @param match data frame defining matching rows.
-#' @param on variables to match on - by default all variables common to both
-#'   data frames will be used.
+#' @param y data frame defining matching rows.
+#' @param on variables to match on - by default will use all variables common
+#'   to both data frames.
 #' @return a data frame
 #' @seealso \code{\link{join}} to combine the columns from both x and y
 #' @export
