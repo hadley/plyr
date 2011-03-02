@@ -28,11 +28,6 @@ BUG FIXES
   levels that don't occur in the data, and `drop = T` to remove combinations
   of levels that don't occur.
 
-DEPRECATED FUNCTIONS
-
-* removed `defaults` function - this is better implemented as the base
-  `modifyList` function.
-
 Version 1.4 (2011-01-03)
 ------------------------------------------------------------------------------
 

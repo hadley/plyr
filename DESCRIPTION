@@ -21,8 +21,8 @@ License: MIT
 LazyData: true
 Collate: 'dimensions.r' 'helper-arrange.r'
     'helper-col-wise.r' 'helper-count.r'
-    'helper-data-frame.r' 'helper-each.r'
-    'helper-match-df.r' 'helper-mutate.r'
+    'helper-data-frame.r' 'helper-defaults.r'
+    'helper-each.r' 'helper-match-df.r' 'helper-mutate.r'
     'helper-quick-df.r' 'helper-rename.r'
     'helper-round-any.r' 'helper-splat.r'
     'helper-strip-splits.r' 'helper-summarise.r'
