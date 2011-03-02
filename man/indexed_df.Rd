@@ -1,6 +1,6 @@
 \name{indexed_df}
 \title{An indexed data frame.}
-\usage{indexed_df(data, index)}
+\usage{indexed_df(data, index, vars)}
 
 \description{
   An indexed data frame. Create a indexed list, a space
@@ -17,4 +17,5 @@
 \arguments{
   \item{env}{environment containing data frame}
   \item{index}{list of indices}
+  \item{vars}{a character vector giving the variables used for subsetting}
 }

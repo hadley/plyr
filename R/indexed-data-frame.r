@@ -3,19 +3,20 @@
 #' 
 #' @param env environment containing data frame
 #' @param index list of indices
+#' @param vars a character vector giving the variables used for subsetting
 #' @keywords internal
 #' @aliases indexed_df length.indexed names.indexed as.list.indexed
 #'   [[.indexed_df [.indexed print.indexed
-indexed_df <- function(data, index) {
+indexed_df <- function(data, index, vars) {
   
   structure(
-    list(data = data, index = index),
+    list(data = data, index = index, vars = vars),
     class = c("indexed", "indexed_df")
   )
 }
 
 "[[.indexed_df" <- function(x, i) {
-  x$data[x$index[[i]], , drop = FALSE]
+  structure(x$data[x$index[[i]], , drop = FALSE], vars = x$vars)
   # x$env$data[x$index[[i]], , drop = FALSE]
   # slice(x, attr(x, "index")[[i]]) 
   # subset_rows(x$env$data, x$index[[i]])

@@ -26,7 +26,7 @@
 \keyword{internal}
 \arguments{
   \item{data}{data frame}
-  \item{.variables}{a \link{quoted} list of variables, a formula, or character vector.  \code{NULL} will not split the data}
+  \item{.variables}{a \link{quoted} list of variables}
   \item{drop}{drop unnused factor levels?}
 }
 \examples{plyr:::splitter_d(mtcars, .(cyl))
