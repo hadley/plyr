@@ -1,5 +1,7 @@
 #' Fail with specified value.
-#' Modify a function so that it returns a default value when there is an error.
+#'
+#' Modify a function so that it returns a default value when there is an
+#' error.
 #' 
 #' @param default default value
 #' @param f function

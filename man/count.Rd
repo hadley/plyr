@@ -4,12 +4,13 @@
 \usage{count(df, vars, wt_var)}
 
 \description{
-  Count the number of occurences. Equivalent to
-  \code{as.data.frame(table(x))}, but does not include
-  combinations with zero counts.
+  Count the number of occurences.
 }
 
 \details{
+  Equivalent to \code{as.data.frame(table(x))}, but does
+  not include combinations with zero counts.
+
   Speed-wise count is competitive with \code{\link{table}}
   for single variables, but it really comes into its own
   when summarising multiple dimensions because it only

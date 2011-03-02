@@ -1,10 +1,10 @@
 \name{round_any}
 \alias{round_any}
-\title{Round to multiple of any number...}
+\title{Round to multiple of any number.}
 \usage{round_any(x, accuracy, f=round)}
 
 \description{
-  Round to multiple of any number
+  Round to multiple of any number.
 }
 \keyword{manip}
 \arguments{

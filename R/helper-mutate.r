@@ -1,4 +1,4 @@
-#' Mutate a data frame by adding new columns or replacing existing.
+#' Mutate a data frame by adding new or replacing existing columns.
 #'
 #' This function is very similar to \code{\link{transform}} but it executes
 #' the transformations iteratively so that later transformations can use the

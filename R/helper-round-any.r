@@ -1,4 +1,4 @@
-#' Round to multiple of any number
+#' Round to multiple of any number.
 #' 
 #' @param x numeric vector to round
 #' @param accuracy number to round to
@@ -16,6 +16,6 @@
 #' round_any(135, 10, ceiling)
 #' round_any(135, 100, ceiling)
 #' round_any(135, 25, ceiling)
-round_any <- function(x, accuracy, f=round) {
+round_any <- function(x, accuracy, f = round) {
   f(x / accuracy) * accuracy
 }

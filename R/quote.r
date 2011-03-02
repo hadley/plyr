@@ -1,5 +1,5 @@
-#' Quote variables.
-#' Create a list of unevaluated expressions for later evaluation
+#' Quote variables to create a list of unevaluated expressions for later
+#' evaluation.
 #' 
 #' This function is similar to \code{\link{~}} in that it is used to
 #' capture the name of variables, not their current value.  This is used

@@ -4,11 +4,14 @@
 \usage{splat(flat)}
 
 \description{
-  `Splat' arguments to a function. Wraps a function in
-  do.call
+  `Splat' arguments to a function.
 }
 
 \details{
+  Wraps a function in do.call, so instead of taking
+  multiple arguments, it takes a single named list which
+  will be interpreted as its arguments.
+
   This is useful when you want to pass a function a row of
   data frame or array, and don't want to manually pull it
   apart in your function.

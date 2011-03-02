@@ -3,8 +3,7 @@
 \usage{summarise(.data, ...)}
 
 \description{
-  Summarise a data frame. Create a new data frame that
-  summarises an existing data frame.
+  Summarise a data frame.
 }
 
 \details{

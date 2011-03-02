@@ -1,9 +1,10 @@
 \name{id}
-\title{A unique numeric id for each unique row in a data frame.}
+\title{Compute a unique numeric id for each unique row in a data frame.}
 \usage{id(.variables, drop=FALSE)}
 
 \description{
-  A unique numeric id for each unique row in a data frame.
+  Compute a unique numeric id for each unique row in a data
+  frame.
 }
 
 \details{

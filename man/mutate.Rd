@@ -1,11 +1,11 @@
 \name{mutate}
 \alias{mutate}
-\title{Mutate a data frame by adding new columns or replacing existing.}
+\title{Mutate a data frame by adding new or replacing existing columns.}
 \usage{mutate(.data, ...)}
 
 \description{
-  Mutate a data frame by adding new columns or replacing
-  existing.
+  Mutate a data frame by adding new or replacing existing
+  columns.
 }
 
 \details{

@@ -1,10 +1,10 @@
 \name{quoted}
-\title{Quote variables.}
+\title{Quote variables to create a list of unevaluated expressions for later...}
 \usage{.(..., .env=parent.frame())}
 
 \description{
-  Quote variables. Create a list of unevaluated expressions
-  for later evaluation
+  Quote variables to create a list of unevaluated
+  expressions for later evaluation.
 }
 
 \details{

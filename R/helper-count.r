@@ -1,4 +1,5 @@
 #' Count the number of occurences.
+#'
 #' Equivalent to \code{as.data.frame(table(x))}, but does not include
 #' combinations with zero counts.
 #'
