@@ -57,9 +57,9 @@ colwise <- function(.fun, .cols = true) {
     if (is.null(row.names)) row.names = rownames(df)
     stopifnot(is.data.frame(df))
     filtered <- filter(df)
-    if (ncol(filtered) == 0) return(data.frame())
+    if (ncol(filtered) == 0) return(data.frame(row.names = row.names))
     
-    df <- as.data.frame(lapply(filtered, .fun, ...))
+    df <- as.data.frame(lapply(filtered, .fun, ...), row.names = row.names)
     names(df) <- names(filtered)
     if (nrow(df) == length(row.names) && is.character(row.names)) {
       rownames(df) <- row.names
