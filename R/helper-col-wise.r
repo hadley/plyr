@@ -61,7 +61,7 @@ colwise <- function(.fun, .cols = true) {
     
     df <- as.data.frame(lapply(filtered, .fun, ...))
     names(df) <- names(filtered)
-    if (nrow(df) == length(row.names) && is.character(row.names)) {
+    if (nrow(df) == length(row.names) && !is.na(row.names)) {
       rownames(df) <- row.names
     }
     df
