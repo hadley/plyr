@@ -44,3 +44,19 @@ test_that("column names not changed", {
   
   
 })
+
+# Bug reported by Karl Ove Hufthammer <karl@huftis.org>
+test_that("label variables always preserved", {
+
+  d <- data.frame(x = 101:104, y = 1:4)
+  f <- function(df) sum(df$y)
+  g <- function(df) if(df$x <= 102) sum(df$y)
+  
+  out1 <- ddply(d, "x", f) # This one works correctly
+  out2 <- ddply(d, "x", g) # This one doesn’t
+  
+  expect_that(names(out1), equals(names(out2)))
+  expect_that(out1$x[1:2], equals(out2$x))
+
+  
+})
