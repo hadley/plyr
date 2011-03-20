@@ -48,18 +48,22 @@
 colwise <- function(.fun, .cols = true) {
   if (!is.function(.cols)) {
     .cols <- as.quoted(.cols)
-    filter <- function(df) as.data.frame(eval.quoted(.cols, df))
+    filter <- function(df) eval.quoted(.cols, df)
   } else {
     filter <- function(df) Filter(.cols, df)
   }
   
   function(df, row.names = NULL, ...) {
-    if (is.null(row.names)) row.names = rownames(df)
     stopifnot(is.data.frame(df))
+    if (is.null(row.names)) row.names <- rownames(df)
+
     filtered <- filter(df)
-    if (ncol(filtered) == 0) return(data.frame(row.names = row.names))
+    if (ncol(filtered) == 0) return(data.frame())
     
-    df <- as.data.frame(lapply(filtered, .fun, ...), row.names = row.names)
+    df <- quickdf(lapply(filtered, .fun, ...))
+    if (nrow(df) == length(row.names)) {
+      rownames(df) <- row.names
+    }
     names(df) <- names(filtered)
     df
   }
