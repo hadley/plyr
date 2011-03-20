@@ -25,3 +25,9 @@ test_that("evaluation takes place in correct environment", {
   expect_that(eval.quoted(x, df)[[1]], equals(1:10))
   
 })
+
+test_that("names work for long expressions", {
+ q <- .(foo = barjasdfgjadhfgjsdhfgusdhfgusheguisdhguioahsrofasdgsdfgsdfg +
+              dfgafgasdfgsdfgsdfgsdfgsdfgsdfgsdfg)
+ expect_that(names(q), equals("foo"))              
+})

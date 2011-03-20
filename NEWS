@@ -26,6 +26,9 @@ BUG FIXES
   matches, not just the first one. It is still a (little) faster than merge.
   The previous behaviour is accessible with `match = "first"`.
 
+* `named.quoted` failed when quoted expressions were longer than 50
+  characters. (Thanks to bug report from Eric Goldlust)
+
 * `rbind.fill` now correctly maintains POSIXct tzone attributes and preserves
   missing factor levels
 
