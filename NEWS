@@ -17,10 +17,10 @@ BUG FIXES
 * `**ply` now works when passed a list of functions
 
 * `*dply` now correctly names output even when some output combinations are
-  missing (NULL)
+  missing (NULL) (Thanks to bug report from Karl Ove Hufthammer)
 
 * `a*ply` now correctly works with zero length margins, operating on the
-  entire object
+  entire object (Thanks to bug report from Stavros Macrakis)
 
 * `join` now implements joins in a more SQL like way, returning all possible
   matches, not just the first one. It is still a (little) faster than merge.
