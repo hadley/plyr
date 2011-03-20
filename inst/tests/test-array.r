@@ -10,6 +10,12 @@ test_that("incorrect result dimensions raise errors", {
   expect_that(laply(1:10, fs[[2]]), throws_error("same number"))
 })
 
+test_that("zero length margin operates on whole object", {
+  a <- array(1:24, 2:4)
+  
+  expect_that(alply(a, NULL, sum)[[1]], equals(sum(1:24)))  
+})
+
 test_that("results must have positive dimensions", {
   expect_that(
     aaply(matrix(0,2,2), 2, function(x) numeric(0)),

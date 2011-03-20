@@ -29,6 +29,11 @@
 #' plyr:::splitter_a(ozone, 1:2)
 splitter_a <- function(data, .margins = 1L, .expand = TRUE) {
   .margins <- as.integer(.margins)
+  
+  if (length(.margins) == 0) {
+    return(list(data))
+  }
+  
   if (!all(.margins %in% seq_len(dims(data)))) stop("Invalid margin")
   
   dimensions <- lapply(amv_dim(data), seq_len)
