@@ -18,39 +18,15 @@ list_to_dataframe <- function(res, labels = NULL) {
   if (all(atomic)) {
     ulength <- unique(unlist(lapply(res, length)))
     if (length(ulength) != 1) stop("Results do not have equal lengths")
-
-    # convert to data.frame to protect class/attributes when rbind'ing
-    res <- lapply(res, function(x) {
-      # converting a vector with as.data.frame fills it in one colum
-      # here we want the vector to be considered as one line
-      # to do that we have to pre-build the dataframe and fill it manually
-      # TODO: find a more efficient way to do that
-      df <- data.frame(matrix(NA, nrow=1, ncol=length(x)))
-      for (i in seq_len(length(x))) {
-        df[i] <- x[i]
-      }
-      # fill names
-      tmpNames <- paste("V", seq_len(length(x)), sep="")
-      if (is.null(names(x))) {
-        names(df) <- tmpNames
-      } else {
-        names(df) <- names(x)
-        blanks <- (names(df) == "")
-        names(df)[blanks] = tmpNames[blanks]
-      }
-      return(df)
-    })
-
+    
     if (length(res) > 1) {
-      # rbind those newley created data.frames together
-      resdf = do.call("rbind", res)
+      resdf <- as.data.frame(do.call("rbind", res), stringsAsFactors = FALSE)
     } else {
-      # we don't need rbind here but we still need the transformation into data frame above
-      resdf = res[[1]]
+      resdf <- as.data.frame(res[[1]], stringsAsFactors = FALSE)
+      resdf <- t(resdf) # since the dimnames are switched
     }
     rows <- rep(1, length(res))
   } else if (all(df)) {
-    # this works to preserve attributes
     resdf <- rbind.fill(res)
     rows <- unlist(lapply(res, NROW))
   } else {
