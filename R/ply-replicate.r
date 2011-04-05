@@ -13,6 +13,9 @@
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @return list of results
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 #' @examples
 #' mods <- rlply(100, lm(y ~ x, data=data.frame(x=rnorm(100), y=rnorm(100))))
 #' hist(laply(mods, function(x) summary(x)$r.squared))
@@ -53,6 +56,9 @@ rlply <- function(.n, .expr, .progress = "none") {
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @return a data frame
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 #' @examples
 #' rdply(20, mean(runif(100)))
 #' rdply(20, each(mean, var)(runif(100)))
@@ -86,6 +92,9 @@ rdply <- function(.n, .expr, .progress = "none") {
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 #' @param .drop should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 #' @examples
 #' raply(100, mean(runif(100)))
 #' raply(100, each(mean, var)(runif(100)))
@@ -121,6 +130,9 @@ raply <- function(.n, .expr, .progress = "none", .drop = TRUE) {
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .print automatically print each result? (default: \code{FALSE})
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 #' @examples
 #' r_ply(10, plot(runif(50)))
 #' r_ply(25, hist(runif(1000)))

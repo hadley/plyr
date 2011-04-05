@@ -22,6 +22,9 @@
 }
 \keyword{manip}
 \value{a data frame}
+\references{Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+\url{http://www.jstatsoft.org/v40/i01/}.}
 \arguments{
   \item{.data}{matrix, array or data frame to be processed}
   \item{.margins}{a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions}

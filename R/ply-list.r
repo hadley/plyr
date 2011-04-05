@@ -23,6 +23,9 @@
 #'   backend provided by foreach
 #' @return list of results
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 #' @examples
 #' llply(llply(mtcars, round), table)
 #' llply(baseball, summary)
@@ -123,6 +126,9 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
 #'   backend provided by foreach
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 #' @examples
 #' linmod <- function(df) lm(rbi ~ year, data = mutate(df, year = year - min(year)))
 #' models <- dlply(baseball, .(id), linmod)
@@ -156,6 +162,9 @@ dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' 
 #' @keywords manip
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 #' @param .data matrix, array or data frame to be processed
 #' @param .margins a vector giving the subscripts to split up \code{data} by.  1 splits up by rows, 2 by columns and c(1,2) by rows and columns, and so on for higher dimensions
 #' @param .fun function to apply to each piece

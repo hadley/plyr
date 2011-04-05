@@ -15,6 +15,9 @@
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .print automatically print each result? (default: \code{FALSE})
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE) {
   if (is.character(.fun)) .fun <- do.call("each", as.list(.fun))
   if (!is.function(.fun)) stop(".fun is not a function.")
@@ -52,6 +55,9 @@ l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE) {
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .print automatically print each result? (default: \code{FALSE})
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 d_ply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .print = FALSE) {
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables)
@@ -81,6 +87,9 @@ d_ply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .prin
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .print automatically print each result? (default: \code{FALSE})
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 a_ply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .print = FALSE) {
   pieces <- splitter_a(.data, .margins, .expand)
   
