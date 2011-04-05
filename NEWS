@@ -1,0 +1,246 @@
+Version 1.4.1 (2011-04-05)
+------------------------------------------------------------------------------
+
+* Add citation to JSS article
+
+Version 1.4 (2011-01-03)
+------------------------------------------------------------------------------
+
+* `count` now takes an additional parameter `wt_var` which allows you to
+  compute weighted sums. This is as fast, or faster than, `tapply` or `xtabs`.
+
+* Really fix bug in `names.quoted`
+
+* `.` now captures the environment in which it was evaluated. This should fix
+  an esoteric class of bugs which no-one probably ever encountered, but will
+  form the basis for an improved version of `ggplot2::aes`.
+
+Version 1.3.1 (2010-12-30)
+------------------------------------------------------------------------------
+
+* Fix bug in `names.quoted` that interfered with ggplot2
+
+Version 1.3 (2010-12-28)
+------------------------------------------------------------------------------
+
+NEW FEATURES
+
+* new function `mutate` that works like transform to add new columns or
+  overwrite existing columns, but computes new columns iteratively so later
+  transformations can use columns created by earlier transformations. (It's
+  also about 10x faster) (Fixes #21)
+
+BUG FIXES
+
+* split column names are no longer coerced to valid R names.
+
+* `quickdf` now adds names if missing
+
+* `summarise` preserves variable names if explicit names not provided (Fixes
+  #17)
+
+* `arrays` with names should be sorted correctly once again (also fixed a bug
+  in the test case that prevented me from catching this automatically)
+
+* `m_ply` no longer possesses .parallel argument (mistakenly added)
+
+* `ldply` (and hence `adply` and `ddply`) now correctly passes on .parallel
+  argument (Fixes #16)
+
+* `id` uses a better strategy for converting to integers, making it possible
+  to use for cases with larger potential numbers of combinations
+
+Version 1.2.1 (2010-09-10)
+------------------------------------------------------------------------------
+
+* Fix bug in llply fast path that causes problems with ggplot2.
+
+Version 1.2 (2010-09-09)
+------------------------------------------------------------------------------
+
+NEW FEATURES
+
+* l*ply, d*ply, a*ply and m*ply all gain a .parallel argument that when TRUE,
+  applies functions in parallel using a parallel backend registered with the
+  foreach package:
+
+  x <- seq_len(20)
+  wait <- function(i) Sys.sleep(0.1)
+  system.time(llply(x, wait))
+  #  user  system elapsed 
+  # 0.007   0.005   2.005 
+   
+  library(doMC)
+  registerDoMC(2) 
+  system.time(llply(x, wait, .parallel = TRUE))
+  #  user  system elapsed 
+  # 0.020   0.011   1.038 
+
+  This work has been generously supported by BD (Becton Dickinson).
+
+MINOR CHANGES
+
+* a*ply and m*ply gain an .expand argument that controls whether data frames
+  produce a single output dimension (one element for each row), or an output
+  dimension for each variable.
+
+* new vaggregate (vector aggregate) function, which is equivalent to tapply,
+  but much faster (~ 10x), since it avoids copying the data.
+
+* llply: for simple lists and vectors, with no progress bar, no extra info,
+  and no parallelisation, llply calls lapply directly to avoid all the
+  overhead associated with those unused extra features.
+
+* llply: in serial case, for loop replaced with custom C function that takes
+  about 40% less time (or about 20% less time than lapply). Note that as a
+  whole, llply still has much more overhead than lapply.
+
+* round_any now lives in plyr instead of reshape
+
+BUG FIXES
+
+* list_to_array works correct even when there are missing values in the array.  
+  This is particularly important for daply.
+
+Version 1.1 (2010-07-19)
+------------------------------------------------------------------------------
+
+* *dply deals more gracefully with the case when all results are NULL 
+  (fixes #10)
+
+* *aply correctly orders output regardless of dimension names 
+  (fixes #11)
+
+* join gains type = "full" which preserves all x and y rows
+
+Version 1.0 (2010-07-02)
+------------------------------------------------------------------------------
+
+New functions:
+
+* arrange, a new helper method for reordering a data frame.
+* count, a version of table that returns data frames immediately and that is
+  much much faster for high-dimensional data.
+* desc makes it easy to sort any vector in descending order
+* join, works like merge but can be much faster and has a somewhat simpler
+  syntax drawing from SQL terminology
+* rbind.fill.matrix is like rbind.fill but works for matrices, code 
+  contributed by C. Beleites
+
+Speed improvements
+
+* experimental immutable data frame (idata.frame) that vastly speeds up
+  subsetting - for large datasets with large numbers of groups, this can yield
+  10-fold speed ups. See examples in ?idata.frame to see how to use it.
+* rbind.fill rewritten again to increase speed and work with more data types
+* d*ply now much faster with nested groups
+
+  This work has been generously supported by BD (Becton Dickinson).
+  
+
+New features:
+
+* d*ply now accepts NULL for splitting variables, indicating that the data
+  should not be split
+* plyr no longer exports internal functions, many of which were causing
+  clashes with other packages
+* rbind.fill now works with data frame columns that are lists or matrices
+* test suite ensures that plyr behaviour is correct and will remain correct
+  as I make future improvements.
+
+Bug fixes:
+
+* **ply: if zero splits, empty list(), data.frame() or logical() returned, 
+  as appropriate for the output type
+* **ply: leaving .fun as NULL now always returns list 
+  (thanks to Stavros Macrakis for the bug report)
+* a*ply: labels now respect options(stringAsFactors)
+* each: scoping bug fixed, thanks to Yasuhisa Yoshida for the bug report
+* list_to_dataframe is more consistent when processing a single data frame
+* NAs preserved in more places
+* progress bars: guaranteed to terminate even if **ply prematurely terminates
+* progress bars: misspelling gives informative warning, instead of
+  uninformative error
+* splitter_d: fixed ordering bug when .drop = FALSE
+
+Version 0.1.9 (2009-06-23)
+------------------------------------------------------------------------------
+
+
+* fix bug in rbind.fill when NULLs present in list
+* improve each to recognise when all elements are numeric
+* fix labelling bug in d*ply when .drop = FALSE
+* additional methods for quoted objects
+* add summarise helper - this function is like transform, but creates a new data frame rather than reusing the old (thanks to Brendan O'Connor for the neat idea)
+
+Version 0.1.8 (2009-04-20)
+------------------------------------------------------------------------------
+
+
+* made rbind a little faster (~20%) using an idea from Richard Raubertas
+* daply now works correctly when splitting variables that contain empty factor levels
+
+Version 0.1.7 (2009-04-15)
+------------------------------------------------------------------------------
+
+ * Version that rbind.fill copies attributes.
+
+Version 0.1.6 (2009-04-15)
+------------------------------------------------------------------------------
+
+
+Improvements:
+
+* all ply functions deal more elegantly when given function names: can supply a vector of function names, and name is used as label in output
+* failwith and each now work with function names as well as functions (i.e. "nrow" instead of nrow)
+* each now accepts a list of functions or a vector of function names
+* l*ply will use list names where present
+* if .inform is TRUE, error messages will give you information about where errors within your data - hopefully this will make problems easier to track down
+* d*ply no longer converts splitting variables to factors when drop = T (thanks to bug report from Charlotte Wickham)
+
+Speed-ups
+
+* massive speed ups for splitting large arrays
+* fixed typo that was causing a 50% speed penalty for d*ply
+* rewritten rbind.fill is considerably (> 4x) faster for many data frames
+* colwise about twice as fast
+
+Bug fixes:
+
+* daply: now works when the data frame is split by multiple variables
+* aaply: now works with vectors
+* ddply: first variable now varies slowest as you'd expect
+
+
+Version 0.1.5 (2009-02-23)
+------------------------------------------------------------------------------
+
+* colwise now accepts a quoted list as its second argument.  This allows you to specify the names of columns to work on: colwise(mean, .(lat, long))
+* d_ply and a_ply now correctly pass ... to the function
+
+Version 0.1.4 (2008-12-12)
+------------------------------------------------------------------------------
+
+ * Greatly improved speed (> 10x faster) and memory usage (50%) for splitting data frames with many combinations
+ * Splitting variables containing missing values now handled consistently
+
+Version 0.1.3 (2008-11-19)
+------------------------------------------------------------------------------
+
+* Fixed problem where when splitting by a variable that contained missing values, missing combinations would be drop, and labels wouldn't match up
+
+Version 0.1.2 (2008-11-18)
+------------------------------------------------------------------------------
+
+  * a*ply now works correctly with array-lists
+  * drop. -> .drop
+  * r*ply now works with ...
+  * use inherits instead of is so method package doesn't need to be loaded
+  * fix bug with using formulas
+
+Version 0.1.1 (2008-10-08)
+------------------------------------------------------------------------------
+
+  * argument names now start with . (instead of ending with it) - this should prevent name clashes with arguments of the called function 
+  * return informative error if .fun is not a function
+  * use full names in all internal calls to avoid argument name clashes
