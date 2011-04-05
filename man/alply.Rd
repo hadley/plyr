@@ -24,6 +24,9 @@
   for cases where the results are not atomic.
 }
 \keyword{manip}
+\references{Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+\url{http://www.jstatsoft.org/v40/i01/}.}
 \value{list of results}
 \arguments{
   \item{.data}{matrix, array or data frame to be processed}

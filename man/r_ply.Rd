@@ -14,6 +14,9 @@
   \code{\link{replicate}}, but never returns anything
 }
 \keyword{manip}
+\references{Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+\url{http://www.jstatsoft.org/v40/i01/}.}
 \arguments{
   \item{.n}{number of times to evaluate the expression}
   \item{.expr}{expression to evaluate}
