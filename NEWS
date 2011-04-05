@@ -37,6 +37,11 @@ BUG FIXES
   levels that don't occur in the data, and `drop = T` to remove combinations
   of levels that don't occur.
 
+Version 1.4.1 (2011-04-05)
+------------------------------------------------------------------------------
+
+* Add citation to JSS article
+
 Version 1.4 (2011-01-03)
 ------------------------------------------------------------------------------
 
