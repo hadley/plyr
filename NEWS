@@ -37,6 +37,9 @@ BUG FIXES
   levels that don't occur in the data, and `drop = T` to remove combinations
   of levels that don't occur.
 
+* `vaggregate` now passes `...` to the aggregation function when working out
+  the output type (thanks to bug report by Pavan Racherla)
+
 Version 1.4.1 (2011-04-05)
 ------------------------------------------------------------------------------
 

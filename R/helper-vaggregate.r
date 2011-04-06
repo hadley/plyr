@@ -45,7 +45,7 @@ vaggregate <- function(.value, .group, .fun, ..., .default = NULL, .n = nlevels(
   }
 
   if (is.null(.default)) {
-    .default <- .fun(.value[0])
+    .default <- .fun(.value[0], ...)
   }
   
   fun <- function(i) {
