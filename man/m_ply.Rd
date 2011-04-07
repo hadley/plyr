@@ -22,6 +22,9 @@
   length 0 (\code{list()}).
 }
 \keyword{manip}
+\references{Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+\url{http://www.jstatsoft.org/v40/i01/}.}
 \arguments{
   \item{.data}{matrix or data frame to use as source of arguments}
   \item{.fun}{function to be called with varying arguments}

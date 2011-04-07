@@ -24,6 +24,9 @@
 #'   backend provided by foreach
 #' @return a data frame
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE) {
   if (!inherits(.data, "split")) .data <- as.list(.data)
   res <- llply(.data = .data, .fun = .fun, ..., 
@@ -61,6 +64,9 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE
 #'   backend provided by foreach
 #' @return a data frame
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 #' @examples
 #' ddply(baseball, .(year), "nrow") 
 #' ddply(baseball, .(lg), c("nrow", "ncol")) 
@@ -103,6 +109,9 @@ ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #'   backend provided by foreach
 #' @return a data frame
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 adply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .parallel = FALSE) {
   pieces <- splitter_a(.data, .margins, .expand)
   

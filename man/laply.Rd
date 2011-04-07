@@ -27,6 +27,9 @@
 }
 \keyword{manip}
 \value{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}
+\references{Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+\url{http://www.jstatsoft.org/v40/i01/}.}
 \arguments{
   \item{.data}{input list}
   \item{.fun}{function to apply to each piece}

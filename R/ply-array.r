@@ -23,6 +23,9 @@
 #'   backend provided by foreach
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 #' @examples
 #' laply(baseball, is.factor)
 #' # cf
@@ -67,6 +70,9 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE, .p
 #'   backend provided by foreach
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 #' @examples
 #' daply(baseball, .(year), nrow)
 #'
@@ -114,6 +120,9 @@ daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #'   backend provided by foreach
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 #' @examples
 #' dim(ozone)
 #' aaply(ozone, 1, mean)

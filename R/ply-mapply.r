@@ -23,6 +23,9 @@
 #'   backend provided by foreach
 #' @return a data frame
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 #' @examples
 #' mdply(data.frame(mean = 1:5, sd = 1:5), rnorm, n = 2)
 #' mdply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 2)
@@ -59,6 +62,9 @@ mdply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none", .
 #'   backend provided by foreach
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 #' @examples
 #' maply(cbind(mean = 1:5, sd = 1:5), rnorm, n = 5)
 #' maply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 5)
@@ -94,6 +100,9 @@ maply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none", .
 #'   backend provided by foreach
 #' @return list of results
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 #' @examples
 #' mlply(cbind(1:4, 4:1), rep)
 #' mlply(cbind(1:4, times = 4:1), rep)
@@ -128,6 +137,9 @@ mlply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none", .
 #'   each row; or nd (expand = TRUE), with a dimension for each variable.
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @export
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
+#'   \url{http://www.jstatsoft.org/v40/i01/}.
 m_ply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none") {
   if (is.matrix(.data) & !is.list(.data)) .data <- .matrix_to_df(.data)
 
