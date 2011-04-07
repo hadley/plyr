@@ -10,6 +10,21 @@
 list_to_dataframe <- function(res, labels = NULL) {
   null <- vapply(res, is.null, logical(1))
   res <- res[!null]
+  labelsOK <- FALSE
+  if (!is.null(labels)) {
+    # If supplied labels have the correct length
+	  if (nrow(labels) == length(null)) {
+      labels <- labels[!null, , drop=FALSE]
+      labelsOK <- TRUE
+	  }
+	} else {
+    # If no labels supplied, use list names
+    if (!is.null(names(res))) {
+      labels <- data.frame(.id = names(res), stringsAsFactors = FALSE)
+      labelsOK <- TRUE
+    }
+  }
+
   if (length(res) == 0) return(data.frame())
 
   atomic <- unlist(lapply(res, is.atomic))
@@ -33,18 +48,13 @@ list_to_dataframe <- function(res, labels = NULL) {
     stop("Results must be all atomic, or all data frames")
   }
 
-  # If no labels supplied, use list names
-  if (is.null(labels) && !is.null(names(res))) {
-    labels <- data.frame(.id = names(res), stringsAsFactors = FALSE)
-  }
-
-  if (!is.null(labels) && nrow(labels) == length(null)) {
+  if (labelsOK) {
     missing_names <- names(labels) == ""
     names(labels)[missing_names] <- paste("X", seq_len(sum(missing_names)),
        sep = "")
     
     cols <- setdiff(names(labels), names(resdf))
-    labels <- labels[!null, cols, drop = FALSE]
+    labels <- labels[, cols, drop = FALSE]
     resdf <- cbind(labels[rep(1:nrow(labels), rows), , drop = FALSE], resdf)
   }
   
