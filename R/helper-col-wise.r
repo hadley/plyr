@@ -51,7 +51,7 @@ colwise <- function(.fun, .cols = true) {
   function(df, ...) {
     stopifnot(is.data.frame(df))
     filtered <- filter(df)
-    if (ncol(filtered) == 0) return(data.frame())
+    if (length(filtered) == 0) return(data.frame())
     
     df <- quickdf(lapply(filtered, .fun, ...))
     names(df) <- names(filtered)
