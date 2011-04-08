@@ -2,17 +2,12 @@
 #' Turn a function that operates on a vector into a function that operates
 #' column-wise on a data.frame.
 #'
-#' By default, the generated function preserves the rownames of the data.frame.
-#' To set the rownames differently, you can specify an argument \code{row.names}
-#' to the generated function.
-#' All other arguments for the generated function will be handed down
-#' into the vector function.
-#'
-#' \code{catcolwise} and \code{numcolwise} provide versions that only operate
-#' on discrete and numeric columns respectively.
+#' \code{catcolwise} and \code{numcolwise} provide version that only operate
+#' on discrete and numeric variables respectively.
 #' 
-#' @param .fun function operating on a vector
-#' @param .cols either a function that tests columns for inclusion, or a quoted object giving which columns to process
+#' @param .fun function
+#' @param .cols either a function that tests columns for inclusion, or a
+#'   quoted object giving which columns to process
 #' @aliases colwise catcolwise numcolwise
 #' @export colwise numcolwise catcolwise
 #' @examples
@@ -53,17 +48,12 @@ colwise <- function(.fun, .cols = true) {
     filter <- function(df) Filter(.cols, df)
   }
   
-  function(df, row.names = NULL, ...) {
+  function(df, ...) {
     stopifnot(is.data.frame(df))
-    if (is.null(row.names)) row.names <- rownames(df)
-
     filtered <- filter(df)
     if (ncol(filtered) == 0) return(data.frame())
     
     df <- quickdf(lapply(filtered, .fun, ...))
-    if (nrow(df) == length(row.names)) {
-      rownames(df) <- row.names
-    }
     names(df) <- names(filtered)
     df
   }

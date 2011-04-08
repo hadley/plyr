@@ -9,22 +9,17 @@
 }
 
 \details{
-  By default, the generated function preserves the rownames
-  of the data.frame. To set the rownames differently, you
-  can specify an argument \code{row.names} to the generated
-  function. All other arguments for the generated function
-  will be handed down into the vector function.
-
-  \code{catcolwise} and \code{numcolwise} provide versions
-  that only operate on discrete and numeric columns
+  \code{catcolwise} and \code{numcolwise} provide version
+  that only operate on discrete and numeric variables
   respectively.
 }
 \alias{colwise}
 \alias{catcolwise}
 \alias{numcolwise}
 \arguments{
-  \item{.fun}{function operating on a vector}
-  \item{.cols}{either a function that tests columns for inclusion, or a quoted object giving which columns to process}
+  \item{.fun}{function}
+  \item{.cols}{either a function that tests columns for inclusion, or a
+quoted object giving which columns to process}
 }
 \examples{# Count number of missing values
 nmissing <- function(x) sum(is.na(x))
