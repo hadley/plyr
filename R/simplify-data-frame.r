@@ -16,16 +16,18 @@ list_to_dataframe <- function(res, labels = NULL) {
   df <- unlist(lapply(res, is.data.frame))
 
   if (all(atomic)) {
-    ulength <- unique(unlist(lapply(res, length)))
-    if (length(ulength) != 1) stop("Results do not have equal lengths")
+    nrow <- length(res)
+    ncol <- unique(unlist(lapply(res, length)))
+    if (length(ncol) != 1) stop("Results do not have equal lengths")
     
-    if (length(res) > 1) {
-      resdf <- as.data.frame(do.call("rbind", res), stringsAsFactors = FALSE)
-    } else {
-      resdf <- as.data.frame(res[[1]], stringsAsFactors = FALSE)
-      resdf <- t(resdf) # since the dimnames are switched
+    vec <- do.call("c", res)
+
+    resdf <- quickdf(unname(split(vec, rep(seq_len(ncol), nrow))))
+    if (!is.null(names(res[[1]]))) {
+      names(resdf) <- names(res[[1]])
     }
-    rows <- rep(1, length(res))
+
+    rows <- rep(ncol, length(nrow))
   } else if (all(df)) {
     resdf <- rbind.fill(res)
     rows <- unlist(lapply(res, NROW))
