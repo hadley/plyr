@@ -57,3 +57,17 @@ test_that("full merge preserves x and y", {
   expect_that(ab$a, equals(c(1:10, rep(NA, 5))))
   expect_that(ab$b, equals(c(rep(NA, 10), 1:5)))    
 })
+
+test_that("left and right are equivalent", {
+  d1 <- data.frame(a = 1:3, b = 1:3)
+  d2 <- data.frame(a = 1:4, c = 1:4)
+
+  right <- join(d1, d2, type="right", by = "a")
+  left <- join(d2, d1, type="left", by = "a")
+  expect_that(left[c("a", "b" ,"c")], equals(right[c("a", "b" ,"c")]))
+
+  right <- join(d1, d2, type="right", by = "a", match = "first")
+  left <- join(d2, d1, type="left", by = "a", match = "first")
+  expect_that(left[c("a", "b" ,"c")], equals(right[c("a", "b" ,"c")]))
+
+})

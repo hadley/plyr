@@ -69,9 +69,10 @@ join_first <- function(x, y, by, type) {
       stop("Duplicated key in y", call. = FALSE)
     }
     
+    new.cols <- setdiff(names(x), by)
     x.match <- match(keys$y, keys$x)
     x.matched <- unrowname(x[x.match, , drop = FALSE])
-    cbind(x.matched, y[, new.cols, drop = FALSE])
+    cbind(y, x.matched[, new.cols, drop = FALSE])
     
   } else if (type == "full") {
     # x with matching y's then any unmatched ys
@@ -100,8 +101,9 @@ join_all <- function(x, y, by, type) {
     out <- cbind(x[ids$x, , drop = FALSE], y[ids$y, new.cols, drop = FALSE])
   } else if (type == "right") {
     # Flip x and y, but make sure to put new columns in the right place
+    new.cols <- setdiff(names(x), by)
     ids <- join_ids(y, x, by, all = TRUE)
-    out <- cbind(x[ids$y, , drop = FALSE], y[ids$x, new.cols, drop = FALSE])
+    out <- cbind(y[ids$x, , drop = FALSE], x[ids$y, new.cols, drop = FALSE])
   } else if (type == "full") {
     # x's with all matching y's, then non-matching y's - just the same as
     # join.first
