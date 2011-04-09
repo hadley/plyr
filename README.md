@@ -15,6 +15,6 @@ It's already possible to do this with base R functions (like split and the apply
   * built-in error recovery, and informative error messages
   * labels that are maintained across all transformations
 
-Considerable effort has been put into making plyr fast and memory efficient, and in many cases plyr is as fast as, or faster than, the built-in functions.
+Considerable effort has been put into making plyr fast and memory efficient, and in many cases plyr is as fast as, or faster than, the built-in equivalents.
 
-You can find out more at http://had.co.nz/plyr/, including a 20 page introductory guide, http://had.co.nz/plyr/plyr-intro.pdf.  You can ask questions about plyr (and data-manipulation in general) on the plyr mailing list. Sign up at http://groups.google.com/group/manipulatr
+A detailed introduction to plyr has been published in JSS: "The Split-Apply-Combine Strategy for Data Analysis", http://www.jstatsoft.org/v40/i01/. You can find out more at http://had.co.nz/plyr/, or track development at http://github.com/hadley/plyr. You can ask questions about plyr (and data manipulation in general) on the plyr mailing list. Sign up at http://groups.google.com/group/manipulatr.
