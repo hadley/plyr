@@ -99,5 +99,5 @@ test_that("names preserved and filled for atomic vectors", {
   expect_that(df, is_a("data.frame"))
   expect_that(nrow(df), equals(2))
   expect_that(ncol(df), equals(2))
-  expect_that(names(df), equals(c("foo","X2")))
+  expect_that(names(df), equals(c("foo","V1")))
 })

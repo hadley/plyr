@@ -20,13 +20,11 @@ list_to_dataframe <- function(res, labels = NULL) {
     ncol <- unique(unlist(lapply(res, length)))
     if (length(ncol) != 1) stop("Results do not have equal lengths")
     
-    vec <- do.call("c", res)
-
+    vec <- unname(do.call("c", res))
+    
     resdf <- quickdf(unname(split(vec, rep(seq_len(ncol), nrow))))
-    if (!is.null(names(res[[1]]))) {
-      names(resdf) <- names(res[[1]])
-    }
-
+    names(resdf) <- make_names(res[[1]], "V")
+    
     rows <- rep(ncol, length(nrow))
   } else if (all(df)) {
     resdf <- rbind.fill(res)
@@ -39,11 +37,9 @@ list_to_dataframe <- function(res, labels = NULL) {
   if (is.null(labels) && !is.null(names(res))) {
     labels <- data.frame(.id = names(res), stringsAsFactors = FALSE)
   }
-
+  
   if (!is.null(labels) && nrow(labels) == length(null)) {
-    missing_names <- names(labels) == ""
-    names(labels)[missing_names] <- paste("X", seq_len(sum(missing_names)),
-       sep = "")
+    names(labels) <- make_names(labels, "X")
     
     cols <- setdiff(names(labels), names(resdf))
     labels <- labels[!null, cols, drop = FALSE]
