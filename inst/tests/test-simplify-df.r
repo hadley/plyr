@@ -101,3 +101,15 @@ test_that("names preserved and filled for atomic vectors", {
   expect_that(ncol(df), equals(2))
   expect_that(names(df), equals(c("foo","V1")))
 })
+
+test_that("names captured from list", {
+  li <- list(a = 1:5, b = 5:10, c = 5:15)
+
+  df <- ldply(li, function(x) mean(x))
+  expect_that(df$.id, equals(c("a", "b", "c")))
+
+  df <- ldply(li, function(x) {
+      if (any(x >= 10)) mean(x)
+  })
+  expect_that(df$.id, equals(c("b", "c")))
+})

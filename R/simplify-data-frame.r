@@ -12,6 +12,15 @@ list_to_dataframe <- function(res, labels = NULL) {
   res <- res[!null]
   if (length(res) == 0) return(data.frame())
 
+  if (!is.null(labels)) {
+    stopifnot(nrow(labels) == length(null))
+    labels <- labels[!null, , drop = FALSE]
+  }
+  if (is.null(labels) && !is.null(names(res))) {
+    labels <- data.frame(.id = names(res), stringsAsFactors = FALSE)
+  }
+
+  # Figure out how to turn elements into a data frame
   atomic <- unlist(lapply(res, is.atomic))
   df <- unlist(lapply(res, is.data.frame))
 
@@ -32,20 +41,14 @@ list_to_dataframe <- function(res, labels = NULL) {
   } else {
     stop("Results must be all atomic, or all data frames")
   }
+  
+  if(is.null(labels)) return(unrowname(resdf))
 
-  # If no labels supplied, use list names
-  if (is.null(labels) && !is.null(names(res))) {
-    labels <- data.frame(.id = names(res), stringsAsFactors = FALSE)
-  }
+  # Add labels to results
+  names(labels) <- make_names(labels, "X")
   
-  if (!is.null(labels) && nrow(labels) == length(null)) {
-    names(labels) <- make_names(labels, "X")
-    
-    cols <- setdiff(names(labels), names(resdf))
-    labels <- labels[!null, cols, drop = FALSE]
-    resdf <- cbind(labels[rep(1:nrow(labels), rows), , drop = FALSE], resdf)
-  }
+  cols <- setdiff(names(labels), names(resdf))
+  labels <- labels[rep(1:nrow(labels), rows), cols, drop = FALSE]
   
-  unrowname(resdf)
+  unrowname(cbind(labels, resdf))
 }
-
