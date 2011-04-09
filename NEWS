@@ -19,6 +19,8 @@ BUG FIXES
 * `*dply` now correctly names output even when some output combinations are
   missing (NULL) (Thanks to bug report from Karl Ove Hufthammer)
 
+* `*dply` preserves the class of many more object types.
+
 * `a*ply` now correctly works with zero length margins, operating on the
   entire object (Thanks to bug report from Stavros Macrakis)
 
