@@ -13,3 +13,10 @@ test_that("Single name match makes change", {
   
   expect_equal(names(y), c("a", "c"))
 })
+
+test_that("Multiple names correctly changed", {
+  x <- c(a = 1, b = 2, c = 3)
+  y <- rename(x, c("c" = "f", "b" = "e", "a" = "d"))
+  
+  expect_equal(names(y), c("d", "e", "f"))
+})

@@ -10,8 +10,7 @@
 #' rename(mtcars, c("disp" = "displ"))
 rename <- function (x, replace) {
   old_names <- names(x)
-  new_names <- unname(replace)
-  name_match <- match(old_names, names(replace))
+  new_names <- unname(replace)[match(old_names, names(replace))]
   
-  setNames(x, ifelse(is.na(name_match), old_names, new_names))
+  setNames(x, ifelse(is.na(new_names), old_names, new_names))
 }
