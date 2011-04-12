@@ -62,6 +62,7 @@ output_template <- function(dfs, nrows) {
   seen <- rep(FALSE, length(output))
   names(seen) <- vars
   
+  is_array <- seen
   is_matrix <- seen
   is_factor <- seen
     
@@ -79,6 +80,8 @@ output_template <- function(dfs, nrows) {
         output[[var]] <- vector("list", nrows)
       } else if (is.matrix(value)) {
         is_matrix[var] <- TRUE
+      } else if (is.array(value)) {
+        is_array[var] <- TRUE
       } else if (inherits(value, "POSIXt")) {
         output[[var]] <- as.POSIXct(rep(NA, nrows))
         attr(output[[var]], "tzone") <- attr(value, "tzone")
@@ -104,9 +107,19 @@ output_template <- function(dfs, nrows) {
     width <- unique(unlist(lapply(dfs, function(df) ncol(df[[var]]))))
     if (length(width) > 1) 
       stop("Matrix variable ", var, " has inconsistent widths")
-    
+      
     vec <- rep(NA, nrows * width)
     output[[var]] <- array(vec, c(nrows, width))
+  }
+  
+  # Set up arrays
+  for (var in vars[is_array]) {
+    dims <- unique(unlist(lapply(dfs, function(df) dims(df[[var]]))))
+    if (any(dims) > 1) {
+      stop("rbind.fill can only work with 1d arrays")
+    }
+    
+    output[[var]] <- rep(NA, nrows)    
   }
   
   output

@@ -73,3 +73,11 @@ test_that("time zones are preserved", {
   }
 
 })
+
+test_that("arrays are ok", {
+  df <- data.frame(x = 1)
+  df$x <- array(1, 1)
+
+  df2 <- rbind.fill(df, df)
+  expect_that(df2$x, is_equivalent_to(rbind(df, df)$x))
+})
