@@ -1,4 +1,4 @@
-Version 1.6
+Version 1.5.1
 ------------------------------------------------------------------------------
 
 * `rbind.fill` now treats 1d arrays in the same way as `rbind` (i.e. it turns
