@@ -34,7 +34,7 @@ list_to_dataframe <- function(res, labels = NULL) {
     resdf <- quickdf(unname(split(vec, rep(seq_len(ncol), nrow))))
     names(resdf) <- make_names(res[[1]], "V")
     
-    rows <- rep(ncol, length(nrow))
+    rows <- rep(1, length(nrow))
   } else if (all(df)) {
     resdf <- rbind.fill(res)
     rows <- unlist(lapply(res, NROW))
