@@ -3,6 +3,8 @@ Version 1.5.2
 
 * `d*ply` returns correct number of rows when function returns vector
 
+* fix NAMESPACE bug which was causing problems with ggplot2
+
 Version 1.5.1
 ------------------------------------------------------------------------------
 
