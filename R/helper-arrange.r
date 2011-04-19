@@ -16,7 +16,11 @@
 #' arrange(mtcars, cyl, desc(disp))
 arrange <- function(df, ...) {
   ord <- eval(substitute(order(...)), df, parent.frame())
-  unrowname(df[ord, ])
+  if(length(ord) != nrow(df)) {
+    stop("Length of ordering vectors don't match data frame size", 
+      call. = FALSE)
+  }
+  unrowname(df[ord, , drop = FALSE])
 }
 
 #' Descending order.
