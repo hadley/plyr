@@ -81,3 +81,20 @@ test_that("arrays are ok", {
   df2 <- rbind.fill(df, df)
   expect_that(df2$x, is_equivalent_to(rbind(df, df)$x))
 })
+
+test_that("attributes are preserved", {
+  d1 <- data.frame(a = runif(10), b = runif(10))
+  d2 <- data.frame(a = runif(10), b = runif(10))
+
+  attr(d1$b, "foo") <- "one"
+  attr(d1$b, "bar") <- "bar"
+  attr(d2$b, "foo") <- "two"
+  attr(d2$b, "baz") <- "baz"
+  
+  d12 <- rbind.fill(d1, d2)
+  d21 <- rbind.fill(d2, d1)
+  
+  expect_that(attr(d12$b, "foo"), equals("one"))
+  expect_that(attr(d21$b, "foo"), equals("two"))
+  
+})

@@ -88,6 +88,7 @@ output_template <- function(dfs, nrows) {
       } else {
         output[[var]] <- rep(NA, nrows)
         class(output[[var]]) <- class(value)
+        attributes(output[[var]]) <- attributes(value)
       }
     }
 
