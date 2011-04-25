@@ -76,8 +76,6 @@ output_template <- function(dfs, nrows) {
       } else if (is.factor(value)) {
         output[[var]] <- factor(rep(NA, nrows))
         is_factor[var] <- TRUE
-      } else if (is.list(value)) {
-        output[[var]] <- vector("list", nrows)
       } else if (is.matrix(value)) {
         is_matrix[var] <- TRUE
       } else if (is.array(value)) {
@@ -85,6 +83,8 @@ output_template <- function(dfs, nrows) {
       } else if (inherits(value, "POSIXt")) {
         output[[var]] <- as.POSIXct(rep(NA, nrows))
         attr(output[[var]], "tzone") <- attr(value, "tzone")
+      } else if (is.list(value)) {
+        output[[var]] <- vector("list", nrows)
       } else {
         output[[var]] <- rep(NA, nrows)
         class(output[[var]]) <- class(value)

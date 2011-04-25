@@ -1,6 +1,8 @@
 Version 1.6
 ------------------------------------------------------------------------------
 
+* `rbind.fill` now works with variables of class `POSIXlt`
+
 * `rbind.fill` tries harder to keep attributes, retaining the attributes from
   the first ocurrence of each column it finds
 

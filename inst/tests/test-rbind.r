@@ -4,14 +4,19 @@ test_that("variable classes are preserved", {
   a <- data.frame(a = factor(letters[1:3]), b = 1:3, c = date())
   b <- data.frame(
     a = factor(letters[3:5]), 
-    d = as.Date(c("2008-01-01", "2009-01-01", "2010-01-01")),
-    e = I (matrix (1:6, nrow = 3)))
-  ab1 <- rbind.fill(a, b)[, letters[1:5]]
-  ab2 <- rbind.fill(b, a)[c(4:6, 1:3), letters[1:5]]
+    d = as.Date(c("2008-01-01", "2009-01-01", "2010-01-01")))
+  b$e <- as.POSIXlt(as.Date(c("2008-01-01", "2009-01-01", "2010-01-01"))) 
+  b$f <- matrix (1:6, nrow = 3)
+  
+  ab1 <- rbind.fill(a, b)[, letters[1:6]]
+  ab2 <- rbind.fill(b, a)[c(4:6, 1:3), letters[1:6]]
   ab2$a <- factor(ab2$a, levels(ab1$a))
   rownames(ab2) <- NULL
   
   expect_that(ab1, equals(ab2))
+  expect_that(unname(lapply(ab1, class)), 
+    equals(list("factor", "integer", "factor", "Date", c("POSIXct", "POSIXt"),
+                "matrix")))
 })
 
 test_that("same as rbind for simple cases", {
