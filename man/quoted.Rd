@@ -1,6 +1,6 @@
 \name{quoted}
 \title{Quote variables to create a list of unevaluated expressions for later...}
-\usage{.(..., .env=parent.frame())}
+\usage{.(..., .env = parent.frame())}
 
 \description{
   Quote variables to create a list of unevaluated

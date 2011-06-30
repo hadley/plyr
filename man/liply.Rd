@@ -1,7 +1,7 @@
 \name{liply}
 \alias{liply}
 \title{Experimental iterator based version of llply.}
-\usage{liply(.iterator, .fun, ...)}
+\usage{liply(.iterator, .fun = NULL, ...)}
 
 \description{
   Experimental iterator based version of llply.

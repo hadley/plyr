@@ -1,7 +1,7 @@
 \name{r_ply}
 \alias{r_ply}
 \title{Replicate expression and discard results.}
-\usage{r_ply(.n, .expr, .progress="none", .print=FALSE)}
+\usage{r_ply(.n, .expr, .progress = "none", .print = FALSE)}
 
 \description{
   Replicate expression and discard results. Evalulate

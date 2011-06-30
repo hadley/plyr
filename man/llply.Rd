@@ -1,8 +1,8 @@
 \name{llply}
 \alias{llply}
 \title{Split list, apply function, and return results in a list.}
-\usage{llply(.data, .fun, ..., .progress="none", .inform=FALSE,
-    .parallel=FALSE)}
+\usage{llply(.data, .fun = NULL, ..., .progress = "none", .inform
+    = FALSE, .parallel = FALSE)}
 
 \description{
   Split list, apply function, and return results in a list.

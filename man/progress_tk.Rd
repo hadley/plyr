@@ -1,7 +1,8 @@
 \name{progress_tk}
 \alias{progress_tk}
 \title{Graphical progress bar, powered by Tk.}
-\usage{progress_tk(title="plyr progress", label="Working...", ...)}
+\usage{progress_tk(title = "plyr progress", label = "Working...",
+    ...)}
 
 \description{
   Graphical progress bar, powered by Tk. A graphical

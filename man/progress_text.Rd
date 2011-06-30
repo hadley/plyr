@@ -1,7 +1,7 @@
 \name{progress_text}
 \alias{progress_text}
 \title{Text progress bar.}
-\usage{progress_text(style=3, ...)}
+\usage{progress_text(style = 3, ...)}
 
 \description{
   Text progress bar. A textual progress bar

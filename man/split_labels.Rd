@@ -1,7 +1,7 @@
 \name{split_labels}
 \alias{split_labels}
 \title{Generate labels for split data frame.}
-\usage{split_labels(splits, drop, id=plyr::id(splits, drop =
+\usage{split_labels(splits, drop, id = plyr::id(splits, drop =
     TRUE))}
 
 \description{

@@ -1,8 +1,8 @@
 \name{laply}
 \alias{laply}
 \title{Split list, apply function, and return results in an array.}
-\usage{laply(.data, .fun, ..., .progress="none", .drop=TRUE,
-    .parallel=FALSE)}
+\usage{laply(.data, .fun = NULL, ..., .progress = "none", .drop =
+    TRUE, .parallel = FALSE)}
 
 \description{
   Split list, apply function, and return results in an

@@ -1,8 +1,8 @@
 \name{mlply}
 \alias{mlply}
 \title{Call function with arguments in array or data frame, returning a list.}
-\usage{mlply(.data, .fun, ..., .expand=TRUE, .progress="none",
-    .parallel=FALSE)}
+\usage{mlply(.data, .fun = NULL, ..., .expand = TRUE, .progress =
+    "none", .parallel = FALSE)}
 
 \description{
   Call function with arguments in array or data frame,

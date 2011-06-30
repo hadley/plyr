@@ -1,6 +1,6 @@
 \name{id}
 \title{Compute a unique numeric id for each unique row in a data frame.}
-\usage{id(.variables, drop=FALSE)}
+\usage{id(.variables, drop = FALSE)}
 
 \description{
   Compute a unique numeric id for each unique row in a data

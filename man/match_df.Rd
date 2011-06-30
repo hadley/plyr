@@ -1,7 +1,7 @@
 \name{match_df}
 \alias{match_df}
 \title{Extract matching rows of a data frame.}
-\usage{match_df(x, y, on)}
+\usage{match_df(x, y, on = NULL)}
 
 \description{
   Extract matching rows of a data frame.

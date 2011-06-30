@@ -1,7 +1,7 @@
 \name{count}
 \alias{count}
 \title{Count the number of occurences.}
-\usage{count(df, vars, wt_var)}
+\usage{count(df, vars = NULL, wt_var = NULL)}
 
 \description{
   Count the number of occurences.

@@ -1,7 +1,7 @@
 \name{splitter_d}
 \alias{splitter_d}
 \title{Split a data frame by variables.}
-\usage{splitter_d(data, .variables, drop=TRUE)}
+\usage{splitter_d(data, .variables = NULL, drop = TRUE)}
 
 \description{
   Split a data frame by variables. Split a data frame into

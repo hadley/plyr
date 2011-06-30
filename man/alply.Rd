@@ -1,8 +1,8 @@
 \name{alply}
 \alias{alply}
 \title{Split array, apply function, and return results in a list.}
-\usage{alply(.data, .margins, .fun, ..., .expand=TRUE,
-    .progress="none", .parallel=FALSE)}
+\usage{alply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
+    .progress = "none", .parallel = FALSE)}
 
 \description{
   Split array, apply function, and return results in a

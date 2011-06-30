@@ -1,8 +1,8 @@
 \name{maply}
 \alias{maply}
 \title{Call function with arguments in array or data frame, returning an array.}
-\usage{maply(.data, .fun, ..., .expand=TRUE, .progress="none",
-    .parallel=FALSE)}
+\usage{maply(.data, .fun = NULL, ..., .expand = TRUE, .progress =
+    "none", .parallel = FALSE)}
 
 \description{
   Call function with arguments in array or data frame,

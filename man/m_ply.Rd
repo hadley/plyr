@@ -1,7 +1,8 @@
 \name{m_ply}
 \alias{m_ply}
 \title{Call function with arguments in array or data frame, discarding results.}
-\usage{m_ply(.data, .fun, ..., .expand=TRUE, .progress="none")}
+\usage{m_ply(.data, .fun = NULL, ..., .expand = TRUE, .progress =
+    "none")}
 
 \description{
   Call function with arguments in array or data frame,

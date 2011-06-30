@@ -1,7 +1,7 @@
 \name{create_progress_bar}
 \alias{create_progress_bar}
 \title{Create progress bar.}
-\usage{create_progress_bar(name="none", ...)}
+\usage{create_progress_bar(name = "none", ...)}
 
 \description{
   Create progress bar. Create progress bar object from text

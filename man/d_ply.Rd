@@ -1,8 +1,8 @@
 \name{d_ply}
 \alias{d_ply}
 \title{Split data frame, apply function, and discard results.}
-\usage{d_ply(.data, .variables, .fun, ..., .progress="none",
-    .print=FALSE)}
+\usage{d_ply(.data, .variables, .fun = NULL, ..., .progress =
+    "none", .print = FALSE)}
 
 \description{
   Split data frame, apply function, and discard results.

@@ -1,8 +1,8 @@
 \name{aaply}
 \alias{aaply}
 \title{Split array, apply function, and return results in an array.}
-\usage{aaply(.data, .margins, .fun, ..., .expand=TRUE,
-    .progress="none", .drop=TRUE, .parallel=FALSE)}
+\usage{aaply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
+    .progress = "none", .drop = TRUE, .parallel = FALSE)}
 
 \description{
   Split array, apply function, and return results in an

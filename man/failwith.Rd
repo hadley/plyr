@@ -1,7 +1,7 @@
 \name{failwith}
 \alias{failwith}
 \title{Fail with specified value.}
-\usage{failwith(default, f, quiet=FALSE)}
+\usage{failwith(default = NULL, f, quiet = FALSE)}
 
 \description{
   Fail with specified value.

@@ -1,6 +1,6 @@
 \name{try_default}
 \title{Try, with default in case of error.}
-\usage{try_default(expr, default, quiet=FALSE)}
+\usage{try_default(expr, default, quiet = FALSE)}
 
 \description{
   Try, with default in case of error. \code{try_default}

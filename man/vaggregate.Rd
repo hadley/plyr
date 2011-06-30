@@ -1,8 +1,8 @@
 \name{vaggregate}
 \alias{vaggregate}
 \title{Vector aggregate.}
-\usage{vaggregate(.value, .group, .fun, ..., .default,
-    .n=nlevels(.group))}
+\usage{vaggregate(.value, .group, .fun, ..., .default = NULL, .n =
+    nlevels(.group))}
 
 \description{
   Vector aggregate.

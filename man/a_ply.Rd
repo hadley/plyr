@@ -1,8 +1,8 @@
 \name{a_ply}
 \alias{a_ply}
 \title{Split array, apply function, and discard results.}
-\usage{a_ply(.data, .margins, .fun, ..., .expand=TRUE,
-    .progress="none", .print=FALSE)}
+\usage{a_ply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
+    .progress = "none", .print = FALSE)}
 
 \description{
   Split array, apply function, and discard results. For

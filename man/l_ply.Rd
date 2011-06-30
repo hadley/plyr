@@ -1,7 +1,8 @@
 \name{l_ply}
 \alias{l_ply}
 \title{Split list, apply function, and discard results.}
-\usage{l_ply(.data, .fun, ..., .progress="none", .print=FALSE)}
+\usage{l_ply(.data, .fun = NULL, ..., .progress = "none", .print =
+    FALSE)}
 
 \description{
   Split list, apply function, and discard results. For each

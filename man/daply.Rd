@@ -1,8 +1,8 @@
 \name{daply}
 \alias{daply}
 \title{Split data frame, apply function, and return results in an array.}
-\usage{daply(.data, .variables, .fun, ..., .progress="none",
-    .drop=TRUE, .parallel=FALSE)}
+\usage{daply(.data, .variables, .fun = NULL, ..., .progress =
+    "none", .drop = TRUE, .parallel = FALSE)}
 
 \description{
   Split data frame, apply function, and return results in

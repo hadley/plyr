@@ -1,7 +1,8 @@
 \name{eval.quoted}
 \alias{eval.quoted}
 \title{Evaluate a quoted list of variables.}
-\usage{eval.quoted(exprs, envir, enclos, try=FALSE)}
+\usage{eval.quoted(exprs, envir = NULL, enclos = NULL, try =
+    FALSE)}
 
 \description{
   Evaluate a quoted list of variables. Evaluates quoted

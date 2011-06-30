@@ -1,8 +1,8 @@
 \name{adply}
 \alias{adply}
 \title{Split array, apply function, and return results in a data frame.}
-\usage{adply(.data, .margins, .fun, ..., .expand=TRUE,
-    .progress="none", .parallel=FALSE)}
+\usage{adply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
+    .progress = "none", .parallel = FALSE)}
 
 \description{
   Split array, apply function, and return results in a data

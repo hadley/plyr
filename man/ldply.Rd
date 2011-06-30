@@ -1,7 +1,8 @@
 \name{ldply}
 \alias{ldply}
 \title{Split list, apply function, and return results in a data frame.}
-\usage{ldply(.data, .fun, ..., .progress="none", .parallel=FALSE)}
+\usage{ldply(.data, .fun = NULL, ..., .progress = "none",
+    .parallel = FALSE)}
 
 \description{
   Split list, apply function, and return results in a data

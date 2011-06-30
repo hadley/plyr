@@ -1,7 +1,7 @@
 \name{loop_apply}
 \alias{loop_apply}
 \title{Loop apply...}
-\usage{loop_apply(n, f, env=parent.frame())}
+\usage{loop_apply(n, f, env = parent.frame())}
 
 \description{
   Loop apply An optimised version of lapply for the special

@@ -1,8 +1,8 @@
 \name{join}
 \alias{join}
 \title{Join two data frames together.}
-\usage{join(x, y, by=intersect(names(x), names(y)), type="left",
-    match="all")}
+\usage{join(x, y, by = intersect(names(x), names(y)), type =
+    "left", match = "all")}
 
 \description{
   Join two data frames together.

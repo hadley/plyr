@@ -1,8 +1,8 @@
 \name{mdply}
 \alias{mdply}
 \title{Call function with arguments in array or data frame, returning a data frame.}
-\usage{mdply(.data, .fun, ..., .expand=TRUE, .progress="none",
-    .parallel=FALSE)}
+\usage{mdply(.data, .fun = NULL, ..., .expand = TRUE, .progress =
+    "none", .parallel = FALSE)}
 
 \description{
   Call function with arguments in array or data frame,

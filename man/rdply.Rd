@@ -1,7 +1,7 @@
 \name{rdply}
 \alias{rdply}
 \title{Replicate expression and return results in a data frame.}
-\usage{rdply(.n, .expr, .progress="none")}
+\usage{rdply(.n, .expr, .progress = "none")}
 
 \description{
   Replicate expression and return results in a data frame.

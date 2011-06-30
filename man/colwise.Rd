@@ -1,6 +1,6 @@
 \name{colwise}
 \title{Column-wise function.}
-\usage{colwise(.fun, .cols=true)}
+\usage{colwise(.fun, .cols = true)}
 
 \description{
   Column-wise function. Turn a function that operates on a

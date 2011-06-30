@@ -1,7 +1,7 @@
 \name{rlply}
 \alias{rlply}
 \title{Replicate expression and return results in a list.}
-\usage{rlply(.n, .expr, .progress="none")}
+\usage{rlply(.n, .expr, .progress = "none")}
 
 \description{
   Replicate expression and return results in a list.

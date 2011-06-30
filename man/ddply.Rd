@@ -1,8 +1,8 @@
 \name{ddply}
 \alias{ddply}
 \title{Split data frame, apply function, and return results in a data frame.}
-\usage{ddply(.data, .variables, .fun, ..., .progress="none",
-    .drop=TRUE, .parallel=FALSE)}
+\usage{ddply(.data, .variables, .fun = NULL, ..., .progress =
+    "none", .drop = TRUE, .parallel = FALSE)}
 
 \description{
   Split data frame, apply function, and return results in a

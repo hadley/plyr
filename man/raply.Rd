@@ -1,7 +1,7 @@
 \name{raply}
 \alias{raply}
 \title{Replicate expression and return results in a array.}
-\usage{raply(.n, .expr, .progress="none", .drop=TRUE)}
+\usage{raply(.n, .expr, .progress = "none", .drop = TRUE)}
 
 \description{
   Replicate expression and return results in a array.
