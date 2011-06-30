@@ -124,7 +124,7 @@ eval.quoted <- function(exprs, envir = NULL, enclos = NULL, try = FALSE) {
 #' @S3method as.quoted name
 #' @S3method as.quoted NULL
 #' @S3method as.quoted numeric
-#' @S3method "[" quoted
+#' @S3method [ quoted
 #' @S3method c quoted
 #' @examples
 #' as.quoted(c("a", "b", "log(d)"))

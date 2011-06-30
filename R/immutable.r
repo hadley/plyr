@@ -10,11 +10,11 @@
 #'
 #' @param df a data frame
 #' @return an immutable data frame
-#' @S3method "[" idf
+#' @S3method [ idf
 #' @S3method names idf
 #' @S3method dim idf
 #' @S3method as.data.frame idf
-#' @S3method "[[" idf
+#' @S3method [[ idf
 #' @keywords manip
 #' @export
 #' @examples
