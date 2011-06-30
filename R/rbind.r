@@ -1,12 +1,12 @@
 #' Combine data.frames by row, filling in missing columns.
 #' \code{rbind}s a list of data frames filling missing columns with NA.
 #' 
-#' This is an enhancement to \code{\link{rbind}} which adds in columns
+#' This is an enhancement to \code{\link{rbind}} that adds in columns
 #' that are not present in all inputs, accepts a list of data frames, and 
 #' operates substantially faster.
 #'
 #' Column names and types in the output will appear in the order in which 
-#' they were encoutered. No checking is performed to ensure that each column
+#' they were encountered. No checking is performed to ensure that each column
 #' is of consistent type in the inputs.
 #' 
 #' @param ... input data frames to row bind together
