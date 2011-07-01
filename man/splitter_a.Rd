@@ -1,13 +1,29 @@
 \name{splitter_a}
 \alias{splitter_a}
 \title{Split an array by...}
-\usage{splitter_a(data, .margins = 1L, .expand = TRUE)}
+\usage{
+  splitter_a(data, .margins = 1L, .expand = TRUE)
+}
+\arguments{
+  \item{data}{>1d data structure (matrix, data.frame or
+  array)}
 
+  \item{.margins}{a vector giving the subscripts to split
+  up \code{data} by.}
+
+  \item{.expand}{if splitting a dataframe by row, should
+  output be 1d (expand = FALSE), with an element for each
+  row; or nd (expand = TRUE), with a dimension for each
+  variable.}
+}
+\value{
+  a list of lower-d slices, with attributes that record
+  split details
+}
 \description{
   Split an array by .margins. Split a 2d or higher data
   structure into lower-d pieces based
 }
-
 \details{
   This is the workhorse of the \code{a*ply} functions.
   Given a >1 d data structure (matrix, array, data.frame),
@@ -21,18 +37,13 @@
   includes enough information to recreate the split from
   attributes on the list of pieces.
 }
-\value{a list of lower-d slices, with attributes that record split details}
-\keyword{internal}
-\arguments{
-  \item{data}{>1d data structure (matrix, data.frame or array)}
-  \item{.margins}{a vector giving the subscripts to split up \code{data} by.}
-  \item{.expand}{if splitting a dataframe by row, should output be 1d 
-(expand = FALSE), with an element for each row; or nd (expand = TRUE), 
-with a dimension for each variable.}
-}
-\examples{plyr:::splitter_a(mtcars, 1)
+\examples{
+plyr:::splitter_a(mtcars, 1)
 plyr:::splitter_a(mtcars, 2)
 
 plyr:::splitter_a(ozone, 2)
 plyr:::splitter_a(ozone, 3)
-plyr:::splitter_a(ozone, 1:2)}
+plyr:::splitter_a(ozone, 1:2)
+}
+\keyword{internal}
+

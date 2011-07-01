@@ -21,7 +21,7 @@
 #' @return list of symbol and language primitives
 #' @aliases . quoted is.quoted
 #' @export . is.quoted
-#' @name quoted
+#' @rdname quoted
 #' @examples
 #' .(a, b, c)
 #' .(first = a, second = b, third = c)

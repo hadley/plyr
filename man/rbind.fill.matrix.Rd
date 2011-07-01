@@ -1,12 +1,18 @@
 \name{rbind.fill.matrix}
 \alias{rbind.fill.matrix}
 \title{Bind matrices by row, and fill missing columns with NA.}
-\usage{rbind.fill.matrix(...)}
-
+\usage{
+  rbind.fill.matrix(...)
+}
+\arguments{
+  \item{...}{the matrices to rbind}
+}
+\value{
+  a matrix with column names
+}
 \description{
   Bind matrices by row, and fill missing columns with NA.
 }
-
 \details{
   The matrices are bound together using their column names
   or the column indices (in that order of precedence.)
@@ -27,15 +33,8 @@
 
   Row names are ignored.
 }
-\value{a matrix with column names}
-\author{C. Beleites}
-\seealso{\code{\link[base]{rbind}}, \code{\link[base]{cbind}},
-\code{\link[plyr]{rbind.fill}}}
-\keyword{manip}
-\arguments{
-  \item{...}{the matrices to rbind}
-}
-\examples{A <- matrix (1:4, 2)
+\examples{
+A <- matrix (1:4, 2)
 B <- matrix (6:11, 2)
 A
 B
@@ -45,4 +44,14 @@ colnames (A) <- c (3, 1)
 A
 rbind.fill.matrix (A, B)
 
-rbind.fill.matrix (A, 99)}
+rbind.fill.matrix (A, 99)
+}
+\author{
+  C. Beleites
+}
+\seealso{
+  \code{\link[base]{rbind}}, \code{\link[base]{cbind}},
+  \code{\link[plyr]{rbind.fill}}
+}
+\keyword{manip}
+

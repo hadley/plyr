@@ -1,13 +1,24 @@
 \name{splitter_d}
 \alias{splitter_d}
 \title{Split a data frame by variables.}
-\usage{splitter_d(data, .variables = NULL, drop = TRUE)}
+\usage{
+  splitter_d(data, .variables = NULL, drop = TRUE)
+}
+\arguments{
+  \item{data}{data frame}
 
+  \item{.variables}{a \link{quoted} list of variables}
+
+  \item{drop}{drop unnused factor levels?}
+}
+\value{
+  a list of data.frames, with attributes that record split
+  details
+}
 \description{
   Split a data frame by variables. Split a data frame into
   pieces based on variable contained in that data frame
 }
-
 \details{
   This is the workhorse of the \code{d*ply} functions.
   Based on the variables you supply, it breaks up a single
@@ -21,15 +32,8 @@
   reconstruct the labelling of the data frame after other
   operations.
 }
-\seealso{\code{\link{.}} for quoting variables, \code{\link{split}}}
-\value{a list of data.frames, with attributes that record split details}
-\keyword{internal}
-\arguments{
-  \item{data}{data frame}
-  \item{.variables}{a \link{quoted} list of variables}
-  \item{drop}{drop unnused factor levels?}
-}
-\examples{plyr:::splitter_d(mtcars, .(cyl))
+\examples{
+plyr:::splitter_d(mtcars, .(cyl))
 plyr:::splitter_d(mtcars, .(vs, am))
 plyr:::splitter_d(mtcars, .(am, vs))
 
@@ -40,4 +44,11 @@ plyr:::splitter_d(mtcars, .(cyl2), drop = FALSE)
 mtcars$cyl3 <- ifelse(mtcars$vs == 1, NA, mtcars$cyl)
 plyr:::splitter_d(mtcars, .(cyl3))
 plyr:::splitter_d(mtcars, .(cyl3, vs))
-plyr:::splitter_d(mtcars, .(cyl3, vs), drop = FALSE)}
+plyr:::splitter_d(mtcars, .(cyl3, vs), drop = FALSE)
+}
+\seealso{
+  \code{\link{.}} for quoting variables,
+  \code{\link{split}}
+}
+\keyword{internal}
+

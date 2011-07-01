@@ -1,12 +1,27 @@
-\name{quoted}
+\name{.}
+\alias{.}
+\alias{quoted}
+\alias{is.quoted}
 \title{Quote variables to create a list of unevaluated expressions for later...}
-\usage{.(..., .env = parent.frame())}
+\usage{
+  .(..., .env = parent.frame())
+}
+\arguments{
+  \item{...}{unevaluated expressions to be recorded.
+  Specify names if you want the set the names of the
+  resultant variables}
 
+  \item{.env}{environment in which unbound symbols in
+  \code{...} should be evaluated.  Defaults to the
+  environment in which \code{.} was executed.}
+}
+\value{
+  list of symbol and language primitives
+}
 \description{
   Quote variables to create a list of unevaluated
   expressions for later evaluation.
 }
-
 \details{
   This function is similar to \code{\link{~}} in that it is
   used to capture the name of variables, not their current
@@ -23,17 +38,8 @@
   \code{\link{as.quoted.character}} to convert strings to
   the appropriate data structure.
 }
-\value{list of symbol and language primitives}
-\alias{.}
-\alias{quoted}
-\alias{is.quoted}
-\arguments{
-  \item{...}{unevaluated expressions to be recorded.  Specify names if you
-want the set the names of the resultant variables}
-  \item{.env}{environment in which unbound symbols in \code{...} should be
-evaluated.  Defaults to the environment in which \code{.} was executed.}
-}
-\examples{.(a, b, c)
+\examples{
+.(a, b, c)
 .(first = a, second = b, third = c)
 .(a ^ 2, b - d, log(c))
 as.quoted(~ a + b + c)
@@ -47,4 +53,6 @@ ddply(mtcars, .(cyl), each(nrow, ncol))
 ddply(mtcars, .(log(cyl)), each(nrow, ncol))
 ddply(mtcars, .(logcyl = log(cyl)), each(nrow, ncol))
 ddply(mtcars, .(vs + am), each(nrow, ncol))
-ddply(mtcars, .(vsam = vs + am), each(nrow, ncol))}
+ddply(mtcars, .(vsam = vs + am), each(nrow, ncol))
+}
+

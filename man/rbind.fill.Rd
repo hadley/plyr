@@ -1,14 +1,20 @@
 \name{rbind.fill}
 \alias{rbind.fill}
 \title{Combine data...}
-\usage{rbind.fill(...)}
-
+\usage{
+  rbind.fill(...)
+}
+\arguments{
+  \item{...}{input data frames to row bind together}
+}
+\value{
+  a single data frame
+}
 \description{
   Combine data.frames by row, filling in missing columns.
   \code{rbind}s a list of data frames filling missing
   columns with NA.
 }
-
 \details{
   This is an enhancement to \code{\link{rbind}} which adds
   in columns that are not present in all inputs, accepts a
@@ -19,9 +25,8 @@
   performed to ensure that each column is of consistent
   type in the inputs.
 }
-\keyword{manip}
-\value{a single data frame}
-\arguments{
-  \item{...}{input data frames to row bind together}
+\examples{
+rbind.fill(mtcars[c("mpg", "wt")], mtcars[c("wt", "cyl")])
 }
-\examples{rbind.fill(mtcars[c("mpg", "wt")], mtcars[c("wt", "cyl")])}
+\keyword{manip}
+

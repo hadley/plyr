@@ -1,13 +1,16 @@
 \name{amv_dimnames}
 \alias{amv_dimnames}
 \title{Dimension names.}
-\usage{amv_dimnames(x)}
-
+\usage{
+  amv_dimnames(x)
+}
+\arguments{
+  \item{x}{array, matrix or vector}
+}
 \description{
   Dimension names. Consistent dimnames for vectors,
   matrices and arrays.
 }
-
 \details{
   Unlike \code{\link{dimnames}} no part of the output will
   ever be null.  If a component of dimnames is omitted,
@@ -15,6 +18,4 @@
   the appropriate length.
 }
 \keyword{internal}
-\arguments{
-  \item{x}{array, matrix or vector}
-}
+

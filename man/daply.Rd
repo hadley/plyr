@@ -1,15 +1,40 @@
 \name{daply}
 \alias{daply}
 \title{Split data frame, apply function, and return results in an array.}
-\usage{daply(.data, .variables, .fun = NULL, ..., .progress =
-    "none", .drop = TRUE, .parallel = FALSE)}
+\usage{
+  daply(.data, .variables, .fun = NULL, ..., .progress =
+  "none", .drop = TRUE, .parallel = FALSE)
+}
+\arguments{
+  \item{.data}{data frame to be processed}
 
+  \item{.variables}{variables to split data frame by, as
+  quoted variables, a formula or character vector}
+
+  \item{.fun}{function to apply to each piece}
+
+  \item{...}{other arguments passed on to \code{.fun}}
+
+  \item{.progress}{name of the progress bar to use, see
+  \code{\link{create_progress_bar}}}
+
+  \item{.drop}{should extra dimensions of length 1 be
+  dropped, simplifying the output.  Defaults to
+  \code{TRUE}}
+
+  \item{.parallel}{if \code{TRUE}, apply function in
+  parallel, using parallel backend provided by foreach}
+}
+\value{
+  if results are atomic with same type and dimensionality,
+  a vector, matrix or array; otherwise, a list-array (a
+  list with dimensions)
+}
 \description{
   Split data frame, apply function, and return results in
   an array. For each subset of data frame, apply function
   then combine results into an array
 }
-
 \details{
   All plyr functions use the same split-apply-combine
   strategy: they split the input into simpler pieces, apply
@@ -22,26 +47,20 @@
   \code{daply} with a function that operates column-wise is
   similar to \code{\link{aggregate}}.
 }
-\keyword{manip}
-\value{if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)}
-\references{Hadley Wickham (2011). The Split-Apply-Combine Strategy for
-Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
-\url{http://www.jstatsoft.org/v40/i01/}.}
-\arguments{
-  \item{.data}{data frame to be processed}
-  \item{.variables}{variables to split data frame by, as quoted variables, a formula or character vector}
-  \item{.fun}{function to apply to each piece}
-  \item{...}{other arguments passed on to \code{.fun}}
-  \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
-  \item{.drop}{should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}}
-  \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 
-backend provided by foreach}
-}
-\examples{daply(baseball, .(year), nrow)
+\examples{
+daply(baseball, .(year), nrow)
 
-# Several different ways of summarising by variables that should not be 
+# Several different ways of summarising by variables that should not be
 # included in the summary
 
 daply(baseball[, c(2, 6:9)], .(year), mean)
 daply(baseball[, 6:9], .(baseball$year), mean)
-daply(baseball, .(year), function(df) mean(df[, 6:9]))}
+daply(baseball, .(year), function(df) mean(df[, 6:9]))
+}
+\references{
+  Hadley Wickham (2011). The Split-Apply-Combine Strategy
+  for Data Analysis. Journal of Statistical Software,
+  40(1), 1-29. \url{http://www.jstatsoft.org/v40/i01/}.
+}
+\keyword{manip}
+

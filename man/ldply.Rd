@@ -1,15 +1,31 @@
 \name{ldply}
 \alias{ldply}
 \title{Split list, apply function, and return results in a data frame.}
-\usage{ldply(.data, .fun = NULL, ..., .progress = "none",
-    .parallel = FALSE)}
+\usage{
+  ldply(.data, .fun = NULL, ..., .progress = "none",
+  .parallel = FALSE)
+}
+\arguments{
+  \item{.data}{list to be processed}
 
+  \item{.fun}{function to apply to each piece}
+
+  \item{...}{other arguments passed on to \code{.fun}}
+
+  \item{.progress}{name of the progress bar to use, see
+  \code{\link{create_progress_bar}}}
+
+  \item{.parallel}{if \code{TRUE}, apply function in
+  parallel, using parallel backend provided by foreach}
+}
+\value{
+  a data frame
+}
 \description{
   Split list, apply function, and return results in a data
   frame. For each element of a list, apply function then
   combine results into a data frame
 }
-
 \details{
   All plyr functions use the same split-apply-combine
   strategy: they split the input into simpler pieces, apply
@@ -27,16 +43,10 @@
   will be \code{rbind}ed together and converted to a data
   frame. Any other values will result in an error.
 }
-\keyword{manip}
-\value{a data frame}
-\references{Hadley Wickham (2011). The Split-Apply-Combine Strategy for
-Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
-\url{http://www.jstatsoft.org/v40/i01/}.}
-\arguments{
-  \item{.data}{list to be processed}
-  \item{.fun}{function to apply to each piece}
-  \item{...}{other arguments passed on to \code{.fun}}
-  \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
-  \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 
-backend provided by foreach}
+\references{
+  Hadley Wickham (2011). The Split-Apply-Combine Strategy
+  for Data Analysis. Journal of Statistical Software,
+  40(1), 1-29. \url{http://www.jstatsoft.org/v40/i01/}.
 }
+\keyword{manip}
+

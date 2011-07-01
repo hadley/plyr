@@ -1,15 +1,38 @@
 \name{ddply}
 \alias{ddply}
 \title{Split data frame, apply function, and return results in a data frame.}
-\usage{ddply(.data, .variables, .fun = NULL, ..., .progress =
-    "none", .drop = TRUE, .parallel = FALSE)}
+\usage{
+  ddply(.data, .variables, .fun = NULL, ..., .progress =
+  "none", .drop = TRUE, .parallel = FALSE)
+}
+\arguments{
+  \item{.data}{data frame to be processed}
 
+  \item{.variables}{variables to split data frame by, as
+  quoted variables, a formula or character vector}
+
+  \item{.fun}{function to apply to each piece}
+
+  \item{.drop}{should combinations of variables that do not
+  appear in the data be preserved (FALSE) or dropped (TRUE,
+  default)}
+
+  \item{...}{other arguments passed on to \code{.fun}}
+
+  \item{.progress}{name of the progress bar to use, see
+  \code{\link{create_progress_bar}}}
+
+  \item{.parallel}{if \code{TRUE}, apply function in
+  parallel, using parallel backend provided by foreach}
+}
+\value{
+  a data frame
+}
 \description{
   Split data frame, apply function, and return results in a
   data frame. For each subset of a data frame, apply
   function then combine results into a data frame
 }
-
 \details{
   All plyr functions use the same split-apply-combine
   strategy: they split the input into simpler pieces, apply
@@ -27,29 +50,22 @@
   will be \code{rbind}ed together and converted to a data
   frame. Any other values will result in an error.
 }
-\keyword{manip}
-\value{a data frame}
-\references{Hadley Wickham (2011). The Split-Apply-Combine Strategy for
-Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
-\url{http://www.jstatsoft.org/v40/i01/}.}
-\arguments{
-  \item{.data}{data frame to be processed}
-  \item{.variables}{variables to split data frame by, as quoted variables, a formula or character vector}
-  \item{.fun}{function to apply to each piece}
-  \item{.drop}{should combinations of variables that do not appear in the 
-data be preserved (FALSE) or dropped (TRUE, default)}
-  \item{...}{other arguments passed on to \code{.fun}}
-  \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
-  \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 
-backend provided by foreach}
-}
-\examples{ddply(baseball, .(year), "nrow") 
-ddply(baseball, .(lg), c("nrow", "ncol")) 
+\examples{
+ddply(baseball, .(year), "nrow")
+ddply(baseball, .(lg), c("nrow", "ncol"))
 
-rbi <- ddply(baseball, .(year), summarise, 
+rbi <- ddply(baseball, .(year), summarise,
 mean_rbi = mean(rbi, na.rm = TRUE))
 with(rbi, plot(year, mean_rbi, type="l"))
 
-base2 <- ddply(baseball, .(id), transform, 
+base2 <- ddply(baseball, .(id), transform,
 career_year = year - min(year) + 1
-)}
+)
+}
+\references{
+  Hadley Wickham (2011). The Split-Apply-Combine Strategy
+  for Data Analysis. Journal of Statistical Software,
+  40(1), 1-29. \url{http://www.jstatsoft.org/v40/i01/}.
+}
+\keyword{manip}
+

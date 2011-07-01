@@ -1,16 +1,37 @@
 \name{mlply}
 \alias{mlply}
 \title{Call function with arguments in array or data frame, returning a list.}
-\usage{mlply(.data, .fun = NULL, ..., .expand = TRUE, .progress =
-    "none", .parallel = FALSE)}
+\usage{
+  mlply(.data, .fun = NULL, ..., .expand = TRUE, .progress
+  = "none", .parallel = FALSE)
+}
+\arguments{
+  \item{.data}{matrix or data frame to use as source of
+  arguments}
 
+  \item{.fun}{function to be called with varying arguments}
+
+  \item{...}{other arguments passed on to \code{.fun}}
+
+  \item{.expand}{should output be 1d (expand = FALSE), with
+  an element for each row; or nd (expand = TRUE), with a
+  dimension for each variable.}
+
+  \item{.progress}{name of the progress bar to use, see
+  \code{\link{create_progress_bar}}}
+
+  \item{.parallel}{if \code{TRUE}, apply function in
+  parallel, using parallel backend provided by foreach}
+}
+\value{
+  list of results
+}
 \description{
   Call function with arguments in array or data frame,
   returning a list. Call a multi-argument function with
   values taken from columns of an data frame or array, and
   combine results into a list
 }
-
 \details{
   The \code{m*ply} functions are the \code{plyr} version of
   \code{mapply}, specialised according to the type of
@@ -22,24 +43,18 @@
   are no results, then this function will return a list of
   length 0 (\code{list()}).
 }
-\keyword{manip}
-\value{list of results}
-\references{Hadley Wickham (2011). The Split-Apply-Combine Strategy for
-Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
-\url{http://www.jstatsoft.org/v40/i01/}.}
-\arguments{
-  \item{.data}{matrix or data frame to use as source of arguments}
-  \item{.fun}{function to be called with varying arguments}
-  \item{...}{other arguments passed on to \code{.fun}}
-  \item{.expand}{should output be 1d (expand = FALSE), with an element for
-each row; or nd (expand = TRUE), with a dimension for each variable.}
-  \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
-  \item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel 
-backend provided by foreach}
-}
-\examples{mlply(cbind(1:4, 4:1), rep)
+\examples{
+mlply(cbind(1:4, 4:1), rep)
 mlply(cbind(1:4, times = 4:1), rep)
 
 mlply(cbind(1:4, 4:1), seq)
 mlply(cbind(1:4, length = 4:1), seq)
-mlply(cbind(1:4, by = 4:1), seq, to = 20)}
+mlply(cbind(1:4, by = 4:1), seq, to = 20)
+}
+\references{
+  Hadley Wickham (2011). The Split-Apply-Combine Strategy
+  for Data Analysis. Journal of Statistical Software,
+  40(1), 1-29. \url{http://www.jstatsoft.org/v40/i01/}.
+}
+\keyword{manip}
+

@@ -1,8 +1,9 @@
 \name{names.quoted}
 \alias{names.quoted}
 \title{Compute names of quoted variables.}
-\usage{\method{names}{quoted} (x)}
-
+\usage{
+  \method{names}{quoted} (x)
+}
 \description{
   Compute names of quoted variables. Figure out names of
   quoted variables, using specified names if they exist,
@@ -11,3 +12,4 @@
   using \code{``}.
 }
 \keyword{internal}
+

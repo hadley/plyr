@@ -1,14 +1,25 @@
 \name{rlply}
 \alias{rlply}
 \title{Replicate expression and return results in a list.}
-\usage{rlply(.n, .expr, .progress = "none")}
+\usage{
+  rlply(.n, .expr, .progress = "none")
+}
+\arguments{
+  \item{.n}{number of times to evaluate the expression}
 
+  \item{.expr}{expression to evaluate}
+
+  \item{.progress}{name of the progress bar to use, see
+  \code{\link{create_progress_bar}}}
+}
+\value{
+  list of results
+}
 \description{
   Replicate expression and return results in a list.
   Evalulate expression n times then combine results into a
   list
 }
-
 \details{
   This function runs an expression multiple times, and
   combines the result into a list.  If there are no
@@ -17,15 +28,14 @@
   \code{\link{replicate}}, but will always return results
   as a list.
 }
-\keyword{manip}
-\value{list of results}
-\references{Hadley Wickham (2011). The Split-Apply-Combine Strategy for
-Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
-\url{http://www.jstatsoft.org/v40/i01/}.}
-\arguments{
-  \item{.n}{number of times to evaluate the expression}
-  \item{.expr}{expression to evaluate}
-  \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
+\examples{
+mods <- rlply(100, lm(y ~ x, data=data.frame(x=rnorm(100), y=rnorm(100))))
+hist(laply(mods, function(x) summary(x)$r.squared))
 }
-\examples{mods <- rlply(100, lm(y ~ x, data=data.frame(x=rnorm(100), y=rnorm(100))))
-hist(laply(mods, function(x) summary(x)$r.squared))}
+\references{
+  Hadley Wickham (2011). The Split-Apply-Combine Strategy
+  for Data Analysis. Journal of Statistical Software,
+  40(1), 1-29. \url{http://www.jstatsoft.org/v40/i01/}.
+}
+\keyword{manip}
+

@@ -1,14 +1,25 @@
 \name{rdply}
 \alias{rdply}
 \title{Replicate expression and return results in a data frame.}
-\usage{rdply(.n, .expr, .progress = "none")}
+\usage{
+  rdply(.n, .expr, .progress = "none")
+}
+\arguments{
+  \item{.n}{number of times to evaluate the expression}
 
+  \item{.expr}{expression to evaluate}
+
+  \item{.progress}{name of the progress bar to use, see
+  \code{\link{create_progress_bar}}}
+}
+\value{
+  a data frame
+}
 \description{
   Replicate expression and return results in a data frame.
   Evalulate expression n times then combine results into a
   data frame
 }
-
 \details{
   This function runs an expression multiple times, and
   combines the result into a data frame.  If there are no
@@ -17,16 +28,15 @@
   function is equivalent to \code{\link{replicate}}, but
   will always return results as a data frame.
 }
-\keyword{manip}
-\value{a data frame}
-\references{Hadley Wickham (2011). The Split-Apply-Combine Strategy for
-Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
-\url{http://www.jstatsoft.org/v40/i01/}.}
-\arguments{
-  \item{.n}{number of times to evaluate the expression}
-  \item{.expr}{expression to evaluate}
-  \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
-}
-\examples{rdply(20, mean(runif(100)))
+\examples{
+rdply(20, mean(runif(100)))
 rdply(20, each(mean, var)(runif(100)))
-rdply(20, data.frame(x = runif(2)))}
+rdply(20, data.frame(x = runif(2)))
+}
+\references{
+  Hadley Wickham (2011). The Split-Apply-Combine Strategy
+  for Data Analysis. Journal of Statistical Software,
+  40(1), 1-29. \url{http://www.jstatsoft.org/v40/i01/}.
+}
+\keyword{manip}
+

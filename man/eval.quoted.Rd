@@ -1,16 +1,22 @@
 \name{eval.quoted}
 \alias{eval.quoted}
 \title{Evaluate a quoted list of variables.}
-\usage{eval.quoted(exprs, envir = NULL, enclos = NULL, try =
-    FALSE)}
+\usage{
+  eval.quoted(exprs, envir = NULL, enclos = NULL, try =
+  FALSE)
+}
+\arguments{
+  \item{expr}{quoted object to evalution}
 
+  \item{try}{if TRUE, return \code{NULL} if evaluation
+  unsuccesful}
+}
+\value{
+  a list
+}
 \description{
   Evaluate a quoted list of variables. Evaluates quoted
   variables in specified environment
 }
-\value{a list}
 \keyword{internal}
-\arguments{
-  \item{expr}{quoted object to evalution}
-  \item{try}{if TRUE, return \code{NULL} if evaluation unsuccesful}
-}
+

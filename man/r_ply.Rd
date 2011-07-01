@@ -1,27 +1,37 @@
 \name{r_ply}
 \alias{r_ply}
 \title{Replicate expression and discard results.}
-\usage{r_ply(.n, .expr, .progress = "none", .print = FALSE)}
+\usage{
+  r_ply(.n, .expr, .progress = "none", .print = FALSE)
+}
+\arguments{
+  \item{.n}{number of times to evaluate the expression}
 
+  \item{.expr}{expression to evaluate}
+
+  \item{.progress}{name of the progress bar to use, see
+  \code{\link{create_progress_bar}}}
+
+  \item{.print}{automatically print each result? (default:
+  \code{FALSE})}
+}
 \description{
   Replicate expression and discard results. Evalulate
   expression n times then discard results
 }
-
 \details{
   This function runs an expression multiple times,
-  discarding the results.  This function is equivalent to
+  discarding the results. This function is equivalent to
   \code{\link{replicate}}, but never returns anything
 }
-\keyword{manip}
-\references{Hadley Wickham (2011). The Split-Apply-Combine Strategy for
-Data Analysis. Journal of Statistical Software, 40(1), 1-29. 
-\url{http://www.jstatsoft.org/v40/i01/}.}
-\arguments{
-  \item{.n}{number of times to evaluate the expression}
-  \item{.expr}{expression to evaluate}
-  \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
-  \item{.print}{automatically print each result? (default: \code{FALSE})}
+\examples{
+r_ply(10, plot(runif(50)))
+r_ply(25, hist(runif(1000)))
 }
-\examples{r_ply(10, plot(runif(50)))
-r_ply(25, hist(runif(1000)))}
+\references{
+  Hadley Wickham (2011). The Split-Apply-Combine Strategy
+  for Data Analysis. Journal of Statistical Software,
+  40(1), 1-29. \url{http://www.jstatsoft.org/v40/i01/}.
+}
+\keyword{manip}
+

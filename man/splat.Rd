@@ -1,12 +1,18 @@
 \name{splat}
 \alias{splat}
 \title{`Splat' arguments to a function.}
-\usage{splat(flat)}
-
+\usage{
+  splat(flat)
+}
+\arguments{
+  \item{flat}{function to splat}
+}
+\value{
+  a function
+}
 \description{
   `Splat' arguments to a function.
 }
-
 \details{
   Wraps a function in do.call, so instead of taking
   multiple arguments, it takes a single named list which
@@ -16,13 +22,12 @@
   data frame or array, and don't want to manually pull it
   apart in your function.
 }
-\value{a function}
-\arguments{
-  \item{flat}{function to splat}
-}
-\examples{hp_per_cyl <- function(hp, cyl, ...) hp / cyl
+\examples{
+hp_per_cyl <- function(hp, cyl, ...) hp / cyl
 splat(hp_per_cyl)(mtcars[1,])
 splat(hp_per_cyl)(mtcars)
 
 f <- function(mpg, wt, ...) data.frame(mw = mpg / wt)
-ddply(mtcars, .(cyl), splat(f))}
+ddply(mtcars, .(cyl), splat(f))
+}
+
