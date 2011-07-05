@@ -1,6 +1,9 @@
 Version 1.6
 ------------------------------------------------------------------------------
 
+* `rlply` now correctly deals with `rlply(4, NULL)` (thanks to bug report from
+  Eric Goldlust)
+
 * `rbind.fill` now works with variables of class `POSIXlt`
 
 * `rbind.fill` tries harder to keep attributes, retaining the attributes from

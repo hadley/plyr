@@ -33,7 +33,7 @@ rlply <- function(.n, .expr, .progress = "none") {
   on.exit(progress$term())
 
   for(i in seq_len(.n)) {
-    result[[i]] <- f()
+    result[i] <- list(f())
     progress$step()
   }
   
