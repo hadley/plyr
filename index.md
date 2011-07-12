@@ -45,7 +45,7 @@ The best place to start is the introductory guide: [plyr: divide and conquer](pl
 You are welcome to ask plyr questions on R-help, but if you'd like to participate in a more focussed mailing list, please sign up for the manipulatr mailing list:
 
 <form action="http://groups.google.com/group/manipulatr/boxsubscribe">
-  Your email address: <input type="text" name="email"> <input type="submit" value="Subscribe">
+  Your email address: <input type="text" name="email" /> <input type="submit" value="Subscribe" />
 </form>
 
 You must be a member to post messages, but anyone can [read the archived discussions](http://groups.google.com/group/manipulatr).
