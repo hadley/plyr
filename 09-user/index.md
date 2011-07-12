@@ -1,3 +1,8 @@
+---
+layout: base
+title: plyr tutorial 2009
+---
+
 # plyr tutorial
 
 [Download data, code, and slides](plyr-tutorial.zip) (.zip, 3 meg)
