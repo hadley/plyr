@@ -1,3 +1,7 @@
+---
+title: plyr: split-apply-combine
+---
+
 # plyr
 
 <img src="pliers.jpg" width="369" height="137" align="right" />
