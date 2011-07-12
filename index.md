@@ -1,4 +1,5 @@
 ---
+layout: base
 title: plyr: split-apply-combine
 ---
 
