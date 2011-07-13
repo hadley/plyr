@@ -3,7 +3,7 @@
 \title{Split data frame, apply function, and return results in a data frame.}
 \usage{
   ddply(.data, .variables, .fun = NULL, ..., .progress =
-  "none", .drop = TRUE, .parallel = FALSE)
+  "none", .drop_i = TRUE, .parallel = FALSE)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -17,6 +17,13 @@
 
   \item{.variables}{variables to split data frame by, as
   quoted variables, a formula or character vector}
+
+  \item{.drop_i}{should combinations of variables that do
+  not appear in the input data be preserved (FALSE) or
+  dropped (TRUE, default)}
+
+  \item{.parallel}{if \code{TRUE}, apply function in
+  parallel, using parallel backend provided by foreach}
 }
 \value{
   A data frame, as described in the output section.
@@ -59,6 +66,9 @@ career_year = year - min(year) + 1
   40(1), 1-29. \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
+  Other data frame input: \code{\link{daply}},
+  \code{\link{dlply}}
+
   Other data frame output: \code{\link{adply}},
   \code{\link{ldply}}
 }

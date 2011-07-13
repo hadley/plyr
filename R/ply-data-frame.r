@@ -35,10 +35,10 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE
 #' base2 <- ddply(baseball, .(id), transform, 
 #'  career_year = year - min(year) + 1
 #' )
-ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE, .parallel = FALSE) {
+ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop_i = TRUE, .parallel = FALSE) {
   if (empty(.data)) return(.data)
   .variables <- as.quoted(.variables)
-  pieces <- splitter_d(.data, .variables, drop = .drop)
+  pieces <- splitter_d(.data, .variables, drop = .drop_i)
   
   ldply(.data = pieces, .fun = .fun, ..., 
     .progress = .progress, .parallel = .parallel)

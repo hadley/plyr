@@ -22,8 +22,11 @@
 
   \item{.expand}{if \code{.data} is a data frame, should
   output be 1d (expand = FALSE), with an element for each
-  row; or nd (expand = TRUE), with a dimension for each
-  variable.}
+  row; or nd (expand = TRUE), with a}
+
+  \item{.parallel}{if \code{TRUE}, apply function in
+  parallel, using parallel backend provided by foreach
+  dimension for each variable.}
 }
 \value{
   A data frame, as described in the output section.
@@ -55,6 +58,9 @@
   40(1), 1-29. \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
+  Other array input: \code{\link{aaply}},
+  \code{\link{alply}}
+
   Other data frame output: \code{\link{ddply}},
   \code{\link{ldply}}
 }
