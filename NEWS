@@ -1,21 +1,19 @@
 Version 1.6
 ------------------------------------------------------------------------------
 
-* fixed namespacing issue which lead to losing labels when subsetting the
-  results of `*_ply`
+* fixed namespacing issue which lead to lost labels when subsetting the
+  results of `*lply`
 
 * `colwise` automatically strips off split variables.
 
 * `rlply` now correctly deals with `rlply(4, NULL)` (thanks to bug report from
   Eric Goldlust)
 
-* `rbind.fill` now works with variables of class `POSIXlt` and preserves the
-  ordered status of factors.
-
 * `rbind.fill` tries harder to keep attributes, retaining the attributes from
-  the first ocurrence of each column it finds
+  the first occurrence of each column it finds. It also now works with
+  variables of class `POSIXlt` and preserves the ordered status of factors.
 
-* allow arrange to work with one column data frames
+* `arrange` now works with one column data frames
 
 Version 1.5.2
 ------------------------------------------------------------------------------
