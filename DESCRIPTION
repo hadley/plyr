@@ -70,3 +70,4 @@ Collate:
     'split-indices.r'
     'split.r'
     'utils.r'
+    'data.r'
