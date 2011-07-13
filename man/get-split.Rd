@@ -1,6 +1,5 @@
-\name{get-split}
-\alias{"[.split"}
-\alias{get-split}
+\name{[.split}
+\alias{[.split}
 \title{Subset splits.}
 \arguments{
   \item{x}{split object}

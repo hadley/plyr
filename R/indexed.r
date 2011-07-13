@@ -1,5 +1,7 @@
+#' @S3method length indexed
 length.indexed <- function(x) length(x$index)
 
+#' @S3method names indexed
 names.indexed <- function(x) {
   labels <- attr(x, "split_labels")
   labels[] <- lapply(labels, as.character)
@@ -7,6 +9,7 @@ names.indexed <- function(x) {
   do.call(paste, c(labels, list(sep = ".")))
 }
 
+#' @S3method as.list indexed
 as.list.indexed <- function(x, ...) {
   n <- length(x)
   out <- vector("list", n)
@@ -18,10 +21,12 @@ as.list.indexed <- function(x, ...) {
   out
 }
 
+#' @S3method print indexed
 print.indexed <- function(x, ...) {
   print(as.list(x))
 }
 
+#' @S3method [ indexed
 "[.indexed" <- function(x, ...) {
   as.list(x)[...]
 }

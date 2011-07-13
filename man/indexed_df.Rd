@@ -1,11 +1,5 @@
 \name{indexed_df}
-\alias{"[.indexed"}
-\alias{"[[.indexed_df"}
-\alias{as.list.indexed}
 \alias{indexed_df}
-\alias{length.indexed}
-\alias{names.indexed}
-\alias{print.indexed}
 \title{An indexed data frame.}
 \usage{
   indexed_df(data, index, vars)

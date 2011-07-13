@@ -1,6 +1,9 @@
 Version 1.6
 ------------------------------------------------------------------------------
 
+* fixed namespacing issue which lead to losing labels when subsetting the
+  results of `*_ply`
+
 * `colwise` automatically strips off split variables.
 
 * `rlply` now correctly deals with `rlply(4, NULL)` (thanks to bug report from
