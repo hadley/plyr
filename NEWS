@@ -1,6 +1,8 @@
 Version 1.6
 ------------------------------------------------------------------------------
 
+* `colwise` automatically strips off split variables.
+
 * `rlply` now correctly deals with `rlply(4, NULL)` (thanks to bug report from
   Eric Goldlust)
 

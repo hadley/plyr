@@ -50,6 +50,7 @@ colwise <- function(.fun, .cols = true) {
   
   function(df, ...) {
     stopifnot(is.data.frame(df))
+    df <- strip_splits(df)
     filtered <- filter(df)
     if (length(filtered) == 0) return(data.frame())
     
