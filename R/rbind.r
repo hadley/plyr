@@ -74,7 +74,7 @@ output_template <- function(dfs, nrows) {
       if (is.vector(value) && is.atomic(value)) {
         output[[var]] <- rep(NA, nrows)
       } else if (is.factor(value)) {
-        output[[var]] <- factor(rep(NA, nrows))
+        output[[var]] <- factor(rep(NA, nrows), ordered = is.ordered(value))
         is_factor[var] <- TRUE
       } else if (is.matrix(value)) {
         is_matrix[var] <- TRUE

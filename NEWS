@@ -4,7 +4,8 @@ Version 1.6
 * `rlply` now correctly deals with `rlply(4, NULL)` (thanks to bug report from
   Eric Goldlust)
 
-* `rbind.fill` now works with variables of class `POSIXlt`
+* `rbind.fill` now works with variables of class `POSIXlt` and preserves the
+  ordered status of factors.
 
 * `rbind.fill` tries harder to keep attributes, retaining the attributes from
   the first ocurrence of each column it finds
