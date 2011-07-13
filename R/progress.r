@@ -26,10 +26,10 @@
 #' @keywords utilities
 #' @export
 #' @examples
-#' l_ply(1:1000, identity, .progress = "none")
-#' l_ply(1:1000, identity, .progress = "tk")
-#' l_ply(1:1000, identity, .progress = "text")
-#' l_ply(1:1000, identity, .progress = progress_text(char = "-"))
+#' l_ply(1:100, identity, .progress = "none")
+#' l_ply(1:100, identity, .progress = "tk")
+#' l_ply(1:100, identity, .progress = "text")
+#' l_ply(1:100, identity, .progress = progress_text(char = "-"))
 create_progress_bar <- function(name = "none", ...) {
   if (!is.character(name)) return(name)
   name <- paste("progress", name, sep="_")

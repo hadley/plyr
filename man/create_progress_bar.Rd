@@ -37,10 +37,10 @@
   over its apperance. See the examples.
 }
 \examples{
-l_ply(1:1000, identity, .progress = "none")
-l_ply(1:1000, identity, .progress = "tk")
-l_ply(1:1000, identity, .progress = "text")
-l_ply(1:1000, identity, .progress = progress_text(char = "-"))
+l_ply(1:100, identity, .progress = "none")
+l_ply(1:100, identity, .progress = "tk")
+l_ply(1:100, identity, .progress = "text")
+l_ply(1:100, identity, .progress = progress_text(char = "-"))
 }
 \seealso{
   \code{\link{progress_none}}, \code{\link{progress_text}},
