@@ -1,4 +1,5 @@
 #' Loop apply
+#'
 #' An optimised version of lapply for the special case of operating on 
 #' \code{seq_len(n)}
 #'

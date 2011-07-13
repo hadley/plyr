@@ -32,9 +32,8 @@
   list of results
 }
 \description{
-  Split array, apply function, and return results in a
-  list. For each slice of an array, apply function then
-  combine results into a list
+  For each slice of an array, apply function then combine
+  results into a list
 }
 \details{
   All plyr functions use the same split-apply-combine

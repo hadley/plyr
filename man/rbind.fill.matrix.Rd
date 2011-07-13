@@ -11,9 +11,6 @@
   a matrix with column names
 }
 \description{
-  Bind matrices by row, and fill missing columns with NA.
-}
-\details{
   The matrices are bound together using their column names
   or the column indices (in that order of precedence.)
   Numeric columns may be converted to character beforehand,
@@ -22,7 +19,8 @@
   column with name \code{"1"} is merged with the first
   column of a matrix without name and so on. The returned
   matrix will always have column names.
-
+}
+\details{
   Vectors are converted to 1-column matrices.
 
   Matrices of factors are not supported. (They are anyways

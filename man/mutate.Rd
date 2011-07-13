@@ -11,16 +11,13 @@
   columns.}
 }
 \description{
-  Mutate a data frame by adding new or replacing existing
-  columns.
-}
-\details{
   This function is very similar to \code{\link{transform}}
   but it executes the transformations iteratively so that
   later transformations can use the columns created by
   earlier transformations.  Like transform, unnamed
   components are silently dropped.
-
+}
+\details{
   Mutate seems to be considerably faster than transform for
   large data frames.
 }

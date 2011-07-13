@@ -29,9 +29,8 @@
   a data frame
 }
 \description{
-  Split data frame, apply function, and return results in a
-  data frame. For each subset of a data frame, apply
-  function then combine results into a data frame
+  For each subset of a data frame, apply function then
+  combine results into a data frame
 }
 \details{
   All plyr functions use the same split-apply-combine

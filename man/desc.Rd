@@ -8,9 +8,6 @@
   \item{x}{vector to transform}
 }
 \description{
-  Descending order.
-}
-\details{
   Transform a vector into a format that will be sorted in
   descending order.
 }

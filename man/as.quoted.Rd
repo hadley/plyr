@@ -1,13 +1,13 @@
 \name{as.quoted}
+\alias{"[.quoted"}
 \alias{as.quoted}
 \alias{as.quoted.call}
 \alias{as.quoted.character}
 \alias{as.quoted.formula}
-\alias{as.quoted.quoted}
 \alias{as.quoted.NULL}
 \alias{as.quoted.numeric}
+\alias{as.quoted.quoted}
 \alias{c.quoted}
-\alias{"[.quoted"}
 \title{Convert input to quoted variables.}
 \usage{
   as.quoted(x, env = parent.frame())
@@ -23,8 +23,8 @@
   a list of quoted variables
 }
 \description{
-  Convert input to quoted variables. Convert characters,
-  formulas and calls to quoted .variables
+  Convert characters, formulas and calls to quoted
+  .variables
 }
 \details{
   This method is called by default on all plyr functions

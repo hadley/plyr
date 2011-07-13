@@ -28,9 +28,8 @@
   list with dimensions)
 }
 \description{
-  Split list, apply function, and return results in an
-  array. For each element of a list, apply function then
-  combine results into an array
+  For each element of a list, apply function then combine
+  results into an array
 }
 \details{
   All plyr functions use the same split-apply-combine

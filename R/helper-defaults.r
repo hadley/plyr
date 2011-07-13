@@ -1,4 +1,5 @@
 #' Set defaults.
+#'
 #' Convient method for combining a list of values with their defaults.
 #' 
 #' @param x list of values

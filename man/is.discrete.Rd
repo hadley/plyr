@@ -8,8 +8,7 @@
   \item{x}{vector to test}
 }
 \description{
-  Determine if a vector is discrete. A discrete vector is a
-  factor or a character vector
+  A discrete vector is a factor or a character vector
 }
 \examples{
 is.discrete(1:10)

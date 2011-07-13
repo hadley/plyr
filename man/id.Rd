@@ -15,10 +15,6 @@
   possibilities
 }
 \description{
-  Compute a unique numeric id for each unique row in a data
-  frame.
-}
-\details{
   Properties: \itemize{ \item \code{order(id)} is
   equivalent to \code{do.call(order, df)} \item rows
   containing the same data have the same value \item if

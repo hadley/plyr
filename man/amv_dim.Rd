@@ -8,8 +8,7 @@
   \item{x}{array, matrix or vector}
 }
 \description{
-  Dimensions. Consistent dimensions for vectors, matrices
-  and arrays.
+  Consistent dimensions for vectors, matrices and arrays.
 }
 \keyword{internal}
 

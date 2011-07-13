@@ -1,8 +1,9 @@
 \name{.}
 \alias{.}
-\alias{quoted}
 \alias{is.quoted}
-\title{Quote variables to create a list of unevaluated expressions for later...}
+\alias{quoted}
+\title{Quote variables to create a list of unevaluated expressions for later
+evaluation.}
 \usage{
   .(..., .env = parent.frame())
 }
@@ -19,15 +20,12 @@
   list of symbol and language primitives
 }
 \description{
-  Quote variables to create a list of unevaluated
-  expressions for later evaluation.
-}
-\details{
   This function is similar to \code{\link{~}} in that it is
   used to capture the name of variables, not their current
   value.  This is used throughout plyr to specify the names
   of variables (or more complicated expressions).
-
+}
+\details{
   Similar tricks can be performed with
   \code{\link{substitute}}, but when functions can be
   called in multiple ways it becomes increasingly tricky to

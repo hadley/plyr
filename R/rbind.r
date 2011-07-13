@@ -1,4 +1,5 @@
 #' Combine data.frames by row, filling in missing columns.
+#'
 #' \code{rbind}s a list of data frames filling missing columns with NA.
 #' 
 #' This is an enhancement to \code{\link{rbind}} that adds in columns

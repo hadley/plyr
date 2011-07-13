@@ -12,9 +12,6 @@
   \item{...}{other arguments passed on to \code{.fun}}
 }
 \description{
-  Experimental iterator based version of llply.
-}
-\details{
   Because iterators do not have known length, \code{liply}
   starts by allocating an output list of length 50, and
   then doubles that length whenever it runs out of space.

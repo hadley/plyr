@@ -32,9 +32,8 @@
   a data frame
 }
 \description{
-  Split array, apply function, and return results in a data
-  frame. For each slice of an array, apply function then
-  combine results into a data frame
+  For each slice of an array, apply function then combine
+  results into a data frame
 }
 \details{
   All plyr functions use the same split-apply-combine

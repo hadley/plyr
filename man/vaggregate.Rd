@@ -21,16 +21,14 @@
   \item{.n}{total number of groups}
 }
 \description{
-  Vector aggregate.
-}
-\details{
   This function is somewhat similar to \code{tapply}, but
   is designed for use in conjunction with \code{id}. It is
   simpler in that it only accepts a single grouping vector
   (use \code{\link{id}} if you have more) and uses
   \code{\link{vapply}} internally, using the
   \code{.default} value as the template.
-
+}
+\details{
   \code{vaggregate} should be faster than \code{tapply} in
   most situations because it avoids making a copy of the
   data.

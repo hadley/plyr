@@ -14,9 +14,8 @@
   (FALSE, default)}
 }
 \description{
-  Try, with default in case of error. \code{try_default}
-  wraps try so that it returns a default value in the case
-  of error.
+  \code{try_default} wraps try so that it returns a default
+  value in the case of error.
 }
 \details{
   \code{tryNULL} provides a useful special case when

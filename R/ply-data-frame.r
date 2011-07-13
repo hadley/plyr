@@ -1,4 +1,5 @@
 #' Split list, apply function, and return results in a data frame.
+#'
 #' For each element of a list, apply function then combine results into a data  frame
 #' 
 #' All plyr functions use the same split-apply-combine strategy: they split the
@@ -36,6 +37,7 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE
 }
 
 #' Split data frame, apply function, and return results in a data frame.
+#'
 #' For each subset of a data frame, apply function then combine results into a  data frame
 #' 
 #' All plyr functions use the same split-apply-combine strategy: they split the
@@ -88,6 +90,7 @@ ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 }
 
 #' Split array, apply function, and return results in a data frame.
+#'
 #' For each slice of an array, apply function then combine results into a data frame
 #' 
 #' All plyr functions use the same split-apply-combine strategy: they split the

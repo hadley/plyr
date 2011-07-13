@@ -15,9 +15,6 @@
   a function
 }
 \description{
-  Fail with specified value.
-}
-\details{
   Modify a function so that it returns a default value when
   there is an error.
 }

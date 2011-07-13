@@ -1,4 +1,5 @@
 #' An indexed data frame.
+#'
 #' Create a indexed list, a space efficient way of indexing into a large data frame
 #' 
 #' @param env environment containing data frame

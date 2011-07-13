@@ -16,8 +16,8 @@
   details
 }
 \description{
-  Split a data frame by variables. Split a data frame into
-  pieces based on variable contained in that data frame
+  Split a data frame into pieces based on variable
+  contained in that data frame
 }
 \details{
   This is the workhorse of the \code{d*ply} functions.

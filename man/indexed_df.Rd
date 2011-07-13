@@ -1,10 +1,10 @@
 \name{indexed_df}
+\alias{"[.indexed"}
+\alias{"[[.indexed_df"}
+\alias{as.list.indexed}
 \alias{indexed_df}
 \alias{length.indexed}
 \alias{names.indexed}
-\alias{as.list.indexed}
-\alias{"[[.indexed_df"}
-\alias{"[.indexed"}
 \alias{print.indexed}
 \title{An indexed data frame.}
 \usage{
@@ -19,8 +19,8 @@
   for subsetting}
 }
 \description{
-  An indexed data frame. Create a indexed list, a space
-  efficient way of indexing into a large data frame
+  Create a indexed list, a space efficient way of indexing
+  into a large data frame
 }
 \keyword{internal}
 

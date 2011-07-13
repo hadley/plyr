@@ -11,9 +11,6 @@
   \code{df} and then fed to \code{\link{order}}}
 }
 \description{
-  Order a data frame by its colums.
-}
-\details{
   This function completes the subsetting, transforming and
   ordering triad with a function that works in a similar
   way to \code{\link{subset}} and \code{\link{transform}}

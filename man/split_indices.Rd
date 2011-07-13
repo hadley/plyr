@@ -12,9 +12,9 @@
   \item{n}{largest integer (may not appear in index)}
 }
 \description{
-  Split indices. An optimised version of split for the
-  special case of splitting row indices into groups, as
-  used by \code{\link{splitter_d}}
+  An optimised version of split for the special case of
+  splitting row indices into groups, as used by
+  \code{\link{splitter_d}}
 }
 \keyword{internal}
 \keyword{manip}

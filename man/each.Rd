@@ -8,12 +8,10 @@
   \item{...}{functions to combine}
 }
 \description{
-  Aggregate multiple functions into a single function.
-}
-\details{
   Combine multiple functions to a single function returning
   a named vector of outputs
-
+}
+\details{
   Each function should produce a single number as output
 }
 \examples{

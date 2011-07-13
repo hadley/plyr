@@ -17,12 +17,10 @@
   \item{...}{necessary to match the generic, but not used}
 }
 \description{
-  Make a function return a data frame.
-}
-\details{
   Create a new function that returns the existing function
   wrapped in a data.frame
-
+}
+\details{
   This is useful when calling \code{*dply} functions with a
   function that returns a vector, and you want the output
   in rows, rather than columns

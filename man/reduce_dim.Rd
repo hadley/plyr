@@ -8,7 +8,7 @@
   \item{x}{array}
 }
 \description{
-  Reduce dimensions. Remove extraneous dimensions
+  Remove extraneous dimensions
 }
 \keyword{internal}
 

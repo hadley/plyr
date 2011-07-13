@@ -26,7 +26,6 @@
   list of results
 }
 \description{
-  Split list, apply function, and return results in a list.
   For each element of a list, apply function then combine
   results into a list
 }

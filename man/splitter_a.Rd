@@ -1,6 +1,6 @@
 \name{splitter_a}
 \alias{splitter_a}
-\title{Split an array by...}
+\title{Split an array by .margins.}
 \usage{
   splitter_a(data, .margins = 1L, .expand = TRUE)
 }
@@ -21,8 +21,8 @@
   split details
 }
 \description{
-  Split an array by .margins. Split a 2d or higher data
-  structure into lower-d pieces based
+  Split a 2d or higher data structure into lower-d pieces
+  based
 }
 \details{
   This is the workhorse of the \code{a*ply} functions.

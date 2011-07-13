@@ -27,10 +27,9 @@
   list of results
 }
 \description{
-  Call function with arguments in array or data frame,
-  returning a list. Call a multi-argument function with
-  values taken from columns of an data frame or array, and
-  combine results into a list
+  Call a multi-argument function with values taken from
+  columns of an data frame or array, and combine results
+  into a list
 }
 \details{
   The \code{m*ply} functions are the \code{plyr} version of

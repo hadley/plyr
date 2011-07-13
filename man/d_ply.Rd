@@ -22,7 +22,6 @@
   \code{FALSE})}
 }
 \description{
-  Split data frame, apply function, and discard results.
   For each subset of a data frame, apply function and
   discard results
 }

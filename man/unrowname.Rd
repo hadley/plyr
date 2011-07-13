@@ -8,7 +8,7 @@
   \item{x}{data frame}
 }
 \description{
-  Un-rowname. Strip rownames from an object
+  Strip rownames from an object
 }
 \keyword{internal}
 

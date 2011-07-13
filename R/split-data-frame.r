@@ -1,4 +1,5 @@
 #' Split a data frame by variables.
+#'
 #' Split a data frame into pieces based on variable contained in that data frame
 #' 
 #' This is the workhorse of the \code{d*ply} functions.  Based on the variables
@@ -61,6 +62,7 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
 }
 
 #' Generate labels for split data frame.
+#'
 #' Create data frame giving labels for split data frame.
 #' 
 #' @param list of variables to split up by

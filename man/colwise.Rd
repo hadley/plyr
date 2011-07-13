@@ -1,6 +1,6 @@
 \name{colwise}
-\alias{colwise}
 \alias{catcolwise}
+\alias{colwise}
 \alias{numcolwise}
 \title{Column-wise function.}
 \usage{
@@ -14,9 +14,8 @@
   process}
 }
 \description{
-  Column-wise function. Turn a function that operates on a
-  vector into a function that operates column-wise on a
-  data.frame.
+  Turn a function that operates on a vector into a function
+  that operates column-wise on a data.frame.
 }
 \details{
   \code{catcolwise} and \code{numcolwise} provide version

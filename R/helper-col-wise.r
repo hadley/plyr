@@ -1,4 +1,5 @@
 #' Column-wise function.
+#'
 #' Turn a function that operates on a vector into a function that operates
 #' column-wise on a data.frame.
 #'

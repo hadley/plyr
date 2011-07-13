@@ -10,8 +10,7 @@
   \item{...}{unused}
 }
 \description{
-  Print split. Don't print labels, so it appears like a
-  regular list
+  Don't print labels, so it appears like a regular list
 }
 \keyword{internal}
 

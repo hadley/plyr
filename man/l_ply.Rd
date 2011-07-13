@@ -19,8 +19,8 @@
   \code{FALSE})}
 }
 \description{
-  Split list, apply function, and discard results. For each
-  element of a list, apply function and discard results
+  For each element of a list, apply function and discard
+  results
 }
 \details{
   All plyr functions use the same split-apply-combine

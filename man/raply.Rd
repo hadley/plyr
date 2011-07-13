@@ -22,7 +22,6 @@
   list with dimensions)
 }
 \description{
-  Replicate expression and return results in a array.
   Evalulate expression n times then combine results into an
   array
 }

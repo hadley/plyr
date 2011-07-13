@@ -8,9 +8,6 @@
   \item{df}{data frame produced by \code{d*ply}.}
 }
 \description{
-  Remove splitting variables from a data frame.
-}
-\details{
   This is useful when you want to perform some operation to
   every column in the data frame, except the variables that
   you have used to split it. These variables will be

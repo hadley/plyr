@@ -11,8 +11,7 @@
   \code{winProgressBar}}
 }
 \description{
-  Graphical progress bar, powered by Windows. A graphical
-  progress bar displayed in a separate window
+  A graphical progress bar displayed in a separate window
 }
 \details{
   This graphical progress only works on Windows.

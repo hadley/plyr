@@ -27,14 +27,11 @@
   a data frame
 }
 \description{
-  Call function with arguments in array or data frame,
-  returning a data frame.
-}
-\details{
   Call a multi-argument function with values taken from
   columns of an data frame or array, and combine results
   into a data frame
-
+}
+\details{
   The \code{m*ply} functions are the \code{plyr} version of
   \code{mapply}, specialised according to the type of
   output they produce.  These functions are just a

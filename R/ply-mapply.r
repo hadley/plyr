@@ -40,6 +40,7 @@ mdply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none", .
 }
 
 #' Call function with arguments in array or data frame, returning an array.
+#'
 #' Call a multi-argument function with values taken from columns of an data frame or array, and combine results into an array
 #' 
 #' The \code{m*ply} functions are the \code{plyr} version of \code{mapply},
@@ -78,6 +79,7 @@ maply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none", .
 }
 
 #' Call function with arguments in array or data frame, returning a list.
+#'
 #' Call a multi-argument function with values taken from columns of an data frame or array, and combine results into a list
 #' 
 #' The \code{m*ply} functions are the \code{plyr} version of \code{mapply},
@@ -119,6 +121,7 @@ mlply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none", .
 }
 
 #' Call function with arguments in array or data frame, discarding results.
+#'
 #' Call a multi-argument function with values taken from columns of an data frame or array, and discard results
 #' 
 #' The \code{m*ply} functions are the \code{plyr} version of \code{mapply},

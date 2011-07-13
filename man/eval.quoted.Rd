@@ -15,8 +15,7 @@
   a list
 }
 \description{
-  Evaluate a quoted list of variables. Evaluates quoted
-  variables in specified environment
+  Evaluates quoted variables in specified environment
 }
 \keyword{internal}
 

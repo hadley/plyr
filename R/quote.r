@@ -45,6 +45,7 @@
 is.quoted <- function(x) inherits(x, "quoted")
 
 #' Print quoted variables.
+#'
 #' Display the \code{\link{str}}ucture of quoted variables
 #' 
 #' @keywords internal
@@ -53,6 +54,7 @@ is.quoted <- function(x) inherits(x, "quoted")
 print.quoted <- function(x, ...) str(x)
 
 #' Compute names of quoted variables.
+#'
 #' Figure out names of quoted variables, using specified names if they exist,
 #' otherwise converting the values to character strings.  This may create 
 #' variable names that can only be accessed using \code{``}.
@@ -73,6 +75,7 @@ names.quoted <- function(x) {
 }
 
 #' Evaluate a quoted list of variables.
+#'
 #' Evaluates quoted variables in specified environment
 #' 
 #' @return a list
@@ -99,6 +102,7 @@ eval.quoted <- function(exprs, envir = NULL, enclos = NULL, try = FALSE) {
 }
 
 #' Convert input to quoted variables.
+#'
 #' Convert characters, formulas and calls to quoted .variables
 #' 
 #' This method is called by default on all plyr functions that take a 

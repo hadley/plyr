@@ -16,8 +16,7 @@
   \code{FALSE})}
 }
 \description{
-  Replicate expression and discard results. Evalulate
-  expression n times then discard results
+  Evalulate expression n times then discard results
 }
 \details{
   This function runs an expression multiple times,

@@ -8,8 +8,8 @@
   \item{l}{list}
 }
 \description{
-  Compact list. Remove all NULL entries from a list
+  Remove all NULL entries from a list
 }
-\keyword{manip}
 \keyword{internal}
+\keyword{manip}
 

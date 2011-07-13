@@ -1,4 +1,5 @@
 #' Create progress bar.
+#'
 #' Create progress bar object from text string.
 #' 
 #' Progress bars give feedback on how apply step is proceeding.  This
@@ -42,6 +43,7 @@ create_progress_bar <- function(name = "none", ...) {
 }
 
 #' Null progress bar
+#'
 #' A progress bar that does nothing
 #' 
 #' This the default progress bar used by plyr functions.  It's very simple to
@@ -60,6 +62,7 @@ progress_none <- function() {
 }
 
 #' Text progress bar.
+#'
 #' A textual progress bar
 #' 
 #' This progress bar displays a textual progress bar that works on all 
@@ -90,6 +93,7 @@ progress_text <- function(style = 3, ...) {
 }
 
 #' Graphical progress bar, powered by Tk.
+#'
 #' A graphical progress bar displayed in a Tk window
 #' 
 #' This graphical progress will appear in a separate window.
@@ -122,6 +126,7 @@ progress_tk <- function(title = "plyr progress", label = "Working...", ...) {
 }
 
 #' Graphical progress bar, powered by Windows.
+#'
 #' A graphical progress bar displayed in a separate window
 #' 
 #' This graphical progress only works on Windows.

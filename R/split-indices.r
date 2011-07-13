@@ -1,4 +1,5 @@
 #' Split indices.
+#'
 #' An optimised version of split for the special case of splitting row
 #' indices into groups, as used by \code{\link{splitter_d}}
 #'

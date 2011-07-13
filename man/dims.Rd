@@ -8,8 +8,7 @@
   \item{x}{array}
 }
 \description{
-  Number of dimensions. Number of dimensions of an array or
-  vector
+  Number of dimensions of an array or vector
 }
 \keyword{internal}
 

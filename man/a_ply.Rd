@@ -29,8 +29,7 @@
   \code{FALSE})}
 }
 \description{
-  Split array, apply function, and discard results. For
-  each slice of an array, apply function and discard
+  For each slice of an array, apply function and discard
   results
 }
 \details{

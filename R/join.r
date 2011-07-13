@@ -1,7 +1,9 @@
 #' Join two data frames together.
 #'
 #' Join, like merge, is designed for the types of problems
-#' where you would use a sql join. The four join types return:
+#' where you would use a sql join. 
+#'
+#' The four join types return:
 #' 
 #' \itemize{
 #'  \item \code{inner}:  only rows with matching keys in both x and y

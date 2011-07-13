@@ -11,8 +11,7 @@
   function}
 }
 \description{
-  Create progress bar. Create progress bar object from text
-  string.
+  Create progress bar object from text string.
 }
 \details{
   Progress bars give feedback on how apply step is

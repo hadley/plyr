@@ -14,8 +14,7 @@
   preserved (FALSE)}
 }
 \description{
-  List to array. Reduce/simplify a list of homogenous
-  objects to an array
+  Reduce/simplify a list of homogenous objects to an array
 }
 \keyword{internal}
 

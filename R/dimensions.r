@@ -1,4 +1,5 @@
 #' Number of dimensions.
+#'
 #' Number of dimensions of an array or vector
 #' 
 #' @param x array
@@ -6,6 +7,7 @@
 dims <- function(x) length(amv_dim(x))
 
 #' Dimensions.
+#'
 #' Consistent dimensions for vectors, matrices and arrays.
 #' 
 #' @param x array, matrix or vector
@@ -14,6 +16,7 @@ amv_dim <- function(x) if (is.vector(x)) length(x) else dim(x)
 
 
 #' Dimension names.
+#'
 #' Consistent dimnames for vectors, matrices and arrays.
 #' 
 #' Unlike \code{\link{dimnames}} no part of the output will ever be
@@ -35,6 +38,7 @@ amv_dimnames <- function(x) {
 }
 
 #' Reduce dimensions.
+#'
 #' Remove extraneous dimensions
 #' 
 #' @param x array

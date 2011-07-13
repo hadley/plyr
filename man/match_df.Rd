@@ -16,9 +16,6 @@
   a data frame
 }
 \description{
-  Extract matching rows of a data frame.
-}
-\details{
   This is particularly useful when you've summarised the
   data in some way and want to subset the original data by
   a characteristic of the subset.

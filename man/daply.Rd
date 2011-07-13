@@ -31,9 +31,8 @@
   list with dimensions)
 }
 \description{
-  Split data frame, apply function, and return results in
-  an array. For each subset of data frame, apply function
-  then combine results into an array
+  For each subset of data frame, apply function then
+  combine results into an array
 }
 \details{
   All plyr functions use the same split-apply-combine

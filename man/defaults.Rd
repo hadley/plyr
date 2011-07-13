@@ -10,8 +10,8 @@
   \item{y}{defaults}
 }
 \description{
-  Set defaults. Convient method for combining a list of
-  values with their defaults.
+  Convient method for combining a list of values with their
+  defaults.
 }
 \keyword{manip}
 

@@ -8,8 +8,7 @@
   \item{x}{array, matrix or vector}
 }
 \description{
-  Dimension names. Consistent dimnames for vectors,
-  matrices and arrays.
+  Consistent dimnames for vectors, matrices and arrays.
 }
 \details{
   Unlike \code{\link{dimnames}} no part of the output will

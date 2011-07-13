@@ -16,7 +16,6 @@
   a data frame
 }
 \description{
-  Replicate expression and return results in a data frame.
   Evalulate expression n times then combine results into a
   data frame
 }

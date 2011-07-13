@@ -20,12 +20,11 @@
   \code{"all"} matching rows.}
 }
 \description{
-  Join two data frames together.
+  Join, like merge, is designed for the types of problems
+  where you would use a sql join.
 }
 \details{
-  Join, like merge, is designed for the types of problems
-  where you would use a sql join. The four join types
-  return:
+  The four join types return:
 
   \itemize{ \item \code{inner}: only rows with matching
   keys in both x and y \item \code{left}: all rows in x,

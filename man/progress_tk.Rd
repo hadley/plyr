@@ -14,8 +14,7 @@
   \code{\link[tcltk]{tkProgressBar}}}
 }
 \description{
-  Graphical progress bar, powered by Tk. A graphical
-  progress bar displayed in a Tk window
+  A graphical progress bar displayed in a Tk window
 }
 \details{
   This graphical progress will appear in a separate window.

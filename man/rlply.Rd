@@ -16,7 +16,6 @@
   list of results
 }
 \description{
-  Replicate expression and return results in a list.
   Evalulate expression n times then combine results into a
   list
 }

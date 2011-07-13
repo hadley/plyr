@@ -12,7 +12,7 @@
   \code{\link{txtProgressBar}}}
 }
 \description{
-  Text progress bar. A textual progress bar
+  A textual progress bar
 }
 \details{
   This progress bar displays a textual progress bar that

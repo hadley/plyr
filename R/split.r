@@ -1,4 +1,5 @@
 #' Subset splits.
+#'
 #' Subset splits, ensuring that labels keep matching
 #' 
 #' @keywords internal
@@ -18,6 +19,7 @@
 }
 
 #' Convert split list to regular list.
+#'
 #' Strip off label related attributed to make a strip list as regular list
 #'   
 #' @keywords internal
@@ -32,6 +34,7 @@ as.list.split <- function(x, ...) {
 }
 
 #' Print split.
+#'
 #' Don't print labels, so it appears like a regular list
 #' 
 #' @keywords internal

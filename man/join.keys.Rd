@@ -1,6 +1,7 @@
 \name{join.keys}
 \alias{join.keys}
-\title{Join keys.}
+\title{Join keys.
+Given two data frames, create a unique key for each row.}
 \usage{
   join.keys(x, y, by)
 }

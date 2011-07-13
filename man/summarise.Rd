@@ -11,9 +11,6 @@
   \item{...}{further arguments of the form var = value}
 }
 \description{
-  Summarise a data frame.
-}
-\details{
   Summarise works in an analagous way to transform, except
   instead of adding columns to an existing data frame, it
   creates a new one.  This is particularly useful in

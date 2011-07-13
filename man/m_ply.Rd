@@ -21,10 +21,8 @@
   \code{\link{create_progress_bar}}}
 }
 \description{
-  Call function with arguments in array or data frame,
-  discarding results. Call a multi-argument function with
-  values taken from columns of an data frame or array, and
-  discard results
+  Call a multi-argument function with values taken from
+  columns of an data frame or array, and discard results
 }
 \details{
   The \code{m*ply} functions are the \code{plyr} version of

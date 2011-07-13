@@ -12,8 +12,7 @@
   considered, or only those present in the data}
 }
 \description{
-  Generate labels for split data frame. Create data frame
-  giving labels for split data frame.
+  Create data frame giving labels for split data frame.
 }
 \keyword{internal}
 
