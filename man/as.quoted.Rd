@@ -1,13 +1,5 @@
 \name{as.quoted}
-\alias{"[.quoted"}
 \alias{as.quoted}
-\alias{as.quoted.call}
-\alias{as.quoted.character}
-\alias{as.quoted.formula}
-\alias{as.quoted.NULL}
-\alias{as.quoted.numeric}
-\alias{as.quoted.quoted}
-\alias{c.quoted}
 \title{Convert input to quoted variables.}
 \usage{
   as.quoted(x, env = parent.frame())

@@ -5,14 +5,12 @@
   each(...)
 }
 \arguments{
-  \item{...}{functions to combine}
+  \item{...}{functions to combine. each function should
+  produce a single number as output}
 }
 \description{
-  Combine multiple functions to a single function returning
-  a named vector of outputs
-}
-\details{
-  Each function should produce a single number as output
+  Combine multiple functions into a single function
+  returning a named vector of outputs.
 }
 \examples{
 each(min, max)(1:10)

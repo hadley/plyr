@@ -49,6 +49,8 @@ plyr:::splitter_d(mtcars, .(cyl3, vs), drop = FALSE)
 \seealso{
   \code{\link{.}} for quoting variables,
   \code{\link{split}}
+
+  Other splitter functions: \code{\link{splitter_a}}
 }
 \keyword{internal}
 

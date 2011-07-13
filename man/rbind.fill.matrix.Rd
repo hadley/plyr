@@ -50,6 +50,8 @@ rbind.fill.matrix (A, 99)
 \seealso{
   \code{\link[base]{rbind}}, \code{\link[base]{cbind}},
   \code{\link[plyr]{rbind.fill}}
+
+  Other binding functions: \code{\link{rbind.fill}}
 }
 \keyword{manip}
 

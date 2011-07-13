@@ -50,6 +50,7 @@ create_progress_bar <- function(name = "none", ...) {
 #' understand - it does nothing!
 #' 
 #' @keywords internal
+#' @family progress bars
 #' @export
 #' @examples
 #' l_ply(1:100, identity, .progress = "none")
@@ -71,6 +72,7 @@ progress_none <- function() {
 #'
 #' @param style style of text bar, see Details section of \code{\link{txtProgressBar}}
 #' @param ... other arugments passed on to \code{\link{txtProgressBar}}
+#' @family progress bars
 #' @export
 #' @examples
 #' l_ply(1:100, identity, .progress = "text")
@@ -102,6 +104,7 @@ progress_text <- function(style = 3, ...) {
 #' @param label progress bar label (inside window)
 #' @param ... other arguments passed on to \code{\link[tcltk]{tkProgressBar}}
 #' @seealso \code{\link[tcltk]{tkProgressBar}} for the function that powers this progress bar
+#' @family progress bars
 #' @export
 #' @examples
 #' l_ply(1:100, identity, .progress = "tk")
@@ -135,6 +138,7 @@ progress_tk <- function(title = "plyr progress", label = "Working...", ...) {
 #' @param ... other arguments passed on to \code{winProgressBar}
 #' @seealso \code{winProgressBar} for the function that powers this progress bar
 #' @export
+#' @family progress bars
 #' @examples
 #' if(exists("winProgressBar")) {
 #' l_ply(1:100, identity, .progress = "win")

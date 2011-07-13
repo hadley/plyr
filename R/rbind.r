@@ -12,6 +12,7 @@
 #' 
 #' @param ... input data frames to row bind together
 #' @keywords manip
+#' @family binding functions
 #' @return a single data frame
 #' @export
 #' @examples

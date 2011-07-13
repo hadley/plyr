@@ -13,6 +13,7 @@
 #' other operations.
 #' 
 #' @seealso \code{\link{.}} for quoting variables, \code{\link{split}}
+#' @family splitter functions
 #' @param data data frame
 #' @param .variables a \link{quoted} list of variables
 #' @param drop drop unnused factor levels?

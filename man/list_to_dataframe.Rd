@@ -15,5 +15,9 @@
   frame. All \code{NULL} entries are removed. Remaining
   entries must be all atomic or all data frames.
 }
+\seealso{
+  Other list simplification functions:
+  \code{\link{list_to_array}}, \code{\link{list_to_vector}}
+}
 \keyword{internal}
 

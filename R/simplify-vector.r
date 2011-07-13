@@ -4,6 +4,7 @@
 #' 
 #' @param res list of input data
 #' @keywords internal
+#' @family list simplification functions
 list_to_vector <- function(res) {
   n <- length(res)
   if (n == 0) return(vector())

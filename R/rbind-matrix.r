@@ -21,6 +21,7 @@
 #' @author C. Beleites
 #' @seealso \code{\link[base]{rbind}}, \code{\link[base]{cbind}},
 #'    \code{\link[plyr]{rbind.fill}}
+#' @family binding functions
 #' @export
 #' @keywords manip
 #' @examples 

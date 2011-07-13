@@ -27,5 +27,8 @@
 \examples{
 rbind.fill(mtcars[c("mpg", "wt")], mtcars[c("wt", "cyl")])
 }
+\seealso{
+  Other binding functions: \code{\link{rbind.fill.matrix}}
+}
 \keyword{manip}
 

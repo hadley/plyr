@@ -1,11 +1,10 @@
 #' Aggregate multiple functions into a single function.
 #'
-#' Combine multiple functions to a single function returning a named vector of
-#' outputs
+#' Combine multiple functions into a single function returning a named vector
+#' of outputs.
 #' 
-#' Each function should produce a single number as output
-#' 
-#' @param ... functions to combine
+#' @param ... functions to combine. each function should produce a single
+#'    number as output
 #' @keywords manip
 #' @export
 #' @examples

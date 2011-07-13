@@ -20,6 +20,7 @@
 #'   (expand = FALSE), with an element for each row; or nd (expand = TRUE), 
 #'   with a dimension for each variable.
 #' @return a list of lower-d slices, with attributes that record split details
+#' @family splitter functions
 #' @keywords internal
 #' @examples
 #' plyr:::splitter_a(mtcars, 1)

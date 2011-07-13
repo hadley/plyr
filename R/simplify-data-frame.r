@@ -4,7 +4,7 @@
 #' All \code{NULL} entries are removed. Remaining entries must be all atomic
 #' or all data frames.
 #' 
-#' 
+#' @family list simplification functions
 #' @param res list of input data
 #' @param labels a data frame of labels, one row for each element of res
 #' @keywords internal
