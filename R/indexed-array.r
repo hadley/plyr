@@ -43,7 +43,7 @@ indexed_array <- function(env, index) {
 #' @S3method length indexed_array
 length.indexed_array <- function(x) nrow(x$index)
 
-#' @S3method [[ indexed
+#' @S3method [[ indexed_array
 "[[.indexed_array" <- function(x, i) {
   indices <- paste(x$index[i, ,drop=TRUE], collapse = ", ")
 
