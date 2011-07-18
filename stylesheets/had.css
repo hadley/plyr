@@ -10,3 +10,12 @@ pre {
   line-height: 1.4em;
   margin: 0.75em 0 0.75em 0;
 }
+
+#header {
+  margin-top: 5em;
+  margin-bottom: 1em;
+}
+#footer {
+  margin-top: 5em;
+  margin-bottom: 1em;
+}

@@ -32,14 +32,19 @@
 <body>
 
 	<div class="container">	
-	  <div class="sixteen columns"> 
-			<h1 class="remove-bottom" style="margin-top: 40px">{{page.title}}</h1> 
+	  <div class="sixteen columns" id="header"> 
+			<h1 class="remove-bottom">{{page.title}}</h1> 
 			<h5>{{page.subtitle}}</h5> 
 			<hr /> 
 		</div>
 	  
 		<div class="sixteen columns">
 		  {{ content }}
+		</div>
+
+		<div id="footer" class="sixteen columns">
+		  <hr />
+		  Built by <a href="http://had.co.nz">Hadley Wickham</a>.
 		</div>
 	</div><!-- container -->
 		
