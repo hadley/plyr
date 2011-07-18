@@ -1,9 +1,8 @@
 ---
 layout: base
-title: plyr: split-apply-combine
+title: plyr
+subtitle: The split-apply-combine strategy for R
 ---
-
-# plyr
 
 <img src="pliers.jpg" width="369" height="137" align="right" />
 
@@ -32,7 +31,7 @@ All course materials are [available online](09-user/).
 
 ## How to install
 
-The current version of plyr is __1.4__ and is available from (CRAN)[http://cran.r-project.org/web/packages/plyr/] so you can install it using the following R command:
+The current version of plyr is __1.4__ and is available from [CRAN](http://cran.r-project.org/web/packages/plyr/) so you can install it using the following R command:
 
     install.packages("plyr")
 
