@@ -25,21 +25,17 @@ Considerable effort has been put into making plyr fast and memory efficient, and
 
 If you are interested in the watching the development of plyr, please see the [development site](http://github.com/hadley/plyr) on [github](http://github.com)
 
-## 2009 plyr tutorial
-
-All course materials are [available online](09-user/).
-
-## How to install
+## Installing plyr
 
 The current version of plyr is __1.4__ and is available from [CRAN](http://cran.r-project.org/web/packages/plyr/) so you can install it using the following R command:
 
     install.packages("plyr")
 
-## Documentation
+## Learning plyr
 
-The best place to start is the introductory guide: [plyr: divide and conquer](plyr-intro-090510.pdf).  (Updated May 10, 2009).
+The best place to start is the article published in JSS: [The Split-Apply-Combine Strategy for Data Analysis](http://www.jstatsoft.org/v40/i01).
 
-## Mailing list
+You might also find [the notes](09-user/) from a tutorial I offered at User! 2009 useful.
 
 You are welcome to ask plyr questions on R-help, but if you'd like to participate in a more focussed mailing list, please sign up for the manipulatr mailing list:
 
