@@ -48,3 +48,11 @@ You must be a member to post messages, but anyone can [read the archived discuss
 ## Get involved
 
 If you've discovered any bugs in the plyr package, or you have thought of a killer new feature, please email me: [h.wickham@gmail.com](mailto:h.wickham@gmail.com).
+
+## News
+
+<ul>
+{% for post in site.posts %}
+  <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+{% endfor %}
+</ul>
