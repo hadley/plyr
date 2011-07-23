@@ -4,7 +4,7 @@ title: plyr
 subtitle: The split-apply-combine strategy for R
 ---
 
-<img src="pliers.jpg" width="369" height="137" align="right" />
+{% capture left %}
 
 plyr is a set of tools for a common set of problems: you need to __split__ up a big data structure into homogeneous pieces, __apply__ a function to each piece and then __combine__ all the results back together. For example, you might want to:
 
@@ -23,15 +23,24 @@ It's already possible to do this with base R functions (like split and the apply
 
 Considerable effort has been put into making plyr fast and memory efficient, and in many cases plyr is as fast as, or faster than, the built-in functions.
 
-If you are interested in the watching the development of plyr, please see the [development site](http://github.com/hadley/plyr) on [github](http://github.com)
+If you are interested in the watching the development of plyr, please see the [development site](http://github.com/hadley/plyr) on [github](http://github.com).  If you've discovered any bugs in the plyr package, or you have thought of a killer new feature, please email me: [h.wickham@gmail.com](mailto:h.wickham@gmail.com).
 
-## Installing plyr
 
-The current version of plyr is __1.4__ and is available from [CRAN](http://cran.r-project.org/web/packages/plyr/) so you can install it using the following R command:
+{% endcapture %}
 
-    install.packages("plyr")
 
-## Learning plyr
+{% capture right %}
+
+## News
+
+<ul>
+{% for post in site.posts %}
+  <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+{% endfor %}
+</ul>
+
+
+## Learning more
 
 The best place to start is the article published in JSS: [The Split-Apply-Combine Strategy for Data Analysis](http://www.jstatsoft.org/v40/i01).
 
@@ -45,14 +54,11 @@ You are welcome to ask plyr questions on R-help, but if you'd like to participat
 
 You must be a member to post messages, but anyone can [read the archived discussions](http://groups.google.com/group/manipulatr).
 
-## Get involved
+{% endcapture %}
 
-If you've discovered any bugs in the plyr package, or you have thought of a killer new feature, please email me: [h.wickham@gmail.com](mailto:h.wickham@gmail.com).
-
-## News
-
-<ul>
-{% for post in site.posts %}
-  <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-{% endfor %}
-</ul>
+<div class="ten columns">
+  {{ left | markdownify }}
+</div>
+<div class="five columns offset-by-one">
+  {{ right | markdownify  }}
+</div>
