@@ -1,6 +1,7 @@
 /* http://colorschemedesigner.com/#1T21Ow0w0w0w0 */
 html, body {
   background-image: url("/exclusive-paper.png");
+  background-attachment:fixed;
 }
 
 p.abstract {margin-top: 1em}
