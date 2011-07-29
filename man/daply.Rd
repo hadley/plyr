@@ -3,7 +3,7 @@
 \title{Split data frame, apply function, and return results in an array.}
 \usage{
   daply(.data, .variables, .fun = NULL, ..., .progress =
-  "none", .drop_o = TRUE, .drop_i = TRUE, .parallel =
+  "none", .drop_i = TRUE, .drop_o = TRUE, .parallel =
   FALSE)
 }
 \arguments{

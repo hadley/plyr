@@ -2,8 +2,8 @@
 \alias{laply}
 \title{Split list, apply function, and return results in an array.}
 \usage{
-  laply(.data, .fun = NULL, ..., .progress = "none",
-  .drop_o = TRUE, .parallel = FALSE)
+  laply(.data, .fun = NULL, ..., .progress = "none", .drop
+  = TRUE, .parallel = FALSE)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -18,7 +18,7 @@
   \item{.parallel}{if \code{TRUE}, apply function in
   parallel, using parallel backend provided by foreach}
 
-  \item{.drop_o}{should extra dimensions of length 1 in the
+  \item{.drop}{should extra dimensions of length 1 in the
   output be dropped, simplifying the output.  Defaults to
   \code{TRUE}}
 }

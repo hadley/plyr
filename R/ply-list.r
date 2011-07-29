@@ -107,9 +107,9 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
 #' with(coef, plot(`(Intercept)`, year))
 #' qual <- laply(models, function(mod) summary(mod)$r.squared)
 #' hist(qual)
-dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop_i = TRUE, .parallel = FALSE) {
+dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE, .parallel = FALSE) {
   .variables <- as.quoted(.variables)
-  pieces <- splitter_d(.data, .variables, drop = .drop_i)
+  pieces <- splitter_d(.data, .variables, drop = .drop)
   
   llply(.data = pieces, .fun = .fun, ..., 
     .progress = .progress, .parallel = .parallel)

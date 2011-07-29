@@ -3,7 +3,7 @@
 \title{Split array, apply function, and return results in an array.}
 \usage{
   aaply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
-  .progress = "none", .drop_o = TRUE, .parallel = FALSE)
+  .progress = "none", .drop = TRUE, .parallel = FALSE)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -28,7 +28,7 @@
   parallel, using parallel backend provided by foreach
   dimension for each variable.}
 
-  \item{.drop_o}{should extra dimensions of length 1 in the
+  \item{.drop}{should extra dimensions of length 1 in the
   output be dropped, simplifying the output.  Defaults to
   \code{TRUE}}
 }

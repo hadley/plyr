@@ -19,7 +19,7 @@
 #' laply(seq_len(10), identity)
 #' laply(seq_len(10), rep, times = 4)
 #' laply(seq_len(10), matrix, nrow = 2, ncol = 2)
-laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop_o = TRUE, .parallel = FALSE) {
+laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE, .parallel = FALSE) {
   if (is.character(.fun)) .fun <- do.call("each", as.list(.fun))
   if (!is.function(.fun)) stop(".fun is not a function.")
   
@@ -27,7 +27,7 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop_o = TRUE, 
   res <- llply(.data = .data, .fun = .fun, ..., 
     .progress = .progress, .parallel = .parallel)
   
-  list_to_array(res, attr(.data, "split_labels"), .drop_o)
+  list_to_array(res, attr(.data, "split_labels"), .drop)
 }
 
 
@@ -38,8 +38,24 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop_o = TRUE, 
 #' similar to \code{\link{aggregate}}. 
 #' 
 #' @template ply
-#' @template d-
-#' @template -a
+#' @section Input: This function splits data frames by variables.
+#' @section Output:
+#'   If there are no results, then this function will return a vector of
+#'   length 0 (\code{vector()}).
+#' @param .data data frame to be processed
+#' @param .variables variables to split data frame by, as quoted
+#'   variables, a formula or character vector
+#' @param .drop_i should combinations of variables that do not appear in the 
+#'   input data be preserved (FALSE) or dropped (TRUE, default)
+#' @param .parallel if \code{TRUE}, apply function in parallel, using parallel 
+#'   backend provided by foreach
+#' @return if results are atomic with same type and dimensionality, a
+#'   vector, matrix or array; otherwise, a list-array (a list with
+#'   dimensions)
+#' @param .drop_o should extra dimensions of length 1 in the output be
+#'   dropped, simplifying the output.  Defaults to \code{TRUE}
+#' @family array output
+#' @family data frame input
 #' @export
 #' @examples
 #' daply(baseball, .(year), nrow)
@@ -50,7 +66,7 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop_o = TRUE, 
 #' daply(baseball[, c(2, 6:9)], .(year), mean)
 #' daply(baseball[, 6:9], .(baseball$year), mean)
 #' daply(baseball, .(year), function(df) mean(df[, 6:9]))
-daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop_o = TRUE, .drop_i = TRUE, .parallel = FALSE) {
+daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop_i = TRUE, .drop_o = TRUE, .parallel = FALSE) {
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables, drop = .drop_i)
   
@@ -89,9 +105,9 @@ daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' aaply(ozone, 1:2, standardise)
 #'  
 #' aaply(ozone, 1:2, diff)
-aaply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .drop_o = TRUE, .parallel = FALSE) {
+aaply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .drop = TRUE, .parallel = FALSE) {
   pieces <- splitter_a(.data, .margins, .expand)
   
   laply(.data = pieces, .fun = .fun, ..., 
-    .progress = .progress, .drop = .drop_o, .parallel = .parallel)
+    .progress = .progress, .drop = .drop, .parallel = .parallel)
 }

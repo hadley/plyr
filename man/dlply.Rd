@@ -3,7 +3,7 @@
 \title{Split data frame, apply function, and return results in a list.}
 \usage{
   dlply(.data, .variables, .fun = NULL, ..., .progress =
-  "none", .drop_i = TRUE, .parallel = FALSE)
+  "none", .drop = TRUE, .parallel = FALSE)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -18,9 +18,9 @@
   \item{.variables}{variables to split data frame by, as
   quoted variables, a formula or character vector}
 
-  \item{.drop_i}{should combinations of variables that do
-  not appear in the input data be preserved (FALSE) or
-  dropped (TRUE, default)}
+  \item{.drop}{should combinations of variables that do not
+  appear in the input data be preserved (FALSE) or dropped
+  (TRUE, default)}
 
   \item{.parallel}{if \code{TRUE}, apply function in
   parallel, using parallel backend provided by foreach}
