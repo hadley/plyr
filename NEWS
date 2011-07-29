@@ -1,6 +1,8 @@
 Version 1.6
 ------------------------------------------------------------------------------
 
+* documentation improved using new features of `roxygen2`
+
 * fixed namespacing issue which lead to lost labels when subsetting the
   results of `*lply`
 
