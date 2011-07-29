@@ -11,7 +11,7 @@
 #' to ensure that the values are extracted from the correct frame.  Substitute
 #' tricks also make it difficult to program against the functions that use
 #' them, while the \code{quoted} class provides 
-#' \code{\link{as.quoted.character}} to convert strings to the appropriate
+#' \code{as.quoted.character} to convert strings to the appropriate
 #' data structure.
 #' 
 #' @param ... unevaluated expressions to be recorded.  Specify names if you

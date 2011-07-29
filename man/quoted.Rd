@@ -32,9 +32,8 @@ evaluation.}
   ensure that the values are extracted from the correct
   frame.  Substitute tricks also make it difficult to
   program against the functions that use them, while the
-  \code{quoted} class provides
-  \code{\link{as.quoted.character}} to convert strings to
-  the appropriate data structure.
+  \code{quoted} class provides \code{as.quoted.character}
+  to convert strings to the appropriate data structure.
 }
 \examples{
 .(a, b, c)
