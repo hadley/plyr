@@ -48,6 +48,11 @@
   data frame with zero rows and columns
   (\code{data.frame()}).
 }
+
+\seealso{
+\link{tapply} base package function with similar functionality;
+}
+
 \examples{
 ddply(baseball, .(year), "nrow")
 ddply(baseball, .(lg), c("nrow", "ncol"))
