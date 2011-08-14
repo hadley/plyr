@@ -21,12 +21,13 @@
 #' @keywords manip
 #' @export
 #' @examples
-#' count(baseball, "id")
-#' count(baseball, "id", "g")
+#' count(df=baseball[1:100,], vars="id") # count of each value of "id" in the first 100 cases
+#' count(df=baseball[1:100,], vars="id", wt_var="g") # count of ids, weighted by their "g" loading
 #' count(baseball, "id", "ab")
 #' count(baseball, "lg")
-#' count(baseball, "stint")
-#' count(count(baseball, c("id", "year")), "id", "freq")
+#' count(baseball, "stint") # how many stints do players do?
+#' count(baseball[1:100,], c("id", "year")) # count of times each player appeared in each of the years they played
+#' count(count(baseball[1:100,], c("id", "year")), "id", "freq") # count of counts: 
 #' count(count(baseball, c("id", "year")), "freq")
 count <- function(df, vars = NULL, wt_var = NULL) {
   if (is.vector(df)) {
