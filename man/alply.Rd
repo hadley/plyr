@@ -3,12 +3,16 @@
 \title{Split array, apply function, and return results in a list.}
 \usage{
   alply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
-    .progress = "none", .parallel = FALSE)
+    .progress = "none", .inform = FALSE, .parallel = FALSE)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
 
   \item{...}{other arguments passed on to \code{.fun}}
+
+  \item{.inform}{produce informative error messages?  This
+  is turned off by by default because it substantially
+  slows processing speed, but is very useful for debugging}
 
   \item{.progress}{name of the progress bar to use, see
   \code{\link{create_progress_bar}}}

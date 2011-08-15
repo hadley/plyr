@@ -19,13 +19,14 @@
 #' laply(seq_len(10), identity)
 #' laply(seq_len(10), rep, times = 4)
 #' laply(seq_len(10), matrix, nrow = 2, ncol = 2)
-laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE, .parallel = FALSE) {
+laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE, .inform = FALSE, .parallel = FALSE) {
   if (is.character(.fun)) .fun <- do.call("each", as.list(.fun))
   if (!is.function(.fun)) stop(".fun is not a function.")
 
   if (!inherits(.data, "split")) .data <- as.list(.data)
-  res <- llply(.data = .data, .fun = .fun, ...,
-    .progress = .progress, .parallel = .parallel)
+
+  res <- llply(.data = .data, .fun = .fun, ..., 
+    .progress = .progress, .inform = .inform, .parallel = .parallel)
 
   list_to_array(res, attr(.data, "split_labels"), .drop)
 }
@@ -66,12 +67,13 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE, .p
 #' daply(baseball[, c(2, 6:9)], .(year), colwise(mean))
 #' daply(baseball[, 6:9], .(baseball$year), colwise(mean))
 #' daply(baseball, .(year), function(df) colwise(mean)(df[, 6:9]))
-daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop_i = TRUE, .drop_o = TRUE, .parallel = FALSE) {
+daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop_i = TRUE, .drop_o = TRUE, .inform = FALSE, .parallel = FALSE) {
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables, drop = .drop_i)
 
-  laply(.data = pieces, .fun = .fun, ...,
-    .progress = .progress, .drop = .drop_o, .parallel = .parallel)
+  laply(.data = pieces, .fun = .fun, ..., 
+    .progress = .progress, .drop = .drop_o,
+    .inform = .inform, .parallel = .parallel)
 }
 
 #' Split array, apply function, and return results in an array.
@@ -105,9 +107,10 @@ daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' aaply(ozone, 1:2, standardise)
 #'
 #' aaply(ozone, 1:2, diff)
-aaply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .drop = TRUE, .parallel = FALSE) {
+aaply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .drop = TRUE, .inform = FALSE, .parallel = FALSE) {
   pieces <- splitter_a(.data, .margins, .expand)
-
-  laply(.data = pieces, .fun = .fun, ...,
-    .progress = .progress, .drop = .drop, .parallel = .parallel)
+  
+  laply(.data = pieces, .fun = .fun, ..., 
+    .progress = .progress, .drop = .drop,
+    .inform = .inform, .parallel = .parallel)
 }
