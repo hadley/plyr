@@ -23,6 +23,7 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE
 #' @template ply
 #' @template d-
 #' @template -d
+#' @seealso \code{\link{tapply}} for similar functionality in the base package
 #' @export
 #' @examples
 #' ddply(baseball, .(year), "nrow") 
