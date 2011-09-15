@@ -9,10 +9,14 @@
 #' @param ... expressions evaluated in the context of \code{df} and then fed
 #'   to \code{\link{order}}
 #' @keywords manip
+#' @seealso \code{\link{order}} for sorting function in the base package
 #' @export
 #' @examples
+#' # sort mtcars data by cylinder and displacement
 #' mtcars[with(mtcars, order(cyl, disp)), ]
+#' # Same result using arrange: no need to use with(), as the context is implicit
 #' arrange(mtcars, cyl, disp)
+#' # Sort with displacement in descending order
 #' arrange(mtcars, cyl, desc(disp))
 arrange <- function(df, ...) {
   ord <- eval(substitute(order(...)), df, parent.frame())
