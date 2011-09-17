@@ -10,8 +10,13 @@
 #' @seealso \code{\link{summarise}} for applying summary functions to data
 #' @export
 #' @examples
-#' # Four equivalent ways to call min() and max() on the vector 1:10
+#' # Call min() and max() on the vector 1:10
 #' each(min, max)(1:10)
+#' # This syntax looks a little different.  It is shorthand for the
+#' # the following:
+#' f<- each(min, max)
+#' f(1:10)
+#' # Three equivalent ways to call min() and max() on the vector 1:10
 #' each("min", "max")(1:10)
 #' each(c("min", "max"))(1:10)
 #' each(c(min, max))(1:10)
