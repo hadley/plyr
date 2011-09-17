@@ -26,10 +26,14 @@
 #' @keywords utilities
 #' @export
 #' @examples
+#' # No progress bar
 #' l_ply(1:100, identity, .progress = "none")
+#' # Use the Tcl/Tk interface
 #' l_ply(1:100, identity, .progress = "tk")
+#' # Text-based progress (|======|)
 #' l_ply(1:100, identity, .progress = "text")
-#' l_ply(1:100, identity, .progress = progress_text(char = "-"))
+#' # Choose a progress character, run a length of time you can see
+#' l_ply(1:10000, identity, .progress = progress_text(char = "."))
 create_progress_bar <- function(name = "none", ...) {
   if (!is.character(name)) return(name)
   name <- paste("progress", name, sep="_")
