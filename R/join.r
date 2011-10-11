@@ -148,7 +148,7 @@ join_ids <- function(x, y, by, all = FALSE) {
 #' @export
 join.keys <- function(x, y, by) {
   joint <- rbind.fill(x[by], y[by])
-  keys <- id(joint)
+  keys <- id(joint, drop = TRUE)
   
   list(
     x = keys[1:nrow(x)],
