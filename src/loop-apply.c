@@ -13,7 +13,7 @@ SEXP loop_apply(SEXP n, SEXP f, SEXP rho) {
 
   SEXP ii;
   for(int i = 0; i < n1; i++) {
-    ii = PROTECT(ScalarInteger(i + 1));
+    PROTECT(ii = ScalarInteger(i + 1));
     SETCADR(R_fcall, ii);
     SET_VECTOR_ELT(results, i, eval(R_fcall, rho));
     
