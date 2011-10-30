@@ -1,3 +1,6 @@
+* `split_indices` checks input more aggressively to prevent segfaults. 
+   Fixes #43.
+
 * fix small bug in `loop_apply` which lead to segfaults in certain
   circumstances. (Thanks to Pål Westermark for patch)
 

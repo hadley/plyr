@@ -10,5 +10,8 @@
 #' @keywords internal manip
 split_indices <- function(index, group, n = max(group)) {
   if (length(index) == 0) return(integer())
+  stopifnot(is.integer(index))
+  stopifnot(is.integer(group))
+  
   .Call("split_indices", index, group, as.integer(n))
 }
