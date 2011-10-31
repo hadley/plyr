@@ -1,3 +1,6 @@
+* `id` will no longer silently return incorrect results when the number of 
+  possible combinations is > 2^52 (Response to #63)
+  
 * `split_indices` checks input more aggressively to prevent segfaults. 
    Fixes #43.
 

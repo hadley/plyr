@@ -31,6 +31,9 @@ id <- function(.variables, drop = FALSE) {
   # Calculate dimensions
   ndistinct <- unlist(lapply(ids, attr, "n"))
   n <- prod(ndistinct)
+  if (n > 2^52) {
+    stop("Too many combinations for join to handle", call. = FALSE)
+  }
 
   p <- length(ids)
   combs <- c(1, cumprod(ndistinct[-p]))
