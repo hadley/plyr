@@ -1,3 +1,6 @@
+* `rbind.fill`: if a column contains both factors and characters (in different
+  inputs), the resulting column will be coerced to character
+
 * `id` will no longer silently return incorrect results when the number of 
   possible combinations is > 2^52 (Response to #63)
   

@@ -103,3 +103,17 @@ test_that("attributes are preserved", {
   expect_that(attr(d21$b, "foo"), equals("two"))
   
 })
+
+test_that("characters override factors", {
+  d1a <- data.frame(x=c('a','b'), y=1:2)
+  d2a <- data.frame(x=c('b','d'), z=1:2, stringsAsFactors=F)
+  
+  d1b <- data.frame(x=c('a','b'), y=1:2, stringsAsFactors=F)
+  d2b <- data.frame(x=c('b','d'), z=1:2)
+  
+  d3a <- rbind.fill(d1a,d2a)
+  d3b <- rbind.fill(d1b,d2b)
+  
+  expect_that(d3a$x, is_a("character"))
+  expect_that(d3b$x, is_a("character"))
+})
