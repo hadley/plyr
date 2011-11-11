@@ -1,5 +1,5 @@
 \name{indexed_array}
-\alias{"[[.indexed_array"}
+\alias{[[.indexed_array}
 \alias{indexed_array}
 \alias{length.indexed_array}
 \alias{names.indexed_array}

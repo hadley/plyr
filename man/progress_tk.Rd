@@ -2,8 +2,8 @@
 \alias{progress_tk}
 \title{Graphical progress bar, powered by Tk.}
 \usage{
-  progress_tk(title = "plyr progress", label =
-  "Working...", ...)
+  progress_tk(title = "plyr progress",
+    label = "Working...", ...)
 }
 \arguments{
   \item{title}{window title}

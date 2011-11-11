@@ -2,8 +2,8 @@
 \alias{mlply}
 \title{Call function with arguments in array or data frame, returning a list.}
 \usage{
-  mlply(.data, .fun = NULL, ..., .expand = TRUE, .progress
-  = "none", .parallel = FALSE)
+  mlply(.data, .fun = NULL, ..., .expand = TRUE,
+    .progress = "none", .parallel = FALSE)
 }
 \arguments{
   \item{.data}{matrix or data frame to use as source of
@@ -53,7 +53,7 @@ mlply(cbind(1:4, by = 4:1), seq, to = 20)
 \references{
   Hadley Wickham (2011). The Split-Apply-Combine Strategy
   for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29. \url{http://www.jstatsoft.org/v40/i01/}.
+  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \keyword{manip}
 

@@ -3,7 +3,7 @@
 \title{Split list, apply function, and return results in a data frame.}
 \usage{
   ldply(.data, .fun = NULL, ..., .progress = "none",
-  .parallel = FALSE)
+    .parallel = FALSE)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -45,7 +45,7 @@
 \references{
   Hadley Wickham (2011). The Split-Apply-Combine Strategy
   for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29. \url{http://www.jstatsoft.org/v40/i01/}.
+  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
   Other data frame output: \code{\link{adply}},

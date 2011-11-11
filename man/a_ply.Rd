@@ -3,7 +3,7 @@
 \title{Split array, apply function, and discard results.}
 \usage{
   a_ply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
-  .progress = "none", .print = FALSE)
+    .progress = "none", .print = FALSE)
 }
 \arguments{
   \item{.data}{matrix, array or data frame to be processed}
@@ -45,7 +45,7 @@
 \references{
   Hadley Wickham (2011). The Split-Apply-Combine Strategy
   for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29. \url{http://www.jstatsoft.org/v40/i01/}.
+  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \keyword{manip}
 

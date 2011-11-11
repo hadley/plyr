@@ -1,6 +1,9 @@
 \name{progress_none}
 \alias{progress_none}
 \title{Null progress bar}
+\usage{
+  progress_none()
+}
 \description{
   A progress bar that does nothing
 }

@@ -2,8 +2,8 @@
 \alias{join}
 \title{Join two data frames together.}
 \usage{
-  join(x, y, by = intersect(names(x), names(y)), type =
-  "left", match = "all")
+  join(x, y, by = intersect(names(x), names(y)),
+    type = "left", match = "all")
 }
 \arguments{
   \item{x}{data frame}

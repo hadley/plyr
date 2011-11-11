@@ -3,9 +3,6 @@
 \alias{baseball}
 \title{Yearly batting records for all major league baseball players}
 \format{A 21699 x 22 data frame}
-\usage{
-  baseball
-}
 \description{
   This data frame contains batting statistics for a subset
   of players collected from
@@ -35,17 +32,17 @@ baberuth <- subset(baseball, id == "ruthba01")
 baberuth$cyear <- baberuth$year - min(baberuth$year) + 1
 
 calculate_cyear <- function(df) {
-mutate(df,
-cyear = year - min(year),
-cpercent = cyear / (max(year) - min(year))
-)
+  mutate(df,
+    cyear = year - min(year),
+    cpercent = cyear / (max(year) - min(year))
+  )
 }
 
 baseball <- ddply(baseball, .(id), calculate_cyear)
 baseball <- subset(baseball, ab >= 25)
 
 model <- function(df) {
-lm(rbi / ab ~ cyear, data=df)
+  lm(rbi / ab ~ cyear, data=df)
 }
 model(baberuth)
 models <- dlply(baseball, .(id), model)
@@ -53,5 +50,6 @@ models <- dlply(baseball, .(id), model)
 \references{
   \url{http://www.baseball-databank.org/}
 }
+\keyword{dataset}
 \keyword{datasets}
 

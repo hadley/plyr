@@ -1,6 +1,9 @@
 \name{[.split}
 \alias{[.split}
 \title{Subset splits.}
+\usage{
+  \method{[}{split} (x, i, ...)
+}
 \arguments{
   \item{x}{split object}
 

@@ -3,7 +3,7 @@
 \title{Split array, apply function, and return results in a data frame.}
 \usage{
   adply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
-  .progress = "none", .parallel = FALSE)
+    .progress = "none", .parallel = FALSE)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -16,7 +16,7 @@
   \item{.data}{matrix, array or data frame to be processed}
 
   \item{.margins}{a vector giving the subscripts to split
-  up \code{data} by. 1 splits up by rows, 2 by columns and
+  up \code{data} by.  1 splits up by rows, 2 by columns and
   c(1,2) by rows and columns, and so on for higher
   dimensions}
 
@@ -55,7 +55,7 @@
 \references{
   Hadley Wickham (2011). The Split-Apply-Combine Strategy
   for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29. \url{http://www.jstatsoft.org/v40/i01/}.
+  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
   Other array input: \code{\link{aaply}},

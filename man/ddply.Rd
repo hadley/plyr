@@ -2,8 +2,8 @@
 \alias{ddply}
 \title{Split data frame, apply function, and return results in a data frame.}
 \usage{
-  ddply(.data, .variables, .fun = NULL, ..., .progress =
-  "none", .drop = TRUE, .parallel = FALSE)
+  ddply(.data, .variables, .fun = NULL, ...,
+    .progress = "none", .drop = TRUE, .parallel = FALSE)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -53,17 +53,17 @@ ddply(baseball, .(year), "nrow")
 ddply(baseball, .(lg), c("nrow", "ncol"))
 
 rbi <- ddply(baseball, .(year), summarise,
-mean_rbi = mean(rbi, na.rm = TRUE))
+  mean_rbi = mean(rbi, na.rm = TRUE))
 with(rbi, plot(year, mean_rbi, type="l"))
 
 base2 <- ddply(baseball, .(id), transform,
-career_year = year - min(year) + 1
+ career_year = year - min(year) + 1
 )
 }
 \references{
   Hadley Wickham (2011). The Split-Apply-Combine Strategy
   for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29. \url{http://www.jstatsoft.org/v40/i01/}.
+  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
   Other data frame input: \code{\link{daply}},

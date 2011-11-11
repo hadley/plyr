@@ -3,7 +3,7 @@
 \title{Split list, apply function, and return results in a list.}
 \usage{
   llply(.data, .fun = NULL, ..., .progress = "none",
-  .inform = FALSE, .parallel = FALSE)
+    .inform = FALSE, .parallel = FALSE)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -52,7 +52,7 @@ llply(x, quantile, probs = 1:3/4)
 \references{
   Hadley Wickham (2011). The Split-Apply-Combine Strategy
   for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29. \url{http://www.jstatsoft.org/v40/i01/}.
+  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
   Other list input: \code{\link{laply}},

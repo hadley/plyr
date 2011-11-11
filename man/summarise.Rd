@@ -19,11 +19,11 @@
 }
 \examples{
 summarise(baseball,
-duration = max(year) - min(year),
-nteams = length(unique(team)))
+ duration = max(year) - min(year),
+ nteams = length(unique(team)))
 ddply(baseball, "id", summarise,
-duration = max(year) - min(year),
-nteams = length(unique(team)))
+ duration = max(year) - min(year),
+ nteams = length(unique(team)))
 }
 \keyword{manip}
 

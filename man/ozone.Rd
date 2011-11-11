@@ -3,9 +3,6 @@
 \alias{ozone}
 \title{Monthly ozone measurements over Central America.}
 \format{A 24 x 24 x 72 numeric array}
-\usage{
-  ozone
-}
 \description{
   This data set is a subset of the data from the 2006 ASA
   Data expo challenge,
@@ -20,7 +17,7 @@
 value <- ozone[1, 1, ]
 time <- 1:72
 month.abbr <- c("Jan", "Feb", "Mar", "Apr", "May",
-"Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+ "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 month <- factor(rep(month.abbr, length = 72), levels = month.abbr)
 year <- rep(1:6, each = 12)
 deseasf <- function(value) lm(value ~ month - 1)
@@ -40,5 +37,6 @@ dim(deseas)
 \references{
   \url{http://stat-computing.org/dataexpo/2006/}
 }
+\keyword{dataset}
 \keyword{datasets}
 

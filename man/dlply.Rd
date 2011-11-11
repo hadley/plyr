@@ -2,8 +2,8 @@
 \alias{dlply}
 \title{Split data frame, apply function, and return results in a list.}
 \usage{
-  dlply(.data, .variables, .fun = NULL, ..., .progress =
-  "none", .drop = TRUE, .parallel = FALSE)
+  dlply(.data, .variables, .fun = NULL, ...,
+    .progress = "none", .drop = TRUE, .parallel = FALSE)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -44,7 +44,7 @@
 }
 \examples{
 linmod <- function(df) {
-lm(rbi ~ year, data = mutate(df, year = year - min(year)))
+  lm(rbi ~ year, data = mutate(df, year = year - min(year)))
 }
 models <- dlply(baseball, .(id), linmod)
 models[[1]]
@@ -57,7 +57,7 @@ hist(qual)
 \references{
   Hadley Wickham (2011). The Split-Apply-Combine Strategy
   for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29. \url{http://www.jstatsoft.org/v40/i01/}.
+  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
   Other data frame input: \code{\link{daply}},
