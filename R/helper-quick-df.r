@@ -24,6 +24,6 @@ make_names <- function(x, prefix = "X") {
     nm <- rep("", length = length(x))
   }
   
-  nm[nm == ""] <- paste(prefix, seq_len(sum(nm == "")), sep = "")
+  nm[nm == ""] <- paste(prefix, seq_len(sum(nm == "", na.rm = TRUE)), sep = "")
   nm
 }
