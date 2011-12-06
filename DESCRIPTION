@@ -20,8 +20,7 @@ Suggests:
     abind,
     testthat (>= 0.2),
     tcltk,
-    foreach
-Imports:
+    foreach,
     itertools,
     iterators
 License: MIT
