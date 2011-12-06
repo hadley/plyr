@@ -32,7 +32,6 @@ Collate:
     'helper-col-wise.r'
     'helper-count.r'
     'helper-data-frame.r'
-    'helper-defaults.r'
     'helper-each.r'
     'helper-match-df.r'
     'helper-mutate.r'

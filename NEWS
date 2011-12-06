@@ -1,3 +1,6 @@
+* `defaults` function has been removed. This was an inferior version of the 
+  base `modifyList` function.
+
 * `rbind.fill`: if a column contains both factors and characters (in different
   inputs), the resulting column will be coerced to character
 
