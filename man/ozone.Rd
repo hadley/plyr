@@ -37,6 +37,5 @@ dim(deseas)
 \references{
   \url{http://stat-computing.org/dataexpo/2006/}
 }
-\keyword{dataset}
 \keyword{datasets}
 

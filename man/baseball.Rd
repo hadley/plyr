@@ -50,6 +50,5 @@ models <- dlply(baseball, .(id), model)
 \references{
   \url{http://www.baseball-databank.org/}
 }
-\keyword{dataset}
 \keyword{datasets}
 
