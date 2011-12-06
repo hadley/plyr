@@ -27,25 +27,25 @@ id <- function(.variables, drop = FALSE) {
 
   # Calculate individual ids
   ids <- rev(lapply(.variables, id_var, drop = drop))
+  p <- length(ids)
 
   # Calculate dimensions
-  ndistinct <- unlist(lapply(ids, attr, "n"))
+  ndistinct <- vapply(ids, attr, "n", FUN.VALUE = integer(1), 
+    USE.NAMES = FALSE)
   n <- prod(ndistinct)
-  if (n > 2^52) {
-    stop("Too many combinations for join to handle", call. = FALSE)
+  if (n > 2 ^ 31) {
+    # Too big for integers, have to use strings, which will be much slower :(
+    
+    char_id <- do.call("paste", c(ids, sep = "\r"))
+    res <- match(char_id, unique(char_id))
+  } else {
+    combs <- c(1, cumprod(ndistinct[-p]))
+
+    mat <- do.call("cbind", ids)
+    res <- c((mat - 1L) %*% combs + 1L)
   }
-
-  p <- length(ids)
-  combs <- c(1, cumprod(ndistinct[-p]))
-
-  mat <- do.call("cbind", ids)
-  res <- c((mat - 1L) %*% combs + 1L)
   attr(res, "n") <- n
-  
-  # vdf <- data.frame(.variables)
-  # names(vdf) <- paste("X", 1:ncol(vdf), sep="")
-  # vdf$i <- res
-  # browser()
+
 
   if (drop) {
     id_var(res, drop = TRUE)

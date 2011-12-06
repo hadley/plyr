@@ -1,9 +1,11 @@
 * `rbind.fill`: if a column contains both factors and characters (in different
   inputs), the resulting column will be coerced to character
 
-* `id` will no longer silently return incorrect results when the number of 
-  possible combinations is > 2^52 (Response to #63)
-  
+* When there are more than 2^31 distinct combinations `id`, switches to a
+  slower fallback strategy using strings (inspired by `merge`) that guarantees
+  correct results. This fixes problems with `join` when joining across many
+  columns. (Fixes #63)
+
 * `split_indices` checks input more aggressively to prevent segfaults. 
    Fixes #43.
 

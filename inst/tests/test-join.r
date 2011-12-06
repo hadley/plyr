@@ -82,3 +82,16 @@ test_that("large number of columns work", {
   expect_that(df$z, equals(3:4))
   
 })
+
+test_that("many potential combinations works", {
+  factor_n <- function(m, n) {
+    factor(sample(n, m, rep = T), levels = seq_len(n))
+  }
+  df1 <- as.data.frame(replicate(20, factor_n(100, 100)))
+  df2 <- as.data.frame(replicate(20, factor_n(100, 100)))
+
+  j <- join(df1, df2)
+  j <- merge(df1, df2, all.x = TRUE)
+  
+  
+})
