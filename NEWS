@@ -1,3 +1,6 @@
+Version 1.7
+------------------------------------------------------------------------------
+
 * `rbind.fill`: if a column contains both factors and characters (in different
   inputs), the resulting column will be coerced to character
 
