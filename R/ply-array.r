@@ -63,9 +63,9 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE, .p
 #' # Several different ways of summarising by variables that should not be 
 #' # included in the summary
 #' 
-#' daply(baseball[, c(2, 6:9)], .(year), mean)
-#' daply(baseball[, 6:9], .(baseball$year), mean)
-#' daply(baseball, .(year), function(df) mean(df[, 6:9]))
+#' daply(baseball[, c(2, 6:9)], .(year), colwise(mean))
+#' daply(baseball[, 6:9], .(baseball$year), colwise(mean))
+#' daply(baseball, .(year), function(df) colwise(mean)(df[, 6:9]))
 daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop_i = TRUE, .drop_o = TRUE, .parallel = FALSE) {
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables, drop = .drop_i)

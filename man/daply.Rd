@@ -55,9 +55,9 @@ daply(baseball, .(year), nrow)
 # Several different ways of summarising by variables that should not be
 # included in the summary
 
-daply(baseball[, c(2, 6:9)], .(year), mean)
-daply(baseball[, 6:9], .(baseball$year), mean)
-daply(baseball, .(year), function(df) mean(df[, 6:9]))
+daply(baseball[, c(2, 6:9)], .(year), colwise(mean))
+daply(baseball[, 6:9], .(baseball$year), colwise(mean))
+daply(baseball, .(year), function(df) colwise(mean)(df[, 6:9]))
 }
 \references{
   Hadley Wickham (2011). The Split-Apply-Combine Strategy
