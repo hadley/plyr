@@ -12,6 +12,9 @@
 * fix small bug in `loop_apply` which lead to segfaults in certain
   circumstances. (Thanks to Pål Westermark for patch)
 
+* `itertools` and `iterators` moved to suggests from imports so that plyr now
+  only depends on base R.
+
 Version 1.6
 ------------------------------------------------------------------------------
 
