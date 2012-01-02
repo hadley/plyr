@@ -30,7 +30,7 @@ id <- function(.variables, drop = FALSE) {
   p <- length(ids)
 
   # Calculate dimensions
-  ndistinct <- vapply(ids, attr, "n", FUN.VALUE = integer(1), 
+  ndistinct <- vapply(ids, attr, "n", FUN.VALUE = numeric(1), 
     USE.NAMES = FALSE)
   n <- prod(ndistinct)
   if (n > 2 ^ 31) {
@@ -58,7 +58,7 @@ ninteraction <- id
 #' Numeric id for a vector.
 #' @keywords internal
 id_var <- function(x, drop = FALSE) {
-  if (length(x) == 0) return(structure(integer(), n = 0))
+  if (length(x) == 0) return(structure(integer(), n = 0L))
   if (!is.null(attr(x, "n")) && !drop) return(x)
   
   if (is.factor(x) && !drop) {
