@@ -1,3 +1,6 @@
+
+* New `take` function for subsetting along an arbitrary dimension.
+
 Version 1.7.1
 ------------------------------------------------------------------------------
 
