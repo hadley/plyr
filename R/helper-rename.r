@@ -17,6 +17,6 @@
 #' # Rename column "disp" to "displacement"
 #' rename(mtcars, c("disp" = "displacement"))
 rename <- function(x, replace, warn_missing = TRUE) {
-  names(x) <- revalue(names(x), replace, warn_missing = TRUE)
+  names(x) <- revalue(names(x), replace, warn_missing = warn_missing)
   x
 }
