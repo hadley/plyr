@@ -70,5 +70,6 @@ Collate:
     'utils.r'
     'data.r'
     'helper-defaults.r'
+    'helper-revalue.r'
     'helper-take.r'
     'plyr.r'
