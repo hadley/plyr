@@ -71,3 +71,4 @@ Collate:
     'data.r'
     'helper-defaults.r'
     'helper-take.r'
+    'plyr.r'
