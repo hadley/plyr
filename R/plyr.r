@@ -2,7 +2,6 @@
 #'
 #' @docType package
 #' @name plyr
-#' @aliases plyr plyr-package
 NULL
 
 
