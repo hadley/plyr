@@ -19,6 +19,7 @@
 #'  nteams = length(unique(team)))
 summarise <- function(.data, ...) {
   cols <- as.list(substitute(list(...))[-1])
+
   # ... not a named list, figure out names by deparsing call
   if(is.null(names(cols))) {
     missing_names <-  rep(TRUE, length(cols))
@@ -29,15 +30,10 @@ summarise <- function(.data, ...) {
     names <- unname(unlist(lapply(match.call(expand = FALSE)$`...`, deparse)))
     names(cols)[missing_names] <- names[missing_names]
   }
-  cols <- cols[names(cols) != ""]
-  env <- new.env(parent=parent.frame())
-  for(name in names(.data)){
-    assign(name,.data[[name]],envir=env)
-  }
-  ret <- list()
+  .data <- as.list(.data)
   for (col in names(cols)) {
-    ret[[col]] <- eval(cols[[col]], ret, env)
+    .data[[col]] <- eval(cols[[col]], .data, parent.frame())
   }
-  quickdf(ret)
+  quickdf(.data[names(cols)])
 }
 summarize <- summarise
