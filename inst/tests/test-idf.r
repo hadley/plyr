@@ -1,4 +1,4 @@
-context("Immutable data frame")
+context("Immutable")
 
 # Create smaller subset of baseball data (for speed)
 bsmall <- subset(baseball, id %in% sample(unique(baseball$id), 20))[, 1:5]
@@ -6,18 +6,12 @@ bsmall$id <- factor(bsmall$id)
 bsmall <- bsmall[sample(rownames(bsmall)),  ]
 rownames(bsmall) <- NULL
 
-test_that("idf access data", {
-  idf <- idata.frame(bsmall)
-  expect_equal(idf$id, bsmall$id)
-  expect_equal(idf[["team"]], bsmall[["team"]])
-})
-
 test_that("idf is immutable", {
   #Since idf are constructed by scratch in both idata.frame and `[.idf]`
   #I will test idf objects created both ways.
 
   #create both before testing any, to make sure that subsetting
-  #doesn't affect the subsetted idf
+  #doesn't change the subsetted idf
   idf <- idata.frame(bsmall)
   x <- idf[1:10, ]
   y <- bsmall[1:10, ]
@@ -66,9 +60,9 @@ test_that("idf extract by [[i]]", {
   x <- idf[6:20,]
   y <- bsmall[6:20,]
 
+  expect_equal(x[[4]], y[[4]])
   expect_equal(idf[[3]], bsmall[[3]])
   expect_equal(idf[["year"]], bsmall[["year"]])
-  expect_equal(x[[4]], y[[4]])
 })
 
 test_that("idf extract $name", {
@@ -77,8 +71,8 @@ test_that("idf extract $name", {
   x <- idf[500:510,]
   y <- bsmall[500:510,]
 
-  expect_equal(idf$team, bsmall$team)
   expect_equal(x$team, y$team)
+  expect_equal(idf$team, bsmall$team)
 })
 
 test_that("idf as environment", {
@@ -87,6 +81,6 @@ test_that("idf as environment", {
   x <- idf[5:10,]
   y <- bsmall[5:10,]
 
-  expect_equal(with(idf, table(team)), with(bsmall, table(team)))
   expect_equal(with(x, mean(year)), with(y, mean(year)))
+  expect_equal(with(idf, table(team)), with(bsmall, table(team)))
 })
