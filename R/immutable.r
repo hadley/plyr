@@ -25,19 +25,21 @@ idata.frame <- function(df) {
   self$`_data` <- df
   self$`_rows` <- seq_len(nrow(df))
   self$`_cols` <- names(df)
-  
-  for (name in names(df)) {
-    f <- eval(substitute(function(v) {
+  self$`_getters` <- lapply(names(df), function(name) {
+    eval(substitute(function(v) {
       if (missing(v)) {
-        `_data`[[name]]
+        `_data`[[name]][`_rows`] 
       } else {
         stop("Immutable")
       }
-    }, list(name = name)))
+    }, list(name = name)), envir=self)
+  })
+  names(self$`_getters`) <- names(df)
+  for (name in names(df)) {
+    f <- self$`_getters`[[name]]
     environment(f) <- self
     makeActiveBinding(name, f, self)
   }
-  
   structure(self, 
     class = c("idf", "environment"))
 }
@@ -77,15 +79,10 @@ idata.frame <- function(df) {
   self$`_rows` <- rows
   self$`_cols` <- cols
   self$`_data` <- x$`_data`
+  self$`_getters` <- x$`_getters`
 
   for (col in cols) {
-    f <- eval(substitute(function(v) {
-      if (missing(v)) {
-        `_data`[[name]][`_rows`]
-      } else {
-        stop("Immutable")
-      }
-    }, list(name = col)))
+    f <- self$`_getters`[[col]]
     environment(f) <- self
     makeActiveBinding(col, f, self)
   }
