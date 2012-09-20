@@ -50,8 +50,9 @@ test_that("idf subset data by [i,j]", {
   yyy <- idf[ , names(y)]
 
   expect_equal(idf[3, "year"], bsmall[[3, "year"]])
-  expect_equal(xx[, "id"], yy[, "id"])
   expect_equal(x[, "year"], y[, "year"])
+  expect_equal(xx[, "id"], yy[, "id"])
+  expect_equal(xxx[, "team"], yyy[, "team"])
 })
 
 test_that("idf extract by [[i]]", {
