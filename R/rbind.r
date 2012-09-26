@@ -23,8 +23,7 @@ rbind.fill <- function(...) {
   if (is.list(dfs[[1]]) && !is.data.frame(dfs[[1]])) {
     dfs <- dfs[[1]]
   }
-  dfs <- Filter(Negate(empty), dfs)
-
+  
   if (length(dfs) == 0) return()
   if (length(dfs) == 1) return(dfs[[1]])
 
@@ -35,13 +34,13 @@ rbind.fill <- function(...) {
 
   # Generate output template
   output <- output_template(dfs, nrows)
-
-  # Compute start and end positions for each data frame
-  pos <- matrix(cumsum(rbind(1, rows - 1)), ncol = 2, byrow = TRUE)
-
+  
+  # Compute start and length for each data frame
+  pos <- matrix(c(cumsum(rows)-rows+1, rows), ncol=2)
+  
   # Copy inputs into output
   for(i in seq_along(rows)) {
-    rng <- pos[i, 1]:pos[i, 2]
+    rng <- seq(pos[i,1], length=pos[i,2])
     df <- dfs[[i]]
 
     for(var in names(df)) {
