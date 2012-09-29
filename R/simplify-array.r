@@ -12,8 +12,7 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
   n <- length(res)
 
   atomic <- sapply(res, is.atomic)
-  if (all(atomic)) {
-    # Atomics need to be same size
+  if (all(atomic) || all(!atomic)) {
     dlength <- unique.default(llply(res, dims))
     if (length(dlength) != 1)
       stop("Results must have the same number of dimensions.")
@@ -29,16 +28,9 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
     res_labels <- amv_dimnames(res[[1]])
     res_index <- expand.grid(res_labels)
 
-    res <- unname(unlist(res))
+    res <- unname(unlist(res, recursive=FALSE))
   } else {
-    # Lists are degenerate case where every element is a singleton
-    res_index <- as.data.frame(matrix(0, 1, 0))
-    res_dim <- numeric()
-    res_labels <- NULL
-
-    attr(res, "split_type") <- NULL
-    attr(res, "split_labels") <- NULL
-    class(res) <- class(res)[2]
+    stop("Results must have compatible types.")
   }
 
   if (is.null(labels)) {
@@ -48,8 +40,7 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
   } else {
     in_labels <- lapply(labels,
       function(x) if(is.factor(x)) levels(x) else sort(unique(x)))
-    in_dim <- sapply(in_labels, length)
-
+    in_dim <- sapply(in_labels, length)        
   }
 
   # Work out where each result should go in the new array
