@@ -3,11 +3,21 @@ context("Arrays")
 test_that("incorrect result dimensions raise errors", {
   fs <- list(
     function(x) rep(x, sample(10, 1)),
-    function(x) if (x < 5) x else matrix(x, 2, 2)
+    function(x) if (x < 5) x else matrix(x, 2, 2),
+    function(x) as.list(rep(x, sample(10, 1))),
+    function(x) if (x < 5) list(x) else matrix(list(x), 2, 2)
   )
 
   expect_that(laply(1:10, fs[[1]]), throws_error("same dim"))
   expect_that(laply(1:10, fs[[2]]), throws_error("same number"))
+  expect_that(laply(1:10, fs[[3]]), throws_error("same dim"))
+  expect_that(laply(1:10, fs[[4]]), throws_error("same number"))
+})
+
+test_that("incompatible result types raise errors", {
+  f <- function(x) if (x < 5) c(x, x) else as.list(x)
+
+  expect_that(laply(1:10, f), throws_error("compatible type"))
 })
 
 test_that("zero length margin operates on whole object", {
@@ -44,6 +54,21 @@ test_that("array binding is correct", {
   m3d <- lapply(1:10, f)
   m4d <- abind(m3d, along = 0)
 
+  expect_that(laply(1:10, f), is_equivalent_to(m4d))
+})
+
+test_that("array binding of lists is correct", {
+  #this is identical to the previous test but in list mode
+  f <- function(x) matrix(as.list(x), 2, 2)
+  m2d <- lapply(1:10, f)
+  #as abind itself doesn't do lists...
+  m3d <- aperm(array(do.call(c, m2d), c(2, 2, 10)), c(3,1,2))
+  
+  expect_that(laply(1:10, f), is_equivalent_to(m3d))
+  f <- function(x) array(as.list(x), c(2, 2, 2))
+  m3d <- lapply(1:10, f)
+  m4d <- aperm(array(do.call(c, m3d), c(2, 2, 2, 10)), c(4, 1, 2, 3))
+  
   expect_that(laply(1:10, f), is_equivalent_to(m4d))
 })
 
