@@ -1,6 +1,6 @@
 \name{try_default}
-\alias{try_default}
 \alias{tryNULL}
+\alias{try_default}
 \title{Try, with default in case of error.}
 \usage{
   try_default(expr, default, quiet = FALSE)
