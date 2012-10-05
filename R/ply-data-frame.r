@@ -29,8 +29,8 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE
 #' # Summarize a dataset by two variables
 #' require(plyr)
 #' group <- c(rep('A', 8), rep('B', 15), rep('C', 6))
-#' sex   <- sample(c("M", "F"), size=29, replace=T)
-#' age   <- runif(n=29, min=18, max=54)
+#' sex   <- sample(c("M", "F"), size = 29, replace = TRUE)
+#' age   <- runif(n = 29, min = 18, max = 54)
 #' dfx   <- data.frame (group, time, age)
 #' 
 #' # Note the use of the '.' function to allow 
@@ -48,7 +48,7 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE
 #' # 6     C   M 34.78 11.50
 #'
 #' # An example using a formula for .variables
-#' ddply(baseball[1:100,], .variables= ~year, .fun=nrow)
+#' ddply(baseball[1:100,], .variables = ~year, .fun=nrow)
 #' # Applying two functions; nrow and ncol
 #' ddply(baseball, .(lg), c("nrow", "mean"))
 #' 
@@ -56,7 +56,7 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE
 #' rbi <- ddply(baseball, .(year), summarise, 
 #'   mean_rbi = mean(rbi, na.rm = TRUE))
 #' # Plot a line chart of the result
-#' plot(mean_rbi ~year, type="l", data=rbi))
+#' plot(mean_rbi ~year, type = "l", data = rbi))
 #' 
 #' # make new variable career_year based on the 
 #' # start year for each player (id)

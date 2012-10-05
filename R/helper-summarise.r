@@ -11,9 +11,12 @@
 #' @aliases summarise summarize
 #' @export summarise summarize
 #' @examples
+#' # Let's extract the number of teams and total period of time
+#' # covered by the baseball dataframe
 #' summarise(baseball, 
 #'  duration = max(year) - min(year), 
 #'  nteams = length(unique(team)))
+#' # Combine with ddply to do that for each separate id
 #' ddply(baseball, "id", summarise, 
 #'  duration = max(year) - min(year), 
 #'  nteams = length(unique(team)))
