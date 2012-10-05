@@ -1,3 +1,4 @@
+* Summarise now works iteratively so that later columns can refer to earlier.  (Thanks to Jim Hester, #44)
 
 * New `take` function for subsetting along an arbitrary dimension.
 
