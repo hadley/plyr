@@ -8,14 +8,19 @@
   \item{x}{named object to modify}
 
   \item{replace}{named character vector, with new names as
-  values, and old names as names.}
+  values, and old names as names. Note: x is not altered:
+  To save the result, you need to copy the returned data
+  into a variable.}
 }
 \description{
   Modify names by name, not position.
 }
 \examples{
 x <- c("a" = 1, "b" = 2, d = 3, 4)
-rename(x, c("d" = "c"))
-rename(mtcars, c("disp" = "displ"))
+# Rename column d to "c", updating the variable "x" with the result
+x <- rename(x, replace=c("d" = "c"))
+x
+# Rename column "disp" to "displacement"
+rename(mtcars, c("disp" = "displacement"))
 }
 

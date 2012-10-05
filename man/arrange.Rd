@@ -18,9 +18,20 @@
   saves a lot of typing!
 }
 \examples{
+# sort mtcars data by cylinder and displacement
 mtcars[with(mtcars, order(cyl, disp)), ]
+# Same result using arrange: no need to use with(), as the context is implicit
+# NOTE: plyr functions do NOT preserve row.names
 arrange(mtcars, cyl, disp)
-arrange(mtcars, cyl, desc(disp))
+# Let's keep the row.names in this example
+myCars = cbind(vehicle=row.names(mtcars), mtcars)
+arrange(myCars, cyl, disp)
+# Sort with displacement in descending order
+arrange(myCars, cyl, desc(disp))
+}
+\seealso{
+  \code{\link{order}} for sorting function in the base
+  package
 }
 \keyword{manip}
 

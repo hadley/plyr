@@ -32,13 +32,23 @@
   converting them to characters/factors.
 }
 \examples{
-count(baseball, "id")
-count(baseball, "id", "g")
+# Count of each value of "id" in the first 100 cases
+count(baseball[1:100,], vars = "id")
+# Count of ids, weighted by their "g" loading
+count(baseball[1:100,], vars = "id", wt_var = "g")
 count(baseball, "id", "ab")
 count(baseball, "lg")
+# How many stints do players do?
 count(baseball, "stint")
-count(count(baseball, c("id", "year")), "id", "freq")
+# Count of times each player appeared in each of the years they played
+count(baseball[1:100,], c("id", "year"))
+# Count of counts
+count(count(baseball[1:100,], c("id", "year")), "id", "freq")
 count(count(baseball, c("id", "year")), "freq")
+}
+\seealso{
+  \code{\link{table}} for related functionality in the base
+  package
 }
 \keyword{manip}
 
