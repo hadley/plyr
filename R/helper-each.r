@@ -2,16 +2,25 @@
 #'
 #' Combine multiple functions into a single function returning a named vector
 #' of outputs.
+#' Note: you cannot supply additional parameters for the summary functions
 #' 
 #' @param ... functions to combine. each function should produce a single
 #'    number as output
 #' @keywords manip
+#' @seealso \code{\link{summarise}} for applying summary functions to data
 #' @export
 #' @examples
+#' # Call min() and max() on the vector 1:10
 #' each(min, max)(1:10)
+#' # This syntax looks a little different.  It is shorthand for the
+#' # the following:
+#' f<- each(min, max)
+#' f(1:10)
+#' # Three equivalent ways to call min() and max() on the vector 1:10
 #' each("min", "max")(1:10)
 #' each(c("min", "max"))(1:10)
 #' each(c(min, max))(1:10)
+#' # Call length(), min() and max() on a random normal vector
 #' each(length, mean, var)(rnorm(100))
 each <- function(...) {
   fnames <- laply(match.call()[-1], deparse)
@@ -39,7 +48,7 @@ each <- function(...) {
   
   if (n == 1) {
     # If there is only one function, things are simple.  We just
-    # need to name the output, if appopriate. 
+    # need to name the output, if appropriate. 
     function(x, ...) {
       res <- fs[[1]](x, ...)
       if (length(res) == 1) names(res) <- unames
@@ -48,7 +57,7 @@ each <- function(...) {
   } else {
     function(x, ...) {
       # For n > 1 things are a little tricky
-      # Construct prtotype for output on first call
+      # Construct protoype for output on first call
       if (is.null(proto)) {
         result <<- vector("list", length = n)
         names(result) <- unames

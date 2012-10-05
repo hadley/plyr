@@ -19,12 +19,13 @@
 #'   variables.
 #' @return a data frame with label and freq columns
 #' @keywords manip
+#' @seealso \code{\link{table}} for related functionality in the base package
 #' @export
 #' @examples
 #' # Count of each value of "id" in the first 100 cases
-#' count(baseball[1:100,], vars="id") 
+#' count(baseball[1:100,], vars = "id") 
 #' # Count of ids, weighted by their "g" loading
-#' count(baseball[1:100,], vars="id", wt_var="g")
+#' count(baseball[1:100,], vars = "id", wt_var = "g")
 #' count(baseball, "id", "ab")
 #' count(baseball, "lg")
 #' # How many stints do players do?
