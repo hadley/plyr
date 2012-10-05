@@ -9,6 +9,9 @@ Version 1.7.1.99
 
 * New `take` function for subsetting along an arbitrary dimension.
 
+* `idata.frame`: Subsetting immutable data frames with `[.idf` is now
+  faster (Peter Meilstrup)
+
 Version 1.7.1
 ------------------------------------------------------------------------------
 
