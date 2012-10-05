@@ -1,7 +1,7 @@
 #' Round to multiple of any number.
 #' 
-#' @param x numeric vector to round
-#' @param accuracy number to round to
+#' @param x numeric or date-time (POSIXct) vector to round
+#' @param accuracy number to round to; for POSIXct objects, a number of seconds
 #' @param f rounding function: \code{\link{floor}}, \code{\link{ceiling}} or 
 #'  \code{\link{round}}
 #' @keywords manip
@@ -16,6 +16,23 @@
 #' round_any(135, 10, ceiling)
 #' round_any(135, 100, ceiling)
 #' round_any(135, 25, ceiling)
+#'
+#' round_any(Sys.time()+1:10, 5)
+#' round_any(Sys.time()+1:10, 5, floor)
+#' round_any(Sys.time(), 3600)
 round_any <- function(x, accuracy, f = round) {
+  UseMethod("round_any")
+}
+
+round_any.numeric <- function(x, accuracy, f = round) {
   f(x / accuracy) * accuracy
+}
+
+round_any.POSIXct <- function(x, accuracy, f = round) {
+  # extract time zone
+  tz <- format(x[1], "%Z")
+  # round to number of seconds
+  xr <- round_any.numeric(as.numeric(x), accuracy, f)
+  # reconvert into a time
+  return(as.POSIXct(xr, origin="1970-01-01 00:00.00 UTC", tz=tz))
 }

@@ -5,9 +5,10 @@
   round_any(x, accuracy, f = round)
 }
 \arguments{
-  \item{x}{numeric vector to round}
+  \item{x}{numeric or date-time (POSIXct) vector to round}
 
-  \item{accuracy}{number to round to}
+  \item{accuracy}{number to round to; for POSIXct objects,
+  a number of seconds}
 
   \item{f}{rounding function: \code{\link{floor}},
   \code{\link{ceiling}} or \code{\link{round}}}
@@ -25,6 +26,10 @@ round_any(135, 25, floor)
 round_any(135, 10, ceiling)
 round_any(135, 100, ceiling)
 round_any(135, 25, ceiling)
+
+round_any(Sys.time()+1:10, 5)
+round_any(Sys.time()+1:10, 5, floor)
+round_any(Sys.time(), 3600)
 }
 \keyword{manip}
 
