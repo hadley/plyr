@@ -39,9 +39,15 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
   
   n <- length(pieces)
   if (n == 0) return(list())
-  
+
+  if ( (!.parallel) || getOption("cores") ) {
+    ncores <- 1
+  } else {
+    ncores <- getOption("cores")
+  }
+
   progress <- create_progress_bar(.progress)
-  progress$init(n)
+  progress$init( n / ncores )
   on.exit(progress$term())
 
   result <- vector("list", n)
