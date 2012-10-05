@@ -86,6 +86,10 @@ names.quoted <- function(x) {
 eval.quoted <- function(exprs, envir = NULL, enclos = NULL, try = FALSE) {
   if (is.numeric(exprs)) return(envir[exprs])
 
+  if (!is.null(envir) && !is.list(envir) && !is.environment(envir)) {
+    stop("envir must be either NULL, a list, or an environment.")
+  }
+
   qenv <- if (is.quoted(exprs)) attr(exprs, "env") else parent.frame()
   if (is.null(envir)) envir <- qenv
   if (is.data.frame(envir) && is.null(enclos)) enclos <- qenv
