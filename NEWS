@@ -1,6 +1,8 @@
 Version 1.7.1.99
 ------------------------------------------------------------------------------
 
+* `a*ply`: 25x speedup when indexing array objects, 3x speedup when indexing data frames.  This should substantially reduce the overhead of using `a*ply`
+
 * `quickdf` is around 20% faster
 
 * `round_any` now works with `POSIXct` objects, thanks to Jean-Olivier Irisson (#76)

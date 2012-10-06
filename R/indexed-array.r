@@ -23,19 +23,19 @@ indexed_array <- function(env, index) {
 
   if (is.list(env$data)) {
     if (is.data.frame(env$data) || (is.array(env$data) && !exact)) {
-      subs <- c("[", "]")
+      subs <- "["
     } else {
-      subs <- c("[[", "]]")
+      subs <- "[["
     }
   } else {
-    subs <- c("[", "]")
+    subs <- "["
   }
 
   # Don't drop if data is a data frame
   drop <- !is.data.frame(env$data)
 
   structure(
-    list(env = env, index = index, drop = drop, subs = subs),
+    list(env = env, index = index, drop = drop, subs = as.name(subs)),
     class = c("indexed_array", "indexed")
   )
 }
@@ -45,14 +45,14 @@ length.indexed_array <- function(x) nrow(x$index)
 
 #' @S3method [[ indexed_array
 "[[.indexed_array" <- function(x, i) {
-  indices <- paste(x$index[i, ,drop=TRUE], collapse = ", ")
+  indices <- unname(x$index[i, , drop = TRUE])
+  indices <- lapply(indices, function(x) if (x == "") bquote() else x)
 
-  ## This is very slow because we have to create a copy to use do.call
-  # do.call(x$subs, c(list(x$env$data), indices, drop=TRUE))
-
-  call <- paste("x$env$data",
-    x$subs[1], indices, ", drop = ", x$drop, x$subs[2], sep = "")
-  eval(parse(text = call))
+  call <- as.call(c(
+    list(x$subs, quote(x$env$data)),
+    indices,
+    list(drop = x$drop)))
+  eval(call)
 }
 
 #' @S3method names indexed
