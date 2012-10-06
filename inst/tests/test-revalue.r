@@ -49,7 +49,7 @@ test_that("Mapping with repeated original values works - should use first instan
 
   newnum <- c(4, 1, 5, 80)
   expect_message(
-    expect_identical(mapvalues(num, c(8, 8), c(80, 800)), newchr))
+    expect_identical(mapvalues(num, c(8, 8), c(80, 800)), newnum))
 })
 
 test_that("Mapping with repeated new value works (for factors, levels should be in earliest position)", {
