@@ -2,7 +2,7 @@
 #'
 #' Create a indexed array, a space efficient way of indexing into a large
 #' array.
-#' 
+#'
 #' @param env environment containing data frame
 #' @param index list of indices
 #' @keywords internal
@@ -16,24 +16,24 @@ indexed_array <- function(env, index) {
   #   * normal array
   #   * normal vector
   #   * list-array with inexact indexing
-  # 
+  #
   # Situations that should use [[
   #   * list
   #   * list-array with exact indexing
-  
+
   if (is.list(env$data)) {
     if (is.data.frame(env$data) || (is.array(env$data) && !exact)) {
       subs <- c("[", "]")
     } else {
-      subs <- c("[[", "]]")    
+      subs <- c("[[", "]]")
     }
   } else {
-    subs <- c("[", "]")    
+    subs <- c("[", "]")
   }
-  
+
   # Don't drop if data is a data frame
   drop <- !is.data.frame(env$data)
-  
+
   structure(
     list(env = env, index = index, drop = drop, subs = subs),
     class = c("indexed_array", "indexed")
@@ -50,7 +50,7 @@ length.indexed_array <- function(x) nrow(x$index)
   ## This is very slow because we have to create a copy to use do.call
   # do.call(x$subs, c(list(x$env$data), indices, drop=TRUE))
 
-  call <- paste("x$env$data", 
+  call <- paste("x$env$data",
     x$subs[1], indices, ", drop = ", x$drop, x$subs[2], sep = "")
   eval(parse(text = call))
 }

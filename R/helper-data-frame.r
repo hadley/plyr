@@ -2,10 +2,10 @@
 #'
 #' Create a new function that returns the existing function wrapped in a
 #' data.frame
-#' 
+#'
 #' This is useful when calling \code{*dply} functions with a function that
 #' returns a vector, and you want the output in rows, rather than columns
-#' 
+#'
 #' @keywords manip
 #' @param x function to make return a data frame
 #' @param row.names necessary to match the generic, but not used

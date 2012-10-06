@@ -5,7 +5,7 @@ length.indexed <- function(x) length(x$index)
 names.indexed <- function(x) {
   labels <- attr(x, "split_labels")
   labels[] <- lapply(labels, as.character)
-  
+
   do.call(paste, c(labels, list(sep = ".")))
 }
 

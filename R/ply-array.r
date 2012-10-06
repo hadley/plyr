@@ -22,11 +22,11 @@
 laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE, .parallel = FALSE) {
   if (is.character(.fun)) .fun <- do.call("each", as.list(.fun))
   if (!is.function(.fun)) stop(".fun is not a function.")
-  
+
   if (!inherits(.data, "split")) .data <- as.list(.data)
-  res <- llply(.data = .data, .fun = .fun, ..., 
+  res <- llply(.data = .data, .fun = .fun, ...,
     .progress = .progress, .parallel = .parallel)
-  
+
   list_to_array(res, attr(.data, "split_labels"), .drop)
 }
 
@@ -35,8 +35,8 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE, .p
 #'
 #' For each subset of data frame, apply function then combine results into
 #' an array.  \code{daply} with a function that operates column-wise is
-#' similar to \code{\link{aggregate}}. 
-#' 
+#' similar to \code{\link{aggregate}}.
+#'
 #' @template ply
 #' @section Input: This function splits data frames by variables.
 #' @section Output:
@@ -45,9 +45,9 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE, .p
 #' @param .data data frame to be processed
 #' @param .variables variables to split data frame by, as quoted
 #'   variables, a formula or character vector
-#' @param .drop_i should combinations of variables that do not appear in the 
+#' @param .drop_i should combinations of variables that do not appear in the
 #'   input data be preserved (FALSE) or dropped (TRUE, default)
-#' @param .parallel if \code{TRUE}, apply function in parallel, using parallel 
+#' @param .parallel if \code{TRUE}, apply function in parallel, using parallel
 #'   backend provided by foreach
 #' @return if results are atomic with same type and dimensionality, a
 #'   vector, matrix or array; otherwise, a list-array (a list with
@@ -60,17 +60,17 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE, .p
 #' @examples
 #' daply(baseball, .(year), nrow)
 #'
-#' # Several different ways of summarising by variables that should not be 
+#' # Several different ways of summarising by variables that should not be
 #' # included in the summary
-#' 
+#'
 #' daply(baseball[, c(2, 6:9)], .(year), colwise(mean))
 #' daply(baseball[, 6:9], .(baseball$year), colwise(mean))
 #' daply(baseball, .(year), function(df) colwise(mean)(df[, 6:9]))
 daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop_i = TRUE, .drop_o = TRUE, .parallel = FALSE) {
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables, drop = .drop_i)
-  
-  laply(.data = pieces, .fun = .fun, ..., 
+
+  laply(.data = pieces, .fun = .fun, ...,
     .progress = .progress, .drop = .drop_o, .parallel = .parallel)
 }
 
@@ -82,7 +82,7 @@ daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' those dimensions are added on to the highest dimensions, rather than the
 #' lowest dimensions.  This makes \code{aaply} idempotent, so that
 #' \code{apply(input, X, identity)} is equivalent to \code{aperm(input, X)}.
-#' 
+#'
 #' @template ply
 #' @template a-
 #' @template -a
@@ -95,19 +95,19 @@ daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' aaply(ozone, c(1,2), mean)
 #'
 #' dim(aaply(ozone, c(1,2), mean))
-#' dim(aaply(ozone, c(1,2), mean, .drop = FALSE)) 
+#' dim(aaply(ozone, c(1,2), mean, .drop = FALSE))
 #'
 #' aaply(ozone, 1, each(min, max))
 #' aaply(ozone, 3, each(min, max))
-#' 
+#'
 #' standardise <- function(x) (x - min(x)) / (max(x) - min(x))
 #' aaply(ozone, 3, standardise)
 #' aaply(ozone, 1:2, standardise)
-#'  
+#'
 #' aaply(ozone, 1:2, diff)
 aaply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .drop = TRUE, .parallel = FALSE) {
   pieces <- splitter_a(.data, .margins, .expand)
-  
-  laply(.data = pieces, .fun = .fun, ..., 
+
+  laply(.data = pieces, .fun = .fun, ...,
     .progress = .progress, .drop = .drop, .parallel = .parallel)
 }

@@ -3,7 +3,7 @@
 #' Reduce/simplify a list of homogenous objects to a data frame.
 #' All \code{NULL} entries are removed. Remaining entries must be all atomic
 #' or all data frames.
-#' 
+#'
 #' @family list simplification functions
 #' @param res list of input data
 #' @param labels a data frame of labels, one row for each element of res
@@ -29,12 +29,12 @@ list_to_dataframe <- function(res, labels = NULL) {
     nrow <- length(res)
     ncol <- unique(unlist(lapply(res, length)))
     if (length(ncol) != 1) stop("Results do not have equal lengths")
-    
+
     vec <- unname(do.call("c", res))
-    
+
     resdf <- quickdf(unname(split(vec, rep(seq_len(ncol), nrow))))
     names(resdf) <- make_names(res[[1]], "V")
-    
+
     rows <- rep(1, length(nrow))
   } else if (all(df)) {
     resdf <- rbind.fill(res)
@@ -42,14 +42,14 @@ list_to_dataframe <- function(res, labels = NULL) {
   } else {
     stop("Results must be all atomic, or all data frames")
   }
-  
+
   if(is.null(labels)) return(unrowname(resdf))
 
   # Add labels to results
   names(labels) <- make_names(labels, "X")
-  
+
   cols <- setdiff(names(labels), names(resdf))
   labels <- labels[rep(1:nrow(labels), rows), cols, drop = FALSE]
-  
+
   unrowname(cbind(labels, resdf))
 }

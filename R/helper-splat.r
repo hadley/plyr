@@ -2,10 +2,10 @@
 #'
 #' Wraps a function in do.call, so instead of taking multiple arguments, it
 #' takes a single named list which will be interpreted as its arguments.
-#' 
+#'
 #' This is useful when you want to pass a function a row of data frame or
 #' array, and don't want to manually pull it apart in your function.
-#' 
+#'
 #' @param flat function to splat
 #' @return a function
 #' @export

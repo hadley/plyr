@@ -1,7 +1,7 @@
 #' Construct an immutable data frame.
-#' 
+#'
 #' An immutable data frame works like an ordinary data frame, except that when
-#' you subset it, it returns a reference to the original data frame, not a 
+#' you subset it, it returns a reference to the original data frame, not a
 #' a copy. This makes subsetting substantially faster and has a big impact
 #' when you are working with large datasets with many groups.
 #'
@@ -28,7 +28,7 @@ idata.frame <- function(df) {
   self$`_getters` <- lapply(names(df), function(name) {
     eval(substitute(function(v) {
       if (missing(v)) {
-        `_data`[[name]][`_rows`] 
+        `_data`[[name]][`_rows`]
       } else {
         stop("Immutable")
       }
@@ -40,11 +40,11 @@ idata.frame <- function(df) {
     environment(f) <- self
     makeActiveBinding(name, f, self)
   }
-  structure(self, 
+  structure(self,
     class = c("idf", "environment"))
 }
 
-"[.idf" <- function(x, i, j, drop = TRUE) { 
+"[.idf" <- function(x, i, j, drop = TRUE) {
   # Single column special cases
   if (nargs() == 2) {
     j <- i
@@ -55,14 +55,14 @@ idata.frame <- function(df) {
     if (missing(i)) i <- TRUE
     return(x[[j]][i])
   }
-  
+
   # New rows
   rows <- x$`_rows`
   if (!missing(i)) {
     if (is.character(i)) stop("Row names not supported")
     rows <- rows[i]
   }
-  
+
   # New cols
   cols <- x$`_cols`
   if (!missing(j)) {
@@ -70,9 +70,9 @@ idata.frame <- function(df) {
       cols <- intersect(cols, j)
     } else {
       cols <- cols[j]
-    }    
+    }
   }
-  
+
   # Make active bindings for functions like lm and eval that will treat this
   # object as an environment or list
   self <- new.env(parent = parent.env(x))
@@ -86,7 +86,7 @@ idata.frame <- function(df) {
     environment(f) <- self
     makeActiveBinding(col, f, self)
   }
-  
+
   structure(self,
     class = c("idf", "environment"))
 }

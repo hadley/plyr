@@ -1,6 +1,6 @@
 #' Loop apply
 #'
-#' An optimised version of lapply for the special case of operating on 
+#' An optimised version of lapply for the special case of operating on
 #' \code{seq_len(n)}
 #'
 #' @param n length of sequence

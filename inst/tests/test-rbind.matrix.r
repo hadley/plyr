@@ -30,7 +30,7 @@ test_that ("additional columns are NA: should behave like rbind.fill for data.fr
   ref <- as.matrix (rbind.fill (as.data.frame (a), as.data.frame (b)))
   colnames (ref) <- seq_len(ncol(ref))
   rownames (ref) <- NULL
-  
+
   expect_that(new, equals(ref))
 })
 
@@ -44,7 +44,7 @@ test_that ("merge with column names: should behave like rbind.fill for data.fram
 
   ref <- as.matrix (rbind.fill (as.data.frame (a), as.data.frame (b)))
   rownames (ref) <- NULL
-  
+
   expect_that(new, equals(ref))
 })
 
@@ -59,22 +59,22 @@ test_that ("merge with column names: should behave like rbind.fill for data.fram
 
   ref <- as.matrix (rbind.fill (as.data.frame (a), as.data.frame (b)))
   rownames (ref) <- NULL
-  
+
   expect_that(new, equals(ref))
 })
 
 test_that ("only 1 element: should behave like rbind.fill for data.frame",{
   a <- matrix (1, 1)
   colnames (a) <- letters [2]
-  
+
   b <- matrix (1:9, 3)
   colnames (b) <- letters [c (1, 2, 4)]
-  
+
   new <- rbind.fill.matrix (a, b)
 
   ref <- as.matrix (rbind.fill (as.data.frame (a), as.data.frame (b)))
   rownames (ref) <- NULL
-  
+
   expect_that(new, equals(ref))
 })
 
@@ -90,7 +90,7 @@ test_that ("character + numeric: should behave like rbind.fill for data.frame",{
                      as.data.frame (b, stringsAsFactors = FALSE))
   ref <- as.matrix (sapply (ref, as.character)) # the last column is integer and would gain a second
                                                 # character with direct as.matrix
-  
+
   expect_that(new, equals(ref))
 })
 
@@ -113,4 +113,4 @@ test_that ("vector: uses as.matrix",{
 })
 
 
- 
+

@@ -2,7 +2,7 @@
 #'
 #' Modify a function so that it returns a default value when there is an
 #' error.
-#' 
+#'
 #' @param default default value
 #' @param f function
 #' @param quiet all error messages be suppressed?
@@ -19,7 +19,7 @@
 #'
 #' safef <- failwith(NULL, f)
 #' safef(1)
-#' safef(2) 
+#' safef(2)
 failwith <- function(default = NULL, f, quiet = FALSE) {
   f <- match.fun(f)
   function(...) try_default(f(...), default, quiet = quiet)
@@ -28,9 +28,9 @@ failwith <- function(default = NULL, f, quiet = FALSE) {
 #' Try, with default in case of error.
 #'
 #' \code{try_default} wraps try so that it returns a default value in the case of error.
-#' 
+#'
 #' \code{tryNULL} provides a useful special case when dealing with lists.
-#' 
+#'
 #' @param expr expression to try
 #' @param default default value in case of error
 #' @param quiet should errors be printed (TRUE) or ignored (FALSE, default)
@@ -41,7 +41,7 @@ failwith <- function(default = NULL, f, quiet = FALSE) {
 try_default <- function(expr, default, quiet = FALSE) {
   result <- default
   if (quiet) {
-    tryCatch(result <- expr, error = function(e) {})    
+    tryCatch(result <- expr, error = function(e) {})
   } else {
     try(result <- expr)
   }
@@ -52,7 +52,7 @@ tryNULL <- function(expr) try_default(expr, NULL, quiet = TRUE)
 
 #' Apply with built in try.
 #' Uses compact, lapply and tryNULL
-#' 
+#'
 #' @keywords internal
 #' @export
 tryapply <- function(list, fun, ...) {

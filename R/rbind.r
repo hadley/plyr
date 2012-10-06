@@ -1,15 +1,15 @@
 #' Combine data.frames by row, filling in missing columns.
 #'
 #' \code{rbind}s a list of data frames filling missing columns with NA.
-#' 
+#'
 #' This is an enhancement to \code{\link{rbind}} that adds in columns
-#' that are not present in all inputs, accepts a list of data frames, and 
+#' that are not present in all inputs, accepts a list of data frames, and
 #' operates substantially faster.
 #'
-#' Column names and types in the output will appear in the order in which 
+#' Column names and types in the output will appear in the order in which
 #' they were encountered. No checking is performed to ensure that each column
 #' is of consistent type in the inputs.
-#' 
+#'
 #' @param ... input data frames to row bind together
 #' @keywords manip
 #' @family binding functions
@@ -24,26 +24,26 @@ rbind.fill <- function(...) {
     dfs <- dfs[[1]]
   }
   dfs <- Filter(Negate(empty), dfs)
-  
+
   if (length(dfs) == 0) return()
   if (length(dfs) == 1) return(dfs[[1]])
-  
+
   # Calculate rows in output
   # Using .row_names_info directly is about 6 times faster than using nrow
   rows <- unlist(lapply(dfs, .row_names_info, 2L))
   nrows <- sum(rows)
-  
+
   # Generate output template
   output <- output_template(dfs, nrows)
-  
+
   # Compute start and end positions for each data frame
   pos <- matrix(cumsum(rbind(1, rows - 1)), ncol = 2, byrow = TRUE)
-  
+
   # Copy inputs into output
-  for(i in seq_along(rows)) { 
+  for(i in seq_along(rows)) {
     rng <- pos[i, 1]:pos[i, 2]
     df <- dfs[[i]]
-    
+
     for(var in names(df)) {
       if (!is.matrix(output[[var]])) {
         if (is.factor(output[[var]]) && is.character(df[[var]])) {
@@ -54,8 +54,8 @@ rbind.fill <- function(...) {
         output[[var]][rng, ] <- df[[var]]
       }
     }
-  } 
-  
+  }
+
   quickdf(output)
 }
 
@@ -63,15 +63,15 @@ output_template <- function(dfs, nrows) {
   vars <- unique(unlist(lapply(dfs, base::names)))   # ~ 125,000/s
   output <- vector("list", length(vars))
   names(output) <- vars
-  
+
   seen <- rep(FALSE, length(output))
   names(seen) <- vars
-  
+
   is_array <- seen
   is_matrix <- seen
   is_factor <- seen
-    
-  for(df in dfs) {    
+
+  for(df in dfs) {
     matching <- intersect(names(df), vars[!seen])
     for(var in matching) {
       value <- df[[var]]
@@ -111,22 +111,22 @@ output_template <- function(dfs, nrows) {
   # Set up matrices
   for(var in vars[is_matrix]) {
     width <- unique(unlist(lapply(dfs, function(df) ncol(df[[var]]))))
-    if (length(width) > 1) 
+    if (length(width) > 1)
       stop("Matrix variable ", var, " has inconsistent widths")
-      
+
     vec <- rep(NA, nrows * width)
     output[[var]] <- array(vec, c(nrows, width))
   }
-  
+
   # Set up arrays
   for (var in vars[is_array]) {
     dims <- unique(unlist(lapply(dfs, function(df) dims(df[[var]]))))
     if (any(dims) > 1) {
       stop("rbind.fill can only work with 1d arrays")
     }
-    
-    output[[var]] <- rep(NA, nrows)    
+
+    output[[var]] <- rep(NA, nrows)
   }
-  
+
   output
 }

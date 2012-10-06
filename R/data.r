@@ -17,27 +17,27 @@
 #' @examples
 #' value <- ozone[1, 1, ]
 #' time <- 1:72
-#' month.abbr <- c("Jan", "Feb", "Mar", "Apr", "May", 
+#' month.abbr <- c("Jan", "Feb", "Mar", "Apr", "May",
 #'  "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 #' month <- factor(rep(month.abbr, length = 72), levels = month.abbr)
 #' year <- rep(1:6, each = 12)
 #' deseasf <- function(value) lm(value ~ month - 1)
-#' 
+#'
 #' models <- alply(ozone, 1:2, deseasf)
 #' coefs <- laply(models, coef)
 #' dimnames(coefs)[[3]] <- month.abbr
 #' names(dimnames(coefs))[3] <- "month"
-#' 
+#'
 #' deseas <- laply(models, resid)
 #' dimnames(deseas)[[3]] <- 1:72
 #' names(dimnames(deseas))[3] <- "time"
-#' 
+#'
 #' dim(coefs)
 #' dim(deseas)
 NULL
 
 #' Yearly batting records for all major league baseball players
-#' 
+#'
 #' This data frame contains batting statistics for a subset of players
 #' collected from \url{http://www.baseball-databank.org/}. There are a total
 #' of 21,699 records, covering 1,228 players from 1871 to 2007. Only players
@@ -57,7 +57,7 @@ NULL
 #'  \item h, hits, times reached base because of a batted, fair ball without
 #'      error by the defense
 #'  \item X2b, hits on which the batter reached second base safely
-#'  \item X3b, hits on which the batter reached third base safely 
+#'  \item X3b, hits on which the batter reached third base safely
 #'  \item hr, number of home runs
 #'  \item rbi, runs batted in
 #'  \item sb, stolen bases
@@ -79,17 +79,17 @@ NULL
 #' @examples
 #' baberuth <- subset(baseball, id == "ruthba01")
 #' baberuth$cyear <- baberuth$year - min(baberuth$year) + 1
-#' 
+#'
 #' calculate_cyear <- function(df) {
-#'   mutate(df, 
+#'   mutate(df,
 #'     cyear = year - min(year),
 #'     cpercent = cyear / (max(year) - min(year))
 #'   )
 #' }
-#' 
+#'
 #' baseball <- ddply(baseball, .(id), calculate_cyear)
 #' baseball <- subset(baseball, ab >= 25)
-#' 
+#'
 #' model <- function(df) {
 #'   lm(rbi / ab ~ cyear, data=df)
 #' }

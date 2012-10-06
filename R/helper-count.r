@@ -23,7 +23,7 @@
 #' @export
 #' @examples
 #' # Count of each value of "id" in the first 100 cases
-#' count(baseball[1:100,], vars = "id") 
+#' count(baseball[1:100,], vars = "id")
 #' # Count of ids, weighted by their "g" loading
 #' count(baseball[1:100,], vars = "id", wt_var = "g")
 #' count(baseball, "id", "ab")
@@ -39,35 +39,35 @@ count <- function(df, vars = NULL, wt_var = NULL) {
   if (is.vector(df)) {
     df <- data.frame(x = df)
   }
-  
+
   if (!is.null(vars)) {
     vars <- as.quoted(vars)
     df2 <- quickdf(eval.quoted(vars, df))
   } else {
     df2 <- df
   }
-  
+
   id <- ninteraction(df2, drop = TRUE)
   u_id <- !duplicated(id)
   labels <- df2[u_id, , drop = FALSE]
   labels <- labels[order(id[u_id]), , drop = FALSE]
-  
+
   if (is.null(wt_var) && "freq" %in% names(df)) {
     message("Using freq as weighting variable")
     wt_var <- "freq"
   }
-  
+
   if (!is.null(wt_var)) {
     wt_var <- as.quoted(wt_var)
     if (length(wt_var) > 1) {
       stop("wt_var must be a single variable", call. = FALSE)
     }
-    
+
     wt <- eval.quoted(wt_var, df)[[1]]
     freq <- vaggregate(wt, id, sum, .default = 0)
   } else {
-    freq <- tabulate(id, attr(id, "n"))    
+    freq <- tabulate(id, attr(id, "n"))
   }
-  
+
   unrowname(data.frame(labels, freq))
 }

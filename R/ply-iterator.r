@@ -1,11 +1,11 @@
 #' Experimental iterator based version of llply.
-#' 
-#' Because iterators do not have known length, \code{liply} starts by 
-#' allocating an output list of length 50, and then doubles that length 
-#' whenever it runs out of space.  This gives O(n ln n) performance rather 
+#'
+#' Because iterators do not have known length, \code{liply} starts by
+#' allocating an output list of length 50, and then doubles that length
+#' whenever it runs out of space.  This gives O(n ln n) performance rather
 #' than the O(n ^ 2) performance from the naive strategy of growing the list
 #' each time.
-#' 
+#'
 #' @keywords manip
 #' @param .iterator iterator object
 #' @param .fun function to apply to each piece
@@ -24,19 +24,19 @@
 liply <- function(.iterator, .fun = NULL, ...) {
   stopifnot(inherits(.iterator, "iter"))
   if (is.null(.fun)) return(as.list(.iterator))
-  
+
   iterator <- itertools::ihasNext(.iterator)
-  
+
   if (is.character(.fun)) .fun <- each(.fun)
   if (!is.function(.fun)) stop(".fun is not a function.")
-  
+
   result <- vector("list", 50)
   i <- 0
 
   while(itertools::hasNext(iterator)) {
     piece <- iterators::nextElem(iterator)
     res <- .fun(piece, ...)
-    
+
     # Double length of vector when necessary.  Gives O(n ln n) performance
     # instead of naive O(n^2)
     i <- i + 1
@@ -46,7 +46,7 @@ liply <- function(.iterator, .fun = NULL, ...) {
     if (!is.null(res)) result[[i]] <- res
   }
   length(result) <- i
-  
+
   result
 }
 

@@ -117,6 +117,6 @@ test_that("names captured from list", {
 test_that("correct number of rows outputted", {
   testdata <- data.frame(a = rep(letters[1:3], each = 5), b = rnorm(15))
   res <- ddply(testdata, .(a), function(x) c(mean(x$b), sd(x$b)))
-  
+
   expect_that(nrow(res), equals(3))
 })

@@ -1,7 +1,7 @@
 #' Subset splits.
 #'
 #' Subset splits, ensuring that labels keep matching
-#' 
+#'
 #' @keywords internal
 #' @param x split object
 #' @param i index
@@ -21,7 +21,7 @@
 #' Convert split list to regular list.
 #'
 #' Strip off label related attributed to make a strip list as regular list
-#'   
+#'
 #' @keywords internal
 #' @param x object to convert to a list
 #' @param ... unused
@@ -37,7 +37,7 @@ as.list.split <- function(x, ...) {
 #' Print split.
 #'
 #' Don't print labels, so it appears like a regular list
-#' 
+#'
 #' @keywords internal
 #' @param x object to print
 #' @param ... unused

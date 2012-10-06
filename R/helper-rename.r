@@ -5,7 +5,7 @@
 #'   old names as names.
 #' @param warn_missing print a message if any of the old names are
 #'   not actually present in \code{x}.
-#' Note: x is not altered: To save the result, you need to copy the returned 
+#' Note: x is not altered: To save the result, you need to copy the returned
 #'   data into a variable.
 #' @export
 #' @importFrom stats setNames

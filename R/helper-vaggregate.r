@@ -1,19 +1,19 @@
 #' Vector aggregate.
 #'
 #' This function is somewhat similar to \code{tapply}, but is designed for
-#' use in conjunction with \code{id}. It is simpler in that it only 
+#' use in conjunction with \code{id}. It is simpler in that it only
 #' accepts a single grouping vector (use \code{\link{id}} if you have more)
 #' and uses \code{\link{vapply}} internally, using the \code{.default} value
 #' as the template.
-#' 
+#'
 #' \code{vaggregate} should be faster than \code{tapply} in most situations
 #' because it avoids making a copy of the data.
-#' 
+#'
 #' @param .value vector of values to aggregate
 #' @param .group grouping vector
 #' @param .fun aggregation function
 #' @param ... other arguments passed on to \code{.fun}
-#' @param .default default value used for missing groups.  This argument is 
+#' @param .default default value used for missing groups.  This argument is
 #'   also used as the template for function output.
 #' @param .n total number of groups
 #' @export
@@ -29,7 +29,7 @@
 #' # Unlike tapply, vaggregate does not support multi-d output:
 #' tapply(warpbreaks$breaks, warpbreaks[,-1], sum)
 #' vaggregate(warpbreaks$breaks, id(warpbreaks[,-1]), sum)
-#' 
+#'
 #' # But it is about 10x faster
 #' x <- rnorm(1e6)
 #' y1 <- sample.int(10, 1e6, replace = TRUE)
@@ -47,7 +47,7 @@ vaggregate <- function(.value, .group, .fun, ..., .default = NULL, .n = nlevels(
   if (is.null(.default)) {
     .default <- .fun(.value[0], ...)
   }
-  
+
   fun <- function(i) {
     if (length(i) == 0) return(.default)
     .fun(.value[i], ...)

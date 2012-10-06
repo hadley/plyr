@@ -1,5 +1,5 @@
-#' @section Output: 
-#'   The most unambiguous behaviour is achieved when \code{.fun} returns a 
+#' @section Output:
+#'   The most unambiguous behaviour is achieved when \code{.fun} returns a
 #'   data frame - in that case pieces will be combined with
 #'   \code{\link{rbind.fill}}.  If \code{.fun} returns an atomic vector of
 #'   fixed length, it will be \code{rbind}ed together and converted to a data

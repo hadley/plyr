@@ -1,17 +1,17 @@
 #' Split a data frame by variables.
 #'
 #' Split a data frame into pieces based on variable contained in that data frame
-#' 
+#'
 #' This is the workhorse of the \code{d*ply} functions.  Based on the variables
 #' you supply, it breaks up a single data frame into a list of data frames,
 #' each containing a single combination from the levels of the specified
 #' variables.
-#' 
+#'
 #' This is basically a thin wrapper around \code{\link{split}} which
 #' evaluates the variables in the context of the data, and includes enough
-#' information to reconstruct the labelling of the data frame after 
+#' information to reconstruct the labelling of the data frame after
 #' other operations.
-#' 
+#'
 #' @seealso \code{\link{.}} for quoting variables, \code{\link{split}}
 #' @family splitter functions
 #' @param data data frame
@@ -34,8 +34,8 @@
 #' plyr:::splitter_d(mtcars, .(cyl3, vs), drop = FALSE)
 splitter_d <- function(data, .variables = NULL, drop = TRUE) {
   stopifnot(is.quoted(.variables))
-  
-  
+
+
   if (length(.variables) == 0) {
     splitv <- rep(1, nrow(data))
     split_labels <- NULL
@@ -48,12 +48,12 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
     split_labels <- split_labels(splits, drop = drop, id = splitv)
     vars <- unlist(lapply(.variables, all.vars))
   }
-  
-  index <- split_indices(seq_along(splitv), as.integer(splitv), 
+
+  index <- split_indices(seq_along(splitv), as.integer(splitv),
     attr(splitv, "n"))
 
   il <- indexed_df(data, index, vars)
-  
+
   structure(
     il,
     class = c(class(il), "split", "list"),
@@ -65,14 +65,14 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
 #' Generate labels for split data frame.
 #'
 #' Create data frame giving labels for split data frame.
-#' 
+#'
 #' @param list of variables to split up by
 #' @param whether all possible combinations should be considered, or only those present in the data
 #' @keywords internal
 #' @export
 split_labels <- function(splits, drop, id = plyr::id(splits, drop = TRUE)) {
   if (length(splits) == 0) return(data.frame())
-  
+
   if (drop) {
     # Need levels which occur in data
     representative <- which(!duplicated(id))[order(unique(id))]

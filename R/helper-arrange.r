@@ -1,7 +1,7 @@
 #' Order a data frame by its colums.
 #'
 #' This function completes the subsetting, transforming and ordering triad
-#' with a function that works in a similar way to \code{\link{subset}} and 
+#' with a function that works in a similar way to \code{\link{subset}} and
 #' \code{\link{transform}} but for reordering a data frame by its columns.
 #' This saves a lot of typing!
 #'
@@ -25,7 +25,7 @@
 arrange <- function(df, ...) {
   ord <- eval(substitute(order(...)), df, parent.frame())
   if(length(ord) != nrow(df)) {
-    stop("Length of ordering vectors don't match data frame size", 
+    stop("Length of ordering vectors don't match data frame size",
       call. = FALSE)
   }
   unrowname(df[ord, , drop = FALSE])

@@ -3,7 +3,7 @@
 #' Combine multiple functions into a single function returning a named vector
 #' of outputs.
 #' Note: you cannot supply additional parameters for the summary functions
-#' 
+#'
 #' @param ... functions to combine. each function should produce a single
 #'    number as output
 #' @keywords manip
@@ -27,12 +27,12 @@ each <- function(...) {
   fs <- list(...)
   if (length(fs[[1]]) > 1) {
     fs <- fs[[1]]
-    
+
     # Jump through hoops to work out names
     snames <- as.list(match.call()[2])[[1]]
     fnames <- unlist(lapply(as.list(snames)[-1], deparse))
   }
-  
+
   # Find function names and replace with function objects
   char <- laply(fs, is.character)
   fnames[char] <- fs[char]
@@ -41,14 +41,14 @@ each <- function(...) {
   unames <- names(fs)
   if (is.null(unames)) unames <- fnames
   unames[unames == ""] <- fnames[unames == ""]
-  
+
   n <- length(fs)
   proto <- NULL
   result <- NULL
-  
+
   if (n == 1) {
     # If there is only one function, things are simple.  We just
-    # need to name the output, if appropriate. 
+    # need to name the output, if appropriate.
     function(x, ...) {
       res <- fs[[1]](x, ...)
       if (length(res) == 1) names(res) <- unames
@@ -65,9 +65,9 @@ each <- function(...) {
         for(i in 1:n) result[[i]] <- fs[[i]](x, ...)
         proto <<- list_to_vector(result)
       } else {
-        for(i in 1:n) proto[[i]] <- fs[[i]](x, ...)      
+        for(i in 1:n) proto[[i]] <- fs[[i]](x, ...)
       }
       proto
-    }  
+    }
   }
 }

@@ -8,7 +8,7 @@ test_that("data frame variables converted to list names", {
   y <- ddply(esoph, .(alcgp, agegp), function(df) mean(df$ncases))
   labs <- paste(y$alcgp, y$agegp, sep = ".")
   expect_that(names(x), equals(labs))
-  
+
 })
 
 test_that("list names are preserved", {
@@ -17,5 +17,5 @@ test_that("list names are preserved", {
 
   names(a) <- letters[1:10]
   expect_that(names(llply(a)), equals(letters[1:10]))
-  
+
 })
