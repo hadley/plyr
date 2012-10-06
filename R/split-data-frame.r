@@ -49,8 +49,7 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
     vars <- unlist(lapply(.variables, all.vars))
   }
 
-  index <- split_indices(seq_along(splitv), as.integer(splitv),
-    attr(splitv, "n"))
+  index <- split_indices(as.integer(splitv), attr(splitv, "n"))
 
   il <- indexed_df(data, index, vars)
 

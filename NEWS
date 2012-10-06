@@ -1,6 +1,8 @@
 Version 1.7.1.99
 ------------------------------------------------------------------------------
 
+* `split_indices`, which powers much internal splitting code (like `vaggregate`, `join` and `d*ply`) is about 2x faster.  It was already incredible fast ~0.2s for 1,000,000 obs, so this won't have much impact on overall performance
+
 * `a*ply`: 25x speedup when indexing array objects, 3x speedup when indexing data frames.  This should substantially reduce the overhead of using `a*ply`
 
 * `quickdf` is around 20% faster

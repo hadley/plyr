@@ -8,10 +8,9 @@
 #' @param n largest integer (may not appear in index)
 #' @useDynLib plyr
 #' @keywords internal manip
-split_indices <- function(index, group, n = max(group)) {
-  if (length(index) == 0) return(integer())
-  stopifnot(is.integer(index))
+split_indices <- function(group, n = max(group)) {
+  if (length(group) == 0) return(integer())
   stopifnot(is.integer(group))
 
-  .Call("split_indices", index, group, as.integer(n))
+  .Call("split_indices", group, as.integer(n))
 }

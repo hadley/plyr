@@ -53,7 +53,7 @@ vaggregate <- function(.value, .group, .fun, ..., .default = NULL, .n = nlevels(
     .fun(.value[i], ...)
   }
 
-  indices <- split_indices(seq_along(.value), .group, .n)
+  indices <- split_indices(.group, .n)
   vapply(indices, fun, .default)
 }
 

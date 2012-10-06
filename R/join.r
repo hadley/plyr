@@ -123,7 +123,7 @@ join_all <- function(x, y, by, type) {
 join_ids <- function(x, y, by, all = FALSE) {
   keys <- join.keys(x, y, by = by)
 
-  ys <- split_indices(seq_along(keys$y), keys$y, keys$n)
+  ys <- split_indices(keys$y, keys$n)
   length(ys) <- keys$n
 
   if (all) {
