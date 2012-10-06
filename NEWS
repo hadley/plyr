@@ -1,6 +1,8 @@
 Version 1.7.1.99
 ------------------------------------------------------------------------------
 
+* `quickdf` is around 20% faster
+
 * `round_any` now works with `POSIXct` objects, thanks to Jean-Olivier Irisson (#76)
 
 * Improved documentation thanks to patches from Tim Bates.

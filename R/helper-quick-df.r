@@ -1,6 +1,6 @@
 #' Quick data frame.
 #'
-#' Experimental version of \code{\link{as.data.frame}} that converts a 
+#' Experimental version of \code{\link{as.data.frame}} that converts a
 #' list to a data frame, but doesn't do any checks to make sure it's a
 #' valid format.  Much faster.
 #'
@@ -10,20 +10,20 @@
 quickdf <- function(list) {
   rows <- unique(unlist(lapply(list, NROW)))
   stopifnot(length(rows) == 1)
-  
+
   names(list) <- make_names(list, "X")
-  
-  structure(list, 
-    class = "data.frame",
-    row.names = seq_len(rows))
+  class(list) <- "data.frame"
+  attr(list, "row.names") <- c(NA_integer_, -rows)
+
+  list
 }
 
 make_names <- function(x, prefix = "X") {
   nm <- names(x)
   if (is.null(nm)) {
-    nm <- rep("", length = length(x))
+    nm <- rep.int("", length(x))
   }
-  
+
   nm[nm == ""] <- paste(prefix, seq_len(sum(nm == "")), sep = "")
   nm
 }
