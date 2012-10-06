@@ -1,0 +1,48 @@
+\name{mapvalues}
+\alias{mapvalues}
+\title{Replace specified values with new values, in a vector or factor.}
+\usage{
+  mapvalues(x, from, to, warn_missing = TRUE)
+}
+\arguments{
+  \item{x}{the factor or vector to modify}
+
+  \item{from}{a vector of the items to replace}
+
+  \item{to}{a vector of replacement values}
+
+  \item{warn_missing}{print a message if any of the old
+  values are not actually present in \code{x}}
+}
+\description{
+  Item in \code{x} that match items \code{from} will be
+  replaced by items in \code{to}, matched by position. For
+  example, items in \code{x} that match the first element
+  in \code{from} will be replaced by the first element of
+  \code{to}.
+}
+\details{
+  If \code{x} is a factor, the matching levels of the
+  factor will be replaced with the new values.
+
+  The related \code{revalue} function works only on
+  character vectors and factors, but this function works on
+  vectors of any type and factors.
+}
+\examples{
+x <- c("a", "b", "c")
+mapvalues(x, c("a", "c"), c("A", "C"))
+
+# Works on factors
+y <- factor(c("a", "b", "c", "a"))
+mapvalues(y, c("a", "c"), c("A", "C"))
+
+# Works on numeric vectors
+z <- c(1, 4, 5, 9)
+mapvalues(z, from = c(1, 5, 9), to = c(10, 50, 90))
+}
+\seealso{
+  \code{\link{revalue}} to do the same thing but with a
+  single named vector instead of two separate vectors.
+}
+

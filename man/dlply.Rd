@@ -16,7 +16,8 @@
   \item{.data}{data frame to be processed}
 
   \item{.variables}{variables to split data frame by, as
-  quoted variables, a formula or character vector}
+  \code{\link{as.quoted}} variables, a formula or character
+  vector}
 
   \item{.drop}{should combinations of variables that do not
   appear in the input data be preserved (FALSE) or dropped

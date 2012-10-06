@@ -2,9 +2,15 @@ context("Rename")
 
 test_that("No match leaves names unchanged", {
   x <- c(a = 1, b = 2, c = 3, 4)
-  y <- rename(x, c(d = "e"))
+  y <- rename(x, c(d = "e"), warn_missing = FALSE)
   
   expect_equal(names(x), names(y))
+})
+
+test_that("Missing old values result in message", {
+  # This is the same rename operation as above, but should give a message
+  x <- c(a = 1, b = 2, c = 3, 4)
+  expect_message(rename(x, c(d = "e")))
 })
 
 test_that("Single name match makes change", {
