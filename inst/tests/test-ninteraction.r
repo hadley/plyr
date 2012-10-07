@@ -56,7 +56,7 @@ test_that("NAs are placed last", {
 })
 
 test_that("zero length input gives single number", {
-  expect_that(id(character()), is_equivalent_to(1))
+  expect_that(id(character()), is_equivalent_to(integer()))
 })
 
 test_that("zero column data frame gives seq_len(nrow)", {
