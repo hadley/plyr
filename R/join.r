@@ -56,19 +56,24 @@ join <- function(x, y, by = intersect(names(x), names(y)), type = "left", match 
 
 join_first <- function(x, y, by, type) {
   keys <- join.keys(x, y, by = by)
-  new.cols <- setdiff(names(y), by)
+
+  x.cols <- setdiff(names(x), by)
+  y.cols <- setdiff(names(y), by)
 
   if (type == "inner") {
     x.match <- match(keys$y, keys$x, 0)
     y.match <- match(keys$x, keys$y, 0)
-    cbind(x[x.match, , drop = FALSE], y[y.match, new.cols, drop = FALSE])
 
+    cbind(
+      x[x.match, by, drop = FALSE],
+      x[x.match, x.cols, drop = FALSE],
+      y[y.match, y.cols, drop = FALSE]
+    )
   } else if (type == "left") {
     y.match <- match(keys$x, keys$y)
-    y.matched <- unrowname(y[y.match, new.cols, drop = FALSE])
+    y.matched <- unrowname(y[y.match, y.cols, drop = FALSE])
 
-    cbind(x, y.matched)
-
+    cbind(x[by], x[x.cols], y.matched)
   } else if (type == "right") {
     if (any(duplicated(keys$y))) {
       stop("Duplicated key in y", call. = FALSE)
@@ -76,18 +81,18 @@ join_first <- function(x, y, by, type) {
 
     new.cols <- setdiff(names(x), by)
     x.match <- match(keys$y, keys$x)
-    x.matched <- unrowname(x[x.match, , drop = FALSE])
-    cbind(y, x.matched[, new.cols, drop = FALSE])
+    x.matched <- unrowname(x[x.match, x.cols, drop = FALSE])
 
+    cbind(y[by], x.matched, y[y.cols])
   } else if (type == "full") {
     # x with matching y's then any unmatched ys
 
     y.match <- match(keys$x, keys$y)
-    y.matched <- unrowname(y[y.match, new.cols, drop = FALSE])
+    y.matched <- unrowname(y[y.match, y.cols, drop = FALSE])
 
     y.unmatch <- is.na(match(keys$y, keys$x))
 
-    rbind.fill(cbind(x, y.matched), y[y.unmatch, , drop = FALSE])
+    rbind.fill(cbind(x[c(by, x.cols)], y.matched), y[y.unmatch, , drop = FALSE])
   }
 }
 
@@ -96,26 +101,31 @@ join_first <- function(x, y, by, type) {
 # horrendously inefficient, so we do various types of hashing, implemented
 # in R as split_indices
 join_all <- function(x, y, by, type) {
-  new.cols <- setdiff(names(y), by)
+  x.cols <- setdiff(names(x), by)
+  y.cols <- setdiff(names(y), by)
 
   if (type == "inner") {
     ids <- join_ids(x, y, by)
-    out <- cbind(x[ids$x, , drop = FALSE], y[ids$y, new.cols, drop = FALSE])
+    out <- cbind(x[ids$x, , drop = FALSE], y[ids$y, y.cols, drop = FALSE])
   } else if (type == "left") {
     ids <- join_ids(x, y, by, all = TRUE)
-    out <- cbind(x[ids$x, , drop = FALSE], y[ids$y, new.cols, drop = FALSE])
+    out <- cbind(x[ids$x, , drop = FALSE], y[ids$y, y.cols, drop = FALSE])
   } else if (type == "right") {
     # Flip x and y, but make sure to put new columns in the right place
     new.cols <- setdiff(names(x), by)
     ids <- join_ids(y, x, by, all = TRUE)
-    out <- cbind(y[ids$x, , drop = FALSE], x[ids$y, new.cols, drop = FALSE])
+    out <- cbind(
+      y[ids$x, by, drop = FALSE],
+      x[ids$y, x.cols, drop = FALSE],
+      y[ids$x, y.cols, drop = FALSE]
+    )
   } else if (type == "full") {
     # x's with all matching y's, then non-matching y's - just the same as
     # join.first
     ids <- join_ids(x, y, by, all = TRUE)
 
     matched <- cbind(x[ids$x, , drop = FALSE],
-                     y[ids$y, new.cols, drop = FALSE])
+                     y[ids$y, y.cols, drop = FALSE])
     unmatched <- y[setdiff(seq_len(nrow(y)), ids$y), , drop = FALSE]
     out <- rbind.fill(matched, unmatched)
   }

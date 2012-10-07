@@ -139,6 +139,28 @@ test_that("joins with zero row dataframe work", {
   expect_equal(nrow(left2), 0)
   expect_equal(nrow(right1), 10)
   expect_equal(nrow(right2), 10)
+})
 
+test_that("column orders are common, x only, y only", {
+  a <- data.frame(a = 1:3, b = 1:3)
+  b <- data.frame(a = 1:4, c = 1:4)
+
+  full1 <- join(a, b, type = "full")
+  full2 <- join(a, b, type = "full", match = "first")
+  inner1 <- join(a, b, type = "inner")
+  inner2 <- join(a, b, type = "inner", match = "first")
+  left1 <- join(a, b, type = "left")
+  left2 <- join(a, b, type = "left", match = "first")
+  right1 <- join(a, b, type = "right")
+  right2 <- join(a, b, type = "right", match = "first")
+
+  expect_equal(names(full1), c("a", "b", "c"))
+  expect_equal(names(full2), c("a", "b", "c"))
+  expect_equal(names(inner1), c("a", "b", "c"))
+  expect_equal(names(inner2), c("a", "b", "c"))
+  expect_equal(names(left1), c("a", "b", "c"))
+  expect_equal(names(left2), c("a", "b", "c"))
+  expect_equal(names(right1), c("a", "b", "c"))
+  expect_equal(names(right2), c("a", "b", "c"))
 
 })
