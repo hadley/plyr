@@ -28,7 +28,9 @@
 #' @param type type of join: left (default), right, inner or full.  See
 #'   details for more information.
 #' @param match how should duplicate ids be matched? Either match just the
-#'   \code{"first"} matching row, or match \code{"all"} matching rows.
+#'   \code{"first"} matching row, or match \code{"all"} matching rows. Defaults
+#'   to \code{"all"} for compatibility with merge, but \code{"first"} is
+#'   significantly faster.
 #' @keywords manip
 #' @export
 #' @examples
@@ -64,6 +66,7 @@ join_first <- function(x, y, by, type) {
   } else if (type == "left") {
     y.match <- match(keys$x, keys$y)
     y.matched <- unrowname(y[y.match, new.cols, drop = FALSE])
+
     cbind(x, y.matched)
 
   } else if (type == "right") {
@@ -150,9 +153,12 @@ join.keys <- function(x, y, by) {
   joint <- rbind.fill(x[by], y[by])
   keys <- id(joint, drop = TRUE)
 
+  n_x <- nrow(x)
+  n_y <- nrow(y)
+
   list(
-    x = keys[1:nrow(x)],
-    y = keys[-(1:nrow(x))],
+    x = keys[seq_len(n_x)],
+    y = keys[n_x + seq_len(n_y)],
     n = attr(keys, "n")
   )
 }

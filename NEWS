@@ -3,7 +3,7 @@ Version 1.7.1.99
 
 * `rbind.fill` now works consistently with 0 column data frames
 
-* `join` works correctly when no common rows (Fixes #74)
+* `join` works correctly when there are no common rows (Fixes #74), or when one input has no rows (Fixes #48)
 
 * `split_indices`, which powers much internal splitting code (like `vaggregate`, `join` and `d*ply`) is about 2x faster.  It was already incredible fast ~0.2s for 1,000,000 obs, so this won't have much impact on overall performance
 

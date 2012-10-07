@@ -17,7 +17,7 @@
 #' @export
 id <- function(.variables, drop = FALSE) {
   if (length(.variables) == 0) {
-    n <- nrow(.variables) %||% 1L
+    n <- nrow(.variables) %||% 0L
     return(structure(seq_len(n), n = n))
   }
 
