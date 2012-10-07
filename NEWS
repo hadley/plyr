@@ -18,6 +18,9 @@ Version 1.7.1.99
 * `idata.frame`: Subsetting immutable data frames with `[.idf` is now
   faster (Peter Meilstrup)
 
+* `rbind.fill` and `rbind.fill.matrix` work consistently with matrices
+  and data frames with zero rows. Fixes #79. (Peter Meilstrup)
+
 Version 1.7.1
 ------------------------------------------------------------------------------
 
