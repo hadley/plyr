@@ -118,25 +118,42 @@ test_that("characters override factors", {
   expect_that(d3b$x, is_a("character"))
 })
 
-test_that("empty data frames ok", {
+test_that("zero row data frames ok", {
   d1 <- data.frame(x = 1:2, y = 2:3)
   d2 <- data.frame(y = 3:4, z = 5:6)
-  
+
   za <- rbind.fill(subset(d1, FALSE))
   zb <- rbind.fill(d1, subset(d2, FALSE))
   zc <- rbind.fill(subset(d1, FALSE), subset(d2, FALSE))
-  
+
   expect_equal(class(za), "data.frame")
   expect_equal(nrow(za), 0)
   expect_true(all(names(za) %in% c("x", "y")))
-  
+
   expect_equal(class(zb), "data.frame")
   expect_equal(nrow(zb), 2)
   expect_true(all(names(zb) %in% c("x", "y", "z")))
   expect_equal(zb$y, d1$y)
   expect_equal(zb$z, rep(as.numeric(NA), nrow(d1)))
-  
+
   expect_equal(class(zc), "data.frame")
   expect_equal(nrow(zc), 0)
   expect_true(all(names(zc) %in% c("x", "y", "z")))
+})
+
+test_that("zero col data frames ok", {
+  d1 <- data.frame(x = "a", y = 1L)
+  d2 <- data.frame(y = 2L, z = 3L)
+
+  za <- rbind.fill(d1[0, ], d2[0, ])
+  zb <- rbind.fill(d1[0, ], d2)
+  zc <- rbind.fill(d1, d2[0, ])
+
+  expect_equal(names(za), c("x", "y", "z"))
+  expect_equal(names(zb), c("x", "y", "z"))
+  expect_equal(names(zc), c("x", "y", "z"))
+
+  expect_equal(nrow(za), 0)
+  expect_equal(nrow(zb), 1)
+  expect_equal(nrow(zc), 1)
 })

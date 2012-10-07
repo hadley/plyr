@@ -65,3 +65,5 @@ nunique <- function(x) {
 empty <- function(df) {
   (is.null(df) || nrow(df) == 0 || ncol(df) == 0)
 }
+
+"%||%" <- function(a, b) if (is.null(a)) b else a

@@ -93,5 +93,27 @@ test_that("many potential combinations works", {
   j <- join(df1, df2)
   j <- merge(df1, df2, all.x = TRUE)
 
+})
 
+test_that("joins with no common rows", {
+  a <- data.frame(a = 1:10)
+  b <- data.frame(b = 1:10)
+
+  full1 <- join(a, b, type = "full")
+  full2 <- join(a, b, type = "full", match = "first")
+  inner1 <- join(a, b, type = "inner")
+  inner2 <- join(a, b, type = "inner", match = "first")
+  left1 <- join(a, b, type = "left")
+  left2 <- join(a, b, type = "left", match = "first")
+  right1 <- join(a, b, type = "right")
+  right2 <- join(a, b, type = "right", match = "first")
+
+  expect_equal(nrow(full1), 20)
+  expect_equal(nrow(full2), 20)
+  expect_equal(nrow(inner1), 0)
+  expect_equal(nrow(inner2), 0)
+  expect_equal(nrow(left1), 10)
+  expect_equal(nrow(left2), 10)
+  expect_equal(nrow(right1), 10)
+  expect_equal(nrow(right2), 10)
 })

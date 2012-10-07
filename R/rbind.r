@@ -34,6 +34,10 @@ rbind.fill <- function(...) {
 
   # Generate output template
   output <- output_template(dfs, nrows)
+  # Case of zero column inputs
+  if (length(output) == 0) {
+    return(as.data.frame(matrix(nrow = nrows, ncol = 0)))
+  }
 
   # Compute start and length for each data frame
   pos <- matrix(c(cumsum(rows) - rows + 1, rows), ncol = 2)
