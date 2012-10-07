@@ -2,7 +2,7 @@
 \alias{split_indices}
 \title{Split indices.}
 \usage{
-  split_indices(index, group, n = max(group))
+  split_indices(group, n = max(group))
 }
 \arguments{
   \item{index}{integer indices}

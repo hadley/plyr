@@ -17,7 +17,9 @@
 
   \item{match}{how should duplicate ids be matched? Either
   match just the \code{"first"} matching row, or match
-  \code{"all"} matching rows.}
+  \code{"all"} matching rows. Defaults to \code{"all"} for
+  compatibility with merge, but \code{"first"} is
+  significantly faster.}
 }
 \description{
   Join, like merge, is designed for the types of problems
