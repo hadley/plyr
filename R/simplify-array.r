@@ -28,7 +28,7 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
     res_labels <- amv_dimnames(res[[1]])
     res_index <- expand.grid(res_labels)
 
-    res <- unname(unlist(res, recursive=FALSE))
+    res <- unlist(res, use.names = FALSE, recursive = FALSE)
   } else {
     stop("Results must have compatible types.")
   }
