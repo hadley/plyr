@@ -60,12 +60,12 @@ rbind.fill.matrix <- function(...) {
   output <- matrix(NA, nrow = nrows, ncol = length(cols))
   colnames(output) <- cols
 
-  # Compute start and length for each data frame
-  pos <- matrix(c(cumsum(rows)-rows+1, rows), ncol=2)
+  # Compute start and length for each matrix
+  pos <- matrix(c(cumsum(rows) - rows + 1, rows), ncol = 2)
 
-  ## fill in the new matrix 
+  ## fill in the new matrix
   for(i in seq_along(rows)) {
-    rng <- seq(pos[i,1], length=pos[i,2])
+    rng <- seq(pos[i, 1], length = pos[i, 2])
     output[rng, lcols[[i]]] <- matrices[[i]]
   }
 
