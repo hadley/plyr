@@ -129,7 +129,7 @@ join_ids <- function(x, y, by, all = FALSE) {
   if (all) {
     # replace NULL with NA to preserve those x's without matching y's
     nulls <- vapply(ys, function(x) length(x) == 0, logical(1))
-    ys[nulls] <- list(NA)
+    ys[nulls] <- list(NA_real_)
   }
 
   ys <- ys[keys$x]
