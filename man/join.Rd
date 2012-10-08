@@ -2,15 +2,15 @@
 \alias{join}
 \title{Join two data frames together.}
 \usage{
-  join(x, y, by = intersect(names(x), names(y)),
-    type = "left", match = "all")
+  join(x, y, by = NULL, type = "left", match = "all")
 }
 \arguments{
   \item{x}{data frame}
 
   \item{y}{data frame}
 
-  \item{by}{character vector of variable names to join by}
+  \item{by}{character vector of variable names to join by.
+  If omitted, will match on all common variables.}
 
   \item{type}{type of join: left (default), right, inner or
   full.  See details for more information.}

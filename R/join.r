@@ -24,7 +24,8 @@
 #'
 #' @param x data frame
 #' @param y data frame
-#' @param by character vector of variable names to join by
+#' @param by character vector of variable names to join by. If omitted, will
+#'   match on all common variables.
 #' @param type type of join: left (default), right, inner or full.  See
 #'   details for more information.
 #' @param match how should duplicate ids be matched? Either match just the
@@ -41,20 +42,21 @@
 #' b2 <- arrange(b2, id, year, stint)
 #' b3 <- arrange(b3, id, year, stint)
 #' stopifnot(all.equal(b2, b3))
-join <- function(x, y, by = intersect(names(x), names(y)), type = "left", match = "all") {
+join <- function(x, y, by = NULL, type = "left", match = "all") {
   type <- match.arg(type, c("left", "right", "inner", "full"))
   match <- match.arg(match, c("first", "all"))
 
-  if (missing(by)) {
+  if (is.null(by)) {
+    by <- intersect(names(x), names(y))
     message("Joining by: ", paste(by, collapse = ", "))
   }
 
   switch(match,
-    "first" = join_first(x, y, by, type),
-    "all" = join_all(x, y, by, type))
+    "first" = .join_first(x, y, by, type),
+    "all" = .join_all(x, y, by, type))
 }
 
-join_first <- function(x, y, by, type) {
+.join_first <- function(x, y, by, type) {
   keys <- join.keys(x, y, by = by)
 
   x.cols <- setdiff(names(x), by)
@@ -100,7 +102,7 @@ join_first <- function(x, y, by, type) {
 # and then evaluate which rows meet the merging criteria. But that is
 # horrendously inefficient, so we do various types of hashing, implemented
 # in R as split_indices
-join_all <- function(x, y, by, type) {
+.join_all <- function(x, y, by, type) {
   x.cols <- setdiff(names(x), by)
   y.cols <- setdiff(names(y), by)
 

@@ -1,6 +1,8 @@
 Version 1.7.1.99
 ------------------------------------------------------------------------------
 
+* new `join_all` function recursively joins a list of data frames. (Fixes #29)
+
 * `*_ply` now accepts `.parallel` argument to enable parallel processing. (Fixes #60)
 
 * Progress bars are disabled when using parallel plyr (Fixes #32)

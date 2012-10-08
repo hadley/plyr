@@ -76,3 +76,4 @@ Collate:
     'helper-take.r'
     'plyr.r'
     'parallel.r'
+    'join_all.r'
