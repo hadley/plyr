@@ -50,18 +50,19 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
   on.exit(progress$term())
 
   result <- vector("list", n)
+	dotArgs <- list(...)
   do.ply <- function(i) {
     piece <- pieces[[i]]
 
     # Display informative error messages, if desired
     if (.inform) {
-      res <- try(.fun(piece, ...))
+      res <- try(do.call(.fun, c(list(piece), dotArgs)))
       if (inherits(res, "try-error")) {
         piece <- paste(capture.output(print(piece)), collapse = "\n")
         stop("with piece ", i, ": \n", piece, call. = FALSE)
       }
     } else {
-      res <- .fun(piece, ...)
+      res <- do.call(.fun, c(list(piece), dotArgs))
     }
     progress$step()
     res
