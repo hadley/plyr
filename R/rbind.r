@@ -28,6 +28,12 @@ rbind.fill <- function(...) {
   if (length(dfs) == 0) return()
   if (length(dfs) == 1) return(dfs[[1]])
 
+  # Check that all inputs are data frames
+  is_df <- vapply(dfs, is.data.frame, logical(1))
+  if (any(!is_df)) {
+    stop("All inputs to rbind.fill must be data.frames", call. = FALSE)
+  }
+
   # Calculate rows in output
   # Using .row_names_info directly is about 6 times faster than using nrow
   rows <- unlist(lapply(dfs, .row_names_info, 2L))
