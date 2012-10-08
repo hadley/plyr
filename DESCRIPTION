@@ -78,3 +78,4 @@ Collate:
     'parallel.r'
     'join_all.r'
     'progress-time.r'
+    'helper-name-rows.r'

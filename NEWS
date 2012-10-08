@@ -1,6 +1,8 @@
 Version 1.7.1.99
 ------------------------------------------------------------------------------
 
+* `name_rows` provides a convenient way of saving and then restoring row names so that you can preserve them if you need to. (#61)
+
 * `*aply` now accepts 0-dimension arrays as outputs. (#88)
 
 * new `progress_time` function that estimates the amount of time remaining before the job is completed. (Thanks to Mike Lawrence, #78)
