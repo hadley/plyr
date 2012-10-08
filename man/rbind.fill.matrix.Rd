@@ -5,7 +5,9 @@
   rbind.fill.matrix(...)
 }
 \arguments{
-  \item{...}{the matrices to rbind}
+  \item{...}{the matrices to rbind. The first argument can
+  be a list of matrices, in which case all other arguments
+  are ignored.}
 }
 \value{
   a matrix with column names

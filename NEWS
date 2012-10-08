@@ -1,6 +1,8 @@
 Version 1.7.1.99
 ------------------------------------------------------------------------------
 
+* `*dply` now deals better with matrix results, converting them to data frames, rather than vectors. (Fixes #12)
+
 * new `join_all` function recursively joins a list of data frames. (Fixes #29)
 
 * `*_ply` now accepts `.parallel` argument to enable parallel processing. (Fixes #60)

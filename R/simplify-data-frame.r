@@ -24,8 +24,12 @@ list_to_dataframe <- function(res, labels = NULL) {
   # Figure out how to turn elements into a data frame
   atomic <- unlist(lapply(res, is.atomic))
   df <- unlist(lapply(res, is.data.frame))
+  mat <- unlist(lapply(res, is.matrix))
 
-  if (all(atomic)) {
+  if (all(mat)) {
+    resdf <- as.data.frame(rbind.fill.matrix(res))
+    rows <- unlist(lapply(res, NROW))
+  } else if (all(atomic)) {
     nrow <- length(res)
     ncol <- unique(unlist(lapply(res, length)))
     if (length(ncol) != 1) stop("Results do not have equal lengths")

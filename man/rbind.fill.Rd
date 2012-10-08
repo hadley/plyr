@@ -5,7 +5,9 @@
   rbind.fill(...)
 }
 \arguments{
-  \item{...}{input data frames to row bind together}
+  \item{...}{input data frames to row bind together.  The
+  first argument can be a list of data frames, in which
+  case all other arguments are ignored.}
 }
 \value{
   a single data frame

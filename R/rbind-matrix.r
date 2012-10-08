@@ -16,7 +16,8 @@
 #'
 #' Row names are ignored.
 #'
-#' @param ... the matrices to rbind
+#' @param ... the matrices to rbind. The first argument can be a list of
+#'   matrices, in which case all other arguments are ignored.
 #' @return a matrix with column names
 #' @author C. Beleites
 #' @seealso \code{\link[base]{rbind}}, \code{\link[base]{cbind}},
@@ -38,6 +39,10 @@
 #' rbind.fill.matrix (A, 99)
 rbind.fill.matrix <- function(...) {
   matrices <- list(...)
+  if (length(matrices) == 0) return()
+  if (is.list(matrices[[1]]) && !is.matrix(matrices[[1]])) {
+    matrices <- matrices[[1]]
+  }
 
   ## check the arguments
   tmp <- unlist(lapply(matrices, is.factor))

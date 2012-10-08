@@ -10,7 +10,8 @@
 #' they were encountered. No checking is performed to ensure that each column
 #' is of consistent type in the inputs.
 #'
-#' @param ... input data frames to row bind together
+#' @param ... input data frames to row bind together.  The first argument can
+#'   be a list of data frames, in which case all other arguments are ignored.
 #' @keywords manip
 #' @family binding functions
 #' @return a single data frame
