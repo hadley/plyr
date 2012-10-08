@@ -1,6 +1,8 @@
 Version 1.7.1.99
 ------------------------------------------------------------------------------
 
+* `*aply` now accepts 0-dimension arrays as outputs. (#88)
+
 * new `progress_time` function that estimates the amount of time remaining before the job is completed. (Thanks to Mike Lawrence, #78)
 
 * `colwise`, `numcolwise` and `catcolwise` now all accept additional arguments in .... (Thanks to Stavros Macrakis, #62)

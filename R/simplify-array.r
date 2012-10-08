@@ -19,7 +19,7 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
 
     dims <- unique(do.call("rbind", llply(res, amv_dim)))
 
-    if (is.null(dims) || !all(dims > 0))
+    if (is.null(dims))
       stop("Results must have one or more dimensions.", call. = FALSE)
     if (nrow(dims) != 1)
       stop("Results must have the same dimensions.", call. = FALSE)
@@ -40,7 +40,7 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
   } else {
     in_labels <- lapply(labels,
       function(x) if(is.factor(x)) levels(x) else sort(unique(x)))
-    in_dim <- sapply(in_labels, length)        
+    in_dim <- sapply(in_labels, length)
   }
 
   # Work out where each result should go in the new array

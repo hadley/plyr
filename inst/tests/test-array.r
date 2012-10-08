@@ -28,10 +28,6 @@ test_that("zero length margin operates on whole object", {
 
 test_that("results must have positive dimensions", {
   expect_that(
-    aaply(matrix(0,2,2), 2, function(x) numeric(0)),
-    throws_error("one or more dimensions"))
-
-  expect_that(
     aaply(matrix(0,2,2), 2, function(x) NULL),
     throws_error("one or more dimensions"))
 })
@@ -63,12 +59,12 @@ test_that("array binding of lists is correct", {
   m2d <- lapply(1:10, f)
   #as abind itself doesn't do lists...
   m3d <- aperm(array(do.call(c, m2d), c(2, 2, 10)), c(3,1,2))
-  
+
   expect_that(laply(1:10, f), is_equivalent_to(m3d))
   f <- function(x) array(as.list(x), c(2, 2, 2))
   m3d <- lapply(1:10, f)
   m4d <- aperm(array(do.call(c, m3d), c(2, 2, 2, 10)), c(4, 1, 2, 3))
-  
+
   expect_that(laply(1:10, f), is_equivalent_to(m4d))
 })
 
