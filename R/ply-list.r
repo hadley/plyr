@@ -40,6 +40,11 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
   n <- length(pieces)
   if (n == 0) return(list())
 
+  if (.parallel && .progress != "none") {
+    message("Progress disabled when using parallel plyr")
+    .progress <- "none"
+  }
+
   progress <- create_progress_bar(.progress)
   progress$init(n)
   on.exit(progress$term())

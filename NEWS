@@ -1,6 +1,8 @@
 Version 1.7.1.99
 ------------------------------------------------------------------------------
 
+* Progress bars are disabled when using parallel plyr (Fixes #32)
+
 * `rbind.fill` now works consistently with 0 column data frames
 
 * `join` works correctly when there are no common rows (Fixes #74), or when one input has no rows (Fixes #48). It also consistently orders the columns: common columns, then x cols, then y cols (Fixes #40).
