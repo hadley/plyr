@@ -1,6 +1,8 @@
 Version 1.7.1.99
 ------------------------------------------------------------------------------
 
+* The subsetting in `d*ply` has been considerably optimised: this will have a small impact unless you have a very large number of groups, in which case it will be considerably faster.
+
 * `d*ply` will now preserve factor levels input if `drop = FALSE` (#81)
 
 * `name_rows` provides a convenient way of saving and then restoring row names so that you can preserve them if you need to. (#61)

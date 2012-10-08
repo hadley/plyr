@@ -16,8 +16,33 @@ indexed_df <- function(data, index, vars) {
 
 #' @S3method [[ indexed_df
 "[[.indexed_df" <- function(x, i) {
-  structure(x$data[x$index[[i]], , drop = FALSE], vars = x$vars)
-  # x$env$data[x$index[[i]], , drop = FALSE]
-  # slice(x, attr(x, "index")[[i]])
-  # subset_rows(x$env$data, x$index[[i]])
+  out <- extract_rows(x$data, x$index[[i]])
+  attr(out, "vars") <- x$vars
+  out
+}
+
+extract_rows <- function(x, i) {
+  n <- ncol(x)
+
+  out <- lapply(seq_len(n), extract_col_rows, df = x, i = i)
+
+  names(out) <- names(x)
+  class(out) <- "data.frame"
+  attr(out, "row.names") <- c(NA_integer_, -length(out[[1]]))
+
+  out
+}
+extract_col_rows <- function(df, i, j) {
+  col <- .subset2(df, j)
+  if (isS4(col)) return(col[i])
+
+  if (is.null(attr(col, "class"))) {
+    .subset(col, i)
+  } else if (inherits(col, "factor") || inherits(x, "POSIXt")) {
+    out <- .subset(col, i)
+    attributes(out) <- attributes(col)
+    out
+  } else {
+    col[i]
+  }
 }
