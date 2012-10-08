@@ -4,7 +4,11 @@
 \alias{numcolwise}
 \title{Column-wise function.}
 \usage{
-  colwise(.fun, .cols = true)
+  colwise(.fun, .cols = true, ...)
+
+  catcolwise(.fun, ...)
+
+  numcolwise(.fun, ...)
 }
 \arguments{
   \item{.fun}{function}
@@ -12,6 +16,8 @@
   \item{.cols}{either a function that tests columns for
   inclusion, or a quoted object giving which columns to
   process}
+
+  \item{...}{other arguments passed on to \code{.fun}}
 }
 \description{
   Turn a function that operates on a vector into a function
@@ -52,5 +58,10 @@ ddply(baseball, .(year), colwise(nmissing, is.discrete))
 # provided:
 ddply(baseball, .(year), numcolwise(nmissing))
 ddply(baseball, .(year), catcolwise(nmissing))
+
+# You can supply additional arguments to either colwise, or the function
+# it generates:
+numcolwise(mean)(baseball, na.rm = TRUE)
+numcolwise(mean, na.rm = TRUE)(baseball)
 }
 

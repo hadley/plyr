@@ -1,6 +1,8 @@
 Version 1.7.1.99
 ------------------------------------------------------------------------------
 
+* `colwise`, `numcolwise` and `catcolwise` now all accept additional arguments in .... (Thanks to Stavros Macrakis, #62)
+
 * `rbind.fill` now stops if inputs are not data frames. (Fixes #51)
 
 * `quickdf` correctly handles NA variable names. (Fixes #66. Thanks to Scott Kostyshak)

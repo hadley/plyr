@@ -9,8 +9,8 @@
 #' @param .fun function
 #' @param .cols either a function that tests columns for inclusion, or a
 #'   quoted object giving which columns to process
-#' @aliases colwise catcolwise numcolwise
-#' @export colwise numcolwise catcolwise
+#' @param ... other arguments passed on to \code{.fun}
+#' @export
 #' @examples
 #' # Count number of missing values
 #' nmissing <- function(x) sum(is.na(x))
@@ -41,7 +41,12 @@
 #' # provided:
 #' ddply(baseball, .(year), numcolwise(nmissing))
 #' ddply(baseball, .(year), catcolwise(nmissing))
-colwise <- function(.fun, .cols = true) {
+#'
+#' # You can supply additional arguments to either colwise, or the function
+#' # it generates:
+#' numcolwise(mean)(baseball, na.rm = TRUE)
+#' numcolwise(mean, na.rm = TRUE)(baseball)
+colwise <- function(.fun, .cols = true, ...) {
   if (!is.function(.cols)) {
     .cols <- as.quoted(.cols)
     filter <- function(df) eval.quoted(.cols, df)
@@ -49,23 +54,29 @@ colwise <- function(.fun, .cols = true) {
     filter <- function(df) Filter(.cols, df)
   }
 
+  dots <- list(...)
   function(df, ...) {
     stopifnot(is.data.frame(df))
     df <- strip_splits(df)
     filtered <- filter(df)
     if (length(filtered) == 0) return(data.frame())
 
-    df <- quickdf(lapply(filtered, .fun, ...))
-    names(df) <- names(filtered)
-    df
+    out <- do.call("lapply", c(list(filtered, .fun, ...), dots))
+    names(out) <- names(filtered)
+
+    quickdf(out)
   }
 }
 
-catcolwise <- function(.fun, .try = FALSE) {
-  colwise(.fun, is.discrete)
+#' @rdname colwise
+#' @export
+catcolwise <- function(.fun, ...) {
+  colwise(.fun, is.discrete, ...)
 }
 
-numcolwise <- function(.fun, .try = FALSE) {
-  colwise(.fun, is.numeric)
+#' @rdname colwise
+#' @export
+numcolwise <- function(.fun, ...) {
+  colwise(.fun, is.numeric, ...)
 }
 
