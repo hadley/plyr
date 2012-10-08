@@ -3,7 +3,7 @@
 \title{Split list, apply function, and discard results.}
 \usage{
   l_ply(.data, .fun = NULL, ..., .progress = "none",
-    .print = FALSE)
+    .print = FALSE, .parallel = FALSE)
 }
 \arguments{
   \item{.data}{list to be processed}
@@ -17,6 +17,9 @@
 
   \item{.print}{automatically print each result? (default:
   \code{FALSE})}
+
+  \item{.parallel}{if \code{TRUE}, apply function in
+  parallel, using parallel backend provided by foreach}
 }
 \description{
   For each element of a list, apply function and discard

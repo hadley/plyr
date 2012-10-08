@@ -1,6 +1,8 @@
 Version 1.7.1.99
 ------------------------------------------------------------------------------
 
+* `*_ply` now accepts `.parallel` argument to enable parallel processing. (Fixes #60)
+
 * Progress bars are disabled when using parallel plyr (Fixes #32)
 
 * `rbind.fill` now works consistently with 0 column data frames

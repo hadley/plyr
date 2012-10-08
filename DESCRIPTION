@@ -21,6 +21,7 @@ Suggests:
     testthat (>= 0.2),
     tcltk,
     foreach,
+    doMC,
     itertools,
     iterators
 License: MIT
@@ -74,3 +75,4 @@ Collate:
     'helper-revalue.r'
     'helper-take.r'
     'plyr.r'
+    'parallel.r'

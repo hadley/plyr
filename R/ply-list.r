@@ -67,13 +67,7 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
     res
   }
   if (.parallel) {
-    if (!require("foreach")) {
-      stop("foreach package required for parallel plyr operation",
-        call. = FALSE)
-    }
-    if (getDoParWorkers() == 1) {
-      warning("No parallel backend registered", call. = TRUE)
-    }
+    setup_parallel()
     result <- foreach(i = seq_len(n)) %dopar% do.ply(i)
   } else {
     result <- loop_apply(n, do.ply)

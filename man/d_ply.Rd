@@ -3,7 +3,7 @@
 \title{Split data frame, apply function, and discard results.}
 \usage{
   d_ply(.data, .variables, .fun = NULL, ...,
-    .progress = "none", .print = FALSE)
+    .progress = "none", .print = FALSE, .parallel = FALSE)
 }
 \arguments{
   \item{.data}{data frame to be processed}
@@ -20,6 +20,9 @@
 
   \item{.print}{automatically print each result? (default:
   \code{FALSE})}
+
+  \item{.parallel}{if \code{TRUE}, apply function in
+  parallel, using parallel backend provided by foreach}
 }
 \description{
   For each subset of a data frame, apply function and

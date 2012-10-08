@@ -8,18 +8,20 @@
 #' elements and discards the output.  This is useful for functions that you are
 #' calling purely for their side effects like display plots and saving output.
 #'
-#'
 #' @keywords manip
 #' @param .data list to be processed
 #' @param .fun function to apply to each piece
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .print automatically print each result? (default: \code{FALSE})
+#' @param .parallel if \code{TRUE}, apply function in parallel, using parallel
+#'   backend provided by foreach
 #' @export
 #' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
 #'   Data Analysis. Journal of Statistical Software, 40(1), 1-29.
 #'   \url{http://www.jstatsoft.org/v40/i01/}.
-l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE) {
+l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE,
+                  .parallel = FALSE) {
   if (is.character(.fun) || is.list(.fun)) .fun <- each(.fun)
   if (!is.function(.fun)) stop(".fun is not a function.")
 
@@ -27,11 +29,20 @@ l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE) {
   progress$init(length(.data))
   on.exit(progress$term())
 
-  .data <- as.list(.data)
-  for(i in seq_along(.data)) {
-    x <- .fun(.data[[i]], ...)
-    if (.print) print(x)
-    progress$step()
+  if (.parallel) {
+    if (.print) message("Printing disabled for parallel processing")
+    if (.progress != "none") message("Progress disabled for parallel processing")
+
+    setup_parallel()
+    ignore <- function(...) NULL
+    foreach(d = .data, .combine = ignore) %dopar% .fun(d, ...)
+  } else {
+    .data <- as.list(.data)
+    for(i in seq_along(.data)) {
+      x <- .fun(.data[[i]], ...)
+      if (.print) print(x)
+      progress$step()
+    }
   }
 
   invisible()
@@ -56,15 +67,19 @@ l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE) {
 #' @param ... other arguments passed on to \code{.fun}
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .print automatically print each result? (default: \code{FALSE})
+#' @param .parallel if \code{TRUE}, apply function in parallel, using parallel
+#'   backend provided by foreach
 #' @export
 #' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
 #'   Data Analysis. Journal of Statistical Software, 40(1), 1-29.
 #'   \url{http://www.jstatsoft.org/v40/i01/}.
-d_ply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .print = FALSE) {
+d_ply <- function(.data, .variables, .fun = NULL, ..., .progress = "none",
+                  .print = FALSE, .parallel = FALSE) {
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables)
 
-  l_ply(.data = pieces, .fun = .fun, ..., .progress = .progress, .print = .print)
+  l_ply(.data = pieces, .fun = .fun, ...,
+    .progress = .progress, .print = .print, .parallel = .parallel)
 }
 
 #' Split array, apply function, and discard results.
@@ -89,12 +104,16 @@ d_ply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .prin
 #'    with a dimension for each variable.
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @param .print automatically print each result? (default: \code{FALSE})
+#' @param .parallel if \code{TRUE}, apply function in parallel, using parallel
+#'   backend provided by foreach
 #' @export
 #' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
 #'   Data Analysis. Journal of Statistical Software, 40(1), 1-29.
 #'   \url{http://www.jstatsoft.org/v40/i01/}.
-a_ply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .print = FALSE) {
+a_ply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE,
+                  .progress = "none", .print = FALSE, .parallel = FALSE) {
   pieces <- splitter_a(.data, .margins, .expand)
 
-  l_ply(.data = pieces, .fun = .fun, ..., .progress = .progress, .print = .print)
+  l_ply(.data = pieces, .fun = .fun, ...,
+    .progress = .progress, .print = .print, .parallel = .parallel)
 }

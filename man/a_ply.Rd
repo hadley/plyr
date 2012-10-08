@@ -3,7 +3,7 @@
 \title{Split array, apply function, and discard results.}
 \usage{
   a_ply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
-    .progress = "none", .print = FALSE)
+    .progress = "none", .print = FALSE, .parallel = FALSE)
 }
 \arguments{
   \item{.data}{matrix, array or data frame to be processed}
@@ -27,6 +27,9 @@
 
   \item{.print}{automatically print each result? (default:
   \code{FALSE})}
+
+  \item{.parallel}{if \code{TRUE}, apply function in
+  parallel, using parallel backend provided by foreach}
 }
 \description{
   For each slice of an array, apply function and discard
