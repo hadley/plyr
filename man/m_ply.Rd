@@ -3,7 +3,7 @@
 \title{Call function with arguments in array or data frame, discarding results.}
 \usage{
   m_ply(.data, .fun = NULL, ..., .expand = TRUE,
-    .progress = "none")
+    .progress = "none", .print = FALSE, .parallel = FALSE)
 }
 \arguments{
   \item{.data}{matrix or data frame to use as source of
@@ -19,6 +19,12 @@
 
   \item{.progress}{name of the progress bar to use, see
   \code{\link{create_progress_bar}}}
+
+  \item{.print}{automatically print each result? (default:
+  \code{FALSE})}
+
+  \item{.parallel}{if \code{TRUE}, apply function in
+  parallel, using parallel backend provided by foreach}
 }
 \description{
   Call a multi-argument function with values taken from

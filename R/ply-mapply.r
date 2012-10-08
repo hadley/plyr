@@ -139,16 +139,20 @@ mlply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none", .
 #' @param .expand should output be 1d (expand = FALSE), with an element for
 #'   each row; or nd (expand = TRUE), with a dimension for each variable.
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
+#' @param .print automatically print each result? (default: \code{FALSE})
+#' @param .parallel if \code{TRUE}, apply function in parallel, using parallel
+#'   backend provided by foreach
 #' @export
 #' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
 #'   Data Analysis. Journal of Statistical Software, 40(1), 1-29.
 #'   \url{http://www.jstatsoft.org/v40/i01/}.
-m_ply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none") {
+m_ply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none",
+                  .print = FALSE, .parallel = FALSE ) {
   if (is.matrix(.data) & !is.list(.data)) .data <- .matrix_to_df(.data)
 
   f <- splat(.fun)
-  a_ply(.data = .data, .margins = 1, .fun = f, ...,
-    .expand = .expand, .progress = .progress)
+  a_ply(.data = .data, .margins = 1, .fun = f, ..., .expand = .expand,
+    .progress = .progress, .print = .print, .parallel = .parallel)
 }
 
 .matrix_to_df <- function(.data) {
