@@ -26,6 +26,7 @@ l_ply(1:100, identity, .progress = progress_text(char = "-"))
 }
 \seealso{
   Other progress bars: \code{\link{progress_none}},
-  \code{\link{progress_tk}}, \code{\link{progress_win}}
+  \code{\link{progress_time}}, \code{\link{progress_tk}},
+  \code{\link{progress_win}}
 }
 

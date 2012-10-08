@@ -77,3 +77,4 @@ Collate:
     'plyr.r'
     'parallel.r'
     'join_all.r'
+    'progress-time.r'

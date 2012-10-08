@@ -16,7 +16,8 @@ l_ply(1:100, identity, .progress = "none")
 }
 \seealso{
   Other progress bars: \code{\link{progress_text}},
-  \code{\link{progress_tk}}, \code{\link{progress_win}}
+  \code{\link{progress_time}}, \code{\link{progress_tk}},
+  \code{\link{progress_win}}
 }
 \keyword{internal}
 

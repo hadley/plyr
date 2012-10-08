@@ -1,0 +1,20 @@
+\name{progress_time}
+\alias{progress_time}
+\title{Text progress bar with time.}
+\usage{
+  progress_time()
+}
+\description{
+  A textual progress bar that estimates time remaining. It
+  displays the estimated time remaining and, when finished,
+  total duration.
+}
+\examples{
+l_ply(1:100, function(x) Sys.sleep(.01), .progress = "time")
+}
+\seealso{
+  Other progress bars: \code{\link{progress_none}},
+  \code{\link{progress_text}}, \code{\link{progress_tk}},
+  \code{\link{progress_win}}
+}
+

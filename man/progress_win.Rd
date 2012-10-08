@@ -27,6 +27,7 @@ l_ply(1:100, identity, .progress = progress_win(title="Working..."))
   progress bar
 
   Other progress bars: \code{\link{progress_none}},
-  \code{\link{progress_text}}, \code{\link{progress_tk}}
+  \code{\link{progress_text}}, \code{\link{progress_time}},
+  \code{\link{progress_tk}}
 }
 
