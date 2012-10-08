@@ -21,6 +21,8 @@
 #'  duration = max(year) - min(year),
 #'  nteams = length(unique(team)))
 summarise <- function(.data, ...) {
+  stopifnot(is.data.frame(.data) || is.list(.data) || is.environment(.data))
+
   cols <- as.list(substitute(list(...))[-1])
 
   # ... not a named list, figure out names by deparsing call

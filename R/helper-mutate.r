@@ -26,6 +26,8 @@
 #' system.time(transform(baseball, avg_ab = ab / g))
 #' system.time(mutate(baseball, avg_ab = ab / g))
 mutate <- function(.data, ...) {
+  stopifnot(is.data.frame(.data) || is.list(.data) || is.environment(.data))
+
   cols <- as.list(substitute(list(...))[-1])
   cols <- cols[names(cols) != ""] # Silently drop unnamed columns
 

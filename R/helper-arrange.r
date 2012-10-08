@@ -23,6 +23,8 @@
 #' # Sort with displacement in descending order
 #' arrange(myCars, cyl, desc(disp))
 arrange <- function(df, ...) {
+  stopifnot(is.data.frame(df))
+
   ord <- eval(substitute(order(...)), df, parent.frame())
   if(length(ord) != nrow(df)) {
     stop("Length of ordering vectors don't match data frame size",
