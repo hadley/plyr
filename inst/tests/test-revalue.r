@@ -105,3 +105,16 @@ test_that("Mapping with ' ' and '$' in original and replacement works", {
   expect_identical(revalue(fac2, c("A $1"="B $1")),
                    factor(c("B $1", "A2", "A3"), levels=c("A2", "B $1", "A3")))
 })
+
+test_that("revalue and mapvalues only accept atomic vectors", {
+  expect_error(revalue(list(A=3), c("3"=30)))
+  expect_error(mapvalues(list(A=3), 3, 30))
+})
+
+test_that("revalue and mapvalues accept empty vectors and NULL", {
+  expect_identical(revalue(character(0), c("3"=30), warn_missing=FALSE), character(0))
+  expect_identical(mapvalues(character(0), 3, 30, warn_missing=FALSE), character(0))
+
+  expect_identical(revalue(NULL, c("3"=30), warn_missing=FALSE), NULL)
+  expect_identical(mapvalues(NULL, 3, 30, warn_missing=FALSE), NULL)
+})
