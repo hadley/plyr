@@ -24,7 +24,7 @@
 #' y <- factor(c("a", "b", "c", "a"))
 #' revalue(y, c(a = "A", c = "C"))
 revalue <- function(x, replace = NULL, warn_missing = TRUE) {
-  if (!is.factor(x) && !is.character(x)) {
+  if (!is.null(x) && !is.factor(x) && !is.character(x)) {
     stop("x is not a factor or a character vector.")
   }
 
@@ -68,6 +68,9 @@ revalue <- function(x, replace = NULL, warn_missing = TRUE) {
 mapvalues <- function(x, from, to, warn_missing = TRUE) {
   if (length(from) != length(to)) {
     stop("`from` and `to` vectors are not the same length.")
+  }
+  if (!is.atomic(x)) {
+    stop("`x` must be an atomic vector.")
   }
 
   if (is.factor(x)) {
