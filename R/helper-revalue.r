@@ -24,7 +24,7 @@
 #' y <- factor(c("a", "b", "c", "a"))
 #' revalue(y, c(a = "A", c = "C"))
 revalue <- function(x, replace = NULL, warn_missing = TRUE) {
-  if (!is.factor(x) && !is.character(x)) {
+  if (!is.null(x) && !is.factor(x) && !is.character(x)) {
     stop("x is not a factor or a character vector.")
   }
 

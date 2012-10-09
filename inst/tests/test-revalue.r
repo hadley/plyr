@@ -111,7 +111,10 @@ test_that("revalue and mapvalues only accept atomic vectors", {
   expect_error(mapvalues(list(A=3), 3, 30))
 })
 
-test_that("revalue and mapvalues accept empty vectors", {
+test_that("revalue and mapvalues accept empty vectors and NULL", {
   expect_identical(revalue(character(0), c("3"=30), warn_missing=FALSE), character(0))
   expect_identical(mapvalues(character(0), 3, 30, warn_missing=FALSE), character(0))
+
+  expect_identical(revalue(NULL, c("3"=30), warn_missing=FALSE), NULL)
+  expect_identical(mapvalues(NULL, 3, 30, warn_missing=FALSE), NULL)
 })
