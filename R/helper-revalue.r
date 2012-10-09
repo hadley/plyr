@@ -69,6 +69,9 @@ mapvalues <- function(x, from, to, warn_missing = TRUE) {
   if (length(from) != length(to)) {
     stop("`from` and `to` vectors are not the same length.")
   }
+  if (!is.atomic(x)) {
+    stop("`x` must be an atomic vector.")
+  }
 
   if (is.factor(x)) {
     # If x is a factor, call self but operate on the levels
