@@ -7,10 +7,23 @@
 #' @template l-
 #' @template -d
 #' @export
-ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE) {
+ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE,
+  .captured_args = NULL, .captured_env = parent.frame()) {
+
   if (!inherits(.data, "split")) .data <- as.list(.data)
-  res <- llply(.data = .data, .fun = .fun, ...,
-    .progress = .progress, .parallel = .parallel)
+
+  dot_args = match.call(expand.dots = FALSE)$...
+  if (!is.null(dot_args)) {
+    if (!is.null(.captured_args)) {
+      stop("Can't have both .captured_args and ... arguments.")
+    } else {
+      .captured_args = dot_args
+    }
+  }
+
+  res <- llply(.data = .data, .fun = .fun,
+    .progress = .progress, .parallel = .parallel,
+    .captured_args = .captured_args, .captured_env = .captured_env)
 
   list_to_dataframe(res, attr(.data, "split_labels"))
 }
@@ -63,13 +76,23 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE
 #' base2 <- ddply(baseball, .(id), transform,
 #'  career_year = year - min(year) + 1
 #' )
-ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE, .parallel = FALSE) {
+ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE, .parallel = FALSE,
+  .captured_args = NULL, .captured_env = parent.frame()) {
   if (empty(.data)) return(.data)
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables, drop = .drop)
 
-  ldply(.data = pieces, .fun = .fun, ...,
-    .progress = .progress, .parallel = .parallel)
+  dot_args = match.call(expand.dots = FALSE)$...
+  if (!is.null(dot_args)) {
+    if (!is.null(.captured_args)) {
+      stop("Can't have both .captured_args and ... arguments.")
+    } else {
+      .captured_args = dot_args
+    }
+  }
+
+  ldply(.data = pieces, .fun = .fun, .progress = .progress, .parallel = .parallel,
+    .captured_args = .captured_args, .captured_env = .captured_env)
 }
 
 #' Split array, apply function, and return results in a data frame.
