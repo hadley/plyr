@@ -19,10 +19,22 @@
 #'
 #' llply(x, mean)
 #' llply(x, quantile, probs = 1:3/4)
-llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, .parallel = FALSE) {
+llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, .parallel = FALSE,
+  .captured_args = NULL, .captured_env = parent.frame()) {
+
   if (is.null(.fun)) return(as.list(.data))
   if (is.character(.fun) || is.list(.fun)) .fun <- each(.fun)
   if (!is.function(.fun)) stop(".fun is not a function.")
+
+  dot_args = match.call(expand.dots = FALSE)$...
+  if (!is.null(dot_args)) {
+    if (!is.null(.captured_args)) {
+      stop("Can't have both .captured_args and ... arguments.")
+    } else {
+      .captured_args = dot_args
+    }
+  }
+
 
   if (!inherits(.data, "split")) {
     pieces <- as.list(.data)
@@ -52,16 +64,17 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
   result <- vector("list", n)
   do.ply <- function(i) {
     piece <- pieces[[i]]
+    all_args <- c(list(piece), .captured_args)
 
     # Display informative error messages, if desired
     if (.inform) {
-      res <- try(.fun(piece, ...))
+      res <- try(do.call(.fun, all_args, envir = .captured_env))
       if (inherits(res, "try-error")) {
         piece <- paste(capture.output(print(piece)), collapse = "\n")
         stop("with piece ", i, ": \n", piece, call. = FALSE)
       }
     } else {
-      res <- .fun(piece, ...)
+      res <- do.call(.fun, all_args, envir = .captured_env)
     }
     progress$step()
     res
