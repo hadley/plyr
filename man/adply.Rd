@@ -3,7 +3,8 @@
 \title{Split array, apply function, and return results in a data frame.}
 \usage{
   adply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
-    .progress = "none", .parallel = FALSE, .paropts = NULL)
+    .progress = "none", .inform = FALSE, .parallel = FALSE,
+    .paropts = NULL)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -13,6 +14,9 @@
   \item{.progress}{name of the progress bar to use, see
   \code{\link{create_progress_bar}}}
 
+  \item{.parallel}{if \code{TRUE}, apply function in
+  parallel, using parallel backend provided by foreach}
+
   \item{.paropts}{a list of additional options passed into
   the \code{\link[foreach]{foreach}} function when parallel
   computation is enabled.  This is important if (for
@@ -21,8 +25,9 @@
   supply them so that all cluster nodes have the correct
   environment set up for computing.}
 
-  \item{.parallel}{if \code{TRUE}, apply function in
-  parallel, using parallel backend provided by foreach}
+  \item{.inform}{produce informative error messages?  This
+  is turned off by by default because it substantially
+  slows processing speed, but is very useful for debugging}
 
   \item{.data}{matrix, array or data frame to be processed}
 

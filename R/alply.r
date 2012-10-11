@@ -14,9 +14,11 @@
 #' alply(ozone, 3, quantile)
 #' alply(ozone, 3, function(x) table(round(x)))
 alply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE,
-                  .progress = "none", .parallel = FALSE, .paropts = NULL) {
+                  .progress = "none", .inform = FALSE, .parallel = FALSE,
+                  .paropts = NULL) {
   pieces <- splitter_a(.data, .margins, .expand)
 
   llply(.data = pieces, .fun = .fun, ...,
-    .progress = .progress, .parallel = .parallel, .paropts = .paropts)
+    .progress = .progress, .inform = .inform,
+    .parallel = .parallel, .paropts = .paropts)
 }

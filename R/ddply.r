@@ -47,11 +47,13 @@
 #'  career_year = year - min(year) + 1
 #' )
 ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none",
-                  .drop = TRUE, .parallel = FALSE, .paropts = NULL) {
+                  .inform = FALSE, .drop = TRUE, .parallel = FALSE,
+                  .paropts = NULL) {
   if (empty(.data)) return(.data)
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables, drop = .drop)
 
   ldply(.data = pieces, .fun = .fun, ...,
-    .progress = .progress, .parallel = .parallel, .paropts = .paropts)
+    .progress = .progress, .inform = .inform,
+    .parallel = .parallel, .paropts = .paropts)
 }

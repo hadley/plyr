@@ -20,10 +20,12 @@
 #' qual <- laply(models, function(mod) summary(mod)$r.squared)
 #' hist(qual)
 dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none",
-                  .drop = TRUE, .parallel = FALSE, .paropts = NULL) {
+                  .inform = FALSE, .drop = TRUE, .parallel = FALSE,
+                  .paropts = NULL) {
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables, drop = .drop)
 
   llply(.data = pieces, .fun = .fun, ...,
-    .progress = .progress, .parallel = .parallel, .paropts = .paropts)
+    .progress = .progress, .inform = .inform,
+    .parallel = .parallel, .paropts = .paropts)
 }

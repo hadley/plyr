@@ -6,8 +6,8 @@
 #' @template l-
 #' @template -_
 #' @export
-l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE,
-                  .parallel = FALSE, .paropts = NULL) {
+l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
+                  .print = FALSE, .parallel = FALSE, .paropts = NULL) {
   if (is.character(.fun) || is.list(.fun)) .fun <- each(.fun)
   if (!is.function(.fun)) stop(".fun is not a function.")
 

@@ -8,9 +8,6 @@
 #' @template ply
 #' @template l-
 #' @template -l
-#' @param .inform produce informative error messages?  This is turned off by
-#'   by default because it substantially slows processing speed, but is very
-#'   useful for debugging
 #' @export
 #' @examples
 #' llply(llply(mtcars, round), table)

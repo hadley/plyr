@@ -31,11 +31,11 @@
 #'
 #' aaply(ozone, 1:2, diff)
 aaply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE,
-                  .progress = "none", .drop = TRUE, .parallel = FALSE,
-                  .paropts = NULL) {
+                  .progress = "none", .inform = FALSE, .drop = TRUE,
+                  .parallel = FALSE, .paropts = NULL) {
   pieces <- splitter_a(.data, .margins, .expand)
 
   laply(.data = pieces, .fun = .fun, ...,
-    .progress = .progress, .drop = .drop, .parallel = .parallel,
-    .paropts = .paropts)
+    .progress = .progress, .inform = .inform, .drop = .drop,
+    .parallel = .parallel, .paropts = .paropts)
 }

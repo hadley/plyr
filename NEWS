@@ -1,6 +1,8 @@
 Version 1.7.1.99
 ------------------------------------------------------------------------------
 
+* `**ply` gain a `.inform` argument (previously only available in `llply`) - this gives more useful debugging information at the cost of some speed. (Thanks to Brian Diggs, #57)
+
 * `**ply` gains a `.paropts` argumetns, a list of options that is passed onto `foreach` for controlling parallel computation.
 
 * New function `here` makes it possible to use `**ply` + a function that uses non-standard evaluation (e.g. `summarise`, `mutate`, `subset`, `arrange`) inside a function.  (Thanks to Peter Meilstrup, #3)

@@ -8,11 +8,12 @@
 #' @template -_
 #' @export
 m_ply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none",
-                  .print = FALSE, .parallel = FALSE, .paropts = NULL) {
+                  .inform = FALSE, .print = FALSE, .parallel = FALSE,
+                  .paropts = NULL) {
   if (is.matrix(.data) & !is.list(.data)) .data <- .matrix_to_df(.data)
 
   f <- splat(.fun)
   a_ply(.data = .data, .margins = 1, .fun = f, ..., .expand = .expand,
-    .progress = .progress, .print = .print, .parallel = .parallel,
-    .paropts = .paropts)
+    .progress = .progress, .inform = .inform, .print = .print,
+    .parallel = .parallel, .paropts = .paropts)
 }
