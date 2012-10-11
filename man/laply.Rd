@@ -3,12 +3,16 @@
 \title{Split list, apply function, and return results in an array.}
 \usage{
   laply(.data, .fun = NULL, ..., .progress = "none",
-    .drop = TRUE, .parallel = FALSE)
+    .drop = TRUE, .inform = FALSE, .parallel = FALSE)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
 
   \item{...}{other arguments passed on to \code{.fun}}
+
+  \item{.inform}{produce informative error messages?  This
+  is turned off by by default because it substantially
+  slows processing speed, but is very useful for debugging}
 
   \item{.progress}{name of the progress bar to use, see
   \code{\link{create_progress_bar}}}

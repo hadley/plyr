@@ -7,9 +7,6 @@
 #' @template ply
 #' @template l-
 #' @template -l
-#' @param .inform produce informative error messages?  This is turned off by
-#'   by default because it substantially slows processing speed, but is very
-#'   useful for debugging
 #' @export
 #' @examples
 #' llply(llply(mtcars, round), table)
@@ -106,12 +103,12 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
 #' with(coef, plot(`(Intercept)`, year))
 #' qual <- laply(models, function(mod) summary(mod)$r.squared)
 #' hist(qual)
-dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE, .parallel = FALSE) {
+dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE, .inform = FALSE, .parallel = FALSE) {
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables, drop = .drop)
-
-  llply(.data = pieces, .fun = .fun, ...,
-    .progress = .progress, .parallel = .parallel)
+  
+  llply(.data = pieces, .fun = .fun, ..., 
+    .progress = .progress, .inform = .inform, .parallel = .parallel)
 }
 
 #' Split array, apply function, and return results in a list.
@@ -127,9 +124,9 @@ dlply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' @examples
 #' alply(ozone, 3, quantile)
 #' alply(ozone, 3, function(x) table(round(x)))
-alply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .parallel = FALSE) {
+alply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .inform = FALSE, .parallel = FALSE) {
   pieces <- splitter_a(.data, .margins, .expand)
-
-  llply(.data = pieces, .fun = .fun, ...,
-    .progress = .progress, .parallel = .parallel)
+  
+  llply(.data = pieces, .fun = .fun, ..., 
+    .progress = .progress, .inform = .inform, .parallel = .parallel)
 }

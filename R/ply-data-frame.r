@@ -7,11 +7,11 @@
 #' @template l-
 #' @template -d
 #' @export
-ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE) {
+ldply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, .parallel = FALSE) {
   if (!inherits(.data, "split")) .data <- as.list(.data)
-  res <- llply(.data = .data, .fun = .fun, ...,
-    .progress = .progress, .parallel = .parallel)
-
+  res <- llply(.data = .data, .fun = .fun, ..., 
+    .progress = .progress, .inform = .inform, .parallel = .parallel)
+  
   list_to_dataframe(res, attr(.data, "split_labels"))
 }
 
@@ -63,13 +63,13 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE
 #' base2 <- ddply(baseball, .(id), transform,
 #'  career_year = year - min(year) + 1
 #' )
-ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE, .parallel = FALSE) {
+ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop = TRUE, .inform = FALSE, .parallel = FALSE) {
   if (empty(.data)) return(.data)
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables, drop = .drop)
-
-  ldply(.data = pieces, .fun = .fun, ...,
-    .progress = .progress, .parallel = .parallel)
+  
+  ldply(.data = pieces, .fun = .fun, ..., 
+    .progress = .progress, .inform = .inform, .parallel = .parallel)
 }
 
 #' Split array, apply function, and return results in a data frame.
@@ -81,9 +81,9 @@ ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
 #' @template a-
 #' @template -d
 #' @export
-adply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .parallel = FALSE) {
+adply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .inform = FALSE, .parallel = FALSE) {
   pieces <- splitter_a(.data, .margins, .expand)
-
-  ldply(.data = pieces, .fun = .fun, ...,
-    .progress = .progress, .parallel = .parallel)
+  
+  ldply(.data = pieces, .fun = .fun, ..., 
+    .progress = .progress, .inform = .inform, .parallel = .parallel)
 }
