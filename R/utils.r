@@ -67,3 +67,11 @@ empty <- function(df) {
 }
 
 "%||%" <- function(a, b) if (is.null(a)) b else a
+
+.matrix_to_df <- function(.data) {
+  cnames <- colnames(.data)
+  if (is.null(cnames)) cnames <- rep("", ncol(.data))
+  .data <- as.data.frame(.data, stringsAsFactors = FALSE)
+  colnames(.data) <- cnames
+  .data
+}

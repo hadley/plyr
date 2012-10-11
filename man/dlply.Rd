@@ -13,6 +13,9 @@
   \item{.progress}{name of the progress bar to use, see
   \code{\link{create_progress_bar}}}
 
+  \item{.parallel}{if \code{TRUE}, apply function in
+  parallel, using parallel backend provided by foreach}
+
   \item{.data}{data frame to be processed}
 
   \item{.variables}{variables to split data frame by, as
@@ -22,9 +25,6 @@
   \item{.drop}{should combinations of variables that do not
   appear in the input data be preserved (FALSE) or dropped
   (TRUE, default)}
-
-  \item{.parallel}{if \code{TRUE}, apply function in
-  parallel, using parallel backend provided by foreach}
 }
 \value{
   list of results

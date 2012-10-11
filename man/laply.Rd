@@ -13,10 +13,10 @@
   \item{.progress}{name of the progress bar to use, see
   \code{\link{create_progress_bar}}}
 
-  \item{.data}{list to be processed}
-
   \item{.parallel}{if \code{TRUE}, apply function in
   parallel, using parallel backend provided by foreach}
+
+  \item{.data}{list to be processed}
 
   \item{.drop}{should extra dimensions of length 1 in the
   output be dropped, simplifying the output.  Defaults to
@@ -36,8 +36,7 @@
   column, not a row.
 }
 \section{Input}{
-  This function splits lists by elements and combines the
-  result into a data frame.
+  This function splits lists by elements.
 }
 
 \section{Output}{

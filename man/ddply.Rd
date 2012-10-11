@@ -13,6 +13,9 @@
   \item{.progress}{name of the progress bar to use, see
   \code{\link{create_progress_bar}}}
 
+  \item{.parallel}{if \code{TRUE}, apply function in
+  parallel, using parallel backend provided by foreach}
+
   \item{.data}{data frame to be processed}
 
   \item{.variables}{variables to split data frame by, as
@@ -22,9 +25,6 @@
   \item{.drop}{should combinations of variables that do not
   appear in the input data be preserved (FALSE) or dropped
   (TRUE, default)}
-
-  \item{.parallel}{if \code{TRUE}, apply function in
-  parallel, using parallel backend provided by foreach}
 }
 \value{
   A data frame, as described in the output section.
@@ -60,8 +60,8 @@ dfx   <- data.frame (group, time, age)
 # Note the use of the '.' function to allow
 # group and sex to be used without quoting
 ddply(dfx, .(group, sex), summarize,
-	mean <- round(mean(age), 2),
-	sd   <- round(sd(age), 2))
+ mean <- round(mean(age), 2),
+ sd   <- round(sd(age), 2))
 
 #   group sex  mean    sd
 # 1     A   F 35.89  8.53

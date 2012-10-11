@@ -1,20 +1,3 @@
-#' Split list, apply function, and return results in a data frame.
-#'
-#' For each element of a list, apply function then combine results into a data
-#' frame.
-#'
-#' @template ply
-#' @template l-
-#' @template -d
-#' @export
-ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE) {
-  if (!inherits(.data, "split")) .data <- as.list(.data)
-  res <- llply(.data = .data, .fun = .fun, ...,
-    .progress = .progress, .parallel = .parallel)
-
-  list_to_dataframe(res, attr(.data, "split_labels"))
-}
-
 #' Split data frame, apply function, and return results in a data frame.
 #'
 #' For each subset of a data frame, apply function then combine results into a
@@ -36,8 +19,8 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE
 #' # Note the use of the '.' function to allow
 #' # group and sex to be used without quoting
 #' ddply(dfx, .(group, sex), summarize,
-#' 	mean <- round(mean(age), 2),
-#' 	sd   <- round(sd(age), 2))
+#'  mean <- round(mean(age), 2),
+#'  sd   <- round(sd(age), 2))
 #'
 #' #   group sex  mean    sd
 #' # 1     A   F 35.89  8.53
@@ -67,22 +50,6 @@ ddply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop
   if (empty(.data)) return(.data)
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables, drop = .drop)
-
-  ldply(.data = pieces, .fun = .fun, ...,
-    .progress = .progress, .parallel = .parallel)
-}
-
-#' Split array, apply function, and return results in a data frame.
-#'
-#' For each slice of an array, apply function then combine results into a data
-#' frame.
-#'
-#' @template ply
-#' @template a-
-#' @template -d
-#' @export
-adply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .parallel = FALSE) {
-  pieces <- splitter_a(.data, .margins, .expand)
 
   ldply(.data = pieces, .fun = .fun, ...,
     .progress = .progress, .parallel = .parallel)

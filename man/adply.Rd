@@ -13,6 +13,9 @@
   \item{.progress}{name of the progress bar to use, see
   \code{\link{create_progress_bar}}}
 
+  \item{.parallel}{if \code{TRUE}, apply function in
+  parallel, using parallel backend provided by foreach}
+
   \item{.data}{matrix, array or data frame to be processed}
 
   \item{.margins}{a vector giving the subscripts to split
@@ -22,11 +25,8 @@
 
   \item{.expand}{if \code{.data} is a data frame, should
   output be 1d (expand = FALSE), with an element for each
-  row; or nd (expand = TRUE), with a}
-
-  \item{.parallel}{if \code{TRUE}, apply function in
-  parallel, using parallel backend provided by foreach
-  dimension for each variable.}
+  row; or nd (expand = TRUE), with a dimension for each
+  variable.}
 }
 \value{
   A data frame, as described in the output section.
