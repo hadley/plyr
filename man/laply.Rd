@@ -61,10 +61,10 @@ laply(seq_len(10), matrix, nrow = 2, ncol = 2)
 }
 \seealso{
   Other array output: \code{\link{aaply}},
-  \code{\link{daply}}
+  \code{\link{daply}}, \code{\link{maply}}
 
-  Other list input: \code{\link{ldply}},
-  \code{\link{llply}}
+  Other list input: \code{\link{l_ply}},
+  \code{\link{ldply}}, \code{\link{llply}}
 }
 \keyword{manip}
 

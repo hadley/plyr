@@ -6,25 +6,25 @@
     .progress = "none", .parallel = FALSE)
 }
 \arguments{
-  \item{.data}{matrix or data frame to use as source of
-  arguments}
-
-  \item{.fun}{function to be called with varying arguments}
+  \item{.fun}{function to apply to each piece}
 
   \item{...}{other arguments passed on to \code{.fun}}
-
-  \item{.expand}{should output be 1d (expand = FALSE), with
-  an element for each row; or nd (expand = TRUE), with a
-  dimension for each variable.}
 
   \item{.progress}{name of the progress bar to use, see
   \code{\link{create_progress_bar}}}
 
   \item{.parallel}{if \code{TRUE}, apply function in
   parallel, using parallel backend provided by foreach}
+
+  \item{.data}{matrix or data frame to use as source of
+  arguments}
+
+  \item{.expand}{should output be 1d (expand = FALSE), with
+  an element for each row; or nd (expand = TRUE), with a
+  dimension for each variable.}
 }
 \value{
-  a data frame
+  A data frame, as described in the output section.
 }
 \description{
   Call a multi-argument function with values taken from
@@ -37,9 +37,21 @@
   output they produce.  These functions are just a
   convenient wrapper around \code{a*ply} with \code{margins
   = 1} and \code{.fun} wrapped in \code{\link{splat}}.
+}
+\section{Input}{
+  Call a multi-argument function with values taken from
+  columns of an data frame or array
+}
 
-  This function combines the result into a data frame.  If
-  there are no results, then this function will return a
+\section{Output}{
+  The most unambiguous behaviour is achieved when
+  \code{.fun} returns a data frame - in that case pieces
+  will be combined with \code{\link{rbind.fill}}.  If
+  \code{.fun} returns an atomic vector of fixed length, it
+  will be \code{rbind}ed together and converted to a data
+  frame. Any other values will result in an error.
+
+  If there are no results, then this function will return a
   data frame with zero rows and columns
   (\code{data.frame()}).
 }
@@ -53,6 +65,13 @@ mdply(cbind(mean = 1:5, sd = 1:5), as.data.frame(rnorm), n = 5)
   Hadley Wickham (2011). The Split-Apply-Combine Strategy
   for Data Analysis. Journal of Statistical Software,
   40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
+}
+\seealso{
+  Other data frame output: \code{\link{adply}},
+  \code{\link{ddply}}, \code{\link{ldply}}
+
+  Other multiple arguments input: \code{\link{m_ply}},
+  \code{\link{maply}}, \code{\link{mlply}}
 }
 \keyword{manip}
 

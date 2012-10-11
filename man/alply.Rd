@@ -56,11 +56,11 @@ alply(ozone, 3, function(x) table(round(x)))
   40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-  Other array input: \code{\link{aaply}},
-  \code{\link{adply}}
+  Other array input: \code{\link{a_ply}},
+  \code{\link{aaply}}, \code{\link{adply}}
 
   Other list output: \code{\link{dlply}},
-  \code{\link{llply}}
+  \code{\link{llply}}, \code{\link{mlply}}
 }
 \keyword{manip}
 

@@ -97,11 +97,11 @@ base2 <- ddply(baseball, .(id), transform,
   \code{\link{tapply}} for similar functionality in the
   base package
 
-  Other data frame input: \code{\link{daply}},
-  \code{\link{dlply}}
+  Other data frame input: \code{\link{d_ply}},
+  \code{\link{daply}}, \code{\link{dlply}}
 
   Other data frame output: \code{\link{adply}},
-  \code{\link{ldply}}
+  \code{\link{ldply}}, \code{\link{mdply}}
 }
 \keyword{manip}
 

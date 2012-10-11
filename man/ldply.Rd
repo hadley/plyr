@@ -49,10 +49,10 @@
 }
 \seealso{
   Other data frame output: \code{\link{adply}},
-  \code{\link{ddply}}
+  \code{\link{ddply}}, \code{\link{mdply}}
 
-  Other list input: \code{\link{laply}},
-  \code{\link{llply}}
+  Other list input: \code{\link{l_ply}},
+  \code{\link{laply}}, \code{\link{llply}}
 }
 \keyword{manip}
 

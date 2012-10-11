@@ -61,11 +61,11 @@ hist(qual)
   40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-  Other data frame input: \code{\link{daply}},
-  \code{\link{ddply}}
+  Other data frame input: \code{\link{d_ply}},
+  \code{\link{daply}}, \code{\link{ddply}}
 
   Other list output: \code{\link{alply}},
-  \code{\link{llply}}
+  \code{\link{llply}}, \code{\link{mlply}}
 }
 \keyword{manip}
 

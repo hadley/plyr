@@ -47,8 +47,6 @@ laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE, .p
 #'   variables, a formula or character vector
 #' @param .drop_i should combinations of variables that do not appear in the
 #'   input data be preserved (FALSE) or dropped (TRUE, default)
-#' @param .parallel if \code{TRUE}, apply function in parallel, using parallel
-#'   backend provided by foreach
 #' @return if results are atomic with same type and dimensionality, a
 #'   vector, matrix or array; otherwise, a list-array (a list with
 #'   dimensions)

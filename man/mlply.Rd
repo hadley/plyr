@@ -6,22 +6,22 @@
     .progress = "none", .parallel = FALSE)
 }
 \arguments{
-  \item{.data}{matrix or data frame to use as source of
-  arguments}
-
-  \item{.fun}{function to be called with varying arguments}
+  \item{.fun}{function to apply to each piece}
 
   \item{...}{other arguments passed on to \code{.fun}}
-
-  \item{.expand}{should output be 1d (expand = FALSE), with
-  an element for each row; or nd (expand = TRUE), with a
-  dimension for each variable.}
 
   \item{.progress}{name of the progress bar to use, see
   \code{\link{create_progress_bar}}}
 
   \item{.parallel}{if \code{TRUE}, apply function in
   parallel, using parallel backend provided by foreach}
+
+  \item{.data}{matrix or data frame to use as source of
+  arguments}
+
+  \item{.expand}{should output be 1d (expand = FALSE), with
+  an element for each row; or nd (expand = TRUE), with a
+  dimension for each variable.}
 }
 \value{
   list of results
@@ -29,7 +29,7 @@
 \description{
   Call a multi-argument function with values taken from
   columns of an data frame or array, and combine results
-  into a list
+  into a list.
 }
 \details{
   The \code{m*ply} functions are the \code{plyr} version of
@@ -37,10 +37,15 @@
   output they produce.  These functions are just a
   convenient wrapper around \code{a*ply} with \code{margins
   = 1} and \code{.fun} wrapped in \code{\link{splat}}.
+}
+\section{Input}{
+  Call a multi-argument function with values taken from
+  columns of an data frame or array
+}
 
-  This function combines the result into a list.  If there
-  are no results, then this function will return a list of
-  length 0 (\code{list()}).
+\section{Output}{
+  If there are no results, then this function will return a
+  list of length 0 (\code{list()}).
 }
 \examples{
 mlply(cbind(1:4, 4:1), rep)
@@ -54,6 +59,13 @@ mlply(cbind(1:4, by = 4:1), seq, to = 20)
   Hadley Wickham (2011). The Split-Apply-Combine Strategy
   for Data Analysis. Journal of Statistical Software,
   40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
+}
+\seealso{
+  Other list output: \code{\link{alply}},
+  \code{\link{dlply}}, \code{\link{llply}}
+
+  Other multiple arguments input: \code{\link{m_ply}},
+  \code{\link{maply}}, \code{\link{mdply}}
 }
 \keyword{manip}
 

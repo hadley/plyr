@@ -14,6 +14,9 @@
   \item{.progress}{name of the progress bar to use, see
   \code{\link{create_progress_bar}}}
 
+  \item{.parallel}{if \code{TRUE}, apply function in
+  parallel, using parallel backend provided by foreach}
+
   \item{.data}{data frame to be processed}
 
   \item{.variables}{variables to split data frame by, as
@@ -22,9 +25,6 @@
   \item{.drop_i}{should combinations of variables that do
   not appear in the input data be preserved (FALSE) or
   dropped (TRUE, default)}
-
-  \item{.parallel}{if \code{TRUE}, apply function in
-  parallel, using parallel backend provided by foreach}
 
   \item{.drop_o}{should extra dimensions of length 1 in the
   output be dropped, simplifying the output.  Defaults to
@@ -66,10 +66,10 @@ daply(baseball, .(year), function(df) colwise(mean)(df[, 6:9]))
 }
 \seealso{
   Other array output: \code{\link{aaply}},
-  \code{\link{laply}}
+  \code{\link{laply}}, \code{\link{maply}}
 
-  Other data frame input: \code{\link{ddply}},
-  \code{\link{dlply}}
+  Other data frame input: \code{\link{d_ply}},
+  \code{\link{ddply}}, \code{\link{dlply}}
 }
 \keyword{manip}
 
