@@ -1,61 +1,68 @@
 Version 1.7.1.99
 ------------------------------------------------------------------------------
 
+NEW FEATURES AND FUNCTIONS
+
 * `**ply` gain a `.inform` argument (previously only available in `llply`) - this gives more useful debugging information at the cost of some speed. (Thanks to Brian Diggs, #57)
-
-* `**ply` gains a `.paropts` argumetns, a list of options that is passed onto `foreach` for controlling parallel computation.
-
-* New function `here` makes it possible to use `**ply` + a function that uses non-standard evaluation (e.g. `summarise`, `mutate`, `subset`, `arrange`) inside a function.  (Thanks to Peter Meilstrup, #3)
-
-* The subsetting in `d*ply` has been considerably optimised: this will have a small impact unless you have a very large number of groups, in which case it will be considerably faster.
-
-* `d*ply` will now preserve factor levels input if `drop = FALSE` (#81)
-
-* `name_rows` provides a convenient way of saving and then restoring row names so that you can preserve them if you need to. (#61)
-
-* `*aply` now accepts 0-dimension arrays as outputs. (#88)
-
-* new `progress_time` function that estimates the amount of time remaining before the job is completed. (Thanks to Mike Lawrence, #78)
 
 * `colwise`, `numcolwise` and `catcolwise` now all accept additional arguments in .... (Thanks to Stavros Macrakis, #62)
 
-* `rbind.fill` now stops if inputs are not data frames. (Fixes #51)
+* `here` makes it possible to use `**ply` + a function that uses non-standard evaluation (e.g. `summarise`, `mutate`, `subset`, `arrange`) inside a function.  (Thanks to Peter Meilstrup, #3)
 
-* `quickdf` correctly handles NA variable names. (Fixes #66. Thanks to Scott Kostyshak)
+* `join_all` recursively joins a list of data frames. (Fixes #29)
 
-* `*dply` now deals better with matrix results, converting them to data frames, rather than vectors. (Fixes #12)
+* `name_rows` provides a convenient way of saving and then restoring row names so that you can preserve them if you need to. (#61)
 
-* new `join_all` function recursively joins a list of data frames. (Fixes #29)
+* `progress_time` (used with `.progress = "time"`) estimates the amount of time remaining before the job is completed. (Thanks to Mike Lawrence, #78)
+
+* `summarise` now works iteratively so that later columns can refer to earlier.  (Thanks to Jim Hester, #44)
+
+* `take` makes it easy to subset along an arbitrary dimension.
+
+* Improved documentation thanks to patches from Tim Bates.
+
+PARALLEL PLYR
+
+* `**ply` gains a `.paropts` argumetns, a list of options that is passed onto `foreach` for controlling parallel computation.
 
 * `*_ply` now accepts `.parallel` argument to enable parallel processing. (Fixes #60)
 
 * Progress bars are disabled when using parallel plyr (Fixes #32)
 
-* `rbind.fill` now works consistently with 0 column data frames
-
-* `join` works correctly when there are no common rows (Fixes #74), or when one input has no rows (Fixes #48). It also consistently orders the columns: common columns, then x cols, then y cols (Fixes #40).
-
-* `split_indices`, which powers much internal splitting code (like `vaggregate`, `join` and `d*ply`) is about 2x faster.  It was already incredible fast ~0.2s for 1,000,000 obs, so this won't have much impact on overall performance
+PERFORMANCE IMPROVEMENTS
 
 * `a*ply`: 25x speedup when indexing array objects, 3x speedup when indexing data frames.  This should substantially reduce the overhead of using `a*ply`
 
-* `quickdf` is around 20% faster
-
-* `round_any` now works with `POSIXct` objects, thanks to Jean-Olivier Irisson (#76)
-
-* Improved documentation thanks to patches from Tim Bates.
-
-* Summarise now works iteratively so that later columns can refer to earlier.  (Thanks to Jim Hester, #44)
-
-* New `take` function for subsetting along an arbitrary dimension.
-
-* `*aply` functions now bind list mode results into a list-array (Peter Meilstrup)
+* `d*ply` subsetting has been considerably optimised: this will have a small impact unless you have a very large number of groups, in which case it will be considerably faster.
 
 * `idata.frame`: Subsetting immutable data frames with `[.idf` is now
   faster (Peter Meilstrup)
 
-* `rbind.fill` and `rbind.fill.matrix` work consistently with matrices
-  and data frames with zero rows. Fixes #79. (Peter Meilstrup)
+* `quickdf` is around 20% faster
+
+* `split_indices`, which powers much internal splitting code (like `vaggregate`, `join` and `d*ply`) is about 2x faster.  It was already incredible fast ~0.2s for 1,000,000 obs, so this won't have much impact on overall performance
+
+BUG FIXES
+
+* `*aply` functions now bind list mode results into a list-array (Peter Meilstrup)
+
+* `*aply` now accepts 0-dimension arrays as inputs. (#88)
+
+* `*dply` now deals better with matrix results, converting them to data frames, rather than vectors. (Fixes #12)
+
+* `d*ply` will now preserve factor levels input if `drop = FALSE` (#81)
+
+* `join` works correctly when there are no common rows (Fixes #74), or when one input has no rows (Fixes #48). It also consistently orders the columns: common columns, then x cols, then y cols (Fixes #40).
+
+* `quickdf` correctly handles NA variable names. (Fixes #66. Thanks to Scott Kostyshak)
+
+* `rbind.fill` and `rbind.fill.matrix` work consistently with matrices and data frames with zero rows. Fixes #79. (Peter Meilstrup)
+
+* `rbind.fill` now stops if inputs are not data frames. (Fixes #51)
+
+* `rbind.fill` now works consistently with 0 column data frames
+
+* `round_any` now works with `POSIXct` objects, thanks to Jean-Olivier Irisson (#76)
 
 Version 1.7.1
 ------------------------------------------------------------------------------
