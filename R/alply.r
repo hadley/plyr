@@ -1,7 +1,9 @@
 #' Split array, apply function, and return results in a list.
 #'
 #' For each slice of an array, apply function then combine results into a
-#' list. \code{alply} is somewhat similar to \code{\link{apply}} for cases
+#' list.
+#'
+#' \code{alply} is somewhat similar to \code{\link{apply}} for cases
 #' where the results are not atomic.
 #'
 #' @template ply

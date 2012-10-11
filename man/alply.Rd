@@ -33,9 +33,11 @@
 }
 \description{
   For each slice of an array, apply function then combine
-  results into a list. \code{alply} is somewhat similar to
-  \code{\link{apply}} for cases where the results are not
-  atomic.
+  results into a list.
+}
+\details{
+  \code{alply} is somewhat similar to \code{\link{apply}}
+  for cases where the results are not atomic.
 }
 \section{Input}{
   This function splits matrices, arrays and data frames by

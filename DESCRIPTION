@@ -84,7 +84,6 @@ Collate:
     'l_ply.r'
     'laply.r'
     'llply.r'
-    'lply.r'
     'm_ply.r'
     'maply.r'
     'mdply.r'
@@ -94,3 +93,4 @@ Collate:
     'rdply.r'
     'rlply.r'
     'liply.r'
+    'ldply.r'

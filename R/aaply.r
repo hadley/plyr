@@ -1,6 +1,7 @@
 #' Split array, apply function, and return results in an array.
 #'
 #' For each slice of an array, apply function, keeping results as an array.
+#'
 #' This function is very similar to \code{\link{apply}}, except that it will
 #' always return an array, and when the function returns >1 d data structures,
 #' those dimensions are added on to the highest dimensions, rather than the

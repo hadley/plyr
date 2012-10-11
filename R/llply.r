@@ -1,6 +1,7 @@
 #' Split list, apply function, and return results in a list.
 #'
 #' For each element of a list, apply function, keeping results as a list.
+#'
 #' \code{llply} is equivalent to \code{\link{lapply}} except that it will
 #' preserve labels and can display a progress bar.
 #'

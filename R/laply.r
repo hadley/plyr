@@ -1,7 +1,9 @@
 #' Split list, apply function, and return results in an array.
 #'
 #' For each element of a list, apply function then combine results into an
-#' array. \code{laply} is similar in spirit to \code{\link{sapply}} except
+#' array.
+#'
+#' \code{laply} is similar in spirit to \code{\link{sapply}} except
 #' that it will always return an array, and the output is transposed with
 #' respect \code{sapply} - each element of the list corresponds to a column,
 #' not a row.

@@ -39,13 +39,16 @@
 }
 \description{
   For each slice of an array, apply function, keeping
-  results as an array. This function is very similar to
-  \code{\link{apply}}, except that it will always return an
-  array, and when the function returns >1 d data
-  structures, those dimensions are added on to the highest
-  dimensions, rather than the lowest dimensions.  This
-  makes \code{aaply} idempotent, so that \code{apply(input,
-  X, identity)} is equivalent to \code{aperm(input, X)}.
+  results as an array.
+}
+\details{
+  This function is very similar to \code{\link{apply}},
+  except that it will always return an array, and when the
+  function returns >1 d data structures, those dimensions
+  are added on to the highest dimensions, rather than the
+  lowest dimensions.  This makes \code{aaply} idempotent,
+  so that \code{apply(input, X, identity)} is equivalent to
+  \code{aperm(input, X)}.
 }
 \section{Input}{
   This function splits matrices, arrays and data frames by

@@ -35,9 +35,12 @@
 }
 \description{
   For each element of a list, apply function, keeping
-  results as a list. \code{llply} is equivalent to
-  \code{\link{lapply}} except that it will preserve labels
-  and can display a progress bar.
+  results as a list.
+}
+\details{
+  \code{llply} is equivalent to \code{\link{lapply}} except
+  that it will preserve labels and can display a progress
+  bar.
 }
 \section{Input}{
   This function splits lists by elements.
