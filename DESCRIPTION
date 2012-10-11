@@ -79,3 +79,4 @@ Collate:
     'join_all.r'
     'progress-time.r'
     'helper-name-rows.r'
+    'helper-here.r'
