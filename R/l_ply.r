@@ -7,7 +7,7 @@
 #' @template -_
 #' @export
 l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE,
-                  .parallel = FALSE) {
+                  .parallel = FALSE, .paropts = NULL) {
   if (is.character(.fun) || is.list(.fun)) .fun <- each(.fun)
   if (!is.function(.fun)) stop(".fun is not a function.")
 
@@ -20,8 +20,12 @@ l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .print = FALSE,
     if (.progress != "none") message("Progress disabled for parallel processing")
 
     setup_parallel()
-    ignore <- function(...) NULL
-    foreach(d = .data, .combine = ignore) %dopar% .fun(d, ...)
+    .paropts$.combine <- function(...) NULL
+    fe_call <- as.call(c(list(as.name("foreach"), d = as.name(".data")),
+      .paropts))
+    fe <- eval(fe_call)
+
+    fe %dopar% .fun(d, ...)
   } else {
     .data <- as.list(.data)
     for(i in seq_along(.data)) {

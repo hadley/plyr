@@ -1,6 +1,8 @@
 Version 1.7.1.99
 ------------------------------------------------------------------------------
 
+* `**ply` gains a `.paropts` argumetns, a list of options that is passed onto `foreach` for controlling parallel computation.
+
 * New function `here` makes it possible to use `**ply` + a function that uses non-standard evaluation (e.g. `summarise`, `mutate`, `subset`, `arrange`) inside a function.  (Thanks to Peter Meilstrup, #3)
 
 * The subsetting in `d*ply` has been considerably optimised: this will have a small impact unless you have a very large number of groups, in which case it will be considerably faster.

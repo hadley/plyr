@@ -3,7 +3,8 @@
 \title{Call function with arguments in array or data frame, returning an array.}
 \usage{
   maply(.data, .fun = NULL, ..., .expand = TRUE,
-    .progress = "none", .drop = TRUE, .parallel = FALSE)
+    .progress = "none", .drop = TRUE, .parallel = FALSE,
+    .paropts = NULL)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -12,6 +13,14 @@
 
   \item{.progress}{name of the progress bar to use, see
   \code{\link{create_progress_bar}}}
+
+  \item{.paropts}{a list of additional options passed into
+  the \code{\link[foreach]{foreach}} function when parallel
+  computation is enabled.  This is important if (for
+  example) your code relies on external data or packages:
+  use the \code{.export} and \code{.packages} arguments to
+  supply them so that all cluster nodes have the correct
+  environment set up for computing.}
 
   \item{.parallel}{if \code{TRUE}, apply function in
   parallel, using parallel backend provided by foreach}

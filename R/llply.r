@@ -11,12 +11,6 @@
 #' @param .inform produce informative error messages?  This is turned off by
 #'   by default because it substantially slows processing speed, but is very
 #'   useful for debugging
-#' @param .paropts a list of additional options passed into
-#'   the \code{\link[foreach]{foreach}} function when parallel computation
-#'   is enabled.  This is important if (for example) your code relies on
-#'   external data or packages: use the \code{.export} and \code{.packages}
-#'   arguments to supply them so that all cluster nodes have the correct
-#'   environment set up for computing.
 #' @export
 #' @examples
 #' llply(llply(mtcars, round), table)
@@ -76,7 +70,10 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
   }
   if (.parallel) {
     setup_parallel()
-    fe <- parallel_fe(n, .paropts)
+
+    i <- seq_len(n)
+    fe_call <- as.call(c(list(as.name("foreach"), i = i), .paropts))
+    fe <- eval(fe_call)
 
     result <- fe %dopar% do.ply(i)
   } else {

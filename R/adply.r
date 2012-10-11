@@ -8,9 +8,9 @@
 #' @template -d
 #' @export
 adply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE,
-                  .progress = "none", .parallel = FALSE) {
+                  .progress = "none", .parallel = FALSE, .paropts = NULL) {
   pieces <- splitter_a(.data, .margins, .expand)
 
   ldply(.data = pieces, .fun = .fun, ...,
-    .progress = .progress, .parallel = .parallel)
+    .progress = .progress, .parallel = .parallel, .paropts = .paropts)
 }

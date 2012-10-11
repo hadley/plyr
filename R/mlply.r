@@ -15,10 +15,11 @@
 #' mlply(cbind(1:4, length = 4:1), seq)
 #' mlply(cbind(1:4, by = 4:1), seq, to = 20)
 mlply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none",
-                  .parallel = FALSE) {
+                  .parallel = FALSE, .paropts = NULL) {
   if (is.matrix(.data) & !is.list(.data)) .data <- .matrix_to_df(.data)
 
   f <- splat(.fun)
   alply(.data = .data, .margins = 1, .fun = f, ...,
-    .expand = .expand, .progress = .progress, .parallel = .parallel)
+    .expand = .expand, .progress = .progress, .parallel = .parallel,
+    .paropts = .paropts)
 }

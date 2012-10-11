@@ -8,10 +8,10 @@
 #' @template -d
 #' @export
 ldply <- function(.data, .fun = NULL, ..., .progress = "none",
-                  .parallel = FALSE) {
+                  .parallel = FALSE, .paropts = NULL) {
   if (!inherits(.data, "split")) .data <- as.list(.data)
   res <- llply(.data = .data, .fun = .fun, ...,
-    .progress = .progress, .parallel = .parallel)
+    .progress = .progress, .parallel = .parallel, .paropts = .paropts)
 
   list_to_dataframe(res, attr(.data, "split_labels"))
 }

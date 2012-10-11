@@ -7,10 +7,12 @@
 #' @template -_
 #' @export
 d_ply <- function(.data, .variables, .fun = NULL, ..., .progress = "none",
-                  .drop = TRUE, .print = FALSE, .parallel = FALSE) {
+                  .drop = TRUE, .print = FALSE, .parallel = FALSE,
+                  .paropts = NULL) {
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables, .drop = .drop)
 
   l_ply(.data = pieces, .fun = .fun, ...,
-    .progress = .progress, .print = .print, .parallel = .parallel)
+    .progress = .progress, .print = .print, .parallel = .parallel,
+    .paropts = .paropts)
 }
