@@ -3,7 +3,7 @@
 \title{Split list, apply function, and return results in a list.}
 \usage{
   llply(.data, .fun = NULL, ..., .progress = "none",
-    .inform = FALSE, .parallel = FALSE)
+    .inform = FALSE, .parallel = FALSE, .paropts = NULL)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -21,6 +21,14 @@
   \item{.inform}{produce informative error messages?  This
   is turned off by by default because it substantially
   slows processing speed, but is very useful for debugging}
+
+  \item{.paropts}{a list of additional options passed into
+  the \code{\link[foreach]{foreach}} function when parallel
+  computation is enabled.  This is important if (for
+  example) your code relies on external data or packages:
+  use the \code{.export} and \code{.packages} arguments to
+  supply them so that all cluster nodes have the correct
+  environment set up for computing.}
 }
 \value{
   list of results

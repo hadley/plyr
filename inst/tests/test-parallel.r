@@ -17,3 +17,12 @@ test_that("l_ply + .parallel complains about invalid arguments", {
     l_ply(1:10, force, .parallel = TRUE, .progress = "text"),
     "Progress disabled")
 })
+
+test_that(".paropts passes options to foreach", {
+  combine <- function(a, b) NULL
+  x <- llply(1:10, identity, .parallel = TRUE,
+    .paropts = list(.combine = combine))
+  expect_equal(x, NULL)
+})
+
+registerDoMC(1)

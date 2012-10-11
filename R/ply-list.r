@@ -10,6 +10,12 @@
 #' @param .inform produce informative error messages?  This is turned off by
 #'   by default because it substantially slows processing speed, but is very
 #'   useful for debugging
+#' @param .paropts a list of additional options passed into
+#'   the \code{\link[foreach]{foreach}} function when parallel computation
+#'   is enabled.  This is important if (for example) your code relies on
+#'   external data or packages: use the \code{.export} and \code{.packages}
+#'   arguments to supply them so that all cluster nodes have the correct
+#'   environment set up for computing.
 #' @export
 #' @examples
 #' llply(llply(mtcars, round), table)
@@ -19,7 +25,8 @@
 #'
 #' llply(x, mean)
 #' llply(x, quantile, probs = 1:3/4)
-llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, .parallel = FALSE) {
+llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
+                  .parallel = FALSE, .paropts = NULL) {
   if (is.null(.fun)) return(as.list(.data))
   if (is.character(.fun) || is.list(.fun)) .fun <- each(.fun)
   if (!is.function(.fun)) stop(".fun is not a function.")
@@ -68,7 +75,9 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE, 
   }
   if (.parallel) {
     setup_parallel()
-    result <- foreach(i = seq_len(n)) %dopar% do.ply(i)
+    fe <- parallel_fe(n, .paropts)
+
+    result <- fe %dopar% do.ply(i)
   } else {
     result <- loop_apply(n, do.ply)
   }
