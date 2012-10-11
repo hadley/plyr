@@ -7,7 +7,8 @@
 #' @template a-
 #' @template -d
 #' @export
-adply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .parallel = FALSE) {
+adply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE,
+                  .progress = "none", .parallel = FALSE) {
   pieces <- splitter_a(.data, .margins, .expand)
 
   ldply(.data = pieces, .fun = .fun, ...,

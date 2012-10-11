@@ -12,7 +12,7 @@
 #' maply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 5)
 #' maply(cbind(1:5, 1:5), rnorm, n = 5)
 maply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none",
-  .drop = TRUE, .parallel = FALSE) {
+                  .drop = TRUE, .parallel = FALSE) {
   if (is.matrix(.data) & !is.list(.data)) .data <- .matrix_to_df(.data)
 
   f <- splat(.fun)

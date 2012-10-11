@@ -21,7 +21,8 @@
 #' laply(seq_len(10), identity)
 #' laply(seq_len(10), rep, times = 4)
 #' laply(seq_len(10), matrix, nrow = 2, ncol = 2)
-laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE, .parallel = FALSE) {
+laply <-  function(.data, .fun = NULL, ..., .progress = "none", .drop = TRUE,
+                  .parallel = FALSE) {
   if (is.character(.fun)) .fun <- do.call("each", as.list(.fun))
   if (!is.function(.fun)) stop(".fun is not a function.")
 

@@ -30,7 +30,8 @@
 #' aaply(ozone, 1:2, standardise)
 #'
 #' aaply(ozone, 1:2, diff)
-aaply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .drop = TRUE, .parallel = FALSE) {
+aaply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE,
+                  .progress = "none", .drop = TRUE, .parallel = FALSE) {
   pieces <- splitter_a(.data, .margins, .expand)
 
   laply(.data = pieces, .fun = .fun, ...,

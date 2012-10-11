@@ -31,7 +31,8 @@
 #' daply(baseball[, c(2, 6:9)], .(year), colwise(mean))
 #' daply(baseball[, 6:9], .(baseball$year), colwise(mean))
 #' daply(baseball, .(year), function(df) colwise(mean)(df[, 6:9]))
-daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none", .drop_i = TRUE, .drop_o = TRUE, .parallel = FALSE) {
+daply <- function(.data, .variables, .fun = NULL, ..., .progress = "none",
+  .drop_i = TRUE, .drop_o = TRUE, .parallel = FALSE) {
   .variables <- as.quoted(.variables)
   pieces <- splitter_d(.data, .variables, drop = .drop_i)
 

@@ -7,7 +7,8 @@
 #' @template l-
 #' @template -d
 #' @export
-ldply <- function(.data, .fun = NULL, ..., .progress = "none", .parallel = FALSE) {
+ldply <- function(.data, .fun = NULL, ..., .progress = "none",
+                  .parallel = FALSE) {
   if (!inherits(.data, "split")) .data <- as.list(.data)
   res <- llply(.data = .data, .fun = .fun, ...,
     .progress = .progress, .parallel = .parallel)

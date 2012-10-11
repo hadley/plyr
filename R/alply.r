@@ -13,7 +13,8 @@
 #' @examples
 #' alply(ozone, 3, quantile)
 #' alply(ozone, 3, function(x) table(round(x)))
-alply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE, .progress = "none", .parallel = FALSE) {
+alply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE,
+                  .progress = "none", .parallel = FALSE) {
   pieces <- splitter_a(.data, .margins, .expand)
 
   llply(.data = pieces, .fun = .fun, ...,

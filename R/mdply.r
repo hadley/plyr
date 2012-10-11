@@ -12,7 +12,8 @@
 #' mdply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 2)
 #' mdply(cbind(mean = 1:5, sd = 1:5), rnorm, n = 5)
 #' mdply(cbind(mean = 1:5, sd = 1:5), as.data.frame(rnorm), n = 5)
-mdply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none", .parallel = FALSE) {
+mdply <- function(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none",
+                  .parallel = FALSE) {
   if (is.matrix(.data) & !is.list(.data)) .data <- .matrix_to_df(.data)
 
   f <- splat(.fun)
