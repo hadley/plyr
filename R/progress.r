@@ -28,8 +28,10 @@
 #' @examples
 #' # No progress bar
 #' l_ply(1:100, identity, .progress = "none")
+#' \dontrun{
 #' # Use the Tcl/Tk interface
 #' l_ply(1:100, identity, .progress = "tk")
+#' }
 #' # Text-based progress (|======|)
 #' l_ply(1:100, identity, .progress = "text")
 #' # Choose a progress character, run a length of time you can see
@@ -111,9 +113,11 @@ progress_text <- function(style = 3, ...) {
 #' @family progress bars
 #' @export
 #' @examples
+#' \dontrun{
 #' l_ply(1:100, identity, .progress = "tk")
 #' l_ply(1:100, identity, .progress = progress_tk(width=400))
 #' l_ply(1:100, identity, .progress = progress_tk(label=""))
+#' }
 progress_tk <- function(title = "plyr progress", label = "Working...", ...) {
   stopifnot(require("tcltk", quiet=TRUE))
   n <- 0

@@ -20,9 +20,11 @@
   This graphical progress will appear in a separate window.
 }
 \examples{
+\dontrun{
 l_ply(1:100, identity, .progress = "tk")
 l_ply(1:100, identity, .progress = progress_tk(width=400))
 l_ply(1:100, identity, .progress = progress_tk(label=""))
+}
 }
 \seealso{
   \code{\link[tcltk]{tkProgressBar}} for the function that

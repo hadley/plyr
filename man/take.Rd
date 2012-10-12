@@ -9,7 +9,7 @@
 
   \item{along}{dimension to subset along}
 
-  \item{indices}{}
+  \item{indices}{the indices to select}
 
   \item{drop}{should the dimensions of the array be
   simplified? Defaults to \code{FALSE} which is the
@@ -23,8 +23,8 @@ x <- array(seq_len(3 * 4 * 5), c(3, 4, 5))
 take(x, 3, 1)
 take(x, 2, 1)
 take(x, 1, 1)
-take(x, 3, 1, drop = TRU)
-take(x, 2, 1, drop = TRU)
-take(x, 1, 1, drop = TRU)
+take(x, 3, 1, drop = TRUE)
+take(x, 2, 1, drop = TRUE)
+take(x, 1, 1, drop = TRUE)
 }
 
