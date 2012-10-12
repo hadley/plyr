@@ -22,6 +22,8 @@ indexed_df <- function(data, index, vars) {
 }
 
 extract_rows <- function(x, i) {
+  if (!is.data.frame(x)) return(x[i, , drop = FALSE])
+
   n <- ncol(x)
 
   out <- lapply(seq_len(n), extract_col_rows, df = x, i = i)
