@@ -40,7 +40,7 @@ extract_col_rows <- function(df, i, j) {
 
   if (is.null(attr(col, "class"))) {
     .subset(col, i)
-  } else if (inherits(col, "factor") || inherits(x, "POSIXt")) {
+  } else if (inherits(col, "factor") || inherits(col, "POSIXt")) {
     out <- .subset(col, i)
     attributes(out) <- attributes(col)
     out
