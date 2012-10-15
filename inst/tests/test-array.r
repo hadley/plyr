@@ -88,6 +88,18 @@ test_that("idempotent function equivalent to permutation",  {
 
 })
 
+test_that("alply optionally sets dims and dimnames attribute", {
+  x <- array(1:24, 4:2,
+             dimnames = list(LETTERS[1:4], letters[24:26], letters[1:2]))
+  perms <- unique(alply(as.matrix(subset(expand.grid(x=0:3,y=0:3,z=0:3), (x+y+z)>0 & !any(duplicated(setdiff(c(x,y,z), 0))))), 1, function(x) setdiff(x, 0)))
+
+  alplys <- lapply(perms, alply, .data=x, identity, .dims=TRUE)
+  m_ply(cbind(perm=perms, ply=alplys), function(perm, ply) {
+    expect_that(dim(ply), is_equivalent_to(dim(x)[perm]))
+    expect_that(dimnames(ply), is_equivalent_to(dimnames(x)[perm]))
+  })
+})
+
 # Test contributed by Baptiste Auguie
 test_that("single column data frames work when treated as an array", {
   foo <- function(a="a", b="b", c="c", ...){
