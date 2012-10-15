@@ -60,7 +60,7 @@
   function returns >1 d data structures, those dimensions
   are added on to the highest dimensions, rather than the
   lowest dimensions.  This makes \code{aaply} idempotent,
-  so that \code{apply(input, X, identity)} is equivalent to
+  so that \code{aaply(input, X, identity)} is equivalent to
   \code{aperm(input, X)}.
 }
 \section{Input}{
