@@ -14,8 +14,9 @@ SEXP split_indices(SEXP group, SEXP n) {
   for (i = 0; i < nlevs; i++)
     counts[i] = 0;
   for (i = 0; i < nobs; i++) {
-    j = pgroup[i] - 1;
-    counts[j]++;
+    j = pgroup[i];
+    if (j > nlevs) error("n smaller than largest index");
+    counts[j - 1]++;
   }
 
   // Allocate storage for results
