@@ -8,8 +8,7 @@ test_that("empty arrays returns object of same shape", {
   expect_that(aaply(x, 3, identity), equals(logical()))
 
   expect_that(adply(x, 1, identity), equals(data.frame()))
-  expect_that(alply(x, 1, identity), equals(list()))
-
+  expect_that(alply(x, 1, identity), is_equivalent_to(list()))
 })
 
 test_that("empty lists return an empty object", {

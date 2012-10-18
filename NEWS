@@ -46,7 +46,7 @@ PERFORMANCE IMPROVEMENTS
 
 BUG FIXES
 
-* `*aply` functions now bind list mode results into a list-array. (Peter Meilstrup).
+* `*aply` functions now bind list mode results into a list-array (Peter Meilstrup)
 
 * `*aply` now accepts 0-dimension arrays as inputs. (#88)
 
