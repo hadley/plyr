@@ -11,5 +11,5 @@
 #' dlply(mtcars, c("vs", "am"))
 #' dlply(mtcars, c("vs", "am"), strip_splits)
 strip_splits <- function(df) {
-  df[setdiff(names(df), attr(df, "vars"))]
+  df[ !names(df) %in% attr(df, "vars") ]
 }
