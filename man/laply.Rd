@@ -48,7 +48,7 @@
   \code{laply} is similar in spirit to \code{\link{sapply}}
   except that it will always return an array, and the
   output is transposed with respect \code{sapply} - each
-  element of the list corresponds to a column, not a row.
+  element of the list corresponds to a row, not a column.
 }
 \section{Input}{
   This function splits lists by elements.

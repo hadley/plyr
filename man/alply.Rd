@@ -49,6 +49,11 @@
   results into a list.
 }
 \details{
+  The list will have "dims" and "dimnames" corresponding to
+  the margins given. For instance \code{alply(x, c(3,2),
+  ...)} where \code{x} has dims \code{c(4,3,2)} will give a
+  result with dims \code{c(2,3)}.
+
   \code{alply} is somewhat similar to \code{\link{apply}}
   for cases where the results are not atomic.
 }
