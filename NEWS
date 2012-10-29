@@ -1,3 +1,177 @@
+Version 1.8
+------------------------------------------------------------------------------
+
+NEW FEATURES AND FUNCTIONS
+
+* `**ply` gain a `.inform` argument (previously only available in `llply`) - this gives more useful debugging information at the cost of some speed. (Thanks to Brian Diggs, #57)
+
+* `alply`'s output gains dimensions and dimnames, similar to `apply`. Sequential indexing of a list produced by `alply` should be unaffected. (Peter Meilstrup)
+
+* `colwise`, `numcolwise` and `catcolwise` now all accept additional arguments in .... (Thanks to Stavros Macrakis, #62)
+
+* `here` makes it possible to use `**ply` + a function that uses non-standard evaluation (e.g. `summarise`, `mutate`, `subset`, `arrange`) inside a function.  (Thanks to Peter Meilstrup, #3)
+
+* `join_all` recursively joins a list of data frames. (Fixes #29)
+
+* `name_rows` provides a convenient way of saving and then restoring row names so that you can preserve them if you need to. (#61)
+
+* `progress_time` (used with `.progress = "time"`) estimates the amount of time remaining before the job is completed. (Thanks to Mike Lawrence, #78)
+
+* `summarise` now works iteratively so that later columns can refer to earlier.  (Thanks to Jim Hester, #44)
+
+* `take` makes it easy to subset along an arbitrary dimension.
+
+* Improved documentation thanks to patches from Tim Bates.
+
+PARALLEL PLYR
+
+* `**ply` gains a `.paropts` argumetns, a list of options that is passed onto `foreach` for controlling parallel computation.
+
+* `*_ply` now accepts `.parallel` argument to enable parallel processing. (Fixes #60)
+
+* Progress bars are disabled when using parallel plyr (Fixes #32)
+
+PERFORMANCE IMPROVEMENTS
+
+* `a*ply`: 25x speedup when indexing array objects, 3x speedup when indexing data frames.  This should substantially reduce the overhead of using `a*ply`
+
+* `d*ply` subsetting has been considerably optimised: this will have a small impact unless you have a very large number of groups, in which case it will be considerably faster.
+
+* `idata.frame`: Subsetting immutable data frames with `[.idf` is now
+  faster (Peter Meilstrup)
+
+* `quickdf` is around 20% faster
+
+* `split_indices`, which powers much internal splitting code (like `vaggregate`, `join` and `d*ply`) is about 2x faster.  It was already incredible fast ~0.2s for 1,000,000 obs, so this won't have much impact on overall performance
+
+BUG FIXES
+
+* `*aply` functions now bind list mode results into a list-array (Peter Meilstrup)
+
+* `*aply` now accepts 0-dimension arrays as inputs. (#88)
+
+* `*dply` now deals better with matrix results, converting them to data frames, rather than vectors. (Fixes #12)
+
+* `d*ply` will now preserve factor levels input if `drop = FALSE` (#81)
+
+* `join` works correctly when there are no common rows (Fixes #74), or when one input has no rows (Fixes #48). It also consistently orders the columns: common columns, then x cols, then y cols (Fixes #40).
+
+* `quickdf` correctly handles NA variable names. (Fixes #66. Thanks to Scott Kostyshak)
+
+* `rbind.fill` and `rbind.fill.matrix` work consistently with matrices and data frames with zero rows. Fixes #79. (Peter Meilstrup)
+
+* `rbind.fill` now stops if inputs are not data frames. (Fixes #51)
+
+* `rbind.fill` now works consistently with 0 column data frames
+
+* `round_any` now works with `POSIXct` objects, thanks to Jean-Olivier Irisson (#76)
+
+Version 1.7.1
+------------------------------------------------------------------------------
+
+* Fix bug in id, using numeric instead of integer
+
+Version 1.7
+------------------------------------------------------------------------------
+
+* `rbind.fill`: if a column contains both factors and characters (in different
+  inputs), the resulting column will be coerced to character
+
+* When there are more than 2^31 distinct combinations `id`, switches to a
+  slower fallback strategy using strings (inspired by `merge`) that guarantees
+  correct results. This fixes problems with `join` when joining across many
+  columns. (Fixes #63)
+
+* `split_indices` checks input more aggressively to prevent segfaults. 
+   Fixes #43.
+
+* fix small bug in `loop_apply` which lead to segfaults in certain
+  circumstances. (Thanks to Pål Westermark for patch)
+
+* `itertools` and `iterators` moved to suggests from imports so that plyr now
+  only depends on base R.
+
+Version 1.6
+------------------------------------------------------------------------------
+
+* documentation improved using new features of `roxygen2`
+
+* fixed namespacing issue which lead to lost labels when subsetting the
+  results of `*lply`
+
+* `colwise` automatically strips off split variables.
+
+* `rlply` now correctly deals with `rlply(4, NULL)` (thanks to bug report from
+  Eric Goldlust)
+
+* `rbind.fill` tries harder to keep attributes, retaining the attributes from
+  the first occurrence of each column it finds. It also now works with
+  variables of class `POSIXlt` and preserves the ordered status of factors.
+
+* `arrange` now works with one column data frames
+
+Version 1.5.2
+------------------------------------------------------------------------------
+
+* `d*ply` returns correct number of rows when function returns vector
+
+* fix NAMESPACE bug which was causing problems with ggplot2
+
+Version 1.5.1
+------------------------------------------------------------------------------
+
+* `rbind.fill` now treats 1d arrays in the same way as `rbind` (i.e. it turns
+  them into ordinary vectors)
+
+* fix bug in rename when renaming multiple columns
+
+Version 1.5 (2011-03-02)
+------------------------------------------------------------------------------
+
+NEW FEATURES
+
+* new `strip_splits` function removes splitting variables from the data frames
+  returned by `ddply`.
+
+* `rename` moved in from reshape, and rewritten.
+
+* new `match_df` function makes it easy to subset a data frame to only contain
+  values matching another data frame. Inspired by
+  http://stackoverflow.com/questions/4693849.
+
+BUG FIXES
+
+* `**ply` now works when passed a list of functions
+
+* `*dply` now correctly names output even when some output combinations are
+  missing (NULL) (Thanks to bug report from Karl Ove Hufthammer)
+
+* `*dply` preserves the class of many more object types.
+
+* `a*ply` now correctly works with zero length margins, operating on the
+  entire object (Thanks to bug report from Stavros Macrakis)
+
+* `join` now implements joins in a more SQL like way, returning all possible
+  matches, not just the first one. It is still a (little) faster than merge.
+  The previous behaviour is accessible with `match = "first"`.
+
+* `join` is now more symmetric so that `join(x, y, "left")` is closer to
+  `join(y, x, "right")`, modulo column ordering
+
+* `named.quoted` failed when quoted expressions were longer than 50
+  characters. (Thanks to bug report from Eric Goldlust)
+
+* `rbind.fill` now correctly maintains POSIXct tzone attributes and preserves
+  missing factor levels
+
+* `split_labels` correctly preserves empty factor levels, which means that
+  `drop = FALSE` should work in more places. Use `base::droplevels` to remove
+  levels that don't occur in the data, and `drop = T` to remove combinations
+  of levels that don't occur.
+
+* `vaggregate` now passes `...` to the aggregation function when working out
+  the output type (thanks to bug report by Pavan Racherla)
+
 Version 1.4.1 (2011-04-05)
 ------------------------------------------------------------------------------
 
