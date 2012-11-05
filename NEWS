@@ -5,7 +5,7 @@ NEW FEATURES AND FUNCTIONS
 
 * `**ply` gain a `.inform` argument (previously only available in `llply`) - this gives more useful debugging information at the cost of some speed. (Thanks to Brian Diggs, #57)
 
-* `alply`'s output gains dimensions and dimnames, similar to `apply`. Sequential indexing of a list produced by `alply` should be unaffected. (Peter Meilstrup)
+* if `.dims = TRUE` `alply`'s output gains dimensions and dimnames, similar to `apply`. Sequential indexing of a list produced by `alply` should be unaffected. (Peter Meilstrup)
 
 * `colwise`, `numcolwise` and `catcolwise` now all accept additional arguments in .... (Thanks to Stavros Macrakis, #62)
 
