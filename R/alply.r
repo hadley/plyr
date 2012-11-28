@@ -21,7 +21,7 @@
 #' alply(ozone, 3, function(x) table(round(x)))
 alply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE,
                   .progress = "none", .inform = FALSE, .parallel = FALSE,
-                  .paropts = NULL, .dims = TRUE) {
+                  .paropts = NULL, .dims = FALSE) {
   pieces <- splitter_a(.data, .margins, .expand)
 
   res <- llply(.data = pieces, .fun = .fun, ...,
