@@ -32,7 +32,7 @@ summarise <- function(.data, ...) {
     missing_names <- names(cols) == ""
   }
   if (any(missing_names)) {
-    names <- unname(unlist(lapply(match.call(expand = FALSE)$`...`, deparse)))
+    names <- unname(unlist(lapply(match.call(expand.dots = FALSE)$`...`, deparse)))
     names(cols)[missing_names] <- names[missing_names]
   }
   .data <- as.list(.data)

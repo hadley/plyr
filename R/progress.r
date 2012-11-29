@@ -119,7 +119,7 @@ progress_text <- function(style = 3, ...) {
 #' l_ply(1:100, identity, .progress = progress_tk(label=""))
 #' }
 progress_tk <- function(title = "plyr progress", label = "Working...", ...) {
-  stopifnot(require("tcltk", quiet=TRUE))
+  stopifnot(require("tcltk", quietly = TRUE))
   n <- 0
   tk <- NULL
 
