@@ -25,7 +25,7 @@ NEW FEATURES AND FUNCTIONS
 
 PARALLEL PLYR
 
-* `**ply` gains a `.paropts` argumetns, a list of options that is passed onto `foreach` for controlling parallel computation.
+* `**ply` gains a `.paropts` argument, a list of options that is passed onto `foreach` for controlling parallel computation.
 
 * `*_ply` now accepts `.parallel` argument to enable parallel processing. (Fixes #60)
 

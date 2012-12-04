@@ -16,6 +16,10 @@
 #' @aliases id ninteraction
 #' @export
 id <- function(.variables, drop = FALSE) {
+  # Drop all zero length inputs
+  lengths <- vapply(.variables, length, integer(1))
+  .variables <- .variables[lengths != 0]
+
   if (length(.variables) == 0) {
     n <- nrow(.variables) %||% 0L
     return(structure(seq_len(n), n = n))
