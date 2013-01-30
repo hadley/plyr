@@ -1,3 +1,6 @@
+* Fix faulty array allocation which caused problems when using `split_indices` 
+  with large (> 2^24) vectors.  (Fixes #131)
+
 Version 1.8
 ------------------------------------------------------------------------------
 
