@@ -2,39 +2,43 @@
 #include <Rdefines.h>
 
 SEXP split_indices(SEXP group, SEXP n) {
-  SEXP vec;
+  SEXP counts, vec;
   int i, j, k;
 
   int nlevs = INTEGER(n)[0];
+  if (nlevs < 1) error("n must be >= 1");
+
   int nobs = LENGTH(group);  
   int *pgroup = INTEGER(group);
   
   // Count number of cases in each group
-  int counts[nlevs];
+  PROTECT(counts = allocVector(INTSXP, nlevs));
+  int *pcounts = INTEGER(counts);
+
   for (i = 0; i < nlevs; i++)
-    counts[i] = 0;
+    pcounts[i] = 0;
   for (i = 0; i < nobs; i++) {
     j = pgroup[i];
     if (j > nlevs) error("n smaller than largest index");
-    counts[j - 1]++;
+    pcounts[j - 1]++;
   }
 
   // Allocate storage for results
   PROTECT(vec = allocVector(VECSXP, nlevs));
   for (i = 0; i < nlevs; i++) {
-    SET_VECTOR_ELT(vec, i, allocVector(INTSXP, counts[i]));
+    SET_VECTOR_ELT(vec, i, allocVector(INTSXP, pcounts[i]));
   }
 
   // Put indices in groups
   for (i = 0; i < nlevs; i++) {
-    counts[i] = 0;
+    pcounts[i] = 0;
   }
   for (i = 0; i < nobs; i++) {
     j = pgroup[i] - 1;
-    k = counts[j];
+    k = pcounts[j];
     INTEGER(VECTOR_ELT(vec, j))[k] = i + 1;
-    counts[j]++;
+    pcounts[j]++;
   }
-  UNPROTECT(1);
+  UNPROTECT(2);
   return vec;
 }
