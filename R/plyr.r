@@ -15,6 +15,7 @@
 #'   \item{d}{data.frame}
 #'   \item{m}{multiple inputs}
 #'   \item{r}{repeat multiple times}
+#'   \item{b}{database}
 #'   \item{_}{nothing}
 #' }
 #'
