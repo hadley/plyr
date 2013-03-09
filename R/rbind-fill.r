@@ -55,10 +55,13 @@ rbind.fill <- function(...) {
     df <- dfs[[i]]
 
     for(var in names(df)) {
+      if (is.factor(output[[var]]) && is.character(df[[var]])) {
+        output[[var]] <- as.character(output[[var]])
+      }
+      if (is.factor(df[[var]]) && is.character(output[[var]])) {
+        df[[var]] <- as.character(df[[var]])
+      }
       if (!is.matrix(output[[var]])) {
-        if (is.factor(output[[var]]) && is.character(df[[var]])) {
-          output[[var]] <- as.character(output[[var]])
-        }
         output[[var]][rng] <- df[[var]]
       } else {
         output[[var]][rng, ] <- df[[var]]
