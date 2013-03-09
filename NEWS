@@ -1,3 +1,8 @@
+* `join(x,y)` works when the key column in X is character and Y is
+  factor. Additionally `rbind.fill(x,y)` converts factor columns of Y
+  to character when columns of X are character. (Thanks to Peter
+  Meilstrup; #128)
+
 * Fix faulty array allocation which caused problems when using `split_indices` 
   with large (> 2^24) vectors.  (Fixes #131)
 
