@@ -28,6 +28,9 @@
 mutate <- function(.data, ...) {
   stopifnot(is.data.frame(.data) || is.list(.data) || is.environment(.data))
 
+  if(class(.data)[1] == "idf")
+    .data = as.data.frame(.data)
+
   cols <- as.list(substitute(list(...))[-1])
   cols <- cols[names(cols) != ""] # Silently drop unnamed columns
 

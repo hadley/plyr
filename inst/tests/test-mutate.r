@@ -10,6 +10,12 @@ test_that("mutate behaves the same as transform", {
   expect_that(m2, equals(t2))
 })
 
+test_that("mutate behaves the same as transform with idata.frames", {
+  m1 <- mutate(idata.frame(airquality), Ozone = -Ozone)
+  t1 <- mutate(idata.frame(airquality), Ozone = -Ozone)
+  expect_that(m1, equals(t1))
+})
+
 test_that("columns can depend on previously created", {
   m1 <- mutate(airquality, dm = Month + Day / 31, dm2 = 2 * dm)
   dm2 <- with(airquality, 2 * (Month + Day / 31))
