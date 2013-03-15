@@ -2,17 +2,17 @@ context("Mutate")
 
 test_that("mutate behaves the same as transform", {
   m1 <- mutate(airquality, Ozone = -Ozone)
-  t1 <- mutate(airquality, Ozone = -Ozone)
+  t1 <- transform(airquality, Ozone = -Ozone)
   expect_that(m1, equals(t1))
 
   m2 <- mutate(airquality, new = -Ozone, Temp = (Temp-32)/1.8)
-  t2 <- mutate(airquality, new = -Ozone, Temp = (Temp-32)/1.8)
+  t2 <- transform(airquality, new = -Ozone, Temp = (Temp-32)/1.8)
   expect_that(m2, equals(t2))
 })
 
 test_that("mutate behaves the same as transform with idata.frames", {
   m1 <- mutate(idata.frame(airquality), Ozone = -Ozone)
-  t1 <- mutate(idata.frame(airquality), Ozone = -Ozone)
+  t1 <- transform(idata.frame(airquality), Ozone = -Ozone)
   expect_that(m1, equals(t1))
 })
 
