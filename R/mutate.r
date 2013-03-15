@@ -28,7 +28,7 @@
 mutate <- function(.data, ...) {
   stopifnot(is.data.frame(.data) || is.list(.data) || is.environment(.data))
 
-  if(class(.data)[1] == "idf")
+  if(is.idata.frame(.data))
     .data = as.data.frame(.data)
 
   cols <- as.list(substitute(list(...))[-1])
