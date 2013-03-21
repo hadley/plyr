@@ -13,6 +13,7 @@
 #' @param .n number of times to evaluate the expression
 #' @param .expr expression to evaluate
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
+#' @param .nname name of the index column, defaults to \code{".n"}
 #' @return a data frame
 #' @export
 #' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
@@ -22,14 +23,16 @@
 #' rdply(20, mean(runif(100)))
 #' rdply(20, each(mean, var)(runif(100)))
 #' rdply(20, data.frame(x = runif(2)))
-rdply <- function(.n, .expr, .progress = "none") {
+rdply <- function(.n, .expr, .progress = "none", .nname = ".n") {
   if (is.function(.expr)) {
     f <- .expr
   } else {
     f <- eval.parent(substitute(function() .expr))
   }
 
+  stopifnot(length(.nname) == 1)
   res <- rlply(.n = .n, .expr = f, .progress = .progress)
   labels <- data.frame(.n = seq_len(.n))
+  names(labels) <- .nname
   list_to_dataframe(res, labels)
 }
