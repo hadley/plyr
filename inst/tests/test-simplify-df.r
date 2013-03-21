@@ -127,8 +127,8 @@ test_that("matrices converted to data frames", {
   colnames(mat) <- letters[1:4]
 
   li <- list(a = mat, b = mat)
-  df <- list_to_dataframe(li)
+  df <- list_to_dataframe(li, idname="my-id")
 
   expect_equal(nrow(df), 2 * nrow(mat))
-  expect_equal(names(df), c(".id", "a", "b", "c", "d"))
+  expect_equal(names(df), c("my-id", "a", "b", "c", "d"))
 })
