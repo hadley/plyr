@@ -22,7 +22,7 @@ list_to_dataframe <- function(res, labels = NULL, idname = NULL) {
   names.res <- names(res)
   if (!is.null(idname) && is.null(labels) && !is.null(names.res)) {
     stopifnot(length(idname) == 1)
-    labels <- data.frame(.id = names.res, stringsAsFactors = FALSE)
+    labels <- data.frame(.id = factor(names.res, levels = unique(names.res)))
     names(labels) <- idname
   }
 

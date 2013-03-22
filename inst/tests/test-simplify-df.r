@@ -103,15 +103,15 @@ test_that("names preserved and filled for atomic vectors", {
 })
 
 test_that("names captured from list", {
-  li <- list(a = 1:5, b = 5:10, c = 5:15)
+  li <- list(c = 5:15, b = 5:10, a = 1:5)
 
   df <- ldply(li, function(x) mean(x))
-  expect_that(df$.id, equals(c("a", "b", "c")))
+  expect_that(df$.id, equals(factor(names(li), levels=names(li))))
 
   df <- ldply(li, function(x) {
       if (any(x >= 10)) mean(x)
   })
-  expect_that(df$.id, equals(c("b", "c")))
+  expect_that(df$.id, equals(factor(names(li)[-3], levels=names(li)[-3])))
 })
 
 test_that("correct number of rows outputted", {
