@@ -41,7 +41,38 @@ rbind.fill <- function(...) {
   # Compute start and length for each data frame
   pos <- matrix(c(cumsum(rows) - rows + 1, rows), ncol = 2)
   
-  rbind.fill.fallback.worker(dfs, rows, pos)
+  # Generate output names and data frame
+  output_names <- output_vars(dfs)
+  output <- list()
+  
+  # Cache
+  seq_along.rows <- seq_along(rows)
+  length.rows <- length(rows)
+  for (var in output_names) {
+    coldata <- vector('list', length.rows)
+    first.i <- NULL
+    for(i in seq_along.rows) {
+      df <- dfs[[i]]
+      if (var %in% names(df)) {
+        df.var <- df[, var]
+        
+        if (is.matrix(df.var) || is.array(df.var) || is.factor(df.var) || inherits(df.var, "POSIXt"))
+          return (rbind.fill.fallback.worker(dfs, rows, pos))
+        if (is.null(first.i))
+          first.i <- i
+
+        coldata[[i]] <- df.var
+      } else {
+        coldata[[i]] <- rep(NA, pos[i, 2])
+      }
+    }
+    
+    # Workhorse, linear run time:
+    output[[var]] <- unlist(coldata, recursive=F, use.names=F)
+    class(output[[var]]) <- class(dfs[[first.i]][[var]])
+    attributes(output[[var]]) <- attributes(dfs[[first.i]][[var]])
+  }
+  return (quickdf(output))
 }
 
 rbind.fill.fallback.worker <- function(dfs, rows, pos) {
