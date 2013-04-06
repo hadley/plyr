@@ -191,7 +191,6 @@ test_that("rbind.fill takes linear run time", {
   time.measurements$NlogN <- time.measurements$N * log(time.measurements$N)
   time.measurements$N2 <- time.measurements$N ** 2
   print(time.measurements)
-  print(time.measurements$elapsed)
   
   models <- list(linear='N', loglinear='NlogN', squared='N2')
   models.rsq <- ldply(
