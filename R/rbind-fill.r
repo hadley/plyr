@@ -37,10 +37,15 @@ rbind.fill <- function(...) {
   # Calculate rows in output
   # Using .row_names_info directly is about 6 times faster than using nrow
   rows <- unlist(lapply(dfs, .row_names_info, 2L))
-  nrows <- sum(rows)
   
   # Compute start and length for each data frame
   pos <- matrix(c(cumsum(rows) - rows + 1, rows), ncol = 2)
+  
+  rbind.fill.fallback.worker(dfs, rows, pos)
+}
+
+rbind.fill.fallback.worker <- function(dfs, rows, pos) {
+  nrows <- sum(rows)
 
   # Generate output template
   output <- output_template(dfs, nrows)
