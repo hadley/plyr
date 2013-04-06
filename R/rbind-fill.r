@@ -38,6 +38,9 @@ rbind.fill <- function(...) {
   # Using .row_names_info directly is about 6 times faster than using nrow
   rows <- unlist(lapply(dfs, .row_names_info, 2L))
   nrows <- sum(rows)
+  
+  # Compute start and length for each data frame
+  pos <- matrix(c(cumsum(rows) - rows + 1, rows), ncol = 2)
 
   # Generate output template
   output <- output_template(dfs, nrows)
@@ -45,9 +48,6 @@ rbind.fill <- function(...) {
   if (length(output) == 0) {
     return(as.data.frame(matrix(nrow = nrows, ncol = 0)))
   }
-
-  # Compute start and length for each data frame
-  pos <- matrix(c(cumsum(rows) - rows + 1, rows), ncol = 2)
 
   # Copy inputs into output
   for(i in seq_along(rows)) {
