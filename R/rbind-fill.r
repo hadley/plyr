@@ -69,8 +69,12 @@ rbind.fill <- function(...) {
   quickdf(output)
 }
 
+output_vars <- function(dfs) {
+  unique(unlist(lapply(dfs, base::names)))   # ~ 125,000/s
+}
+
 output_template <- function(dfs, nrows) {
-  vars <- unique(unlist(lapply(dfs, base::names)))   # ~ 125,000/s
+  vars <- output_vars(dfs)
   output <- vector("list", length(vars))
   names(output) <- vars
 
