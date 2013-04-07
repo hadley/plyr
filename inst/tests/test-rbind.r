@@ -55,6 +55,17 @@ test_that("matrices are preserved", {
   expect_that(ab1, equals(ab2))
 })
 
+test_that("don't allow inconsistent widths in matrix columns", {
+  a <- data.frame(x=1)
+  b <- data.frame(x=2:3)
+  
+  a$x <- matrix(1:4, ncol=4)
+  b$x <- matrix(1:6, ncol=3)
+  
+  expect_error(rbind.fill(a, b), regexp='Matrix variable x has inconsistent widths')
+  expect_error(rbind.fill(b, a), regexp='Matrix variable x has inconsistent widths')
+})
+
 test_that("missing levels in factors preserved", {
   f <- addNA(factor(c("a", "b", NA)))
   df1 <- data.frame(a = f)
