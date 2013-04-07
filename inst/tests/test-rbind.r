@@ -188,7 +188,6 @@ test_that("rbind.fill takes linear run time", {
     }
   )
   time.measurements$N <- as.numeric(as.character(time.measurements$.id))
-  time.measurements$NlogN <- time.measurements$N * log(time.measurements$N)
   time.measurements$N2 <- time.measurements$N ** 2
   print(time.measurements)
   
