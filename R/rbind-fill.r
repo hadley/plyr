@@ -48,7 +48,13 @@ rbind.fill <- function(...) {
 
   # Compute start and length for each data frame
   pos <- data.frame(start=cumsum(rows) - rows + 1, length=rows)
+  
+  output <- rbind.fill.worker(output, dfs, rows, pos)
+  
+  quickdf(output)
+}
 
+rbind.fill.worker <- function(output, dfs, rows, pos) {
   # Copy inputs into output
   for(i in seq_along(rows)) {
     rng <- seq(pos$start[i], length = pos$length[i])
@@ -66,7 +72,7 @@ rbind.fill <- function(...) {
     }
   }
 
-  quickdf(output)
+  output
 }
 
 output_template <- function(dfs, nrows) {
