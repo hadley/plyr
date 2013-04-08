@@ -17,6 +17,7 @@ URL: http://had.co.nz/plyr
 Depends:
     R (>= 3.0.0),
     Rcpp (>= 0.10.3)
+LinkingTo: Rcpp
 Suggests:
     abind,
     testthat (>= 0.2),
@@ -95,3 +96,4 @@ Collate:
     'rbind-fill.r'
     'splitter-a.r'
     'splitter-d.r'
+    'RcppExports.R'
