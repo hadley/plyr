@@ -47,11 +47,11 @@ rbind.fill <- function(...) {
   }
 
   # Compute start and length for each data frame
-  pos <- matrix(c(cumsum(rows) - rows + 1, rows), ncol = 2)
+  pos <- data.frame(start=cumsum(rows) - rows + 1, length=rows)
 
   # Copy inputs into output
   for(i in seq_along(rows)) {
-    rng <- seq(pos[i, 1], length = pos[i, 2])
+    rng <- seq(pos$start[i], length = pos$length[i])
     df <- dfs[[i]]
 
     for(var in names(df)) {
