@@ -36,7 +36,7 @@ rbind.fill <- function(...) {
 
   # Calculate rows in output
   # Using .row_names_info directly is about 6 times faster than using nrow
-  rows <- unlist(lapply(dfs, .row_names_info, 2L))
+  rows <- unlist.fast(lapply(dfs, .row_names_info, 2L))
   nrows <- sum(rows)
 
   # Generate output template
@@ -77,7 +77,7 @@ rbind.fill.worker <- function(output, dfs, rows, pos) {
 }
 
 output_template <- function(dfs, nrows) {
-  vars <- unique(unlist(lapply(dfs, base::names)))   # ~ 125,000/s
+  vars <- unique(unlist.fast(lapply(dfs, base::names)))   # ~ 125,000/s
   output <- vector("list", length(vars))
   names(output) <- vars
 
@@ -120,14 +120,14 @@ output_template <- function(dfs, nrows) {
 
   # Set up factors
   for(var in vars[is_factor]) {
-    all <- unique(lapply(dfs, function(df) levels(df[[var]])))
-    output[[var]] <- factor(output[[var]], levels = unique(unlist(all)),
+    all <- lapply(dfs, function(df) levels(df[[var]]))
+    output[[var]] <- factor(output[[var]], levels = unique(unlist.fast(all)),
       exclude = NULL)
   }
 
   # Set up matrices
   for(var in vars[is_matrix]) {
-    width <- unique(unlist(lapply(dfs, function(df) ncol(df[[var]]))))
+    width <- unique(unlist.fast(lapply(dfs, function(df) ncol(df[[var]]))))
     if (length(width) > 1)
       stop("Matrix variable ", var, " has inconsistent widths")
 
@@ -137,7 +137,7 @@ output_template <- function(dfs, nrows) {
 
   # Set up arrays
   for (var in vars[is_array]) {
-    dims <- unique(unlist(lapply(dfs, function(df) dims(df[[var]]))))
+    dims <- unique(unlist.fast(lapply(dfs, function(df) dims(df[[var]]))))
     if (any(dims) > 1) {
       stop("rbind.fill can only work with 1d arrays")
     }
@@ -147,3 +147,5 @@ output_template <- function(dfs, nrows) {
 
   output
 }
+
+unlist.fast <- function(x) unlist(x, recursive=F, use.names=F)
