@@ -170,13 +170,13 @@ test_that("zero col data frames ok", {
 })
 
 test_that("rbind.fill takes linear run time", {
-  REP <- 2
+  REP <- 3
   
-  R <- 400
+  R <- 4000
   df <- data.frame(a=1:R, b=1:R, c=1:R)
   
   NB <- 25
-  NR <- 4
+  NR <- 6
   
   NL <- NB * 2 ^ (0:NR)
   names(NL) <- NL
@@ -195,7 +195,7 @@ test_that("rbind.fill takes linear run time", {
         function() {
           system.time(rbind.fill(ldf))
         }
-      )
+      )[-1,] # Discard first result: Cache effects
     }
   )
   time.measurements$N <- as.numeric(as.character(time.measurements$.id))

@@ -6,15 +6,14 @@
 using namespace Rcpp;
 
 // rbind_fill_worker
-List rbind_fill_worker(List output, DataFrame dfs, IntegerVector rows, DataFrame pos);
-RcppExport SEXP plyr_rbind_fill_worker(SEXP outputSEXP, SEXP dfsSEXP, SEXP rowsSEXP, SEXP posSEXP) {
+List rbind_fill_worker(List dfs, IntegerVector rows, int nrows);
+RcppExport SEXP plyr_rbind_fill_worker(SEXP dfsSEXP, SEXP rowsSEXP, SEXP nrowsSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope __rngScope;
-    List output = Rcpp::as<List >(outputSEXP);
-    DataFrame dfs = Rcpp::as<DataFrame >(dfsSEXP);
+    List dfs = Rcpp::as<List >(dfsSEXP);
     IntegerVector rows = Rcpp::as<IntegerVector >(rowsSEXP);
-    DataFrame pos = Rcpp::as<DataFrame >(posSEXP);
-    List __result = rbind_fill_worker(output, dfs, rows, pos);
+    int nrows = Rcpp::as<int >(nrowsSEXP);
+    List __result = rbind_fill_worker(dfs, rows, nrows);
     return Rcpp::wrap(__result);
 END_RCPP
 }
