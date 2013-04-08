@@ -57,6 +57,7 @@ rbind.fill <- function(...) {
 rbind.fill.worker <- function(output, dfs, rows, pos) {
   # Copy inputs into output
   for(i in seq_along(rows)) {
+    rng1 <- seq(1, length = pos$length[i])
     rng <- seq(pos$start[i], length = pos$length[i])
     df <- dfs[[i]]
 
@@ -65,9 +66,9 @@ rbind.fill.worker <- function(output, dfs, rows, pos) {
         if (is.factor(output[[var]]) && is.character(df[[var]])) {
           output[[var]] <- as.character(output[[var]])
         }
-        output[[var]][rng] <- df[[var]]
+        output[[var]][rng] <- df[[var]][rng1]
       } else {
-        output[[var]][rng, ] <- df[[var]]
+        output[[var]][rng, ] <- df[[var]][rng1, ]
       }
     }
   }
