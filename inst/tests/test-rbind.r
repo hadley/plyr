@@ -55,6 +55,17 @@ test_that("matrices are preserved", {
   expect_that(ab1, equals(ab2))
 })
 
+test_that("don't allow inconsistent widths in matrix columns", {
+  a <- data.frame(x=1)
+  b <- data.frame(x=2:3)
+  
+  a$x <- matrix(1:4, ncol=4)
+  b$x <- matrix(1:6, ncol=3)
+  
+  expect_error(rbind.fill(a, b), regexp='Matrix variable x has inconsistent widths')
+  expect_error(rbind.fill(b, a), regexp='Matrix variable x has inconsistent widths')
+})
+
 test_that("missing levels in factors preserved", {
   f <- addNA(factor(c("a", "b", NA)))
   df1 <- data.frame(a = f)
@@ -156,4 +167,51 @@ test_that("zero col data frames ok", {
   expect_equal(nrow(za), 0)
   expect_equal(nrow(zb), 1)
   expect_equal(nrow(zc), 1)
+})
+
+test_that("rbind.fill takes linear run time", {
+  REP <- 2
+  
+  R <- 400
+  df <- data.frame(a=1:R, b=1:R, c=1:R)
+  
+  NB <- 25
+  NR <- 4
+  
+  NL <- NB * 2 ^ (0:NR)
+  names(NL) <- NL
+  
+  time.measurements <- ldply(
+    NL,
+    function (N) {
+      ldf <- rlply(
+        N,
+        function()
+          df
+      )
+      gc()
+      rdply(
+        REP,
+        function() {
+          system.time(rbind.fill(ldf))
+        }
+      )
+    }
+  )
+  time.measurements$N <- as.numeric(as.character(time.measurements$.id))
+  time.measurements$N2 <- time.measurements$N ** 2
+  print(time.measurements)
+  
+  models <- list(linear='N', squared='N2')
+  models.rsq <- ldply(
+    models,
+    function(f) {
+      model <- lm(as.formula(paste0('elapsed~', f)), time.measurements)
+      data.frame(r.squared=summary(model)$r.squared)
+    }
+  )
+  print(models.rsq)
+  
+  expect_true(which.max(models.rsq$r.squared) ==
+                which(models.rsq$.id == 'linear'))
 })

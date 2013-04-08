@@ -37,6 +37,45 @@ rbind.fill <- function(...) {
   # Calculate rows in output
   # Using .row_names_info directly is about 6 times faster than using nrow
   rows <- unlist(lapply(dfs, .row_names_info, 2L))
+  
+  # Compute start and length for each data frame
+  pos <- matrix(c(cumsum(rows) - rows + 1, rows), ncol = 2)
+  
+  # Generate output names and data frame
+  output_names <- output_vars(dfs)
+  output <- list()
+  
+  # Cache
+  seq_along.rows <- seq_along(rows)
+  length.rows <- length(rows)
+  for (var in output_names) {
+    coldata <- vector('list', length.rows)
+    first.i <- NULL
+    for(i in seq_along.rows) {
+      df <- dfs[[i]]
+      if (var %in% names(df)) {
+        df.var <- df[, var]
+        
+        if (is.matrix(df.var) || is.array(df.var) || is.factor(df.var) || inherits(df.var, "POSIXt"))
+          return (rbind.fill.fallback.worker(dfs, rows, pos))
+        if (is.null(first.i))
+          first.i <- i
+
+        coldata[[i]] <- df.var
+      } else {
+        coldata[[i]] <- rep(NA, pos[i, 2])
+      }
+    }
+    
+    # Workhorse, linear run time:
+    output[[var]] <- unlist(coldata, recursive=F, use.names=F)
+    class(output[[var]]) <- class(dfs[[first.i]][[var]])
+    attributes(output[[var]]) <- attributes(dfs[[first.i]][[var]])
+  }
+  return (quickdf(output))
+}
+
+rbind.fill.fallback.worker <- function(dfs, rows, pos) {
   nrows <- sum(rows)
 
   # Generate output template
@@ -45,9 +84,6 @@ rbind.fill <- function(...) {
   if (length(output) == 0) {
     return(as.data.frame(matrix(nrow = nrows, ncol = 0)))
   }
-
-  # Compute start and length for each data frame
-  pos <- matrix(c(cumsum(rows) - rows + 1, rows), ncol = 2)
 
   # Copy inputs into output
   for(i in seq_along(rows)) {
@@ -69,8 +105,12 @@ rbind.fill <- function(...) {
   quickdf(output)
 }
 
+output_vars <- function(dfs) {
+  unique(unlist(lapply(dfs, base::names)))   # ~ 125,000/s
+}
+
 output_template <- function(dfs, nrows) {
-  vars <- unique(unlist(lapply(dfs, base::names)))   # ~ 125,000/s
+  vars <- output_vars(dfs)
   output <- vector("list", length(vars))
   names(output) <- vars
 
