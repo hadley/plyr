@@ -39,6 +39,12 @@ rbind.fill <- function(...) {
   rows <- unlist.fast(lapply(dfs, .row_names_info, 2L))
   nrows <- sum(rows)
 
+  output <- rbind.fill.worker(dfs, rows, nrows)
+
+  quickdf(output)
+}
+
+rbind.fill.worker <- function(dfs, rows, nrows) {
   # Generate output template
   output <- output_template(dfs, nrows)
   # Case of zero column inputs
@@ -49,12 +55,6 @@ rbind.fill <- function(...) {
   # Compute start and length for each data frame
   pos <- data.frame(start=cumsum(rows) - rows + 1, length=rows)
   
-  output <- rbind.fill.worker(output, dfs, rows, pos)
-  
-  quickdf(output)
-}
-
-rbind.fill.worker <- function(output, dfs, rows, pos) {
   # Copy inputs into output
   for(i in seq_along(rows)) {
     rng1 <- seq(1, length = pos$length[i])
@@ -72,7 +72,7 @@ rbind.fill.worker <- function(output, dfs, rows, pos) {
       }
     }
   }
-
+  
   output
 }
 
