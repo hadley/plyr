@@ -1,23 +1,5 @@
+library(testthat)
 context("rbind.fill")
-
-test_that("variable classes are preserved", {
-  a <- data.frame(a = factor(letters[1:3]), b = 1:3, c = date())
-  b <- data.frame(
-    a = factor(letters[3:5]),
-    d = as.Date(c("2008-01-01", "2009-01-01", "2010-01-01")))
-  b$e <- as.POSIXlt(as.Date(c("2008-01-01", "2009-01-01", "2010-01-01")))
-  b$f <- matrix (1:6, nrow = 3)
-
-  ab1 <- rbind.fill(a, b)[, letters[1:6]]
-  ab2 <- rbind.fill(b, a)[c(4:6, 1:3), letters[1:6]]
-  ab2$a <- factor(ab2$a, levels(ab1$a))
-  rownames(ab2) <- NULL
-
-  expect_that(ab1, equals(ab2))
-  expect_that(unname(lapply(ab1, class)),
-    equals(list("factor", "integer", "factor", "Date", c("POSIXct", "POSIXt"),
-                "matrix")))
-})
 
 test_that("same as rbind for simple cases", {
   bsmall <- baseball[1:1000, ]
@@ -37,6 +19,112 @@ test_that("columns are in expected order", {
   expect_that(names(rbind.fill(a, b)), equals(c("a", "b", "c", "d", "e")))
   expect_that(names(rbind.fill(a, c)), equals(c("a", "b", "c")))
   expect_that(names(rbind.fill(c, a)), equals(c("c", "b", "a")))
+})
+
+test_that("zero row data frames ok", {
+  d1 <- data.frame(x = 1:2, y = 2:3)
+  d2 <- data.frame(y = 3:4, z = 5:6)
+  
+  za <- rbind.fill(subset(d1, FALSE))
+  zb <- rbind.fill(d1, subset(d2, FALSE))
+  zc <- rbind.fill(subset(d1, FALSE), subset(d2, FALSE))
+  
+  expect_equal(class(za), "data.frame")
+  expect_equal(nrow(za), 0)
+  expect_true(all(names(za) %in% c("x", "y")))
+  
+  expect_equal(class(zb), "data.frame")
+  expect_equal(nrow(zb), 2)
+  expect_true(all(names(zb) %in% c("x", "y", "z")))
+  expect_equal(zb$y, d1$y)
+  expect_equal(zb$z, rep(as.numeric(NA), nrow(d1)))
+  
+  expect_equal(class(zc), "data.frame")
+  expect_equal(nrow(zc), 0)
+  expect_true(all(names(zc) %in% c("x", "y", "z")))
+})
+
+test_that("zero col data frames ok", {
+  d1 <- data.frame(x = "a", y = 1L)
+  d2 <- data.frame(y = 2L, z = 3L)
+  
+  za <- rbind.fill(d1[0, ], d2[0, ])
+  zb <- rbind.fill(d1[0, ], d2)
+  zc <- rbind.fill(d1, d2[0, ])
+  
+  expect_equal(names(za), c("x", "y", "z"))
+  expect_equal(names(zb), c("x", "y", "z"))
+  expect_equal(names(zc), c("x", "y", "z"))
+  
+  expect_equal(nrow(za), 0)
+  expect_equal(nrow(zb), 1)
+  expect_equal(nrow(zc), 1)
+})
+
+test_that("rbind.fill takes linear run time", {
+  REP <- 3
+  
+  R <- 4000
+  df <- data.frame(a=1:R, b=1:R, c=1:R)
+  
+  NB <- 25
+  NR <- 6
+  
+  NL <- NB * 2 ^ (0:NR)
+  names(NL) <- NL
+  
+  time.measurements <- ldply(
+    NL,
+    function (N) {
+      ldf <- rlply(
+        N,
+        function()
+          df
+      )
+      gc()
+      rdply(
+        REP,
+        function() {
+          system.time(rbind.fill(ldf))
+        }
+      )[-1,] # Discard first result: Cache effects
+    }
+  )
+  time.measurements$N <- as.numeric(as.character(time.measurements$.id))
+  time.measurements$N2 <- time.measurements$N ** 2
+  print(time.measurements)
+  
+  models <- list(linear='N', squared='N2')
+  models.rsq <- ldply(
+    models,
+    function(f) {
+      model <- lm(as.formula(paste0('elapsed~', f)), time.measurements)
+      data.frame(r.squared=summary(model)$r.squared)
+    }
+  )
+  print(models.rsq)
+  
+  expect_true(which.max(models.rsq$r.squared) ==
+                which(models.rsq$.id == 'linear'))
+})
+
+test_that("variable classes are preserved", {
+  a <- data.frame(a = factor(letters[1:3]), b = 1:3, c = date())
+  b <- data.frame(
+    a = factor(letters[3:5]),
+    d = as.Date(c("2008-01-01", "2009-01-01", "2010-01-01")))
+  b$e <- as.POSIXlt(as.Date(c("2008-01-01", "2009-01-01", "2010-01-01")))
+  b$f <- matrix (1:6, nrow = 3)
+  
+  ab1 <- rbind.fill(a, b)[, letters[1:6]]
+  ab2 <- rbind.fill(b, a)[c(4:6, 1:3), letters[1:6]]
+  ab2$a <- factor(ab2$a, levels(ab1$a))
+  rownames(ab2) <- NULL
+  
+  expect_that(ab1, equals(ab2))
+  expect_that(unname(lapply(ab1, class)),
+              equals(list("factor", "integer", "factor", "Date", c("POSIXct", "POSIXt"),
+                          "matrix")))
 })
 
 test_that("matrices are preserved", {
@@ -127,91 +215,4 @@ test_that("characters override factors", {
 
   expect_that(d3a$x, is_a("character"))
   expect_that(d3b$x, is_a("character"))
-})
-
-test_that("zero row data frames ok", {
-  d1 <- data.frame(x = 1:2, y = 2:3)
-  d2 <- data.frame(y = 3:4, z = 5:6)
-
-  za <- rbind.fill(subset(d1, FALSE))
-  zb <- rbind.fill(d1, subset(d2, FALSE))
-  zc <- rbind.fill(subset(d1, FALSE), subset(d2, FALSE))
-
-  expect_equal(class(za), "data.frame")
-  expect_equal(nrow(za), 0)
-  expect_true(all(names(za) %in% c("x", "y")))
-
-  expect_equal(class(zb), "data.frame")
-  expect_equal(nrow(zb), 2)
-  expect_true(all(names(zb) %in% c("x", "y", "z")))
-  expect_equal(zb$y, d1$y)
-  expect_equal(zb$z, rep(as.numeric(NA), nrow(d1)))
-
-  expect_equal(class(zc), "data.frame")
-  expect_equal(nrow(zc), 0)
-  expect_true(all(names(zc) %in% c("x", "y", "z")))
-})
-
-test_that("zero col data frames ok", {
-  d1 <- data.frame(x = "a", y = 1L)
-  d2 <- data.frame(y = 2L, z = 3L)
-
-  za <- rbind.fill(d1[0, ], d2[0, ])
-  zb <- rbind.fill(d1[0, ], d2)
-  zc <- rbind.fill(d1, d2[0, ])
-
-  expect_equal(names(za), c("x", "y", "z"))
-  expect_equal(names(zb), c("x", "y", "z"))
-  expect_equal(names(zc), c("x", "y", "z"))
-
-  expect_equal(nrow(za), 0)
-  expect_equal(nrow(zb), 1)
-  expect_equal(nrow(zc), 1)
-})
-
-test_that("rbind.fill takes linear run time", {
-  REP <- 3
-  
-  R <- 4000
-  df <- data.frame(a=1:R, b=1:R, c=1:R)
-  
-  NB <- 25
-  NR <- 6
-  
-  NL <- NB * 2 ^ (0:NR)
-  names(NL) <- NL
-  
-  time.measurements <- ldply(
-    NL,
-    function (N) {
-      ldf <- rlply(
-        N,
-        function()
-          df
-      )
-      gc()
-      rdply(
-        REP,
-        function() {
-          system.time(rbind.fill(ldf))
-        }
-      )[-1,] # Discard first result: Cache effects
-    }
-  )
-  time.measurements$N <- as.numeric(as.character(time.measurements$.id))
-  time.measurements$N2 <- time.measurements$N ** 2
-  print(time.measurements)
-  
-  models <- list(linear='N', squared='N2')
-  models.rsq <- ldply(
-    models,
-    function(f) {
-      model <- lm(as.formula(paste0('elapsed~', f)), time.measurements)
-      data.frame(r.squared=summary(model)$r.squared)
-    }
-  )
-  print(models.rsq)
-  
-  expect_true(which.max(models.rsq$r.squared) ==
-                which(models.rsq$.id == 'linear'))
 })
