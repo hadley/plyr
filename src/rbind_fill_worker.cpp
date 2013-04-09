@@ -3,16 +3,16 @@
 using namespace Rcpp;
 
 template <int T, class U>
-void fill(Vector<T> v, size_t from, size_t to, const U& u) {
-  std::fill(v.begin() + from, v.begin() + to, u);
+void fillNA(Vector<T> v, size_t from, size_t to) {
+  std::fill(v.begin() + from, v.begin() + to, v.get_na());
 }
 
 void fillNA(SEXP v, size_t from, size_t to) {
   switch (TYPEOF(v)) {
-  case REALSXP: fill(as<Vector<REALSXP> >(v), from, to, NA_REAL); break;
-  case LGLSXP:  fill(as<Vector<LGLSXP>  >(v), from, to, NA_LOGICAL); break;
-  case INTSXP:  fill(as<Vector<INTSXP>  >(v), from, to, NA_INTEGER); break;
-  case STRSXP:  fill(as<Vector<STRSXP>  >(v), from, to, NA_STRING); break;
+  case REALSXP: fillNA(as<Vector<REALSXP> >(v), from, to); break;
+  case LGLSXP:  fillNA(as<Vector<LGLSXP>  >(v), from, to); break;
+  case INTSXP:  fillNA(as<Vector<INTSXP>  >(v), from, to); break;
+  case STRSXP:  fillNA(as<Vector<STRSXP>  >(v), from, to); break;
   case CPLXSXP:
   default:
     throw exception("Not implemented");
