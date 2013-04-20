@@ -121,8 +121,7 @@ test_that("correct number of rows outputted", {
   expect_that(nrow(res), equals(3))
 })
 
-
-test_that("matrices converted to data frames", {
+test_that("matrices converted to data frames, without id column", {
   mat <- matrix(1:20, ncol = 4)
   colnames(mat) <- letters[1:4]
 
@@ -130,5 +129,16 @@ test_that("matrices converted to data frames", {
   df <- list_to_dataframe(li)
 
   expect_equal(nrow(df), 2 * nrow(mat))
-  expect_equal(names(df), c(".id", "a", "b", "c", "d"))
+  expect_equal(names(df), c("a", "b", "c", "d"))
+})
+
+test_that("matrices converted to data frames, with id column", {
+  mat <- matrix(1:20, ncol = 4)
+  colnames(mat) <- letters[1:4]
+  
+  li <- list(a = mat, b = mat)
+  df <- list_to_dataframe(li, idname="my-id")
+  
+  expect_equal(nrow(df), 2 * nrow(mat))
+  expect_equal(names(df), c("my-id", "a", "b", "c", "d"))
 })
