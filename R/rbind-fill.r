@@ -36,9 +36,15 @@ rbind.fill <- function(...) {
 
   # Calculate rows in output
   # Using .row_names_info directly is about 6 times faster than using nrow
-  rows <- unlist(lapply(dfs, .row_names_info, 2L))
+  rows <- unlist.fast(lapply(dfs, .row_names_info, 2L))
   nrows <- sum(rows)
 
+  output <- rbind.fill.worker(dfs, rows, nrows)
+
+  quickdf(output)
+}
+
+rbind.fill.worker <- function(dfs, rows, nrows) {
   # Generate output template
   output <- output_template(dfs, nrows)
   # Case of zero column inputs
@@ -47,11 +53,12 @@ rbind.fill <- function(...) {
   }
 
   # Compute start and length for each data frame
-  pos <- matrix(c(cumsum(rows) - rows + 1, rows), ncol = 2)
-
+  pos <- data.frame(start=cumsum(rows) - rows + 1, length=rows)
+  
   # Copy inputs into output
   for(i in seq_along(rows)) {
-    rng <- seq(pos[i, 1], length = pos[i, 2])
+    rng1 <- seq(1, length = pos$length[i])
+    rng <- seq(pos$start[i], length = pos$length[i])
     df <- dfs[[i]]
 
     for(var in names(df)) {
@@ -59,18 +66,18 @@ rbind.fill <- function(...) {
         if (is.factor(output[[var]]) && is.character(df[[var]])) {
           output[[var]] <- as.character(output[[var]])
         }
-        output[[var]][rng] <- df[[var]]
+        output[[var]][rng] <- df[[var]][rng1]
       } else {
-        output[[var]][rng, ] <- df[[var]]
+        output[[var]][rng, ] <- df[[var]][rng1, ]
       }
     }
   }
-
-  quickdf(output)
+  
+  output
 }
 
 output_template <- function(dfs, nrows) {
-  vars <- unique(unlist(lapply(dfs, base::names)))   # ~ 125,000/s
+  vars <- unique(unlist.fast(lapply(dfs, base::names)))   # ~ 125,000/s
   output <- vector("list", length(vars))
   names(output) <- vars
 
@@ -113,14 +120,14 @@ output_template <- function(dfs, nrows) {
 
   # Set up factors
   for(var in vars[is_factor]) {
-    all <- unique(lapply(dfs, function(df) levels(df[[var]])))
-    output[[var]] <- factor(output[[var]], levels = unique(unlist(all)),
+    all <- lapply(dfs, function(df) levels(df[[var]]))
+    output[[var]] <- factor(output[[var]], levels = unique(unlist.fast(all)),
       exclude = NULL)
   }
 
   # Set up matrices
   for(var in vars[is_matrix]) {
-    width <- unique(unlist(lapply(dfs, function(df) ncol(df[[var]]))))
+    width <- unique(unlist.fast(lapply(dfs, function(df) ncol(df[[var]]))))
     if (length(width) > 1)
       stop("Matrix variable ", var, " has inconsistent widths")
 
@@ -130,7 +137,7 @@ output_template <- function(dfs, nrows) {
 
   # Set up arrays
   for (var in vars[is_array]) {
-    dims <- unique(unlist(lapply(dfs, function(df) dims(df[[var]]))))
+    dims <- unique(unlist.fast(lapply(dfs, function(df) dims(df[[var]]))))
     if (any(dims) > 1) {
       stop("rbind.fill can only work with 1d arrays")
     }
@@ -140,3 +147,5 @@ output_template <- function(dfs, nrows) {
 
   output
 }
+
+unlist.fast <- function(x) unlist(x, recursive=F, use.names=F)
