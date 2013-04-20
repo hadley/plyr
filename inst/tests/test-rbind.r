@@ -216,3 +216,13 @@ test_that("characters override factors", {
   expect_that(d3a$x, is_a("character"))
   expect_that(d3b$x, is_a("character"))
 })
+
+test_that("type coercion works", {
+  d1 <- data.frame(a=as.integer(1:3), b=1:3, c=as.integer(1:3))
+  d2 <- data.frame(a=1:3, b=complex(imaginary=1:3), c=as.character(1:3))
+  d3 <- rbind.fill(d1, d2)
+
+  expect_true(is.numeric(d3$a))
+  expect_true(is.complex(d3$b))
+  expect_true(is.character(d3$c))
+})
