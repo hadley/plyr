@@ -23,6 +23,10 @@ NEW FEATURES AND FUNCTIONS
 
 * Improved documentation thanks to patches from Tim Bates.
 
+* New parameter `.id` to `rdply()` that specifies the name of the index column. (Thanks to Kirill Müller, #142)
+
+* The `.id` column is created as factor in ldply(). (Thanks to Kirill Müller, #137)
+
 PARALLEL PLYR
 
 * `**ply` gains a `.paropts` argumetns, a list of options that is passed onto `foreach` for controlling parallel computation.

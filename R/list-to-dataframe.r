@@ -18,7 +18,9 @@ list_to_dataframe <- function(res, labels = NULL) {
     labels <- labels[!null, , drop = FALSE]
   }
   if (is.null(labels) && !is.null(names(res))) {
-    labels <- data.frame(.id = names(res), stringsAsFactors = FALSE)
+    names.res <- names(res)
+    labels <- data.frame(.id = names.res, stringsAsFactors = FALSE)
+    labels$.id <- factor(labels$.id, levels = unique(names.res))
   }
 
   # Figure out how to turn elements into a data frame
