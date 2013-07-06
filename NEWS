@@ -12,6 +12,8 @@ BUG FIXES
 * Fix faulty array allocation which caused problems when using `split_indices` 
   with large (> 2^24) vectors.  (Fixes #131)
 
+* The .id column in ldply() is generated as a factor to preserve the sort order. (Thanks to Kirill Müller, #137)
+
 Version 1.8
 ------------------------------------------------------------------------------
 
