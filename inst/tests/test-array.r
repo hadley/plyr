@@ -101,7 +101,7 @@ test_that("alply sets dims and dimnames, equivalence to permutation", {
                                          (x+y+z)>0 & !any(duplicated(setdiff(c(x,y,z), 0))))),
                         1, function(x) setdiff(x, 0)))
   p_aperm <- llply(p_alply, function(x) union(setdiff(1:3, x), x))
-  alplys <- lapply(p_alply, alply, .data=x, identity)
+  alplys <- lapply(p_alply, alply, .data=x, identity, .dims = TRUE)
   #alply will fill in dimnames on a dim that has none, so match that here
   dimnames(x)[[3]] <- c("1", "2")
   aperms <- llply(p_aperm, .fun=aperm, a=x)
