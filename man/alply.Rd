@@ -4,7 +4,7 @@
 \usage{
   alply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
     .progress = "none", .inform = FALSE, .parallel = FALSE,
-    .paropts = NULL)
+    .paropts = NULL, .dims = FALSE)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -40,6 +40,9 @@
   output be 1d (expand = FALSE), with an element for each
   row; or nd (expand = TRUE), with a dimension for each
   variable.}
+
+  \item{.dims}{if \code{TRUE}, copy over dimensions and
+  names from input.}
 }
 \value{
   list of results
