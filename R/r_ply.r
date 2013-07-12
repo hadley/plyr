@@ -19,7 +19,8 @@
 #' r_ply(10, plot(runif(50)))
 #' r_ply(25, hist(runif(1000)))
 r_ply <- function(.n, .expr, .progress = "none", .print = FALSE) {
-  if (is.function(.expr)) {
+  parsed <- substitute(.expr)
+  if (grepl('^function', parsed[[1]])) {
     f <- .expr
   } else {
     f <- eval.parent(substitute(function() .expr))
