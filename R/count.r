@@ -36,7 +36,7 @@
 #' count(count(baseball[1:100,], c("id", "year")), "id", "freq")
 #' count(count(baseball, c("id", "year")), "freq")
 count <- function(df, vars = NULL, wt_var = NULL) {
-  if (is.vector(df)) {
+  if (is.atomic(df)) {
     df <- data.frame(x = df)
   }
 
