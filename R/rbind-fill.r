@@ -56,20 +56,28 @@ rbind.fill <- function(...) {
 
     for(var in names(df)) {
       if (is.factor(output[[var]]) && is.character(df[[var]])) {
-        output[[var]] <- as.character(output[[var]])
+        output[[var]] <- factor_to_char_preserving_attrs(output[[var]])
       }
       if (is.factor(df[[var]]) && is.character(output[[var]])) {
-        df[[var]] <- as.character(df[[var]])
+        df[[var]] <- factor_to_char_preserving_attrs(df[[var]])
       }
-      if (!is.matrix(output[[var]])) {
-        output[[var]][rng] <- df[[var]]
-      } else {
+      if (is.matrix(output[[var]])) {
         output[[var]][rng, ] <- df[[var]]
+      } else {
+        output[[var]][rng] <- df[[var]]
       }
     }
   }
 
   quickdf(output)
+}
+
+factor_to_char_preserving_attrs <- function(x) {
+  a <- attributes(x)
+  a[c("levels", "class")] <- NULL
+  x <- as.character(x)
+  mostattributes(x) <- a
+  x
 }
 
 output_template <- function(dfs, nrows) {
@@ -81,7 +89,6 @@ output_template <- function(dfs, nrows) {
   names(seen) <- vars
 
   is_array <- seen
-  is_matrix <- seen
   is_factor <- seen
 
   for(df in dfs) {
@@ -89,24 +96,30 @@ output_template <- function(dfs, nrows) {
     for(var in matching) {
       value <- df[[var]]
 
-      if (is.vector(value) && is.atomic(value)) {
-        output[[var]] <- rep(NA, nrows)
-      } else if (is.factor(value)) {
-        output[[var]] <- factor(rep(NA, nrows), ordered = is.ordered(value))
-        is_factor[var] <- TRUE
-      } else if (is.matrix(value)) {
-        is_matrix[var] <- TRUE
-      } else if (is.array(value)) {
-        is_array[var] <- TRUE
-      } else if (inherits(value, "POSIXt")) {
+      if (inherits(value, "POSIXt")) {
         output[[var]] <- as.POSIXct(rep(NA, nrows))
         attr(output[[var]], "tzone") <- attr(value, "tzone")
-      } else if (is.list(value)) {
-        output[[var]] <- vector("list", nrows)
       } else {
-        output[[var]] <- rep(NA, nrows)
-        class(output[[var]]) <- class(value)
-        attributes(output[[var]]) <- attributes(value)
+        if (is.factor(value)) {
+          is_factor[[var]] <- TRUE
+        }
+        a <- attributes(value)
+        if(length(dim(value)) >= 1) {
+          newdim <- c(nrows, dim(value)[-1])
+          value <- vector(typeof(value), prod(newdim))
+          a$dim <- newdim
+          a$dimnames <- NULL
+          is_array[[var]] <- TRUE
+        } else {
+          value <- vector(typeof(value), nrows)
+        }
+        if (is.recursive(value)) {
+          value[] <- list(NULL)
+        } else {
+          value[] <- NA
+        }
+        attributes(value) <- a
+        output[[var]] <- value
       }
     }
 
@@ -117,28 +130,17 @@ output_template <- function(dfs, nrows) {
   # Set up factors
   for(var in vars[is_factor]) {
     all <- unique(lapply(dfs, function(df) levels(df[[var]])))
-    output[[var]] <- factor(output[[var]], levels = unique(unlist(all)),
-      exclude = NULL)
-  }
-
-  # Set up matrices
-  for(var in vars[is_matrix]) {
-    width <- unique(unlist(lapply(dfs, function(df) ncol(df[[var]]))))
-    if (length(width) > 1)
-      stop("Matrix variable ", var, " has inconsistent widths")
-
-    vec <- rep(NA, nrows * width)
-    output[[var]] <- array(vec, c(nrows, width))
+    levels(output[[var]]) <- unique(unlist(all))
   }
 
   # Set up arrays
-  for (var in vars[is_array]) {
-    dims <- unique(unlist(lapply(dfs, function(df) dims(df[[var]]))))
-    if (any(dims) > 1) {
-      stop("rbind.fill can only work with 1d arrays")
-    }
-
-    output[[var]] <- rep(NA, nrows)
+  for(var in vars[is_array]) {
+    df_has <- vapply(dfs, function(df) var %in% names(df), FALSE)
+    dims <- unique(lapply(dfs[df_has], function(df) dim(df[[var]])[-1]))
+    if (length(dims) > 1)
+        stop("Array variable ", var, " has inconsistent dims")
+    if (length(dims[[1]]) == 0) #is dropping dims necessary for 1d arrays?
+        output[[var]] <- as.vector(output[[var]])
   }
 
   output
