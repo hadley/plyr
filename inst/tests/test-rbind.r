@@ -55,6 +55,28 @@ test_that("matrices are preserved", {
   expect_that(ab1, equals(ab2))
 })
 
+test_that("character or factor or list-matrices are preserved", {
+  d1 <- data.frame(a=1:2,
+                   x=I(matrix(c('a', 'b', 'c', 'd'), nrow=2)))
+  d2 <- data.frame(b=1:2,
+                   x=I(`dim<-`(factor(c('a', 'b', 'c', 'd')), c(2,2))))
+  d3 <- data.frame(b=1:2,
+                   x=I(array(as.list(1:4), c(2,2))))
+
+  b1 <- rbind.fill(d1, d1)
+  b2 <- rbind.fill(d2, d2)
+  b3 <- rbind.fill(d3, d3)
+
+  expect_equal(dim(b1$x), c(4,2))
+  expect_equal(typeof(b1$x), "character")
+
+  expect_equal(dim(b2$x), c(4,2))
+  expect_is(b2$x, "factor")
+
+  expect_equal(dim(b3$x), c(4,2))
+  expect_equal(typeof(b3$x), "list")
+})
+
 test_that("missing levels in factors preserved", {
   f <- addNA(factor(c("a", "b", NA)))
   df1 <- data.frame(a = f)
@@ -79,12 +101,15 @@ test_that("time zones are preserved", {
 
 })
 
-test_that("arrays are ok", {
+test_that("arrays are ok", { #is this necessary?
   df <- data.frame(x = 1)
   df$x <- array(1, 1)
 
   df2 <- rbind.fill(df, df)
+  #this asserts that dim is stripped off 1d arrays. Necessary?
   expect_that(df2$x, is_equivalent_to(rbind(df, df)$x))
+  #this would be more consistent
+  #expect_that(df2$x, is_equivalent_to(rbind(array(1,1), array(1,1))))
 })
 
 test_that("attributes are preserved", {
@@ -104,18 +129,35 @@ test_that("attributes are preserved", {
 
 })
 
-test_that("characters override factors", {
+test_that("characters override and convert factors", {
   d1a <- data.frame(x=c('a','b'), y=1:2)
-  d2a <- data.frame(x=c('b','d'), z=1:2, stringsAsFactors=F)
+  d2a <- data.frame(x=c('c','d'), z=1:2, stringsAsFactors=F)
 
   d1b <- data.frame(x=c('a','b'), y=1:2, stringsAsFactors=F)
-  d2b <- data.frame(x=c('b','d'), z=1:2)
+  d2b <- data.frame(x=c('c','d'), z=1:2)
 
   d3a <- rbind.fill(d1a,d2a)
   d3b <- rbind.fill(d1b,d2b)
 
-  expect_that(d3a$x, is_a("character"))
-  expect_that(d3b$x, is_a("character"))
+  expect_equal(d3a$x, c("a", "b", "c", "d"))
+  expect_equal(d3b$x, c("a", "b", "c", "d"))
+})
+
+test_that("factor to character conversion preserves attributes", {
+  d1 <- data.frame(a = letters[1:10], b = factor(letters[11:20]),
+                   stringsAsFactors=FALSE)
+  d2 <- data.frame(a = factor(letters[11:20]), b = letters[11:20],
+                   stringsAsFactors=FALSE)
+
+  attr(d1$a, "foo") <- "one"
+  attr(d1$b, "foo") <- "two"
+  attr(d2$a, "foo") <- "bar"
+  attr(d2$b, "foo") <- "baz"
+
+  d12 <- rbind.fill(d1, d2)
+
+  expect_equal(attr(d12$a, "foo"), "one")
+  expect_equal(attr(d12$b, "foo"), "two")
 })
 
 test_that("zero row data frames ok", {
