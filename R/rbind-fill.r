@@ -88,60 +88,54 @@ output_template <- function(dfs, nrows) {
   seen <- rep(FALSE, length(output))
   names(seen) <- vars
 
-  is_array <- seen
-  is_factor <- seen
-
   for(df in dfs) {
     matching <- intersect(names(df), vars[!seen])
     for(var in matching) {
-      value <- df[[var]]
-
-      if (inherits(value, "POSIXt")) {
-        output[[var]] <- as.POSIXct(rep(NA, nrows))
-        attr(output[[var]], "tzone") <- attr(value, "tzone")
-      } else {
-        if (is.factor(value)) {
-          is_factor[[var]] <- TRUE
-        }
-        a <- attributes(value)
-        if(length(dim(value)) >= 1) {
-          newdim <- c(nrows, dim(value)[-1])
-          value <- vector(typeof(value), prod(newdim))
-          a$dim <- newdim
-          a$dimnames <- NULL
-          is_array[[var]] <- TRUE
-        } else {
-          value <- vector(typeof(value), nrows)
-        }
-        if (is.recursive(value)) {
-          value[] <- list(NULL)
-        } else {
-          value[] <- NA
-        }
-        attributes(value) <- a
-        output[[var]] <- value
-      }
+      output[[var]] <- allocate_column(df[[var]], nrows, dfs, var)
     }
 
     seen[matching] <- TRUE
     if (all(seen)) break  # Quit as soon as all done
   }
 
-  # Set up factors
-  for(var in vars[is_factor]) {
-    all <- unique(lapply(dfs, function(df) levels(df[[var]])))
-    levels(output[[var]]) <- unique(unlist(all))
+  output
+}
+
+allocate_column <- function(value, nrows, dfs, var) {
+  a <- attributes(value)
+  if (inherits(value, "POSIXt")) {
+    tzone <- attr(value, "tzone")
+    value <- as.POSIXct(rep(NA, nrows))
+    attr(value, "tzone") <- tzone
+  } else {
+    if(length(dim(value)) >= 1) {
+      newdim <- c(nrows, dim(value)[-1])
+      value <- vector(typeof(value), prod(newdim))
+      a$dim <- newdim
+      a$dimnames <- NULL
+    } else {
+      value <- vector(typeof(value), nrows)
+    }
+    if (!is.recursive(value)) {
+      value[] <- NA
+    }
+    attributes(value) <- a
   }
 
-  # Set up arrays
-  for(var in vars[is_array]) {
+  # Combine levels for factors
+  if (is.factor(value)) {
+    all <- unique(lapply(dfs, function(df) levels(df[[var]])))
+    levels(value) <- unique(unlist(all))
+  }
+
+  # Check dim consistency for arrays
+  if (is.array(value)) {
     df_has <- vapply(dfs, function(df) var %in% names(df), FALSE)
     dims <- unique(lapply(dfs[df_has], function(df) dim(df[[var]])[-1]))
     if (length(dims) > 1)
         stop("Array variable ", var, " has inconsistent dims")
     if (length(dims[[1]]) == 0) #is dropping dims necessary for 1d arrays?
-        output[[var]] <- as.vector(output[[var]])
+        value <- as.vector(value)
   }
-
-  output
+  value
 }
