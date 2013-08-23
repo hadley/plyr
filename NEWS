@@ -1,9 +1,15 @@
 Version 1.8.0.99
 ------------------------------------------------------------------------------
-* `join(x,y)` works when the key column in X is character and Y is
-  factor. Additionally `rbind.fill(x,y)` converts factor columns of Y
-  to character when columns of X are character. (Thanks to Peter
-  Meilstrup; #128)
+Improvements to `rbind.fill` and by extension `*dply` and `join`:
+
+* `rbind.fill` handles non-numeric matrix columns (i.e. factors, characters, lists)
+  (Contributed by Peter Meilstrup)
+
+* `rbind.fill(x,y)` converts factor columns of Y to
+  character when columns of X are character. (Contributed by Peter Meilstrup)
+  
+* `join(x,y)` and `match_df(x,y)` now work when the key column in X is
+  character and Y is factor. (Contributed by Peter Meilstrup)
 
 * Fix faulty array allocation which caused problems when using `split_indices` 
   with large (> 2^24) vectors.  (Fixes #131)
