@@ -55,21 +55,11 @@ rbind.fill <- function(...) {
     df <- dfs[[i]]
 
     for(var in names(df)) {
-      if (is.factor(output[[var]]) && is.character(df[[var]])) {
-        output[[var]] <- factor_to_char_preserving_attrs(output[[var]])
-      }
-      if (is.factor(df[[var]]) && is.character(output[[var]])) {
-        df[[var]] <- factor_to_char_preserving_attrs(df[[var]])
-      }
-      if (is.matrix(output[[var]])) {
-        output[[var]][rng, ] <- df[[var]]
-      } else {
-        output[[var]][rng] <- df[[var]]
-      }
+      output[[var]](rng, df[[var]])
     }
   }
 
-  quickdf(output)
+  quickdf(lapply(output, function(x) x()))
 }
 
 factor_to_char_preserving_attrs <- function(x) {
@@ -137,5 +127,24 @@ allocate_column <- function(value, nrows, dfs, var) {
     if (length(dims[[1]]) == 0) #is dropping dims necessary for 1d arrays?
         value <- as.vector(value)
   }
-  value
+
+  #Return a mutator
+  function(rows, what) {
+    switch(nargs()+1,
+           value,
+           if (is.matrix(value)) value[rows,] else value[rows],
+           {
+             if (is.factor(value) && is.character(what)) {
+               value <<- factor_to_char_preserving_attrs(value)
+             }
+             if (is.factor(what) && is.character(value)) {
+               what <- factor_to_char_preserving_attrs(what)
+             }
+             if (is.matrix(value)) {
+               value[rows, ] <<- what
+             } else {
+               value[rows] <<- what
+             }
+           })
+  }
 }
