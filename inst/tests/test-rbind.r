@@ -101,7 +101,7 @@ test_that("time zones are preserved", {
 
 })
 
-test_that("arrays are ok", { #is this necessary?
+test_that("arrays are ok", {
   df <- data.frame(x = 1)
   df$x <- array(1, 1)
 
@@ -111,6 +111,16 @@ test_that("arrays are ok", { #is this necessary?
   #this would be more consistent
   #expect_that(df2$x, is_equivalent_to(rbind(array(1,1), array(1,1))))
 })
+
+test_that("multidim arrays ok", {
+  library(abind)
+  df <- data.frame(x = 1:3)
+  df$x <- array(1:27, c(3,3,3))
+
+  df2 <- rbind.fill(df, df)
+  expect_equal(dim(df2$x), dim(abind(along=1, df$x, df$x)))
+  expect_that(df2$x, is_equivalent_to(abind(along=1, df$x, df$x)))
+ })
 
 test_that("attributes are preserved", {
   d1 <- data.frame(a = runif(10), b = runif(10))
