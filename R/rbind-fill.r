@@ -99,27 +99,43 @@ allocate_column <- function(example, nrows, dfs, var) {
   #next modification.
   type <- typeof(example)
   handler <- type
+
+  #this statement may be altered below
+  assignment <- quote(column[rows] <<- what)
+
   if (inherits(example, "POSIXt")) {
     #this should get folded in to general attribute handling as well...
     tzone <- attr(example, "tzone")
     column <- structure(as.POSIXct(rep(NA, nrows)), tzone=tzone)
   } else {
+
     a <- attributes(example)
     a$names <- NULL
     isList <- is.recursive(example)
+
     if (is.array(example)) {
+
+      a$dimnames <- NULL #todo: check if rbind handles these
+
       # Check that all other args have consistent dims
       df_has <- vapply(dfs, function(df) var %in% names(df), FALSE)
       dims <- unique(lapply(dfs[df_has], function(df) dim(df[[var]])[-1]))
       if (length(dims) > 1)
           stop("Array variable ", var, " has inconsistent dims")
+
+      # add empty args
+      assignment[[2]] <- as.call(
+          c(as.list(assignment[[2]]),
+            rep(list(quote(expr = )), length(dims[[1]]))))
+
       if (length(dims[[1]]) == 0) { #is dropping dims necessary for 1d arrays?
         a$dim <- NULL
       } else {
         a$dim <- c(nrows, dim(example)[-1])
       }
-      a$dimnames <- NULL
+
       length <- prod(a$dim)
+
     } else {
       length <- nrows
     }
@@ -128,6 +144,7 @@ allocate_column <- function(example, nrows, dfs, var) {
       df_has <- vapply(dfs, function(df) var %in% names(df), FALSE)
       isfactor <- vapply(dfs[df_has], function(df) is.factor(df[[var]]), FALSE)
       if (!all(isfactor)) {
+        #fall back on character
         type <- "character"
         handler <- "character"
         a$class <- NULL
@@ -156,27 +173,16 @@ allocate_column <- function(example, nrows, dfs, var) {
       handler,
       character = function(rows, what) {
         if (nargs() == 0) return(column)
-        if (is.matrix(column)) {
-          column[rows, ] <<- as.character(what)
-        } else {
-          column[rows] <<- as.character(what)
-        }
+        what <- as.character(what)
+        eval(assignment)
       },
       factor = function(rows, what) {
         if(nargs() == 0) return(column)
-        if (is.matrix(column)) {
-          column[rows, ] <<- as.character(what)
-        } else {
-          column[rows] <<- as.character(what)
-        }
+        eval(assignment)
       },
       function(rows, what) {
         if(nargs() == 0) return(column)
-        if (is.matrix(column)) {
-          column[rows, ] <<- what
-        } else {
-          column[rows] <<- what
-        }
+        eval(assignment)
       }
       )
 }
