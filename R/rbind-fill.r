@@ -91,60 +91,92 @@ output_template <- function(dfs, nrows) {
   output
 }
 
-allocate_column <- function(value, nrows, dfs, var) {
-  a <- attributes(value)
-  if (inherits(value, "POSIXt")) {
-    tzone <- attr(value, "tzone")
-    value <- as.POSIXct(rep(NA, nrows))
-    attr(value, "tzone") <- tzone
+allocate_column <- function(example, nrows, dfs, var) {
+  #Compute the attributes of the column and allocate.
+  #To avoid multiple allocations, never _inspect_ column after allocating
+  #it. Inspection, even something as innocuous as is.matrix(column),
+  #will  setting NAMED to 2 and forcing a copy on the
+  #next modification.
+  type <- typeof(example)
+  handler <- type
+  if (inherits(example, "POSIXt")) {
+    #this should get folded in to general attribute handling as well...
+    tzone <- attr(example, "tzone")
+    column <- structure(as.POSIXct(rep(NA, nrows)), tzone=tzone)
   } else {
-    if(length(dim(value)) >= 1) {
-      newdim <- c(nrows, dim(value)[-1])
-      value <- vector(typeof(value), prod(newdim))
-      a$dim <- newdim
+    a <- attributes(example)
+    a$names <- NULL
+    isList <- is.recursive(example)
+    if (is.array(example)) {
+      # Check that all other args have consistent dims
+      df_has <- vapply(dfs, function(df) var %in% names(df), FALSE)
+      dims <- unique(lapply(dfs[df_has], function(df) dim(df[[var]])[-1]))
+      if (length(dims) > 1)
+          stop("Array variable ", var, " has inconsistent dims")
+      if (length(dims[[1]]) == 0) { #is dropping dims necessary for 1d arrays?
+        a$dim <- NULL
+      } else {
+        a$dim <- c(nrows, dim(example)[-1])
+      }
       a$dimnames <- NULL
+      length <- prod(a$dim)
     } else {
-      value <- vector(typeof(value), nrows)
+      length <- nrows
     }
-    if (!is.recursive(value)) {
-      value[] <- NA
+
+    if (is.factor(example)) {
+      df_has <- vapply(dfs, function(df) var %in% names(df), FALSE)
+      isfactor <- vapply(dfs[df_has], function(df) is.factor(df[[var]]), FALSE)
+      if (!all(isfactor)) {
+        type <- "character"
+        handler <- "character"
+        a$class <- NULL
+        a$levels <- NULL
+      } else {
+        a$levels <- unique(unlist(lapply(dfs[df_has],
+                                         function(df) levels(df[[var]]))))
+        handler <- "factor"
+      }
     }
-    attributes(value) <- a
+
+    column <- vector(type, length)
+    #tracemem(column)
+    if (!isList) {
+      column[] <- NA
+    }
+    attributes(column) <- a
   }
 
-  # Combine levels for factors
-  if (is.factor(value)) {
-    all <- unique(lapply(dfs, function(df) levels(df[[var]])))
-    levels(value) <- unique(unlist(all))
-  }
+  # Check that all inputs are factors, and combine levels (or convert to char)
 
-  # Check dim consistency for arrays
-  if (is.array(value)) {
-    df_has <- vapply(dfs, function(df) var %in% names(df), FALSE)
-    dims <- unique(lapply(dfs[df_has], function(df) dim(df[[var]])[-1]))
-    if (length(dims) > 1)
-        stop("Array variable ", var, " has inconsistent dims")
-    if (length(dims[[1]]) == 0) #is dropping dims necessary for 1d arrays?
-        value <- as.vector(value)
-  }
-
-  #Return a mutator
-  function(rows, what) {
-    switch(nargs()+1,
-           value,
-           if (is.matrix(value)) value[rows,] else value[rows],
-           {
-             if (is.factor(value) && is.character(what)) {
-               value <<- factor_to_char_preserving_attrs(value)
-             }
-             if (is.factor(what) && is.character(value)) {
-               what <- factor_to_char_preserving_attrs(what)
-             }
-             if (is.matrix(value)) {
-               value[rows, ] <<- what
-             } else {
-               value[rows] <<- what
-             }
-           })
-  }
+  #Return a mutator.
+  #It is especially important never to inspect the column in the mutator.
+  # To avoid inspecting the column, return a specialized mutator.
+  switch(
+      handler,
+      character = function(rows, what) {
+        if (nargs() == 0) return(column)
+        if (is.matrix(column)) {
+          column[rows, ] <<- as.character(what)
+        } else {
+          column[rows] <<- as.character(what)
+        }
+      },
+      factor = function(rows, what) {
+        if(nargs() == 0) return(column)
+        if (is.matrix(column)) {
+          column[rows, ] <<- as.character(what)
+        } else {
+          column[rows] <<- as.character(what)
+        }
+      },
+      function(rows, what) {
+        if(nargs() == 0) return(column)
+        if (is.matrix(column)) {
+          column[rows, ] <<- what
+        } else {
+          column[rows] <<- what
+        }
+      }
+      )
 }
