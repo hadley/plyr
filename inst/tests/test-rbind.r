@@ -211,8 +211,8 @@ test_that("zero col data frames ok", {
 })
 
 rbind_time <- function(size,
-                       classes=c("numeric", "character",
-                                 "array", "factor", "time")) {
+                       classes = c("numeric", "character",
+                                   "array", "factor", "time")) {
   unit <- quickdf(list(numeric = 1:3,
                        character = c("a", "b", "c"),
                        array = array(1:6, c(3,2)),
@@ -224,7 +224,7 @@ rbind_time <- function(size,
 
 get_rbind_times <- function(...) {
   rbind_time(10) #warm up/JIT
-  mdply(.fun=rbind_time, ...)
+  mdply(.fun = rbind_time, ...)
 }
 
 expect_linear_enough <- function(timings, size=2^10, threshold=0.03) {
@@ -245,12 +245,12 @@ test_that("rbind.fill performance linear", {
 
 test_that("rbind.fill performance linear with factors", {
   timings <- get_rbind_times(data.frame(size = 2^(1:10)),
-                                 classes=c("factor"))
+                             classes=c("factor"))
   expect_linear_enough(timings)
 })
 
 test_that("rbind.fill performance linear with times", {
   timings <- get_rbind_times(data.frame(size = 2^(1:10)),
-                                 classes=c("time"))
+                             classes=c("time"))
   expect_linear_enough(timings)
 })
