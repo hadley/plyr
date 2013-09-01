@@ -209,3 +209,46 @@ test_that("zero col data frames ok", {
   expect_equal(nrow(zb), 1)
   expect_equal(nrow(zc), 1)
 })
+
+rbind_time <- function(size,
+                       classes=c("numeric", "character",
+                                 "array", "factor", "time")) {
+  unit <- quickdf(list(numeric = 1:3,
+                       character = c("a", "b", "c"),
+                       array = array(1:6, c(3,2)),
+                       factor = factor(c("a", "b", "c")),
+                       time = as.POSIXct(Sys.time()) + 1:3))
+  args <- rep(list(unit[classes]), size)
+  system.time(do.call(rbind.fill, args))
+}
+
+get_rbind_times <- function(...) {
+  rbind_time(10) #warm up/JIT
+  mdply(.fun=rbind_time, ...)
+}
+
+expect_linear_enough <- function(timings, size=2^10, threshold=0.03) {
+  #expect that no more than `threshold` of a `size` input's runtime is
+  #accounted for by quadratic behavior
+  model <- lm(user.self ~ size + I(size^2), timings)
+  p <- predict(model, newdata=data.frame(size=2^10), type="terms")
+  expect_that(p[2] / p[1] < 0.03, is_true(), NULL, NULL)
+}
+
+test_that("rbind.fill performance linear", {
+  rbind.times <- get_rbind_times(data.frame(size = 2^(1:10)),
+                                 classes=c("numeric", "character", "array"))
+  expect_linear_enough(rbind.times)
+})
+
+test_that("rbind.fill performance linear with factors", {
+  rbind.times <- get_rbind_times(data.frame(size = 2^(1:10)),
+                                 classes=c("factor"))
+  expect_linear_enough(rbind.times)
+})
+
+test_that("rbind.fill performance linear with times", {
+  rbind.times <- get_rbind_times(data.frame(size = 2^(1:10)),
+                                 classes=c("time"))
+  expect_linear_enough(rbind.times)
+})

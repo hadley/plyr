@@ -143,32 +143,35 @@ allocate_column <- function(example, nrows, dfs, var) {
     if (is.factor(example)) {
       df_has <- vapply(dfs, function(df) var %in% names(df), FALSE)
       isfactor <- vapply(dfs[df_has], function(df) is.factor(df[[var]]), FALSE)
-      if (!all(isfactor)) {
+      if (all(isfactor)) {
+        #will be referenced by the mutator
+        levels <- unique(unlist(lapply(dfs[df_has],
+                                       function(df) levels(df[[var]]))))
+        class <- a$class
+        a$levels <- levels
+        a$class <- NULL #postpone setting class
+        handler <- "factor"
+      } else {
         #fall back on character
         type <- "character"
         handler <- "character"
         a$class <- NULL
         a$levels <- NULL
-      } else {
-        a$levels <- unique(unlist(lapply(dfs[df_has],
-                                         function(df) levels(df[[var]]))))
-        handler <- "factor"
       }
     }
 
     column <- vector(type, length)
-    #tracemem(column)
     if (!isList) {
       column[] <- NA
     }
     attributes(column) <- a
   }
 
-  # Check that all inputs are factors, and combine levels (or convert to char)
-
-  #Return a mutator.
-  #It is especially important never to inspect the column in the mutator.
-  # To avoid inspecting the column, return a specialized mutator.
+  #It is especially important never to inspect the column when in the main
+  #rbind.fill loop. To avoid inspecting the column, we've done
+  #specialization (figuring out the array assignment form and data
+  #type) up front, and instead of returning the column, we return a
+  #mutator function that closes over the column.
   switch(
       handler,
       character = function(rows, what) {
@@ -177,12 +180,18 @@ allocate_column <- function(example, nrows, dfs, var) {
         eval(assignment)
       },
       factor = function(rows, what) {
-        if(nargs() == 0) return(column)
-        eval(assignment)
+        if(nargs() == 0) {
+          class(column) <<- class
+          column
+        } else {
+          #duplicate what `[<-.factor` does
+          what <- match(what, levels)
+          #no need to check since we already computed levels
+          eval(assignment)
+        }
       },
       function(rows, what) {
         if(nargs() == 0) return(column)
         eval(assignment)
-      }
-      )
+      })
 }
