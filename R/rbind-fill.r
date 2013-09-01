@@ -196,7 +196,7 @@ allocate_column <- function(example, nrows, dfs, var) {
           class(column) <<- class
           column
         } else {
-          what <- as.POSIXct(what, tz=tzone)
+          what <- as.POSIXct(what, tz = tzone)
           eval(assignment)
         }
       },
