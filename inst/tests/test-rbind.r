@@ -122,6 +122,23 @@ test_that("multidim arrays ok", {
   expect_that(df2$x, is_equivalent_to(abind(along=1, df$x, df$x)))
  })
 
+test_that("Array column names preserved", {
+  x <- data.frame(hair.color=dimnames(HairEyeColor)[[1]])
+  x$obs <- HairEyeColor[,,1]
+
+  xx1 <- rbind(x, x)
+  xx2 <- rbind.fill(x, x)
+
+  #plyr is against row names, but should respect col names like rbind
+  rownames(xx1) <- NULL
+  rownames(xx1$obs) <- NULL
+
+  #but unlike rbind it should also preserve names-of-dimnames.
+  names(dimnames(xx1$obs)) <- c(NA, "Eye")
+
+  expect_equal(xx1, xx2)
+})
+
 test_that("attributes are preserved", {
   d1 <- data.frame(a = runif(10), b = runif(10))
   d2 <- data.frame(a = runif(10), b = runif(10))

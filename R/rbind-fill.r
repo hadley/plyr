@@ -109,7 +109,11 @@ allocate_column <- function(example, nrows, dfs, var) {
 
   if (is.array(example)) {
 
-    a$dimnames <- NULL #todo: check if rbind handles these
+    if ("dimnames" %in% names(a)) {
+      a$dimnames[1] <- list(NULL)
+      if (!is.null(names(a$dimnames)))
+          names(a$dimnames)[1] <- NA
+    }
 
     # Check that all other args have consistent dims
     df_has <- vapply(dfs, function(df) var %in% names(df), FALSE)
