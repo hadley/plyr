@@ -4,7 +4,8 @@
 
 * `rbind.fill` handles non-numeric matrix columns (i.e. factor arrays,
   character arrays, list arrays); also arrays with more than 2
-  dimensions can be used. (Contributed by Peter Meilstrup)
+  dimensions can be used. Dimnames of array columns are now preserved.
+  (Contributed by Peter Meilstrup)
 
 * `rbind.fill(x,y)` converts factor columns of Y to character when
   columns of X are character. `join(x,y)` and `match_df(x,y)` now work
