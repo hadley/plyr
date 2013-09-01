@@ -99,13 +99,15 @@ allocate_column <- function(example, nrows, dfs, var) {
   #next modification.
   a <- attributes(example)
   type <- typeof(example)
+  class <- a$class
   handler <- type
+  isList <- is.recursive(example)
 
   #this statement may be altered below
   assignment <- quote(column[rows] <<- what)
 
   a$names <- NULL
-  isList <- is.recursive(example)
+  a$class <- NULL
 
   if (is.array(example)) {
 
@@ -145,22 +147,19 @@ allocate_column <- function(example, nrows, dfs, var) {
       #will be referenced by the mutator
       levels <- unique(unlist(lapply(dfs[df_has],
                                      function(df) levels(df[[var]]))))
-      class <- a$class
       a$levels <- levels
-      a$class <- NULL #postpone setting class
       handler <- "factor"
     } else {
       #fall back on character
       type <- "character"
       handler <- "character"
-      a$class <- NULL
+      class <- NULL
       a$levels <- NULL
     }
   }
 
   if (inherits(example, "POSIXt")) {
     tzone <- attr(example, "tzone")
-    a$class <- NULL
     class <- c("POSIXct", "POSIXt")
     type <- "double"
     handler <- "time"
@@ -180,32 +179,36 @@ allocate_column <- function(example, nrows, dfs, var) {
   switch(
       handler,
       character = function(rows, what) {
-        if (nargs() == 0) return(column)
+        if (nargs() == 0) {
+          class(column) <<- class
+          return(column)
+        }
         what <- as.character(what)
         eval(assignment)
       },
       factor = function(rows, what) {
         if(nargs() == 0) {
           class(column) <<- class
-          column
-        } else {
-          #duplicate what `[<-.factor` does
-          what <- match(what, levels)
-          #no need to check since we already computed levels
-          eval(assignment)
+          return(column)
         }
+        #duplicate what `[<-.factor` does
+        what <- match(what, levels)
+        #no need to check since we already computed levels
+        eval(assignment)
       },
       time = function(rows, what) {
         if (nargs() == 0) {
           class(column) <<- class
-          column
-        } else {
-          what <- as.POSIXct(what, tz = tzone)
-          eval(assignment)
+          return(column)
         }
+        what <- as.POSIXct(what, tz = tzone)
+        eval(assignment)
       },
       function(rows, what) {
-        if(nargs() == 0) return(column)
+        if(nargs() == 0) {
+          class(column) <<- class
+          return(column)
+        }
         eval(assignment)
       })
 }
