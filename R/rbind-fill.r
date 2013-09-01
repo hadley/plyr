@@ -97,81 +97,82 @@ allocate_column <- function(example, nrows, dfs, var) {
   #it. Inspection, even something as innocuous as is.matrix(column),
   #will  setting NAMED to 2 and forcing a copy on the
   #next modification.
+  a <- attributes(example)
   type <- typeof(example)
   handler <- type
 
   #this statement may be altered below
   assignment <- quote(column[rows] <<- what)
 
-  if (inherits(example, "POSIXt")) {
-    #this should get folded in to general attribute handling as well...
-    tzone <- attr(example, "tzone")
-    column <- structure(as.POSIXct(rep(NA, nrows)), tzone=tzone)
-  } else {
+  a$names <- NULL
+  isList <- is.recursive(example)
 
-    a <- attributes(example)
-    a$names <- NULL
-    isList <- is.recursive(example)
+  if (is.array(example)) {
 
-    if (is.array(example)) {
+    a$dimnames <- NULL #todo: check if rbind handles these
 
-      a$dimnames <- NULL #todo: check if rbind handles these
+    # Check that all other args have consistent dims
+    df_has <- vapply(dfs, function(df) var %in% names(df), FALSE)
+    dims <- unique(lapply(dfs[df_has], function(df) dim(df[[var]])[-1]))
+    if (length(dims) > 1)
+        stop("Array variable ", var, " has inconsistent dims")
 
-      # Check that all other args have consistent dims
-      df_has <- vapply(dfs, function(df) var %in% names(df), FALSE)
-      dims <- unique(lapply(dfs[df_has], function(df) dim(df[[var]])[-1]))
-      if (length(dims) > 1)
-          stop("Array variable ", var, " has inconsistent dims")
+    # add empty args
+    assignment[[2]] <- as.call(
+        c(as.list(assignment[[2]]),
+          rep(list(quote(expr = )), length(dims[[1]]))))
 
-      # add empty args
-      assignment[[2]] <- as.call(
-          c(as.list(assignment[[2]]),
-            rep(list(quote(expr = )), length(dims[[1]]))))
-
-      if (length(dims[[1]]) == 0) { #is dropping dims necessary for 1d arrays?
-        a$dim <- NULL
-      } else {
-        a$dim <- c(nrows, dim(example)[-1])
-      }
-
-      length <- prod(a$dim)
-
+    if (length(dims[[1]]) == 0) { #is dropping dims necessary for 1d arrays?
+      a$dim <- NULL
     } else {
-      length <- nrows
+      a$dim <- c(nrows, dim(example)[-1])
     }
 
-    if (is.factor(example)) {
-      df_has <- vapply(dfs, function(df) var %in% names(df), FALSE)
-      isfactor <- vapply(dfs[df_has], function(df) is.factor(df[[var]]), FALSE)
-      if (all(isfactor)) {
-        #will be referenced by the mutator
-        levels <- unique(unlist(lapply(dfs[df_has],
-                                       function(df) levels(df[[var]]))))
-        class <- a$class
-        a$levels <- levels
-        a$class <- NULL #postpone setting class
-        handler <- "factor"
-      } else {
-        #fall back on character
-        type <- "character"
-        handler <- "character"
-        a$class <- NULL
-        a$levels <- NULL
-      }
-    }
+    length <- prod(a$dim)
 
-    column <- vector(type, length)
-    if (!isList) {
-      column[] <- NA
-    }
-    attributes(column) <- a
+  } else {
+    length <- nrows
   }
 
-  #It is especially important never to inspect the column when in the main
-  #rbind.fill loop. To avoid inspecting the column, we've done
-  #specialization (figuring out the array assignment form and data
-  #type) up front, and instead of returning the column, we return a
-  #mutator function that closes over the column.
+  if (is.factor(example)) {
+    df_has <- vapply(dfs, function(df) var %in% names(df), FALSE)
+    isfactor <- vapply(dfs[df_has], function(df) is.factor(df[[var]]), FALSE)
+    if (all(isfactor)) {
+      #will be referenced by the mutator
+      levels <- unique(unlist(lapply(dfs[df_has],
+                                     function(df) levels(df[[var]]))))
+      class <- a$class
+      a$levels <- levels
+      a$class <- NULL #postpone setting class
+      handler <- "factor"
+    } else {
+      #fall back on character
+      type <- "character"
+      handler <- "character"
+      a$class <- NULL
+      a$levels <- NULL
+    }
+  }
+
+  if (inherits(example, "POSIXt")) {
+    tzone <- attr(example, "tzone")
+    a$class <- NULL
+    class <- c("POSIXct", "POSIXt")
+    type <- "double"
+    handler <- "time"
+  }
+
+  column <- vector(type, length)
+  if (!isList) {
+    column[] <- NA
+  }
+  attributes(column) <- a
+
+  #It is especially important never to inspect the column when in the
+  #main rbind.fill loop. To avoid that, we've done specialization
+  #(figuring out the array assignment form and data type) ahead of
+  #time, and instead of returning the column, we return a mutator
+  #function that closes over the column.
   switch(
       handler,
       character = function(rows, what) {
@@ -187,6 +188,15 @@ allocate_column <- function(example, nrows, dfs, var) {
           #duplicate what `[<-.factor` does
           what <- match(what, levels)
           #no need to check since we already computed levels
+          eval(assignment)
+        }
+      },
+      time = function(rows, what) {
+        if (nargs() == 0) {
+          class(column) <<- class
+          column
+        } else {
+          what <- as.POSIXct(what, tz=tzone)
           eval(assignment)
         }
       },

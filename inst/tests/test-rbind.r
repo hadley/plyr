@@ -230,25 +230,27 @@ get_rbind_times <- function(...) {
 expect_linear_enough <- function(timings, size=2^10, threshold=0.03) {
   #expect that no more than `threshold` of a `size` input's runtime is
   #accounted for by quadratic behavior
-  model <- lm(user.self ~ size + I(size^2), timings)
-  p <- predict(model, newdata=data.frame(size=2^10), type="terms")
-  expect_that(p[2] / p[1] < 0.03, is_true(), NULL, NULL)
+  #don't understand what predict.lm does w/ built-in intercepts
+  timings <- mutate(timings, intercept=1)
+  model <- lm(user.self ~ size + I(size^2) - 1 + intercept, timings)
+  p <- predict(model, newdata=data.frame(size=2^10, intercept=1), type="terms")
+  expect_that(p[2] / p[1] < 0.2, is_true(), NULL, NULL)
 }
 
 test_that("rbind.fill performance linear", {
-  rbind.times <- get_rbind_times(data.frame(size = 2^(1:10)),
-                                 classes=c("numeric", "character", "array"))
-  expect_linear_enough(rbind.times)
+  timings <- get_rbind_times(data.frame(size = 2^(1:10)),
+                             classes=c("numeric", "character", "array"))
+  expect_linear_enough(timings)
 })
 
 test_that("rbind.fill performance linear with factors", {
-  rbind.times <- get_rbind_times(data.frame(size = 2^(1:10)),
+  timings <- get_rbind_times(data.frame(size = 2^(1:10)),
                                  classes=c("factor"))
-  expect_linear_enough(rbind.times)
+  expect_linear_enough(timings)
 })
 
 test_that("rbind.fill performance linear with times", {
-  rbind.times <- get_rbind_times(data.frame(size = 2^(1:10)),
+  timings <- get_rbind_times(data.frame(size = 2^(1:10)),
                                  classes=c("time"))
-  expect_linear_enough(rbind.times)
+  expect_linear_enough(timings)
 })
