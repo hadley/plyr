@@ -62,14 +62,6 @@ rbind.fill <- function(...) {
   quickdf(lapply(output, function(x) x()))
 }
 
-factor_to_char_preserving_attrs <- function(x) {
-  a <- attributes(x)
-  a[c("levels", "class")] <- NULL
-  x <- as.character(x)
-  mostattributes(x) <- a
-  x
-}
-
 output_template <- function(dfs, nrows) {
   vars <- unique(unlist(lapply(dfs, base::names)))   # ~ 125,000/s
   output <- vector("list", length(vars))
