@@ -244,14 +244,14 @@ get_rbind_times <- function(...) {
   mdply(.fun = rbind_time, ...)
 }
 
-expect_linear_enough <- function(timings, size=2^10, threshold=0.03) {
+expect_linear_enough <- function(timings, size=2^10, threshold=0.2) {
   #expect that no more than `threshold` of a `size` input's runtime is
   #accounted for by quadratic behavior
-  #don't understand what predict.lm does w/ built-in intercepts
+  #predict.lm(type="terms") does strange things w/ built-in intercepts, avoid
   timings <- mutate(timings, intercept=1)
   model <- lm(user.self ~ size + I(size^2) - 1 + intercept, timings)
-  p <- predict(model, newdata=data.frame(size=2^10, intercept=1), type="terms")
-  expect_that(p[2] / p[1] < 0.2, is_true(), NULL, NULL)
+  p <- predict(model, newdata=data.frame(size=size, intercept=1), type="terms")
+  expect_that(p[2] / p[1] < threshold, is_true(), NULL, NULL)
 }
 
 test_that("rbind.fill performance linear", {
