@@ -84,18 +84,17 @@ output_template <- function(dfs, nrows) {
 }
 
 allocate_column <- function(example, nrows, dfs, var) {
-  #Compute the attributes of the column and allocate.
-  #To avoid multiple allocations, never _inspect_ column after allocating
-  #it. Inspection, even something as innocuous as is.matrix(column),
-  #will  setting NAMED to 2 and forcing a copy on the
-  #next modification.
+  #Compute the attributes of the column and allocate.  Returns a
+  #mutator function f(rows, values) rather than the actual allocated
+  #column.
   a <- attributes(example)
   type <- typeof(example)
   class <- a$class
   handler <- type
   isList <- is.recursive(example)
 
-  #this statement may be altered below
+  #This statement is eval'ed to do assignments. It may be altered below
+  #to account for arrays.
   assignment <- quote(column[rows] <<- what)
 
   a$names <- NULL
@@ -115,7 +114,7 @@ allocate_column <- function(example, nrows, dfs, var) {
     if (length(dims) > 1)
         stop("Array variable ", var, " has inconsistent dims")
 
-    # add empty args
+    # Adjust assignment statement
     assignment[[2]] <- as.call(
         c(as.list(assignment[[2]]),
           rep(list(quote(expr = )), length(dims[[1]]))))
