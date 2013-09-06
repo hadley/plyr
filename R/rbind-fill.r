@@ -113,6 +113,10 @@ allocate_column <- function(example, nrows, dfs, var) {
   a$names <- NULL
   a$class <- NULL
 
+  if (is.data.frame(example)) {
+    stop("Data frame column '", var, "' not supported by rbind.fill")
+  }
+
   if (is.array(example)) {
 
     if ("dimnames" %in% names(a)) {
