@@ -227,6 +227,21 @@ test_that("zero col data frames ok", {
   expect_equal(nrow(zc), 1)
 })
 
+test_that("rbind.fill rejects non-vector columns", {
+  a <- list(a=list(1), b=c(3), c="d", f=function() NULL)
+  attr(a, "row.names") <- c(NA_integer_, -1)
+  class(a) <- "data.frame"
+  expect_error(rbind.fill(a,a), "cannot make")
+})
+
+test_that("rbind.fill rejects data frame columns", {
+  a <- data.frame(a=1:3, b=2:4, c=3:5)
+  a$c <- data.frame(x=10:12, y=11:13)
+  rownames(a) <- NULL
+  rownames(a$c) <- NULL
+  expect_error(rbind.fill(a,a), "not supported")
+})
+
 rbind_time <- function(size,
                        classes = c("numeric", "character",
                                    "array", "factor", "time")) {
