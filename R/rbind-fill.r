@@ -40,9 +40,12 @@ rbind.fill <- function(...) {
   nrows <- sum(rows)
 
   # Generate output template
-  output <- output_template(dfs, nrows)
+  ot <- output_template(dfs, nrows)
+  setters <- ot$setters
+  getters <- ot$getters
+
   # Case of zero column inputs
-  if (length(output) == 0) {
+  if (length(setters) == 0) {
     return(as.data.frame(matrix(nrow = nrows, ncol = 0)))
   }
 
@@ -55,13 +58,14 @@ rbind.fill <- function(...) {
     df <- dfs[[i]]
 
     for(var in names(df)) {
-      output[[var]](rng, df[[var]])
+      setters[[var]](rng, df[[var]])
     }
   }
 
-  quickdf(lapply(output, function(x) x()))
+  quickdf(lapply(getters, function(x) x()))
 }
 
+# Construct named lists of setters and getters.
 output_template <- function(dfs, nrows) {
   vars <- unique(unlist(lapply(dfs, base::names)))   # ~ 125,000/s
   output <- vector("list", length(vars))
@@ -80,22 +84,31 @@ output_template <- function(dfs, nrows) {
     if (all(seen)) break  # Quit as soon as all done
   }
 
-  output
+  list(setters=lapply(output, `[[`, "set"),
+       getters=lapply(output, `[[`, "get"))
 }
 
+# Allocate space for a column to be filled out by rbind.fill.
+#
+# @param example An example vector taken from the first data frame
+# @param nrows The number of rows
+# @param dfs The list of data frames that will be combined. This may
+# need to be scanned (to unify factor levels or check array dimension
+# consistency)
+# @param var The name of the column.
+#
+# @return A list of two accessor functions `list(set=<>, get=<>)`.
+# `.$set(rows, value)` stores data in the given rows.
+# `.$get()` retreives the column data.
 allocate_column <- function(example, nrows, dfs, var) {
   #Compute the attributes of the column and allocate.  Returns a
   #mutator function f(rows, values) rather than the actual allocated
   #column.
+
   a <- attributes(example)
   type <- typeof(example)
   class <- a$class
-  handler <- type
   isList <- is.recursive(example)
-
-  #This statement is eval'ed to do assignments. It may be altered below
-  #to account for arrays.
-  assignment <- quote(column[rows] <<- what)
 
   a$names <- NULL
   a$class <- NULL
@@ -114,18 +127,13 @@ allocate_column <- function(example, nrows, dfs, var) {
     if (length(dims) > 1)
         stop("Array variable ", var, " has inconsistent dims")
 
-    # Adjust assignment statement
-    assignment[[2]] <- as.call(
-        c(as.list(assignment[[2]]),
-          rep(list(quote(expr = )), length(dims[[1]]))))
-
     if (length(dims[[1]]) == 0) { #is dropping dims necessary for 1d arrays?
       a$dim <- NULL
+      length <- nrows
     } else {
       a$dim <- c(nrows, dim(example)[-1])
+      length <- prod(a$dim)
     }
-
-    length <- prod(a$dim)
 
   } else {
     length <- nrows
@@ -147,13 +155,13 @@ allocate_column <- function(example, nrows, dfs, var) {
       class <- NULL
       a$levels <- NULL
     }
-  }
-
-  if (inherits(example, "POSIXt")) {
+  } else if (inherits(example, "POSIXt")) {
     tzone <- attr(example, "tzone")
     class <- c("POSIXct", "POSIXt")
     type <- "double"
     handler <- "time"
+  } else {
+    handler <- type
   }
 
   column <- vector(type, length)
@@ -162,44 +170,51 @@ allocate_column <- function(example, nrows, dfs, var) {
   }
   attributes(column) <- a
 
+  #construct an assignment expression like `column[rows, ...] <- what`
+  #appropriate for the number of dims
+  assignment <- make_assignment_call(length(a$dim))
+
   #It is especially important never to inspect the column when in the
   #main rbind.fill loop. To avoid that, we've done specialization
   #(figuring out the array assignment form and data type) ahead of
-  #time, and instead of returning the column, we return a mutator
-  #function that closes over the column.
-  switch(
+  #time, and instead of returning the column, we return accessor
+  #functions that close over the column.
+  setter <- switch(
       handler,
       character = function(rows, what) {
-        if (nargs() == 0) {
-          class(column) <<- class
-          return(column)
-        }
         what <- as.character(what)
         eval(assignment)
       },
       factor = function(rows, what) {
-        if(nargs() == 0) {
-          class(column) <<- class
-          return(column)
-        }
         #duplicate what `[<-.factor` does
         what <- match(what, levels)
         #no need to check since we already computed levels
         eval(assignment)
       },
       time = function(rows, what) {
-        if (nargs() == 0) {
-          class(column) <<- class
-          return(column)
-        }
         what <- as.POSIXct(what, tz = tzone)
         eval(assignment)
       },
       function(rows, what) {
-        if(nargs() == 0) {
-          class(column) <<- class
-          return(column)
-        }
         eval(assignment)
       })
+
+  getter <- function() {
+    class(column) <<- class
+    column
+  }
+
+  list(set=setter, get=getter)
+}
+
+#construct an assignment expression like `column[rows, ...] <- what`
+#appropriate for the number of dims
+make_assignment_call <- function(ndims) {
+  assignment <- quote(column[rows] <<- what)
+  if (ndims >= 2) {
+    assignment[[2]] <- as.call(
+        c(as.list(assignment[[2]]),
+          rep(list(quote(expr = )), ndims - 1)))
+  }
+  assignment
 }
