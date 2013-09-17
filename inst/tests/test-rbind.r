@@ -108,8 +108,15 @@ test_that("arrays are ok", {
   df2 <- rbind.fill(df, df)
   #this asserts that dim is stripped off 1d arrays. Necessary?
   expect_that(df2$x, is_equivalent_to(rbind(df, df)$x))
+  expect_that(dim(df2$x), equals(dim(rbind(df, df)$x)))
   #this would be more consistent
   #expect_that(df2$x, is_equivalent_to(rbind(array(1,1), array(1,1))))
+
+  #if dims are stripped, dimnames should be also
+  df <- data.frame(x = 1)
+  df$x <- array(2, 1, list(x="one"))
+  df2 <- rbind.fill(df, df)
+  expect_that(is.null(dimnames(df2$x)), is_true())
 })
 
 test_that("multidim arrays ok", {
@@ -134,7 +141,7 @@ test_that("Array column names preserved", {
   rownames(xx1$obs) <- NULL
 
   #but unlike rbind it should also preserve names-of-dimnames.
-  names(dimnames(xx1$obs)) <- c(NA, "Eye")
+  names(dimnames(xx1$obs)) <- c("", "Eye")
 
   expect_equal(xx1, xx2)
 })
@@ -153,7 +160,6 @@ test_that("attributes are preserved", {
 
   expect_that(attr(d12$b, "foo"), equals("one"))
   expect_that(attr(d21$b, "foo"), equals("two"))
-
 })
 
 test_that("characters override and convert factors", {

@@ -122,7 +122,7 @@ allocate_column <- function(example, nrows, dfs, var) {
     if ("dimnames" %in% names(a)) {
       a$dimnames[1] <- list(NULL)
       if (!is.null(names(a$dimnames)))
-          names(a$dimnames)[1] <- NA
+          names(a$dimnames)[1] <- ""
     }
 
     # Check that all other args have consistent dims
@@ -133,6 +133,7 @@ allocate_column <- function(example, nrows, dfs, var) {
 
     if (length(dims[[1]]) == 0) { #is dropping dims necessary for 1d arrays?
       a$dim <- NULL
+      a$dimnames <- NULL
       length <- nrows
     } else {
       a$dim <- c(nrows, dim(example)[-1])
