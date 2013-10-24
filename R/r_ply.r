@@ -19,20 +19,8 @@
 #' r_ply(10, plot(runif(50)))
 #' r_ply(25, hist(runif(1000)))
 r_ply <- function(.n, .expr, .progress = "none", .print = FALSE) {
-  if (is.function(.expr)) {
-    f <- .expr
-  } else {
-    f <- eval.parent(substitute(function() .expr))
-  }
-
-  progress <- create_progress_bar(.progress)
-
-  progress$init(.n)
-  on.exit(progress$term())
-
-  for(i in seq_len(.n)) {
-    f()
-    progress$step()
-  }
-  progress$term()
+  .rlply_worker(.n, .progress,
+                eval.parent(substitute(function() .expr)),
+                .discard = TRUE, .print = .print)
+  invisible(NULL)
 }
