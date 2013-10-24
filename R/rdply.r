@@ -23,13 +23,8 @@
 #' rdply(20, each(mean, var)(runif(100)))
 #' rdply(20, data.frame(x = runif(2)))
 rdply <- function(.n, .expr, .progress = "none") {
-  if (is.function(.expr)) {
-    f <- .expr
-  } else {
-    f <- eval.parent(substitute(function() .expr))
-  }
-
-  res <- rlply(.n = .n, .expr = f, .progress = .progress)
+  res <- .rlply_worker(.n, .progress,
+                       eval.parent(substitute(function() .expr)))
   labels <- data.frame(.n = seq_len(.n))
   list_to_dataframe(res, labels)
 }
