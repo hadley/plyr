@@ -71,11 +71,11 @@ rlply <- function(.n, .expr, .progress = "none") {
     invisible(NULL)
   } else {
     result <- vector("list", length = .n)
-    result[[1]] <- wrap(function() fun$val)()
+    result[1L] <- list(wrap(function() fun$val)())
     progress$step()
     
     for(i in seq.int(from = 2L, length.out = .n - 1L)) {
-      result[[i]] <- f()
+      result[i] <- list(f())
       progress$step()
     }
     
