@@ -69,6 +69,8 @@ BUG FIXES
 
 * `round_any` now works with `POSIXct` objects, thanks to Jean-Olivier Irisson (#76)
 
+* `r*ply` expression is evaluated exactly `.n` times, evaluation results are consistent with side effects. (#158, thanks to Kirill Müller)
+
 Version 1.7.1
 ------------------------------------------------------------------------------
 
