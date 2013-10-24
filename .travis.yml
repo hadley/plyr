@@ -1,0 +1,14 @@
+# it is not really python, but there is no R support on Travis CI yet
+language: python
+
+env: RTRAVISPATH=~root/R-travis
+
+# install dependencies
+install:
+  - sudo git clone https://github.com/krlmlr/R-travis.git $RTRAVISPATH
+  - sudo $RTRAVISPATH/install
+
+# run tests
+script:
+  - $RTRAVISPATH/script stable
+  - $RTRAVISPATH/script devel
