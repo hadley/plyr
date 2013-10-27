@@ -3,3 +3,4 @@ src/.gitignore
 man-roxygen
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.travis\.yml$
