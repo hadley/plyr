@@ -2,3 +2,4 @@ src-*
 .DS_Store
 .Rproj.user
 *.Rproj
+/.Rhistory
