@@ -3,7 +3,8 @@
 \title{Split list, apply function, and return results in a data frame.}
 \usage{
   ldply(.data, .fun = NULL, ..., .progress = "none",
-    .inform = FALSE, .parallel = FALSE, .paropts = NULL)
+    .inform = FALSE, .parallel = FALSE, .paropts = NULL,
+    .id = ".id")
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -29,6 +30,10 @@
   slows processing speed, but is very useful for debugging}
 
   \item{.data}{list to be processed}
+
+  \item{.id}{name of the index column (used if \code{.data}
+  is a named list), defaults to \code{".id"}. Pass
+  \code{NULL} to avoid creation of the index column}
 }
 \value{
   A data frame, as described in the output section.
