@@ -75,7 +75,7 @@ mapvalues <- function(x, from, to, warn_missing = TRUE) {
 
   if (is.factor(x)) {
     # If x is a factor, call self but operate on the levels
-    levels(x) <- mapvalues(levels(x), from, to)
+    levels(x) <- mapvalues(levels(x), from, to, warn_missing)
     return(x)
   }
 
