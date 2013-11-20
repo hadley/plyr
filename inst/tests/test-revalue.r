@@ -118,3 +118,20 @@ test_that("revalue and mapvalues accept empty vectors and NULL", {
   expect_identical(revalue(NULL, c("3"=30), warn_missing=FALSE), NULL)
   expect_identical(mapvalues(NULL, 3, 30, warn_missing=FALSE), NULL)
 })
+
+test_that("revalue and mapvalues respect warn_missing", {
+  # revalue
+  expect_that(revalue("a", c("a"="A")), not(shows_message()))
+  expect_that(revalue("a", c("b"="B"), warn_missing=TRUE), shows_message())
+  expect_that(revalue("a", c("b"="B"), warn_missing=FALSE), not(shows_message()))
+
+  # mapvalues
+  expect_that(mapvalues("a", "a", "A"), not(shows_message()))
+  expect_that(mapvalues("a", "b", "B", warn_missing=TRUE), shows_message())
+  expect_that(mapvalues("a", "b", "B", warn_missing=FALSE), not(shows_message()))
+
+  # mapvalues with factors
+  expect_that(mapvalues(factor("a"), "a", "A"), not(shows_message()))
+  expect_that(mapvalues(factor("a"), "b", "B", warn_missing=TRUE), shows_message())
+  expect_that(mapvalues(factor("a"), "b", "B", warn_missing=FALSE), not(shows_message()))
+})
