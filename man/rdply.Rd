@@ -2,7 +2,7 @@
 \alias{rdply}
 \title{Replicate expression and return results in a data frame.}
 \usage{
-  rdply(.n, .expr, .progress = "none")
+rdply(.n, .expr, .progress = "none")
 }
 \arguments{
   \item{.n}{number of times to evaluate the expression}
@@ -13,19 +13,19 @@
   \code{\link{create_progress_bar}}}
 }
 \value{
-  a data frame
+a data frame
 }
 \description{
-  Evalulate expression n times then combine results into a
-  data frame
+Evalulate expression n times then combine results into a
+data frame
 }
 \details{
-  This function runs an expression multiple times, and
-  combines the result into a data frame.  If there are no
-  results, then this function returns a data frame with
-  zero rows and columns (\code{data.frame()}). This
-  function is equivalent to \code{\link{replicate}}, but
-  will always return results as a data frame.
+This function runs an expression multiple times, and
+combines the result into a data frame.  If there are no
+results, then this function returns a data frame with zero
+rows and columns (\code{data.frame()}). This function is
+equivalent to \code{\link{replicate}}, but will always
+return results as a data frame.
 }
 \examples{
 rdply(20, mean(runif(100)))
@@ -33,9 +33,9 @@ rdply(20, each(mean, var)(runif(100)))
 rdply(20, data.frame(x = runif(2)))
 }
 \references{
-  Hadley Wickham (2011). The Split-Apply-Combine Strategy
-  for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
+Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1),
+1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \keyword{manip}
 

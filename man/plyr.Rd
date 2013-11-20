@@ -4,25 +4,25 @@
 \alias{plyr-package}
 \title{plyr: the split-apply-combine paradigm for R.}
 \description{
-  The plyr package is a set of clean and consistent tools
-  that implement the split-apply-combine pattern in R. This
-  is an extremely common pattern in data analysis: you
-  solve a complex problem by breaking it down into small
-  pieces, doing something to each piece and then combining
-  the results back together again.
+The plyr package is a set of clean and consistent tools
+that implement the split-apply-combine pattern in R. This
+is an extremely common pattern in data analysis: you solve
+a complex problem by breaking it down into small pieces,
+doing something to each piece and then combining the
+results back together again.
 }
 \details{
-  The plyr functions are named according to what sort of
-  data structure they split up and what sort of data
-  structure they return:
+The plyr functions are named according to what sort of data
+structure they split up and what sort of data structure
+they return:
 
-  \describe{ \item{a}{array} \item{l}{list}
-  \item{d}{data.frame} \item{m}{multiple inputs}
-  \item{r}{repeat multiple times} \item{_}{nothing} }
+\describe{ \item{a}{array} \item{l}{list}
+\item{d}{data.frame} \item{m}{multiple inputs}
+\item{r}{repeat multiple times} \item{_}{nothing} }
 
-  So \code{\link{ddply}} takes a data frame as input and
-  returns a data frame as output, and \code{\link{l_ply}}
-  takes a list as input and returns nothing as output.
+So \code{\link{ddply}} takes a data frame as input and
+returns a data frame as output, and \code{\link{l_ply}}
+takes a list as input and returns nothing as output.
 }
 \section{Row names}{
   By design, no plyr function will preserve row names - in

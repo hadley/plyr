@@ -2,7 +2,7 @@
 \alias{as.list.split}
 \title{Convert split list to regular list.}
 \usage{
-  \method{as.list}{split} (x, ...)
+\method{as.list}{split}(x, ...)
 }
 \arguments{
   \item{x}{object to convert to a list}
@@ -10,8 +10,8 @@
   \item{...}{unused}
 }
 \description{
-  Strip off label related attributed to make a strip list
-  as regular list
+Strip off label related attributed to make a strip list as
+regular list
 }
 \keyword{internal}
 

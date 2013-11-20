@@ -2,16 +2,16 @@
 \alias{each}
 \title{Aggregate multiple functions into a single function.}
 \usage{
-  each(...)
+each(...)
 }
 \arguments{
   \item{...}{functions to combine. each function should
   produce a single number as output}
 }
 \description{
-  Combine multiple functions into a single function
-  returning a named vector of outputs. Note: you cannot
-  supply additional parameters for the summary functions
+Combine multiple functions into a single function returning
+a named vector of outputs. Note: you cannot supply
+additional parameters for the summary functions
 }
 \examples{
 # Call min() and max() on the vector 1:10
@@ -28,8 +28,8 @@ each(c(min, max))(1:10)
 each(length, mean, var)(rnorm(100))
 }
 \seealso{
-  \code{\link{summarise}} for applying summary functions to
-  data
+\code{\link{summarise}} for applying summary functions to
+data
 }
 \keyword{manip}
 

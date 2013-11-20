@@ -2,7 +2,7 @@
 \alias{join}
 \title{Join two data frames together.}
 \usage{
-  join(x, y, by = NULL, type = "left", match = "all")
+join(x, y, by = NULL, type = "left", match = "all")
 }
 \arguments{
   \item{x}{data frame}
@@ -22,29 +22,29 @@
   significantly faster.}
 }
 \description{
-  Join, like merge, is designed for the types of problems
-  where you would use a sql join.
+Join, like merge, is designed for the types of problems
+where you would use a sql join.
 }
 \details{
-  The four join types return:
+The four join types return:
 
-  \itemize{ \item \code{inner}: only rows with matching
-  keys in both x and y \item \code{left}: all rows in x,
-  adding matching columns from y \item \code{right}: all
-  rows in y, adding matching columns from x \item
-  \code{full}: all rows in x with matching columns in y,
-  then the rows of y that don't match x. }
+\itemize{ \item \code{inner}: only rows with matching keys
+in both x and y \item \code{left}: all rows in x, adding
+matching columns from y \item \code{right}: all rows in y,
+adding matching columns from x \item \code{full}: all rows
+in x with matching columns in y, then the rows of y that
+don't match x. }
 
-  Note that from plyr 1.5, \code{join} will (by default)
-  return all matches, not just the first match, as it did
-  previously.
+Note that from plyr 1.5, \code{join} will (by default)
+return all matches, not just the first match, as it did
+previously.
 
-  Unlike merge, preserves the order of x no matter what
-  join type is used. If needed, rows from y will be added
-  to the bottom.  Join is often faster than merge, although
-  it is somewhat less featureful - it currently offers no
-  way to rename output or merge on different variables in
-  the x and y data frames.
+Unlike merge, preserves the order of x no matter what join
+type is used. If needed, rows from y will be added to the
+bottom.  Join is often faster than merge, although it is
+somewhat less featureful - it currently offers no way to
+rename output or merge on different variables in the x and
+y data frames.
 }
 \examples{
 first <- ddply(baseball, "id", summarise, first = min(year))

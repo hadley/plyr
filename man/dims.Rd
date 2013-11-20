@@ -2,13 +2,13 @@
 \alias{dims}
 \title{Number of dimensions.}
 \usage{
-  dims(x)
+dims(x)
 }
 \arguments{
   \item{x}{array}
 }
 \description{
-  Number of dimensions of an array or vector
+Number of dimensions of an array or vector
 }
 \keyword{internal}
 

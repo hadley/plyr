@@ -2,17 +2,17 @@
 \alias{strip_splits}
 \title{Remove splitting variables from a data frame.}
 \usage{
-  strip_splits(df)
+strip_splits(df)
 }
 \arguments{
   \item{df}{data frame produced by \code{d*ply}.}
 }
 \description{
-  This is useful when you want to perform some operation to
-  every column in the data frame, except the variables that
-  you have used to split it. These variables will be
-  automatically added back on to the result when combining
-  all results together.
+This is useful when you want to perform some operation to
+every column in the data frame, except the variables that
+you have used to split it. These variables will be
+automatically added back on to the result when combining
+all results together.
 }
 \examples{
 dlply(mtcars, c("vs", "am"))

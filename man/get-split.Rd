@@ -2,7 +2,7 @@
 \alias{[.split}
 \title{Subset splits.}
 \usage{
-  \method{[}{split} (x, i, ...)
+\method{[}{split}(x, i, ...)
 }
 \arguments{
   \item{x}{split object}
@@ -12,7 +12,7 @@
   \item{...}{unused}
 }
 \description{
-  Subset splits, ensuring that labels keep matching
+Subset splits, ensuring that labels keep matching
 }
 \keyword{internal}
 

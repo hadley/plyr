@@ -2,14 +2,14 @@
 \alias{nunique}
 \title{Number of unique values.}
 \usage{
-  nunique(x)
+nunique(x)
 }
 \arguments{
   \item{x}{vector}
 }
 \description{
-  Calculate number of unique values of a variable as
-  efficiently as possible.
+Calculate number of unique values of a variable as
+efficiently as possible.
 }
 \keyword{internal}
 

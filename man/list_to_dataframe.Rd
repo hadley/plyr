@@ -2,7 +2,7 @@
 \alias{list_to_dataframe}
 \title{List to data frame.}
 \usage{
-  list_to_dataframe(res, labels = NULL)
+list_to_dataframe(res, labels = NULL)
 }
 \arguments{
   \item{res}{list of input data}
@@ -11,13 +11,13 @@
   element of res}
 }
 \description{
-  Reduce/simplify a list of homogenous objects to a data
-  frame. All \code{NULL} entries are removed. Remaining
-  entries must be all atomic or all data frames.
+Reduce/simplify a list of homogenous objects to a data
+frame. All \code{NULL} entries are removed. Remaining
+entries must be all atomic or all data frames.
 }
 \seealso{
-  Other list simplification functions:
-  \code{\link{list_to_array}}, \code{\link{list_to_vector}}
+Other list simplification functions:
+\code{\link{list_to_array}}, \code{\link{list_to_vector}}
 }
 \keyword{internal}
 

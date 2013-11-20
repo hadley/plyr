@@ -2,19 +2,19 @@
 \alias{true}
 \title{Function that always returns true.}
 \usage{
-  true(...)
+true(...)
 }
 \arguments{
   \item{...}{all input ignored}
 }
 \value{
-  \code{TRUE}
+\code{TRUE}
 }
 \description{
-  Function that always returns true.
+Function that always returns true.
 }
 \seealso{
-  \code{\link{colwise}} which uses it
+\code{\link{colwise}} which uses it
 }
 \keyword{internal}
 

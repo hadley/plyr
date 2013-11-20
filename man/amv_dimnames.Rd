@@ -2,19 +2,19 @@
 \alias{amv_dimnames}
 \title{Dimension names.}
 \usage{
-  amv_dimnames(x)
+amv_dimnames(x)
 }
 \arguments{
   \item{x}{array, matrix or vector}
 }
 \description{
-  Consistent dimnames for vectors, matrices and arrays.
+Consistent dimnames for vectors, matrices and arrays.
 }
 \details{
-  Unlike \code{\link{dimnames}} no part of the output will
-  ever be null.  If a component of dimnames is omitted,
-  \code{amv_dimnames} will return an integer sequence of
-  the appropriate length.
+Unlike \code{\link{dimnames}} no part of the output will
+ever be null.  If a component of dimnames is omitted,
+\code{amv_dimnames} will return an integer sequence of the
+appropriate length.
 }
 \keyword{internal}
 

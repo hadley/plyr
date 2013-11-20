@@ -2,25 +2,24 @@
 \alias{idata.frame}
 \title{Construct an immutable data frame.}
 \usage{
-  idata.frame(df)
+idata.frame(df)
 }
 \arguments{
   \item{df}{a data frame}
 }
 \value{
-  an immutable data frame
+an immutable data frame
 }
 \description{
-  An immutable data frame works like an ordinary data
-  frame, except that when you subset it, it returns a
-  reference to the original data frame, not a a copy. This
-  makes subsetting substantially faster and has a big
-  impact when you are working with large datasets with many
-  groups.
+An immutable data frame works like an ordinary data frame,
+except that when you subset it, it returns a reference to
+the original data frame, not a a copy. This makes
+subsetting substantially faster and has a big impact when
+you are working with large datasets with many groups.
 }
 \details{
-  This method is still a little experimental, so please let
-  me know if you run into any problems.
+This method is still a little experimental, so please let
+me know if you run into any problems.
 }
 \examples{
 system.time(dlply(baseball, "id", nrow))

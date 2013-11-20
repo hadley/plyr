@@ -2,9 +2,8 @@
 \alias{mlply}
 \title{Call function with arguments in array or data frame, returning a list.}
 \usage{
-  mlply(.data, .fun = NULL, ..., .expand = TRUE,
-    .progress = "none", .inform = FALSE, .parallel = FALSE,
-    .paropts = NULL)
+mlply(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none",
+  .inform = FALSE, .parallel = FALSE, .paropts = NULL)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -37,19 +36,19 @@
   dimension for each variable.}
 }
 \value{
-  list of results
+list of results
 }
 \description{
-  Call a multi-argument function with values taken from
-  columns of an data frame or array, and combine results
-  into a list.
+Call a multi-argument function with values taken from
+columns of an data frame or array, and combine results into
+a list.
 }
 \details{
-  The \code{m*ply} functions are the \code{plyr} version of
-  \code{mapply}, specialised according to the type of
-  output they produce.  These functions are just a
-  convenient wrapper around \code{a*ply} with \code{margins
-  = 1} and \code{.fun} wrapped in \code{\link{splat}}.
+The \code{m*ply} functions are the \code{plyr} version of
+\code{mapply}, specialised according to the type of output
+they produce.  These functions are just a convenient
+wrapper around \code{a*ply} with \code{margins = 1} and
+\code{.fun} wrapped in \code{\link{splat}}.
 }
 \section{Input}{
   Call a multi-argument function with values taken from
@@ -69,16 +68,16 @@ mlply(cbind(1:4, length = 4:1), seq)
 mlply(cbind(1:4, by = 4:1), seq, to = 20)
 }
 \references{
-  Hadley Wickham (2011). The Split-Apply-Combine Strategy
-  for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
+Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1),
+1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-  Other list output: \code{\link{alply}},
-  \code{\link{dlply}}, \code{\link{llply}}
+Other list output: \code{\link{alply}},
+\code{\link{dlply}}, \code{\link{llply}}
 
-  Other multiple arguments input: \code{\link{m_ply}},
-  \code{\link{maply}}, \code{\link{mdply}}
+Other multiple arguments input: \code{\link{m_ply}},
+\code{\link{maply}}, \code{\link{mdply}}
 }
 \keyword{manip}
 

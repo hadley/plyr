@@ -2,7 +2,7 @@
 \alias{progress_text}
 \title{Text progress bar.}
 \usage{
-  progress_text(style = 3, ...)
+progress_text(style = 3, ...)
 }
 \arguments{
   \item{style}{style of text bar, see Details section of
@@ -12,21 +12,21 @@
   \code{\link{txtProgressBar}}}
 }
 \description{
-  A textual progress bar
+A textual progress bar
 }
 \details{
-  This progress bar displays a textual progress bar that
-  works on all platforms.  It is a thin wrapper around the
-  built-in \code{\link{setTxtProgressBar}} and can be
-  customised in the same way.
+This progress bar displays a textual progress bar that
+works on all platforms.  It is a thin wrapper around the
+built-in \code{\link{setTxtProgressBar}} and can be
+customised in the same way.
 }
 \examples{
 l_ply(1:100, identity, .progress = "text")
 l_ply(1:100, identity, .progress = progress_text(char = "-"))
 }
 \seealso{
-  Other progress bars: \code{\link{progress_none}},
-  \code{\link{progress_time}}, \code{\link{progress_tk}},
-  \code{\link{progress_win}}
+Other progress bars: \code{\link{progress_none}},
+\code{\link{progress_time}}, \code{\link{progress_tk}},
+\code{\link{progress_win}}
 }
 

@@ -2,9 +2,9 @@
 \alias{daply}
 \title{Split data frame, apply function, and return results in an array.}
 \usage{
-  daply(.data, .variables, .fun = NULL, ...,
-    .progress = "none", .inform = FALSE, .drop_i = TRUE,
-    .drop_o = TRUE, .parallel = FALSE, .paropts = NULL)
+daply(.data, .variables, .fun = NULL, ..., .progress = "none",
+  .inform = FALSE, .drop_i = TRUE, .drop_o = TRUE, .parallel = FALSE,
+  .paropts = NULL)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -43,15 +43,14 @@
   \code{TRUE}}
 }
 \value{
-  if results are atomic with same type and dimensionality,
-  a vector, matrix or array; otherwise, a list-array (a
-  list with dimensions)
+if results are atomic with same type and dimensionality, a
+vector, matrix or array; otherwise, a list-array (a list
+with dimensions)
 }
 \description{
-  For each subset of data frame, apply function then
-  combine results into an array.  \code{daply} with a
-  function that operates column-wise is similar to
-  \code{\link{aggregate}}.
+For each subset of data frame, apply function then combine
+results into an array.  \code{daply} with a function that
+operates column-wise is similar to \code{\link{aggregate}}.
 }
 \section{Input}{
   This function splits data frames by variables.
@@ -72,16 +71,16 @@ daply(baseball[, 6:9], .(baseball$year), colwise(mean))
 daply(baseball, .(year), function(df) colwise(mean)(df[, 6:9]))
 }
 \references{
-  Hadley Wickham (2011). The Split-Apply-Combine Strategy
-  for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
+Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1),
+1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-  Other array output: \code{\link{aaply}},
-  \code{\link{laply}}, \code{\link{maply}}
+Other array output: \code{\link{aaply}},
+\code{\link{laply}}, \code{\link{maply}}
 
-  Other data frame input: \code{\link{d_ply}},
-  \code{\link{ddply}}, \code{\link{dlply}}
+Other data frame input: \code{\link{d_ply}},
+\code{\link{ddply}}, \code{\link{dlply}}
 }
 \keyword{manip}
 

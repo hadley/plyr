@@ -2,13 +2,13 @@
 \alias{names.quoted}
 \title{Compute names of quoted variables.}
 \usage{
-  \method{names}{quoted} (x)
+\method{names}{quoted}(x)
 }
 \description{
-  Figure out names of quoted variables, using specified
-  names if they exist, otherwise converting the values to
-  character strings.  This may create variable names that
-  can only be accessed using \code{``}.
+Figure out names of quoted variables, using specified names
+if they exist, otherwise converting the values to character
+strings.  This may create variable names that can only be
+accessed using \code{``}.
 }
 \keyword{internal}
 

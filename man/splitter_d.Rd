@@ -2,7 +2,7 @@
 \alias{splitter_d}
 \title{Split a data frame by variables.}
 \usage{
-  splitter_d(data, .variables = NULL, drop = TRUE)
+splitter_d(data, .variables = NULL, drop = TRUE)
 }
 \arguments{
   \item{data}{data frame}
@@ -12,25 +12,23 @@
   \item{drop}{drop unnused factor levels?}
 }
 \value{
-  a list of data.frames, with attributes that record split
-  details
+a list of data.frames, with attributes that record split
+details
 }
 \description{
-  Split a data frame into pieces based on variable
-  contained in that data frame
+Split a data frame into pieces based on variable contained
+in that data frame
 }
 \details{
-  This is the workhorse of the \code{d*ply} functions.
-  Based on the variables you supply, it breaks up a single
-  data frame into a list of data frames, each containing a
-  single combination from the levels of the specified
-  variables.
+This is the workhorse of the \code{d*ply} functions.  Based
+on the variables you supply, it breaks up a single data
+frame into a list of data frames, each containing a single
+combination from the levels of the specified variables.
 
-  This is basically a thin wrapper around
-  \code{\link{split}} which evaluates the variables in the
-  context of the data, and includes enough information to
-  reconstruct the labelling of the data frame after other
-  operations.
+This is basically a thin wrapper around \code{\link{split}}
+which evaluates the variables in the context of the data,
+and includes enough information to reconstruct the
+labelling of the data frame after other operations.
 }
 \examples{
 plyr:::splitter_d(mtcars, .(cyl))
@@ -47,10 +45,9 @@ plyr:::splitter_d(mtcars, .(cyl3, vs))
 plyr:::splitter_d(mtcars, .(cyl3, vs), drop = FALSE)
 }
 \seealso{
-  \code{\link{.}} for quoting variables,
-  \code{\link{split}}
+\code{\link{.}} for quoting variables, \code{\link{split}}
 
-  Other splitter functions: \code{\link{splitter_a}}
+Other splitter functions: \code{\link{splitter_a}}
 }
 \keyword{internal}
 

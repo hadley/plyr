@@ -2,16 +2,16 @@
 \alias{here}
 \title{Capture current evaluation context.}
 \usage{
-  here(f)
+here(f)
 }
 \arguments{
   \item{f}{a function that does non-standard evaluation}
 }
 \description{
-  This function captures the current context, making it
-  easier to use \code{**ply} with functions that do special
-  evaluation and need access to the environment where ddply
-  was called from.
+This function captures the current context, making it
+easier to use \code{**ply} with functions that do special
+evaluation and need access to the environment where ddply
+was called from.
 }
 \examples{
 df <- data.frame(a = rep(c("a","b"), each = 10), b = 1:20)
@@ -28,6 +28,6 @@ f2("name:")
 # Works :)
 }
 \author{
-  Peter Meilstrup, \url{https://github.com/crowding}
+Peter Meilstrup, \url{https://github.com/crowding}
 }
 

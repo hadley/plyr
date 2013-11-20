@@ -2,9 +2,8 @@
 \alias{maply}
 \title{Call function with arguments in array or data frame, returning an array.}
 \usage{
-  maply(.data, .fun = NULL, ..., .expand = TRUE,
-    .progress = "none", .inform = FALSE, .drop = TRUE,
-    .parallel = FALSE, .paropts = NULL)
+maply(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none",
+  .inform = FALSE, .drop = TRUE, .parallel = FALSE, .paropts = NULL)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -41,21 +40,21 @@
   \code{TRUE}}
 }
 \value{
-  if results are atomic with same type and dimensionality,
-  a vector, matrix or array; otherwise, a list-array (a
-  list with dimensions)
+if results are atomic with same type and dimensionality, a
+vector, matrix or array; otherwise, a list-array (a list
+with dimensions)
 }
 \description{
-  Call a multi-argument function with values taken from
-  columns of an data frame or array, and combine results
-  into an array
+Call a multi-argument function with values taken from
+columns of an data frame or array, and combine results into
+an array
 }
 \details{
-  The \code{m*ply} functions are the \code{plyr} version of
-  \code{mapply}, specialised according to the type of
-  output they produce.  These functions are just a
-  convenient wrapper around \code{a*ply} with \code{margins
-  = 1} and \code{.fun} wrapped in \code{\link{splat}}.
+The \code{m*ply} functions are the \code{plyr} version of
+\code{mapply}, specialised according to the type of output
+they produce.  These functions are just a convenient
+wrapper around \code{a*ply} with \code{margins = 1} and
+\code{.fun} wrapped in \code{\link{splat}}.
 }
 \section{Input}{
   Call a multi-argument function with values taken from
@@ -72,16 +71,16 @@ maply(expand.grid(mean = 1:5, sd = 1:5), rnorm, n = 5)
 maply(cbind(1:5, 1:5), rnorm, n = 5)
 }
 \references{
-  Hadley Wickham (2011). The Split-Apply-Combine Strategy
-  for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
+Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1),
+1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-  Other array output: \code{\link{aaply}},
-  \code{\link{daply}}, \code{\link{laply}}
+Other array output: \code{\link{aaply}},
+\code{\link{daply}}, \code{\link{laply}}
 
-  Other multiple arguments input: \code{\link{m_ply}},
-  \code{\link{mdply}}, \code{\link{mlply}}
+Other multiple arguments input: \code{\link{m_ply}},
+\code{\link{mdply}}, \code{\link{mlply}}
 }
 \keyword{manip}
 

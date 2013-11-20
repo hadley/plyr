@@ -2,8 +2,8 @@
 \alias{ldply}
 \title{Split list, apply function, and return results in a data frame.}
 \usage{
-  ldply(.data, .fun = NULL, ..., .progress = "none",
-    .inform = FALSE, .parallel = FALSE, .paropts = NULL)
+ldply(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
+  .parallel = FALSE, .paropts = NULL)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -31,11 +31,11 @@
   \item{.data}{list to be processed}
 }
 \value{
-  A data frame, as described in the output section.
+A data frame, as described in the output section.
 }
 \description{
-  For each element of a list, apply function then combine
-  results into a data frame.
+For each element of a list, apply function then combine
+results into a data frame.
 }
 \section{Input}{
   This function splits lists by elements.
@@ -54,16 +54,16 @@
   (\code{data.frame()}).
 }
 \references{
-  Hadley Wickham (2011). The Split-Apply-Combine Strategy
-  for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
+Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1),
+1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-  Other data frame output: \code{\link{adply}},
-  \code{\link{ddply}}, \code{\link{mdply}}
+Other data frame output: \code{\link{adply}},
+\code{\link{ddply}}, \code{\link{mdply}}
 
-  Other list input: \code{\link{l_ply}},
-  \code{\link{laply}}, \code{\link{llply}}
+Other list input: \code{\link{l_ply}}, \code{\link{laply}},
+\code{\link{llply}}
 }
 \keyword{manip}
 
