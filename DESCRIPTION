@@ -18,7 +18,7 @@ Depends:
     R (>= 2.11.0)
 Suggests:
     abind,
-    testthat (>= 0.2),
+    testthat (>= 0.7.1.99),
     tcltk,
     foreach,
     doMC,
