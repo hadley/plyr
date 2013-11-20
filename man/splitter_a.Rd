@@ -2,7 +2,7 @@
 \alias{splitter_a}
 \title{Split an array by .margins.}
 \usage{
-  splitter_a(data, .margins = 1L, .expand = TRUE)
+splitter_a(data, .margins = 1L, .expand = TRUE)
 }
 \arguments{
   \item{data}{>1d data structure (matrix, data.frame or
@@ -17,25 +17,25 @@
   variable.}
 }
 \value{
-  a list of lower-d slices, with attributes that record
-  split details
+a list of lower-d slices, with attributes that record split
+details
 }
 \description{
-  Split a 2d or higher data structure into lower-d pieces
-  based
+Split a 2d or higher data structure into lower-d pieces
+based
 }
 \details{
-  This is the workhorse of the \code{a*ply} functions.
-  Given a >1 d data structure (matrix, array, data.frame),
-  it splits it into pieces based on the subscripts that you
-  supply.  Each piece is a lower dimensional slice.
+This is the workhorse of the \code{a*ply} functions.  Given
+a >1 d data structure (matrix, array, data.frame), it
+splits it into pieces based on the subscripts that you
+supply.  Each piece is a lower dimensional slice.
 
-  The margins are specified in the same way as
-  \code{\link{apply}}, but \code{splitter_a} just splits up
-  the data, while \code{apply} also applies a function and
-  combines the pieces back together.  This function also
-  includes enough information to recreate the split from
-  attributes on the list of pieces.
+The margins are specified in the same way as
+\code{\link{apply}}, but \code{splitter_a} just splits up
+the data, while \code{apply} also applies a function and
+combines the pieces back together.  This function also
+includes enough information to recreate the split from
+attributes on the list of pieces.
 }
 \examples{
 plyr:::splitter_a(mtcars, 1)
@@ -46,7 +46,7 @@ plyr:::splitter_a(ozone, 3)
 plyr:::splitter_a(ozone, 1:2)
 }
 \seealso{
-  Other splitter functions: \code{\link{splitter_d}}
+Other splitter functions: \code{\link{splitter_d}}
 }
 \keyword{internal}
 

@@ -2,8 +2,7 @@
 \alias{as.data.frame.function}
 \title{Make a function return a data frame.}
 \usage{
-  \method{as.data.frame}{function} (x, row.names, optional,
-    ...)
+\method{as.data.frame}{function}(x, row.names, optional, ...)
 }
 \arguments{
   \item{x}{function to make return a data frame}
@@ -17,13 +16,13 @@
   \item{...}{necessary to match the generic, but not used}
 }
 \description{
-  Create a new function that returns the existing function
-  wrapped in a data.frame
+Create a new function that returns the existing function
+wrapped in a data.frame
 }
 \details{
-  This is useful when calling \code{*dply} functions with a
-  function that returns a vector, and you want the output
-  in rows, rather than columns
+This is useful when calling \code{*dply} functions with a
+function that returns a vector, and you want the output in
+rows, rather than columns
 }
 \keyword{manip}
 

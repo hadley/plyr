@@ -2,7 +2,7 @@
 \alias{rename}
 \title{Modify names by name, not position.}
 \usage{
-  rename(x, replace, warn_missing = TRUE)
+rename(x, replace, warn_missing = TRUE)
 }
 \arguments{
   \item{x}{named object to modify}
@@ -16,7 +16,7 @@
   returned data into a variable.}
 }
 \description{
-  Modify names by name, not position.
+Modify names by name, not position.
 }
 \examples{
 x <- c("a" = 1, "b" = 2, d = 3, 4)

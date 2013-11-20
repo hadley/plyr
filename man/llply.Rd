@@ -2,8 +2,8 @@
 \alias{llply}
 \title{Split list, apply function, and return results in a list.}
 \usage{
-  llply(.data, .fun = NULL, ..., .progress = "none",
-    .inform = FALSE, .parallel = FALSE, .paropts = NULL)
+llply(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
+  .parallel = FALSE, .paropts = NULL)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -31,16 +31,16 @@
   \item{.data}{list to be processed}
 }
 \value{
-  list of results
+list of results
 }
 \description{
-  For each element of a list, apply function, keeping
-  results as a list.
+For each element of a list, apply function, keeping results
+as a list.
 }
 \details{
-  \code{llply} is equivalent to \code{\link{lapply}} except
-  that it will preserve labels and can display a progress
-  bar.
+\code{llply} is equivalent to \code{\link{lapply}} except
+that it will preserve labels and can display a progress
+bar.
 }
 \section{Input}{
   This function splits lists by elements.
@@ -60,16 +60,16 @@ llply(x, mean)
 llply(x, quantile, probs = 1:3/4)
 }
 \references{
-  Hadley Wickham (2011). The Split-Apply-Combine Strategy
-  for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
+Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1),
+1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-  Other list input: \code{\link{l_ply}},
-  \code{\link{laply}}, \code{\link{ldply}}
+Other list input: \code{\link{l_ply}}, \code{\link{laply}},
+\code{\link{ldply}}
 
-  Other list output: \code{\link{alply}},
-  \code{\link{dlply}}, \code{\link{mlply}}
+Other list output: \code{\link{alply}},
+\code{\link{dlply}}, \code{\link{mlply}}
 }
 \keyword{manip}
 

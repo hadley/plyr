@@ -2,9 +2,9 @@
 \alias{a_ply}
 \title{Split array, apply function, and discard results.}
 \usage{
-  a_ply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
-    .progress = "none", .inform = FALSE, .print = FALSE,
-    .parallel = FALSE, .paropts = NULL)
+a_ply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
+  .progress = "none", .inform = FALSE, .print = FALSE,
+  .parallel = FALSE, .paropts = NULL)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -45,11 +45,11 @@
   \code{FALSE})}
 }
 \value{
-  Nothing
+Nothing
 }
 \description{
-  For each slice of an array, apply function and discard
-  results
+For each slice of an array, apply function and discard
+results
 }
 \section{Input}{
   This function splits matrices, arrays and data frames by
@@ -62,16 +62,16 @@
   displaying plots or saving output.
 }
 \references{
-  Hadley Wickham (2011). The Split-Apply-Combine Strategy
-  for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
+Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1),
+1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-  Other array input: \code{\link{aaply}},
-  \code{\link{adply}}, \code{\link{alply}}
+Other array input: \code{\link{aaply}},
+\code{\link{adply}}, \code{\link{alply}}
 
-  Other no output: \code{\link{d_ply}},
-  \code{\link{l_ply}}, \code{\link{m_ply}}
+Other no output: \code{\link{d_ply}}, \code{\link{l_ply}},
+\code{\link{m_ply}}
 }
 \keyword{manip}
 

@@ -2,9 +2,9 @@
 \alias{aaply}
 \title{Split array, apply function, and return results in an array.}
 \usage{
-  aaply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
-    .progress = "none", .inform = FALSE, .drop = TRUE,
-    .parallel = FALSE, .paropts = NULL)
+aaply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
+  .progress = "none", .inform = FALSE, .drop = TRUE, .parallel = FALSE,
+  .paropts = NULL)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -46,22 +46,22 @@
   \code{TRUE}}
 }
 \value{
-  if results are atomic with same type and dimensionality,
-  a vector, matrix or array; otherwise, a list-array (a
-  list with dimensions)
+if results are atomic with same type and dimensionality, a
+vector, matrix or array; otherwise, a list-array (a list
+with dimensions)
 }
 \description{
-  For each slice of an array, apply function, keeping
-  results as an array.
+For each slice of an array, apply function, keeping results
+as an array.
 }
 \details{
-  This function is very similar to \code{\link{apply}},
-  except that it will always return an array, and when the
-  function returns >1 d data structures, those dimensions
-  are added on to the highest dimensions, rather than the
-  lowest dimensions.  This makes \code{aaply} idempotent,
-  so that \code{aaply(input, X, identity)} is equivalent to
-  \code{aperm(input, X)}.
+This function is very similar to \code{\link{apply}},
+except that it will always return an array, and when the
+function returns >1 d data structures, those dimensions are
+added on to the highest dimensions, rather than the lowest
+dimensions.  This makes \code{aaply} idempotent, so that
+\code{aaply(input, X, identity)} is equivalent to
+\code{aperm(input, X)}.
 }
 \section{Input}{
   This function splits matrices, arrays and data frames by
@@ -92,16 +92,16 @@ aaply(ozone, 1:2, standardise)
 aaply(ozone, 1:2, diff)
 }
 \references{
-  Hadley Wickham (2011). The Split-Apply-Combine Strategy
-  for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
+Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1),
+1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-  Other array input: \code{\link{a_ply}},
-  \code{\link{adply}}, \code{\link{alply}}
+Other array input: \code{\link{a_ply}},
+\code{\link{adply}}, \code{\link{alply}}
 
-  Other array output: \code{\link{daply}},
-  \code{\link{laply}}, \code{\link{maply}}
+Other array output: \code{\link{daply}},
+\code{\link{laply}}, \code{\link{maply}}
 }
 \keyword{manip}
 

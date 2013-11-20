@@ -2,7 +2,7 @@
 \alias{round_any}
 \title{Round to multiple of any number.}
 \usage{
-  round_any(x, accuracy, f = round)
+round_any(x, accuracy, f = round)
 }
 \arguments{
   \item{x}{numeric or date-time (POSIXct) vector to round}
@@ -14,7 +14,7 @@
   \code{\link{ceiling}} or \code{\link{round}}}
 }
 \description{
-  Round to multiple of any number.
+Round to multiple of any number.
 }
 \examples{
 round_any(135, 10)

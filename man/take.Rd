@@ -2,7 +2,7 @@
 \alias{take}
 \title{Take a subset along an arbitrary dimension}
 \usage{
-  take(x, along, indices, drop = FALSE)
+take(x, along, indices, drop = FALSE)
 }
 \arguments{
   \item{x}{matrix or array to subset}
@@ -16,7 +16,7 @@
   opposite of the useful R default.}
 }
 \description{
-  Take a subset along an arbitrary dimension
+Take a subset along an arbitrary dimension
 }
 \examples{
 x <- array(seq_len(3 * 4 * 5), c(3, 4, 5))

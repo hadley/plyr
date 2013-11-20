@@ -2,19 +2,18 @@
 \alias{name_rows}
 \title{Toggle row names between explicit and implicit.}
 \usage{
-  name_rows(df)
+name_rows(df)
 }
 \arguments{
   \item{df}{a data.frame, with either \code{rownames}, or a
   column called \code{.rownames}.}
 }
 \description{
-  Plyr functions ignore row names, so this function
-  provides a way to preserve them by converting them to an
-  explicit column in the data frame.  After the plyr
-  operation, you can then apply \code{name_rows} again to
-  convert back from the explicit column to the implicit
-  \code{rownames}.
+Plyr functions ignore row names, so this function provides
+a way to preserve them by converting them to an explicit
+column in the data frame.  After the plyr operation, you
+can then apply \code{name_rows} again to convert back from
+the explicit column to the implicit \code{rownames}.
 }
 \examples{
 name_rows(mtcars)

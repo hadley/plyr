@@ -4,11 +4,11 @@
 \alias{numcolwise}
 \title{Column-wise function.}
 \usage{
-  colwise(.fun, .cols = true, ...)
+colwise(.fun, .cols = true, ...)
 
-  catcolwise(.fun, ...)
+catcolwise(.fun, ...)
 
-  numcolwise(.fun, ...)
+numcolwise(.fun, ...)
 }
 \arguments{
   \item{.fun}{function}
@@ -20,13 +20,13 @@
   \item{...}{other arguments passed on to \code{.fun}}
 }
 \description{
-  Turn a function that operates on a vector into a function
-  that operates column-wise on a data.frame.
+Turn a function that operates on a vector into a function
+that operates column-wise on a data.frame.
 }
 \details{
-  \code{catcolwise} and \code{numcolwise} provide version
-  that only operate on discrete and numeric variables
-  respectively.
+\code{catcolwise} and \code{numcolwise} provide version
+that only operate on discrete and numeric variables
+respectively.
 }
 \examples{
 # Count number of missing values

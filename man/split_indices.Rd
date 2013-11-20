@@ -2,7 +2,7 @@
 \alias{split_indices}
 \title{Split indices.}
 \usage{
-  split_indices(group, n = max(group))
+split_indices(group, n = max(group))
 }
 \arguments{
   \item{index}{integer indices}
@@ -12,9 +12,9 @@
   \item{n}{largest integer (may not appear in index)}
 }
 \description{
-  An optimised version of split for the special case of
-  splitting row indices into groups, as used by
-  \code{\link{splitter_d}}
+An optimised version of split for the special case of
+splitting row indices into groups, as used by
+\code{\link{splitter_d}}
 }
 \keyword{internal}
 \keyword{manip}

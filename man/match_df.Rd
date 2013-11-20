@@ -2,7 +2,7 @@
 \alias{match_df}
 \title{Extract matching rows of a data frame.}
 \usage{
-  match_df(x, y, on = NULL)
+match_df(x, y, on = NULL)
 }
 \arguments{
   \item{x}{data frame to subset.}
@@ -13,24 +13,23 @@
   variables common to both data frames.}
 }
 \value{
-  a data frame
+a data frame
 }
 \description{
-  Match works in the same way as join, but instead of
-  return the combined dataset, it only returns the matching
-  rows from the first dataset. This is particularly useful
-  when you've summarised the data in some way and want to
-  subset the original data by a characteristic of the
-  subset.
+Match works in the same way as join, but instead of return
+the combined dataset, it only returns the matching rows
+from the first dataset. This is particularly useful when
+you've summarised the data in some way and want to subset
+the original data by a characteristic of the subset.
 }
 \details{
-  \code{match_df} shares the same semantics as
-  \code{\link{join}}, not \code{\link{match}}:
+\code{match_df} shares the same semantics as
+\code{\link{join}}, not \code{\link{match}}:
 
-  \itemize{ \item the match criterion is \code{==}, not
-  \code{\link{identical}}).  \item it doesn't work for
-  columns that are not atomic vectors \item if there are no
-  matches, the row will be omitted' }
+\itemize{ \item the match criterion is \code{==}, not
+\code{\link{identical}}).  \item it doesn't work for
+columns that are not atomic vectors \item if there are no
+matches, the row will be omitted' }
 }
 \examples{
 # count the occurrences of each id in the baseball dataframe, then get the subset with a freq >25
@@ -46,8 +45,8 @@ bb_longterm <- match_df(baseball, longterm, on="id")
 bb_longterm[1:5,]
 }
 \seealso{
-  \code{\link{join}} to combine the columns from both x and
-  y and \code{\link{match}} for the base function selecting
-  matching items
+\code{\link{join}} to combine the columns from both x and y
+and \code{\link{match}} for the base function selecting
+matching items
 }
 

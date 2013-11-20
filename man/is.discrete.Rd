@@ -2,13 +2,13 @@
 \alias{is.discrete}
 \title{Determine if a vector is discrete.}
 \usage{
-  is.discrete(x)
+is.discrete(x)
 }
 \arguments{
   \item{x}{vector to test}
 }
 \description{
-  A discrete vector is a factor or a character vector
+A discrete vector is a factor or a character vector
 }
 \examples{
 is.discrete(1:10)

@@ -2,8 +2,7 @@
 \alias{split_labels}
 \title{Generate labels for split data frame.}
 \usage{
-  split_labels(splits, drop,
-    id = plyr::id(splits, drop = TRUE))
+split_labels(splits, drop, id = plyr::id(splits, drop = TRUE))
 }
 \arguments{
   \item{list}{of variables to split up by}
@@ -12,7 +11,7 @@
   considered, or only those present in the data}
 }
 \description{
-  Create data frame giving labels for split data frame.
+Create data frame giving labels for split data frame.
 }
 \keyword{internal}
 

@@ -2,9 +2,8 @@
 \alias{mdply}
 \title{Call function with arguments in array or data frame, returning a data frame.}
 \usage{
-  mdply(.data, .fun = NULL, ..., .expand = TRUE,
-    .progress = "none", .inform = FALSE, .parallel = FALSE,
-    .paropts = NULL)
+mdply(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none",
+  .inform = FALSE, .parallel = FALSE, .paropts = NULL)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -37,19 +36,19 @@
   dimension for each variable.}
 }
 \value{
-  A data frame, as described in the output section.
+A data frame, as described in the output section.
 }
 \description{
-  Call a multi-argument function with values taken from
-  columns of an data frame or array, and combine results
-  into a data frame
+Call a multi-argument function with values taken from
+columns of an data frame or array, and combine results into
+a data frame
 }
 \details{
-  The \code{m*ply} functions are the \code{plyr} version of
-  \code{mapply}, specialised according to the type of
-  output they produce.  These functions are just a
-  convenient wrapper around \code{a*ply} with \code{margins
-  = 1} and \code{.fun} wrapped in \code{\link{splat}}.
+The \code{m*ply} functions are the \code{plyr} version of
+\code{mapply}, specialised according to the type of output
+they produce.  These functions are just a convenient
+wrapper around \code{a*ply} with \code{margins = 1} and
+\code{.fun} wrapped in \code{\link{splat}}.
 }
 \section{Input}{
   Call a multi-argument function with values taken from
@@ -75,16 +74,16 @@ mdply(cbind(mean = 1:5, sd = 1:5), rnorm, n = 5)
 mdply(cbind(mean = 1:5, sd = 1:5), as.data.frame(rnorm), n = 5)
 }
 \references{
-  Hadley Wickham (2011). The Split-Apply-Combine Strategy
-  for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
+Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1),
+1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-  Other data frame output: \code{\link{adply}},
-  \code{\link{ddply}}, \code{\link{ldply}}
+Other data frame output: \code{\link{adply}},
+\code{\link{ddply}}, \code{\link{ldply}}
 
-  Other multiple arguments input: \code{\link{m_ply}},
-  \code{\link{maply}}, \code{\link{mlply}}
+Other multiple arguments input: \code{\link{m_ply}},
+\code{\link{maply}}, \code{\link{mlply}}
 }
 \keyword{manip}
 

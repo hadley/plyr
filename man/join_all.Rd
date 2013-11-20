@@ -2,7 +2,7 @@
 \alias{join_all}
 \title{Recursively join a list of data frames.}
 \usage{
-  join_all(dfs, by = NULL, type = "left", match = "all")
+join_all(dfs, by = NULL, type = "left", match = "all")
 }
 \arguments{
   \item{dfs}{A list of data frames.}
@@ -20,7 +20,7 @@
   significantly faster.}
 }
 \description{
-  Recursively join a list of data frames.
+Recursively join a list of data frames.
 }
 \examples{
 dfs <- list(

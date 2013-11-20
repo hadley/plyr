@@ -2,9 +2,8 @@
 \alias{laply}
 \title{Split list, apply function, and return results in an array.}
 \usage{
-  laply(.data, .fun = NULL, ..., .progress = "none",
-    .inform = FALSE, .drop = TRUE, .parallel = FALSE,
-    .paropts = NULL)
+laply(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
+  .drop = TRUE, .parallel = FALSE, .paropts = NULL)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -36,19 +35,19 @@
   \code{TRUE}}
 }
 \value{
-  if results are atomic with same type and dimensionality,
-  a vector, matrix or array; otherwise, a list-array (a
-  list with dimensions)
+if results are atomic with same type and dimensionality, a
+vector, matrix or array; otherwise, a list-array (a list
+with dimensions)
 }
 \description{
-  For each element of a list, apply function then combine
-  results into an array.
+For each element of a list, apply function then combine
+results into an array.
 }
 \details{
-  \code{laply} is similar in spirit to \code{\link{sapply}}
-  except that it will always return an array, and the
-  output is transposed with respect \code{sapply} - each
-  element of the list corresponds to a row, not a column.
+\code{laply} is similar in spirit to \code{\link{sapply}}
+except that it will always return an array, and the output
+is transposed with respect \code{sapply} - each element of
+the list corresponds to a row, not a column.
 }
 \section{Input}{
   This function splits lists by elements.
@@ -69,16 +68,16 @@ laply(seq_len(10), rep, times = 4)
 laply(seq_len(10), matrix, nrow = 2, ncol = 2)
 }
 \references{
-  Hadley Wickham (2011). The Split-Apply-Combine Strategy
-  for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
+Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1),
+1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-  Other array output: \code{\link{aaply}},
-  \code{\link{daply}}, \code{\link{maply}}
+Other array output: \code{\link{aaply}},
+\code{\link{daply}}, \code{\link{maply}}
 
-  Other list input: \code{\link{l_ply}},
-  \code{\link{ldply}}, \code{\link{llply}}
+Other list input: \code{\link{l_ply}}, \code{\link{ldply}},
+\code{\link{llply}}
 }
 \keyword{manip}
 

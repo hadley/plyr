@@ -2,9 +2,8 @@
 \alias{dlply}
 \title{Split data frame, apply function, and return results in a list.}
 \usage{
-  dlply(.data, .variables, .fun = NULL, ...,
-    .progress = "none", .inform = FALSE, .drop = TRUE,
-    .parallel = FALSE, .paropts = NULL)
+dlply(.data, .variables, .fun = NULL, ..., .progress = "none",
+  .inform = FALSE, .drop = TRUE, .parallel = FALSE, .paropts = NULL)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -40,13 +39,13 @@
   (TRUE, default)}
 }
 \value{
-  list of results
+list of results
 }
 \description{
-  For each subset of a data frame, apply function then
-  combine results into a list. \code{dlply} is similar to
-  \code{\link{by}} except that the results are returned in
-  a different format.
+For each subset of a data frame, apply function then
+combine results into a list. \code{dlply} is similar to
+\code{\link{by}} except that the results are returned in a
+different format.
 }
 \section{Input}{
   This function splits data frames by variables.
@@ -69,16 +68,16 @@ qual <- laply(models, function(mod) summary(mod)$r.squared)
 hist(qual)
 }
 \references{
-  Hadley Wickham (2011). The Split-Apply-Combine Strategy
-  for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
+Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1),
+1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-  Other data frame input: \code{\link{d_ply}},
-  \code{\link{daply}}, \code{\link{ddply}}
+Other data frame input: \code{\link{d_ply}},
+\code{\link{daply}}, \code{\link{ddply}}
 
-  Other list output: \code{\link{alply}},
-  \code{\link{llply}}, \code{\link{mlply}}
+Other list output: \code{\link{alply}},
+\code{\link{llply}}, \code{\link{mlply}}
 }
 \keyword{manip}
 

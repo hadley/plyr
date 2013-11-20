@@ -2,9 +2,9 @@
 \alias{adply}
 \title{Split array, apply function, and return results in a data frame.}
 \usage{
-  adply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
-    .progress = "none", .inform = FALSE, .parallel = FALSE,
-    .paropts = NULL)
+adply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
+  .progress = "none", .inform = FALSE, .parallel = FALSE,
+  .paropts = NULL)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -42,11 +42,11 @@
   variable.}
 }
 \value{
-  A data frame, as described in the output section.
+A data frame, as described in the output section.
 }
 \description{
-  For each slice of an array, apply function then combine
-  results into a data frame.
+For each slice of an array, apply function then combine
+results into a data frame.
 }
 \section{Input}{
   This function splits matrices, arrays and data frames by
@@ -66,16 +66,16 @@
   (\code{data.frame()}).
 }
 \references{
-  Hadley Wickham (2011). The Split-Apply-Combine Strategy
-  for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
+Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1),
+1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-  Other array input: \code{\link{a_ply}},
-  \code{\link{aaply}}, \code{\link{alply}}
+Other array input: \code{\link{a_ply}},
+\code{\link{aaply}}, \code{\link{alply}}
 
-  Other data frame output: \code{\link{ddply}},
-  \code{\link{ldply}}, \code{\link{mdply}}
+Other data frame output: \code{\link{ddply}},
+\code{\link{ldply}}, \code{\link{mdply}}
 }
 \keyword{manip}
 

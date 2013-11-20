@@ -2,7 +2,7 @@
 \alias{as.quoted}
 \title{Convert input to quoted variables.}
 \usage{
-  as.quoted(x, env = parent.frame())
+as.quoted(x, env = parent.frame())
 }
 \arguments{
   \item{x}{input to quote}
@@ -12,25 +12,24 @@
   environment in which \code{as.quoted} was executed.}
 }
 \value{
-  a list of quoted variables
+a list of quoted variables
 }
 \description{
-  Convert characters, formulas and calls to quoted
-  .variables
+Convert characters, formulas and calls to quoted .variables
 }
 \details{
-  This method is called by default on all plyr functions
-  that take a \code{.variables} argument, so that
-  equivalent forms can be used anywhere.
+This method is called by default on all plyr functions that
+take a \code{.variables} argument, so that equivalent forms
+can be used anywhere.
 
-  Currently conversions exist for character vectors,
-  formulas and call objects.
+Currently conversions exist for character vectors, formulas
+and call objects.
 }
 \examples{
 as.quoted(c("a", "b", "log(d)"))
 as.quoted(a ~ b + log(d))
 }
 \seealso{
-  \code{\link{.}}
+\code{\link{.}}
 }
 

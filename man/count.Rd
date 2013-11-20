@@ -2,7 +2,7 @@
 \alias{count}
 \title{Count the number of occurences.}
 \usage{
-  count(df, vars = NULL, wt_var = NULL)
+count(df, vars = NULL, wt_var = NULL)
 }
 \arguments{
   \item{df}{data frame to be processed}
@@ -14,22 +14,22 @@
   for each combination of id variables.}
 }
 \value{
-  a data frame with label and freq columns
+a data frame with label and freq columns
 }
 \description{
-  Equivalent to \code{as.data.frame(table(x))}, but does
-  not include combinations with zero counts.
+Equivalent to \code{as.data.frame(table(x))}, but does not
+include combinations with zero counts.
 }
 \details{
-  Speed-wise count is competitive with \code{\link{table}}
-  for single variables, but it really comes into its own
-  when summarising multiple dimensions because it only
-  counts combinations that actually occur in the data.
+Speed-wise count is competitive with \code{\link{table}}
+for single variables, but it really comes into its own when
+summarising multiple dimensions because it only counts
+combinations that actually occur in the data.
 
-  Compared to \code{\link{table}} +
-  \code{\link{as.data.frame}}, \code{count} also preserves
-  the type of the identifier variables, instead of
-  converting them to characters/factors.
+Compared to \code{\link{table}} +
+\code{\link{as.data.frame}}, \code{count} also preserves
+the type of the identifier variables, instead of converting
+them to characters/factors.
 }
 \examples{
 # Count of each value of "id" in the first 100 cases
@@ -47,8 +47,8 @@ count(count(baseball[1:100,], c("id", "year")), "id", "freq")
 count(count(baseball, c("id", "year")), "freq")
 }
 \seealso{
-  \code{\link{table}} for related functionality in the base
-  package
+\code{\link{table}} for related functionality in the base
+package
 }
 \keyword{manip}
 

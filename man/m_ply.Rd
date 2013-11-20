@@ -2,9 +2,8 @@
 \alias{m_ply}
 \title{Call function with arguments in array or data frame, discarding results.}
 \usage{
-  m_ply(.data, .fun = NULL, ..., .expand = TRUE,
-    .progress = "none", .inform = FALSE, .print = FALSE,
-    .parallel = FALSE, .paropts = NULL)
+m_ply(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none",
+  .inform = FALSE, .print = FALSE, .parallel = FALSE, .paropts = NULL)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -40,19 +39,19 @@
   \code{FALSE})}
 }
 \value{
-  Nothing
+Nothing
 }
 \description{
-  Call a multi-argument function with values taken from
-  columns of an data frame or array, and discard results
-  into a list.
+Call a multi-argument function with values taken from
+columns of an data frame or array, and discard results into
+a list.
 }
 \details{
-  The \code{m*ply} functions are the \code{plyr} version of
-  \code{mapply}, specialised according to the type of
-  output they produce.  These functions are just a
-  convenient wrapper around \code{a*ply} with \code{margins
-  = 1} and \code{.fun} wrapped in \code{\link{splat}}.
+The \code{m*ply} functions are the \code{plyr} version of
+\code{mapply}, specialised according to the type of output
+they produce.  These functions are just a convenient
+wrapper around \code{a*ply} with \code{margins = 1} and
+\code{.fun} wrapped in \code{\link{splat}}.
 }
 \section{Input}{
   Call a multi-argument function with values taken from
@@ -65,16 +64,16 @@
   displaying plots or saving output.
 }
 \references{
-  Hadley Wickham (2011). The Split-Apply-Combine Strategy
-  for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
+Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1),
+1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-  Other multiple arguments input: \code{\link{maply}},
-  \code{\link{mdply}}, \code{\link{mlply}}
+Other multiple arguments input: \code{\link{maply}},
+\code{\link{mdply}}, \code{\link{mlply}}
 
-  Other no output: \code{\link{a_ply}},
-  \code{\link{d_ply}}, \code{\link{l_ply}}
+Other no output: \code{\link{a_ply}}, \code{\link{d_ply}},
+\code{\link{l_ply}}
 }
 \keyword{manip}
 

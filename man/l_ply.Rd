@@ -2,9 +2,8 @@
 \alias{l_ply}
 \title{Split list, apply function, and discard results.}
 \usage{
-  l_ply(.data, .fun = NULL, ..., .progress = "none",
-    .inform = FALSE, .print = FALSE, .parallel = FALSE,
-    .paropts = NULL)
+l_ply(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
+  .print = FALSE, .parallel = FALSE, .paropts = NULL)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -35,11 +34,11 @@
   \code{FALSE})}
 }
 \value{
-  Nothing
+Nothing
 }
 \description{
-  For each element of a list, apply function and discard
-  results
+For each element of a list, apply function and discard
+results
 }
 \section{Input}{
   This function splits lists by elements.
@@ -51,16 +50,16 @@
   displaying plots or saving output.
 }
 \references{
-  Hadley Wickham (2011). The Split-Apply-Combine Strategy
-  for Data Analysis. Journal of Statistical Software,
-  40(1), 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
+Hadley Wickham (2011). The Split-Apply-Combine Strategy for
+Data Analysis. Journal of Statistical Software, 40(1),
+1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-  Other list input: \code{\link{laply}},
-  \code{\link{ldply}}, \code{\link{llply}}
+Other list input: \code{\link{laply}}, \code{\link{ldply}},
+\code{\link{llply}}
 
-  Other no output: \code{\link{a_ply}},
-  \code{\link{d_ply}}, \code{\link{m_ply}}
+Other no output: \code{\link{a_ply}}, \code{\link{d_ply}},
+\code{\link{m_ply}}
 }
 \keyword{manip}
 

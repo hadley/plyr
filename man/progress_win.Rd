@@ -2,7 +2,7 @@
 \alias{progress_win}
 \title{Graphical progress bar, powered by Windows.}
 \usage{
-  progress_win(title = "plyr progress", ...)
+progress_win(title = "plyr progress", ...)
 }
 \arguments{
   \item{title}{window title}
@@ -11,10 +11,10 @@
   \code{winProgressBar}}
 }
 \description{
-  A graphical progress bar displayed in a separate window
+A graphical progress bar displayed in a separate window
 }
 \details{
-  This graphical progress only works on Windows.
+This graphical progress only works on Windows.
 }
 \examples{
 if(exists("winProgressBar")) {
@@ -23,11 +23,11 @@ l_ply(1:100, identity, .progress = progress_win(title="Working..."))
 }
 }
 \seealso{
-  \code{winProgressBar} for the function that powers this
-  progress bar
+\code{winProgressBar} for the function that powers this
+progress bar
 
-  Other progress bars: \code{\link{progress_none}},
-  \code{\link{progress_text}}, \code{\link{progress_time}},
-  \code{\link{progress_tk}}
+Other progress bars: \code{\link{progress_none}},
+\code{\link{progress_text}}, \code{\link{progress_time}},
+\code{\link{progress_tk}}
 }
 

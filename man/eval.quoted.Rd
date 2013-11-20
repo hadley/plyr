@@ -2,8 +2,7 @@
 \alias{eval.quoted}
 \title{Evaluate a quoted list of variables.}
 \usage{
-  eval.quoted(exprs, envir = NULL, enclos = NULL,
-    try = FALSE)
+eval.quoted(exprs, envir = NULL, enclos = NULL, try = FALSE)
 }
 \arguments{
   \item{expr}{quoted object to evalution}
@@ -12,10 +11,10 @@
   unsuccesful}
 }
 \value{
-  a list
+a list
 }
 \description{
-  Evaluates quoted variables in specified environment
+Evaluates quoted variables in specified environment
 }
 \keyword{internal}
 

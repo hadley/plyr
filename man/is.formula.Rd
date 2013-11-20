@@ -3,10 +3,10 @@
 \title{Is a formula?
 Checks if argument is a formula}
 \usage{
-  is.formula(x)
+is.formula(x)
 }
 \description{
-  Is a formula? Checks if argument is a formula
+Is a formula? Checks if argument is a formula
 }
 \keyword{internal}
 

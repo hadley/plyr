@@ -2,7 +2,7 @@
 \alias{mutate}
 \title{Mutate a data frame by adding new or replacing existing columns.}
 \usage{
-  mutate(.data, ...)
+mutate(.data, ...)
 }
 \arguments{
   \item{.data}{the data frame to transform}
@@ -11,15 +11,15 @@
   columns.}
 }
 \description{
-  This function is very similar to \code{\link{transform}}
-  but it executes the transformations iteratively so that
-  later transformations can use the columns created by
-  earlier transformations.  Like transform, unnamed
-  components are silently dropped.
+This function is very similar to \code{\link{transform}}
+but it executes the transformations iteratively so that
+later transformations can use the columns created by
+earlier transformations.  Like transform, unnamed
+components are silently dropped.
 }
 \details{
-  Mutate seems to be considerably faster than transform for
-  large data frames.
+Mutate seems to be considerably faster than transform for
+large data frames.
 }
 \examples{
 # Examples from transform
@@ -34,9 +34,9 @@ system.time(transform(baseball, avg_ab = ab / g))
 system.time(mutate(baseball, avg_ab = ab / g))
 }
 \seealso{
-  \code{\link{subset}}, \code{\link{summarise}},
-  \code{\link{arrange}}.  For another somewhat different
-  approach to solving the same problem, see
-  \code{\link{within}}.
+\code{\link{subset}}, \code{\link{summarise}},
+\code{\link{arrange}}.  For another somewhat different
+approach to solving the same problem, see
+\code{\link{within}}.
 }
 
