@@ -85,6 +85,7 @@ split_labels <- function(splits, drop, id = plyr::id(splits, drop = TRUE)) {
 
 ulevels <- function(x) {
   if (is.factor(x)) {
+    x <- addNA(x, ifany = TRUE)
     levs <- levels(x)
     factor(levs, levels = levs)
   } else {
