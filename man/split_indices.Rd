@@ -2,19 +2,22 @@
 \alias{split_indices}
 \title{Split indices.}
 \usage{
-split_indices(group, n = max(group))
+split_indices(group, n = 0L)
 }
 \arguments{
   \item{index}{integer indices}
 
-  \item{group}{integer groups}
-
-  \item{n}{largest integer (may not appear in index)}
+  \item{n}{largest integer (may not appear in index). This
+  is hint: if the largest value of \code{group} is bigger
+  than \code{n}, the output will silently expand.}
 }
 \description{
 An optimised version of split for the special case of
 splitting row indices into groups, as used by
 \code{\link{splitter_d}}
+}
+\examples{
+split_indices(sample(10, 100, rep = TRUE), 10)
 }
 \keyword{internal}
 \keyword{manip}
