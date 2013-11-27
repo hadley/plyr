@@ -55,6 +55,11 @@ test_that("NAs are placed last", {
   expect_that(id_var(c(NA, 1)), is_equivalent_to(c(2, 1)))
 })
 
+test_that("factor with missing levels has correct count", {
+  id <- id_var(factor(1, NA))
+  expect_equal(attr(id, "n"), 1)
+})
+
 test_that("zero length input gives single number", {
   expect_that(id(character()), is_equivalent_to(integer()))
 })
