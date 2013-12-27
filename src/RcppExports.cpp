@@ -22,15 +22,15 @@ BEGIN_RCPP
 END_RCPP
 }
 // split_indices
-std::vector<std::vector<int> > split_indices(IntegerVector group, int n = 0);
-RcppExport SEXP plyr_split_indices(SEXP groupSEXP, SEXP nSEXP) {
+std::vector<std::vector<int> > split_indices(IntegerVector group, int groups);
+RcppExport SEXP plyr_split_indices(SEXP groupSEXP, SEXP groupsSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::RNGScope __rngScope;
         Rcpp::traits::input_parameter< IntegerVector >::type group(groupSEXP );
-        Rcpp::traits::input_parameter< int >::type n(nSEXP );
-        std::vector<std::vector<int> > __result = split_indices(group, n);
+        Rcpp::traits::input_parameter< int >::type groups(groupsSEXP );
+        std::vector<std::vector<int> > __result = split_indices(group, groups);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
