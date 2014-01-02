@@ -98,6 +98,9 @@ dim.idf <- function(x) c(length(x$`_rows`), length(x$`_cols`))
 as.data.frame.idf <- function(x, ...) {
   x$`_data`[x$`_rows`, x$`_cols`]
 }
+is.idata.frame <- function(x) {
+  'idf' %in% class(x)
+}
 
 "[[.idf" <- function(x, i) {
   if (is.numeric(i)) {

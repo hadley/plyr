@@ -13,4 +13,6 @@ test_that("summarise creates correct names", {
   # df <- summarise(mtcars, mean(cyl), mean(vs))
   # expect_that(names(df), equals("x", "y"))
 
+  df <- summarise(idata.frame(mtcars), x=cyl, y=vs)
+  expect_that(names(df), equals(c("x", "y")))
 })
