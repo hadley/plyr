@@ -164,3 +164,22 @@ test_that("column orders are common, x only, y only", {
   expect_equal(names(right2), c("a", "b", "c"))
 
 })
+
+test_that("strings match to factors", {
+
+  dfF <- data.frame(character = c("Aeryn", "Jothee", "Jothee",
+                      "Chiana", "Scorpius", "Scorpius"),
+                    species = c("Sebacian", "Luxan", "Sebacian",
+                      "Nibari", "Sebacian", "Scarran"),
+                    stringsAsFactors = TRUE)
+  dfS <- colwise(as.character)(dfF)
+  matchF <- data.frame(species = "Sebacian", stringsAsFactors = TRUE)
+  matchS <- colwise(as.character)(matchF)
+
+  #nor does `join`, (so inner joins are not commutative)
+  expect_equal(3, nrow(join(dfF, matchF, type = "inner", by="species")))
+  expect_equal(3, nrow(join(dfS, matchS, type = "inner", by="species")))
+  expect_equal(3, nrow(join(dfS, matchF, type = "inner", by="species")))
+  expect_equal(3, nrow(join(dfF, matchS, type = "inner", by="species")))
+
+})

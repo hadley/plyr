@@ -55,6 +55,28 @@ test_that("matrices are preserved", {
   expect_that(ab1, equals(ab2))
 })
 
+test_that("character or factor or list-matrices are preserved", {
+  d1 <- data.frame(a=1:2,
+                   x=I(matrix(c('a', 'b', 'c', 'd'), nrow=2)))
+  d2 <- data.frame(b=1:2,
+                   x=I(`dim<-`(factor(c('a', 'b', 'c', 'd')), c(2,2))))
+  d3 <- data.frame(b=1:2,
+                   x=I(array(as.list(1:4), c(2,2))))
+
+  b1 <- rbind.fill(d1, d1)
+  b2 <- rbind.fill(d2, d2)
+  b3 <- rbind.fill(d3, d3)
+
+  expect_equal(dim(b1$x), c(4,2))
+  expect_equal(typeof(b1$x), "character")
+
+  expect_equal(dim(b2$x), c(4,2))
+  expect_is(b2$x, "factor")
+
+  expect_equal(dim(b3$x), c(4,2))
+  expect_equal(typeof(b3$x), "list")
+})
+
 test_that("missing levels in factors preserved", {
   f <- addNA(factor(c("a", "b", NA)))
   df1 <- data.frame(a = f)
@@ -84,7 +106,44 @@ test_that("arrays are ok", {
   df$x <- array(1, 1)
 
   df2 <- rbind.fill(df, df)
+  #this asserts that dim is stripped off 1d arrays. Necessary?
   expect_that(df2$x, is_equivalent_to(rbind(df, df)$x))
+  expect_that(dim(df2$x), equals(dim(rbind(df, df)$x)))
+  #this would be more consistent
+  #expect_that(df2$x, is_equivalent_to(rbind(array(1,1), array(1,1))))
+
+  #if dims are stripped, dimnames should be also
+  df <- data.frame(x = 1)
+  df$x <- array(2, 1, list(x="one"))
+  df2 <- rbind.fill(df, df)
+  expect_that(is.null(dimnames(df2$x)), is_true())
+})
+
+test_that("multidim arrays ok", {
+  library(abind)
+  df <- data.frame(x = 1:3)
+  df$x <- array(1:27, c(3,3,3))
+
+  df2 <- rbind.fill(df, df)
+  expect_equal(dim(df2$x), dim(abind(along=1, df$x, df$x)))
+  expect_that(df2$x, is_equivalent_to(abind(along=1, df$x, df$x)))
+ })
+
+test_that("Array column names preserved", {
+  x <- data.frame(hair.color=dimnames(HairEyeColor)[[1]])
+  x$obs <- HairEyeColor[,,1]
+
+  xx1 <- rbind(x, x)
+  xx2 <- rbind.fill(x, x)
+
+  #plyr is against row names, but should respect col names like rbind
+  rownames(xx1) <- NULL
+  rownames(xx1$obs) <- NULL
+
+  #but unlike rbind it should also preserve names-of-dimnames.
+  names(dimnames(xx1$obs)) <- c("", "Eye")
+
+  expect_equal(xx1, xx2)
 })
 
 test_that("attributes are preserved", {
@@ -101,21 +160,37 @@ test_that("attributes are preserved", {
 
   expect_that(attr(d12$b, "foo"), equals("one"))
   expect_that(attr(d21$b, "foo"), equals("two"))
-
 })
 
-test_that("characters override factors", {
+test_that("characters override and convert factors", {
   d1a <- data.frame(x=c('a','b'), y=1:2)
-  d2a <- data.frame(x=c('b','d'), z=1:2, stringsAsFactors=F)
+  d2a <- data.frame(x=c('c','d'), z=1:2, stringsAsFactors=F)
 
   d1b <- data.frame(x=c('a','b'), y=1:2, stringsAsFactors=F)
-  d2b <- data.frame(x=c('b','d'), z=1:2)
+  d2b <- data.frame(x=c('c','d'), z=1:2)
 
   d3a <- rbind.fill(d1a,d2a)
   d3b <- rbind.fill(d1b,d2b)
 
-  expect_that(d3a$x, is_a("character"))
-  expect_that(d3b$x, is_a("character"))
+  expect_equal(d3a$x, c("a", "b", "c", "d"))
+  expect_equal(d3b$x, c("a", "b", "c", "d"))
+})
+
+test_that("factor to character conversion preserves attributes", {
+  d1 <- data.frame(a = letters[1:10], b = factor(letters[11:20]),
+                   stringsAsFactors=FALSE)
+  d2 <- data.frame(a = factor(letters[11:20]), b = letters[11:20],
+                   stringsAsFactors=FALSE)
+
+  attr(d1$a, "foo") <- "one"
+  attr(d1$b, "foo") <- "two"
+  attr(d2$a, "foo") <- "bar"
+  attr(d2$b, "foo") <- "baz"
+
+  d12 <- rbind.fill(d1, d2)
+
+  expect_equal(attr(d12$a, "foo"), "one")
+  expect_equal(attr(d12$b, "foo"), "two")
 })
 
 test_that("zero row data frames ok", {
@@ -156,4 +231,64 @@ test_that("zero col data frames ok", {
   expect_equal(nrow(za), 0)
   expect_equal(nrow(zb), 1)
   expect_equal(nrow(zc), 1)
+})
+
+test_that("rbind.fill rejects non-vector columns", {
+  a <- list(a=list(1), b=c(3), c="d", f=function() NULL)
+  attr(a, "row.names") <- c(NA_integer_, -1)
+  class(a) <- "data.frame"
+  expect_error(rbind.fill(a,a), "cannot make")
+})
+
+test_that("rbind.fill rejects data frame columns", {
+  a <- data.frame(a=1:3, b=2:4, c=3:5)
+  a$c <- data.frame(x=10:12, y=11:13)
+  rownames(a) <- NULL
+  rownames(a$c) <- NULL
+  expect_error(rbind.fill(a,a), "not supported")
+})
+
+rbind_time <- function(size,
+                       classes = c("numeric", "character",
+                                   "array", "factor", "time")) {
+  unit <- quickdf(list(numeric = 1:3,
+                       character = c("a", "b", "c"),
+                       array = array(1:6, c(3,2)),
+                       factor = factor(c("a", "b", "c")),
+                       time = as.POSIXct(Sys.time()) + 1:3))
+  args <- rep(list(unit[classes]), size)
+  system.time(do.call(rbind.fill, args))
+}
+
+get_rbind_times <- function(...) {
+  rbind_time(10) #warm up/JIT
+  mdply(.fun = rbind_time, ...)
+}
+
+expect_linear_enough <- function(timings, size=2^10, threshold=0.2) {
+  #expect that no more than `threshold` of a `size` input's runtime is
+  #accounted for by quadratic behavior
+  #predict.lm(type="terms") does strange things w/ built-in intercepts, avoid
+  timings <- mutate(timings, intercept=1)
+  model <- lm(user.self ~ size + I(size^2) - 1 + intercept, timings)
+  p <- predict(model, newdata=data.frame(size=size, intercept=1), type="terms")
+  expect_that(p[2] / p[1] < threshold, is_true(), NULL, NULL)
+}
+
+test_that("rbind.fill performance linear", {
+  timings <- get_rbind_times(data.frame(size = 2^(1:10)),
+                             classes=c("numeric", "character", "array"))
+  expect_linear_enough(timings)
+})
+
+test_that("rbind.fill performance linear with factors", {
+  timings <- get_rbind_times(data.frame(size = 2^(1:10)),
+                             classes=c("factor"))
+  expect_linear_enough(timings)
+})
+
+test_that("rbind.fill performance linear with times", {
+  timings <- get_rbind_times(data.frame(size = 2^(1:10)),
+                             classes=c("time"))
+  expect_linear_enough(timings)
 })
