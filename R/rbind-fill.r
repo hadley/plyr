@@ -7,8 +7,14 @@
 #' operates substantially faster.
 #'
 #' Column names and types in the output will appear in the order in which
-#' they were encountered. No checking is performed to ensure that each column
-#' is of consistent type in the inputs.
+#' they were encountered.
+#'
+#' Unordered factor columns will have their levels unified and
+#' character data bound with factors will be converted to
+#' character. POSIXct data will be converted to be in the same time
+#' zone. Array and matrix columns must have identical dimensions after
+#' the row count. Aside from these there are no general checks that
+#' each column is of consistent data type.
 #'
 #' @param ... input data frames to row bind together.  The first argument can
 #'   be a list of data frames, in which case all other arguments are ignored.
