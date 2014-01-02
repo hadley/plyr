@@ -25,6 +25,16 @@ Considerable effort has been put into making plyr fast and memory efficient, and
 
 If you are interested in the watching the development of plyr, please see the [development site](http://github.com/hadley/plyr) on [github](http://github.com). If you've discovered any bugs in the plyr package, or you have thought of a killer new feature, please email me: [h.wickham@gmail.com](mailto:h.wickham@gmail.com).
 
+## Installation
+
+```r
+# Get the released version from CRAN
+install.packages("plyr")
+
+# Get the development version from github
+devtools::install_github("hadley/plyr")
+```
+
 {% endcapture %}
 
 
