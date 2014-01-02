@@ -11,16 +11,6 @@
 #' @param env environment in which to evaluate function
 #' @useDynLib plyr
 #' @keywords internal manip
-#' @examples
-#' loop_apply(10, function(x) x ^ 2)
-#' y <- 10
-#' loop_apply(10, function(x) x + y)
-#' 
-#' f <- function() {
-#'   y <- 100
-#'   loop_apply(10, function(x) x + y)
-#' } 
-#' f()
 loop_apply <- function(n, f) {
     .Call('plyr_loop_apply', PACKAGE = 'plyr', n, f)
 }
