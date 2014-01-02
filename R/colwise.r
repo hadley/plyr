@@ -79,4 +79,3 @@ catcolwise <- function(.fun, ...) {
 numcolwise <- function(.fun, ...) {
   colwise(.fun, is.numeric, ...)
 }
-

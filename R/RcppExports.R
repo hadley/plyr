@@ -11,7 +11,6 @@
 #' @param env environment in which to evaluate function
 #' @useDynLib plyr
 #' @keywords internal manip
-#' @export
 #' @examples
 #' loop_apply(10, function(x) x ^ 2)
 #' y <- 10
