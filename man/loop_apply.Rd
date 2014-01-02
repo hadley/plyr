@@ -15,17 +15,6 @@ loop_apply(n, f)
 An optimised version of lapply for the special case of
 operating on \code{seq_len(n)}
 }
-\examples{
-loop_apply(10, function(x) x ^ 2)
-y <- 10
-loop_apply(10, function(x) x + y)
-
-f <- function() {
-  y <- 100
-  loop_apply(10, function(x) x + y)
-}
-f()
-}
 \keyword{internal}
 \keyword{manip}
 

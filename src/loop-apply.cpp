@@ -11,16 +11,6 @@ using namespace Rcpp;
 //' @param env environment in which to evaluate function
 //' @useDynLib plyr
 //' @keywords internal manip
-//' @examples
-//' loop_apply(10, function(x) x ^ 2)
-//' y <- 10
-//' loop_apply(10, function(x) x + y)
-//' 
-//' f <- function() {
-//'   y <- 100
-//'   loop_apply(10, function(x) x + y)
-//' } 
-//' f()
 // [[Rcpp::export]]
 List loop_apply(int n, Function f) {
   List out(n);
