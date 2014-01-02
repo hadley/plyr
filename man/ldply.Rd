@@ -59,10 +59,10 @@ Data Analysis. Journal of Statistical Software, 40(1),
 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other data frame output: \code{\link{adply}},
-\code{\link{ddply}}, \code{\link{mdply}}
+Other data frame output: \code{\link{adply}};
+\code{\link{ddply}}; \code{\link{mdply}}
 
-Other list input: \code{\link{l_ply}}, \code{\link{laply}},
+Other list input: \code{\link{l_ply}}; \code{\link{laply}};
 \code{\link{llply}}
 }
 \keyword{manip}

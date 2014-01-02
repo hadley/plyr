@@ -55,10 +55,10 @@ Data Analysis. Journal of Statistical Software, 40(1),
 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other list input: \code{\link{laply}}, \code{\link{ldply}},
+Other list input: \code{\link{laply}}; \code{\link{ldply}};
 \code{\link{llply}}
 
-Other no output: \code{\link{a_ply}}, \code{\link{d_ply}},
+Other no output: \code{\link{a_ply}}; \code{\link{d_ply}};
 \code{\link{m_ply}}
 }
 \keyword{manip}

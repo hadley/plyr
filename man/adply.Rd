@@ -71,11 +71,11 @@ Data Analysis. Journal of Statistical Software, 40(1),
 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other array input: \code{\link{a_ply}},
-\code{\link{aaply}}, \code{\link{alply}}
+Other array input: \code{\link{a_ply}};
+\code{\link{aaply}}; \code{\link{alply}}
 
-Other data frame output: \code{\link{ddply}},
-\code{\link{ldply}}, \code{\link{mdply}}
+Other data frame output: \code{\link{ddply}};
+\code{\link{ldply}}; \code{\link{mdply}}
 }
 \keyword{manip}
 

@@ -17,7 +17,7 @@ entries must be all atomic or all data frames.
 }
 \seealso{
 Other list simplification functions:
-\code{\link{list_to_array}}, \code{\link{list_to_vector}}
+\code{\link{list_to_array}}; \code{\link{list_to_vector}}
 }
 \keyword{internal}
 

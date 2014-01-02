@@ -69,10 +69,10 @@ Data Analysis. Journal of Statistical Software, 40(1),
 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other multiple arguments input: \code{\link{maply}},
-\code{\link{mdply}}, \code{\link{mlply}}
+Other multiple arguments input: \code{\link{maply}};
+\code{\link{mdply}}; \code{\link{mlply}}
 
-Other no output: \code{\link{a_ply}}, \code{\link{d_ply}},
+Other no output: \code{\link{a_ply}}; \code{\link{d_ply}};
 \code{\link{l_ply}}
 }
 \keyword{manip}

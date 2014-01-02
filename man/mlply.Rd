@@ -73,11 +73,11 @@ Data Analysis. Journal of Statistical Software, 40(1),
 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other list output: \code{\link{alply}},
-\code{\link{dlply}}, \code{\link{llply}}
+Other list output: \code{\link{alply}};
+\code{\link{dlply}}; \code{\link{llply}}
 
-Other multiple arguments input: \code{\link{m_ply}},
-\code{\link{maply}}, \code{\link{mdply}}
+Other multiple arguments input: \code{\link{m_ply}};
+\code{\link{maply}}; \code{\link{mdply}}
 }
 \keyword{manip}
 
