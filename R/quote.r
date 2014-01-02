@@ -116,7 +116,7 @@ eval.quoted <- function(exprs, envir = NULL, enclos = NULL, try = FALSE) {
 #' call objects.
 #'
 #' @return a list of quoted variables
-#' @seealso \code{\link{.}}
+#' @seealso \code{\link[=quoted]{.}}
 #' @param x input to quote
 #' @param env environment in which unbound symbols in expression should be
 #'   evaluated. Defaults to the environment in which \code{as.quoted} was
