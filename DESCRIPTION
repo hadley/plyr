@@ -19,7 +19,7 @@ Depends:
 LinkingTo: Rcpp
 Suggests:
     abind,
-    testthat (>= 0.7.1.99),
+    testthat,
     tcltk,
     foreach,
     doMC,
