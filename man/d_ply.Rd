@@ -64,10 +64,10 @@ Data Analysis. Journal of Statistical Software, 40(1),
 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other data frame input: \code{\link{daply}},
-\code{\link{ddply}}, \code{\link{dlply}}
+Other data frame input: \code{\link{daply}};
+\code{\link{ddply}}; \code{\link{dlply}}
 
-Other no output: \code{\link{a_ply}}, \code{\link{l_ply}},
+Other no output: \code{\link{a_ply}}; \code{\link{l_ply}};
 \code{\link{m_ply}}
 }
 \keyword{manip}

@@ -67,10 +67,10 @@ Data Analysis. Journal of Statistical Software, 40(1),
 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other array input: \code{\link{aaply}},
-\code{\link{adply}}, \code{\link{alply}}
+Other array input: \code{\link{aaply}};
+\code{\link{adply}}; \code{\link{alply}}
 
-Other no output: \code{\link{d_ply}}, \code{\link{l_ply}},
+Other no output: \code{\link{d_ply}}; \code{\link{l_ply}};
 \code{\link{m_ply}}
 }
 \keyword{manip}

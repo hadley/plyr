@@ -13,8 +13,8 @@ total duration.
 l_ply(1:100, function(x) Sys.sleep(.01), .progress = "time")
 }
 \seealso{
-Other progress bars: \code{\link{progress_none}},
-\code{\link{progress_text}}, \code{\link{progress_tk}},
+Other progress bars: \code{\link{progress_none}};
+\code{\link{progress_text}}; \code{\link{progress_tk}};
 \code{\link{progress_win}}
 }
 

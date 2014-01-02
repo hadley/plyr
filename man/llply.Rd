@@ -65,11 +65,11 @@ Data Analysis. Journal of Statistical Software, 40(1),
 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other list input: \code{\link{l_ply}}, \code{\link{laply}},
+Other list input: \code{\link{l_ply}}; \code{\link{laply}};
 \code{\link{ldply}}
 
-Other list output: \code{\link{alply}},
-\code{\link{dlply}}, \code{\link{mlply}}
+Other list output: \code{\link{alply}};
+\code{\link{dlply}}; \code{\link{mlply}}
 }
 \keyword{manip}
 

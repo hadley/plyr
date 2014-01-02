@@ -73,10 +73,10 @@ Data Analysis. Journal of Statistical Software, 40(1),
 1-29.  \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other array output: \code{\link{aaply}},
-\code{\link{daply}}, \code{\link{maply}}
+Other array output: \code{\link{aaply}};
+\code{\link{daply}}; \code{\link{maply}}
 
-Other list input: \code{\link{l_ply}}, \code{\link{ldply}},
+Other list input: \code{\link{l_ply}}; \code{\link{ldply}};
 \code{\link{llply}}
 }
 \keyword{manip}
