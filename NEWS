@@ -4,6 +4,9 @@ Version 1.8.0.99
 * Fix faulty array allocation which caused problems when using `split_indices` 
   with large (> 2^24) vectors.  (Fixes #131)
 
+* `list_to_array()` incorrectly determined dimensions if column of labels 
+  contained any missing values (#169).
+
 Version 1.8
 ------------------------------------------------------------------------------
 
