@@ -27,7 +27,7 @@ If you are interested in the watching the development of plyr, please see the [d
 
 ## Installation
 
-```r
+```
 # Get the released version from CRAN
 install.packages("plyr")
 
