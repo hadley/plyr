@@ -7,7 +7,9 @@ rbind.fill(...)
 \arguments{
   \item{...}{input data frames to row bind together.  The
   first argument can be a list of data frames, in which
-  case all other arguments are ignored.}
+  case all other arguments are ignored.  Any NULL inputs
+  are silently dropped. If all inputs are NULL, the output
+  is NULL.}
 }
 \value{
 a single data frame

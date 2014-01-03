@@ -18,6 +18,8 @@
 #'
 #' @param ... input data frames to row bind together.  The first argument can
 #'   be a list of data frames, in which case all other arguments are ignored.
+#'   Any NULL inputs are silently dropped. If all inputs are NULL, the output
+#'   is NULL.
 #' @keywords manip
 #' @family binding functions
 #' @return a single data frame
@@ -30,6 +32,7 @@ rbind.fill <- function(...) {
   if (is.list(dfs[[1]]) && !is.data.frame(dfs[[1]])) {
     dfs <- dfs[[1]]
   }
+  dfs <- compact(dfs)
 
   if (length(dfs) == 0) return()
   if (length(dfs) == 1) return(dfs[[1]])

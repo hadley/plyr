@@ -1,5 +1,8 @@
 Version 1.8.0.99
 ------------------------------------------------------------------------------
+
+* `rbind.fill` now silently drops NULL inputs (#138)
+
 * `rbind.fill` avoids array copying which had produced quadratic time
   complexity. `*dply` of large numbers of groups should be faster.
   (Contributed by Peter Meilstrup)
