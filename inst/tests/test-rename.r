@@ -37,3 +37,36 @@ test_that("Renaming lists", {
   y <- rename(x, c("c" = "f", "b" = "e", "a" = "d"))
   expect_identical(y, list(d = 1, e = 2, f = 3))
 })
+
+context("Rename - Duplicates")
+
+test_that("Renaming list with an conflicting variable name - default", {
+  x <- list(a = 1, b = 2, c = 3)
+  replace_list <- c("c" = "f", "b" = "e", "a" = "f")
+  expect_warning(object = rename(x=x, replace=replace_list))
+})
+test_that("Renaming list with an conflicting variable name - warning", {
+  duplicate_behavior <- "error"
+  x <- list(a = 1, b = 2, c = 3)
+  replace_list <- c("c" = "f", "b" = "e", "a" = "f")
+  expect_error(object = rename(x=x, replace=replace_list, duplicate_behavior=duplicate_behavior))
+})
+test_that("Renaming list with an conflicting variable name - warning", {
+  duplicate_behavior <- "warning"
+  x <- list(a = 1, b = 2, c = 3)
+  replace_list <- c("c" = "f", "b" = "e", "a" = "f")
+  expect_warning(object = rename(x=x, replace=replace_list, duplicate_behavior=duplicate_behavior))
+})
+test_that("Renaming list with an conflicting variable name - message", {
+  duplicate_behavior <- "message"
+  x <- list(a = 1, b = 2, c = 3)
+  replace_list <- c("c" = "f", "b" = "e", "a" = "f")
+  expect_message(object = rename(x=x, replace=replace_list, duplicate_behavior=duplicate_behavior))
+})
+test_that("Renaming list with an conflicting variable name - silent", {
+  duplicate_behavior <- "silent"
+  x <- list(a = 1, b = 2, c = 3)
+  replace_list <- c("c" = "f", "b" = "e", "a" = "f")
+  expected_value <- list(f = 1, e = 2, f = 3)
+  expect_identical(rename(x=x, replace=replace_list, duplicate_behavior=duplicate_behavior), expected=expected_value)
+})
