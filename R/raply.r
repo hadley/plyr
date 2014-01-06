@@ -30,12 +30,7 @@
 #' hist(raply(1000, mean(rexp(100))))
 #' hist(raply(1000, mean(rexp(1000))))
 raply <- function(.n, .expr, .progress = "none", .drop = TRUE) {
-  if (is.function(.expr)) {
-    f <- .expr
-  } else {
-    f <- eval.parent(substitute(function() .expr))
-  }
-
-  res <- rlply(.n = .n, .expr = f, .progress = .progress)
+  res <- .rlply_worker(.n, .progress,
+                       eval.parent(substitute(function() .expr)))
   list_to_array(res, NULL, .drop)
 }

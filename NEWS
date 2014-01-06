@@ -29,6 +29,9 @@ Version 1.8.0.99
 * `list_to_array()` incorrectly determined dimensions if column of labels 
   contained any missing values (#169).
 
+* `r*ply` expression is evaluated exactly `.n` times, evaluation results are
+  consistent with side effects. (#158, thanks to Kirill Müller)
+
 Version 1.8
 ------------------------------------------------------------------------------
 
