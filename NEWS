@@ -1,6 +1,12 @@
 Version 1.8.0.99
 ------------------------------------------------------------------------------
 
+* New parameter `.id` to `ldply()` and `rdply()` that specifies the name of the index column. (Thanks to Kirill Müller, #107, #140, #142)
+
+* New parameter `.id` to `rdply()` that specifies the name of the index column. (Thanks to Kirill Müller, #142)
+
+* The .id column in ldply() is generated as a factor to preserve the sort order. (Thanks to Kirill Müller, #137)
+
 * `rbind.fill` now silently drops NULL inputs (#138)
 
 * `rbind.fill` avoids array copying which had produced quadratic time

@@ -103,15 +103,15 @@ test_that("names preserved and filled for atomic vectors", {
 })
 
 test_that("names captured from list", {
-  li <- list(a = 1:5, b = 5:10, c = 5:15)
+  li <- list(c = 5:15, b = 5:10, a = 1:5)
 
   df <- ldply(li, function(x) mean(x))
-  expect_that(df$.id, equals(c("a", "b", "c")))
+  expect_that(df$.id, equals(factor(names(li), levels=names(li))))
 
   df <- ldply(li, function(x) {
       if (any(x >= 10)) mean(x)
   })
-  expect_that(df$.id, equals(c("b", "c")))
+  expect_that(df$.id, equals(factor(names(li)[-3], levels=names(li)[-3])))
 })
 
 test_that("correct number of rows outputted", {
@@ -121,8 +121,7 @@ test_that("correct number of rows outputted", {
   expect_that(nrow(res), equals(3))
 })
 
-
-test_that("matrices converted to data frames", {
+test_that("matrices converted to data frames, without id column", {
   mat <- matrix(1:20, ncol = 4)
   colnames(mat) <- letters[1:4]
 
@@ -130,5 +129,16 @@ test_that("matrices converted to data frames", {
   df <- list_to_dataframe(li)
 
   expect_equal(nrow(df), 2 * nrow(mat))
-  expect_equal(names(df), c(".id", "a", "b", "c", "d"))
+  expect_equal(names(df), c("a", "b", "c", "d"))
+})
+
+test_that("matrices converted to data frames, with id column", {
+  mat <- matrix(1:20, ncol = 4)
+  colnames(mat) <- letters[1:4]
+  
+  li <- list(a = mat, b = mat)
+  df <- list_to_dataframe(li, idname="my-id")
+  
+  expect_equal(nrow(df), 2 * nrow(mat))
+  expect_equal(names(df), c("my-id", "a", "b", "c", "d"))
 })
