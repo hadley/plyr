@@ -113,7 +113,7 @@ test_that("Side effects for rdply", {
     if (n == 0) {
       exp_res <- data.frame()
     } else {
-      exp_res <- data.frame(.n = 1L:n, i = 1L:n)
+      exp_res <- data.frame(.n = factor(1L:n, levels = 1L:n), i = 1L:n)
     }
     
     i <- 0
