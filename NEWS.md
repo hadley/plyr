@@ -249,8 +249,8 @@
 
 * `quickdf` now adds names if missing
 
-* `summarise` preserves variable names if explicit names not provided (Fixes
-  #17)
+* `summarise` preserves variable names if explicit names not provided 
+  (Fixes #17)
 
 * `arrays` with names should be sorted correctly once again (also fixed a bug
   in the test case that prevented me from catching this automatically)
