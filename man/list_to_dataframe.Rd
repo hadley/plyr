@@ -2,13 +2,16 @@
 \alias{list_to_dataframe}
 \title{List to data frame.}
 \usage{
-list_to_dataframe(res, labels = NULL)
+list_to_dataframe(res, labels = NULL, idname = NULL)
 }
 \arguments{
   \item{res}{list of input data}
 
   \item{labels}{a data frame of labels, one row for each
   element of res}
+
+  \item{idname}{the name of the index column, \code{NULL}
+  for no index column}
 }
 \description{
 Reduce/simplify a list of homogenous objects to a data
