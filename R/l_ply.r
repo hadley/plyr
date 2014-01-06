@@ -25,6 +25,8 @@ l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
       .paropts))
     fe <- eval(fe_call)
 
+    # Mute note about "no visible binding for d"
+    d <- NULL
     fe %dopar% .fun(d, ...)
   } else {
     .data <- as.list(.data)
