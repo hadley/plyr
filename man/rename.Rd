@@ -2,7 +2,7 @@
 \alias{rename}
 \title{Modify names by name, not position.}
 \usage{
-rename(x, replace, warn_missing = TRUE)
+rename(x, replace, warn_missing = TRUE, duplicate_behavior = "warning")
 }
 \arguments{
   \item{x}{named object to modify}
@@ -11,7 +11,12 @@ rename(x, replace, warn_missing = TRUE)
   values, and old names as names.}
 
   \item{warn_missing}{print a message if any of the old
-  names are not actually present in \code{x}. Note: x is
+  names are not actually present in \code{x}.}
+
+  \item{duplicate_behavior}{specifies the behavior if
+  duplicates names would result in \code{x}. Options are
+  \code{error}, \code{warning}, \code{message}, and
+  \code{silent}. The default is \code{warning}. Note: x is
   not altered: To save the result, you need to copy the
   returned data into a variable.}
 }
