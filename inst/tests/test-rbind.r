@@ -292,10 +292,3 @@ test_that("rbind.fill performance linear with times", {
                              classes=c("time"))
   expect_linear_enough(timings)
 })
-
-test_that("NULLs silently dropped", {  
-  expect_equal(rbind.fill(mtcars, NULL), mtcars)
-  expect_equal(rbind.fill(NULL, mtcars), mtcars)
-  expect_equal(rbind.fill(NULL, NULL), NULL)
-  
-})
