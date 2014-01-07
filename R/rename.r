@@ -24,9 +24,8 @@ rename <- function(x, replace, warn_missing = TRUE, duplicate_behavior = "warnin
   # This line does the real work of `rename()`.
   names(x) <- revalue(names(x), replace, warn_missing = warn_missing)
   
-  # Check if any names are duplicated
-  tabled_values <- table(names(x))
-  duplicated_names <- names(tabled_values[tabled_values>1])
+  # Check if any names are duplicated.
+  duplicated_names <- names(x)[duplicated(names(x))]
   if( length(duplicated_names) > 0L ) {
     #     response_message <- paste0("The plyr::rename operation has created duplicates for the following names: `", paste(duplicated_names, collapse="`, `"), "`")
     response_message <- paste0("The plyr::rename operation has created duplicates for the following name(s): (`", paste(duplicated_names, collapse="`, `"), "`)")
