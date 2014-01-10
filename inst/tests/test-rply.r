@@ -113,7 +113,7 @@ test_that("Side effects for rdply", {
     if (n == 0) {
       exp_res <- data.frame()
     } else {
-      exp_res <- data.frame(.n = factor(1L:n, levels = 1L:n), i = 1L:n)
+      exp_res <- data.frame(.n = as.character(1L:n), i = 1L:n, stringsAsFactors = FALSE)
     }
     
     i <- 0
@@ -138,4 +138,9 @@ test_that("Invalid arguments for r_ply", {
   expect_error(r_ply("abc", identity))
   expect_error(r_ply(c(1,2), identity))
   expect_error(r_ply(list(5), identity))
+})
+
+test_that(".id columnd for rdply", {
+  expect_equal(rdply(5, 10)$.n, as.character(1:5))
+  expect_equal(rdply(5, 10, .id=".n")$.n, factor(1:5))
 })

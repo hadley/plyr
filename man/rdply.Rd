@@ -2,7 +2,7 @@
 \alias{rdply}
 \title{Replicate expression and return results in a data frame.}
 \usage{
-rdply(.n, .expr, .progress = "none", .id = ".n")
+rdply(.n, .expr, .progress = "none", .id)
 }
 \arguments{
   \item{.n}{number of times to evaluate the expression}
@@ -14,7 +14,8 @@ rdply(.n, .expr, .progress = "none", .id = ".n")
 
   \item{.id}{name of the index column, defaults to
   \code{".n"}. Pass \code{NULL} to avoid creation of the
-  index column}
+  index column. For compatibility, omit or pass \code{NA}
+  to avoid converting the index column to a factor.}
 }
 \value{
 a data frame

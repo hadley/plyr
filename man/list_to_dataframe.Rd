@@ -2,7 +2,8 @@
 \alias{list_to_dataframe}
 \title{List to data frame.}
 \usage{
-list_to_dataframe(res, labels = NULL, idname = NULL)
+list_to_dataframe(res, labels = NULL, id_name = NULL,
+  id_as_factor = FALSE)
 }
 \arguments{
   \item{res}{list of input data}

@@ -106,12 +106,12 @@ test_that("names captured from list", {
   li <- list(c = 5:15, b = 5:10, a = 1:5)
 
   df <- ldply(li, function(x) mean(x))
-  expect_that(df$.id, equals(factor(names(li), levels=names(li))))
+  expect_that(df$.id, equals(names(li)))
 
   df <- ldply(li, function(x) {
       if (any(x >= 10)) mean(x)
   })
-  expect_that(df$.id, equals(factor(names(li)[-3], levels=names(li)[-3])))
+  expect_that(df$.id, equals(names(li)[-3]))
 })
 
 test_that("correct number of rows outputted", {
@@ -137,8 +137,21 @@ test_that("matrices converted to data frames, with id column", {
   colnames(mat) <- letters[1:4]
   
   li <- list(a = mat, b = mat)
-  df <- list_to_dataframe(li, idname="my-id")
+  df <- plyr:::list_to_dataframe(li, id_name = "my_id")
   
   expect_equal(nrow(df), 2 * nrow(mat))
-  expect_equal(names(df), c("my-id", "a", "b", "c", "d"))
+  expect_equal(names(df), c("my_id", "a", "b", "c", "d"))
+  expect_equal(df$my_id, rep(c("a", "b"), c(5, 5)))
+})
+
+test_that("matrices converted to data frames, with id column as factor", {
+  mat <- matrix(1:20, ncol = 4)
+  colnames(mat) <- letters[1:4]
+  
+  li <- list(a = mat, b = mat)
+  df <- list_to_dataframe(li, id_name = "my_id", id_as_factor = TRUE)
+  
+  expect_equal(nrow(df), 2 * nrow(mat))
+  expect_equal(names(df), c("my_id", "a", "b", "c", "d"))
+  expect_equal(levels(df$my_id), c("a", "b"))
 })

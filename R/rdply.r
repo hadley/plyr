@@ -2,31 +2,39 @@
 #'
 #' Evalulate expression n times then combine results into a data frame
 #'
-#' This function runs an expression multiple times, and combines the
-#' result into a data frame.  If there are no results, then this function
-#' returns a data frame with zero rows and columns (\code{data.frame()}).
-#' This function is equivalent to \code{\link{replicate}}, but will always
-#' return results as a data frame.
+#' This function runs an expression multiple times, and combines the result into
+#' a data frame.  If there are no results, then this function returns a data
+#' frame with zero rows and columns (\code{data.frame()}). This function is
+#' equivalent to \code{\link{replicate}}, but will always return results as a
+#' data frame.
 #'
 #'
 #' @keywords manip
 #' @param .n number of times to evaluate the expression
 #' @param .expr expression to evaluate
-#' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
-#' @param .id name of the index column, defaults to \code{".n"}. Pass
-#'   \code{NULL} to avoid creation of the index column
+#' @param .progress name of the progress bar to use, see
+#'   \code{\link{create_progress_bar}}
+#' @param .id name of the index column. Pass \code{NULL} to avoid creation of
+#'   the index column. For compatibility, omit this argument or pass \code{NA}
+#'   to avoid converting the index column to a factor; in this case, \code{".n"}
+#'   is used as colum name..
 #' @return a data frame
 #' @export
-#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
-#'   Data Analysis. Journal of Statistical Software, 40(1), 1-29.
+#' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for Data
+#'   Analysis. Journal of Statistical Software, 40(1), 1-29.
 #'   \url{http://www.jstatsoft.org/v40/i01/}.
 #' @examples
 #' rdply(20, mean(runif(100)))
 #' rdply(20, each(mean, var)(runif(100)))
 #' rdply(20, data.frame(x = runif(2)))
-rdply <- function(.n, .expr, .progress = "none", .id = ".n") {
+rdply <- function(.n, .expr, .progress = "none", .id = NA) {
   res <- .rlply_worker(.n, .progress,
                        eval.parent(substitute(function() .expr)))
   names(res) <- seq_len(.n)
-  list_to_dataframe(res, idname = .id)
+  if (is.na(.id)) {
+    .id <- ".n"
+    id_as_factor <- FALSE
+  } else
+    id_as_factor <- TRUE
+  list_to_dataframe(res, id_name = .id, id_as_factor = id_as_factor)
 }
