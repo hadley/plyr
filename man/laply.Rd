@@ -76,8 +76,8 @@ Data Analysis. Journal of Statistical Software, 40(1),
 Other array output: \code{\link{aaply}};
 \code{\link{daply}}; \code{\link{maply}}
 
-Other list input: \code{\link{l_ply}}; \code{\link{ldply}};
-\code{\link{llply}}
+Other list input: \code{\link{ldply}}; \code{\link{llply}};
+\code{\link{l_ply}}
 }
 \keyword{manip}
 

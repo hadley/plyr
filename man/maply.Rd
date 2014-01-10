@@ -79,8 +79,8 @@ Data Analysis. Journal of Statistical Software, 40(1),
 Other array output: \code{\link{aaply}};
 \code{\link{daply}}; \code{\link{laply}}
 
-Other multiple arguments input: \code{\link{m_ply}};
-\code{\link{mdply}}; \code{\link{mlply}}
+Other multiple arguments input: \code{\link{mdply}};
+\code{\link{mlply}}; \code{\link{m_ply}}
 }
 \keyword{manip}
 
