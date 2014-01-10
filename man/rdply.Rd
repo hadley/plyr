@@ -2,7 +2,7 @@
 \alias{rdply}
 \title{Replicate expression and return results in a data frame.}
 \usage{
-rdply(.n, .expr, .progress = "none", .id)
+rdply(.n, .expr, .progress = "none", .id = NA)
 }
 \arguments{
   \item{.n}{number of times to evaluate the expression}
@@ -12,10 +12,11 @@ rdply(.n, .expr, .progress = "none", .id)
   \item{.progress}{name of the progress bar to use, see
   \code{\link{create_progress_bar}}}
 
-  \item{.id}{name of the index column, defaults to
-  \code{".n"}. Pass \code{NULL} to avoid creation of the
-  index column. For compatibility, omit or pass \code{NA}
-  to avoid converting the index column to a factor.}
+  \item{.id}{name of the index column. Pass \code{NULL} to
+  avoid creation of the index column. For compatibility,
+  omit this argument or pass \code{NA} to avoid converting
+  the index column to a factor; in this case, \code{".n"}
+  is used as colum name..}
 }
 \value{
 a data frame
