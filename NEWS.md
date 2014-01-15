@@ -6,8 +6,9 @@
 * New parameter `.id` to `rdply()` that specifies the name of the index column. 
   (Thanks to Kirill Müller, #142)
 
-* The .id column in ldply() is generated as a factor to preserve the sort order. 
-  (Thanks to Kirill Müller, #137)
+* The .id column in `ldply()` and `rdply()` is generated as a factor to preserve
+  the sort order, but only if the new `.id` parameter is set. (Thanks to Kirill
+  Müller, #137)
 
 * `rbind.fill` now silently drops NULL inputs (#138)
 

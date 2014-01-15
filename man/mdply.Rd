@@ -82,8 +82,8 @@ Data Analysis. Journal of Statistical Software, 40(1),
 Other data frame output: \code{\link{adply}};
 \code{\link{ddply}}; \code{\link{ldply}}
 
-Other multiple arguments input: \code{\link{m_ply}};
-\code{\link{maply}}; \code{\link{mlply}}
+Other multiple arguments input: \code{\link{maply}};
+\code{\link{mlply}}; \code{\link{m_ply}}
 }
 \keyword{manip}
 

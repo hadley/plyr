@@ -79,8 +79,8 @@ Data Analysis. Journal of Statistical Software, 40(1),
 Other array output: \code{\link{aaply}};
 \code{\link{laply}}; \code{\link{maply}}
 
-Other data frame input: \code{\link{d_ply}};
-\code{\link{ddply}}; \code{\link{dlply}}
+Other data frame input: \code{\link{ddply}};
+\code{\link{dlply}}; \code{\link{d_ply}}
 }
 \keyword{manip}
 

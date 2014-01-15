@@ -10,7 +10,7 @@
 #' @param idname the name of the index column, \code{NULL} for no index
 #'   column
 #' @keywords internal
-list_to_dataframe <- function(res, labels = NULL, idname = NULL) {
+list_to_dataframe <- function(res, labels = NULL, id_name = NULL, id_as_factor = FALSE) {
   null <- vapply(res, is.null, logical(1))
   res <- res[!null]
   if (length(res) == 0) return(data.frame())
@@ -19,11 +19,13 @@ list_to_dataframe <- function(res, labels = NULL, idname = NULL) {
     stopifnot(nrow(labels) == length(null))
     labels <- labels[!null, , drop = FALSE]
   }
-  names.res <- names(res)
-  if (!is.null(idname) && is.null(labels) && !is.null(names.res)) {
-    stopifnot(length(idname) == 1)
-    labels <- data.frame(.id = factor(names.res, levels = unique(names.res)))
-    names(labels) <- idname
+  names_res <- names(res)
+  if (!is.null(id_name) && is.null(labels) && !is.null(names_res)) {
+    stopifnot(length(id_name) == 1)
+    if (id_as_factor)
+      names_res <- factor(names_res, levels = unique(names_res))
+    labels <- data.frame(.id = names_res, stringsAsFactors = FALSE)
+    names(labels) <- id_name
   }
 
   # Figure out how to turn elements into a data frame

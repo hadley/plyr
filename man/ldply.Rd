@@ -3,7 +3,7 @@
 \title{Split list, apply function, and return results in a data frame.}
 \usage{
 ldply(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
-  .parallel = FALSE, .paropts = NULL, .id = ".id")
+  .parallel = FALSE, .paropts = NULL, .id = NA)
 }
 \arguments{
   \item{.fun}{function to apply to each piece}
@@ -31,8 +31,11 @@ ldply(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
   \item{.data}{list to be processed}
 
   \item{.id}{name of the index column (used if \code{.data}
-  is a named list), defaults to \code{".id"}. Pass
-  \code{NULL} to avoid creation of the index column}
+  is a named list).  Pass \code{NULL} to avoid creation of
+  the index column. For compatibility, omit this argument
+  or pass \code{NA} to avoid converting the index column to
+  a factor; in this case, \code{".id"} is used as colum
+  name.}
 }
 \value{
 A data frame, as described in the output section.
@@ -66,8 +69,8 @@ Data Analysis. Journal of Statistical Software, 40(1),
 Other data frame output: \code{\link{adply}};
 \code{\link{ddply}}; \code{\link{mdply}}
 
-Other list input: \code{\link{l_ply}}; \code{\link{laply}};
-\code{\link{llply}}
+Other list input: \code{\link{laply}}; \code{\link{llply}};
+\code{\link{l_ply}}
 }
 \keyword{manip}
 

@@ -76,8 +76,8 @@ Data Analysis. Journal of Statistical Software, 40(1),
 Other list output: \code{\link{alply}};
 \code{\link{dlply}}; \code{\link{llply}}
 
-Other multiple arguments input: \code{\link{m_ply}};
-\code{\link{maply}}; \code{\link{mdply}}
+Other multiple arguments input: \code{\link{maply}};
+\code{\link{mdply}}; \code{\link{m_ply}}
 }
 \keyword{manip}
 

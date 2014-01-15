@@ -102,8 +102,8 @@ Data Analysis. Journal of Statistical Software, 40(1),
 \code{\link{tapply}} for similar functionality in the base
 package
 
-Other data frame input: \code{\link{d_ply}};
-\code{\link{daply}}; \code{\link{dlply}}
+Other data frame input: \code{\link{daply}};
+\code{\link{dlply}}; \code{\link{d_ply}}
 
 Other data frame output: \code{\link{adply}};
 \code{\link{ldply}}; \code{\link{mdply}}
