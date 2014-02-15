@@ -1,6 +1,6 @@
 #' Summarise a data frame.
 #'
-#' Summarise works in an analogous way to \code{\link{transform}}, except
+#' Summarise works in an analogous way to \code{\link{mutate}}, except
 #' instead of adding columns to an existing data frame, it creates a new
 #' data frame.  This is particularly useful in conjunction with
 #' \code{\link{ddply}} as it makes it easy to perform group-wise summaries.
@@ -10,6 +10,9 @@
 #' @keywords manip
 #' @aliases summarise summarize
 #' @export summarise summarize
+#' @note Be careful when using existing variable names; the corresponding 
+#' columns will be immediately updated with the new data and this can affect
+#' subsequent operations referring to those variables.
 #' @examples
 #' # Let's extract the number of teams and total period of time
 #' # covered by the baseball dataframe
