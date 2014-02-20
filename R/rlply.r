@@ -58,27 +58,27 @@ rlply <- function(.n, .expr, .progress = "none") {
   # function defined above.
   fun <- .wrapped_expr_to_fun(.expr_wrap)
   f <- wrap(fun$f)
-  
+
   if (.discard) {
     wrap(function() fun$val)()
     progress$step()
-    
+
     for(i in seq.int(from = 2L, length.out = .n - 1L)) {
       f()
       progress$step()
     }
-    
+
     invisible(NULL)
   } else {
     result <- vector("list", length = .n)
     result[1L] <- list(wrap(function() fun$val)())
     progress$step()
-    
+
     for(i in seq.int(from = 2L, length.out = .n - 1L)) {
       result[i] <- list(f())
       progress$step()
     }
-    
+
     result
   }
 }
@@ -91,6 +91,7 @@ rlply <- function(.n, .expr, .progress = "none") {
 #' @param .expr_wrap function to call
 #' @return named list with two components. f -- function, val -- result of first
 #'   evaluation
+#' @noRd
 .wrapped_expr_to_fun <- function(.expr_wrap) {
   # When .expr_wrap is evaluated, it will return either a function or an
   # expression.  In the first case, this function is assigned to the f
