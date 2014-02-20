@@ -24,12 +24,12 @@ round_any <- function(x, accuracy, f = round) {
   UseMethod("round_any")
 }
 
-#' @S3method round_any numeric
+#' @export
 round_any.numeric <- function(x, accuracy, f = round) {
   f(x / accuracy) * accuracy
 }
 
-#' @S3method round_any POSIXct
+#' @export
 round_any.POSIXct <- function(x, accuracy, f = round) {
   tz <- format(x[1], "%Z")
   xr <- round_any(as.numeric(x), accuracy, f)

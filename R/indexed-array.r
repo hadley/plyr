@@ -40,10 +40,10 @@ indexed_array <- function(env, index) {
   )
 }
 
-#' @S3method length indexed_array
+#' @export
 length.indexed_array <- function(x) nrow(x$index)
 
-#' @S3method [[ indexed_array
+#' @export
 "[[.indexed_array" <- function(x, i) {
   indices <- unname(x$index[i, , drop = TRUE])
   indices <- lapply(indices, function(x) if (x == "") bquote() else x)
@@ -55,5 +55,5 @@ length.indexed_array <- function(x) nrow(x$index)
   eval(call)
 }
 
-#' @S3method names indexed
+#' @export
 names.indexed_array <- function(x) rownames(x$index)

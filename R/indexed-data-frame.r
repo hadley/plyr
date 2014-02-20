@@ -14,7 +14,7 @@ indexed_df <- function(data, index, vars) {
   )
 }
 
-#' @S3method [[ indexed_df
+#' @export
 "[[.indexed_df" <- function(x, i) {
   out <- extract_rows(x$data, x$index[[i]])
   attr(out, "vars") <- x$vars

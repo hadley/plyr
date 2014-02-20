@@ -10,11 +10,6 @@
 #'
 #' @param df a data frame
 #' @return an immutable data frame
-#' @S3method [ idf
-#' @S3method names idf
-#' @S3method dim idf
-#' @S3method as.data.frame idf
-#' @S3method [[ idf
 #' @keywords manip
 #' @export
 #' @examples
@@ -44,6 +39,7 @@ idata.frame <- function(df) {
     class = c("idf", "environment"))
 }
 
+#' @export
 "[.idf" <- function(x, i, j, drop = TRUE) {
   # Single column special cases
   if (nargs() == 2) {
@@ -91,14 +87,18 @@ idata.frame <- function(df) {
     class = c("idf", "environment"))
 }
 
+#' @export
 names.idf <- function(x) x$`_cols`
 
+#' @export
 dim.idf <- function(x) c(length(x$`_rows`), length(x$`_cols`))
 
+#' @export
 as.data.frame.idf <- function(x, ...) {
   x$`_data`[x$`_rows`, x$`_cols`]
 }
 
+#' @export
 "[[.idf" <- function(x, i) {
   if (is.numeric(i)) {
     i <- names(x)[i]
