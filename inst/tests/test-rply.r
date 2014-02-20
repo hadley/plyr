@@ -142,5 +142,5 @@ test_that("Invalid arguments for r_ply", {
 
 test_that(".id column for rdply", {
   expect_equal(rdply(5, 10)$.n, 1:5)
-  expect_equal(rdply(5, 10, .id=".n")$.n, factor(1:5))
+  expect_equal(rdply(5, 10, .id=".x")$.x, 1:5)
 })

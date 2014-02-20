@@ -32,9 +32,7 @@ rdply <- function(.n, .expr, .progress = "none", .id = NA) {
                        eval.parent(substitute(function() .expr)))
   names(res) <- seq_len(.n)
   labels <- data.frame(.n = seq_len(.n))
-  if (!is.na(.id)) {
-    labels$.n <- factor(labels$.n, levels = labels$.n)
+  if (!is.na(.id))
     names(labels) <- .id
-  }
   list_to_dataframe(res, labels)
 }
