@@ -14,7 +14,7 @@
 
 * `rbind.fill` avoids array copying which had produced quadratic time
   complexity. `*dply` of large numbers of groups should be faster.
-  (Contributed by Peter Meilstrup)
+  (Contributed by Peter Meilstrup)  
 
 * `rbind.fill` handles non-numeric matrix columns (i.e. factor arrays,
   character arrays, list arrays); also arrays with more than 2

@@ -27,3 +27,4 @@ Suggests:
     iterators
 License: MIT
 LazyData: true
+Roxygen: list(wrap = FALSE)
