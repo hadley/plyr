@@ -27,6 +27,6 @@ Suggests:
     doMC,
     itertools,
     iterators
-License: MIT
+License: MIT + file LICENSE
 LazyData: true
 Roxygen: list(wrap = FALSE)
