@@ -60,6 +60,7 @@
 #' }
 #'
 #' @docType package
+#' @importFrom Rcpp sourceCpp
 #' @name plyr
 NULL
 

@@ -16,6 +16,8 @@ Description: plyr is a set of tools that solves a common
 URL: http://had.co.nz/plyr
 Depends:
     R (>= 2.11.0)
+Imports:
+    Rcpp (>= 0.11.0)
 LinkingTo: Rcpp
 Suggests:
     abind,
