@@ -265,6 +265,9 @@ get_rbind_times <- function(...) {
   mdply(.fun = rbind_time, ...)
 }
 
+if (identical(Sys.getenv("NOT_CRAN"), "true") &&
+    !identical(Sys.getenv("TRAVIS"), "true")) {
+
 expect_linear_enough <- function(timings, size=2^10, threshold=0.2) {
   #expect that no more than `threshold` of a `size` input's runtime is
   #accounted for by quadratic behavior
@@ -293,9 +296,11 @@ test_that("rbind.fill performance linear with times", {
   expect_linear_enough(timings)
 })
 
-test_that("NULLs silently dropped", {  
+test_that("NULLs silently dropped", {
   expect_equal(rbind.fill(mtcars, NULL), mtcars)
   expect_equal(rbind.fill(NULL, mtcars), mtcars)
   expect_equal(rbind.fill(NULL, NULL), NULL)
-  
+
 })
+
+}
