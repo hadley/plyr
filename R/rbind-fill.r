@@ -127,28 +127,27 @@ allocate_column <- function(example, nrows, dfs, var) {
   }
 
   if (is.array(example)) {
+    if (length(dim(example)) > 1) {
+      if ("dimnames" %in% names(a)) {
+        a$dimnames[1] <- list(NULL)
+        if (!is.null(names(a$dimnames)))
+            names(a$dimnames)[1] <- ""
+      }
 
-    if ("dimnames" %in% names(a)) {
-      a$dimnames[1] <- list(NULL)
-      if (!is.null(names(a$dimnames)))
-          names(a$dimnames)[1] <- ""
-    }
+      # Check that all other args have consistent dims
+      df_has <- vapply(dfs, function(df) var %in% names(df), FALSE)
+      dims <- unique(lapply(dfs[df_has], function(df) dim(df[[var]])[-1]))
+      if (length(dims) > 1)
+          stop("Array variable ", var, " has inconsistent dims")
 
-    # Check that all other args have consistent dims
-    df_has <- vapply(dfs, function(df) var %in% names(df), FALSE)
-    dims <- unique(lapply(dfs[df_has], function(df) dim(df[[var]])[-1]))
-    if (length(dims) > 1)
-        stop("Array variable ", var, " has inconsistent dims")
-
-    if (length(dims[[1]]) == 0) { #is dropping dims necessary for 1d arrays?
+      a$dim <- c(nrows, dim(example)[-1])
+      length <- prod(a$dim)
+    } else {
+      #1d arrays devolve into vectors
       a$dim <- NULL
       a$dimnames <- NULL
       length <- nrows
-    } else {
-      a$dim <- c(nrows, dim(example)[-1])
-      length <- prod(a$dim)
     }
-
   } else {
     length <- nrows
   }
