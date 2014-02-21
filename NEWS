@@ -1,11 +1,14 @@
-Version 1.8.0.99
+Version 1.8.1
 ------------------------------------------------------------------------------
 
-* New parameter `.id` to `ldply()` and `rdply()` that specifies the name of the index column. (Thanks to Kirill Müller, #107, #140, #142)
+* New parameter `.id` to `ldply()` and `rdply()` that specifies the name of
+  the index column. (Thanks to Kirill Müller, #107, #140, #142)
 
-* New parameter `.id` to `rdply()` that specifies the name of the index column. (Thanks to Kirill Müller, #142)
+* New parameter `.id` to `rdply()` that specifies the name of the index
+  column. (Thanks to Kirill Müller, #142)
 
-* The .id column in ldply() is generated as a factor to preserve the sort order. (Thanks to Kirill Müller, #137)
+* The `.id` column in `ldply()` is generated as a factor to preserve the sort
+  order. (Thanks to Kirill Müller, #137)
 
 * `rbind.fill` now silently drops NULL inputs (#138)
 
@@ -23,10 +26,10 @@ Version 1.8.0.99
   when the key column in X is character and Y is factor. (Contributed
   by Peter Meilstrup)
 
-* Fix faulty array allocation which caused problems when using `split_indices` 
+* Fix faulty array allocation which caused problems when using `split_indices`
   with large (> 2^24) vectors.  (Fixes #131)
 
-* `list_to_array()` incorrectly determined dimensions if column of labels 
+* `list_to_array()` incorrectly determined dimensions if column of labels
   contained any missing values (#169).
 
 * `r*ply` expression is evaluated exactly `.n` times, evaluation results are
@@ -118,7 +121,7 @@ Version 1.7
   correct results. This fixes problems with `join` when joining across many
   columns. (Fixes #63)
 
-* `split_indices` checks input more aggressively to prevent segfaults. 
+* `split_indices` checks input more aggressively to prevent segfaults.
    Fixes #43.
 
 * fix small bug in `loop_apply` which lead to segfaults in certain
@@ -277,14 +280,14 @@ NEW FEATURES
   x <- seq_len(20)
   wait <- function(i) Sys.sleep(0.1)
   system.time(llply(x, wait))
-  #  user  system elapsed 
-  # 0.007   0.005   2.005 
-   
+  #  user  system elapsed
+  # 0.007   0.005   2.005
+
   library(doMC)
-  registerDoMC(2) 
+  registerDoMC(2)
   system.time(llply(x, wait, .parallel = TRUE))
-  #  user  system elapsed 
-  # 0.020   0.011   1.038 
+  #  user  system elapsed
+  # 0.020   0.011   1.038
 
   This work has been generously supported by BD (Becton Dickinson).
 
@@ -309,16 +312,16 @@ MINOR CHANGES
 
 BUG FIXES
 
-* list_to_array works correct even when there are missing values in the array.  
+* list_to_array works correct even when there are missing values in the array.
   This is particularly important for daply.
 
 Version 1.1 (2010-07-19)
 ------------------------------------------------------------------------------
 
-* *dply deals more gracefully with the case when all results are NULL 
+* *dply deals more gracefully with the case when all results are NULL
   (fixes #10)
 
-* *aply correctly orders output regardless of dimension names 
+* *aply correctly orders output regardless of dimension names
   (fixes #11)
 
 * join gains type = "full" which preserves all x and y rows
@@ -334,7 +337,7 @@ New functions:
 * desc makes it easy to sort any vector in descending order
 * join, works like merge but can be much faster and has a somewhat simpler
   syntax drawing from SQL terminology
-* rbind.fill.matrix is like rbind.fill but works for matrices, code 
+* rbind.fill.matrix is like rbind.fill but works for matrices, code
   contributed by C. Beleites
 
 Speed improvements
@@ -346,7 +349,7 @@ Speed improvements
 * d*ply now much faster with nested groups
 
   This work has been generously supported by BD (Becton Dickinson).
-  
+
 
 New features:
 
@@ -360,9 +363,9 @@ New features:
 
 Bug fixes:
 
-* **ply: if zero splits, empty list(), data.frame() or logical() returned, 
+* **ply: if zero splits, empty list(), data.frame() or logical() returned,
   as appropriate for the output type
-* **ply: leaving .fun as NULL now always returns list 
+* **ply: leaving .fun as NULL now always returns list
   (thanks to Stavros Macrakis for the bug report)
 * a*ply: labels now respect options(stringAsFactors)
 * each: scoping bug fixed, thanks to Yasuhisa Yoshida for the bug report
@@ -451,6 +454,6 @@ Version 0.1.2 (2008-11-18)
 Version 0.1.1 (2008-10-08)
 ------------------------------------------------------------------------------
 
-  * argument names now start with . (instead of ending with it) - this should prevent name clashes with arguments of the called function 
+  * argument names now start with . (instead of ending with it) - this should prevent name clashes with arguments of the called function
   * return informative error if .fun is not a function
   * use full names in all internal calls to avoid argument name clashes
