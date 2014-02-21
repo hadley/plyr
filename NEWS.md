@@ -3,10 +3,7 @@
 * New parameter `.id` to `ldply()` and `rdply()` that specifies the name of the 
   index column. (Thanks to Kirill Müller, #107, #140, #142)
 
-* New parameter `.id` to `rdply()` that specifies the name of the index column. 
-  (Thanks to Kirill Müller, #142)
-
-* The .id column in `ldply()` and `rdply()` is generated as a factor to preserve
+* The .id column in `ldply()` is generated as a factor to preserve
   the sort order, but only if the new `.id` parameter is set. (Thanks to Kirill
   Müller, #137)
 

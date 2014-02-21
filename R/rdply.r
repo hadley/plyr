@@ -31,10 +31,8 @@ rdply <- function(.n, .expr, .progress = "none", .id = NA) {
   res <- .rlply_worker(.n, .progress,
                        eval.parent(substitute(function() .expr)))
   names(res) <- seq_len(.n)
-  if (is.na(.id)) {
-    .id <- ".n"
-    id_as_factor <- FALSE
-  } else
-    id_as_factor <- TRUE
-  list_to_dataframe(res, id_name = .id, id_as_factor = id_as_factor)
+  labels <- data.frame(.n = seq_len(.n))
+  if (!is.na(.id))
+    names(labels) <- .id
+  list_to_dataframe(res, labels)
 }
