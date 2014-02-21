@@ -101,22 +101,27 @@ test_that("time zones are preserved", {
 
 })
 
-test_that("arrays are ok", {
+test_that("1d arrays treated as vectors", {
   df <- data.frame(x = 1)
   df$x <- array(1, 1)
 
+  #1d arrays converted into vectors
   df2 <- rbind.fill(df, df)
-  #this asserts that dim is stripped off 1d arrays. Necessary?
   expect_that(df2$x, is_equivalent_to(rbind(df, df)$x))
   expect_that(dim(df2$x), equals(dim(rbind(df, df)$x)))
-  #this would be more consistent
-  #expect_that(df2$x, is_equivalent_to(rbind(array(1,1), array(1,1))))
 
   #if dims are stripped, dimnames should be also
   df <- data.frame(x = 1)
   df$x <- array(2, 1, list(x="one"))
   df2 <- rbind.fill(df, df)
   expect_that(is.null(dimnames(df2$x)), is_true())
+
+  #can bind 1d array to vector
+  dfV <- data.frame(x=3)
+  dfO1 <- rbind.fill(df, dfV)
+  dfO2 <- rbind.fill(dfV, df)
+  expect_equal(dfO1, data.frame(x=c(2, 3)))
+  expect_equal(dfO2, data.frame(x=c(3, 2)))
 })
 
 test_that("multidim arrays ok", {
