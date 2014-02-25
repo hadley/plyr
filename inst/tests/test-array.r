@@ -133,12 +133,12 @@ test_that("single column data frames work when treated as an array", {
 
 test_that("aaply equivalent to apply with correct permutation", {
   a <- matrix(seq_len(400), ncol = 20)
-  expect_that(rowMeans(a), equals(aaply(a, 1, mean), check.attr = FALSE))
-  expect_that(colMeans(a), equals(aaply(a, 2, mean), check.attr = FALSE))
+  expect_equivalent(rowMeans(a), aaply(a, 1, mean))
+  expect_equivalent(colMeans(a), aaply(a, 2, mean))
 
   b <- structure(a, dimnames = amv_dimnames(a))
-  expect_that(rowMeans(b), equals(aaply(b, 1, mean), check.attr = FALSE))
-  expect_that(colMeans(b), equals(aaply(b, 2, mean), check.attr = FALSE))
+  expect_equivalent(rowMeans(b), aaply(b, 1, mean))
+  expect_equivalent(colMeans(b), aaply(b, 2, mean))
 })
 
 test_that("array reconstruction correct with missing cells", {
