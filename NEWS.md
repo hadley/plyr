@@ -1,7 +1,10 @@
-# Version 1.8.0.99
+# Version 1.8.1
 
-* New parameter `.id` to `ldply()` and `rdply()` that specifies the name of the 
-  index column. (Thanks to Kirill Müller, #107, #140, #142)
+* New parameter `.id` to `ldply()` and `rdply()` that specifies the name of
+  the index column. (Thanks to Kirill Müller, #107, #140, #142)
+
+* New parameter `.id` to `rdply()` that specifies the name of the index
+  column. (Thanks to Kirill Müller, #142)
 
 * The .id column in `ldply()` is generated as a factor to preserve
   the sort order, but only if the new `.id` parameter is set. (Thanks to Kirill
@@ -11,7 +14,7 @@
 
 * `rbind.fill` avoids array copying which had produced quadratic time
   complexity. `*dply` of large numbers of groups should be faster.
-  (Contributed by Peter Meilstrup)  
+  (Contributed by Peter Meilstrup)
 
 * `rbind.fill` handles non-numeric matrix columns (i.e. factor arrays,
   character arrays, list arrays); also arrays with more than 2
@@ -23,11 +26,14 @@
   when the key column in X is character and Y is factor. (Contributed
   by Peter Meilstrup)
 
-* Fix faulty array allocation which caused problems when using `split_indices` 
+* Fix faulty array allocation which caused problems when using `split_indices`
   with large (> 2^24) vectors.  (Fixes #131)
 
-* `list_to_array()` incorrectly determined dimensions if column of labels 
+* `list_to_array()` incorrectly determined dimensions if column of labels
   contained any missing values (#169).
+
+* `r*ply` expression is evaluated exactly `.n` times, evaluation results are
+  consistent with side effects. (#158, thanks to Kirill Müller)
 
 # Version 1.8
 
@@ -55,21 +61,21 @@
 
 ## Parallel plyr
 
-* `**ply` gains a `.paropts` argument, a list of options that is passed onto 
+* `**ply` gains a `.paropts` argument, a list of options that is passed onto
   `foreach` for controlling parallel computation.
 
-* `*_ply` now accepts `.parallel` argument to enable parallel processing. 
+* `*_ply` now accepts `.parallel` argument to enable parallel processing.
   (Fixes #60)
 
 * Progress bars are disabled when using parallel plyr (Fixes #32)
 
 ## Performance improvements
 
-* `a*ply`: 25x speedup when indexing array objects, 3x speedup when indexing 
+* `a*ply`: 25x speedup when indexing array objects, 3x speedup when indexing
   data frames.  This should substantially reduce the overhead of using `a*ply`
 
-* `d*ply` subsetting has been considerably optimised: this will have a small 
-  impact unless you have a very large number of groups, in which case it will be 
+* `d*ply` subsetting has been considerably optimised: this will have a small
+  impact unless you have a very large number of groups, in which case it will be
   considerably faster.
 
 * `idata.frame`: Subsetting immutable data frames with `[.idf` is now
@@ -77,40 +83,40 @@
 
 * `quickdf` is around 20% faster
 
-* `split_indices`, which powers much internal splitting code (like 
-  `vaggregate`, `join` and `d*ply`) is about 2x faster.  It was already 
-  incredibly fast ~0.2s for 1,000,000 obs, so this won't have much impact on 
+* `split_indices`, which powers much internal splitting code (like
+  `vaggregate`, `join` and `d*ply`) is about 2x faster.  It was already
+  incredibly fast ~0.2s for 1,000,000 obs, so this won't have much impact on
   overall performance
 
 ## Bug fixes
 
-* `*aply` functions now bind list mode results into a list-array 
+* `*aply` functions now bind list mode results into a list-array
    (Peter Meilstrup)
 
 * `*aply` now accepts 0-dimension arrays as inputs. (#88)
 
 * `count` now works correctly for factor and Date inputs. (Fixes #130)
 
-* `*dply` now deals better with matrix results, converting them to data frames, 
+* `*dply` now deals better with matrix results, converting them to data frames,
    rather than vectors. (Fixes #12)
 
 * `d*ply` will now preserve factor levels input if `drop = FALSE` (#81)
 
-* `join` works correctly when there are no common rows (Fixes #74), or when 
-  one input has no rows (Fixes #48). It also consistently orders the columns: 
+* `join` works correctly when there are no common rows (Fixes #74), or when
+  one input has no rows (Fixes #48). It also consistently orders the columns:
   common columns, then x cols, then y cols (Fixes #40).
 
-* `quickdf` correctly handles NA variable names. (Fixes #66. Thanks to Scott 
+* `quickdf` correctly handles NA variable names. (Fixes #66. Thanks to Scott
   Kostyshak)
 
-* `rbind.fill` and `rbind.fill.matrix` work consistently with matrices and data 
+* `rbind.fill` and `rbind.fill.matrix` work consistently with matrices and data
   frames with zero rows. Fixes #79. (Peter Meilstrup)
 
 * `rbind.fill` now stops if inputs are not data frames. (Fixes #51)
 
 * `rbind.fill` now works consistently with 0 column data frames
 
-* `round_any` now works with `POSIXct` objects, thanks to Jean-Olivier 
+* `round_any` now works with `POSIXct` objects, thanks to Jean-Olivier
    Irisson (#76)
 
 # Version 1.7.1
@@ -127,7 +133,7 @@
   correct results. This fixes problems with `join` when joining across many
   columns. (Fixes #63)
 
-* `split_indices` checks input more aggressively to prevent segfaults. 
+* `split_indices` checks input more aggressively to prevent segfaults.
    Fixes #43.
 
 * fix small bug in `loop_apply` which lead to segfaults in certain
@@ -247,7 +253,7 @@
 
 * `quickdf` now adds names if missing
 
-* `summarise` preserves variable names if explicit names not provided 
+* `summarise` preserves variable names if explicit names not provided
   (Fixes #17)
 
 * `arrays` with names should be sorted correctly once again (also fixed a bug
@@ -269,24 +275,24 @@
 
 ## New features
 
-* `l*ply`, `d*ply`, `a*ply` and `m*ply` all gain a .parallel argument that when 
-  `TRUE`, applies functions in parallel using a parallel backend registered with 
+* `l*ply`, `d*ply`, `a*ply` and `m*ply` all gain a .parallel argument that when
+  `TRUE`, applies functions in parallel using a parallel backend registered with
   the foreach package:
 
     ```R
     x <- seq_len(20)
     wait <- function(i) Sys.sleep(0.1)
     system.time(llply(x, wait))
-    #  user  system elapsed 
-    # 0.007   0.005   2.005 
-     
+    #  user  system elapsed
+    # 0.007   0.005   2.005
+
     library(doMC)
-    registerDoMC(2) 
+    registerDoMC(2)
     system.time(llply(x, wait, .parallel = TRUE))
-    #  user  system elapsed 
-    # 0.020   0.011   1.038 
+    #  user  system elapsed
+    # 0.020   0.011   1.038
     ```
-  
+
     This work has been generously supported by BD (Becton Dickinson).
 
 ## Minor changes
@@ -310,15 +316,15 @@
 
 ## Bug fixes
 
-* `list_to_array` works correct even when there are missing values in the array.  
+* `list_to_array` works correct even when there are missing values in the array.
   This is particularly important for daply.
 
 # Version 1.1 (2010-07-19)
 
-* `*dply` deals more gracefully with the case when all results are NULL 
+* `*dply` deals more gracefully with the case when all results are NULL
   (fixes #10)
 
-* `*aply` correctly orders output regardless of dimension names 
+* `*aply` correctly orders output regardless of dimension names
   (fixes #11)
 
 * join gains type = "full" which preserves all x and y rows
@@ -333,7 +339,7 @@
 * desc makes it easy to sort any vector in descending order
 * join, works like merge but can be much faster and has a somewhat simpler
   syntax drawing from SQL terminology
-* rbind.fill.matrix is like rbind.fill but works for matrices, code 
+* rbind.fill.matrix is like rbind.fill but works for matrices, code
   contributed by C. Beleites
 
 ## Speed improvements
@@ -360,9 +366,9 @@
 
 ## Bug fixes:
 
-* **ply: if zero splits, empty list(), data.frame() or logical() returned, 
+* **ply: if zero splits, empty list(), data.frame() or logical() returned,
   as appropriate for the output type
-* **ply: leaving .fun as NULL now always returns list 
+* **ply: leaving .fun as NULL now always returns list
   (thanks to Stavros Macrakis for the bug report)
 * a*ply: labels now respect options(stringAsFactors)
 * each: scoping bug fixed, thanks to Yasuhisa Yoshida for the bug report
@@ -417,20 +423,20 @@
 
 # Version 0.1.5 (2009-02-23)
 
-* colwise now accepts a quoted list as its second argument.  This allows you to 
+* colwise now accepts a quoted list as its second argument.  This allows you to
   specify the names of columns to work on: colwise(mean, .(lat, long))
 * d_ply and a_ply now correctly pass ... to the function
 
 # Version 0.1.4 (2008-12-12)
 
 
-* Greatly improved speed (> 10x faster) and memory usage (50%) for splitting 
+* Greatly improved speed (> 10x faster) and memory usage (50%) for splitting
   data frames with many combinations
 * Splitting variables containing missing values now handled consistently
 
 # Version 0.1.3 (2008-11-19)
 
-* Fixed problem where when splitting by a variable that contained missing 
+* Fixed problem where when splitting by a variable that contained missing
   values, missing combinations would be drop, and labels wouldn't match up
 
 # Version 0.1.2 (2008-11-18)
@@ -443,6 +449,6 @@
 
 # Version 0.1.1 (2008-10-08)
 
-* argument names now start with . (instead of ending with it) - this should prevent name clashes with arguments of the called function 
+* argument names now start with . (instead of ending with it) - this should prevent name clashes with arguments of the called function
 * return informative error if .fun is not a function
 * use full names in all internal calls to avoid argument name clashes
