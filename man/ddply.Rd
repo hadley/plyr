@@ -45,6 +45,8 @@ A data frame, as described in the output section.
 \description{
 For each subset of a data frame, apply function then combine results into a
 data frame.
+To apply a function for each row, use \code{\link{adply}} with
+\code{.margins} set to \code{1}.
 }
 \section{Input}{
   This function splits data frames by variables.

@@ -46,6 +46,8 @@ list of results
 For each subset of a data frame, apply function then combine results into a
 list. \code{dlply} is similar to \code{\link{by}} except that the results
 are returned in a different format.
+To apply a function for each row, use \code{\link{alply}} with
+\code{.margins} set to \code{1}.
 }
 \section{Input}{
   This function splits data frames by variables.

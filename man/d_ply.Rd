@@ -47,7 +47,9 @@ d_ply(.data, .variables, .fun = NULL, ..., .progress = "none",
 Nothing
 }
 \description{
-For each subset of a data frame, apply function and discard results
+For each subset of a data frame, apply function and discard results.
+To apply a function for each row, use \code{\link{a_ply}} with
+\code{.margins} set to \code{1}.
 }
 \section{Input}{
   This function splits data frames by variables.
