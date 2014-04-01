@@ -49,7 +49,7 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
   on.exit(progress$term())
 
   result <- vector("list", n)
-  args <- list(...)
+  args <- as.list(substitute(list(...))[-1])
   fun_with_dots <- if (length(args) == 0) .fun else
     function(piece) do.call(.fun, c(list(piece), args))
   do.ply <- function(i) {
