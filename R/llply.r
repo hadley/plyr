@@ -57,10 +57,11 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
 
     # Display informative error messages, if desired
     if (.inform) {
-      res <- try(fun_with_dots(piece))
+      res <- try(fun_with_dots(piece), silent = TRUE)
       if (inherits(res, "try-error")) {
         piece <- paste(capture.output(print(piece)), collapse = "\n")
-        stop("with piece ", i, ": \n", piece, call. = FALSE)
+        child_error <- gsub("^Error in fun_with_dots[(]piece[)] : ", "", res)
+        stop(child_error, "with piece ", i, ": \n", piece, call. = FALSE)
       }
     } else {
       res <- fun_with_dots(piece)
