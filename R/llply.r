@@ -49,22 +49,32 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
   on.exit(progress$term())
 
   result <- vector("list", n)
-  do.ply <- function(i) {
-    piece <- pieces[[i]]
+  args <- as.list(substitute(list(...))[-1])
+  fun_with_dots <- if (length(args) == 0) .fun else
+    function(piece) do.call(.fun, c(list(piece), args))
 
-    # Display informative error messages, if desired
-    if (.inform) {
-      res <- try(.fun(piece, ...))
+  # Display informative error messages, if desired
+  do.ply <- if (.inform) {
+    function(i) {
+      piece <- pieces[[i]]
+      res <- try(fun_with_dots(piece), silent = TRUE)
       if (inherits(res, "try-error")) {
         piece <- paste(capture.output(print(piece)), collapse = "\n")
-        stop("with piece ", i, ": \n", piece, call. = FALSE)
+        child_error <- gsub("^Error in fun_with_dots[(]piece[)] : ", "", res)
+        stop(child_error, "with piece ", i, ": \n", piece, call. = FALSE)
       }
-    } else {
-      res <- .fun(piece, ...)
+      progress$step()
+      res
     }
-    progress$step()
-    res
+  } else {
+    function(i) {
+      piece <- pieces[[i]]
+      res <- fun_with_dots(piece)
+      progress$step()
+      res
+    }
   }
+
   if (.parallel) {
     setup_parallel()
 
