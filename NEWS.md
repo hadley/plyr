@@ -1,3 +1,12 @@
+* Use a wrapper to call `.fun` in `llply`; this avoids warnings when using
+  `.parallel=T` with a snow backend. (@krlmlr, #203)
+
+* Error messages are also reported with `.parallel = TRUE`. (@krlmlr, #210)
+
+* `do.ply` does not check `.inform`, instead the code chooses between two
+  slightly different versions of `do.ply`.  This should result in marginally
+  faster execution. (@krlmlr, #210)
+
 # Version 1.8.1
 
 * New parameter `.id` to `ldply()` and `rdply()` that specifies the name of
