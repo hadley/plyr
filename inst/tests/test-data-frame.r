@@ -62,16 +62,39 @@ test_that("label variables always preserved", {
 })
 
 # Test for #140
-test_that(".id column can be renamed", {
+test_that(".id column can be renamed or removed", {
   l <- llply(1:4, function(i) rep(i, i))
   names(l) <- 1:4
   f <- function(l) data.frame(sum=sum(unlist(l)))
 
   out1 <- ldply(l, f)
   out2 <- ldply(l, f, .id='x')
-  out3 <- ldply(l, f, .id=NULL)
 
   expect_equal(names(out1), c('.id', 'sum'))
   expect_equal(names(out2), c('x', 'sum'))
+
+  # more tests
+  expect_identical(out1$.id, names(l))
+  expect_identical(out2$x, factor(names(l)))
+
+  out3 <- ldply(l, f, .id=NULL)
   expect_equal(names(out3), c('sum'))
+
+  out4 <- ldply(l, f, .id='sum') # names conflict
+  expect_equal(names(out4), c('sum'))
+
+  out5 <- ldply(l, f, .id=NA) # defaults
+  expect_equal(names(out5), c('.id', 'sum'))
+  expect_identical(out5$.id, names(l))
+
+  out6 <- ldply(l, f, .id='.id') # defaults
+  expect_equal(names(out6), c('.id', 'sum'))
+  expect_identical(out6$.id, factor(names(l)))
+
+  # no names = no .id column
+  expect_equal(ldply(unname(l), f, .id=NA), out3)
+  expect_equal(ldply(unname(l), f, .id="Name"), out3)
+  expect_equal(ldply(unname(l), f, .id=NULL), out3)
+
+  # todo: test for list with attr(,'split-labels'), needed?
 })
