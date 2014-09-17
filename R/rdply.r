@@ -1,6 +1,6 @@
 #' Replicate expression and return results in a data frame.
 #'
-#' Evalulate expression n times then combine results into a data frame
+#' Evaluate expression n times then combine results into a data frame
 #'
 #' This function runs an expression multiple times, and combines the result into
 #' a data frame.  If there are no results, then this function returns a data
@@ -17,7 +17,7 @@
 #' @param .id name of the index column. Pass \code{NULL} to avoid creation of
 #'   the index column. For compatibility, omit this argument or pass \code{NA}
 #'   to avoid converting the index column to a factor; in this case, \code{".n"}
-#'   is used as colum name..
+#'   is used as colum name.
 #' @return a data frame
 #' @export
 #' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for Data
@@ -32,7 +32,7 @@ rdply <- function(.n, .expr, .progress = "none", .id = NA) {
                        eval.parent(substitute(function() .expr)))
   names(res) <- seq_len(.n)
   labels <- data.frame(.n = seq_len(.n))
-  if (!is.na(.id))
-    names(labels) <- .id
-  list_to_dataframe(res, labels)
+  if (!is.null(.id) && is.na(.id))
+    .id <- ".n"
+  list_to_dataframe(res, labels, .id, FALSE)
 }
