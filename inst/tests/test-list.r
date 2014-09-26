@@ -21,7 +21,7 @@ test_that("list names are preserved", {
 })
 
 # Test for #142
-test_that(".n column can be renamed or removed", {
+test_that(".n column can be renamed or dropped", {
   f <- function() data.frame(r=runif(1))
 
   out1 <- rdply(4, f)
@@ -36,6 +36,7 @@ test_that(".n column can be renamed or removed", {
 
   out <- rdply(4, f, .id=NULL)
   expect_equal(names(out), c('r'))
+  expect_false(out$r[4]==4)
 
   out <- rdply(4, f, .id='r') # names conflict
   expect_equal(names(out), c('r'))
