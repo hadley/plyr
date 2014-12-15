@@ -62,14 +62,16 @@ test_that("label variables always preserved", {
 })
 
 # Test for #140
-test_that(".id column can be renamed", {
+test_that(".id column can be renamed or dropped", {
   l <- llply(1:4, function(i) rep(i, i))
   names(l) <- 1:4
   f <- function(l) data.frame(sum=sum(unlist(l)))
   
   out1 <- ldply(l, f)
   out2 <- ldply(l, f, .id='x')
+  out3 <- ldply(l, f, .id=NULL)
   
   expect_equal(names(out1), c('.id', 'sum'))
   expect_equal(names(out2), c('x', 'sum'))
+  expect_equal(names(out3), c('sum'))
 })
