@@ -11,7 +11,7 @@
 #'   arguments to supply them so that all cluster nodes have the correct
 #'   environment set up for computing.
 #' @param .inform produce informative error messages?  This is turned off by
-#'   by default because it substantially slows processing speed, but is very
+#'   default because it substantially slows processing speed, but is very
 #'   useful for debugging
 #' @keywords manip
 #' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy
