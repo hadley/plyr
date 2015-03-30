@@ -9,31 +9,23 @@ using namespace Rcpp;
 List loop_apply(int n, Function f);
 RcppExport SEXP plyr_loop_apply(SEXP nSEXP, SEXP fSEXP) {
 BEGIN_RCPP
-    SEXP __sexp_result;
-    {
-        Rcpp::RNGScope __rngScope;
-        Rcpp::traits::input_parameter< int >::type n(nSEXP );
-        Rcpp::traits::input_parameter< Function >::type f(fSEXP );
-        List __result = loop_apply(n, f);
-        PROTECT(__sexp_result = Rcpp::wrap(__result));
-    }
-    UNPROTECT(1);
-    return __sexp_result;
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< Function >::type f(fSEXP);
+    __result = Rcpp::wrap(loop_apply(n, f));
+    return __result;
 END_RCPP
 }
 // split_indices
-std::vector<std::vector<int> > split_indices(IntegerVector group, int n = 0);
+std::vector<std::vector<int> > split_indices(IntegerVector group, int n);
 RcppExport SEXP plyr_split_indices(SEXP groupSEXP, SEXP nSEXP) {
 BEGIN_RCPP
-    SEXP __sexp_result;
-    {
-        Rcpp::RNGScope __rngScope;
-        Rcpp::traits::input_parameter< IntegerVector >::type group(groupSEXP );
-        Rcpp::traits::input_parameter< int >::type n(nSEXP );
-        std::vector<std::vector<int> > __result = split_indices(group, n);
-        PROTECT(__sexp_result = Rcpp::wrap(__result));
-    }
-    UNPROTECT(1);
-    return __sexp_result;
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< IntegerVector >::type group(groupSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    __result = Rcpp::wrap(split_indices(group, n));
+    return __result;
 END_RCPP
 }
