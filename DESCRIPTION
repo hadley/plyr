@@ -1,19 +1,16 @@
 Package: plyr
-Type: Package
-Title: Tools for splitting, applying and combining data
 Version: 1.8.1.9000
-Author: Hadley Wickham <h.wickham@gmail.com>
-Maintainer: Hadley Wickham <h.wickham@gmail.com>
-Description: plyr is a set of tools that solves a common
-    set of problems: you need to break a big problem down
-    into manageable pieces, operate on each pieces and then
-    put all the pieces back together.  For example, you
-    might want to fit a model to each spatial location or
-    time point in your study, summarise data by panels or
-    collapse high-dimensional arrays to simpler summary
-    statistics. The development of plyr has been generously
-    supported by BD (Becton Dickinson).
-URL: http://had.co.nz/plyr
+Title: Tools for Splitting, Applying and Combining Data
+Description: A set of tools that solves a common set of problems: you
+    need to break a big problem down into manageable pieces, operate on each
+    piece and then put all the pieces back together.  For example, you might
+    want to fit a model to each spatial location or time point in your study,
+    summarise data by panels or collapse high-dimensional arrays to simpler
+    summary statistics. The development of plyr has been generously supported
+    by BD (Becton Dickinson).
+Authors@R: person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre"))
+URL: http://had.co.nz/plyr, https://github.com/hadley/plyr
+BugReports: https://github.com/hadley/plyr/issues
 Depends:
     R (>= 3.1.0)
 Imports:
