@@ -1,4 +1,4 @@
 library(testthat)
 library(plyr)
 
-test_package("plyr")
+test_check("plyr")
