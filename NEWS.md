@@ -2,6 +2,8 @@
 
 * Update for changes in R namespace best-practices.
 
+* Fix bug in `split_indices()` when `n` isn't supplied. 
+
 # Version 1.8.1
 
 * New parameter `.id` to `ldply()` and `rdply()` that specifies the name of

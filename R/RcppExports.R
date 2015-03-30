@@ -18,16 +18,17 @@ loop_apply <- function(n, f) {
 #' Split indices.
 #'
 #' An optimised version of split for the special case of splitting row
-#' indices into groups, as used by \code{\link{splitter_d}}
+#' indices into groups, as used by \code{\link{splitter_d}}.
 #'
 #' @param index integer indices
-#' @param n largest integer (may not appear in index). This is hint: if 
+#' @param n largest integer (may not appear in index). This is hint: if
 #'   the largest value of \code{group} is bigger than \code{n}, the output
 #'   will silently expand.
 #' @useDynLib plyr
 #' @keywords internal manip
 #' @export
 #' @examples
+#' split_indices(sample(10, 100, rep = TRUE))
 #' split_indices(sample(10, 100, rep = TRUE), 10)
 split_indices <- function(group, n = 0L) {
     .Call('plyr_split_indices', PACKAGE = 'plyr', group, n)

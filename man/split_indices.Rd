@@ -15,9 +15,10 @@ will silently expand.}
 }
 \description{
 An optimised version of split for the special case of splitting row
-indices into groups, as used by \code{\link{splitter_d}}
+indices into groups, as used by \code{\link{splitter_d}}.
 }
 \examples{
+split_indices(sample(10, 100, rep = TRUE))
 split_indices(sample(10, 100, rep = TRUE), 10)
 }
 \keyword{internal}
