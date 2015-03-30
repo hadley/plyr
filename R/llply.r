@@ -69,7 +69,7 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
     setup_parallel()
 
     i <- seq_len(n)
-    fe_call <- as.call(c(list(as.name("foreach"), i = i), .paropts))
+    fe_call <- as.call(c(list(quote(foreach::foreach), i = i), .paropts))
     fe <- eval(fe_call)
 
     result <- foreach::`%dopar%`(fe, do.ply(i))

@@ -21,7 +21,7 @@ l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
 
     setup_parallel()
     .paropts$.combine <- function(...) NULL
-    fe_call <- as.call(c(list(as.name("foreach"), d = as.name(".data")),
+    fe_call <- as.call(c(list(quote(foreach::foreach), d = as.name(".data")),
       .paropts))
     fe <- eval(fe_call)
 
