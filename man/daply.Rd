@@ -50,6 +50,8 @@ if results are atomic with same type and dimensionality, a
 For each subset of data frame, apply function then combine results into
 an array.  \code{daply} with a function that operates column-wise is
 similar to \code{\link{aggregate}}.
+To apply a function for each row, use \code{\link{aaply}} with
+\code{.margins} set to \code{1}.
 }
 \section{Input}{
  This function splits data frames by variables.
