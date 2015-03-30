@@ -10,7 +10,7 @@
 #'   external data or packages: use the \code{.export} and \code{.packages}
 #'   arguments to supply them so that all cluster nodes have the correct
 #'   environment set up for computing.
-#' @param .inform produce informative error messages?  This is turned off by
+#' @param .inform produce informative error messages?  This is turned off
 #'   by default because it substantially slows processing speed, but is very
 #'   useful for debugging
 #' @keywords manip
