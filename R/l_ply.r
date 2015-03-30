@@ -27,7 +27,7 @@ l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
 
     # Mute note about "no visible binding for d"
     d <- NULL
-    fe %dopar% .fun(d, ...)
+    foreach::`%dopar%`(fe, .fun(d, ...))
   } else {
     .data <- as.list(.data)
     for(i in seq_along(.data)) {

@@ -15,7 +15,7 @@ Description: plyr is a set of tools that solves a common
     supported by BD (Becton Dickinson).
 URL: http://had.co.nz/plyr
 Depends:
-    R (>= 2.11.0)
+    R (>= 3.1.0)
 Imports:
     Rcpp (>= 0.11.0)
 LinkingTo: Rcpp

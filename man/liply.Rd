@@ -21,7 +21,7 @@ than the O(n ^ 2) performance from the naive strategy of growing the list
 each time.
 }
 \examples{
-if(require("iterators")) {
+if (require("iterators")) {
   system.time(dlply(baseball, "id", summarise, mean_rbi = mean(rbi)))
   system.time({
     baseball_id <- isplit2(baseball, baseball$id)

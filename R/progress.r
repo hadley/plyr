@@ -119,18 +119,18 @@ progress_text <- function(style = 3, ...) {
 #' l_ply(1:100, identity, .progress = progress_tk(label=""))
 #' }
 progress_tk <- function(title = "plyr progress", label = "Working...", ...) {
-  stopifnot(require("tcltk", quietly = TRUE))
+  stopifnot(requireNamespace("tcltk", quietly = TRUE))
   n <- 0
   tk <- NULL
 
   list(
     init = function(x) {
-      tk <<- tkProgressBar(max = x, title = title, label = label, ...)
-      setTkProgressBar(tk, 0)
+      tk <<- tcltk::tkProgressBar(max = x, title = title, label = label, ...)
+      tcltk::setTkProgressBar(tk, 0)
     },
     step = function() {
       n <<- n + 1
-      setTkProgressBar(tk, n)
+      tcltk::setTkProgressBar(tk, n)
     },
     term = function() close(tk)
   )

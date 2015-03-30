@@ -10,7 +10,6 @@
 #' @export
 #' @examples
 #' # Summarize a dataset by two variables
-#' require(plyr)
 #' dfx <- data.frame(
 #'   group = c(rep('A', 8), rep('B', 15), rep('C', 6)),
 #'   sex = sample(c("M", "F"), size = 29, replace = TRUE),
