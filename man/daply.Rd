@@ -21,7 +21,7 @@ variables, a formula or character vector}
 \item{.progress}{name of the progress bar to use, see
 \code{\link{create_progress_bar}}}
 
-\item{.inform}{produce informative error messages?  This is turned off by
+\item{.inform}{produce informative error messages?  This is turned off
 by default because it substantially slows processing speed, but is very
 useful for debugging}
 
