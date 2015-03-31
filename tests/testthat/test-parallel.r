@@ -1,7 +1,7 @@
 context("Parallel")
 
-if (require("doMC", quietly = TRUE)) {
-  registerDoMC(2)
+if (require("doParallel", quietly = TRUE)) {
+  registerDoParallel(cores = 2)
 
   test_that("l_ply respects .parallel", {
     skip_on_cran()
@@ -27,5 +27,5 @@ if (require("doMC", quietly = TRUE)) {
     expect_equal(x, NULL)
   })
 
-  registerDoMC(1)
+  registerDoParallel(1)
 }
