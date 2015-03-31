@@ -69,7 +69,9 @@ test_that(".id column can be renamed", {
   
   out1 <- ldply(l, f)
   out2 <- ldply(l, f, .id='x')
+  out3 <- ldply(l, f, .id=NULL)
   
   expect_equal(names(out1), c('.id', 'sum'))
   expect_equal(names(out2), c('x', 'sum'))
+  expect_equal(names(out3), c('sum')
 })
