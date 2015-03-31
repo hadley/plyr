@@ -14,20 +14,20 @@
 #' @examples
 #' x <- c("a" = 1, "b" = 2, d = 3, 4)
 #' # Rename column d to "c", updating the variable "x" with the result
-#' x <- rename(x, replace=c("d" = "c"))
+#' x <- rename(x, replace = c("d" = "c"))
 #' x
 #' # Rename column "disp" to "displacement"
 #' rename(mtcars, c("disp" = "displacement"))
 rename <- function(x, replace, warn_missing = TRUE, warn_duplicate = TRUE ) {
-  
+
   # This line does the real work of `rename()`.
   names(x) <- revalue(names(x), replace, warn_missing = warn_missing)
-  
+
   # Check if any names are duplicated.
   duplicated_names <- names(x)[duplicated(names(x))]
-  if( warn_duplicate && (length(duplicated_names) > 0L)  ) {
-    response_message <- paste0("The plyr::rename operation has created duplicates for the following name(s): (`", paste(duplicated_names, collapse="`, `"), "`)")
-    warning(response_message)
-  }  
-  return( x )
+  if (warn_duplicate && (length(duplicated_names) > 0L)) {
+    duplicated_names_message <- paste(duplicated_names, collapse="`, `")
+    warning("The plyr::rename operation has created duplicates for the following name(s): (`", duplicated_names_message, "`)")
+  }
+  x
 }

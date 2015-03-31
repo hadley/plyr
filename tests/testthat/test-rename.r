@@ -1,6 +1,4 @@
-#################################################
-### Main-stream cases
-#################################################
+# Main-stream cases -----------------------------------
 context("Rename - Expected Usage")
 
 test_that("No match leaves names unchanged", {
@@ -41,61 +39,54 @@ test_that("Renaming lists", {
   expect_identical(y, list(d = 1, e = 2, f = 3))
 })
 
-#################################################
-### Duplicate Names
-#################################################
+# Duplicate Names -----------------------------------
 context("Rename - Duplicates")
 
-##
-## This batch tests the typical renaming scenarios
-##
+# This batch tests the typical renaming scenarios
 test_that("Renaming list with an conflicting variable name - default", {
   x <- list(a = 1, b = 2, c = 3)
   replace_list <- c("c" = "f", "b" = "e", "a" = "f")
   expected_response <- "The plyr::rename operation has created duplicates for the following name\\(s\\): \\(`f`\\)"
-  expect_warning(object = rename(x=x, replace=replace_list), regexp=expected_response)
+  expect_warning(object = rename(x = x, replace = replace_list), regexp = expected_response)
 })
-test_that("Renaming list with an conflicting variable name - warning", {
-  duplicate_behavior <- "warning"
+test_that("Renaming list with an conflicting variable name - without warning", {
   x <- list(a = 1, b = 2, c = 3)
   replace_list <- c("c" = "f", "b" = "e", "a" = "f")
-  expected_response <- "The plyr::rename operation has created duplicates for the following name\\(s\\): \\(`f`\\)"
-  result <- rename(x=x, replace=replace_list, warn_duplicate = FALSE)
+  result <- rename(x = x, replace = replace_list, warn_duplicate = FALSE)
+  expect_identical(result, list(f = 1, e = 2, f = 3))
 })
 
 
-##
-## This batch tests the boundary cases
-##
+# This batch tests the boundary cases
 test_that("Renaming to the same value", {
   #One element is renamed to itself
   x <- list(a = 1, b = 2, c = 3)
   replace_list <- c("a" = "a")
   expected_value <- x
-  expect_identical(rename(x=x, replace=replace_list), expected=expected_value)
+  expect_identical(rename(x = x, replace = replace_list), expected = expected_value)
 })
 test_that("Renaming list with an empty renaming vector", {
   #No renames are requested (which could happen if the calling code was under a lot of automated code.)
   x <- list(a = 1, b = 2, c = 3)
   replace_list <- c()
   expected_value <- x
-  expect_identical(rename(x=x, replace=replace_list), expected=expected_value)
+  expect_identical(rename(x = x, replace = replace_list), expected = expected_value)
 })
 test_that("Single Swapping (shouldn't cause problems)", {
   #Notice how a becomes c, while c becomes f.
   x <- list(a = 1, b = 2, c = 3)
   replace_list <- c("c" = "f", "b" = "e", "a" = "c")
   expected_value <- list(c = 1, e = 2, f = 3)
-  actual_value <- rename(x=x, replace=replace_list)
-  expect_identical(actual_value, expected=expected_value)
+  actual_value <- rename(x = x, replace = replace_list)
+  expect_identical(actual_value, expected = expected_value)
 })
 test_that("Double Swapping (shouldn't cause problems)", {
   #Notice how a becomes c, while c becomes a.
   x <- list(a = 1, b = 2, c = 3)
   replace_list <- c("c" = "a", "b" = "z", "a" = "c")
   expected_value <- list(c = 1, z = 2, a = 3)
-  actual_value <- rename(x=x, replace=replace_list)
-  expect_identical(actual_value, expected=expected_value)
+  actual_value <- rename(x = x, replace = replace_list)
+  expect_identical(actual_value, expected = expected_value)
 })
 test_that("Multiple assignments for the same element", {
   #Notice how it requests to change a to d, e, and f.
@@ -103,5 +94,5 @@ test_that("Multiple assignments for the same element", {
   replace_list <- c("a" = "d", "a" = "e", "a" = "f")
   expected_response <- "The following `from` values were not present in `x`: a, a"
   expected_value <- list(a = 1, a = 2, a = 3)
-  expect_message(rename(x=x, replace=replace_list), regexp=expected_response)
+  expect_message(rename(x = x, replace = replace_list), regexp = expected_response)
 })
