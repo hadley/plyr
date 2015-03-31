@@ -26,7 +26,9 @@ test_that(".n column can be renamed", {
   
   out1 <- rdply(4, f)
   out2 <- rdply(4, f, .id='x')
+  out3 <- rdply(4, f, .id=NULL)
   
   expect_equal(names(out1), c('.n', 'r'))
   expect_equal(names(out2), c('x', 'r'))
+  expect_equal(names(out3), c('r')
 })
