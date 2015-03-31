@@ -23,6 +23,6 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
     id_as_factor <- FALSE
   } else {
     id_as_factor <- TRUE
-   }
+  }
   list_to_dataframe(res, attr(.data, "split_labels"), .id, id_as_factor)
 }
