@@ -4,7 +4,7 @@
 \alias{rename}
 \title{Modify names by name, not position.}
 \usage{
-rename(x, replace, warn_missing = TRUE)
+rename(x, replace, warn_missing = TRUE, warn_duplicate = TRUE)
 }
 \arguments{
 \item{x}{named object to modify}
@@ -13,7 +13,10 @@ rename(x, replace, warn_missing = TRUE)
 old names as names.}
 
 \item{warn_missing}{print a message if any of the old names are
-  not actually present in \code{x}.
+not actually present in \code{x}.}
+
+\item{warn_duplicate}{print a message if any name appears more
+  than once in \code{x} after the operation.
 Note: x is not altered: To save the result, you need to copy the returned
   data into a variable.}
 }

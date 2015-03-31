@@ -5,6 +5,8 @@
 #'   old names as names.
 #' @param warn_missing print a message if any of the old names are
 #'   not actually present in \code{x}.
+#' @param warn_duplicate print a message if any name appears more
+#'   than once in \code{x} after the operation.
 #' Note: x is not altered: To save the result, you need to copy the returned
 #'   data into a variable.
 #' @export
@@ -16,7 +18,16 @@
 #' x
 #' # Rename column "disp" to "displacement"
 #' rename(mtcars, c("disp" = "displacement"))
-rename <- function(x, replace, warn_missing = TRUE) {
+rename <- function(x, replace, warn_missing = TRUE, warn_duplicate = TRUE ) {
+  
+  # This line does the real work of `rename()`.
   names(x) <- revalue(names(x), replace, warn_missing = warn_missing)
-  x
+  
+  # Check if any names are duplicated.
+  duplicated_names <- names(x)[duplicated(names(x))]
+  if( warn_duplicate && (length(duplicated_names) > 0L)  ) {
+    response_message <- paste0("The plyr::rename operation has created duplicates for the following name(s): (`", paste(duplicated_names, collapse="`, `"), "`)")
+    warning(response_message)
+  }  
+  return( x )
 }
