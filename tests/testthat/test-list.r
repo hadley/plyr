@@ -21,14 +21,26 @@ test_that("list names are preserved", {
 })
 
 # Test for #142
-test_that(".n column can be renamed", {
+test_that(".n column can be renamed or removed", {
   f <- function() data.frame(r=runif(1))
   
   out1 <- rdply(4, f)
   out2 <- rdply(4, f, .id='x')
-  out3 <- rdply(4, f, .id=NULL)
   
   expect_equal(names(out1), c('.n', 'r'))
   expect_equal(names(out2), c('x', 'r'))
-  expect_equal(names(out3), c('r')
+  
+  # more testing
+  expect_identical(out1$.n, seq_len(4))
+  expect_identical(out2$x, seq_len(4))
+
+  out <- rdply(4, f, .id=NULL)
+  expect_equal(names(out), c('r'))
+
+  out <- rdply(4, f, .id='r') # names conflict
+  expect_equal(names(out), c('r'))
+
+  out <- rdply(4, f, .id='.n') # defaults
+  expect_equal(names(out), c('.n', 'r'))
+  expect_identical(out$.n, seq_len(4))
 })
