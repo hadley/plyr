@@ -16,8 +16,7 @@
 #'   \code{\link{create_progress_bar}}
 #' @param .id name of the index column. Pass \code{NULL} to avoid creation of
 #'   the index column. For compatibility, omit this argument or pass \code{NA}
-#'   to avoid converting the index column to a factor; in this case, \code{".n"}
-#'   is used as colum name.
+#'   to use \code{".n"} as column name.
 #' @return a data frame
 #' @export
 #' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for Data
