@@ -4,7 +4,7 @@
 
 |setting  |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.1.2 (2014-10-31) |
+|version  |R version 3.1.3 (2015-03-09) |
 |system   |x86_64, darwin13.4.0         |
 |ui       |RStudio (0.99.362)           |
 |language |(EN)                         |
@@ -13,18 +13,18 @@
 
 ## Packages
 
-|package   |*  |version |date       |source         |
-|:---------|:--|:-------|:----------|:--------------|
-|abind     |*  |1.4-3   |2015-03-13 |CRAN (R 3.1.3) |
-|doMC      |*  |1.3.3   |2014-02-28 |CRAN (R 3.1.0) |
-|foreach   |   |1.4.2   |2014-04-11 |CRAN (R 3.1.0) |
-|iterators |*  |1.0.7   |2014-04-11 |CRAN (R 3.1.0) |
-|itertools |*  |0.1-3   |2014-03-12 |CRAN (R 3.1.0) |
-|Rcpp      |*  |0.11.5  |2015-03-06 |CRAN (R 3.1.3) |
-|testthat  |   |0.9.1   |2014-10-01 |CRAN (R 3.1.1) |
+|package    |*  |version |date       |source         |
+|:----------|:--|:-------|:----------|:--------------|
+|abind      |*  |1.4-3   |2015-03-13 |CRAN (R 3.1.3) |
+|doParallel |*  |1.0.8   |2014-02-28 |CRAN (R 3.1.2) |
+|foreach    |*  |1.4.2   |2014-04-11 |CRAN (R 3.1.2) |
+|iterators  |*  |1.0.7   |2014-04-11 |CRAN (R 3.1.2) |
+|itertools  |*  |0.1-3   |2014-03-12 |CRAN (R 3.1.2) |
+|Rcpp       |*  |0.11.5  |2015-03-06 |CRAN (R 3.1.3) |
+|testthat   |   |0.9.1   |2014-10-01 |CRAN (R 3.1.2) |
 
 # Check results
-288 checked out of 289 dependencies 
+289 checked out of 290 dependencies 
 
 ## abctools (1.0)
 Maintainer: Matt Nunes <m.nunes@lancaster.ac.uk>
@@ -32,19 +32,13 @@ Maintainer: Matt Nunes <m.nunes@lancaster.ac.uk>
 ```
 checking whether package ‘abctools’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/abctools.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/abctools.Rcheck/00install.out’ for details.
 ```
 
 ## abd (0.2-7)
 Maintainer: Kevin M. Middleton <middletonk@missouri.edu>
 
-```
-checking whether package ‘abd’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘car’ was built under R version 3.1.3
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/abd.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## acs (1.2)
 Maintainer: Ezra Haber Glenn <eglenn@mit.edu>
@@ -72,18 +66,16 @@ geo.make : .geo.unit.make: no visible binding for global variable
 ## afex (0.13-145)
 Maintainer: Henrik Singmann <singmann+afex@gmail.com>
 
-```
-checking whether package ‘afex’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘car’ was built under R version 3.1.3
-  Warning: package ‘Rcpp’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/afex.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## aLFQ (1.3.2)
 Maintainer: George Rosenberger <rosenberger@imsb.biol.ethz.ch>
 
-__OK__
+```
+checking whether package ‘aLFQ’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/aLFQ.Rcheck/00install.out’ for details.
+```
 
 ## alm (0.4.0)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
@@ -100,6 +92,13 @@ __OK__
 ## AppliedPredictiveModeling (1.1-6)
 Maintainer: Max Kuhn <mxkuhn@gmail.com>
 
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘ellipse’ ‘lattice’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
 ```
 checking R code for possible problems ... NOTE
 bookTheme: no visible global function definition for ‘trellis.par.set’
@@ -141,35 +140,42 @@ Execution halted
 ## ARPobservation (1.1)
 Maintainer: James E. Pustejovsky <jepusto@gmail.com>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'Observation-algorithms.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## ARTool (0.9.3)
 Maintainer: Matthew Kay <mjskay@uw.edu>  
 Bug reports: https://github.com/mjskay/ARTool/issues/new
 
-```
-checking whether package ‘ARTool’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘Rcpp’ was built under R version 3.1.3
-  Warning: package ‘car’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/ARTool.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## bams (1.6)
 Maintainer: Toby Dylan Hocking <toby@sg.cs.titech.ac.jp>
 
 ```
 checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘gada’
+Packages suggested but not available for checking: ‘GLAD’ ‘DNAcopy’ ‘gada’
 ```
 ```
 checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘DNAcopy’ ‘GLAD’ ‘cghseg’ ‘changepoint’ ‘gada’ ‘grid’ ‘proto’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
 Missing or unexported object: ‘ggplot2::coord_transform’
 Unexported objects imported by ':::' calls:
   ‘cghseg:::segmeanCO’ ‘ggplot2:::GeomRect’
   See the note in ?`:::` about the use of this operator.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -190,17 +196,29 @@ runglad : <anonymous>: no visible binding for global variable ‘daglad’
 runglad : <anonymous> : <anonymous>: no visible binding for global
   variable ‘glad’
 ```
+```
+checking line endings in Makefiles ... NOTE
+Found the following Makefile(s) without a final LF:
+  inst/article/Makefile
+Some ‘make’ programs ignore lines not ending in LF.
+```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'redoing-the-article.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## BatchExperiments (1.4.1)
 Maintainer: Michel Lang <michellang@gmail.com>  
 Bug reports: https://github.com/tudo-r/BatchExperiments/issues
 
-```
-checking whether package ‘BatchExperiments’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘BatchJobs’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/BatchExperiments.Rcheck/00install.out’ for details.
-```
 ```
 checking dependencies in R code ... NOTE
 Unexported objects imported by ':::' calls:
@@ -217,51 +235,42 @@ Unexported objects imported by ':::' calls:
   ‘BatchJobs:::makeRegistryInternal’ ‘BatchJobs:::saveRegistry’
   ‘BatchJobs:::seeder’ ‘BatchJobs:::syncRegistry’
   See the note in ?`:::` about the use of this operator.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 
-## bayesGDS (0.6.0)
+## bayesGDS (0.6.1)
 Maintainer: Michael Braun <braunm@smu.edu>
 
-```
-checking dependencies in R code ... NOTE
-Package in Depends field not imported from: ‘compiler’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
-```
-```
-checking R code for possible problems ... NOTE
-demo.get.hess.struct: no visible global function definition for
-  ‘Diagonal’
-demo.get.hess.struct: no visible global function definition for
-  ‘Matrix’
-demo.get.hess.struct: no visible global function definition for ‘cBind’
-demo.get.hess.struct: no visible global function definition for ‘rBind’
-demo.get.hess.struct: no visible global function definition for
-  ‘Matrix.to.Coord’
-```
+__OK__
 
 ## bayesPop (5.2-2)
 Maintainer: Hana Sevcikova <hanas@uw.edu>
 
-```
-checking whether package ‘bayesPop’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘bayesLife’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/bayesPop.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## bcpa (1.1)
 Maintainer: Eliezer Gurarie <eliezg@uw.edu>
 
 ```
-checking whether package ‘bcpa’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘Rcpp’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/bcpa.Rcheck/00install.out’ for details.
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Loading required package: Rcpp
+Loading required package: plyr
+Warning in plot.xy(xy.coords(x, y), type = type, ...) :
+  plot type 'black' will be truncated to first character
+Warning in plot.xy(xy.coords(x, y), type = type, ...) :
+  plot type 'black' will be truncated to first character
+Warning in replayPlot(x) :
+  plot type 'black' will be truncated to first character
+Warning in replayPlot(x) :
+  plot type 'black' will be truncated to first character
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'bcpa.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
 ```
 
 ## bdvis (0.1.0)
@@ -272,16 +281,25 @@ __OK__
 ## bear (2.6.4)
 Maintainer: Yung-jin Lee <mobilepk@gmail.com>
 
-__OK__
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' call to ‘plyr’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
 
 ## benchmark (0.3-6)
 Maintainer: Manuel J. A. Eugster <manuel@mjae.net>
 
 ```
-checking whether package ‘benchmark’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/benchmark.Rcheck/00install.out’ for details.
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘Rgraphviz’
+```
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' call to ‘multcomp’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -317,11 +335,29 @@ stripchart.AlgorithmPerformance: no visible binding for global variable
 stripchart.AlgorithmPerformance: no visible binding for global variable
   ‘samples’
 ```
+```
+checking Rd cross-references ... NOTE
+Package unavailable to check Rd xrefs: ‘graph’
+```
 
 ## BEQI2 (2.0-0)
 Maintainer: Dennis Walvoort <dennis.Walvoort@wur.nl>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+For more information on the usage of the BEQI2 tool, type: vignette("BEQI2")
+Number of duplicated records: 1
+These will be removed
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'BEQI2.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## Biograph (2.0.4)
 Maintainer: Frans Willekens <willekens@demogr.mpg.de>
@@ -338,12 +374,6 @@ __OK__
 Maintainer: Matthew Krachey <matthewkrachey@yahoo.com>
 
 ```
-checking whether package ‘bmk’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘coda’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/bmk.Rcheck/00install.out’ for details.
-```
-```
 checking dependencies in R code ... NOTE
 'library' or 'require' calls to packages already attached by Depends:
   ‘coda’ ‘functional’ ‘plyr’
@@ -352,8 +382,6 @@ Packages in Depends field not imported from:
   ‘coda’ ‘functional’ ‘plyr’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -387,13 +415,7 @@ __OK__
 ## BSGS (1.0)
 Maintainer: Kuo-Jung Lee <kuojunglee@mail.ncku.edu.tw>
 
-```
-checking whether package ‘BSGS’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘MASS’ was built under R version 3.1.3
-  Warning: package ‘pscl’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/BSGS.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## BTSPAS (2014.0901)
 Maintainer: Carl J Schwarz <cschwarz@stat.sfu.ca>
@@ -405,37 +427,66 @@ Package suggested but not available for checking: ‘BRugs’
 ```
 checking whether package ‘BTSPAS’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/BTSPAS.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/BTSPAS.Rcheck/00install.out’ for details.
 ```
 
 ## caret (6.0-41)
 Maintainer: Max Kuhn <Max.Kuhn@pfizer.com>
 
 ```
-checking whether package ‘caret’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/caret.Rcheck/00install.out’ for details.
+checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘MASS’ ‘earth’ ‘fastICA’ ‘ipred’ ‘klaR’ ‘nnet’ ‘pROC’ ‘party’ ‘proxy’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Attaching package: ‘pROC’
+
+The following objects are masked from ‘package:stats’:
+
+    cov, smooth, var
+
+
+Attaching package: ‘pls’
+
+The following object is masked from ‘package:caret’:
+
+    R2
+
+The following object is masked from ‘package:stats’:
+
+    loadings
+
+Loading required package: klaR
+Loading required package: MASS
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'caret.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
 ```
 
 ## caretEnsemble (1.0.0)
 Maintainer: Zachary A. Mayer <zach.mayer@gmail.com>  
 Bug reports: https://github.com/zachmayer/caretEnsemble/issues
 
-```
-checking whether package ‘caretEnsemble’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/caretEnsemble.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## cda (1.5.1)
 Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
 
 ```
-checking whether package ‘cda’ can be installed ... [26s/27s] ERROR
-Installation failed.
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/cda.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppArmadillo’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## CDM (4.2-12)
@@ -443,22 +494,22 @@ Maintainer: Alexander Robitzsch <a.robitzsch@bifie.at>
 
 ```
 checking package dependencies ... ERROR
-Package required but not available: ‘WrightMap’
+Packages required but not available: ‘WrightMap’ ‘RcppArmadillo’
 
 Package suggested but not available for checking: ‘BIFIEsurvey’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## chemosensors (0.7.8)
 Maintainer: Andrey Ziyatdinov <andrey.ziyatdinov@upc.edu>
 
 ```
-checking whether package ‘chemosensors’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/chemosensors.Rcheck/00install.out’ for details.
+checking dependencies in R code ... NOTE
+'library' or 'require' call to ‘doMC’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
 ```
 
 ## ChemoSpec (4.0.1)
@@ -501,6 +552,12 @@ Maintainer: Hadley Wickham <h.wickham@gmail.com>
 checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘rggobi’
 ```
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' call to ‘rggobi’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
 
 ## classify (1.3)
 Maintainer: Dr Chris Wheadon <chris.wheadon@gmail.com>
@@ -508,13 +565,26 @@ Maintainer: Dr Chris Wheadon <chris.wheadon@gmail.com>
 ```
 checking whether package ‘classify’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/classify.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/classify.Rcheck/00install.out’ for details.
 ```
 
 ## clhs (0.5-4)
 Maintainer: Pierre Roudier <roudierp@landcareresearch.co.nz>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Warning: attributes are not identical across measure variables; they will be dropped
+Warning: attributes are not identical across measure variables; they will be dropped
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'vignette.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## clickstream (1.1.3)
 Maintainer: Michael Scholz <michael.scholz@uni-passau.de>
@@ -528,19 +598,13 @@ Maintainer: Hadley Wickham <h.wickham@gmail.com>
 checking package dependencies ... ERROR
 Packages required but not available: ‘rggobi’ ‘RGtk2’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## coefplot (1.2.0)
 Maintainer: Jared P. Lander <packages@jaredlander.com>
 
-```
-checking whether package ‘coefplot’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/coefplot.Rcheck/00install.out’ for details.
-```
 ```
 checking DESCRIPTION meta-information ... NOTE
 Deprecated license: BSD
@@ -549,7 +613,24 @@ Deprecated license: BSD
 ## confidence (1.1-0)
 Maintainer: Dennis J. J. Walvoort <dennis.Walvoort@wur.nl>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Loading required package: tcltk
+
+For more information on the usage of the Confidence tool, type:
+vignette("confidence")
+Examples of input files can be found in:
+'/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/confidence.Rcheck/confidence/extdata'
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'confidence.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## cpca (0.1.2)
 Maintainer: Andrey Ziyatdinov <andrey.ziyatdinov@upc.edu>
@@ -581,12 +662,34 @@ __OK__
 Maintainer: Matt Dowle <mdowle@mdowle.plus.com>  
 Bug reports: https://github.com/Rdatatable/data.table/issues
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'datatable-faq.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## dataRetrieval (2.1.2)
 Maintainer: Laura DeCicco <ldecicco@usgs.gov>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'dataRetrieval.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## dcmr (1.0)
 Maintainer: Diane Losardo <dlosardo@amplify.com>
@@ -596,33 +699,22 @@ __OK__
 ## decctools (0.2.0)
 Maintainer: James Keirstead <j.keirstead@imperial.ac.uk>
 
-```
-checking whether package ‘decctools’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘XLConnect’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/decctools.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## Deducer (0.7-7)
 Maintainer: Ian Fellows <ian@fellstat.com>
 
-```
-checking whether package ‘Deducer’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-  Warning: package ‘car’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/Deducer.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## demi (1.1.2)
 Maintainer: Sten Ilmjarv <sten.ilmjarv@gmail.com>
 
 ```
 checking package dependencies ... ERROR
-Packages required but not available: ‘affxparser’ ‘oligo’
+Packages required but not available: ‘affxparser’ ‘affy’ ‘oligo’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## dendextend (0.18.3)
@@ -635,7 +727,7 @@ Package which this enhances but not available for checking: ‘labeltodendro’
 ```
 ```
 checking Rd cross-references ... NOTE
-Packages unavailable to check Rd xrefs: ‘WGCNA’, ‘moduleColor’, ‘distory’
+Packages unavailable to check Rd xrefs: ‘WGCNA’, ‘distory’, ‘moduleColor’
 ```
 
 ## DescribeDisplay (0.2.4)
@@ -655,8 +747,6 @@ checking dependencies in R code ... NOTE
 Package in Depends field not imported from: ‘proto’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 
 ## discreteRV (1.1.4)
@@ -726,22 +816,11 @@ __OK__
 Maintainer: Jacob Montgomery <jacob.montgomery@wustl.edu>
 
 ```
-checking whether package ‘EBMAforecast’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘separationplot’ was built under R version 3.1.3
-  Warning: package ‘ensembleBMA’ was built under R version 3.1.3
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-  Warning: package ‘abind’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/EBMAforecast.Rcheck/00install.out’ for details.
-```
-```
 checking dependencies in R code ... NOTE
 Packages in Depends field not imported from:
   ‘Hmisc’ ‘abind’ ‘ensembleBMA’ ‘methods’ ‘plyr’ ‘separationplot’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -759,13 +838,6 @@ __OK__
 Maintainer: Jared E. Knowles <jknowles@gmail.com>
 
 ```
-checking whether package ‘eeptools’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-  Warning: package ‘MASS’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/eeptools.Rcheck/00install.out’ for details.
-```
-```
 checking R code for possible problems ... NOTE
 moves_calc: no visible binding for global variable ‘id’
 ```
@@ -773,17 +845,29 @@ moves_calc: no visible binding for global variable ‘id’
 ## EIAdata (0.0.3)
 Maintainer: Matthew Brigida <matt@complete-markets.com>
 
-```
-checking whether package ‘EIAdata’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘zoo’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/EIAdata.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## emdatr (0.2)
 Maintainer: Gopi Goteti <my.ration.shop@gmail.com>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Loading required package: emdatr
+Loading required package: RCurl
+Loading required package: bitops
+Loading required package: ggplot2
+Loading required package: plyr
+downloading data from bitbucket. might take a few moments...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'emdatr.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## emdbook (1.3.7)
 Maintainer: Ben Bolker <bolker@mcmaster.ca>
@@ -800,10 +884,11 @@ __OK__
 Maintainer: Stefan Widgren <stefan.widgren@sva.se>
 
 ```
-checking whether package ‘EpiContactTrace’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘Rcpp’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/EpiContactTrace.Rcheck/00install.out’ for details.
+checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘animation’ ‘ggmap’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -840,7 +925,18 @@ __OK__
 Maintainer: TszKin Julian Chan <ctszkin@gmail.com>  
 Bug reports: TszKin Julian Chan <ctszkin@gmail.com>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'vignette.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## FAOSTAT (1.9)
 Maintainer: Filippo Gheri <filippo.gheri@fao.org>
@@ -849,17 +945,23 @@ Maintainer: Filippo Gheri <filippo.gheri@fao.org>
 checking data for non-ASCII characters ... NOTE
   Note: found 178 marked UTF-8 strings
 ```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'FAOSTAT.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## fishmove (0.3-1)
 Maintainer: Johannes Radinger <jradinger@igb-berlin.de>
 
-```
-checking whether package ‘fishmove’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-  Warning: package ‘MASS’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/fishmove.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## freqweights (1.0.1)
 Maintainer: Emilio Torres-Manzanera <torres@uniovi.es>
@@ -884,8 +986,6 @@ Packages in Depends field not imported from:
   ‘RSQLite’ ‘lattice’ ‘plyr’ ‘reshape’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -982,8 +1082,6 @@ checking dependencies in R code ... NOTE
 Package in Depends field not imported from: ‘tools’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -993,30 +1091,28 @@ IsValidGDELT: no visible global function definition for ‘md5sum’
 ## gdm (1.0)
 Maintainer: Matthew C. Fitzpatrick <mfitzpatrick@al.umces.edu>
 
-```
-checking whether package ‘gdm’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘Rcpp’ was built under R version 3.1.3
-  Warning: package ‘raster’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/gdm.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## gems (1.0.0)
 Maintainer: Luisa Salazar Vizcaya <luisa.salazar@ispm.unibe.ch>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'gems.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## geospt (1.0-1)
 Maintainer: Al� Santacruz <amsantac@unal.edu.co>
 
-```
-checking whether package ‘geospt’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘gstat’ was built under R version 3.1.3
-  Warning: package ‘genalg’ was built under R version 3.1.3
-  Warning: package ‘MASS’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/geospt.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## gfcanalysis (1.2)
 Maintainer: Alex Zvoleff <azvoleff@conservation.org>  
@@ -1024,10 +1120,10 @@ Bug reports: https://github.com/azvoleff/gfcanalysis/issues
 
 ```
 checking package dependencies ... ERROR
-Package required but not available: ‘rasterVis’
+Packages required but not available: ‘rgdal’ ‘rgeos’ ‘rasterVis’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## GGally (0.5.0)
@@ -1038,28 +1134,47 @@ __OK__
 ## ggenealogy (0.1.0)
 Maintainer: Lindsay Rutter <lrutter@iastate.edu>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Warning in .Call("R_igraph_get_shortest_paths", graph, as.igraph.vs(graph,  :
+  At structural_properties.c:740 :Couldn't reach some vertices
+Warning: There is no path between those two vertices
+Warning in loop_apply(n, do.ply) :
+  Removed 39 rows containing missing values (geom_segment).
+Warning in loop_apply(n, do.ply) :
+  Removed 39 rows containing missing values (geom_text).
+Warning in loop_apply(n, do.ply) :
+  Removed 39 rows containing missing values (geom_segment).
+Warning in loop_apply(n, do.ply) :
+  Removed 39 rows containing missing values (geom_text).
+Warning in loop_apply(n, do.ply) :
+  Removed 39 rows containing missing values (geom_segment).
+Warning in loop_apply(n, do.ply) :
+  Removed 39 rows containing missing values (geom_text).
+Warning in loop_apply(n, do.ply) :
+  Removed 39 rows containing missing values (geom_segment).
+Warning in loop_apply(n, do.ply) :
+  Removed 39 rows containing missing values (geom_text).
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'ggenealogy.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## ggmap (2.4)
 Maintainer: David Kahle <david.kahle@gmail.com>  
 Bug reports: https://github.com/dkahle/ggmap/issues
 
-```
-checking whether package ‘ggmap’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/ggmap.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## ggparallel (0.1.1)
 Maintainer: Heike Hofmann <hofmann@iastate.edu>
 
-```
-checking whether package ‘ggparallel’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/ggparallel.Rcheck/00install.out’ for details.
-```
 ```
 checking DESCRIPTION meta-information ... NOTE
 License components which are templates and need '+ file LICENSE':
@@ -1076,8 +1191,6 @@ Packages in Depends field not imported from:
   ‘ggplot2’ ‘plyr’ ‘reshape2’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -1131,24 +1244,7 @@ These lines will be truncated in the PDF manual.
 Maintainer: Hadley Wickham <h.wickham@gmail.com>  
 Bug reports: https://github.com/hadley/ggplot2/issues
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
-  geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
-  Error in predLoess(y, x, newx, s, weights, pars$robust, pars$span, pars$degree,  : 
-    NA/NaN/Inf in foreign function call (arg 5)
-  In addition: Warning message:
-  In max(panels$ROW) : no non-missing arguments to max; returning -Inf
-  geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
-  geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
-  geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
-  1
-  stat-bin : 
-  stat-sum : R(70683,0x7fff7ec45300) malloc: *** error for object 0x7fd5e8cc8c50: pointer being freed was not allocated
-  *** set a breakpoint in malloc_error_break to debug
-```
+__OK__
 
 ## ggsubplot (0.3.2)
 Maintainer: Garrett Grolemund <garrett@rstudio.com>
@@ -1158,41 +1254,23 @@ __OK__
 ## ggswissmaps (0.0.2)
 Maintainer: Sandro Petrillo Burri <gibo.gaf@gmail.com>
 
-```
-checking whether package ‘ggswissmaps’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/ggswissmaps.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## ggthemes (2.1.2)
 Maintainer: Jeffrey B. Arnold <jeffrey.arnold@gmail.com>  
 Bug reports: http://github.com/jrnold/ggthemes
 
-```
-checking whether package ‘ggthemes’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/ggthemes.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## gpmap (0.1.1)
 Maintainer: Arne B. Gjuvsland <arne.gjuvsland@nmbu.no>
 
-```
-checking whether package ‘gpmap’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/gpmap.Rcheck/00install.out’ for details.
-```
 ```
 checking dependencies in R code ... NOTE
 Packages in Depends field not imported from:
   ‘foreach’ ‘ggplot2’ ‘isotone’ ‘plyr’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -1265,21 +1343,34 @@ __OK__
 ## granovaGG (1.3)
 Maintainer: Brian A. Danielak <brian@briandk.com>
 
-```
-checking whether package ‘granovaGG’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/granovaGG.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## gsDesign (2.9-3)
 Maintainer: Keaven Anderson <keaven_anderson@merck.com>
 
 ```
-checking whether package ‘gsDesign’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/gsDesign.Rcheck/00install.out’ for details.
+checking line endings in Makefiles ... NOTE
+Found the following Makefile(s) without a final LF:
+  inst/unitTests/Makefile
+Some ‘make’ programs ignore lines not ending in LF.
+```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Loading required package: gsDesign
+Loading required package: ggplot2
+Loading required package: xtable
+Loading required package: stringr
+Loading required package: RUnit
+Loading required package: plyr
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'gsSurvTemplate.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
 ```
 
 ## GSIF (0.4-4)
@@ -1287,13 +1378,15 @@ Maintainer: Tomislav Hengl <tom.hengl@wur.nl>
 
 ```
 checking package dependencies ... ERROR
-Packages required but not available: ‘RSAGA’ ‘dismo’ ‘aqp’ ‘plotKML’
+Packages required but not available:
+  ‘RSAGA’ ‘dismo’ ‘rgdal’ ‘aqp’ ‘plotKML’
 
 Packages suggested but not available for checking:
-  ‘soiltexture’ ‘quantregForest’ ‘fossil’ ‘gdalUtils’ ‘maxlike’
+  ‘soiltexture’ ‘spatstat’ ‘quantregForest’ ‘fossil’ ‘gdalUtils’
+  ‘maxlike’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## gtable (0.1.2)
@@ -1314,7 +1407,27 @@ checking installed package size ... NOTE
 ## harvestr (0.6.0)
 Maintainer: Andrew Redd <andrew.redd@hsc.utah.edu>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Loading required package: coda
+Loading required package: MASS
+##
+## Markov Chain Monte Carlo Package (MCMCpack)
+## Copyright (C) 2003-2015 Andrew D. Martin, Kevin M. Quinn, and Jong Hee Park
+##
+## Support provided by the U.S. National Science Foundation
+## (Grants SES-0350646 and SES-0350613)
+##
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'harvestr.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## hillmakeR (0.2)
 Maintainer: David Gilinson <dgilinson@reefpointgroup.com>
@@ -1326,22 +1439,50 @@ Maintainer: Michael Friendly <friendly@yorku.ca>
 
 ```
 checking Rd cross-references ... NOTE
-Packages unavailable to check Rd xrefs: ‘Guerry’, ‘alr3’, ‘agridat’
+Packages unavailable to check Rd xrefs: ‘Guerry’, ‘agridat’, ‘alr3’
 ```
 
 ## HiveR (0.2-28)
 Maintainer: Bryan A. Hanson <hanson@depauw.edu>  
 Bug reports: https://github.com/bryanhanson/HiveR/issues
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+cropping figure/PPNA-1.pdf
+PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
+==> 1 page written on `figure/PPNA-1.pdf'.
+cropping figure/PPN4-1.pdf
+PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
+==> 1 page written on `figure/PPN4-1.pdf'.
+cropping figure/PPN5-1.pdf
+PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
+==> 1 page written on `figure/PPN5-1.pdf'.
+cropping figure/PPN6-1.pdf
+PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
+==> 1 page written on `figure/PPN6-1.pdf'.
+cropping figure/E_coli_2-1.pdf
+PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
+==> 1 page written on `figure/E_coli_2-1.pdf'.
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'HiveR.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## HLMdiag (0.2.5)
 Maintainer: Adam Loy <loyad01@gmail.com>
 
 ```
-checking whether package ‘HLMdiag’ can be installed ... [24s/25s] ERROR
-Installation failed.
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/HLMdiag.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppArmadillo’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## hydrostats (0.2.3)
@@ -1353,36 +1494,16 @@ __OK__
 Maintainer: Daniel Caro <daniel.caro@education.ox.ac.uk>  
 Bug reports: https://github.com/eldafani/intsvy/issues
 
-```
-checking whether package ‘intsvy’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘memisc’ was built under R version 3.1.3
-  Warning: package ‘MASS’ was built under R version 3.1.3
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/intsvy.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## IsingSampler (0.2)
 Maintainer: Sacha Epskamp <mail@sachaepskamp.com>
 
-```
-checking whether package ‘IsingSampler’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘Rcpp’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/IsingSampler.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## ivlewbel (1.1)
 Maintainer: Alan Fernihough <alan.fernihough@gmail.com>
 
-```
-checking whether package ‘ivlewbel’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘gmm’ was built under R version 3.1.3
-  Warning: package ‘sandwich’ was built under R version 3.1.3
-  Warning: package ‘zoo’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/ivlewbel.Rcheck/00install.out’ for details.
-```
 ```
 checking R code for possible problems ... NOTE
 clusterVCV: no visible global function definition for ‘estfun’
@@ -1393,28 +1514,40 @@ ftest: no visible global function definition for ‘vcovHC’
 ## JAGUAR (2.0)
 Maintainer: Chaitanya Acharya <c.acharya@duke.edu>
 
-```
-checking whether package ‘JAGUAR’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘Rcpp’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/JAGUAR.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## jsonlite (0.9.15)
 Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
 Bug reports: http://github.com/jeroenooms/jsonlite/issues
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Warning in buildVignettes(dir = "/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/jsonlite.Rcheck/vign_test/jsonlite") :
+  Files named as vignettes but with no recognized vignette engine:
+   ‘vignettes/json-opencpu-concordance.tex’
+(Is a VignetteBuilder field missing?)
+
+Attaching package: 'jsonlite'
+
+The following object is masked from 'package:utils':
+
+    View
+
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'json-opencpu.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## Kernelheaping (0.2)
 Maintainer: Marcus Gross <marcus.gross@fu-berlin.de>
 
-```
-checking whether package ‘Kernelheaping’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘MASS’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/Kernelheaping.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## kimisc (0.2-1)
 Maintainer: Kirill Mueller <mail@kirill-mueller.de>  
@@ -1437,7 +1570,35 @@ __OK__
 ## kobe (1.3.2)
 Maintainer: Laurence Kell <laurie.kell@iccat.int>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+
+Attaching package: ‘reshape’
+
+The following objects are masked from ‘package:plyr’:
+
+    rename, round_any
+
+Warning in loop_apply(n, do.ply) :
+  Removed 11 rows containing missing values (geom_path).
+Warning in loop_apply(n, do.ply) :
+  Removed 16 rows containing missing values (geom_path).
+Scale for 'y' is already present. Adding another scale for 'y', which will replace the existing scale.
+Scale for 'x' is already present. Adding another scale for 'x', which will replace the existing scale.
+Warning in loop_apply(n, do.ply) :
+  Removed 8 rows containing missing values (geom_point).
+Warning in loop_apply(n, do.ply) :
+  Removed 8 rows containing missing values (geom_point).
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'kobe.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## Lahman (3.0-1)
 Maintainer: Michael Friendly <friendly@yorku.ca>
@@ -1448,10 +1609,22 @@ checking installed package size ... NOTE
   sub-directories of 1Mb or more:
     data   7.2Mb
 ```
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' call to ‘plyr’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
 
 ## LakeMetabolizer (1.1)
 Maintainer: Luke Winslow <lawinslow@gmail.com>
 
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' call to ‘R2jags’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
 ```
 checking R code for possible problems ... NOTE
 bayesFit: no visible global function definition for ‘jags’
@@ -1479,14 +1652,28 @@ Maintainer: Jason Bryer <jason@bryer.org>
 Bug reports: https://github.com/jbryer/likert/issues
 
 ```
-checking whether package ‘likert’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/likert.Rcheck/00install.out’ for details.
+checking dependencies in R code ... NOTE
+'library' or 'require' call to ‘shiny’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
 ```
 ```
 checking data for non-ASCII characters ... NOTE
   Note: found 7 marked UTF-8 strings
+```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Loading required package: ggplot2
+Loading required package: xtable
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'likert-xtable.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
 ```
 
 ## lint (0.3)
@@ -1508,21 +1695,16 @@ __OK__
 Maintainer: Alexandra Kuznetsova <alku@dtu.dk>
 
 ```
-checking whether package ‘lmerTest’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘Rcpp’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/lmerTest.Rcheck/00install.out’ for details.
+checking dependencies in R code ... NOTE
+'library' or 'require' call to ‘pbkrtest’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
 ```
 
 ## lsbclust (1.0.2)
 Maintainer: Pieter Schoonees <schoonees@gmail.com>
 
-```
-checking whether package ‘lsbclust’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/lsbclust.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## lsmeans (2.16)
 Maintainer: Russ Lenth <russell-lenth@uiowa.edu>
@@ -1532,6 +1714,20 @@ checking package dependencies ... NOTE
 Packages which this enhances but not available for checking:
   ‘afex’ ‘coxme’ ‘gee’ ‘geepack’ ‘glmmADMB’
 ```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Loading required package: estimability
+NOTE: Results may be misleading due to involvement in interactions
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'extending.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## lubridate (1.3.3)
 Maintainer: Garrett Grolemund <garrett@rstudio.com>  
@@ -1539,7 +1735,7 @@ Bug reports: https://github.com/hadley/lubridate/issues
 
 ```
 checking package dependencies ... NOTE
-Package which this enhances but not available for checking: ‘fts’
+Packages which this enhances but not available for checking: ‘its’ ‘fts’
 ```
 
 ## marked (1.1.8)
@@ -1548,7 +1744,7 @@ Maintainer: Jeff Laake <Jeff.Laake@noaa.gov>
 ```
 checking whether package ‘marked’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/marked.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/marked.Rcheck/00install.out’ for details.
 ```
 
 ## medicalrisk (1.1)
@@ -1567,15 +1763,23 @@ Maintainer: Sean C. Anderson <sean@seananderson.ca>
 Bug reports: http://github.com/seananderson/metafolio/issues
 
 ```
-checking whether package ‘metafolio’ can be installed ... ERROR
-Installation failed.
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/metafolio.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppArmadillo’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## metafor (1.9-5)
 Maintainer: Wolfgang Viechtbauer <wvb@metafor-project.org>
 
-__OK__
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘Epi’ ‘lme4’ ‘polycor’ ‘survival’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
 
 ## metagen (1.0)
 Maintainer: Thomas W. D. Möbius <kontakt@thomasmoebius.de>
@@ -1585,7 +1789,20 @@ __OK__
 ## mizer (0.2)
 Maintainer: Finlay Scott <finlay.scott@jrc.ec.europa.eu>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Warning in xy.coords(x, y, xlabel, ylabel, log) :
+  1 y value <= 0 omitted from logarithmic plot
+species, w\\_inf, w\\_mat, beta, sigma, r\\_max, k\\_vbError in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'mizer_vignette.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## mlr (2.3)
 Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
@@ -1596,21 +1813,15 @@ checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘xgboost’
 ```
 ```
-checking whether package ‘mlr’ can be installed ... [10s/10s] WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/mlr.Rcheck/00install.out’ for details.
-```
-```
 checking dependencies in R code ... NOTE
 Missing or unexported object: ‘kohonen::predict.kohonen’
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking tests ... ERROR
 Running the tests in ‘tests/run-base.R’ failed.
 Last 13 lines of output:
+  makeClassifTask(data = 44, target = "y") does not match 'be a data.frame'. Actual value: "Error in test_check("mlr", filter = "base") : \n  Assertion on 'data' failed: Must be of type 'data.frame', not 'double'\n"
+  
   2. Failure(@test_base_SupervisedTask.R#27): SupervisedTask ---------------------
   makeClassifTask(data = regr.df, target = regr.target) does not match 'be a factor'. Actual value: "Error in test_check("mlr", filter = "base") : \n  Assertion on 'medv' failed: Must be of type 'factor', not 'double'\n"
   
@@ -1621,14 +1832,19 @@ Last 13 lines of output:
   makeClassifTask(data = 44) does not match 'Must be a data.frame'. Actual value: "Error in test_check("mlr", filter = "base") : \n  Assertion on 'data' failed: Must be of type 'data.frame', not 'double'\n"
   
   Error: Test failures
-  In addition: Warning message:
-  package 'ggplot2' was built under R version 3.1.3 
   Execution halted
 ```
 
 ## morse (1.0.2)
 Maintainer: Philippe Ruiz <philippe.ruiz@univ-lyon1.fr>
 
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘dclone’ ‘ggmcmc’ ‘ggplot2’ ‘gridExtra’ ‘lattice’ ‘rjags’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
 ```
 checking R code for possible problems ... NOTE
 .repro.DIC: no visible global function definition for ‘dic.samples’
@@ -1738,27 +1954,59 @@ checking package dependencies ... NOTE
 Package which this enhances but not available for checking: ‘manipulate’
 ```
 ```
-checking whether package ‘mosaic’ can be installed ... [13s/13s] WARNING
-Found the following significant warnings:
-  Warning: package ‘car’ was built under R version 3.1.3
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/mosaic.Rcheck/00install.out’ for details.
-```
-```
 checking installed package size ... NOTE
   installed size is  9.4Mb
   sub-directories of 1Mb or more:
     R     1.8Mb
     doc   7.0Mb
 ```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
+geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
+geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
+geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'mosaicresources.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## MplusAutomation (0.6-3)
 Maintainer: Michael Hallquist <michael.hallquist@gmail.com>
 
 ```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘rhdf5’
+```
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘relimp’ ‘rhdf5’ ‘tcltk’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
+```
 checking R code for possible problems ... NOTE
 readModels: no visible global function definition for ‘h5dump’
 showSummaryTable: no visible global function definition for ‘showData’
+```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'Vignette.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
 ```
 
 ## mpoly (0.0.5)
@@ -1770,13 +2018,6 @@ __OK__
 Maintainer: Brian A. Fannin <BFannin@RedwoodsGroup.com>
 
 ```
-checking whether package ‘MRMR’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-  Warning: package ‘zoo’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/MRMR.Rcheck/00install.out’ for details.
-```
-```
 checking R code for possible problems ... NOTE
 PlotResiduals: no visible global function definition for ‘.’
 ```
@@ -1786,34 +2027,71 @@ Maintainer: Jason Bryer <jason@bryer.org>
 Bug reports: https://github.com/jbryer/multilevelPSA/issues
 
 ```
-checking whether package ‘multilevelPSA’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/multilevelPSA.Rcheck/00install.out’ for details.
+checking dependencies in R code ... NOTE
+'library' or 'require' call to ‘MASS’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
 ```
 
 ## MVN (3.9)
 Maintainer: Selcuk Korkmaz <selcuk.korkmaz@hacettepe.edu.tr>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'MVN.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## mvnfast (0.1.3)
 Maintainer: Matteo Fasiolo <matteo.fasiolo@gmail.com>
 
 ```
-checking whether package ‘mvnfast’ can be installed ... [14s/14s] ERROR
-Installation failed.
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/mvnfast.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppArmadillo’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## NAPPA (2.0.1)
 Maintainer: Mark Wappett <m.a.wappett@googlemail.com>
 
 ```
-checking whether package ‘NAPPA’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘NanoStringNorm’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/NAPPA.Rcheck/00install.out’ for details.
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Loading required package: NAPPA
+Loading required package: plyr
+Loading required package: NanoStringNorm
+Loading required package: gdata
+gdata: read.xls support for 'XLS' (Excel 97-2004) files ENABLED.
+
+gdata: read.xls support for 'XLSX' (Excel 2007+) files ENABLED.
+
+Attaching package: ‘gdata’
+
+The following object is masked from ‘package:stats’:
+
+    nobs
+
+The following object is masked from ‘package:utils’:
+
+    object.size
+
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'NAPPA.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
 ```
 
 ## nat.nblast (1.5)
@@ -1844,8 +2122,8 @@ Maintainer: Alexander W Blocker <ablocker@gmail.com>
 checking package dependencies ... ERROR
 Package required but not available: ‘Rglpk’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## ngramr (1.4.5)
@@ -1860,8 +2138,6 @@ Maintainer: Will Beasley <wibeasley@hotmail.com>
 checking dependencies in R code ... NOTE
 Namespace in Imports field not imported from: ‘methods’
   All declared Imports should be used.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -1869,6 +2145,19 @@ ReadCsvNlsy79Gen1: no visible binding for global variable
   ‘SubjectDetails79’
 ReadCsvNlsy79Gen2: no visible binding for global variable
   ‘SubjectDetails79’
+```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Loading required package: NlsyLinks
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'Faq.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
 ```
 
 ## npIntFactRep (1.2)
@@ -1884,12 +2173,7 @@ __OK__
 ## nullabor (0.3.1)
 Maintainer: Di Cook <dicook@iastate.edu>
 
-```
-checking whether package ‘nullabor’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/nullabor.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## okmesonet (0.1.5)
 Maintainer: Brady Allred <allredbw@gmail.com>
@@ -1910,7 +2194,7 @@ Maintainer: David Carslaw <david.carslaw@kcl.ac.uk>
 ```
 checking whether package ‘openair’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/openair.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/openair.Rcheck/00install.out’ for details.
 ```
 
 ## OpenRepGrid (0.1.9)
@@ -1923,62 +2207,92 @@ Maintainer: Thalles Silva <tsantossilva@algomau.ca>
 
 ```
 checking package dependencies ... ERROR
-Package required but not available: ‘openair’
+Packages required but not available: ‘openair’ ‘rgdal’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## optiRum (0.35)
 Maintainer: Stephanie Locke <stephanie.locke@optimumcredit.co.uk>  
 Bug reports: https://github.com/stephlocke/optiRum/issues
 
-__OK__
+```
+checking tests ... ERROR
+Running the tests in ‘tests/test-all.R’ failed.
+Last 13 lines of output:
+  2: eval(code, new_test_environment)
+  3: eval(expr, envir, enclos)
+  4: generatePDF(srcpath = basepath, srcname = "basic", destpath = testpath, destname = "basic", 
+         DATED = FALSE, CLEANUP = FALSE) at test-generatePDF.R:151
+  5: knitr::knit2pdf(input = src, output = dest, envir = envir, quiet = QUIET, clean = CLEANUP, 
+         ...)
+  6: tools::texi2pdf(basename(out), ...)
+  7: texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet, texi2dvi = texi2dvi, 
+         texinputs = texinputs, index = index)
+  8: stop(msg, domain = NA)
+  
+  Error: Test failures
+  Execution halted
+```
 
 ## OutbreakTools (0.1-13)
 Maintainer: Thibaut Jombart <t.jombart@imperial.ac.uk>
 
 ```
-checking whether package ‘OutbreakTools’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/OutbreakTools.Rcheck/00install.out’ for details.
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+  The following sequence IDs are not in the dataset: 311, 222
+Warning in (if (out_format(c("latex", "sweave", "listings"))) sanitize_fn else str_c)(path,  :
+  replaced special characters in figure filename "figs/OutbreakTools-out.width==".8\\textwidth"" -> "figs/OutbreakTools-out.width___.8\\textwidth_"
+Warning in (if (out_format(c("latex", "sweave", "listings"))) sanitize_fn else str_c)(path,  :
+  dots in figure paths replaced with _ ("figs/OutbreakTools-out_width____8//textwidth_")
+Warning: The shape palette can deal with a maximum of 6 discrete values because
+more than 6 becomes difficult to discriminate; you have 11. Consider
+specifying shapes manually. if you must have them.
+Warning in loop_apply(n, do.ply) :
+  Removed 58 rows containing missing values (geom_point).
+Warning: The shape palette can deal with a maximum of 6 discrete values because
+more than 6 becomes difficult to discriminate; you have 11. Consider
+specifying shapes manually. if you must have them.
+Map from URL : http://maps.googleapis.com/maps/api/staticmap?center=51.516439,-0.171146&zoom=14&size=640x640&scale=2&maptype=terrain&language=en-EN&sensor=false
+Warning in loop_apply(n, do.ply) :
+  Removed 4 rows containing missing values (geom_point).
+Map from URL : http://maps.googleapis.com/maps/api/staticmap?center=51.516029,-0.178545&zoom=15&size=640x640&scale=2&maptype=terrain&language=en-EN&sensor=false
+Warning in loop_apply(n, do.ply) :
+  Removed 120 rows containing missing values (geom_point).
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'OutbreakTools.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
 ```
 
 ## paleobioDB (0.3)
 Maintainer: Sara Varela <svarela@paleobiogeography.org>  
 Bug reports: https://github.com/ropensci/paleobioDB/issues
 
-```
-checking whether package ‘paleobioDB’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘raster’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/paleobioDB.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## paleofire (1.1.5)
 Maintainer: Olivier Blarquez <blarquez@gmail.com>
 
 ```
 checking package dependencies ... ERROR
-Package required but not available: ‘GCD’
+Packages required but not available: ‘GCD’ ‘rgdal’
 
-Package suggested but not available for checking: ‘Imap’
+Packages suggested but not available for checking: ‘agricolae’ ‘Imap’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## parboost (0.1.3)
 Maintainer: Ronert Obst <ronert.obst@gmail.com>
 
-```
-checking whether package ‘parboost’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘zoo’ was built under R version 3.1.3
-  Warning: package ‘sandwich’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/parboost.Rcheck/00install.out’ for details.
-```
 ```
 checking R code for possible problems ... NOTE
 cv_subsample: no visible global function definition for ‘mstop’
@@ -2000,8 +2314,8 @@ Maintainer: Alessandro Samuel-Rosa <alessandrosamuelrosa@gmail.com>
 checking package dependencies ... ERROR
 Package required but not available: ‘spsurvey’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## peptider (0.1.7)
@@ -2013,20 +2327,17 @@ __OK__
 Maintainer: Carson Sievert <sievert@iastate.edu>  
 Bug reports: http://github.com/cpsievert/pitchRx/issues
 
-```
-checking whether package ‘pitchRx’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/pitchRx.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## planar (1.5.2)
 Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
 
 ```
-checking whether package ‘planar’ can be installed ... [20s/20s] ERROR
-Installation failed.
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/planar.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppArmadillo’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## plotKML (0.5-0)
@@ -2034,13 +2345,14 @@ Maintainer: Tomislav Hengl <tom.hengl@wur.nl>
 
 ```
 checking package dependencies ... ERROR
-Packages required but not available: ‘dismo’ ‘aqp’ ‘colorRamps’ ‘RSAGA’
+Packages required but not available:
+  ‘rgdal’ ‘dismo’ ‘aqp’ ‘colorRamps’ ‘RSAGA’
 
 Packages suggested but not available for checking:
-  ‘adehabitat’ ‘fossil’ ‘spcosa’ ‘rgbif’ ‘GSIF’ ‘gdalUtils’
+  ‘adehabitat’ ‘fossil’ ‘spcosa’ ‘spatstat’ ‘rgbif’ ‘GSIF’ ‘gdalUtils’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## plotSEMM (2.0)
@@ -2062,57 +2374,17 @@ __OK__
 Maintainer: Daniela Witten <dwitten@u.washington.edu>
 
 ```
-checking installed package size ... NOTE
-  installed size is  6.7Mb
-  sub-directories of 1Mb or more:
-    data   6.3Mb
-```
-```
-checking dependencies in R code ... NOTE
-Packages in Depends field not imported from:
-  ‘impute’ ‘plyr’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
-```
-```
-checking R code for possible problems ... NOTE
-cor.xl.ImputeData: no visible global function definition for
-  ‘impute.knn’
+checking package dependencies ... ERROR
+Package required but not available: ‘impute’
 
-Found the following assignments to the global environment:
-File ‘PMA/R/CCA.xlfuns.R’:
-  assign(paste("cor.", x, sep = ""), val, pos = .GlobalEnv)
-```
-```
-checking Rd line widths ... NOTE
-Rd file 'CCA.Rd':
-  \usage lines wider than 90 characters:
-     CCA(x, z, typex=c("standard", "ordered"),typez=c("standard","ordered"), penaltyx=NULL, penaltyz=NULL, K=1,
-  \examples lines wider than 100 characters:
-     out <- CCA(x,z,typex="standard",typez="standard",K=1,penaltyx=perm.out$bestpenaltyx,penaltyz=perm.out$bestpenaltyz, v=perm.out$v.init)
-     #out <- CCA(x,z,typex="standard",typez="standard",K=1,penaltyx=perm.out$bestpenaltyx,penaltyz=perm.out$bestpenaltyz,
-     #out<-CCA(x,z,typex="standard",typez="standard",outcome="quantitative",y=y,penaltyx=perm.out$bestpenaltyx,penaltyz=perm.out$bestpenalty ... [TRUNCATED]
-     #perm.out <- CCA.permute(x=rna,z=dna[,chrom==1],typex="standard", typez="ordered",nperms=5,penaltyxs=seq(.02,.7,len=10))
-     #out <- CCA(x=rna,z=dna[,chrom==1], typex="standard", typez="ordered",penaltyx=perm.out$bestpenaltyx,
-
-Rd file 'CCA.permute.Rd':
-  \usage lines wider than 90 characters:
-     CCA.permute(x,z,typex=c("standard", "ordered"),typez=c("standard","ordered"), penaltyxs=NULL, penaltyzs=NULL,
-
-These lines will be truncated in the PDF manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## pointRes (1.0.2)
 Maintainer: Marieke van der Maaten-Theunissen <marieketheunissen@gmail.com>
 
-```
-checking whether package ‘pointRes’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/pointRes.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## pollstR (1.2.0)
 Maintainer: Jeffrey B. Arnold <jeffrey.arnold@gmail.com>  
@@ -2126,10 +2398,11 @@ Maintainer: Bernd Gruber <Bernd.Gruber@canberra.edu.au>
 ```
 checking package dependencies ... ERROR
 Packages required but not available:
-  ‘gap’ ‘calibrate’ ‘dismo’ ‘genetics’ ‘mmod’
+  ‘adegenet’ ‘gap’ ‘calibrate’ ‘dismo’ ‘pegas’ ‘genetics’ ‘rgdal’
+  ‘gdistance’ ‘mmod’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## pqantimalarials (0.2)
@@ -2140,12 +2413,7 @@ __OK__
 ## predictmeans (0.99)
 Maintainer: Dongwen Luo <dongwen.luo@agresearch.co.nz>
 
-```
-checking whether package ‘predictmeans’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘Rcpp’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/predictmeans.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## primerTree (1.0.1)
 Maintainer: Jim Hester <james.f.hester@gmail.com>
@@ -2155,23 +2423,29 @@ __OK__
 ## pROC (1.7.3)
 Maintainer: Xavier Robin <robin@lindinglab.org>
 
-__OK__
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘MASS’ ‘logcondens’ ‘microbenchmark’ ‘tcltk’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
 
 ## profileR (0.2-1)
 Maintainer: Christopher David Desjardins <cddesjardins@gmail.com>
 
-```
-checking whether package ‘profileR’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-  Warning: package ‘MASS’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/profileR.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## profr (0.3.1)
 Maintainer: Hadley Wickham <h.wickham@gmail.com>  
 Bug reports: https://github.com/hadley/profr/issues
 
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' call to ‘ggplot2’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
 ```
 checking R code for possible problems ... NOTE
 ggplot.profr: no visible global function definition for ‘ggplot’
@@ -2203,13 +2477,13 @@ Maintainer: Andrew J. Barbour <andy.barbour@gmail.com>
 Bug reports: https://github.com/abarbour/psd/issues
 
 ```
-checking package dependencies ... NOTE
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppArmadillo’
+
 Package suggested but not available for checking: ‘fftw’
-```
-```
-checking whether package ‘psd’ can be installed ... [10s/10s] ERROR
-Installation failed.
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/psd.Rcheck/00install.out’ for details.
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## psytabs (0.5)
@@ -2223,12 +2497,6 @@ Adding so many packages to the search path is excessive and importing
 selectively is preferable.
 ```
 ```
-checking whether package ‘psytabs’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘MASS’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/psytabs.Rcheck/00install.out’ for details.
-```
-```
 checking dependencies in R code ... NOTE
 'library' or 'require' calls to packages already attached by Depends:
   ‘R2HTML’ ‘mokken’ ‘plyr’ ‘rtf’
@@ -2237,8 +2505,6 @@ Packages in Depends field not imported from:
   ‘R2HTML’ ‘lavaan’ ‘mokken’ ‘plyr’ ‘psych’ ‘rtf’ ‘semTools’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -2313,8 +2579,8 @@ Packages required but not available: ‘labdsv’ ‘VennDiagram’ ‘FD’
 Packages suggested but not available for checking:
   ‘indicspecies’ ‘Heatplus’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## rapport (0.51)
@@ -2332,8 +2598,6 @@ Packages in Depends field not imported from:
 Unexported objects imported by ':::' calls:
   ‘tools:::fetchRdDB’ ‘utils:::index.search’
   See the note in ?`:::` about the use of this operator.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -2420,8 +2684,6 @@ checking dependencies in R code ... NOTE
 Package in Depends field not imported from: ‘reshape’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -2437,8 +2699,8 @@ Maintainer: Graham Williams <Graham.Williams@togaware.com>
 ```
 checking package dependencies ... NOTE
 Packages suggested but not available for checking:
-  ‘RGtk2’ ‘cairoDevice’ ‘gWidgetsRGtk2’ ‘playwith’ ‘rggobi’
-  ‘RGtk2Extras’ ‘RODBC’ ‘pkgDepTools’
+  ‘RGtk2’ ‘cairoDevice’ ‘graph’ ‘gWidgetsRGtk2’ ‘playwith’ ‘RBGL’
+  ‘rggobi’ ‘RGtk2Extras’ ‘RODBC’ ‘pkgDepTools’ ‘Rgraphviz’
 ```
 ```
 checking installed package size ... NOTE
@@ -2449,6 +2711,17 @@ checking installed package size ... NOTE
     po     1.2Mb
 ```
 ```
+checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘Hmisc’ ‘RBGL’ ‘RGtk2’ ‘RGtk2Extras’ ‘ROCR’ ‘RODBC’ ‘Rgraphviz’ ‘XML’
+  ‘ada’ ‘arules’ ‘bitops’ ‘cairoDevice’ ‘colorspace’ ‘e1071’ ‘fBasics’
+  ‘foreign’ ‘fpc’ ‘graph’ ‘grid’ ‘kernlab’ ‘methods’ ‘nnet’
+  ‘pkgDepTools’ ‘pmml’ ‘randomForest’ ‘reshape’ ‘rggobi’ ‘rpart’
+  ‘stats’ ‘survival’ ‘utils’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
+```
 checking R code for possible problems ... NOTE
 Found an obsolete/platform-specific call in the following functions:
   ‘openMyDevice’ ‘printPlot’ ‘savePlotToFile’
@@ -2456,6 +2729,18 @@ Found the platform-specific devices:
   ‘win.metafile’ ‘win.print’
 dev.new() is the preferred way to open a new device, in the unlikely
 event one is needed.
+```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'rattle.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
 ```
 
 ## rbefdata (0.3.5)
@@ -2479,10 +2764,10 @@ Maintainer: Byoungnam Min <mbnmbn00@gmail.com>
 
 ```
 checking package dependencies ... ERROR
-Packages required but not available: ‘fmcsR’ ‘ChemmineR’
+Packages required but not available: ‘fmcsR’ ‘ChemmineR’ ‘KEGGREST’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## rbison (0.4.5)
@@ -2494,12 +2779,7 @@ __OK__
 ## rcbalance (1.4)
 Maintainer: Samuel D. Pimentel <spi@wharton.upenn.edu>
 
-```
-checking whether package ‘rcbalance’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘MASS’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/rcbalance.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## rclinicaltrials (1.4.1)
 Maintainer: Michael C Sachs <sachsmc@gmail.com>
@@ -2510,20 +2790,12 @@ __OK__
 Maintainer: Triad sou. <triadsou@gmail.com>
 
 ```
-checking whether package ‘RcmdrPlugin.KMggplot2’ can be installed ... [11s/11s] WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/RcmdrPlugin.KMggplot2.Rcheck/00install.out’ for details.
-```
-```
 checking dependencies in R code ... NOTE
 Packages in Depends field not imported from:
   ‘ggplot2’ ‘grid’ ‘methods’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
 Missing or unexported object: ‘ggplot2::digest.ggplot’
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -2580,6 +2852,13 @@ checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘RODBC’
 ```
 ```
+checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘RODBC’ ‘testthat’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
+```
 checking tests ... ERROR
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
@@ -2605,8 +2884,26 @@ Maintainer: Mathew W. McLean <mathew.w.mclean@gmail.com>
 checking foreign function calls ... NOTE
 Foreign function call to a different package:
   .External("do_read_bib", ..., PACKAGE = "bibtex")
-See the chapter ‘System and foreign language interfaces’ of the
-‘Writing R Extensions’ manual.
+See chapter ‘System and foreign language interfaces’ in the ‘Writing R
+Extensions’ manual.
+```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Warning in grepl("mkbib", x) : input string 8 is invalid in this locale
+Warning in grepl("\n", lines, fixed = TRUE) :
+  input string 8 is invalid in this locale
+Warning in grepl("mkbib", x) : input string 8 is invalid in this locale
+Warning in grepl("\n", lines, fixed = TRUE) :
+  input string 8 is invalid in this locale
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'manual.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
 ```
 
 ## remix (2.1)
@@ -2620,8 +2917,6 @@ Packages in Depends field not imported from:
   for when this namespace is loaded but not attached.
 ':::' call which should be '::': ‘Hmisc:::label.default’
   See the note in ?`:::` about the use of this operator.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -2665,7 +2960,7 @@ S3 methods shown with full name in documentation object 'as.data.frame.tabular':
 
 The \usage entries for S3 methods should use the \method markup and not
 their full name.
-See the chapter ‘Writing R documentation files’ in the ‘Writing R
+See chapter ‘Writing R documentation files’ in the ‘Writing R
 Extensions’ manual.
 ```
 
@@ -2693,8 +2988,8 @@ Maintainer: Jason Crowley <crowley.jason.s@gmail.com>
 checking package dependencies ... ERROR
 Package required but not available: ‘gWidgetsRGtk2’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## rfigshare (0.3.6)
@@ -2712,8 +3007,6 @@ Packages in Depends field not imported from:
   ‘RCurl’ ‘XML’ ‘plyr’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -2884,18 +3177,19 @@ __OK__
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/rgbif/issues
 
-__OK__
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘rgeos’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
 
 ## RIGHT (0.2.0)
 Maintainer: Jonghyun Bae <bnbbkr@gmail.com>  
 Bug reports: https://groups.google.com/forum/?hl=en#!forum/right-user
 
-```
-checking whether package ‘RIGHT’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/RIGHT.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## rinat (0.1.4)
 Maintainer: Edmund Hart <edmund.m.hart@gmail.com>
@@ -2905,7 +3199,18 @@ __OK__
 ## rLakeAnalyzer (1.4)
 Maintainer: Luke Winslow <lawinslow@gmail.com>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'data.handling.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## Rmisc (1.5)
 Maintainer: Ryan M. Hope <rmh3093@gmail.com>
@@ -2917,6 +3222,10 @@ Maintainer: Dmitriy Selivanov <selivanov.dmitriy@gmail.com>
 Bug reports: https://github.com/mongosoup/rmongodb/issues
 
 ```
+checking for GNU extensions in Makefiles ... NOTE
+GNU make is a SystemRequirements.
+```
+```
 checking compiled code ... NOTE
 File ‘rmongodb/libs/rmongodb.so’:
   Found ‘_rand’, possibly from ‘rand’ (C)
@@ -2925,10 +3234,47 @@ File ‘rmongodb/libs/rmongodb.so’:
     Object: ‘libmongo/bson.o’
 
 Compiled code should not call entry points which might terminate R nor
-write to stdout/stderr instead of to the console, nor the C RNG.
+write to stdout/stderr instead of to the console, nor the system RNG.
 
 See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
 ```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+     'mongo.is.connected',
+     'mongo.disconnect',
+     'mongo.reconnect',
+     'mongo.get.err',
+     'mongo.get.primary',
+     'mongo.get.hosts',
+     'mongo.get.socket',
+     'mongo.set.timeout',
+     'mongo.get.timeout'.
+
+_E_x_a_m_p_l_e_s:
+
+     mongo <- mongo.create()
+     ## Not run:
+     
+         mongo <- mongo.create("192.168.0.3")
+     ## End(Not run)
+     
+
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'rmongodb_cheat_sheet.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
+
+## Rmonkey (0.2.11)
+Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>  
+Bug reports: https://github.com/leeper/Rmonkey/issues
+
+__OK__
 
 ## RNeXML (2.0.1)
 Maintainer: Carl Boettiger <cboettig@gmail.com>  
@@ -2938,12 +3284,25 @@ Bug reports: https://github.com/ropensci/RNeXML/issues
 checking package dependencies ... NOTE
 Packages suggested but not available for checking: ‘rrdf’ ‘Sxslt’
 ```
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘Sxslt’ ‘rfigshare’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
 
 ## rnoaa (0.3.3)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: http://www.github.com/ropensci/rnoaa/issues
 
-__OK__
+```
+checking package dependencies ... ERROR
+Packages required but not available: ‘rgdal’ ‘rgeos’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
 
 ## robustvarComp (0.1-2)
 Maintainer: Claudio Agostinelli <claudio@unive.it>
@@ -2951,39 +3310,23 @@ Maintainer: Claudio Agostinelli <claudio@unive.it>
 ```
 checking whether package ‘robustvarComp’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/robustvarComp.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/robustvarComp.Rcheck/00install.out’ for details.
 ```
 
 ## rplos (0.4.6)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/rplos/issues
 
-```
-checking whether package ‘rplos’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/rplos.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## RSA (0.9.8)
 Maintainer: Felix Schönbrodt <felix@nicebread.de>
 
-```
-checking whether package ‘RSA’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/RSA.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## RSAGA (0.93-6)
 Maintainer: Alexander Brenning <brenning@uwaterloo.ca>
 
-```
-checking whether package ‘RSAGA’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘gstat’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/RSAGA.Rcheck/00install.out’ for details.
-```
 ```
 checking dependencies in R code ... NOTE
 'library' or 'require' calls to packages already attached by Depends:
@@ -2993,8 +3336,6 @@ Packages in Depends field not imported from:
   ‘gstat’ ‘plyr’ ‘shapefiles’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -3007,6 +3348,10 @@ pick.from.shapefile: no visible global function definition for
   ‘read.shapefile’
 pick.from.shapefile: no visible global function definition for ‘add.xy’
 rsaga.get.modules: no visible global function definition for ‘llply’
+```
+```
+checking Rd cross-references ... NOTE
+Package unavailable to check Rd xrefs: ‘rgdal’
 ```
 
 ## rsdmx (0.4-5)
@@ -3053,7 +3398,33 @@ __OK__
 ## rspear (0.1-2)
 Maintainer: Eduard Szoecs <eduardszoecs@gmail.com>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Loading required package: rspear
+Loading required package: reshape2
+trying URL 'http://www.systemecology.eu/rspear/traits.csv'
+Content type 'text/csv' length 127504 bytes (124 KB)
+opened URL
+==================================================
+downloaded 124 KB
+
+Warning in spear(spear_example, taxa = names(spear_example)[1], abundance = names(spear_example)[2],  :
+  There were unmatched species:
+xxxxxxxxx
+Set SPEAR to 0.
+Warning in spear(spear_example, taxa = names(spear_example)[1], abundance = names(spear_example)[2],  :
+  Non-direct taxon matches!
+Check trait table if match is appropiate!!
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'rspear.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## RStorm (0.902)
 Maintainer: Maurits Kaptein <maurits@mauritskaptein.com>
@@ -3063,8 +3434,6 @@ checking dependencies in R code ... NOTE
 Package in Depends field not imported from: ‘plyr’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -3096,13 +3465,11 @@ Maintainer: Edmund Hart <edmund.m.hart@gmail.com>
 Bug reports: http://github.com/ropensci/rWBclimate/issues
 
 ```
-checking R code for possible problems ... NOTE
-check_ISO_code: no visible binding for global variable ‘NoAm_country’
-check_ISO_code: no visible binding for global variable ‘SoAm_country’
-check_ISO_code: no visible binding for global variable ‘Oceana_country’
-check_ISO_code: no visible binding for global variable ‘Africa_country’
-check_ISO_code: no visible binding for global variable ‘Asia_country’
-check_ISO_code: no visible binding for global variable ‘Eur_country’
+checking package dependencies ... ERROR
+Package required but not available: ‘rgdal’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## RXKCD (1.7-5)
@@ -3114,8 +3481,6 @@ Packages in Depends field not imported from:
   ‘RJSONIO’ ‘jpeg’ ‘png’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -3130,7 +3495,18 @@ Maintainer: Tom August <tomaug@ceh.ac.uk>
 Bug reports: 
         https://github.com/biologicalrecordscentre/rYoutheria/issues
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'vignette.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## scales (0.2.4)
 Maintainer: Hadley Wickham <h.wickham@gmail.com>  
@@ -3140,8 +3516,6 @@ Bug reports: https://github.com/hadley/scales/issues
 checking dependencies in R code ... NOTE
 Namespace in Imports field not imported from: ‘methods’
   All declared Imports should be used.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 
 ## scholar (0.1.2)
@@ -3152,6 +3526,12 @@ __OK__
 ## semPlot (1.0.1)
 Maintainer: Sacha Epskamp <mail@sachaepskamp.com>
 
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' call to ‘MplusAutomation’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
 ```
 checking R code for possible problems ... NOTE
 semPlotModel.mplus.model: no visible global function definition for
@@ -3168,10 +3548,11 @@ Maintainer: Bettina Budeus <bettina.budeus@stud.uni-due.de>
 
 ```
 checking package dependencies ... ERROR
-Packages required but not available: ‘widgetTools’ ‘calibrate’
+Packages required but not available:
+  ‘Biostrings’ ‘qvalue’ ‘widgetTools’ ‘calibrate’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## SGP (1.2-0.0)
@@ -3187,6 +3568,13 @@ checking installed package size ... NOTE
   installed size is  7.8Mb
   sub-directories of 1Mb or more:
     data   6.9Mb
+```
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘SGPdata’ ‘parallel’ ‘randomNames’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -3321,8 +3709,10 @@ Maintainer: Dylan Beaudette <dylan.beaudette@ca.usda.gov>
 checking package dependencies ... ERROR
 Packages required but not available: ‘aqp’ ‘soilDB’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+Packages suggested but not available for checking: ‘rgdal’ ‘spdep’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## simTool (1.0.3)
@@ -3338,8 +3728,6 @@ checking dependencies in R code ... NOTE
 Package in Depends field not imported from: ‘plyr’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -3350,10 +3738,32 @@ fitted.sma: no visible global function definition for ‘join’
 Maintainer: Josh Browning <jbrownin@mines.edu>
 
 ```
-checking whether package ‘snht’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/snht.Rcheck/00install.out’ for details.
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Loading required package: gridExtra
+Loading required package: grid
+Warning in loop_apply(n, do.ply) :
+  Removed 60 rows containing missing values (geom_path).
+Warning in loop_apply(n, do.ply) :
+  Removed 60 rows containing missing values (geom_path).
+Warning in loop_apply(n, do.ply) :
+  Removed 120 rows containing missing values (geom_path).
+Warning in loop_apply(n, do.ply) :
+  Removed 400 rows containing missing values (geom_path).
+Warning in loop_apply(n, do.ply) :
+  Removed 400 rows containing missing values (geom_path).
+Warning in robustSNHTunequal(data = data, period = period, time = time,  :
+  Only integer values of time are used!  Rounding down.
+Warning in loop_apply(n, do.ply) :
+  Removed 6 rows containing missing values (geom_path).
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'snht.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
 ```
 
 ## soil.spec (2.1.4)
@@ -3363,10 +3773,11 @@ Maintainer: Andrew Sila <a.sila@cgiar.org>
 checking package dependencies ... ERROR
 Package required but not available: ‘GSIF’
 
-Packages suggested but not available for checking: ‘plotKML’ ‘date’
+Packages suggested but not available for checking:
+  ‘plotKML’ ‘spatstat’ ‘date’ ‘rgdal’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## soilDB (1.5-2)
@@ -3376,10 +3787,11 @@ Maintainer: D.E. Beaudette <dylan.beaudette@ca.usda.gov>
 checking package dependencies ... ERROR
 Package required but not available: ‘aqp’
 
-Packages suggested but not available for checking: ‘dismo’ ‘RODBC’
+Packages suggested but not available for checking:
+  ‘XMLSchema’ ‘SSOAP’ ‘dismo’ ‘rgdal’ ‘RODBC’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## solr (0.1.4)
@@ -3392,7 +3804,37 @@ __OK__
 Maintainer: Leo Lahti <louhos@googlegroups.com>  
 Bug reports: https://github.com/ropengov/sorvi/issues
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Loading http://data.okf.fi/ropengov/avoindata//louhos/translations.rda
+Loading http://data.okf.fi/ropengov/avoindata/mml/rdata/Yleiskartta-1000/HallintoAlue_DataFrame.RData. (C) MML 2013. Converted to RData shape object by Louhos. For more information, see https://github.com/avoindata/mml/
+Downloading data from http://fi.wikipedia.org/wiki/Luettelo_Suomen_postinumeroista_kunnittain
+Loading http://data.okf.fi/ropengov/avoindata/mml/rdata/Yleiskartta-1000/HallintoAlue_DataFrame.RData. (C) MML 2013. Converted to RData shape object by Louhos. For more information, see https://github.com/avoindata/mml/
+Loading http://data.okf.fi/ropengov/avoindata/mml/rdata/Yleiskartta-1000/HallintoAlue_DataFrame.RData. (C) MML 2013. Converted to RData shape object by Louhos. For more information, see https://github.com/avoindata/mml/
+Loading http://data.okf.fi/ropengov/avoindata/mml/rdata/Yleiskartta-1000/HallintoAlue_DataFrame.RData. (C) MML 2013. Converted to RData shape object by Louhos. For more information, see https://github.com/avoindata/mml/
+Loading http://data.okf.fi/ropengov/avoindata/mml/rdata/Yleiskartta-1000/HallintoAlue_DataFrame.RData. (C) MML 2013. Converted to RData shape object by Louhos. For more information, see https://github.com/avoindata/mml/
+Loading http://data.okf.fi/ropengov/avoindata/mml/rdata/Yleiskartta-1000/HallintoAlue_DataFrame.RData. (C) MML 2013. Converted to RData shape object by Louhos. For more information, see https://github.com/avoindata/mml/
+
+Attaching package: 'plyr'
+
+The following objects are masked from 'package:reshape':
+
+    rename, round_any
+
+Computing boostrapped smoothers ...
+convert bootstrapped spaghettis to long format
+Computing density estimates for each vertical cut ...
+Build ggplot figure ...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'sorvi.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## spanr (1.0)
 Maintainer: Roger Marshall <rj.marshall@auckland.ac.nz>
@@ -3400,7 +3842,7 @@ Maintainer: Roger Marshall <rj.marshall@auckland.ac.nz>
 ```
 checking whether package ‘spanr’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/spanr.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/spanr.Rcheck/00install.out’ for details.
 ```
 
 ## sparseMVN (0.2.0)
@@ -3419,18 +3861,36 @@ Maintainer: Roger Marshall <rj.marshall@auckland.ac.nz>
 ```
 checking whether package ‘srd’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/srd.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/srd.Rcheck/00install.out’ for details.
 ```
 
 ## ss3sim (0.8.2)
 Maintainer: Sean Anderson <sean@seananderson.ca>
 
 ```
+checking dependencies in R code ... NOTE
+'library' or 'require' call to ‘foreach’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
+```
 checking R code for possible problems ... NOTE
 run_ss3sim: no visible global function definition for ‘%dopar%’
 run_ss3sim: no visible global function definition for ‘foreach’
 setup_parallel: no visible global function definition for
   ‘getDoParWorkers’
+```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'ss3sim-vignette.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
 ```
 
 ## SSrat (1.0)
@@ -3441,7 +3901,22 @@ __OK__
 ## sss (0.0-11)
 Maintainer: Andrie de Vries <apdevries@gmail.com>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+The sss package is in early stages of development and still considered experimental.
+Read 3 items
+Reading SSS metadata
+Reading SSS data
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'sss.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## Stack (2.0-1)
 Maintainer: Mike Malecki <Mike.Malecki@yougov.com>
@@ -3566,36 +4041,62 @@ Bug reports: https://github.com/OskarHansson/strvalidator/issues
 checking package dependencies ... ERROR
 Packages required but not available: ‘gWidgetsRGtk2’ ‘RGtk2’
 
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## surveydata (0.1-14)
 Maintainer: Andrie de Vries <apdevries@gmail.com>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'surveydata.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## synthpop (1.1-0)
 Maintainer: Beata Nowok <beata.nowok@gmail.com>
 
 ```
-checking whether package ‘synthpop’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘MASS’ was built under R version 3.1.3
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/synthpop.Rcheck/00install.out’ for details.
-```
-```
 checking dependencies in R code ... NOTE
 Unexported object imported by a ':::' call: ‘coefplot:::position_dodgev’
   See the note in ?`:::` about the use of this operator.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
+```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Loading required package: lattice
+Loading required package: MASS
+Loading required package: nnet
+Loading required package: ggplot2
+Loading required package: coefplot
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'synthpop.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
 ```
 
 ## taRifx (1.0.6)
 Maintainer: Ari B. Friedman <abfriedman@gmail.com>
 
+```
+checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘gdata’ ‘ggplot2’ ‘grid’ ‘lattice’ ‘xtable’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
 ```
 checking R code for possible problems ... NOTE
 autoplot.microbenchmark: no visible global function definition for
@@ -3694,12 +4195,14 @@ Maintainer: Jeffrey Wong <jeff.ct.wong@gmail.com>
 
 ```
 checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘ggplot2’ ‘plyr’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
 Packages in Depends field not imported from:
   ‘Matrix’ ‘lubridate’ ‘timeDate’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -3728,65 +4231,96 @@ projectDate: no visible global function definition for
 Maintainer: Gionata Bocci <boccigionata@gmail.com>  
 Bug reports: https://github.com/GioBo/TR8/issues
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'Expanding_TR8.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## trapezoid (2.0-0)
 Maintainer: Jeremy Thoms Hetzel <jthetzel@gmail.com>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Loading required package: trapezoid
+Loading required package: plyr
+Loading required package: ggplot2
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'trapezoid.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## treeclim (1.0.11)
 Maintainer: Christian Zang <christian.zang@wzw.tum.de>
 
 ```
-checking whether package ‘treeclim’ can be installed ... [26s/27s] ERROR
-Installation failed.
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/treeclim.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppArmadillo’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## treecm (1.2.1)
 Maintainer: Marco Bascietto <marco.bascietto@cnr.it>
 
-__OK__
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Error : Mapping a variable to y and also using stat="bin".
+  With stat="bin", it will attempt to set the y value to the count of cases in each group.
+  This can result in unexpected behavior and will not be allowed in a future version of ggplot2.
+  If you want y to represent counts of cases, use stat="bin" and don't map a variable to y.
+  If you want y to represent values in the data, use stat="identity".
+  See ?geom_bar for examples. (Defunct; last used in version 0.9.2)
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'treecm.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
+```
 
 ## TripleR (1.4)
 Maintainer: Felix Schönbrodt <felix.schoenbrodt@psy.lmu.de>
 
-```
-checking whether package ‘TripleR’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/TripleR.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## unmarked (0.10-6)
 Maintainer: Richard Chandler <rbchan@uga.edu>
 
 ```
-checking whether package ‘unmarked’ can be installed ... [18s/18s] ERROR
-Installation failed.
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/unmarked.Rcheck/00install.out’ for details.
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppArmadillo’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## useful (1.1.8)
 Maintainer: Jared P. Lander <packages@jaredlander.com>
 
-```
-checking whether package ‘useful’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/useful.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## userfriendlyscience (0.2-1)
 Maintainer: Gjalt-Jorn Peters <gjalt-jorn@userfriendlyscience.com>
 
-```
-checking whether package ‘userfriendlyscience’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘ggplot2’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/userfriendlyscience.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## ustyc (1.0.0)
 Maintainer: Matt Barry <mrb@softisms.com>  
@@ -3798,25 +4332,53 @@ __OK__
 Maintainer: Juris Breidaks <Juris.Breidaks@csb.gov.lv>  
 Bug reports: https://github.com/CSBLatvia/vardpoor/issues/
 
-```
-checking whether package ‘vardpoor’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘MASS’ was built under R version 3.1.3
-See ‘/private/tmp/RtmpcHl3QG/check_crancab9455da7e2/vardpoor.Rcheck/00install.out’ for details.
-```
+__OK__
 
 ## vcdExtra (0.6-5)
 Maintainer: Michael Friendly <friendly@yorku.ca>
 
 ```
+checking dependencies in R code ... NOTE
+'library' or 'require' call to ‘rgl’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
+```
 checking Rd cross-references ... NOTE
 Package unavailable to check Rd xrefs: ‘alr3’
+```
+```
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Loading required package: vcd
+Loading required package: grid
+Loading required package: gnm
+The following objects are masked _by_ .GlobalEnv:
+
+    A, B, C
+
+Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
+  Running 'texi2dvi' on 'vcd-tutorial.tex' failed.
+Messages:
+sh: /usr/local/bin/texi2dvi: No such file or directory
+Calls: buildVignettes -> texi2pdf -> texi2dvi
+Execution halted
+
 ```
 
 ## vdmR (0.1.0)
 Maintainer: Tomokazu Fujino <fujino@fwu.ac.jp>
 
-__OK__
+```
+checking package dependencies ... ERROR
+Packages required but not available: ‘gridSVG’ ‘Rook’
+
+Package suggested but not available for checking: ‘rgeos’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
 
 ## vetools (1.3-28)
 Maintainer: Andrew Sajo-Castelli <asajo@usb.ve>  
@@ -3853,8 +4415,6 @@ Packages in Depends field not imported from:
   ‘plyr’ ‘reshape2’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
-See the information on DESCRIPTION files in the chapter ‘Creating R
-packages’ of the ‘Writing R Extensions’ manual.
 ```
 ```
 checking R code for possible problems ... NOTE

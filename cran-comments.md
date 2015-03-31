@@ -11,24 +11,21 @@ This is a minor update to:
 
 ## Test environments
 
-* local OS X install, R 3.1.2
-* ubuntu 12.04 (on travis-ci), R 3.1.2
+* local OS X install, R 3.1.3
+* ubuntu 12.04 (on travis-ci), R 3.1.3
 * win-builder (devel and release)
 
 ## R CMD check results
 
 There were no ERRORs or WARNINGs. 
 
-There was 1 NOTE:
+There was two NOTEs:
 
 * My email address has changed from <h.wickham@gmail.com> to 
   <hadley@rstudio.com>. I'll send the confirmation from my old email
   shortly.
 
-* checking dependencies in R code ... NOTE
-  Namespace in Imports field not imported from: 'R6'
-
-  R6 is a build-time dependency.
+* BD, Becton and plyr are not misspellings.
 
 ## Downstream dependencies
 I have also run R CMD check on downstream dependencies of plyr 
