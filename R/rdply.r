@@ -30,9 +30,9 @@ rdply <- function(.n, .expr, .progress = "none", .id = NA) {
   res <- .rlply_worker(.n, .progress,
                        eval.parent(substitute(function() .expr)))
   names(res) <- seq_len(.n)
-  if (is.null(.id))
+  if (is.null(.id)) {
       labels <- NULL
-  else {
+  } else {
     labels <- data.frame(.n = seq_len(.n))
     if (!is.na(.id)) {
       names(labels) <- .id
