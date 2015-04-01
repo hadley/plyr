@@ -32,13 +32,25 @@ Maintainer: Matt Nunes <m.nunes@lancaster.ac.uk>
 ```
 checking whether package ‘abctools’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/abctools.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/abctools.Rcheck/00install.out’ for details.
 ```
 
 ## abd (0.2-7)
 Maintainer: Kevin M. Middleton <middletonk@missouri.edu>
 
-__OK__
+```
+checking whether the package can be loaded ... ERROR
+Loading this package had a fatal error status code 1
+Loading log:
+Loading required package: nlme
+Loading required package: lattice
+Error in unloadNamespace(package) : 
+  namespace ‘lattice’ is imported by ‘nlme’ so cannot be unloaded
+Error in library(pkg, character.only = TRUE, logical.return = TRUE, lib.loc = lib.loc) : 
+  “lattice” version 0.20.30 cannot be unloaded.
+Calls: library -> .getRequiredPackages2 -> library
+Execution halted
+```
 
 ## acs (1.2)
 Maintainer: Ezra Haber Glenn <eglenn@mit.edu>
@@ -74,7 +86,7 @@ Maintainer: George Rosenberger <rosenberger@imsb.biol.ethz.ch>
 ```
 checking whether package ‘aLFQ’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/aLFQ.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/aLFQ.Rcheck/00install.out’ for details.
 ```
 
 ## alm (0.4.0)
@@ -140,18 +152,7 @@ Execution halted
 ## ARPobservation (1.1)
 Maintainer: James E. Pustejovsky <jepusto@gmail.com>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'Observation-algorithms.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## ARTool (0.9.3)
 Maintainer: Matthew Kay <mjskay@uw.edu>  
@@ -202,18 +203,6 @@ Found the following Makefile(s) without a final LF:
   inst/article/Makefile
 Some ‘make’ programs ignore lines not ending in LF.
 ```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'redoing-the-article.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
 
 ## BatchExperiments (1.4.1)
 Maintainer: Michel Lang <michellang@gmail.com>  
@@ -250,28 +239,7 @@ __OK__
 ## bcpa (1.1)
 Maintainer: Eliezer Gurarie <eliezg@uw.edu>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: Rcpp
-Loading required package: plyr
-Warning in plot.xy(xy.coords(x, y), type = type, ...) :
-  plot type 'black' will be truncated to first character
-Warning in plot.xy(xy.coords(x, y), type = type, ...) :
-  plot type 'black' will be truncated to first character
-Warning in replayPlot(x) :
-  plot type 'black' will be truncated to first character
-Warning in replayPlot(x) :
-  plot type 'black' will be truncated to first character
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'bcpa.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## bdvis (0.1.0)
 Maintainer: Vijay Barve <vijay.barve@gmail.com>
@@ -343,21 +311,7 @@ Package unavailable to check Rd xrefs: ‘graph’
 ## BEQI2 (2.0-0)
 Maintainer: Dennis Walvoort <dennis.Walvoort@wur.nl>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-For more information on the usage of the BEQI2 tool, type: vignette("BEQI2")
-Number of duplicated records: 1
-These will be removed
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'BEQI2.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## Biograph (2.0.4)
 Maintainer: Frans Willekens <willekens@demogr.mpg.de>
@@ -427,7 +381,7 @@ Package suggested but not available for checking: ‘BRugs’
 ```
 checking whether package ‘BTSPAS’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/BTSPAS.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/BTSPAS.Rcheck/00install.out’ for details.
 ```
 
 ## caret (6.0-41)
@@ -439,37 +393,6 @@ checking dependencies in R code ... NOTE
   ‘MASS’ ‘earth’ ‘fastICA’ ‘ipred’ ‘klaR’ ‘nnet’ ‘pROC’ ‘party’ ‘proxy’
   Please use :: or requireNamespace() instead.
   See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Attaching package: ‘pROC’
-
-The following objects are masked from ‘package:stats’:
-
-    cov, smooth, var
-
-
-Attaching package: ‘pls’
-
-The following object is masked from ‘package:caret’:
-
-    R2
-
-The following object is masked from ‘package:stats’:
-
-    loadings
-
-Loading required package: klaR
-Loading required package: MASS
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'caret.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
 ```
 
 ## caretEnsemble (1.0.0)
@@ -565,26 +488,13 @@ Maintainer: Dr Chris Wheadon <chris.wheadon@gmail.com>
 ```
 checking whether package ‘classify’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/classify.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/classify.Rcheck/00install.out’ for details.
 ```
 
 ## clhs (0.5-4)
 Maintainer: Pierre Roudier <roudierp@landcareresearch.co.nz>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Warning: attributes are not identical across measure variables; they will be dropped
-Warning: attributes are not identical across measure variables; they will be dropped
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'vignette.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## clickstream (1.1.3)
 Maintainer: Michael Scholz <michael.scholz@uni-passau.de>
@@ -613,24 +523,7 @@ Deprecated license: BSD
 ## confidence (1.1-0)
 Maintainer: Dennis J. J. Walvoort <dennis.Walvoort@wur.nl>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: tcltk
-
-For more information on the usage of the Confidence tool, type:
-vignette("confidence")
-Examples of input files can be found in:
-'/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/confidence.Rcheck/confidence/extdata'
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'confidence.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## cpca (0.1.2)
 Maintainer: Andrey Ziyatdinov <andrey.ziyatdinov@upc.edu>
@@ -662,34 +555,12 @@ __OK__
 Maintainer: Matt Dowle <mdowle@mdowle.plus.com>  
 Bug reports: https://github.com/Rdatatable/data.table/issues
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'datatable-faq.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## dataRetrieval (2.1.2)
 Maintainer: Laura DeCicco <ldecicco@usgs.gov>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'dataRetrieval.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## dcmr (1.0)
 Maintainer: Diane Losardo <dlosardo@amplify.com>
@@ -850,24 +721,7 @@ __OK__
 ## emdatr (0.2)
 Maintainer: Gopi Goteti <my.ration.shop@gmail.com>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: emdatr
-Loading required package: RCurl
-Loading required package: bitops
-Loading required package: ggplot2
-Loading required package: plyr
-downloading data from bitbucket. might take a few moments...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'emdatr.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## emdbook (1.3.7)
 Maintainer: Ben Bolker <bolker@mcmaster.ca>
@@ -925,18 +779,7 @@ __OK__
 Maintainer: TszKin Julian Chan <ctszkin@gmail.com>  
 Bug reports: TszKin Julian Chan <ctszkin@gmail.com>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'vignette.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## FAOSTAT (1.9)
 Maintainer: Filippo Gheri <filippo.gheri@fao.org>
@@ -944,18 +787,6 @@ Maintainer: Filippo Gheri <filippo.gheri@fao.org>
 ```
 checking data for non-ASCII characters ... NOTE
   Note: found 178 marked UTF-8 strings
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'FAOSTAT.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
 ```
 
 ## fishmove (0.3-1)
@@ -1096,18 +927,7 @@ __OK__
 ## gems (1.0.0)
 Maintainer: Luisa Salazar Vizcaya <luisa.salazar@ispm.unibe.ch>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'gems.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## geospt (1.0-1)
 Maintainer: Al� Santacruz <amsantac@unal.edu.co>
@@ -1129,42 +949,53 @@ manual.
 ## GGally (0.5.0)
 Maintainer: Barret Schloerke <schloerke@gmail.com>
 
-__OK__
+```
+checking examples ... ERROR
+Running examples in ‘GGally-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: ggally_facethist
+> ### Title: Plots the Histograms by Faceting
+> ### Aliases: ggally_facethist
+> ### Keywords: hplot
+> 
+> ### ** Examples
+> 
+> data(tips, package = "reshape")
+>  ggally_facethist(tips, mapping = ggplot2::aes(x = tip, y = sex))
+stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
+stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
+>  ggally_facethist(tips, mapping = ggplot2::aes_string(x = "tip", y = "sex"), binwidth = 0.1)
+Warning in loop_apply(n, do.ply) :
+  position_stack requires constant width: output may be incorrect
+Warning in loop_apply(n, do.ply) :
+  position_stack requires constant width: output may be incorrect
+
+ *** caught segfault ***
+address 0x7faf20000038, cause 'memory not mapped'
+
+Traceback:
+ 1: allocate_column(df[[var]], nrows, dfs, var)
+ 2: output_template(dfs, nrows)
+ 3: rbind.fill(res)
+ 4: list_to_dataframe(res, attr(.data, "split_labels"), .id, id_as_factor)
+ 5: ldply(.data = pieces, .fun = .fun, ..., .progress = .progress,     .inform = .inform, .parallel = .parallel, .paropts = .paropts)
+ 6: ddply(data, "PANEL", function(data) {    .$position$adjust(data)})
+ 7: get(x, envir = this, inherits = inh)(this, ...)
+ 8: p$adjust_position(d)
+ 9: f(d = data[[i]], p = layers[[i]])
+10: dlapply(function(d, p) p$adjust_position(d))
+11: ggplot_build(x)
+12: print.ggplot(list(data = list(total_bill = c(16.99, 10.34, 21.01, 23.68, 24.59, 25.29, 8.77, 26.88, 15.04, 14.78, 10.27, 35.26, 15.42, 18.43, 14.83, 21.58, 10.33, 16.29, 16.97, 20.65, 17.92, 20.29, 15.77, 39.42, 19.82, 17.81, 13.37, 12.69, 21.7, 19.65, 9.55, 18.35, 15.06, 20.69, 17.78, 24.06, 16.31, 16.93, 18.69, 31.27, 16.04, 17.46, 13.94, 9.68, 30.4, 18.29, 22.23, 32.4, 28.55, 18.04, 12.54, 10.29, 34.81, 9.94, 25.56, 19.49, 38.01, 26.41, 11.24, 48.27, 20.29, 13.81, 11.02, 18.29, 17.59, 20.08, 16.45, 3.07, 20.23, 15.01, 12.02, 17.07, 26.86, 25.28, 14.73, 10.51, 17.92, 27.2, 22.76, 17.29, 19.44, 16.66, 10.07, 32.68, 15.98, 34.83, 13.03, 18.28, 24.71, 21.16, 28.97, 22.49, 5.75, 16.32, 22.75, 40.17, 27.28, 12.03, 21.01, 12.46, 11.35, 15.38, 44.3, 22.42, 20.92, 15.36, 20.49, 25.21, 18.24, 14.31, 14, 7.25, 38.07, 23.95, 25.71, 17.31, 29.93, 10.65, 12.43, 24.08, 11.69, 13.42, 14.26, 15.95, 12.48, 29.8, 8.52, 14.52, 11.38, 22.82, 19.08, 20.27, 11.17, 12.26, 18.26, 8.51, 10.33, 14.15, 16, 13.16, 17.47, 34.3, 41.19, 27.05, 16.43, 8.35, 18.64, 11.87, 9.78, 7.51, 14.07, 13.13, 17.26, 24.55, 19.77, 29.85, 48.17, 25, 13.39, 16.49, 21.5, 12.66, 16.21, 13.81, 17.51, 24.52, 20.76, 31.71, 10.59, 10.63, 50.81, 15.81, 7.25, 31.85, 16.82, 32.9, 17.89, 14.48, 9.6, 34.63, 34.65, 23.33, 45.35, 23.17, 40.55, 20.69, 20.9, 30.46, 18.15, 23.1, 15.69, 19.81, 28.44, 15.48, 16.58, 7.56, 10.34, 43.11, 13, 13.51, 18.71, 12.74, 13, 16.4, 20.53, 16.47, 26.59, 38.73, 24.27, 12.76, 30.06, 25.89, 48.33, 13.27, 28.17, 12.9, 28.15, 11.59, 7.74, 30.14, 12.16, 13.42, 8.58, 15.98, 13.42, 16.27, 10.09, 20.45, 13.28, 22.12, 24.01, 15.69, 11.61, 10.77, 15.53, 10.07, 12.6, 32.83, 35.83, 29.03, 27.18, 22.67, 17.82, 18.78),     tip = c(1.01, 1.66, 3.5, 3.31, 3.61, 4.71, 2, 3.12, 1.96,     3.23, 1.71, 5, 1.57, 3, 3.02, 3.92, 1.67, 3.71, 3.5, 3.35,     4.08, 2.75, 2.23, 7.58, 3.18, 2.34, 2, 2, 4.3, 3, 1.45, 2.5,     3, 2.45, 3.27, 3.6, 2, 3.07, 2.31, 5, 2.24, 2.54, 3.06, 1.32,     5.6, 3, 5, 6, 2.05, 3, 2.5, 2.6, 5.2, 1.56, 4.34, 3.51, 3,     1.5, 1.76, 6.73, 3.21, 2, 1.98, 3.76, 2.64, 3.15, 2.47, 1,     2.01, 2.09, 1.97, 3, 3.14, 5, 2.2, 1.25, 3.08, 4, 3, 2.71,     3, 3.4, 1.83, 5, 2.03, 5.17, 2, 4, 5.85, 3, 3, 3.5, 1, 4.3,     3.25, 4.73, 4, 1.5, 3, 1.5, 2.5, 3, 2.5, 3.48, 4.08, 1.64,     4.06, 4.29, 3.76, 4, 3, 1, 4, 2.55, 4, 3.5, 5.07, 1.5, 1.8,     2.92, 2.31, 1.68, 2.5, 2, 2.52, 4.2, 1.48, 2, 2, 2.18, 1.5,     2.83, 1.5, 2, 3.25, 1.25, 2, 2, 2, 2.75, 3.5, 6.7, 5, 5,     2.3, 1.5, 1.36, 1.63, 1.73, 2, 2.5, 2, 2.74, 2, 2, 5.14,     5, 3.75, 2.61, 2, 3.5, 2.5, 2, 2, 3, 3.48, 2.24, 4.5, 1.61,     2, 10, 3.16, 5.15, 3.18, 4, 3.11, 2, 2, 4, 3.55, 3.68, 5.65,     3.5, 6.5, 3, 5, 3.5, 2, 3.5, 4, 1.5, 4.19, 2.56, 2.02, 4,     1.44, 2, 5, 2, 2, 4, 2.01, 2, 2.5, 4, 3.23, 3.41, 3, 2.03,     2.23, 2, 5.16, 9, 2.5, 6.5, 1.1, 3, 1.5, 1.44, 3.09, 2.2,     3.48, 1.92, 3, 1.58, 2.5, 2, 3, 2.72, 2.88, 2, 3, 3.39, 1.47,     3, 1.25, 1, 1.17, 4.67, 5.92, 2, 2, 1.75, 3), sex = c(1L,     2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 1L, 2L,     1L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L,     2L, 1L, 1L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L,     2L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 2L,     2L, 2L, 2L, 1L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 1L, 1L, 1L, 2L,     1L, 2L, 2L, 1L, 1L, 2L, 1L, 1L, 2L, 2L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 2L, 1L, 1L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 1L, 2L, 1L, 1L, 2L, 2L, 2L, 1L, 2L, 1L, 2L,     2L, 2L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 1L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 2L, 2L,     2L, 1L, 1L, 2L, 2L, 1L, 1L, 1L, 2L, 1L, 2L, 2L, 2L, 1L, 2L,     2L, 2L, 1L, 1L, 1L, 2L, 2L, 2L, 1L, 2L, 1L, 2L, 1L, 2L, 1L,     1L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 1L,     2L, 2L, 1L), smoker = c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 2L, 1L,     2L, 1L, 1L, 2L, 2L, 1L, 1L, 2L, 1L, 1L, 1L, 2L, 1L, 1L, 2L,     1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 2L, 2L,     1L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 1L, 2L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 1L, 1L,     2L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 1L, 1L), day = c(3L, 3L,     3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,     3L, 3L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L,     3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L,     4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,     4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 3L, 3L,     3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,     3L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,     3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L,     4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 4L), time = c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), size = c(2L, 3L, 3L,     2L, 4L, 4L, 2L, 4L, 2L, 2L, 2L, 4L, 2L, 4L, 2L, 2L, 3L, 3L,     3L, 3L, 2L, 2L, 2L, 4L, 2L, 4L, 2L, 2L, 2L, 2L, 2L, 4L, 2L,     4L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 2L, 2L, 2L, 4L, 2L, 2L, 4L,     3L, 2L, 2L, 2L, 4L, 2L, 4L, 2L, 4L, 2L, 2L, 4L, 2L, 2L, 2L,     4L, 3L, 3L, 2L, 1L, 2L, 2L, 2L, 3L, 2L, 2L, 2L, 2L, 2L, 4L,     2L, 2L, 2L, 2L, 1L, 2L, 2L, 4L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 4L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 1L, 3L, 2L, 3L, 2L, 4L, 2L, 2L, 4L, 2L, 2L, 2L,     2L, 2L, 6L, 2L, 2L, 2L, 3L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 6L, 5L, 6L, 2L, 2L, 3L, 2L, 2L, 2L, 2L, 2L, 3L,     4L, 4L, 5L, 6L, 4L, 2L, 4L, 4L, 2L, 3L, 2L, 2L, 3L, 2L, 4L,     2L, 2L, 3L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 4L, 2L, 3L,     4L, 2L, 5L, 3L, 5L, 3L, 3L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 4L,     2L, 2L, 3L, 2L, 2L, 2L, 4L, 3L, 3L, 4L, 2L, 2L, 3L, 4L, 4L,     2L, 3L, 2L, 5L, 2L, 2L, 4L, 2L, 2L, 1L, 3L, 2L, 2L, 2L, 4L,     2L, 2L, 4L, 3L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 2L, 2L, 2L,     2L)), layers = list(<environment>), scales = <S4 object of class "Scales">,     mapping = list(x = tip), theme = list(panel.margin = 0.1),     coordinates = list(limits = list(x = NULL, y = NULL)), facet = list(        rows = list(sex), cols = list(), margins = FALSE, free = list(            x = FALSE, y = FALSE), space_free = list(x = FALSE,             y = FALSE), labeller = "label_value", as.table = TRUE,         drop = TRUE, shrink = TRUE), plot_env = <environment>,     labels = list(x = "tip", y = "sex"), type = "combo", subType = "facethist",     horizontal = TRUE))
+13: print(list(data = list(total_bill = c(16.99, 10.34, 21.01, 23.68, 24.59, 25.29, 8.77, 26.88, 15.04, 14.78, 10.27, 35.26, 15.42, 18.43, 14.83, 21.58, 10.33, 16.29, 16.97, 20.65, 17.92, 20.29, 15.77, 39.42, 19.82, 17.81, 13.37, 12.69, 21.7, 19.65, 9.55, 18.35, 15.06, 20.69, 17.78, 24.06, 16.31, 16.93, 18.69, 31.27, 16.04, 17.46, 13.94, 9.68, 30.4, 18.29, 22.23, 32.4, 28.55, 18.04, 12.54, 10.29, 34.81, 9.94, 25.56, 19.49, 38.01, 26.41, 11.24, 48.27, 20.29, 13.81, 11.02, 18.29, 17.59, 20.08, 16.45, 3.07, 20.23, 15.01, 12.02, 17.07, 26.86, 25.28, 14.73, 10.51, 17.92, 27.2, 22.76, 17.29, 19.44, 16.66, 10.07, 32.68, 15.98, 34.83, 13.03, 18.28, 24.71, 21.16, 28.97, 22.49, 5.75, 16.32, 22.75, 40.17, 27.28, 12.03, 21.01, 12.46, 11.35, 15.38, 44.3, 22.42, 20.92, 15.36, 20.49, 25.21, 18.24, 14.31, 14, 7.25, 38.07, 23.95, 25.71, 17.31, 29.93, 10.65, 12.43, 24.08, 11.69, 13.42, 14.26, 15.95, 12.48, 29.8, 8.52, 14.52, 11.38, 22.82, 19.08, 20.27, 11.17, 12.26, 18.26, 8.51, 10.33, 14.15, 16, 13.16, 17.47, 34.3, 41.19, 27.05, 16.43, 8.35, 18.64, 11.87, 9.78, 7.51, 14.07, 13.13, 17.26, 24.55, 19.77, 29.85, 48.17, 25, 13.39, 16.49, 21.5, 12.66, 16.21, 13.81, 17.51, 24.52, 20.76, 31.71, 10.59, 10.63, 50.81, 15.81, 7.25, 31.85, 16.82, 32.9, 17.89, 14.48, 9.6, 34.63, 34.65, 23.33, 45.35, 23.17, 40.55, 20.69, 20.9, 30.46, 18.15, 23.1, 15.69, 19.81, 28.44, 15.48, 16.58, 7.56, 10.34, 43.11, 13, 13.51, 18.71, 12.74, 13, 16.4, 20.53, 16.47, 26.59, 38.73, 24.27, 12.76, 30.06, 25.89, 48.33, 13.27, 28.17, 12.9, 28.15, 11.59, 7.74, 30.14, 12.16, 13.42, 8.58, 15.98, 13.42, 16.27, 10.09, 20.45, 13.28, 22.12, 24.01, 15.69, 11.61, 10.77, 15.53, 10.07, 12.6, 32.83, 35.83, 29.03, 27.18, 22.67, 17.82, 18.78), tip = c(1.01, 1.66, 3.5, 3.31, 3.61, 4.71, 2, 3.12, 1.96, 3.23, 1.71, 5, 1.57, 3, 3.02, 3.92, 1.67, 3.71, 3.5, 3.35, 4.08, 2.75, 2.23, 7.58, 3.18, 2.34, 2, 2, 4.3, 3, 1.45, 2.5, 3, 2.45, 3.27, 3.6, 2, 3.07, 2.31, 5, 2.24, 2.54, 3.06, 1.32, 5.6, 3, 5, 6, 2.05, 3, 2.5, 2.6, 5.2, 1.56, 4.34, 3.51, 3, 1.5, 1.76, 6.73, 3.21, 2, 1.98, 3.76, 2.64, 3.15, 2.47, 1, 2.01, 2.09, 1.97, 3, 3.14, 5, 2.2, 1.25, 3.08, 4, 3, 2.71, 3, 3.4, 1.83, 5, 2.03, 5.17, 2, 4, 5.85, 3, 3, 3.5, 1, 4.3, 3.25, 4.73, 4, 1.5, 3, 1.5, 2.5, 3, 2.5, 3.48, 4.08, 1.64, 4.06, 4.29, 3.76, 4, 3, 1, 4, 2.55, 4, 3.5, 5.07, 1.5, 1.8, 2.92, 2.31, 1.68, 2.5, 2, 2.52, 4.2, 1.48, 2, 2, 2.18, 1.5, 2.83, 1.5, 2, 3.25, 1.25, 2, 2, 2, 2.75, 3.5, 6.7, 5, 5, 2.3, 1.5, 1.36, 1.63, 1.73, 2, 2.5, 2, 2.74, 2, 2, 5.14, 5, 3.75, 2.61, 2, 3.5, 2.5, 2, 2, 3, 3.48, 2.24, 4.5, 1.61, 2, 10, 3.16, 5.15, 3.18, 4, 3.11, 2, 2, 4, 3.55, 3.68, 5.65, 3.5, 6.5, 3, 5, 3.5, 2, 3.5, 4, 1.5, 4.19, 2.56, 2.02, 4, 1.44, 2, 5, 2, 2, 4, 2.01, 2, 2.5, 4, 3.23, 3.41, 3, 2.03, 2.23, 2, 5.16, 9, 2.5, 6.5, 1.1, 3, 1.5, 1.44, 3.09, 2.2, 3.48, 1.92, 3, 1.58, 2.5, 2, 3, 2.72, 2.88, 2, 3, 3.39, 1.47, 3, 1.25, 1, 1.17, 4.67, 5.92, 2, 2, 1.75, 3), sex = c(1L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 1L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 1L, 1L, 1L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 1L, 1L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 1L, 1L, 2L, 2L, 2L, 1L, 2L, 1L, 2L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 2L, 2L, 1L, 1L, 1L, 2L, 1L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 1L, 1L, 1L, 2L, 2L, 2L, 1L, 2L, 1L, 2L, 1L, 2L, 1L, 1L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 1L, 2L, 2L, 1L), smoker = c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 2L, 1L, 2L, 1L, 1L, 2L, 2L, 1L, 1L, 2L, 1L, 1L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 1L, 1L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 1L, 1L), day = c(3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 4L), time = c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L),     size = c(2L, 3L, 3L, 2L, 4L, 4L, 2L, 4L, 2L, 2L, 2L, 4L,     2L, 4L, 2L, 2L, 3L, 3L, 3L, 3L, 2L, 2L, 2L, 4L, 2L, 4L, 2L,     2L, 2L, 2L, 2L, 4L, 2L, 4L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 2L,     2L, 2L, 4L, 2L, 2L, 4L, 3L, 2L, 2L, 2L, 4L, 2L, 4L, 2L, 4L,     2L, 2L, 4L, 2L, 2L, 2L, 4L, 3L, 3L, 2L, 1L, 2L, 2L, 2L, 3L,     2L, 2L, 2L, 2L, 2L, 4L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 4L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 4L, 2L, 2L, 2L, 2L, 2L, 2L,     3L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 3L, 2L, 3L, 2L, 4L,     2L, 2L, 4L, 2L, 2L, 2L, 2L, 2L, 6L, 2L, 2L, 2L, 3L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 6L, 5L, 6L, 2L, 2L, 3L,     2L, 2L, 2L, 2L, 2L, 3L, 4L, 4L, 5L, 6L, 4L, 2L, 4L, 4L, 2L,     3L, 2L, 2L, 3L, 2L, 4L, 2L, 2L, 3L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 4L, 2L, 3L, 4L, 2L, 5L, 3L, 5L, 3L, 3L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 4L, 2L, 2L, 3L, 2L, 2L, 2L, 4L, 3L, 3L,     4L, 2L, 2L, 3L, 4L, 4L, 2L, 3L, 2L, 5L, 2L, 2L, 4L, 2L, 2L,     1L, 3L, 2L, 2L, 2L, 4L, 2L, 2L, 4L, 3L, 2L, 2L, 2L, 2L, 2L,     2L, 3L, 3L, 2L, 2L, 2L, 2L)), layers = list(<environment>),     scales = <S4 object of class "Scales">, mapping = list(x = tip),     theme = list(panel.margin = 0.1), coordinates = list(limits = list(        x = NULL, y = NULL)), facet = list(rows = list(sex),         cols = list(), margins = FALSE, free = list(x = FALSE,             y = FALSE), space_free = list(x = FALSE, y = FALSE),         labeller = "label_value", as.table = TRUE, drop = TRUE,         shrink = TRUE), plot_env = <environment>, labels = list(        x = "tip", y = "sex"), type = "combo", subType = "facethist",     horizontal = TRUE))
+aborting ...
+```
 
 ## ggenealogy (0.1.0)
 Maintainer: Lindsay Rutter <lrutter@iastate.edu>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Warning in .Call("R_igraph_get_shortest_paths", graph, as.igraph.vs(graph,  :
-  At structural_properties.c:740 :Couldn't reach some vertices
-Warning: There is no path between those two vertices
-Warning in loop_apply(n, do.ply) :
-  Removed 39 rows containing missing values (geom_segment).
-Warning in loop_apply(n, do.ply) :
-  Removed 39 rows containing missing values (geom_text).
-Warning in loop_apply(n, do.ply) :
-  Removed 39 rows containing missing values (geom_segment).
-Warning in loop_apply(n, do.ply) :
-  Removed 39 rows containing missing values (geom_text).
-Warning in loop_apply(n, do.ply) :
-  Removed 39 rows containing missing values (geom_segment).
-Warning in loop_apply(n, do.ply) :
-  Removed 39 rows containing missing values (geom_text).
-Warning in loop_apply(n, do.ply) :
-  Removed 39 rows containing missing values (geom_segment).
-Warning in loop_apply(n, do.ply) :
-  Removed 39 rows containing missing values (geom_text).
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'ggenealogy.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## ggmap (2.4)
 Maintainer: David Kahle <david.kahle@gmail.com>  
@@ -1354,24 +1185,6 @@ Found the following Makefile(s) without a final LF:
   inst/unitTests/Makefile
 Some ‘make’ programs ignore lines not ending in LF.
 ```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: gsDesign
-Loading required package: ggplot2
-Loading required package: xtable
-Loading required package: stringr
-Loading required package: RUnit
-Loading required package: plyr
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'gsSurvTemplate.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
 
 ## GSIF (0.4-4)
 Maintainer: Tomislav Hengl <tom.hengl@wur.nl>
@@ -1407,27 +1220,7 @@ checking installed package size ... NOTE
 ## harvestr (0.6.0)
 Maintainer: Andrew Redd <andrew.redd@hsc.utah.edu>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: coda
-Loading required package: MASS
-##
-## Markov Chain Monte Carlo Package (MCMCpack)
-## Copyright (C) 2003-2015 Andrew D. Martin, Kevin M. Quinn, and Jong Hee Park
-##
-## Support provided by the U.S. National Science Foundation
-## (Grants SES-0350646 and SES-0350613)
-##
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'harvestr.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## hillmakeR (0.2)
 Maintainer: David Gilinson <dgilinson@reefpointgroup.com>
@@ -1446,33 +1239,7 @@ Packages unavailable to check Rd xrefs: ‘Guerry’, ‘agridat’, ‘alr3’
 Maintainer: Bryan A. Hanson <hanson@depauw.edu>  
 Bug reports: https://github.com/bryanhanson/HiveR/issues
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-cropping figure/PPNA-1.pdf
-PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
-==> 1 page written on `figure/PPNA-1.pdf'.
-cropping figure/PPN4-1.pdf
-PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
-==> 1 page written on `figure/PPN4-1.pdf'.
-cropping figure/PPN5-1.pdf
-PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
-==> 1 page written on `figure/PPN5-1.pdf'.
-cropping figure/PPN6-1.pdf
-PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
-==> 1 page written on `figure/PPN6-1.pdf'.
-cropping figure/E_coli_2-1.pdf
-PDFCROP 1.38, 2012/11/02 - Copyright (c) 2002-2012 by Heiko Oberdiek.
-==> 1 page written on `figure/E_coli_2-1.pdf'.
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'HiveR.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## HLMdiag (0.2.5)
 Maintainer: Adam Loy <loyad01@gmail.com>
@@ -1520,29 +1287,7 @@ __OK__
 Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
 Bug reports: http://github.com/jeroenooms/jsonlite/issues
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Warning in buildVignettes(dir = "/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/jsonlite.Rcheck/vign_test/jsonlite") :
-  Files named as vignettes but with no recognized vignette engine:
-   ‘vignettes/json-opencpu-concordance.tex’
-(Is a VignetteBuilder field missing?)
-
-Attaching package: 'jsonlite'
-
-The following object is masked from 'package:utils':
-
-    View
-
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'json-opencpu.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## Kernelheaping (0.2)
 Maintainer: Marcus Gross <marcus.gross@fu-berlin.de>
@@ -1570,35 +1315,7 @@ __OK__
 ## kobe (1.3.2)
 Maintainer: Laurence Kell <laurie.kell@iccat.int>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-
-Attaching package: ‘reshape’
-
-The following objects are masked from ‘package:plyr’:
-
-    rename, round_any
-
-Warning in loop_apply(n, do.ply) :
-  Removed 11 rows containing missing values (geom_path).
-Warning in loop_apply(n, do.ply) :
-  Removed 16 rows containing missing values (geom_path).
-Scale for 'y' is already present. Adding another scale for 'y', which will replace the existing scale.
-Scale for 'x' is already present. Adding another scale for 'x', which will replace the existing scale.
-Warning in loop_apply(n, do.ply) :
-  Removed 8 rows containing missing values (geom_point).
-Warning in loop_apply(n, do.ply) :
-  Removed 8 rows containing missing values (geom_point).
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'kobe.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## Lahman (3.0-1)
 Maintainer: Michael Friendly <friendly@yorku.ca>
@@ -1661,20 +1378,6 @@ checking dependencies in R code ... NOTE
 checking data for non-ASCII characters ... NOTE
   Note: found 7 marked UTF-8 strings
 ```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: ggplot2
-Loading required package: xtable
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'likert-xtable.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
 
 ## lint (0.3)
 Maintainer: Andrew Redd <andrew.redd@hsc.utah.edu>
@@ -1714,20 +1417,6 @@ checking package dependencies ... NOTE
 Packages which this enhances but not available for checking:
   ‘afex’ ‘coxme’ ‘gee’ ‘geepack’ ‘glmmADMB’
 ```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: estimability
-NOTE: Results may be misleading due to involvement in interactions
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'extending.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
 
 ## lubridate (1.3.3)
 Maintainer: Garrett Grolemund <garrett@rstudio.com>  
@@ -1744,7 +1433,7 @@ Maintainer: Jeff Laake <Jeff.Laake@noaa.gov>
 ```
 checking whether package ‘marked’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/marked.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/marked.Rcheck/00install.out’ for details.
 ```
 
 ## medicalrisk (1.1)
@@ -1789,20 +1478,7 @@ __OK__
 ## mizer (0.2)
 Maintainer: Finlay Scott <finlay.scott@jrc.ec.europa.eu>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Warning in xy.coords(x, y, xlabel, ylabel, log) :
-  1 y value <= 0 omitted from logarithmic plot
-species, w\\_inf, w\\_mat, beta, sigma, r\\_max, k\\_vbError in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'mizer_vignette.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## mlr (2.3)
 Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
@@ -1960,22 +1636,6 @@ checking installed package size ... NOTE
     R     1.8Mb
     doc   7.0Mb
 ```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
-geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
-geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
-geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'mosaicresources.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
 
 ## MplusAutomation (0.6-3)
 Maintainer: Michael Hallquist <michael.hallquist@gmail.com>
@@ -1995,18 +1655,6 @@ checking dependencies in R code ... NOTE
 checking R code for possible problems ... NOTE
 readModels: no visible global function definition for ‘h5dump’
 showSummaryTable: no visible global function definition for ‘showData’
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'Vignette.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
 ```
 
 ## mpoly (0.0.5)
@@ -2036,18 +1684,7 @@ checking dependencies in R code ... NOTE
 ## MVN (3.9)
 Maintainer: Selcuk Korkmaz <selcuk.korkmaz@hacettepe.edu.tr>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'MVN.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## mvnfast (0.1.3)
 Maintainer: Matteo Fasiolo <matteo.fasiolo@gmail.com>
@@ -2063,36 +1700,7 @@ manual.
 ## NAPPA (2.0.1)
 Maintainer: Mark Wappett <m.a.wappett@googlemail.com>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: NAPPA
-Loading required package: plyr
-Loading required package: NanoStringNorm
-Loading required package: gdata
-gdata: read.xls support for 'XLS' (Excel 97-2004) files ENABLED.
-
-gdata: read.xls support for 'XLSX' (Excel 2007+) files ENABLED.
-
-Attaching package: ‘gdata’
-
-The following object is masked from ‘package:stats’:
-
-    nobs
-
-The following object is masked from ‘package:utils’:
-
-    object.size
-
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'NAPPA.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## nat.nblast (1.5)
 Maintainer: James Manton <ajd.manton@googlemail.com>
@@ -2146,19 +1754,6 @@ ReadCsvNlsy79Gen1: no visible binding for global variable
 ReadCsvNlsy79Gen2: no visible binding for global variable
   ‘SubjectDetails79’
 ```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: NlsyLinks
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'Faq.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
 
 ## npIntFactRep (1.2)
 Maintainer: Jos Feys <jos.feys@faber.kuleuven.be>
@@ -2194,7 +1789,7 @@ Maintainer: David Carslaw <david.carslaw@kcl.ac.uk>
 ```
 checking whether package ‘openair’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/openair.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/openair.Rcheck/00install.out’ for details.
 ```
 
 ## OpenRepGrid (0.1.9)
@@ -2217,59 +1812,12 @@ manual.
 Maintainer: Stephanie Locke <stephanie.locke@optimumcredit.co.uk>  
 Bug reports: https://github.com/stephlocke/optiRum/issues
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  2: eval(code, new_test_environment)
-  3: eval(expr, envir, enclos)
-  4: generatePDF(srcpath = basepath, srcname = "basic", destpath = testpath, destname = "basic", 
-         DATED = FALSE, CLEANUP = FALSE) at test-generatePDF.R:151
-  5: knitr::knit2pdf(input = src, output = dest, envir = envir, quiet = QUIET, clean = CLEANUP, 
-         ...)
-  6: tools::texi2pdf(basename(out), ...)
-  7: texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet, texi2dvi = texi2dvi, 
-         texinputs = texinputs, index = index)
-  8: stop(msg, domain = NA)
-  
-  Error: Test failures
-  Execution halted
-```
+__OK__
 
 ## OutbreakTools (0.1-13)
 Maintainer: Thibaut Jombart <t.jombart@imperial.ac.uk>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-  The following sequence IDs are not in the dataset: 311, 222
-Warning in (if (out_format(c("latex", "sweave", "listings"))) sanitize_fn else str_c)(path,  :
-  replaced special characters in figure filename "figs/OutbreakTools-out.width==".8\\textwidth"" -> "figs/OutbreakTools-out.width___.8\\textwidth_"
-Warning in (if (out_format(c("latex", "sweave", "listings"))) sanitize_fn else str_c)(path,  :
-  dots in figure paths replaced with _ ("figs/OutbreakTools-out_width____8//textwidth_")
-Warning: The shape palette can deal with a maximum of 6 discrete values because
-more than 6 becomes difficult to discriminate; you have 11. Consider
-specifying shapes manually. if you must have them.
-Warning in loop_apply(n, do.ply) :
-  Removed 58 rows containing missing values (geom_point).
-Warning: The shape palette can deal with a maximum of 6 discrete values because
-more than 6 becomes difficult to discriminate; you have 11. Consider
-specifying shapes manually. if you must have them.
-Map from URL : http://maps.googleapis.com/maps/api/staticmap?center=51.516439,-0.171146&zoom=14&size=640x640&scale=2&maptype=terrain&language=en-EN&sensor=false
-Warning in loop_apply(n, do.ply) :
-  Removed 4 rows containing missing values (geom_point).
-Map from URL : http://maps.googleapis.com/maps/api/staticmap?center=51.516029,-0.178545&zoom=15&size=640x640&scale=2&maptype=terrain&language=en-EN&sensor=false
-Warning in loop_apply(n, do.ply) :
-  Removed 120 rows containing missing values (geom_point).
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'OutbreakTools.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## paleobioDB (0.3)
 Maintainer: Sara Varela <svarela@paleobiogeography.org>  
@@ -2730,18 +2278,6 @@ Found the platform-specific devices:
 dev.new() is the preferred way to open a new device, in the unlikely
 event one is needed.
 ```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'rattle.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
 
 ## rbefdata (0.3.5)
 Maintainer: Claas-Thido Pfaff <claas-thido.pfaff@idiv-biodiversity.de>
@@ -2886,24 +2422,6 @@ Foreign function call to a different package:
   .External("do_read_bib", ..., PACKAGE = "bibtex")
 See chapter ‘System and foreign language interfaces’ in the ‘Writing R
 Extensions’ manual.
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Warning in grepl("mkbib", x) : input string 8 is invalid in this locale
-Warning in grepl("\n", lines, fixed = TRUE) :
-  input string 8 is invalid in this locale
-Warning in grepl("mkbib", x) : input string 8 is invalid in this locale
-Warning in grepl("\n", lines, fixed = TRUE) :
-  input string 8 is invalid in this locale
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'manual.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
 ```
 
 ## remix (2.1)
@@ -3199,18 +2717,7 @@ __OK__
 ## rLakeAnalyzer (1.4)
 Maintainer: Luke Winslow <lawinslow@gmail.com>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'data.handling.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## Rmisc (1.5)
 Maintainer: Ryan M. Hope <rmh3093@gmail.com>
@@ -3237,37 +2744,6 @@ Compiled code should not call entry points which might terminate R nor
 write to stdout/stderr instead of to the console, nor the system RNG.
 
 See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-     'mongo.is.connected',
-     'mongo.disconnect',
-     'mongo.reconnect',
-     'mongo.get.err',
-     'mongo.get.primary',
-     'mongo.get.hosts',
-     'mongo.get.socket',
-     'mongo.set.timeout',
-     'mongo.get.timeout'.
-
-_E_x_a_m_p_l_e_s:
-
-     mongo <- mongo.create()
-     ## Not run:
-     
-         mongo <- mongo.create("192.168.0.3")
-     ## End(Not run)
-     
-
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'rmongodb_cheat_sheet.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
 ```
 
 ## Rmonkey (0.2.11)
@@ -3310,7 +2786,7 @@ Maintainer: Claudio Agostinelli <claudio@unive.it>
 ```
 checking whether package ‘robustvarComp’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/robustvarComp.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/robustvarComp.Rcheck/00install.out’ for details.
 ```
 
 ## rplos (0.4.6)
@@ -3398,33 +2874,7 @@ __OK__
 ## rspear (0.1-2)
 Maintainer: Eduard Szoecs <eduardszoecs@gmail.com>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: rspear
-Loading required package: reshape2
-trying URL 'http://www.systemecology.eu/rspear/traits.csv'
-Content type 'text/csv' length 127504 bytes (124 KB)
-opened URL
-==================================================
-downloaded 124 KB
-
-Warning in spear(spear_example, taxa = names(spear_example)[1], abundance = names(spear_example)[2],  :
-  There were unmatched species:
-xxxxxxxxx
-Set SPEAR to 0.
-Warning in spear(spear_example, taxa = names(spear_example)[1], abundance = names(spear_example)[2],  :
-  Non-direct taxon matches!
-Check trait table if match is appropiate!!
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'rspear.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## RStorm (0.902)
 Maintainer: Maurits Kaptein <maurits@mauritskaptein.com>
@@ -3495,18 +2945,7 @@ Maintainer: Tom August <tomaug@ceh.ac.uk>
 Bug reports: 
         https://github.com/biologicalrecordscentre/rYoutheria/issues
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'vignette.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## scales (0.2.4)
 Maintainer: Hadley Wickham <h.wickham@gmail.com>  
@@ -3737,34 +3176,7 @@ fitted.sma: no visible global function definition for ‘join’
 ## snht (1.0.2)
 Maintainer: Josh Browning <jbrownin@mines.edu>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: gridExtra
-Loading required package: grid
-Warning in loop_apply(n, do.ply) :
-  Removed 60 rows containing missing values (geom_path).
-Warning in loop_apply(n, do.ply) :
-  Removed 60 rows containing missing values (geom_path).
-Warning in loop_apply(n, do.ply) :
-  Removed 120 rows containing missing values (geom_path).
-Warning in loop_apply(n, do.ply) :
-  Removed 400 rows containing missing values (geom_path).
-Warning in loop_apply(n, do.ply) :
-  Removed 400 rows containing missing values (geom_path).
-Warning in robustSNHTunequal(data = data, period = period, time = time,  :
-  Only integer values of time are used!  Rounding down.
-Warning in loop_apply(n, do.ply) :
-  Removed 6 rows containing missing values (geom_path).
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'snht.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## soil.spec (2.1.4)
 Maintainer: Andrew Sila <a.sila@cgiar.org>
@@ -3804,37 +3216,7 @@ __OK__
 Maintainer: Leo Lahti <louhos@googlegroups.com>  
 Bug reports: https://github.com/ropengov/sorvi/issues
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading http://data.okf.fi/ropengov/avoindata//louhos/translations.rda
-Loading http://data.okf.fi/ropengov/avoindata/mml/rdata/Yleiskartta-1000/HallintoAlue_DataFrame.RData. (C) MML 2013. Converted to RData shape object by Louhos. For more information, see https://github.com/avoindata/mml/
-Downloading data from http://fi.wikipedia.org/wiki/Luettelo_Suomen_postinumeroista_kunnittain
-Loading http://data.okf.fi/ropengov/avoindata/mml/rdata/Yleiskartta-1000/HallintoAlue_DataFrame.RData. (C) MML 2013. Converted to RData shape object by Louhos. For more information, see https://github.com/avoindata/mml/
-Loading http://data.okf.fi/ropengov/avoindata/mml/rdata/Yleiskartta-1000/HallintoAlue_DataFrame.RData. (C) MML 2013. Converted to RData shape object by Louhos. For more information, see https://github.com/avoindata/mml/
-Loading http://data.okf.fi/ropengov/avoindata/mml/rdata/Yleiskartta-1000/HallintoAlue_DataFrame.RData. (C) MML 2013. Converted to RData shape object by Louhos. For more information, see https://github.com/avoindata/mml/
-Loading http://data.okf.fi/ropengov/avoindata/mml/rdata/Yleiskartta-1000/HallintoAlue_DataFrame.RData. (C) MML 2013. Converted to RData shape object by Louhos. For more information, see https://github.com/avoindata/mml/
-Loading http://data.okf.fi/ropengov/avoindata/mml/rdata/Yleiskartta-1000/HallintoAlue_DataFrame.RData. (C) MML 2013. Converted to RData shape object by Louhos. For more information, see https://github.com/avoindata/mml/
-
-Attaching package: 'plyr'
-
-The following objects are masked from 'package:reshape':
-
-    rename, round_any
-
-Computing boostrapped smoothers ...
-convert bootstrapped spaghettis to long format
-Computing density estimates for each vertical cut ...
-Build ggplot figure ...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'sorvi.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## spanr (1.0)
 Maintainer: Roger Marshall <rj.marshall@auckland.ac.nz>
@@ -3842,7 +3224,7 @@ Maintainer: Roger Marshall <rj.marshall@auckland.ac.nz>
 ```
 checking whether package ‘spanr’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/spanr.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/spanr.Rcheck/00install.out’ for details.
 ```
 
 ## sparseMVN (0.2.0)
@@ -3861,7 +3243,7 @@ Maintainer: Roger Marshall <rj.marshall@auckland.ac.nz>
 ```
 checking whether package ‘srd’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpaTGn9N/check_cran3da26de4b7c3/srd.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/srd.Rcheck/00install.out’ for details.
 ```
 
 ## ss3sim (0.8.2)
@@ -3880,18 +3262,6 @@ run_ss3sim: no visible global function definition for ‘foreach’
 setup_parallel: no visible global function definition for
   ‘getDoParWorkers’
 ```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'ss3sim-vignette.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
 
 ## SSrat (1.0)
 Maintainer: Hans Landsheer <j.a.landsheer@uu.nl>
@@ -3901,22 +3271,7 @@ __OK__
 ## sss (0.0-11)
 Maintainer: Andrie de Vries <apdevries@gmail.com>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-The sss package is in early stages of development and still considered experimental.
-Read 3 items
-Reading SSS metadata
-Reading SSS data
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'sss.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## Stack (2.0-1)
 Maintainer: Mike Malecki <Mike.Malecki@yougov.com>
@@ -4048,18 +3403,7 @@ manual.
 ## surveydata (0.1-14)
 Maintainer: Andrie de Vries <apdevries@gmail.com>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'surveydata.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## synthpop (1.1-0)
 Maintainer: Beata Nowok <beata.nowok@gmail.com>
@@ -4068,23 +3412,6 @@ Maintainer: Beata Nowok <beata.nowok@gmail.com>
 checking dependencies in R code ... NOTE
 Unexported object imported by a ':::' call: ‘coefplot:::position_dodgev’
   See the note in ?`:::` about the use of this operator.
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: lattice
-Loading required package: MASS
-Loading required package: nnet
-Loading required package: ggplot2
-Loading required package: coefplot
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'synthpop.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
 ```
 
 ## taRifx (1.0.6)
@@ -4231,37 +3558,12 @@ projectDate: no visible global function definition for
 Maintainer: Gionata Bocci <boccigionata@gmail.com>  
 Bug reports: https://github.com/GioBo/TR8/issues
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'Expanding_TR8.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## trapezoid (2.0-0)
 Maintainer: Jeremy Thoms Hetzel <jthetzel@gmail.com>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: trapezoid
-Loading required package: plyr
-Loading required package: ggplot2
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'trapezoid.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## treeclim (1.0.11)
 Maintainer: Christian Zang <christian.zang@wzw.tum.de>
@@ -4277,24 +3579,7 @@ manual.
 ## treecm (1.2.1)
 Maintainer: Marco Bascietto <marco.bascietto@cnr.it>
 
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Error : Mapping a variable to y and also using stat="bin".
-  With stat="bin", it will attempt to set the y value to the count of cases in each group.
-  This can result in unexpected behavior and will not be allowed in a future version of ggplot2.
-  If you want y to represent counts of cases, use stat="bin" and don't map a variable to y.
-  If you want y to represent values in the data, use stat="identity".
-  See ?geom_bar for examples. (Defunct; last used in version 0.9.2)
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'treecm.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
-```
+__OK__
 
 ## TripleR (1.4)
 Maintainer: Felix Schönbrodt <felix.schoenbrodt@psy.lmu.de>
@@ -4346,25 +3631,6 @@ checking dependencies in R code ... NOTE
 ```
 checking Rd cross-references ... NOTE
 Package unavailable to check Rd xrefs: ‘alr3’
-```
-```
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: vcd
-Loading required package: grid
-Loading required package: gnm
-The following objects are masked _by_ .GlobalEnv:
-
-    A, B, C
-
-Error in texi2dvi(file = file, pdf = TRUE, clean = clean, quiet = quiet,  : 
-  Running 'texi2dvi' on 'vcd-tutorial.tex' failed.
-Messages:
-sh: /usr/local/bin/texi2dvi: No such file or directory
-Calls: buildVignettes -> texi2pdf -> texi2dvi
-Execution halted
-
 ```
 
 ## vdmR (0.1.0)
