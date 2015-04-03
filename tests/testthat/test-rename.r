@@ -49,6 +49,12 @@ test_that("Renaming list with one conflicting variable name - default", {
   expected_response <- "The plyr::rename operation has created duplicates for the following name\\(s\\): \\(`f`\\)"
   expect_warning(object = rename(x = x, replace = replace_list), regexp = expected_response)
 })
+test_that("Renaming list with two conflicting variable names - default", {
+  x <- list(a = 1, b = 2, c = 3, d = 4, e = 5)
+  replace_list <- c("c" = "f", "b" = "e", "a" = "f", "d" = "g", "e" = "g")
+  expected_response <- "The plyr::rename operation has created duplicates for the following name\\(s\\): \\(`f`, `g`\\)"
+  expect_warning(object = rename(x = x, replace = replace_list), regexp = expected_response)
+})
 test_that("Renaming list with an conflicting variable name - without warning", {
   x <- list(a = 1, b = 2, c = 3)
   replace_list <- c("c" = "f", "b" = "e", "a" = "f")
