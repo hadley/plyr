@@ -47,13 +47,13 @@ test_that("Renaming list with one conflicting variable name - default", {
   x <- list(a = 1, b = 2, c = 3)
   replace_list <- c("c" = "f", "b" = "e", "a" = "f")
   expected_response <- "The plyr::rename operation has created duplicates for the following name\\(s\\): \\(`f`\\)"
-  expect_warning(object = rename(x = x, replace = replace_list), regexp = expected_response)
+  expect_warning(rename(x = x, replace = replace_list), expected_response)
 })
 test_that("Renaming list with two conflicting variable names - default", {
   x <- list(a = 1, b = 2, c = 3, d = 4, e = 5)
   replace_list <- c("c" = "f", "b" = "e", "a" = "f", "d" = "g", "e" = "g")
   expected_response <- "The plyr::rename operation has created duplicates for the following name\\(s\\): \\(`f`, `g`\\)"
-  expect_warning(object = rename(x = x, replace = replace_list), regexp = expected_response)
+  expect_warning(rename(x = x, replace = replace_list), expected_response)
 })
 test_that("Renaming list with an conflicting variable name - without warning", {
   x <- list(a = 1, b = 2, c = 3)
@@ -69,14 +69,14 @@ test_that("Renaming to the same value", {
   x <- list(a = 1, b = 2, c = 3)
   replace_list <- c("a" = "a")
   expected_value <- x
-  expect_identical(rename(x = x, replace = replace_list), expected = expected_value)
+  expect_identical(rename(x = x, replace = replace_list), expected_value)
 })
 test_that("Renaming list with an empty renaming vector", {
   #No renames are requested (which could happen if the calling code was under a lot of automated code.)
   x <- list(a = 1, b = 2, c = 3)
   replace_list <- c()
   expected_value <- x
-  expect_identical(rename(x = x, replace = replace_list), expected = expected_value)
+  expect_identical(rename(x = x, replace = replace_list), expected_value)
 })
 test_that("Single Swapping (shouldn't cause problems)", {
   #Notice how a becomes c, while c becomes f.
@@ -84,7 +84,7 @@ test_that("Single Swapping (shouldn't cause problems)", {
   replace_list <- c("c" = "f", "b" = "e", "a" = "c")
   expected_value <- list(c = 1, e = 2, f = 3)
   actual_value <- rename(x = x, replace = replace_list)
-  expect_identical(actual_value, expected = expected_value)
+  expect_identical(actual_value, expected_value)
 })
 test_that("Double Swapping (shouldn't cause problems)", {
   #Notice how a becomes c, while c becomes a.
@@ -92,7 +92,7 @@ test_that("Double Swapping (shouldn't cause problems)", {
   replace_list <- c("c" = "a", "b" = "z", "a" = "c")
   expected_value <- list(c = 1, z = 2, a = 3)
   actual_value <- rename(x = x, replace = replace_list)
-  expect_identical(actual_value, expected = expected_value)
+  expect_identical(actual_value, expected_value)
 })
 test_that("Multiple assignments for the same element", {
   #Notice how it requests to change a to d, e, and f.
@@ -100,5 +100,5 @@ test_that("Multiple assignments for the same element", {
   replace_list <- c("a" = "d", "a" = "e", "a" = "f")
   expected_response <- "The following `from` values were not present in `x`: a, a"
   expected_value <- list(a = 1, a = 2, a = 3)
-  expect_message(rename(x = x, replace = replace_list), regexp = expected_response)
+  expect_message(rename(x = x, replace = replace_list), expected_response)
 })
