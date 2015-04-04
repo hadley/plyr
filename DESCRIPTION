@@ -21,7 +21,7 @@ Suggests:
     testthat,
     tcltk,
     foreach,
-    doMC,
+    doParallel,
     itertools,
     iterators
 License: MIT + file LICENSE

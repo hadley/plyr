@@ -292,8 +292,7 @@
     #  user  system elapsed
     # 0.007   0.005   2.005
 
-    library(doMC)
-    registerDoMC(2)
+    doParallel::registerDoParallel(2)
     system.time(llply(x, wait, .parallel = TRUE))
     #  user  system elapsed
     # 0.020   0.011   1.038
