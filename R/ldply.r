@@ -18,10 +18,11 @@ ldply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
     .progress = .progress, .inform = .inform,
     .parallel = .parallel, .paropts = .paropts)
 
-  if (is.na(.id)) {
+  if (identical(.id, NA) {
     .id <- ".id"
     id_as_factor <- FALSE
-  } else
+  } else {
     id_as_factor <- TRUE
+  }
   list_to_dataframe(res, attr(.data, "split_labels"), .id, id_as_factor)
 }
