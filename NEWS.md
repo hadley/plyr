@@ -5,8 +5,8 @@
 * Fix bug in `split_indices()` when `n` isn't supplied. 
 
 * Fix bug in `.id` parameter to `ldply()` and `rdply()` allowing for 
-  `.id = NULL` to work as described in the help. (Thanks to Doug Mitarotonda,
-  #207, and Marek, #224 and #225)
+  `.id = NULL` to work as described in the help. (Thanks to Doug Mitarotonda, #207, 
+  and Marek, #224 and #225)
 
 # Version 1.8.1
 
