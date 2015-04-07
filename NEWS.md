@@ -8,6 +8,9 @@
   `.id = NULL` to work as described in the help. (Thanks to Doug Mitarotonda, #207, 
   and Marek, #224 and #225)
 
+* Parameter `.inform` is now honored for `?_ply()` calls. (Thanks to
+  Kirill Müller, #209)
+
 # Version 1.8.1
 
 * New parameter `.id` to `ldply()` and `rdply()` that specifies the name of
