@@ -15,3 +15,24 @@ test_that("each() function", {
   expect_error(each()(1:10))
 
 })
+
+test_that("here() function", {
+
+  df <- data.frame(a = rep(c("a","b"), each = 10), b = 1:20)
+  f1 <- function(label) {
+     ddply(df, "a", mutate, label = paste(label, b))
+  }
+  expect_error(f1("name:"))
+
+  f2 <- function(label) {
+     ddply(df, "a", here(mutate), label = paste(label, b))
+  }
+  expect_true(all(grepl("^name: ", f2("name:")$label)))
+
+  f3 <- function() {
+    label <- "name:"
+    ddply(df, "a", here(mutate), label = paste(label, b))
+  }
+  expect_true(all(grepl("^name: ", f3()$label)))
+
+})
