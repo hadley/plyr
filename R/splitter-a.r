@@ -42,7 +42,8 @@ splitter_a <- function(data, .margins = 1L, .expand = TRUE) {
   dimensions[-.margins] <- list("")
   indices <- expand.grid(dimensions, KEEP.OUT.ATTRS = FALSE,
     stringsAsFactors = FALSE)
-  names(indices) <- paste("X", 1:ncol(indices), sep="")
+
+  names(indices) <- paste("X", seq_len(ncol(indices)), sep="")
 
   # Ensure indices are ordered in the way in which they should appear in the
   # output - last margin varies fastest
