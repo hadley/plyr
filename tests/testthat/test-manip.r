@@ -36,3 +36,13 @@ test_that("here() function", {
   expect_true(all(grepl("^name: ", f3()$label)))
 
 })
+
+test_that("defaults() function", {
+
+  expect_equal(defaults(c(a=1, b=2), c(c=3)), c(a=1, b=2, c=3))
+  expect_equal(defaults(c(a=1, b=2), c(a=3, b=4)), c(a=1, b=2))
+  expect_equal(defaults(c(a=1, b=2), c(a=3, d=4)), c(a=1, b=2, d=4))
+  expect_equal(defaults(c(a=1, b=2), c()), c(a=1, b=2))
+  expect_equal(defaults(c(), c(a=3, d=4)), c(a=3, d=4))
+
+})
