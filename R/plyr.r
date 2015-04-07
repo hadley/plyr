@@ -62,9 +62,11 @@
 #' @docType package
 #' @importFrom Rcpp sourceCpp
 #' @name plyr
+# EXCLUDE COVERAGE START
 NULL
 
 
 .onUnload <- function (libpath) {
   library.dynam.unload("plyr", libpath)
 }
+# EXCLUDE COVERAGE END
