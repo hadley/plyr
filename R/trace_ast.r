@@ -40,6 +40,9 @@ trace_ast.call <- function(x, visitor, ...) {
 trace_ast.if <- trace_ast.call
 
 #' @export
+trace_ast.for <- trace_ast.call
+
+#' @export
 trace_ast.name <- function(x, visitor, ...) {
   visitor(x, ...)
 }
@@ -49,3 +52,12 @@ trace_ast.character <- trace_ast.name
 
 #' @export
 trace_ast.logical <- trace_ast.name
+
+#' @export
+trace_ast.numeric <- trace_ast.name
+
+#' @export
+trace_ast.NULL <- trace_ast.name
+
+#' @export
+trace_ast.srcref <- trace_ast.name
