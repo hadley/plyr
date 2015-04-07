@@ -4,7 +4,7 @@
 \alias{splitter_a}
 \title{Split an array by .margins.}
 \usage{
-splitter_a(data, .margins = 1L, .expand = TRUE)
+splitter_a(data, .margins = 1L, .expand = TRUE, .id = NA)
 }
 \arguments{
 \item{data}{>1d data structure (matrix, data.frame or array)}
@@ -14,6 +14,13 @@ splitter_a(data, .margins = 1L, .expand = TRUE)
 \item{.expand}{if splitting a dataframe by row, should output be 1d
 (expand = FALSE), with an element for each row; or nd (expand = TRUE),
 with a dimension for each variable.}
+
+\item{.id}{names of the split label.
+Pass \code{NULL} to avoid creation of split labels.
+Omit or pass \code{NA} to use the default names
+\code{"X1"}, \code{"X2"}, \ldots.
+Otherwise, this argument must have the same length as
+\code{.margins}.}
 }
 \value{
 a list of lower-d slices, with attributes that record split details

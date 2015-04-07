@@ -19,6 +19,12 @@
 #' @param .expand if splitting a dataframe by row, should output be 1d
 #'   (expand = FALSE), with an element for each row; or nd (expand = TRUE),
 #'   with a dimension for each variable.
+#' @param .id names of the split label.
+#'   Pass \code{NULL} to avoid creation of split labels.
+#'   Omit or pass \code{NA} to use the default names
+#'   \code{"X1"}, \code{"X2"}, \ldots.
+#'   Otherwise, this argument must have the same length as
+#'   \code{.margins}.
 #' @return a list of lower-d slices, with attributes that record split details
 #' @family splitter functions
 #' @keywords internal
@@ -29,8 +35,19 @@
 #' plyr:::splitter_a(ozone, 2)
 #' plyr:::splitter_a(ozone, 3)
 #' plyr:::splitter_a(ozone, 1:2)
-splitter_a <- function(data, .margins = 1L, .expand = TRUE) {
+splitter_a <- function(data, .margins = 1L, .expand = TRUE, .id = NA) {
   .margins <- as.integer(.margins)
+
+  if (!is.null(.id)) {
+    if (any(is.na(.id))) {
+      .id <- paste("X", seq_along(.margins), sep="")
+    } else {
+      if (length(.id) != length(.margins)) {
+        stop(".id argument must be of length ", length(.margins), " (=number of margins)")
+      }
+      .id <- as.character(.id)
+    }
+  }
 
   if (length(.margins) == 0) {
     return(list(data))
@@ -68,8 +85,11 @@ splitter_a <- function(data, .margins = 1L, .expand = TRUE) {
     if (!is.null(names(dnames))) {
       names(split_labels) <- names(dnames)[.margins]
     } else {
-      names(split_labels) <- paste("X", seq_along(.margins), sep = "")
+      names(split_labels) <- .id
     }
+
+    if (is.null(.id))
+      split_labels <- NULL
   }
 
   structure(
