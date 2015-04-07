@@ -1,10 +1,11 @@
 #' Make a function return a data frame.
 #'
 #' Create a new function that returns the existing function wrapped in a
-#' data.frame
+#' data.frame with a single column, \code{value}.
 #'
 #' This is useful when calling \code{*dply} functions with a function that
-#' returns a vector, and you want the output in rows, rather than columns
+#' returns a vector, and you want the output in rows, rather than columns.
+#' The \code{value} column is always created, even for empty inputs.
 #'
 #' @keywords manip
 #' @param x function to make return a data frame

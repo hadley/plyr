@@ -46,3 +46,13 @@ test_that("defaults() function", {
   expect_equal(defaults(c(), c(a=3, d=4)), c(a=3, d=4))
 
 })
+
+test_that("as.data.frame.function() function", {
+
+  expect_equal(as.data.frame(identity)(1:10), data.frame(value = 1:10))
+  expect_equal(as.data.frame(rev)(1:10), data.frame(value = 10:1))
+
+  # Always create value column, even if empty
+  expect_equal(as.data.frame(identity)(numeric()), data.frame(value = numeric()))
+
+})
