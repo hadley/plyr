@@ -6,6 +6,9 @@
 #' @template l-
 #' @template -_
 #' @export
+#' @examples
+#' l_ply(llply(mtcars, round), table, .print = TRUE)
+#' l_ply(baseball, function(x) print(summary(x)))
 l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
                   .print = FALSE, .parallel = FALSE, .paropts = NULL) {
   if (is.character(.fun) || is.list(.fun)) .fun <- each(.fun)
