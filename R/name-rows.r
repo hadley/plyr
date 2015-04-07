@@ -8,6 +8,7 @@
 #' @param df a data.frame, with either \code{rownames}, or a column called
 #'  \code{.rownames}.
 #' @export
+#' @keywords manip
 #' @examples
 #' name_rows(mtcars)
 #' name_rows(name_rows(mtcars))
