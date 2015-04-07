@@ -96,3 +96,20 @@ test_that(".id column can be renamed or dropped", {
 
   # todo: test for list with attr(,'split-labels'), needed?
 })
+
+test_that("d_ply", {
+
+  result <- list()
+  memoize <- function(x) {
+    result <<- c(result, list(x))
+  }
+
+  with_mock(
+    print = memoize, {
+      d_ply(baseball, "year", identity, .print = TRUE)
+    }
+  )
+
+  expect_true(all(mapply(identical, result, unname(dlply(baseball, "year", identity)))))
+
+})
