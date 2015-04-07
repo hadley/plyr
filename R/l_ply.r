@@ -51,6 +51,9 @@ l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
     }
     progress$step()
   }
+  do.ply <- varsubst(do.ply, .inform = .inform, .print = .print)
+  do.ply <- constif(do.ply)
+
   if (.parallel) {
     setup_parallel()
     .paropts$.combine <- function(...) NULL

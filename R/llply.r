@@ -65,6 +65,9 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
     progress$step()
     res
   }
+  do.ply <- varsubst(do.ply, .inform = .inform)
+  do.ply <- constif(do.ply)
+
   if (.parallel) {
     setup_parallel()
 
