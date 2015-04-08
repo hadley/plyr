@@ -36,7 +36,7 @@ test_that(".n column can be renamed or dropped", {
 
   out <- rdply(4, f, .id=NULL)
   expect_equal(names(out), c('r'))
-  expect_false(out$r[4]==4)
+  expect_false(out$r[4] == 4)
 
   out <- rdply(4, f, .id='r') # names conflict
   expect_equal(names(out), c('r'))

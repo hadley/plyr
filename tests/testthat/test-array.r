@@ -74,7 +74,7 @@ test_that("idempotent function equivalent to permutation",  {
     dimnames = list(LETTERS[1:4], letters[24:26], letters[1:2]))
 
   perms <- unique(alply(as.matrix(subset(expand.grid(x=0:3,y=0:3,z=0:3),
-                                         (x+y+z)>0 & !any(duplicated(setdiff(c(x,y,z), 0))))),
+                                         (x + y + z) > 0 & !any(duplicated(setdiff(c(x,y,z), 0))))),
                         1,
                         function(x) setdiff(x, 0)))
 
@@ -98,7 +98,7 @@ test_that("alply sets dims and dimnames, equivalence to permutation", {
   #an aperm with the unused dimensions shifted to the front.
   #check against all ways to split this array
   p_alply <- unique(alply(as.matrix(subset(expand.grid(x=0:3,y=0:3,z=0:3),
-                                         (x+y+z)>0 & !any(duplicated(setdiff(c(x,y,z), 0))))),
+                                         (x + y + z) > 0 & !any(duplicated(setdiff(c(x,y,z), 0))))),
                         1, function(x) setdiff(x, 0)))
   p_aperm <- llply(p_alply, function(x) union(setdiff(1:3, x), x))
   alplys <- lapply(p_alply, alply, .data=x, identity, .dims = TRUE)

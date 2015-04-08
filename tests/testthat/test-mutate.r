@@ -5,8 +5,8 @@ test_that("mutate behaves the same as transform", {
   t1 <- transform(airquality, Ozone = -Ozone)
   expect_that(m1, equals(t1))
 
-  m2 <- mutate(airquality, new = -Ozone, Temp = (Temp-32)/1.8)
-  t2 <- transform(airquality, new = -Ozone, Temp = (Temp-32)/1.8)
+  m2 <- mutate(airquality, new = -Ozone, Temp = (Temp - 32) / 1.8)
+  t2 <- transform(airquality, new = -Ozone, Temp = (Temp - 32) / 1.8)
   expect_that(m2, equals(t2))
 })
 
