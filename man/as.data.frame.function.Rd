@@ -17,11 +17,12 @@
 }
 \description{
 Create a new function that returns the existing function wrapped in a
-data.frame
+data.frame with a single column, \code{value}.
 }
 \details{
 This is useful when calling \code{*dply} functions with a function that
-returns a vector, and you want the output in rows, rather than columns
+returns a vector, and you want the output in rows, rather than columns.
+The \code{value} column is always created, even for empty inputs.
 }
 \keyword{manip}
 
