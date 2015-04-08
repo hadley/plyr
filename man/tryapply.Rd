@@ -7,6 +7,13 @@ Uses compact, lapply and tryNULL}
 \usage{
 tryapply(list, fun, ...)
 }
+\arguments{
+\item{list}{list to apply function \code{f} on}
+
+\item{...}{further arguments to \code{f}}
+
+\item{f}{function}
+}
 \description{
 Apply with built in try.
 Uses compact, lapply and tryNULL
