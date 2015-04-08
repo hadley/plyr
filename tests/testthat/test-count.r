@@ -13,7 +13,7 @@ test_that("count matches table", {
     mtcars["mpg"],
     mtcars[c("cyl", "vs")])
 
-  for(datum in data) {
+  for (datum in data) {
     expect_that(count_f(datum), equals(table_f(datum)))
   }
 
@@ -22,7 +22,7 @@ test_that("count matches table", {
 test_that("random order doesn't affect count", {
   usual <- count(mtcars, "cyl")
 
-  for(i in 1:5) {
+  for (i in 1:5) {
     mtcars_r <- mtcars[sample(1:nrow(mtcars)), ]
     expect_that(count(mtcars_r, "cyl"), equals(usual))
   }

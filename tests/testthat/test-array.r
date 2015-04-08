@@ -81,7 +81,7 @@ test_that("idempotent function equivalent to permutation",  {
   aperms <- llply(perms, function(perm) aperm(x, unique(c(perm, 1:3))))
   aaplys <- llply(perms, function(perm) aaply(x, perm, identity))
 
-  for(i in seq_along(aperms)) {
+  for (i in seq_along(aperms)) {
     perm <- paste(perms[[i]], collapse = ", ")
     expect_that(dim(aaplys[[i]]), equals(dim(aperms[[i]])), perm)
     expect_that(unname(dimnames(aaplys[[i]])), equals(dimnames(aperms[[i]])),
@@ -170,7 +170,7 @@ test_that("array names do not affect output", {
     alpha_rev = set_dimnames(base, list(R = letters[12:1], C = LETTERS[4:1]))
   )
 
-  for(name in names(arrays)) {
+  for (name in names(arrays)) {
     array <- arrays[[name]]
     expect_that(aaply(array, 1, sum),
       equals(rowSums(array), check.attributes = FALSE), info = name)

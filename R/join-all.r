@@ -15,7 +15,7 @@ join_all <- function(dfs, by = NULL, type = "left", match = "all") {
   if (length(dfs) == 1) return(dfs[[1]])
 
   joined <- dfs[[1]]
-  for(i in 2:length(dfs)) {
+  for (i in 2:length(dfs)) {
     joined <- join(joined, dfs[[i]], by = by, type = type, match = match)
   }
 

@@ -7,7 +7,7 @@ simple_vectors <- list(
 )
 
 test_that("for vector, equivalent to rank", {
-  for(case in simple_vectors) {
+  for (case in simple_vectors) {
     rank <- rank(case, ties = "min")
     rank_df <- id(as.data.frame(case))
 
@@ -16,7 +16,7 @@ test_that("for vector, equivalent to rank", {
 })
 
 test_that("duplicates numbered sequentially", {
-  for(case in simple_vectors) {
+  for (case in simple_vectors) {
     rank <- rep(rank(case, ties = "min"), each = 2)
     rank_df <- id(as.data.frame(rep(case, each = 2)))
 
@@ -26,14 +26,14 @@ test_that("duplicates numbered sequentially", {
 
 test_that("n calculated correctly", {
   n <- function(x) attr(id(x), "n")
-  for(case in simple_vectors) {
+  for (case in simple_vectors) {
     expect_that(n(as.data.frame(case)), equals(26))
   }
 
 })
 
 test_that("for vector + constant, equivalent to rank", {
-  for(case in simple_vectors) {
+  for (case in simple_vectors) {
     rank <- rank(case, ties = "min")
 
     after <- id(data.frame(case, x = 1))

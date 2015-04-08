@@ -30,7 +30,7 @@ l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
     foreach::`%dopar%`(fe, .fun(d, ...))
   } else {
     .data <- as.list(.data)
-    for(i in seq_along(.data)) {
+    for (i in seq_along(.data)) {
       x <- .fun(.data[[i]], ...)
       if (.print) print(x)
       progress$step()

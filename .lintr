@@ -2,6 +2,5 @@ linters: with_defaults(
     "single_quotes_linter" = NULL, # 52
     "camel_case_linter" = NULL, # 36
     "line_length_linter" = NULL, # 26
-    "infix_spaces_linter" = NULL, # 24
-    "spaces_left_parentheses_linter" = NULL # 20
+    "infix_spaces_linter" = NULL # 24
   )

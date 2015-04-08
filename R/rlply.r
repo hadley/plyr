@@ -65,7 +65,7 @@ rlply <- function(.n, .expr, .progress = "none") {
     wrap(function() fun$val)()
     progress$step()
 
-    for(i in seq.int(from = 2L, length.out = .n - 1L)) {
+    for (i in seq.int(from = 2L, length.out = .n - 1L)) {
       f()
       progress$step()
     }
@@ -76,7 +76,7 @@ rlply <- function(.n, .expr, .progress = "none") {
     result[1L] <- list(wrap(function() fun$val)())
     progress$step()
 
-    for(i in seq.int(from = 2L, length.out = .n - 1L)) {
+    for (i in seq.int(from = 2L, length.out = .n - 1L)) {
       result[i] <- list(f())
       progress$step()
     }

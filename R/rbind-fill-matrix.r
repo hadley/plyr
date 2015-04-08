@@ -69,7 +69,7 @@ rbind.fill.matrix <- function(...) {
   pos <- matrix(c(cumsum(rows) - rows + 1, rows), ncol = 2)
 
   ## fill in the new matrix
-  for(i in seq_along(rows)) {
+  for (i in seq_along(rows)) {
     rng <- seq(pos[i, 1], length = pos[i, 2])
     output[rng, lcols[[i]]] <- matrices[[i]]
   }
