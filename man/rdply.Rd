@@ -16,14 +16,13 @@ rdply(.n, .expr, .progress = "none", .id = NA)
 
 \item{.id}{name of the index column. Pass \code{NULL} to avoid creation of
 the index column. For compatibility, omit this argument or pass \code{NA}
-to avoid converting the index column to a factor; in this case, \code{".n"}
-is used as colum name..}
+to use \code{".n"} as column name.}
 }
 \value{
 a data frame
 }
 \description{
-Evalulate expression n times then combine results into a data frame
+Evaluate expression n times then combine results into a data frame
 }
 \details{
 This function runs an expression multiple times, and combines the result into
