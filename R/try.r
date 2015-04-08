@@ -41,7 +41,7 @@ failwith <- function(default = NULL, f, quiet = FALSE) {
 try_default <- function(expr, default, quiet = FALSE) {
   result <- default
   if (quiet) {
-    tryCatch(result <- expr, error = function(e) {})
+    tryCatch(result <- expr, error = function(e) NULL)
   } else {
     try(result <- expr)
   }

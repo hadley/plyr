@@ -62,9 +62,9 @@ create_progress_bar <- function(name = "none", ...) {
 #' l_ply(1:100, identity, .progress = "none")
 progress_none <- function() {
   list(
-    init = function(x) {},
-    step = function()  {},
-    term = function()  {}
+    init = function(x) NULL,
+    step = function()  NULL,
+    term = function()  NULL
   )
 }
 

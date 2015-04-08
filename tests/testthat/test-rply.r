@@ -5,7 +5,9 @@ test_that("Side effects for r_ply", {
 
   # Simple function with side effect of incrementing i in an outer environment
   # by one
-  inc <- function() { i <<- i + 1; invisible(NULL) }
+  inc <- function() {
+    i <<- i + 1; invisible(NULL)
+  }
 
   # For each of the possible counts, check that exactly n side effects are seen
   # for various types of invocations of inc: As a statement, as a function call
@@ -44,7 +46,9 @@ test_that("Side effects for rlply", {
 
   # Similar to the test for r_ply, now there is also a return value in incition
   # to the side effect
-  inc <- function() { i <<- i + 1 }
+  inc <- function() {
+    i <<- i + 1
+  }
 
   # The test now checks, in incition to side effect count, that the returned
   # list is correct
@@ -75,7 +79,9 @@ test_that("Side effects for rlply", {
 test_that("Side effects for raply", {
   counts <- c(0, 1, 5)
 
-  inc <- function() { i <<- i + 1 }
+  inc <- function() {
+    i <<- i + 1
+  }
 
   for (n in counts) {
     # This is funny. Why does raply(.n, inc) return a named vector only for
@@ -107,7 +113,9 @@ test_that("Side effects for raply", {
 test_that("Side effects for rdply", {
   counts <- c(0, 1, 5)
 
-  inc <- function() { i <<- i + 1; data.frame(i = i) }
+  inc <- function() {
+    i <<- i + 1; data.frame(i = i)
+  }
 
   for (n in counts) {
     if (n == 0) {

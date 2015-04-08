@@ -21,17 +21,10 @@ l %>%
 
 
 
-|linter                                | freq|
-|:-------------------------------------|----:|
-|Trailing blank lines are superfluous. |    1|
+|linter | freq|
+|:------|----:|
 
 ```r
 l
-```
-
-```
-## R/RcppExports.R:36:1: style: Trailing blank lines are superfluous.
-## 
-## ^
 ```
 

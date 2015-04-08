@@ -39,7 +39,9 @@ rlply <- function(.n, .expr, .progress = "none") {
   on.exit(progress$term())
 
   if (.print) {
-    wrap <- function(f) function() { print(f()) }
+    wrap <- function(f) function() {
+      print(f())
+    }
   } else {
     wrap <- identity
   }
