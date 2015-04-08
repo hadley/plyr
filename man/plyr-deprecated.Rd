@@ -3,12 +3,14 @@
 \name{plyr-deprecated}
 \alias{plyr-deprecated}
 \title{Deprecated Functions in Package plyr}
-\usage{
-liply(...)
-isplit2(...)
-}
 \description{
 These functions are provided for compatibility with older versions of
 \code{plyr} only, and may be defunct as soon as the next release.
+}
+\details{
+\itemize{
+  \item \code{\link{liply}}
+  \item \code{\link{isplit2}}
+}
 }
 
