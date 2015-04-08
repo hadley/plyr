@@ -66,6 +66,13 @@ empty <- function(df) {
   (is.null(df) || nrow(df) == 0 || ncol(df) == 0)
 }
 
+#' Is a formula?
+#' Checks if argument is a formula
+#'
+#' @keywords internal
+#' @export
+is.formula <- function(x) inherits(x, "formula")
+
 "%||%" <- function(a, b) if (is.null(a)) b else a
 
 .matrix_to_df <- function(.data) {

@@ -66,8 +66,3 @@ test_that("extraction", {
   expect_equal(.(a, b)[1], .(a))
   expect_equal(.(a, b, c)[-1], .(b, c))
 })
-
-test_that("check for formula", {
-  expect_true(is.formula(~a))
-  expect_false(is.formula("a"))
-})
