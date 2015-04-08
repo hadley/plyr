@@ -75,7 +75,3 @@ empty <- function(df) {
   colnames(.data) <- cnames
   .data
 }
-
-.any_duplicated <- function(x) {
-  any(duplicated(x))
-}
