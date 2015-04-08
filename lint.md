@@ -2,6 +2,7 @@
 
 ```r
 library(magrittr)
+library(plyr)
 
 l <- lintr::lint_package()
 ```
@@ -13,7 +14,6 @@ l <- lintr::lint_package()
 ```r
 l %>%
   as.data.frame %>%
-  mutate(linter = gsub("'[^']*'", "''", message)) %>%
   count("linter") %>%
   arrange(-freq) %>%
   knitr::kable()
