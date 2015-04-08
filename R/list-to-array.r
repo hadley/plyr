@@ -26,6 +26,9 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
 
     res_dim <- amv_dim(res[[1]])
     res_labels <- amv_dimnames(res[[1]])
+    if (any(vapply(res_labels, .any_duplicated, FALSE))) {
+      warning("Duplicate names not supported.")
+    }
     res_index <- expand.grid(res_labels)
 
     res <- unlist(res, use.names = FALSE, recursive = FALSE)
