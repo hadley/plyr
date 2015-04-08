@@ -33,7 +33,7 @@ test_that("Basic mapping works", {
   # revalue doesn't work for numeric vectors
 })
 
-test_that("Mapping with repeated original values works - should use first instance, and give message", {
+test_that("Mapping with repeated original values - uses first instance, and gives message", {
   newchr <- c("A2", "B1", "A3", "B1")
   expect_message(
     expect_identical(mapvalues(chr, c("A1", "A1"), c("B1", "C1")), newchr))
@@ -52,7 +52,7 @@ test_that("Mapping with repeated original values works - should use first instan
     expect_identical(mapvalues(num, c(8, 8), c(80, 800)), newnum))
 })
 
-test_that("Mapping with repeated new value works (for factors, levels should be in earliest position)", {
+test_that("Mapping with repeated new value (for factors, levels are in earliest position)", {
   newchr <- c("BX", "A1", "BX", "A1")
   expect_identical(mapvalues(chr, c("A3", "A2"), c("BX", "BX")), newchr)
   expect_identical(revalue(chr, c(A3="BX", A2="BX")), newchr)

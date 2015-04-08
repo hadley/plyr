@@ -21,9 +21,8 @@ l %>%
 
 
 
-|linter               | freq|
-|:--------------------|----:|
-|spaces_inside_linter |    1|
+|linter | freq|
+|:------|----:|
 
 ```r
 l %>%
@@ -36,17 +35,11 @@ l %>%
 
 ```
 ## with_defaults(
-##   spaces_inside_linter # 1
+##   
 ## )
 ```
 
 ```r
 l
-```
-
-```
-## R/id.r:34:13: style: Do not place spaces around code in parentheses or square brackets.
-##     res <- c( (mat - 1L) %*% combs + 1L)
-##             ^
 ```
 
