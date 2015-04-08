@@ -10,7 +10,7 @@
 #' @keywords manip
 #' @aliases summarise summarize
 #' @export summarise summarize
-#' @note Be careful when using existing variable names; the corresponding 
+#' @note Be careful when using existing variable names; the corresponding
 #' columns will be immediately updated with the new data and this can affect
 #' subsequent operations referring to those variables.
 #' @examples

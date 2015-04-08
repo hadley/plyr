@@ -3,7 +3,6 @@ exclude_linters <- c(
   "single_quotes_linter", # 52
   "camel_case_linter", # 36
   "line_length_linter", # 26
-  "trailing_whitespace_linter", # 26
   "infix_spaces_linter", # 24
   "spaces_left_parentheses_linter", # 20
   "closed_curly_linter", # 10

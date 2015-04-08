@@ -74,9 +74,9 @@ test_that("Side effects for rlply", {
 
 test_that("Side effects for raply", {
   counts <- c(0, 1, 5)
-  
+
   inc <- function() { i <<- i + 1 }
-  
+
   for (n in counts) {
     # This is funny. Why does raply(.n, inc) return a named vector only for
     # .n == 1?
@@ -86,17 +86,17 @@ test_that("Side effects for raply", {
       exp_res <- setNames(nm = 1)
     } else
       exp_res <- seq_len(n)
-    
+
     i <- 0
     res <- raply(n, inc)
     expect_equal(res, exp_res, info="inc")
     expect_equal(i, n, info="inc")
-    
+
     i <- 0
     res <- raply(n, inc())
     expect_equal(res, exp_res, info="inc()")
     expect_equal(i, n, info="inc()")
-    
+
     i <- 0
     res <- raply(n, function() inc())
     expect_equal(res, exp_res, info="function() inc()")
@@ -106,26 +106,26 @@ test_that("Side effects for raply", {
 
 test_that("Side effects for rdply", {
   counts <- c(0, 1, 5)
-  
+
   inc <- function() { i <<- i + 1; data.frame(i = i) }
-  
+
   for (n in counts) {
     if (n == 0) {
       exp_res <- data.frame()
     } else {
       exp_res <- data.frame(.n = 1L:n, i = 1L:n, stringsAsFactors = FALSE)
     }
-    
+
     i <- 0
     res <- rdply(n, inc)
     expect_equal(res, exp_res, info="inc")
     expect_equal(i, n, info="inc")
-    
+
     i <- 0
     res <- rdply(n, inc())
     expect_equal(res, exp_res, info="inc()")
     expect_equal(i, n, info="inc()")
-    
+
     i <- 0
     res <- rdply(n, function() inc())
     expect_equal(res, exp_res, info="function() inc()")

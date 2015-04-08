@@ -135,10 +135,10 @@ test_that("matrices converted to data frames, without id column", {
 test_that("matrices converted to data frames, with id column", {
   mat <- matrix(1:20, ncol = 4)
   colnames(mat) <- letters[1:4]
-  
+
   li <- list(a = mat, b = mat)
   df <- plyr:::list_to_dataframe(li, id_name = "my_id")
-  
+
   expect_equal(nrow(df), 2 * nrow(mat))
   expect_equal(names(df), c("my_id", "a", "b", "c", "d"))
   expect_equal(df$my_id, rep(c("a", "b"), c(5, 5)))
@@ -147,10 +147,10 @@ test_that("matrices converted to data frames, with id column", {
 test_that("matrices converted to data frames, with id column as factor", {
   mat <- matrix(1:20, ncol = 4)
   colnames(mat) <- letters[1:4]
-  
+
   li <- list(a = mat, b = mat)
   df <- list_to_dataframe(li, id_name = "my_id", id_as_factor = TRUE)
-  
+
   expect_equal(nrow(df), 2 * nrow(mat))
   expect_equal(names(df), c("my_id", "a", "b", "c", "d"))
   expect_equal(levels(df$my_id), c("a", "b"))
