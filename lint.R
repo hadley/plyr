@@ -20,3 +20,5 @@ l %>%
   count("linter") %>%
   arrange(-freq) %>%
   knitr::kable()
+
+l
