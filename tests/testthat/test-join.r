@@ -183,3 +183,25 @@ test_that("strings match to factors", {
   expect_equal(3, nrow(join(dfF, matchS, type = "inner", by="species")))
 
 })
+
+test_that("join_all", {
+
+  df <- expand.grid(.id = 1, a = 1:2, b = 4:5, c = letters[1:2], d = letters[4:5],
+                    KEEP.OUT.ATTRS = FALSE, stringsAsFactors = FALSE)
+  df$.id <- as.integer(rownames(df))
+  expect_equal(join_all(list(df)), df)
+  expect_equal(join_all(list(df[, c(1,2)], df[, c(1,3,4,5)])), df)
+  expect_equal(join_all(list(df[, c(1,2)], df[, c(1,3,4)], df[, c(1,4,5)])), df)
+
+})
+
+test_that("match_df", {
+
+  df <- expand.grid(.id = 1, a = 1:2, b = 4:5, c = letters[1:2], d = letters[4:5],
+                    KEEP.OUT.ATTRS = FALSE, stringsAsFactors = FALSE)
+
+  expect_equal(match_df(df, df), df)
+  expect_equal(match_df(df, df), df)
+  expect_equal(nrow(match_df(df, data.frame(a=1, b=4))), 4)
+
+})
