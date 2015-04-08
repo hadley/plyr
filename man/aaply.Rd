@@ -58,6 +58,11 @@ those dimensions are added on to the highest dimensions, rather than the
 lowest dimensions.  This makes \code{aaply} idempotent, so that
 \code{aaply(input, X, identity)} is equivalent to \code{aperm(input, X)}.
 }
+\section{Warning}{
+Passing a data frame as first argument may lead to
+unexpected results, see \url{https://github.com/hadley/plyr/issues/212}.
+}
+
 \section{Input}{
  This function splits matrices, arrays and data frames by
   dimensions
