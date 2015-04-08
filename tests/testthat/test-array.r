@@ -185,7 +185,7 @@ test_that("no support for duplicate names (#211)", {
   n <- function(x) {
     setNames(x, letters[c(1:9,2)])
   }
-  A <- list(X=n(1:10),Y=n(11:20),Z=n(21:30))
+  B <- list(X=n(1:10), Y=n(11:20), Z=n(21:30))
 
   expect_warning(laply(B, identity), "Duplicate names")
 
