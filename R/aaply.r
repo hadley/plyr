@@ -8,6 +8,9 @@
 #' lowest dimensions.  This makes \code{aaply} idempotent, so that
 #' \code{aaply(input, X, identity)} is equivalent to \code{aperm(input, X)}.
 #'
+#' @section Warning:Passing a data frame as first argument may lead to
+#' unexpected results, see \url{https://github.com/hadley/plyr/issues/212}.
+#'
 #' @template ply
 #' @template a-
 #' @template -a
