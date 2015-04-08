@@ -135,5 +135,3 @@ test_that("zero-row matrices", {
   expect_equal(nrow(bc), 0)
   expect_true(all(colnames(bc) %in% c("x", "y", "z")))
 })
-
-

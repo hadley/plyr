@@ -33,4 +33,3 @@ loop_apply <- function(n, f) {
 split_indices <- function(group, n = 0L) {
     .Call('plyr_split_indices', PACKAGE = 'plyr', group, n)
 }
-

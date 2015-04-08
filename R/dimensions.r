@@ -48,4 +48,3 @@ reduce_dim <- function(x) {
   call <- as.call(c(list(as.name("["), quote(x)), subs, list(drop = TRUE)))
   eval(call)
 }
-

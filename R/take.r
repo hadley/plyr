@@ -22,4 +22,3 @@ take <- function(x, along, indices, drop = FALSE) {
 
   eval(as.call(c(as.name("["), as.name("x"), index, drop = drop)))
 }
-

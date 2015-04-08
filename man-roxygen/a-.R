@@ -9,4 +9,3 @@
 #' @param .expand if \code{.data} is a data frame, should output be 1d (expand
 #'   = FALSE), with an element for each row; or nd (expand = TRUE), with a
 #'  dimension for each variable.
-
