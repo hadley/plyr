@@ -67,7 +67,7 @@ rbind.fill <- function(...) {
     df <- dfs[[i]]
 
     for (var in names(df)) {
-      setters[[var]](rng, df[[var]])
+      setters[[var]](rng, df[[var]]) # nolint
     }
   }
 

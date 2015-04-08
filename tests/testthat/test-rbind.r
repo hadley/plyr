@@ -286,19 +286,19 @@ expect_linear_enough <- function(timings, size=2^10, threshold=0.2) {
 }
 
 test_that("rbind.fill performance linear", {
-  timings <- get_rbind_times(data.frame(size = 2^(1:10)),
+  timings <- get_rbind_times(data.frame(size = 2 ^ (1:10)),
                              classes=c("numeric", "character", "array"))
   expect_linear_enough(timings)
 })
 
 test_that("rbind.fill performance linear with factors", {
-  timings <- get_rbind_times(data.frame(size = 2^(1:10)),
+  timings <- get_rbind_times(data.frame(size = 2 ^ (1:10)),
                              classes=c("factor"))
   expect_linear_enough(timings)
 })
 
 test_that("rbind.fill performance linear with times", {
-  timings <- get_rbind_times(data.frame(size = 2^(1:10)),
+  timings <- get_rbind_times(data.frame(size = 2 ^ (1:10)),
                              classes=c("time"))
   expect_linear_enough(timings)
 })

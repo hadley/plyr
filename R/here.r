@@ -21,7 +21,7 @@
 #' f2("name:")
 #' # Works :)
 here <- function(f) {
-  call <- substitute(function(...) (f)(...), list(f = f))
+  call <- substitute(function(...) (f)(...), list(f = f)) # nolint
   fun <- eval(call, parent.frame())
   attr(fun, "srcref") <- srcfilecopy("<text>", deparse(call))
   fun
