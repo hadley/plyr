@@ -13,16 +13,6 @@
 #' @param .fun function to apply to each piece
 #' @param ... other arguments passed on to \code{.fun}
 #' @export
-#' @examples
-#' if (require("iterators")) {
-#'   system.time(dlply(baseball, "id", summarise, mean_rbi = mean(rbi)))
-#'   system.time({
-#'     baseball_id <- isplit2(baseball, baseball$id)
-#'     liply(baseball_id, summarise, mean_rbi = mean(rbi, na.rm = TRUE))
-#'   })
-#'   # Iterators get used up:
-#'   liply(baseball_id, summarise, mean_rbi = mean(rbi, na.rm = TRUE))
-#' }
 # EXCLUDE COVERAGE START
 liply <- function(.iterator, .fun = NULL, ...) {
   .Deprecated("llply")
