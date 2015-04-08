@@ -20,6 +20,12 @@ if (require("doParallel", quietly = TRUE)) {
       "Progress disabled")
   })
 
+  test_that("llply + .parallel complains about invalid arguments", {
+    expect_message(
+      llply(1:10, force, .parallel = TRUE, .progress = "text"),
+      "Progress disabled")
+  })
+
   test_that(".paropts passes options to foreach", {
     combine <- function(a, b) NULL
     x <- llply(1:10, identity, .parallel = TRUE,

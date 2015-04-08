@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/hadley/plyr.png?branch=master)](https://travis-ci.org/hadley/plyr)
+[![Build Status](https://travis-ci.org/hadley/plyr.png?branch=master)](https://travis-ci.org/hadley/plyr) [![Coverage Status](https://coveralls.io/repos/hadley/plyr/badge.svg?branch=master)](https://coveralls.io/r/hadley/plyr?branch=master)
 
 # plyr
 
