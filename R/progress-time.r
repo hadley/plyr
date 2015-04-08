@@ -24,8 +24,10 @@ progress_time <- function() {
 }
 
 txtTimerBar <- function(n = 1) {
+  # nolint start
   start <- .last_update_time <- proc.time()[3]
   times <- numeric(n)
+  # nolint end
   value <- NULL
 
   killed <- FALSE

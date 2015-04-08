@@ -14,6 +14,5 @@
 #' @method as.data.frame function
 #' @export
 as.data.frame.function <- function(x, row.names, optional, ...) {
-  name <- deparse(substitute(x))
   function(...) data.frame(value = x(...))
 }

@@ -43,8 +43,6 @@ each <- function(...) {
   unames[unames == ""] <- fnames[unames == ""]
 
   n <- length(fs)
-  proto <- NULL
-  result <- NULL
 
   if (n == 1) {
     # If there is only one function, things are simple.  We just
@@ -55,6 +53,11 @@ each <- function(...) {
       res
     }
   } else {
+    # nolint start
+    proto <- NULL
+    result <- NULL
+    # nolint end
+
     function(x, ...) {
       # For n > 1 things are a little tricky
       # Construct protoype for output on first call

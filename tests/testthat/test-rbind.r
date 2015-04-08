@@ -266,8 +266,10 @@ rbind_time <- function(size,
 }
 
 get_rbind_times <- function(...) {
+  # nolint start
   rbind_time(10) #warm up/JIT
   mdply(.fun = rbind_time, ...)
+  # nolint end
 }
 
 if (identical(Sys.getenv("NOT_CRAN"), "true") &&
