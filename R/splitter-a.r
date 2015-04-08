@@ -58,7 +58,14 @@ splitter_a <- function(data, .margins = 1L, .expand = TRUE) {
       dnames <- list(seq_len(nrow(data)), names(data))
     } else {
       dnames <- amv_dimnames(data)
-      dnames <- lapply(dnames, function(x) factor(x, levels = x))
+      dnames <- lapply(
+        dnames,
+        function(x) {
+          if (any(duplicated(x)))
+            x <- make.unique(as.character(x))
+          factor(x, levels = x)
+        }
+      )
     }
 
     raw <- mapply("[", dnames[.margins], indices[.margins], SIMPLIFY = FALSE)
