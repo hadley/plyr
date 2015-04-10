@@ -18,6 +18,9 @@
 * Warn on duplicate names that cause certain array functions to fail. (Thanks
   to Kirill Müller, #211)
 
+* Parameter `.inform` is now honored for `?_ply()` calls. (Thanks to
+  Kirill Müller, #209)
+
 # Version 1.8.1
 
 * New parameter `.id` to `ldply()` and `rdply()` that specifies the name of
