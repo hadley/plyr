@@ -62,12 +62,12 @@ rbind.fill <- function(...) {
   pos <- matrix(c(cumsum(rows) - rows + 1, rows), ncol = 2)
 
   # Copy inputs into output
-  for(i in seq_along(rows)) {
+  for (i in seq_along(rows)) {
     rng <- seq(pos[i, 1], length = pos[i, 2])
     df <- dfs[[i]]
 
-    for(var in names(df)) {
-      setters[[var]](rng, df[[var]])
+    for (var in names(df)) {
+      setters[[var]](rng, df[[var]]) # nolint
     }
   }
 
@@ -83,9 +83,9 @@ output_template <- function(dfs, nrows) {
   seen <- rep(FALSE, length(output))
   names(seen) <- vars
 
-  for(df in dfs) {
+  for (df in dfs) {
     matching <- intersect(names(df), vars[!seen])
-    for(var in matching) {
+    for (var in matching) {
       output[[var]] <- allocate_column(df[[var]], nrows, dfs, var)
     }
 

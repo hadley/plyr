@@ -91,7 +91,7 @@ test_that("time zones are preserved", {
   get_tz <- function(x) attr(as.POSIXlt(x), "tz")
 
   tzs <- c("CET", "UTC")
-  for(tz in tzs) {
+  for (tz in tzs) {
     start <- data.frame(x = as.POSIXct(dstart, tz = tz))
     end <- data.frame(x = as.POSIXct(dstop, tz = tz))
 
@@ -266,37 +266,39 @@ rbind_time <- function(size,
 }
 
 get_rbind_times <- function(...) {
+  # nolint start
   rbind_time(10) #warm up/JIT
   mdply(.fun = rbind_time, ...)
+  # nolint end
 }
 
 if (identical(Sys.getenv("NOT_CRAN"), "true") &&
     !identical(Sys.getenv("TRAVIS"), "true")) {
 
-expect_linear_enough <- function(timings, size=2^10, threshold=0.2) {
+expect_linear_enough <- function(timings, size=2 ^ 10, threshold=0.2) {
   #expect that no more than `threshold` of a `size` input's runtime is
   #accounted for by quadratic behavior
   #predict.lm(type="terms") does strange things w/ built-in intercepts, avoid
   timings <- mutate(timings, intercept=1)
-  model <- lm(user.self ~ size + I(size^2) - 1 + intercept, timings)
+  model <- lm(user.self ~ size + I(size ^ 2) - 1 + intercept, timings)
   p <- predict(model, newdata=data.frame(size=size, intercept=1), type="terms")
   expect_that(p[2] / p[1] < threshold, is_true(), NULL, NULL)
 }
 
 test_that("rbind.fill performance linear", {
-  timings <- get_rbind_times(data.frame(size = 2^(1:10)),
+  timings <- get_rbind_times(data.frame(size = 2 ^ (1:10)),
                              classes=c("numeric", "character", "array"))
   expect_linear_enough(timings)
 })
 
 test_that("rbind.fill performance linear with factors", {
-  timings <- get_rbind_times(data.frame(size = 2^(1:10)),
+  timings <- get_rbind_times(data.frame(size = 2 ^ (1:10)),
                              classes=c("factor"))
   expect_linear_enough(timings)
 })
 
 test_that("rbind.fill performance linear with times", {
-  timings <- get_rbind_times(data.frame(size = 2^(1:10)),
+  timings <- get_rbind_times(data.frame(size = 2 ^ (1:10)),
                              classes=c("time"))
   expect_linear_enough(timings)
 })

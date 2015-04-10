@@ -7,3 +7,4 @@ man-roxygen
 NEWS\.md
 ^cran-comments\.md$
 ^revdep$
+^\.lintr$

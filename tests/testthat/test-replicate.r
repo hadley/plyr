@@ -10,6 +10,6 @@ test_that("length of results are correct", {
 
 test_that("name of id column is set", {
   df <- rdply(4, function() c(a=1), .id='index')
-  
+
   expect_equal(names(df), c('index', 'a'))
 })

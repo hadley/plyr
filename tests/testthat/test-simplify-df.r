@@ -3,7 +3,7 @@ context("List to data frame")
 a <- as.POSIXct(1, origin="2011-01-01")
 
 test_that("classes preserved for atomic scalars", {
-  li <- list(a, a+1)
+  li <- list(a, a + 1)
   df <- list_to_dataframe(li)
   expect_that(df, is_a("data.frame"))
   expect_that(class(df[,1]), equals(class(a)))
@@ -21,7 +21,7 @@ test_that("classes preserved for atomic scalars in list of length 1", {
 })
 
 test_that("classes preserved for atomic vectors", {
-  li <- list(c(a, a+1), c(a+2, a+3))
+  li <- list(c(a, a + 1), c(a + 2, a + 3))
   df <- list_to_dataframe(li)
   expect_that(df, is_a("data.frame"))
   expect_that(nrow(df), equals(2))
@@ -30,7 +30,7 @@ test_that("classes preserved for atomic vectors", {
 })
 
 test_that("classes preserved for atomic vectors in list of length 1", {
-  li <- list(c(a, a+1))
+  li <- list(c(a, a + 1))
   df <- list_to_dataframe(li)
   expect_that(df, is_a("data.frame"))
   expect_that(nrow(df), equals(1))
@@ -39,7 +39,7 @@ test_that("classes preserved for atomic vectors in list of length 1", {
 })
 
 test_that("classes preserved for data.frames", {
-  li <- list(data.frame(V1=a, V2=a+1), data.frame(V1=a+2, V2=a+3))
+  li <- list(data.frame(V1=a, V2=a + 1), data.frame(V1=a + 2, V2=a + 3))
   df <- list_to_dataframe(li)
   expect_that(df, is_a("data.frame"))
   expect_that(nrow(df), equals(2))
@@ -135,10 +135,10 @@ test_that("matrices converted to data frames, without id column", {
 test_that("matrices converted to data frames, with id column", {
   mat <- matrix(1:20, ncol = 4)
   colnames(mat) <- letters[1:4]
-  
+
   li <- list(a = mat, b = mat)
   df <- plyr:::list_to_dataframe(li, id_name = "my_id")
-  
+
   expect_equal(nrow(df), 2 * nrow(mat))
   expect_equal(names(df), c("my_id", "a", "b", "c", "d"))
   expect_equal(df$my_id, rep(c("a", "b"), c(5, 5)))
@@ -147,10 +147,10 @@ test_that("matrices converted to data frames, with id column", {
 test_that("matrices converted to data frames, with id column as factor", {
   mat <- matrix(1:20, ncol = 4)
   colnames(mat) <- letters[1:4]
-  
+
   li <- list(a = mat, b = mat)
   df <- list_to_dataframe(li, id_name = "my_id", id_as_factor = TRUE)
-  
+
   expect_equal(nrow(df), 2 * nrow(mat))
   expect_equal(names(df), c("my_id", "a", "b", "c", "d"))
   expect_equal(levels(df$my_id), c("a", "b"))

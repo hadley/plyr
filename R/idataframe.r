@@ -27,7 +27,8 @@ idata.frame <- function(df) {
       } else {
         stop("Immutable")
       }
-    }, list(name = name)), envir=self)
+    },
+    list(name = name)), envir=self)
   })
   names(self$`_getters`) <- names(df)
   for (name in names(df)) {

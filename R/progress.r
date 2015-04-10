@@ -62,9 +62,9 @@ create_progress_bar <- function(name = "none", ...) {
 #' l_ply(1:100, identity, .progress = "none")
 progress_none <- function() {
   list(
-    init = function(x) {},
-    step = function()  {},
-    term = function()  {}
+    init = function(x) NULL,
+    step = function()  NULL,
+    term = function()  NULL
   )
 }
 
@@ -158,12 +158,12 @@ progress_win <- function(title = "plyr progress", ...) {
 
   list(
     init = function(x) {
-      win <<- winProgressBar(max = x, title = title, ...)
-      setWinProgressBar(win, 0)
+      win <<- winProgressBar(max = x, title = title, ...) # nolint
+      setWinProgressBar(win, 0) # nolint
     },
     step = function() {
       n <<- n + 1
-      setWinProgressBar(win, n)
+      setWinProgressBar(win, n) # nolint
     },
     term = function() close(win)
   )

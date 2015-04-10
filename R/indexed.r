@@ -13,7 +13,7 @@ names.indexed <- function(x) {
 as.list.indexed <- function(x, ...) {
   n <- length(x)
   out <- vector("list", n)
-  for(i in seq_len(n)) {
+  for (i in seq_len(n)) {
     out[[i]] <- x[[i]]
   }
   names(out) <- names(x)

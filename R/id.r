@@ -37,7 +37,7 @@ id <- function(.variables, drop = FALSE) {
   # Calculate dimensions
   ndistinct <- vapply(ids, attr, "n", FUN.VALUE = numeric(1),
     USE.NAMES = FALSE)
-  
+
   n <- prod(ndistinct)
   if (n > 2 ^ 31) {
     # Too big for integers, have to use strings, which will be much slower :(
@@ -48,7 +48,7 @@ id <- function(.variables, drop = FALSE) {
     combs <- c(1, cumprod(ndistinct[-p]))
 
     mat <- do.call("cbind", ids)
-    res <- c((mat - 1L) %*% combs + 1L)
+    res <- c((mat - 1L) %*% combs + 1L) # nolint
   }
   attr(res, "n") <- n
 

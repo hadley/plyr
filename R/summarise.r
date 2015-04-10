@@ -10,7 +10,7 @@
 #' @keywords manip
 #' @aliases summarise summarize
 #' @export summarise summarize
-#' @note Be careful when using existing variable names; the corresponding 
+#' @note Be careful when using existing variable names; the corresponding
 #' columns will be immediately updated with the new data and this can affect
 #' subsequent operations referring to those variables.
 #' @examples
@@ -35,7 +35,7 @@ summarise <- function(.data, ...) {
     missing_names <- names(cols) == ""
   }
   if (any(missing_names)) {
-    names <- unname(unlist(lapply(match.call(expand.dots = FALSE)$`...`, deparse)))
+    names <- unname(unlist(lapply(match.call(expand.dots = FALSE)$`...`, deparse))) # nolint
     names(cols)[missing_names] <- names[missing_names]
   }
   .data <- as.list(.data)

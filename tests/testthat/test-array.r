@@ -74,14 +74,14 @@ test_that("idempotent function equivalent to permutation",  {
     dimnames = list(LETTERS[1:4], letters[24:26], letters[1:2]))
 
   perms <- unique(alply(as.matrix(subset(expand.grid(x=0:3,y=0:3,z=0:3),
-                                         (x+y+z)>0 & !any(duplicated(setdiff(c(x,y,z), 0))))),
+                                         (x + y + z) > 0 & !any(duplicated(setdiff(c(x,y,z), 0))))),
                         1,
                         function(x) setdiff(x, 0)))
 
   aperms <- llply(perms, function(perm) aperm(x, unique(c(perm, 1:3))))
   aaplys <- llply(perms, function(perm) aaply(x, perm, identity))
 
-  for(i in seq_along(aperms)) {
+  for (i in seq_along(aperms)) {
     perm <- paste(perms[[i]], collapse = ", ")
     expect_that(dim(aaplys[[i]]), equals(dim(aperms[[i]])), perm)
     expect_that(unname(dimnames(aaplys[[i]])), equals(dimnames(aperms[[i]])),
@@ -98,7 +98,7 @@ test_that("alply sets dims and dimnames, equivalence to permutation", {
   #an aperm with the unused dimensions shifted to the front.
   #check against all ways to split this array
   p_alply <- unique(alply(as.matrix(subset(expand.grid(x=0:3,y=0:3,z=0:3),
-                                         (x+y+z)>0 & !any(duplicated(setdiff(c(x,y,z), 0))))),
+                                         (x + y + z) > 0 & !any(duplicated(setdiff(c(x,y,z), 0))))),
                         1, function(x) setdiff(x, 0)))
   p_aperm <- llply(p_alply, function(x) union(setdiff(1:3, x), x))
   alplys <- lapply(p_alply, alply, .data=x, identity, .dims = TRUE)
@@ -170,7 +170,7 @@ test_that("array names do not affect output", {
     alpha_rev = set_dimnames(base, list(R = letters[12:1], C = LETTERS[4:1]))
   )
 
-  for(name in names(arrays)) {
+  for (name in names(arrays)) {
     array <- arrays[[name]]
     expect_that(aaply(array, 1, sum),
       equals(rowSums(array), check.attributes = FALSE), info = name)

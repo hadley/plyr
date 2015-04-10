@@ -13,7 +13,7 @@ test_that("count matches table", {
     mtcars["mpg"],
     mtcars[c("cyl", "vs")])
 
-  for(datum in data) {
+  for (datum in data) {
     expect_that(count_f(datum), equals(table_f(datum)))
   }
 
@@ -22,7 +22,7 @@ test_that("count matches table", {
 test_that("random order doesn't affect count", {
   usual <- count(mtcars, "cyl")
 
-  for(i in 1:5) {
+  for (i in 1:5) {
     mtcars_r <- mtcars[sample(1:nrow(mtcars)), ]
     expect_that(count(mtcars_r, "cyl"), equals(usual))
   }
@@ -52,12 +52,12 @@ test_that("count works with factors and dates", {
   genders <- c("Female", "Male")
   n <- c(5, 10)
   gender_data <- factor(rep.int(genders, n))
-    
+
   expect_equal(count(gender_data), data.frame(x = genders, freq = n))
- 
+
   this_week <- seq(Sys.Date(), Sys.Date() + 6, "1 day")
   n2 <- 1:7
   day_data <- rep(this_week, n2)
-  
+
   expect_equal(count(day_data), data.frame(x = this_week, freq = n2))
 })

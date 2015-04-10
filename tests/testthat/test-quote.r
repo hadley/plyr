@@ -27,7 +27,9 @@ test_that("evaluation takes place in correct environment", {
 })
 
 test_that("names work for long expressions", {
+ # nolint start
  q <- .(foo = barjasdfgjadhfgjsdhfgusdhfgusheguisdhguioahsrofasdgsdfgsdfg +
               dfgafgasdfgsdfgsdfgsdfgsdfgsdfgsdfg)
+ # nolint end
  expect_that(names(q), equals("foo"))
 })

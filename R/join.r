@@ -81,7 +81,6 @@ join <- function(x, y, by = NULL, type = "left", match = "all") {
       stop("Duplicated key in y", call. = FALSE)
     }
 
-    new.cols <- setdiff(names(x), by)
     x.match <- match(keys$y, keys$x)
     x.matched <- unrowname(x[x.match, x.cols, drop = FALSE])
 
@@ -114,7 +113,6 @@ join <- function(x, y, by = NULL, type = "left", match = "all") {
     out <- cbind(x[ids$x, , drop = FALSE], y[ids$y, y.cols, drop = FALSE])
   } else if (type == "right") {
     # Flip x and y, but make sure to put new columns in the right place
-    new.cols <- setdiff(names(x), by)
     ids <- join_ids(y, x, by, all = TRUE)
     out <- cbind(
       y[ids$x, by, drop = FALSE],

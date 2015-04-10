@@ -31,7 +31,7 @@ mutate <- function(.data, ...) {
   cols <- as.list(substitute(list(...))[-1])
   cols <- cols[names(cols) != ""] # Silently drop unnamed columns
 
-  for(col in names(cols)) {
+  for (col in names(cols)) {
     .data[[col]] <- eval(cols[[col]], .data, parent.frame())
   }
   .data
