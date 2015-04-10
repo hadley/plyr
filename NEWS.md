@@ -2,6 +2,9 @@
 
 * Update for changes in R namespace best-practices.
 
+* New parameter `.id` to `adply()` that specifies the name(s) of
+  the index column(s). (Thanks to Kirill Müller, #191)
+
 * Fix bug in `split_indices()` when `n` isn't supplied. 
 
 * Fix bug in `.id` parameter to `ldply()` and `rdply()` allowing for 
@@ -12,9 +15,6 @@
 
 * New parameter `.id` to `ldply()` and `rdply()` that specifies the name of
   the index column. (Thanks to Kirill Müller, #107, #140, #142)
-
-* New parameter `.id` to `rdply()` that specifies the name of the index
-  column. (Thanks to Kirill Müller, #142)
 
 * The .id column in `ldply()` is generated as a factor to preserve
   the sort order, but only if the new `.id` parameter is set. (Thanks to Kirill

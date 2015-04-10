@@ -6,7 +6,7 @@
 \usage{
 adply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
   .progress = "none", .inform = FALSE, .parallel = FALSE,
-  .paropts = NULL)
+  .paropts = NULL, .id = NA)
 }
 \arguments{
 \item{.data}{matrix, array or data frame to be processed}
@@ -39,6 +39,13 @@ is enabled.  This is important if (for example) your code relies on
 external data or packages: use the \code{.export} and \code{.packages}
 arguments to supply them so that all cluster nodes have the correct
 environment set up for computing.}
+
+\item{.id}{name(s) of the index column(s).
+Pass \code{NULL} to avoid creation of the index column(s).
+Omit or pass \code{NA} to use the default names
+\code{"X1"}, \code{"X2"}, \ldots.
+Otherwise, this argument must have the same length as
+\code{.margins}.}
 }
 \value{
 A data frame, as described in the output section.
