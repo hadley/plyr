@@ -12,6 +12,6 @@ a_ply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE,
   pieces <- splitter_a(.data, .margins, .expand)
 
   l_ply(.data = pieces, .fun = .fun, ...,
-    .progress = .progress, .print = .print, .parallel = .parallel,
-    .paropts = .paropts)
+    .progress = .progress, .inform = .inform, .print = .print,
+    .parallel = .parallel, .paropts = .paropts)
 }

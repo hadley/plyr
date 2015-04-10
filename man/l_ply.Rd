@@ -49,6 +49,10 @@ For each element of a list, apply function and discard results
   calling purely for their side effects like displaying plots or
   saving output.
 }
+\examples{
+l_ply(llply(mtcars, round), table, .print = TRUE)
+l_ply(baseball, function(x) print(summary(x)))
+}
 \references{
 Hadley Wickham (2011). The Split-Apply-Combine Strategy
   for Data Analysis. Journal of Statistical Software, 40(1), 1-29.
