@@ -76,6 +76,9 @@ splitter_a <- function(data, .margins = 1L, .expand = TRUE, .id = NA) {
       dnames <- list(seq_len(nrow(data)), names(data))
     } else {
       dnames <- amv_dimnames(data)
+      if (any(vapply(dnames, anyDuplicated, integer(1)) != 0)) {
+        warning("Duplicate names not supported.", call. = FALSE)
+      }
       dnames <- lapply(dnames, function(x) factor(x, levels = x))
     }
 
