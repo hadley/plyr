@@ -16,3 +16,9 @@ test_that("columns can depend on previously created", {
 
   expect_that(m1$dm2, equals(dm2))
 })
+
+test_that("mutating a column twice does not work", {
+  # For compatibility, see #218
+  m1 <- mutate(airquality, dm = 0, dm = Month + Day / 31)
+  expect_equal(m1$dm, rep(0, length(m1$dm)))
+})
