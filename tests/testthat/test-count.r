@@ -61,3 +61,9 @@ test_that("count works with factors and dates", {
 
   expect_equal(count(day_data), data.frame(x = this_week, freq = n2))
 })
+
+test_that("vaggregate corner cases", {
+  res <- vaggregate(1:99, rep(1:11, 9), sum)
+  expect_equal(res, vaggregate(1:99, expand.grid(1:11, 1:9)[,1,drop=FALSE], sum))
+  expect_equal(res, vaggregate(1:99, rep(0.5 + (1:11), 9), sum, .default = 1))
+})

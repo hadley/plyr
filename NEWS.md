@@ -11,6 +11,10 @@
   `.id = NULL` to work as described in the help. (Thanks to Doug Mitarotonda, #207, 
   and Marek, #224 and #225)
 
+* Deprecate exotic functions `liply()` and `isplit2()`, remove unused and
+  unexported functions `dots()` and `parallel_fe()` (Thanks to Kirill Müller,
+  #242, #248)
+
 # Version 1.8.1
 
 * New parameter `.id` to `ldply()` and `rdply()` that specifies the name of

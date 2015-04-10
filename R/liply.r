@@ -6,22 +6,16 @@
 #' than the O(n ^ 2) performance from the naive strategy of growing the list
 #' each time.
 #'
+#' @section Warning:Deprecated, do not use in new code.
+#' @seealso \code{\link{plyr-deprecated}}
 #' @keywords manip
 #' @param .iterator iterator object
 #' @param .fun function to apply to each piece
 #' @param ... other arguments passed on to \code{.fun}
 #' @export
-#' @examples
-#' if (require("iterators")) {
-#'   system.time(dlply(baseball, "id", summarise, mean_rbi = mean(rbi)))
-#'   system.time({
-#'     baseball_id <- isplit2(baseball, baseball$id)
-#'     liply(baseball_id, summarise, mean_rbi = mean(rbi, na.rm = TRUE))
-#'   })
-#'   # Iterators get used up:
-#'   liply(baseball_id, summarise, mean_rbi = mean(rbi, na.rm = TRUE))
-#' }
+# EXCLUDE COVERAGE START
 liply <- function(.iterator, .fun = NULL, ...) {
+  .Deprecated("llply")
   stopifnot(inherits(.iterator, "iter"))
   if (is.null(.fun)) return(as.list(.iterator))
 
@@ -52,9 +46,12 @@ liply <- function(.iterator, .fun = NULL, ...) {
 
 #' Split iterator that returns values, not indices.
 #'
+#' @section Warning:Deprecated, do not use in new code.
+#' @seealso \code{\link{plyr-deprecated}}
 #' @keywords internal
 #' @export
 isplit2 <- function (x, f, drop = FALSE, ...)  {
+  .Deprecated(c("splitter_d", "splitter_a"))
   it <- iterators::isplit(seq_len(nrow(x)), f, drop = drop, ...)
   nextEl <- function() {
     i <- iterators::nextElem(it)
@@ -62,3 +59,4 @@ isplit2 <- function (x, f, drop = FALSE, ...)  {
   }
   structure(list(nextElem = nextEl), class = c("abstractiter", "iter"))
 }
+# EXCLUDE COVERAGE END

@@ -9,5 +9,11 @@ isplit2(x, f, drop = FALSE, ...)
 \description{
 Split iterator that returns values, not indices.
 }
+\section{Warning}{
+Deprecated, do not use in new code.
+}
+\seealso{
+\code{\link{plyr-deprecated}}
+}
 \keyword{internal}
 

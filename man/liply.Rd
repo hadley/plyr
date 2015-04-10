@@ -20,16 +20,11 @@ whenever it runs out of space.  This gives O(n ln n) performance rather
 than the O(n ^ 2) performance from the naive strategy of growing the list
 each time.
 }
-\examples{
-if (require("iterators")) {
-  system.time(dlply(baseball, "id", summarise, mean_rbi = mean(rbi)))
-  system.time({
-    baseball_id <- isplit2(baseball, baseball$id)
-    liply(baseball_id, summarise, mean_rbi = mean(rbi, na.rm = TRUE))
-  })
-  # Iterators get used up:
-  liply(baseball_id, summarise, mean_rbi = mean(rbi, na.rm = TRUE))
+\section{Warning}{
+Deprecated, do not use in new code.
 }
+\seealso{
+\code{\link{plyr-deprecated}}
 }
 \keyword{manip}
 

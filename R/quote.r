@@ -192,10 +192,3 @@ c.quoted <- function(..., recursive = FALSE) {
 "[.quoted" <- function(x, i, ...) {
   structure(NextMethod("["), env = attr(x, "env"), class = "quoted")
 }
-
-#' Is a formula?
-#' Checks if argument is a formula
-#'
-#' @keywords internal
-#' @export
-is.formula <- function(x) inherits(x, "formula")
