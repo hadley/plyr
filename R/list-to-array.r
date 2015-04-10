@@ -26,7 +26,16 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
 
     res_dim <- amv_dim(res[[1]])
     res_labels <- amv_dimnames(res[[1]])
-    res_index <- expand.grid(res_labels)
+    res_labels_unique <- lapply(
+      res_labels,
+      function(x) {
+        if (any(duplicated(x)))
+          x <- make.unique(as.character(x))
+
+        x
+      }
+    )
+    res_index <- expand.grid(res_labels_unique)
 
     res <- unlist(res, use.names = FALSE, recursive = FALSE)
   } else {
