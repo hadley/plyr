@@ -15,6 +15,9 @@
   unexported functions `dots()` and `parallel_fe()` (Thanks to Kirill Müller,
   #242, #248)
 
+* Warn on duplicate names that cause certain array functions to fail. (Thanks
+  to Kirill Müller, #211)
+
 # Version 1.8.1
 
 * New parameter `.id` to `ldply()` and `rdply()` that specifies the name of
