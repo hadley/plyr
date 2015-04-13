@@ -32,3 +32,9 @@ I have also run R CMD check on downstream dependencies of plyr
 (https://github.com/hadley/plyr/tree/master/revdep). All packages 
 that I could install passed except:
 
+* NAT: the error occurs in a test "we can read neuron from remote url", which
+  suggests it's an interim failure (plus it only occur once in the 3+ times
+  I ran the revdep checks)
+  
+* RSiteCatalyst: appears to be authentication related.
+

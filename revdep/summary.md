@@ -6,7 +6,7 @@
 |:--------|:----------------------------|
 |version  |R version 3.1.3 (2015-03-09) |
 |system   |x86_64, darwin13.4.0         |
-|ui       |RStudio (0.99.362)           |
+|ui       |RStudio (0.99.380)           |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/Chicago              |
@@ -24,7 +24,7 @@
 |testthat   |   |0.9.1   |2014-10-01 |CRAN (R 3.1.2) |
 
 # Check results
-289 checked out of 290 dependencies 
+293 checked out of 294 dependencies 
 
 ## abctools (1.0)
 Maintainer: Matt Nunes <m.nunes@lancaster.ac.uk>
@@ -32,7 +32,7 @@ Maintainer: Matt Nunes <m.nunes@lancaster.ac.uk>
 ```
 checking whether package ‘abctools’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/abctools.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/abctools.Rcheck/00install.out’ for details.
 ```
 
 ## abd (0.2-7)
@@ -86,7 +86,7 @@ Maintainer: George Rosenberger <rosenberger@imsb.biol.ethz.ch>
 ```
 checking whether package ‘aLFQ’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/aLFQ.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/aLFQ.Rcheck/00install.out’ for details.
 ```
 
 ## alm (0.4.0)
@@ -381,7 +381,7 @@ Package suggested but not available for checking: ‘BRugs’
 ```
 checking whether package ‘BTSPAS’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/BTSPAS.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/BTSPAS.Rcheck/00install.out’ for details.
 ```
 
 ## caret (6.0-41)
@@ -417,7 +417,7 @@ Maintainer: Alexander Robitzsch <a.robitzsch@bifie.at>
 
 ```
 checking package dependencies ... ERROR
-Packages required but not available: ‘WrightMap’ ‘RcppArmadillo’
+Package required but not available: ‘RcppArmadillo’
 
 Package suggested but not available for checking: ‘BIFIEsurvey’
 
@@ -488,7 +488,7 @@ Maintainer: Dr Chris Wheadon <chris.wheadon@gmail.com>
 ```
 checking whether package ‘classify’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/classify.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/classify.Rcheck/00install.out’ for details.
 ```
 
 ## clhs (0.5-4)
@@ -557,7 +557,7 @@ Bug reports: https://github.com/Rdatatable/data.table/issues
 
 __OK__
 
-## dataRetrieval (2.1.2)
+## dataRetrieval (2.2.0)
 Maintainer: Laura DeCicco <ldecicco@usgs.gov>
 
 __OK__
@@ -949,48 +949,7 @@ manual.
 ## GGally (0.5.0)
 Maintainer: Barret Schloerke <schloerke@gmail.com>
 
-```
-checking examples ... ERROR
-Running examples in ‘GGally-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: ggally_facethist
-> ### Title: Plots the Histograms by Faceting
-> ### Aliases: ggally_facethist
-> ### Keywords: hplot
-> 
-> ### ** Examples
-> 
-> data(tips, package = "reshape")
->  ggally_facethist(tips, mapping = ggplot2::aes(x = tip, y = sex))
-stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
-stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
->  ggally_facethist(tips, mapping = ggplot2::aes_string(x = "tip", y = "sex"), binwidth = 0.1)
-Warning in loop_apply(n, do.ply) :
-  position_stack requires constant width: output may be incorrect
-Warning in loop_apply(n, do.ply) :
-  position_stack requires constant width: output may be incorrect
-
- *** caught segfault ***
-address 0x7faf20000038, cause 'memory not mapped'
-
-Traceback:
- 1: allocate_column(df[[var]], nrows, dfs, var)
- 2: output_template(dfs, nrows)
- 3: rbind.fill(res)
- 4: list_to_dataframe(res, attr(.data, "split_labels"), .id, id_as_factor)
- 5: ldply(.data = pieces, .fun = .fun, ..., .progress = .progress,     .inform = .inform, .parallel = .parallel, .paropts = .paropts)
- 6: ddply(data, "PANEL", function(data) {    .$position$adjust(data)})
- 7: get(x, envir = this, inherits = inh)(this, ...)
- 8: p$adjust_position(d)
- 9: f(d = data[[i]], p = layers[[i]])
-10: dlapply(function(d, p) p$adjust_position(d))
-11: ggplot_build(x)
-12: print.ggplot(list(data = list(total_bill = c(16.99, 10.34, 21.01, 23.68, 24.59, 25.29, 8.77, 26.88, 15.04, 14.78, 10.27, 35.26, 15.42, 18.43, 14.83, 21.58, 10.33, 16.29, 16.97, 20.65, 17.92, 20.29, 15.77, 39.42, 19.82, 17.81, 13.37, 12.69, 21.7, 19.65, 9.55, 18.35, 15.06, 20.69, 17.78, 24.06, 16.31, 16.93, 18.69, 31.27, 16.04, 17.46, 13.94, 9.68, 30.4, 18.29, 22.23, 32.4, 28.55, 18.04, 12.54, 10.29, 34.81, 9.94, 25.56, 19.49, 38.01, 26.41, 11.24, 48.27, 20.29, 13.81, 11.02, 18.29, 17.59, 20.08, 16.45, 3.07, 20.23, 15.01, 12.02, 17.07, 26.86, 25.28, 14.73, 10.51, 17.92, 27.2, 22.76, 17.29, 19.44, 16.66, 10.07, 32.68, 15.98, 34.83, 13.03, 18.28, 24.71, 21.16, 28.97, 22.49, 5.75, 16.32, 22.75, 40.17, 27.28, 12.03, 21.01, 12.46, 11.35, 15.38, 44.3, 22.42, 20.92, 15.36, 20.49, 25.21, 18.24, 14.31, 14, 7.25, 38.07, 23.95, 25.71, 17.31, 29.93, 10.65, 12.43, 24.08, 11.69, 13.42, 14.26, 15.95, 12.48, 29.8, 8.52, 14.52, 11.38, 22.82, 19.08, 20.27, 11.17, 12.26, 18.26, 8.51, 10.33, 14.15, 16, 13.16, 17.47, 34.3, 41.19, 27.05, 16.43, 8.35, 18.64, 11.87, 9.78, 7.51, 14.07, 13.13, 17.26, 24.55, 19.77, 29.85, 48.17, 25, 13.39, 16.49, 21.5, 12.66, 16.21, 13.81, 17.51, 24.52, 20.76, 31.71, 10.59, 10.63, 50.81, 15.81, 7.25, 31.85, 16.82, 32.9, 17.89, 14.48, 9.6, 34.63, 34.65, 23.33, 45.35, 23.17, 40.55, 20.69, 20.9, 30.46, 18.15, 23.1, 15.69, 19.81, 28.44, 15.48, 16.58, 7.56, 10.34, 43.11, 13, 13.51, 18.71, 12.74, 13, 16.4, 20.53, 16.47, 26.59, 38.73, 24.27, 12.76, 30.06, 25.89, 48.33, 13.27, 28.17, 12.9, 28.15, 11.59, 7.74, 30.14, 12.16, 13.42, 8.58, 15.98, 13.42, 16.27, 10.09, 20.45, 13.28, 22.12, 24.01, 15.69, 11.61, 10.77, 15.53, 10.07, 12.6, 32.83, 35.83, 29.03, 27.18, 22.67, 17.82, 18.78),     tip = c(1.01, 1.66, 3.5, 3.31, 3.61, 4.71, 2, 3.12, 1.96,     3.23, 1.71, 5, 1.57, 3, 3.02, 3.92, 1.67, 3.71, 3.5, 3.35,     4.08, 2.75, 2.23, 7.58, 3.18, 2.34, 2, 2, 4.3, 3, 1.45, 2.5,     3, 2.45, 3.27, 3.6, 2, 3.07, 2.31, 5, 2.24, 2.54, 3.06, 1.32,     5.6, 3, 5, 6, 2.05, 3, 2.5, 2.6, 5.2, 1.56, 4.34, 3.51, 3,     1.5, 1.76, 6.73, 3.21, 2, 1.98, 3.76, 2.64, 3.15, 2.47, 1,     2.01, 2.09, 1.97, 3, 3.14, 5, 2.2, 1.25, 3.08, 4, 3, 2.71,     3, 3.4, 1.83, 5, 2.03, 5.17, 2, 4, 5.85, 3, 3, 3.5, 1, 4.3,     3.25, 4.73, 4, 1.5, 3, 1.5, 2.5, 3, 2.5, 3.48, 4.08, 1.64,     4.06, 4.29, 3.76, 4, 3, 1, 4, 2.55, 4, 3.5, 5.07, 1.5, 1.8,     2.92, 2.31, 1.68, 2.5, 2, 2.52, 4.2, 1.48, 2, 2, 2.18, 1.5,     2.83, 1.5, 2, 3.25, 1.25, 2, 2, 2, 2.75, 3.5, 6.7, 5, 5,     2.3, 1.5, 1.36, 1.63, 1.73, 2, 2.5, 2, 2.74, 2, 2, 5.14,     5, 3.75, 2.61, 2, 3.5, 2.5, 2, 2, 3, 3.48, 2.24, 4.5, 1.61,     2, 10, 3.16, 5.15, 3.18, 4, 3.11, 2, 2, 4, 3.55, 3.68, 5.65,     3.5, 6.5, 3, 5, 3.5, 2, 3.5, 4, 1.5, 4.19, 2.56, 2.02, 4,     1.44, 2, 5, 2, 2, 4, 2.01, 2, 2.5, 4, 3.23, 3.41, 3, 2.03,     2.23, 2, 5.16, 9, 2.5, 6.5, 1.1, 3, 1.5, 1.44, 3.09, 2.2,     3.48, 1.92, 3, 1.58, 2.5, 2, 3, 2.72, 2.88, 2, 3, 3.39, 1.47,     3, 1.25, 1, 1.17, 4.67, 5.92, 2, 2, 1.75, 3), sex = c(1L,     2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 1L, 2L,     1L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L,     2L, 1L, 1L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L,     2L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 2L,     2L, 2L, 2L, 1L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 1L, 1L, 1L, 2L,     1L, 2L, 2L, 1L, 1L, 2L, 1L, 1L, 2L, 2L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 2L, 1L, 1L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 1L, 2L, 1L, 1L, 2L, 2L, 2L, 1L, 2L, 1L, 2L,     2L, 2L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 1L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 2L, 2L,     2L, 1L, 1L, 2L, 2L, 1L, 1L, 1L, 2L, 1L, 2L, 2L, 2L, 1L, 2L,     2L, 2L, 1L, 1L, 1L, 2L, 2L, 2L, 1L, 2L, 1L, 2L, 1L, 2L, 1L,     1L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 1L,     2L, 2L, 1L), smoker = c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 2L, 1L,     2L, 1L, 1L, 2L, 2L, 1L, 1L, 2L, 1L, 1L, 1L, 2L, 1L, 1L, 2L,     1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 2L, 2L,     1L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 1L, 2L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 1L, 1L,     2L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 1L, 1L), day = c(3L, 3L,     3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,     3L, 3L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L,     3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L,     4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,     4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 3L, 3L,     3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,     3L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,     3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L,     4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 4L), time = c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), size = c(2L, 3L, 3L,     2L, 4L, 4L, 2L, 4L, 2L, 2L, 2L, 4L, 2L, 4L, 2L, 2L, 3L, 3L,     3L, 3L, 2L, 2L, 2L, 4L, 2L, 4L, 2L, 2L, 2L, 2L, 2L, 4L, 2L,     4L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 2L, 2L, 2L, 4L, 2L, 2L, 4L,     3L, 2L, 2L, 2L, 4L, 2L, 4L, 2L, 4L, 2L, 2L, 4L, 2L, 2L, 2L,     4L, 3L, 3L, 2L, 1L, 2L, 2L, 2L, 3L, 2L, 2L, 2L, 2L, 2L, 4L,     2L, 2L, 2L, 2L, 1L, 2L, 2L, 4L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 4L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 1L, 3L, 2L, 3L, 2L, 4L, 2L, 2L, 4L, 2L, 2L, 2L,     2L, 2L, 6L, 2L, 2L, 2L, 3L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 6L, 5L, 6L, 2L, 2L, 3L, 2L, 2L, 2L, 2L, 2L, 3L,     4L, 4L, 5L, 6L, 4L, 2L, 4L, 4L, 2L, 3L, 2L, 2L, 3L, 2L, 4L,     2L, 2L, 3L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 4L, 2L, 3L,     4L, 2L, 5L, 3L, 5L, 3L, 3L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 4L,     2L, 2L, 3L, 2L, 2L, 2L, 4L, 3L, 3L, 4L, 2L, 2L, 3L, 4L, 4L,     2L, 3L, 2L, 5L, 2L, 2L, 4L, 2L, 2L, 1L, 3L, 2L, 2L, 2L, 4L,     2L, 2L, 4L, 3L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 2L, 2L, 2L,     2L)), layers = list(<environment>), scales = <S4 object of class "Scales">,     mapping = list(x = tip), theme = list(panel.margin = 0.1),     coordinates = list(limits = list(x = NULL, y = NULL)), facet = list(        rows = list(sex), cols = list(), margins = FALSE, free = list(            x = FALSE, y = FALSE), space_free = list(x = FALSE,             y = FALSE), labeller = "label_value", as.table = TRUE,         drop = TRUE, shrink = TRUE), plot_env = <environment>,     labels = list(x = "tip", y = "sex"), type = "combo", subType = "facethist",     horizontal = TRUE))
-13: print(list(data = list(total_bill = c(16.99, 10.34, 21.01, 23.68, 24.59, 25.29, 8.77, 26.88, 15.04, 14.78, 10.27, 35.26, 15.42, 18.43, 14.83, 21.58, 10.33, 16.29, 16.97, 20.65, 17.92, 20.29, 15.77, 39.42, 19.82, 17.81, 13.37, 12.69, 21.7, 19.65, 9.55, 18.35, 15.06, 20.69, 17.78, 24.06, 16.31, 16.93, 18.69, 31.27, 16.04, 17.46, 13.94, 9.68, 30.4, 18.29, 22.23, 32.4, 28.55, 18.04, 12.54, 10.29, 34.81, 9.94, 25.56, 19.49, 38.01, 26.41, 11.24, 48.27, 20.29, 13.81, 11.02, 18.29, 17.59, 20.08, 16.45, 3.07, 20.23, 15.01, 12.02, 17.07, 26.86, 25.28, 14.73, 10.51, 17.92, 27.2, 22.76, 17.29, 19.44, 16.66, 10.07, 32.68, 15.98, 34.83, 13.03, 18.28, 24.71, 21.16, 28.97, 22.49, 5.75, 16.32, 22.75, 40.17, 27.28, 12.03, 21.01, 12.46, 11.35, 15.38, 44.3, 22.42, 20.92, 15.36, 20.49, 25.21, 18.24, 14.31, 14, 7.25, 38.07, 23.95, 25.71, 17.31, 29.93, 10.65, 12.43, 24.08, 11.69, 13.42, 14.26, 15.95, 12.48, 29.8, 8.52, 14.52, 11.38, 22.82, 19.08, 20.27, 11.17, 12.26, 18.26, 8.51, 10.33, 14.15, 16, 13.16, 17.47, 34.3, 41.19, 27.05, 16.43, 8.35, 18.64, 11.87, 9.78, 7.51, 14.07, 13.13, 17.26, 24.55, 19.77, 29.85, 48.17, 25, 13.39, 16.49, 21.5, 12.66, 16.21, 13.81, 17.51, 24.52, 20.76, 31.71, 10.59, 10.63, 50.81, 15.81, 7.25, 31.85, 16.82, 32.9, 17.89, 14.48, 9.6, 34.63, 34.65, 23.33, 45.35, 23.17, 40.55, 20.69, 20.9, 30.46, 18.15, 23.1, 15.69, 19.81, 28.44, 15.48, 16.58, 7.56, 10.34, 43.11, 13, 13.51, 18.71, 12.74, 13, 16.4, 20.53, 16.47, 26.59, 38.73, 24.27, 12.76, 30.06, 25.89, 48.33, 13.27, 28.17, 12.9, 28.15, 11.59, 7.74, 30.14, 12.16, 13.42, 8.58, 15.98, 13.42, 16.27, 10.09, 20.45, 13.28, 22.12, 24.01, 15.69, 11.61, 10.77, 15.53, 10.07, 12.6, 32.83, 35.83, 29.03, 27.18, 22.67, 17.82, 18.78), tip = c(1.01, 1.66, 3.5, 3.31, 3.61, 4.71, 2, 3.12, 1.96, 3.23, 1.71, 5, 1.57, 3, 3.02, 3.92, 1.67, 3.71, 3.5, 3.35, 4.08, 2.75, 2.23, 7.58, 3.18, 2.34, 2, 2, 4.3, 3, 1.45, 2.5, 3, 2.45, 3.27, 3.6, 2, 3.07, 2.31, 5, 2.24, 2.54, 3.06, 1.32, 5.6, 3, 5, 6, 2.05, 3, 2.5, 2.6, 5.2, 1.56, 4.34, 3.51, 3, 1.5, 1.76, 6.73, 3.21, 2, 1.98, 3.76, 2.64, 3.15, 2.47, 1, 2.01, 2.09, 1.97, 3, 3.14, 5, 2.2, 1.25, 3.08, 4, 3, 2.71, 3, 3.4, 1.83, 5, 2.03, 5.17, 2, 4, 5.85, 3, 3, 3.5, 1, 4.3, 3.25, 4.73, 4, 1.5, 3, 1.5, 2.5, 3, 2.5, 3.48, 4.08, 1.64, 4.06, 4.29, 3.76, 4, 3, 1, 4, 2.55, 4, 3.5, 5.07, 1.5, 1.8, 2.92, 2.31, 1.68, 2.5, 2, 2.52, 4.2, 1.48, 2, 2, 2.18, 1.5, 2.83, 1.5, 2, 3.25, 1.25, 2, 2, 2, 2.75, 3.5, 6.7, 5, 5, 2.3, 1.5, 1.36, 1.63, 1.73, 2, 2.5, 2, 2.74, 2, 2, 5.14, 5, 3.75, 2.61, 2, 3.5, 2.5, 2, 2, 3, 3.48, 2.24, 4.5, 1.61, 2, 10, 3.16, 5.15, 3.18, 4, 3.11, 2, 2, 4, 3.55, 3.68, 5.65, 3.5, 6.5, 3, 5, 3.5, 2, 3.5, 4, 1.5, 4.19, 2.56, 2.02, 4, 1.44, 2, 5, 2, 2, 4, 2.01, 2, 2.5, 4, 3.23, 3.41, 3, 2.03, 2.23, 2, 5.16, 9, 2.5, 6.5, 1.1, 3, 1.5, 1.44, 3.09, 2.2, 3.48, 1.92, 3, 1.58, 2.5, 2, 3, 2.72, 2.88, 2, 3, 3.39, 1.47, 3, 1.25, 1, 1.17, 4.67, 5.92, 2, 2, 1.75, 3), sex = c(1L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 1L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 1L, 1L, 1L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 1L, 1L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 1L, 1L, 2L, 2L, 2L, 1L, 2L, 1L, 2L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 2L, 2L, 1L, 1L, 1L, 2L, 1L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 1L, 1L, 1L, 2L, 2L, 2L, 1L, 2L, 1L, 2L, 1L, 2L, 1L, 1L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 1L, 2L, 2L, 1L), smoker = c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 2L, 1L, 2L, 1L, 1L, 2L, 2L, 1L, 1L, 2L, 1L, 1L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 1L, 1L, 2L, 2L, 2L, 1L, 1L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 1L, 1L), day = c(3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 4L), time = c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L),     size = c(2L, 3L, 3L, 2L, 4L, 4L, 2L, 4L, 2L, 2L, 2L, 4L,     2L, 4L, 2L, 2L, 3L, 3L, 3L, 3L, 2L, 2L, 2L, 4L, 2L, 4L, 2L,     2L, 2L, 2L, 2L, 4L, 2L, 4L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 2L,     2L, 2L, 4L, 2L, 2L, 4L, 3L, 2L, 2L, 2L, 4L, 2L, 4L, 2L, 4L,     2L, 2L, 4L, 2L, 2L, 2L, 4L, 3L, 3L, 2L, 1L, 2L, 2L, 2L, 3L,     2L, 2L, 2L, 2L, 2L, 4L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 4L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 4L, 2L, 2L, 2L, 2L, 2L, 2L,     3L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 3L, 2L, 3L, 2L, 4L,     2L, 2L, 4L, 2L, 2L, 2L, 2L, 2L, 6L, 2L, 2L, 2L, 3L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 6L, 5L, 6L, 2L, 2L, 3L,     2L, 2L, 2L, 2L, 2L, 3L, 4L, 4L, 5L, 6L, 4L, 2L, 4L, 4L, 2L,     3L, 2L, 2L, 3L, 2L, 4L, 2L, 2L, 3L, 2L, 2L, 2L, 2L, 2L, 2L,     2L, 2L, 2L, 4L, 2L, 3L, 4L, 2L, 5L, 3L, 5L, 3L, 3L, 2L, 2L,     2L, 2L, 2L, 2L, 2L, 4L, 2L, 2L, 3L, 2L, 2L, 2L, 4L, 3L, 3L,     4L, 2L, 2L, 3L, 4L, 4L, 2L, 3L, 2L, 5L, 2L, 2L, 4L, 2L, 2L,     1L, 3L, 2L, 2L, 2L, 4L, 2L, 2L, 4L, 3L, 2L, 2L, 2L, 2L, 2L,     2L, 3L, 3L, 2L, 2L, 2L, 2L)), layers = list(<environment>),     scales = <S4 object of class "Scales">, mapping = list(x = tip),     theme = list(panel.margin = 0.1), coordinates = list(limits = list(        x = NULL, y = NULL)), facet = list(rows = list(sex),         cols = list(), margins = FALSE, free = list(x = FALSE,             y = FALSE), space_free = list(x = FALSE, y = FALSE),         labeller = "label_value", as.table = TRUE, drop = TRUE,         shrink = TRUE), plot_env = <environment>, labels = list(        x = "tip", y = "sex"), type = "combo", subType = "facethist",     horizontal = TRUE))
-aborting ...
-```
+__OK__
 
 ## ggenealogy (0.1.0)
 Maintainer: Lindsay Rutter <lrutter@iastate.edu>
@@ -1166,7 +1125,7 @@ plot3_orig: no visible global function definition for ‘facet_wrap’
 plot3_orig: no visible global function definition for ‘labs’
 ```
 
-## gProfileR (0.5)
+## gProfileR (0.5.3)
 Maintainer: Tambet Arak <tambet.arak@gmail.com>
 
 __OK__
@@ -1219,6 +1178,11 @@ checking installed package size ... NOTE
 
 ## harvestr (0.6.0)
 Maintainer: Andrew Redd <andrew.redd@hsc.utah.edu>
+
+__OK__
+
+## HighDimOut (1.0.0)
+Maintainer: Cheng Fan <raja8885@hotmail.com>
 
 __OK__
 
@@ -1333,19 +1297,10 @@ checking dependencies in R code ... NOTE
   See section 'Suggested packages' in the 'Writing R Extensions' manual.
 ```
 
-## LakeMetabolizer (1.1)
+## LakeMetabolizer (1.3.1)
 Maintainer: Luke Winslow <lawinslow@gmail.com>
 
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' call to ‘R2jags’ in package code.
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
-```
-checking R code for possible problems ... NOTE
-bayesFit: no visible global function definition for ‘jags’
-```
+__OK__
 
 ## learningr (0.29)
 Maintainer: Richie Cotton <richierocks@gmail.com>
@@ -1433,7 +1388,7 @@ Maintainer: Jeff Laake <Jeff.Laake@noaa.gov>
 ```
 checking whether package ‘marked’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/marked.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/marked.Rcheck/00install.out’ for details.
 ```
 
 ## medicalrisk (1.1)
@@ -1496,9 +1451,6 @@ Missing or unexported object: ‘kohonen::predict.kohonen’
 checking tests ... ERROR
 Running the tests in ‘tests/run-base.R’ failed.
 Last 13 lines of output:
-  makeClassifTask(data = 44, target = "y") does not match 'be a data.frame'. Actual value: "Error in test_check("mlr", filter = "base") : \n  Assertion on 'data' failed: Must be of type 'data.frame', not 'double'\n"
-  
-  2. Failure(@test_base_SupervisedTask.R#27): SupervisedTask ---------------------
   makeClassifTask(data = regr.df, target = regr.target) does not match 'be a factor'. Actual value: "Error in test_check("mlr", filter = "base") : \n  Assertion on 'medv' failed: Must be of type 'factor', not 'double'\n"
   
   3. Failure(@test_base_SupervisedTask.R#29): SupervisedTask ---------------------
@@ -1508,6 +1460,9 @@ Last 13 lines of output:
   makeClassifTask(data = 44) does not match 'Must be a data.frame'. Actual value: "Error in test_check("mlr", filter = "base") : \n  Assertion on 'data' failed: Must be of type 'data.frame', not 'double'\n"
   
   Error: Test failures
+  In addition: Warning message:
+  In lognet(x, is.sparse, ix, jx, y, weights, offset, alpha, nobs,  :
+    one multinomial or binomial class has fewer than 8  observations; dangerous ground
   Execution halted
 ```
 
@@ -1711,7 +1666,24 @@ __OK__
 Maintainer: Greg Jefferis <jefferis@gmail.com>  
 Bug reports: https://github.com/jefferis/nat/issues
 
-__OK__
+```
+checking tests ... ERROR
+Running the tests in ‘tests/test-all.R’ failed.
+Last 13 lines of output:
+  3: eval(expr, envir, enclos)
+  4: expect_equal(vdns[[1]]$SegList, sl) at test-.neuron-io-remote-nocran.R:12
+  5: expect_that(object, equals(expected, label = expected.label, ...), info = info, label = label)
+  6: condition(object)
+  7: compare(expected, actual, ...)
+  8: compare.default(expected, actual, ...)
+  9: all.equal(x, y, ...)
+  10: all.equal.list(x, y, ...)
+  11: attr.all.equal(target, current, ...)
+  12: mode(current)
+  
+  Error: Test failures
+  Execution halted
+```
 
 ## networkD3 (0.1.2.1)
 Maintainer: Christopher Gandrud <christopher.gandrud@gmail.com>
@@ -1787,9 +1759,9 @@ totalprecip: no visible binding for global variable ‘TIME’
 Maintainer: David Carslaw <david.carslaw@kcl.ac.uk>
 
 ```
-checking whether package ‘openair’ can be installed ... ERROR
+checking whether package ‘openair’ can be installed ... [31s/32s] ERROR
 Installation failed.
-See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/openair.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/openair.Rcheck/00install.out’ for details.
 ```
 
 ## OpenRepGrid (0.1.9)
@@ -1871,7 +1843,7 @@ Maintainer: Eric Hare <erichare@iastate.edu>
 
 __OK__
 
-## pitchRx (1.6)
+## pitchRx (1.7)
 Maintainer: Carson Sievert <sievert@iastate.edu>  
 Bug reports: http://github.com/cpsievert/pitchRx/issues
 
@@ -2364,6 +2336,11 @@ Bug reports: https://github.com/ropensci/rcrossref/issues
 
 __OK__
 
+## RDML (0.8-3)
+Maintainer: Konstantin A. Blagodatskikh <k.blag@yandex.ru>
+
+__OK__
+
 ## rdryad (0.1.1)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/rdryad/issues
@@ -2714,7 +2691,7 @@ Maintainer: Edmund Hart <edmund.m.hart@gmail.com>
 
 __OK__
 
-## rLakeAnalyzer (1.4)
+## rLakeAnalyzer (1.7.3)
 Maintainer: Luke Winslow <lawinslow@gmail.com>
 
 __OK__
@@ -2786,7 +2763,7 @@ Maintainer: Claudio Agostinelli <claudio@unive.it>
 ```
 checking whether package ‘robustvarComp’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/robustvarComp.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/robustvarComp.Rcheck/00install.out’ for details.
 ```
 
 ## rplos (0.4.6)
@@ -2865,7 +2842,7 @@ Bug reports: https://github.com/ropensci/rsnps/issues
 
 __OK__
 
-## rSPACE (1.1.0)
+## rSPACE (1.1.1)
 Maintainer: Martha Ellis <martha.ellis@gmail.com>  
 Bug reports: http://github.com/mmellis/rSPACE/issues
 
@@ -3224,7 +3201,7 @@ Maintainer: Roger Marshall <rj.marshall@auckland.ac.nz>
 ```
 checking whether package ‘spanr’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/spanr.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/spanr.Rcheck/00install.out’ for details.
 ```
 
 ## sparseMVN (0.2.0)
@@ -3243,7 +3220,7 @@ Maintainer: Roger Marshall <rj.marshall@auckland.ac.nz>
 ```
 checking whether package ‘srd’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpoLQ4Ti/check_cran14c1fbc85546/srd.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/srd.Rcheck/00install.out’ for details.
 ```
 
 ## ss3sim (0.8.2)
@@ -3388,6 +3365,11 @@ Visualization.Surfaceplots: no visible global function definition for
   ‘grid.arrange’
 ```
 
+## stcm (0.1.0)
+Maintainer: Chris Krogslund <ckrogslund@berkeley.edu>
+
+__OK__
+
 ## strvalidator (1.4.0)
 Maintainer: Oskar Hansson <oskar.hansson@fhi.no>  
 Bug reports: https://github.com/OskarHansson/strvalidator/issues
@@ -3412,6 +3394,19 @@ Maintainer: Beata Nowok <beata.nowok@gmail.com>
 checking dependencies in R code ... NOTE
 Unexported object imported by a ':::' call: ‘coefplot:::position_dodgev’
   See the note in ?`:::` about the use of this operator.
+```
+
+## TAM (1.6-0)
+Maintainer: Alexander Robitzsch <a.robitzsch@bifie.at>
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘RcppArmadillo’
+
+Package required and available but unsuitable version: ‘CDM’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## taRifx (1.0.6)
@@ -3602,7 +3597,7 @@ Maintainer: Jared P. Lander <packages@jaredlander.com>
 
 __OK__
 
-## userfriendlyscience (0.2-1)
+## userfriendlyscience (0.2-2)
 Maintainer: Gjalt-Jorn Peters <gjalt-jorn@userfriendlyscience.com>
 
 __OK__
