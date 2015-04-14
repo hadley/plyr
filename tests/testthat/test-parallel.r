@@ -8,7 +8,7 @@ if (require("doParallel", quietly = TRUE)) {
 
     expect_that(
       l_ply(c(0.1, 0.1), Sys.sleep, .parallel = TRUE),
-      takes_less_than(0.15))
+      takes_less_than(0.18))
   })
 
   test_that("l_ply + .parallel complains about invalid arguments", {
