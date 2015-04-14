@@ -275,14 +275,11 @@ get_rbind_times <- function(...) {
 if (identical(Sys.getenv("NOT_CRAN"), "true") &&
     !identical(Sys.getenv("TRAVIS"), "true")) {
 
-expect_linear_enough <- function(timings, size=2 ^ 10, threshold=0.2) {
+expect_linear_enough <- function(timings, threshold=0.1) {
   #expect that no more than `threshold` of a `size` input's runtime is
   #accounted for by quadratic behavior
-  #predict.lm(type="terms") does strange things w/ built-in intercepts, avoid
-  timings <- mutate(timings, intercept=1)
-  model <- lm(user.self ~ size + I(size ^ 2) - 1 + intercept, timings)
-  p <- predict(model, newdata=data.frame(size=size, intercept=1), type="terms")
-  expect_that(p[2] / p[1] < threshold, is_true(), NULL, NULL)
+  model <- lm(I(user.self / size) ~ size, timings)
+  expect_less_than(threshold, summary(model)$coefficients[2,4])
 }
 
 test_that("rbind.fill performance linear", {
