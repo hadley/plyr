@@ -32,7 +32,7 @@ Maintainer: Matt Nunes <m.nunes@lancaster.ac.uk>
 ```
 checking whether package ‘abctools’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/abctools.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/abctools.Rcheck/00install.out’ for details.
 ```
 
 ## abd (0.2-7)
@@ -86,7 +86,7 @@ Maintainer: George Rosenberger <rosenberger@imsb.biol.ethz.ch>
 ```
 checking whether package ‘aLFQ’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/aLFQ.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/aLFQ.Rcheck/00install.out’ for details.
 ```
 
 ## alm (0.4.0)
@@ -231,7 +231,7 @@ Maintainer: Michael Braun <braunm@smu.edu>
 
 __OK__
 
-## bayesPop (5.2-2)
+## bayesPop (5.3-4)
 Maintainer: Hana Sevcikova <hanas@uw.edu>
 
 __OK__
@@ -381,7 +381,7 @@ Package suggested but not available for checking: ‘BRugs’
 ```
 checking whether package ‘BTSPAS’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/BTSPAS.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/BTSPAS.Rcheck/00install.out’ for details.
 ```
 
 ## caret (6.0-41)
@@ -488,7 +488,7 @@ Maintainer: Dr Chris Wheadon <chris.wheadon@gmail.com>
 ```
 checking whether package ‘classify’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/classify.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/classify.Rcheck/00install.out’ for details.
 ```
 
 ## clhs (0.5-4)
@@ -620,8 +620,9 @@ Package in Depends field not imported from: ‘proto’
   for when this namespace is loaded but not attached.
 ```
 
-## discreteRV (1.1.4)
-Maintainer: Eric Hare <erichare@iastate.edu>
+## discreteRV (1.2)
+Maintainer: Eric Hare <erichare@iastate.edu>  
+Bug reports: https://github.com/erichare/discreteRV/issues
 
 __OK__
 
@@ -1247,7 +1248,7 @@ Maintainer: Chaitanya Acharya <c.acharya@duke.edu>
 
 __OK__
 
-## jsonlite (0.9.15)
+## jsonlite (0.9.16)
 Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
 Bug reports: http://github.com/jeroenooms/jsonlite/issues
 
@@ -1388,7 +1389,7 @@ Maintainer: Jeff Laake <Jeff.Laake@noaa.gov>
 ```
 checking whether package ‘marked’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/marked.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/marked.Rcheck/00install.out’ for details.
 ```
 
 ## medicalrisk (1.1)
@@ -1591,6 +1592,33 @@ checking installed package size ... NOTE
     R     1.8Mb
     doc   7.0Mb
 ```
+```
+checking examples ... ERROR
+Running examples in ‘mosaic-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: CIAdata
+> ### Title: Return a dataset based on the CIA World Factbook
+> ### Aliases: CIAdata
+> 
+> ### ** Examples
+> 
+> head(CIAdata())
+            Category                  Field   Name Code                 Unit
+1          Geography                   Area   area 2147                sq km
+2 People and Society             Population    pop 2119               people
+3 People and Society Population growth rate growth 2002                    %
+4 People and Society             Birth rate  birth 2054   births/1000 people
+5 People and Society             Death rate  death 2066   deaths/1000 people
+6 People and Society     Net migration rate   migr 2112 migrants/1000 people
+> gdpData <- CIAdata("pop")
+Loading required namespace: RCurl
+Error in names(table) <- c("country", name) : 
+  'names' attribute [2] must be the same length as the vector [0]
+Calls: CIAdata
+Execution halted
+```
 
 ## MplusAutomation (0.6-3)
 Maintainer: Michael Hallquist <michael.hallquist@gmail.com>
@@ -1666,24 +1694,7 @@ __OK__
 Maintainer: Greg Jefferis <jefferis@gmail.com>  
 Bug reports: https://github.com/jefferis/nat/issues
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  3: eval(expr, envir, enclos)
-  4: expect_equal(vdns[[1]]$SegList, sl) at test-.neuron-io-remote-nocran.R:12
-  5: expect_that(object, equals(expected, label = expected.label, ...), info = info, label = label)
-  6: condition(object)
-  7: compare(expected, actual, ...)
-  8: compare.default(expected, actual, ...)
-  9: all.equal(x, y, ...)
-  10: all.equal.list(x, y, ...)
-  11: attr.all.equal(target, current, ...)
-  12: mode(current)
-  
-  Error: Test failures
-  Execution halted
-```
+__OK__
 
 ## networkD3 (0.1.2.1)
 Maintainer: Christopher Gandrud <christopher.gandrud@gmail.com>
@@ -1759,9 +1770,9 @@ totalprecip: no visible binding for global variable ‘TIME’
 Maintainer: David Carslaw <david.carslaw@kcl.ac.uk>
 
 ```
-checking whether package ‘openair’ can be installed ... [31s/32s] ERROR
+checking whether package ‘openair’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/openair.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/openair.Rcheck/00install.out’ for details.
 ```
 
 ## OpenRepGrid (0.1.9)
@@ -1838,8 +1849,9 @@ See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
 ```
 
-## peptider (0.1.7)
-Maintainer: Eric Hare <erichare@iastate.edu>
+## peptider (0.2)
+Maintainer: Eric Hare <erichare@iastate.edu>  
+Bug reports: https://github.com/heike/peptider/issues
 
 __OK__
 
@@ -2375,7 +2387,6 @@ checking dependencies in R code ... NOTE
 checking tests ... ERROR
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
-                 character()
              else names(CURLcodeValues)[i]
          }
          typeName = gsub("^CURLE_", "", typeName)
@@ -2384,7 +2395,8 @@ Last 13 lines of output:
          else warning)
          fun(structure(list(message = msg, call = sys.call()), class = c(typeName, "GenericCurlError", 
              "error", "condition")))
-     }(35L, "Unknown SSL protocol error in connection to bbmc.ouhsc.edu:-9800", TRUE)
+     }(35L, "SSL peer handshake failed, the server most likely requires a client certificate to connect", 
+         TRUE)
   
   Error: Test failures
   Execution halted
@@ -2763,7 +2775,7 @@ Maintainer: Claudio Agostinelli <claudio@unive.it>
 ```
 checking whether package ‘robustvarComp’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/robustvarComp.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/robustvarComp.Rcheck/00install.out’ for details.
 ```
 
 ## rplos (0.4.6)
@@ -3201,7 +3213,7 @@ Maintainer: Roger Marshall <rj.marshall@auckland.ac.nz>
 ```
 checking whether package ‘spanr’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/spanr.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/spanr.Rcheck/00install.out’ for details.
 ```
 
 ## sparseMVN (0.2.0)
@@ -3220,7 +3232,7 @@ Maintainer: Roger Marshall <rj.marshall@auckland.ac.nz>
 ```
 checking whether package ‘srd’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpJHtr0F/check_cran170cc13cc1d65/srd.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/srd.Rcheck/00install.out’ for details.
 ```
 
 ## ss3sim (0.8.2)
@@ -3686,7 +3698,7 @@ wordmatch: no visible global function definition for ‘melt’
 wordmatch: no visible global function definition for ‘count’
 ```
 
-## wppExplorer (1.5-0)
+## wppExplorer (1.6-1)
 Maintainer: Hana Sevcikova <hanas@uw.edu>
 
 __OK__
