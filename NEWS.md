@@ -1,4 +1,4 @@
-# Version 1.8.1.9000
+# Version 1.8.2
 
 * Update for changes in R namespace best-practices.
 

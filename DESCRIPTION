@@ -1,13 +1,13 @@
 Package: plyr
-Version: 1.8.1.9000
+Version: 1.8.2
 Title: Tools for Splitting, Applying and Combining Data
 Description: A set of tools that solves a common set of problems: you
     need to break a big problem down into manageable pieces, operate on each
     piece and then put all the pieces back together.  For example, you might
     want to fit a model to each spatial location or time point in your study,
     summarise data by panels or collapse high-dimensional arrays to simpler
-    summary statistics. The development of plyr has been generously supported
-    by BD (Becton Dickinson).
+    summary statistics. The development of 'plyr' has been generously supported
+    by 'Becton Dickinson'.
 Authors@R: person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre"))
 URL: http://had.co.nz/plyr, https://github.com/hadley/plyr
 BugReports: https://github.com/hadley/plyr/issues

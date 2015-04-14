@@ -1,8 +1,10 @@
 ## Changes
 
-This is a minor update to:
+This is a minor update. It includes:
 
-* Use namespace best practices
+* Fixes for R CMD check notes.
+
+* Some small backward compatible changes.
 
 * Fix an error in a C function - I suspect this is what was causing crashes
   in the ggplot2 and failures with UBSAN, but I couldn't reliably reproduce
@@ -19,22 +21,20 @@ This is a minor update to:
 
 There were no ERRORs or WARNINGs. 
 
-There was two NOTEs:
+There was one NOTE:
 
 * My email address has changed from <h.wickham@gmail.com> to 
   <hadley@rstudio.com>. I'll send the confirmation from my old email
   shortly.
 
-* BD, Becton and plyr are not misspellings.
-
 ## Downstream dependencies
 I have also run R CMD check on downstream dependencies of plyr 
-(https://github.com/hadley/plyr/tree/master/revdep). All packages 
-that I could install passed except:
+(https://github.com/hadley/plyr/tree/master/revdep). I have noted ERRORs and 
+WARNINGs below - I do not believe them to be related to changes to plyr:
 
-* NAT: the error occurs in a test "we can read neuron from remote url", which
-  suggests it's an interim failure (plus it only occur once in the 3+ times
-  I ran the revdep checks)
-  
-* RSiteCatalyst: appears to be authentication related.
-
+* abd: fails to unload lattice.
+* ChemoSpec: example requires suggested package (and binary for that package is 
+  not available on the mac)
+* mlr: fails in same way on CRAN.
+* mosaic: fails after web request. Fails in same way on CRAN.
+* RSiteCatalyst: fails with authentication error.
