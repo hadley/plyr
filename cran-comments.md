@@ -1,6 +1,10 @@
 ## Changes
 
-This is a minor update. It includes:
+This is a resubmission: it fixes the failure for tests to complete on 32-bit windows. (I accidentally included tests that need an interactive environment, which I run locally.)
+
+----
+
+The initial submission included:
 
 * Fixes for R CMD check notes.
 
