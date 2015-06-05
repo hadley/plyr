@@ -1,5 +1,8 @@
 # Version 1.8.2.9000
 
+* Revert to C version of `loop_apply()` as Rcpp version was appears to be
+  having PROTECTion problems. (Also fixes #256)
+
 # Version 1.8.2
 
 * Update for changes in R namespace best-practices.
