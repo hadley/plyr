@@ -1,6 +1,7 @@
 ## Changes
 
-This works around what I believe is a PROTECTion in Rcpp: `loop_apply` was occassionally returning random data.
+* Work around a PROTECTion failure in Rcpp
+* Fix a test failure on R-devel.
 
 ## Test environments
 
@@ -14,12 +15,16 @@ There were no ERRORs, WARNINGs or NOTEs.
 
 ## Downstream dependencies
 I have also run R CMD check on all 312 downstream dependencies of plyr 
-(https://github.com/hadley/plyr/tree/master/revdep). I have noted ERRORs and 
-WARNINGs below - I do not believe them to be related to changes to plyr:
+(https://github.com/hadley/plyr/tree/master/revdep). I have noted ERRORs below.
+Given the minimal change to plyr, I do not believe these errors to be a result
+of changes to plyr.
 
-* abd: fails to unload lattice.
-* ChemoSpec: example requires suggested package (and binary for that package is 
-  not available on the mac)
-* mlr: fails in same way on CRAN.
-* mosaic: fails after web request. Fails in same way on CRAN.
-* RSiteCatalyst: fails with authentication error.
+* caretEnsemble
+* ChemoSpec: example fails with missing suggested package
+* dataRetrieval
+* gemtc: missing system dependency
+* ggmap: existing CRAN failure
+* mlr: appears to be NAMESPACE problem
+* pxweb: appears to be web connectivity problem
+* REDCapR: auth failure
+* RSiteCatalyst: auth failure
