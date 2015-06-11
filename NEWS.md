@@ -1,4 +1,4 @@
-# Version 1.8.2.9000
+# Version 1.8.3
 
 * Revert to C version of `loop_apply()` as Rcpp version was appears to be
   having PROTECTion problems. (Also fixes #256)

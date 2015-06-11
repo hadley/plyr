@@ -4,9 +4,9 @@
 
 |setting  |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.1.3 (2015-03-09) |
+|version  |R version 3.2.0 (2015-04-16) |
 |system   |x86_64, darwin13.4.0         |
-|ui       |RStudio (0.99.380)           |
+|ui       |RStudio (0.99.584)           |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/Chicago              |
@@ -15,46 +15,43 @@
 
 |package    |*  |version |date       |source         |
 |:----------|:--|:-------|:----------|:--------------|
-|abind      |*  |1.4-3   |2015-03-13 |CRAN (R 3.1.3) |
-|doParallel |*  |1.0.8   |2014-02-28 |CRAN (R 3.1.2) |
-|foreach    |*  |1.4.2   |2014-04-11 |CRAN (R 3.1.2) |
-|iterators  |*  |1.0.7   |2014-04-11 |CRAN (R 3.1.2) |
-|itertools  |*  |0.1-3   |2014-03-12 |CRAN (R 3.1.2) |
-|Rcpp       |*  |0.11.5  |2015-03-06 |CRAN (R 3.1.3) |
-|testthat   |   |0.9.1   |2014-10-01 |CRAN (R 3.1.2) |
+|abind      |   |1.4-3   |2015-03-13 |CRAN (R 3.2.0) |
+|doParallel |   |1.0.8   |2014-02-28 |CRAN (R 3.2.0) |
+|foreach    |   |1.4.2   |2014-04-11 |CRAN (R 3.2.0) |
+|iterators  |   |1.0.7   |2014-04-11 |CRAN (R 3.2.0) |
+|itertools  |   |0.1-3   |2014-03-12 |CRAN (R 3.2.0) |
+|Rcpp       |   |0.11.6  |2015-05-01 |CRAN (R 3.2.0) |
+|testthat   |*  |0.10.0  |2015-05-22 |CRAN (R 3.2.0) |
 
 # Check results
-293 checked out of 294 dependencies 
+311 checked out of 312 dependencies 
 
-## abctools (1.0)
-Maintainer: Matt Nunes <m.nunes@lancaster.ac.uk>
+## abctools (1.0.2)
+Maintainer: Matt Nunes <m.nunes@lancaster.ac.uk>  
+Bug reports: http://github.com/dennisprangle/abctools/issues
 
 ```
 checking whether package ‘abctools’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/abctools.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/abctools.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
 ## abd (0.2-7)
 Maintainer: Kevin M. Middleton <middletonk@missouri.edu>
 
-```
-checking whether the package can be loaded ... ERROR
-Loading this package had a fatal error status code 1
-Loading log:
-Loading required package: nlme
-Loading required package: lattice
-Error in unloadNamespace(package) : 
-  namespace ‘lattice’ is imported by ‘nlme’ so cannot be unloaded
-Error in library(pkg, character.only = TRUE, logical.return = TRUE, lib.loc = lib.loc) : 
-  “lattice” version 0.20.30 cannot be unloaded.
-Calls: library -> .getRequiredPackages2 -> library
-Execution halted
-```
+__OK__
 
 ## acs (1.2)
 Maintainer: Ezra Haber Glenn <eglenn@mit.edu>
 
+```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  confint.acs dim.acs length.acs prompt.acs
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
 ```
 checking R code for possible problems ... NOTE
 geo.lookup: no visible binding for global variable ‘fips.state’
@@ -74,6 +71,10 @@ geo.make : .geo.unit.make: no visible binding for global variable
 geo.make : .geo.unit.make: no visible binding for global variable
   ‘fips.school’
 ```
+```
+DONE
+Status: 2 NOTEs
+```
 
 ## afex (0.13-145)
 Maintainer: Henrik Singmann <singmann+afex@gmail.com>
@@ -86,7 +87,8 @@ Maintainer: George Rosenberger <rosenberger@imsb.biol.ethz.ch>
 ```
 checking whether package ‘aLFQ’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/aLFQ.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/aLFQ.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
 ## alm (0.4.0)
@@ -105,6 +107,10 @@ __OK__
 Maintainer: Max Kuhn <mxkuhn@gmail.com>
 
 ```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
 checking dependencies in R code ... NOTE
 'library' or 'require' calls in package code:
   ‘ellipse’ ‘lattice’
@@ -120,43 +126,34 @@ upperp: no visible global function definition for ‘ellipse’
 upperp: no visible global function definition for ‘panel.xyplot’
 upperp: no visible global function definition for ‘trellis.par.get’
 ```
+```
+DONE
+Status: 3 NOTEs
+```
 
-## aqp (1.8)
+## APSIM (0.8.0)
+Maintainer: Justin Fainges <Justin.Fainges@csiro.au>
+
+__OK__
+
+## aqp (1.8-6)
 Maintainer: Dylan Beaudette <debeaudette@ucdavis.edu>
 
-```
-checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘soilDB’ ‘compositions’
-```
-```
-checking examples ... ERROR
-Running examples in ‘aqp-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: addVolumeFraction
-> ### Title: Symbolize Volume Fraction on a Soil Profile Collection Plot
-> ### Aliases: addVolumeFraction
-> ### Keywords: ~kwd1
-> 
-> ### ** Examples
-> 
-> # sample data
-> data(loafercreek, package='soilDB')
-Error in find.package(package, lib.loc, verbose = verbose) : 
-  there is no package called ‘soilDB’
-Calls: data -> find.package
-Execution halted
-```
+__OK__
 
 ## ARPobservation (1.1)
 Maintainer: James E. Pustejovsky <jepusto@gmail.com>
 
 __OK__
 
-## ARTool (0.9.3)
+## ARTool (0.9.5)
 Maintainer: Matthew Kay <mjskay@uw.edu>  
 Bug reports: https://github.com/mjskay/ARTool/issues/new
+
+__OK__
+
+## asVPC (1.0.2)
+Maintainer: Eun-Kyung Lee <lee.eunk@gmail.com>
 
 __OK__
 
@@ -203,6 +200,10 @@ Found the following Makefile(s) without a final LF:
   inst/article/Makefile
 Some ‘make’ programs ignore lines not ending in LF.
 ```
+```
+DONE
+Status: 4 NOTEs
+```
 
 ## BatchExperiments (1.4.1)
 Maintainer: Michel Lang <michellang@gmail.com>  
@@ -224,6 +225,10 @@ Unexported objects imported by ':::' calls:
   ‘BatchJobs:::makeRegistryInternal’ ‘BatchJobs:::saveRegistry’
   ‘BatchJobs:::seeder’ ‘BatchJobs:::syncRegistry’
   See the note in ?`:::` about the use of this operator.
+```
+```
+DONE
+Status: 1 NOTE
 ```
 
 ## bayesGDS (0.6.1)
@@ -254,6 +259,10 @@ checking dependencies in R code ... NOTE
 'library' or 'require' call to ‘plyr’ in package code.
   Please use :: or requireNamespace() instead.
   See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
+```
+DONE
+Status: 1 NOTE
 ```
 
 ## benchmark (0.3-6)
@@ -307,9 +316,19 @@ stripchart.AlgorithmPerformance: no visible binding for global variable
 checking Rd cross-references ... NOTE
 Package unavailable to check Rd xrefs: ‘graph’
 ```
+```
+DONE
+Status: 4 NOTEs
+```
 
 ## BEQI2 (2.0-0)
 Maintainer: Dennis Walvoort <dennis.Walvoort@wur.nl>
+
+__OK__
+
+## bigml (0.1.2)
+Maintainer: Leon Hwang <hwang@bigml.com>  
+Bug reports: https://github.com/bigmlcom/bigml-r/issues
 
 __OK__
 
@@ -322,11 +341,22 @@ __OK__
 Maintainer: Paul J. McMurdie <mcmurdie@stanford.edu>  
 Bug reports: https://github.com/joey711/biom/issues
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## bmk (1.0)
 Maintainer: Matthew Krachey <matthewkrachey@yahoo.com>
 
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
 ```
 checking dependencies in R code ... NOTE
 'library' or 'require' calls to packages already attached by Depends:
@@ -348,19 +378,30 @@ bmksummary: no visible global function definition for ‘mcmc.list’
 bmksummary: no visible global function definition for ‘effectiveSize’
 bmksummary: no visible global function definition for ‘gelman.diag’
 ```
+```
+DONE
+Status: 3 NOTEs
+```
 
-## bold (0.2.0)
+## bold (0.2.6)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/bold/issues
 
-__OK__
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘sangerseqR’
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## boottol (2.0)
 Maintainer: Garrett Schiltgen <garrett.schiltgen@gmail.com>
 
 __OK__
 
-## broom (0.3.6)
+## broom (0.3.7)
 Maintainer: David Robinson <admiral.david@gmail.com>  
 Bug reports: http://github.com/dgrtwo/broom/issues
 
@@ -381,58 +422,78 @@ Package suggested but not available for checking: ‘BRugs’
 ```
 checking whether package ‘BTSPAS’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/BTSPAS.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/BTSPAS.Rcheck/00install.out’ for details.
+Status: 1 ERROR, 1 NOTE
 ```
 
-## caret (6.0-41)
+## caret (6.0-47)
 Maintainer: Max Kuhn <Max.Kuhn@pfizer.com>
 
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘MASS’ ‘earth’ ‘fastICA’ ‘ipred’ ‘klaR’ ‘nnet’ ‘pROC’ ‘party’ ‘proxy’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
+__OK__
 
 ## caretEnsemble (1.0.0)
 Maintainer: Zachary A. Mayer <zach.mayer@gmail.com>  
 Bug reports: https://github.com/zachmayer/caretEnsemble/issues
 
-__OK__
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  3 - 2 == 1
+  
+  testthat results ================================================================
+  OK: 348 SKIPPED: 0 FAILED: 6
+  1. Error: Warnings issued for missing data correctly 
+  2. Error: NA preservation and standard errors work right 
+  3. Error: We can ensemble models and handle missingness across predictors 
+  4. Failure (at test-optimizers.R#122): Warnings and fallbacks in degenerate cases 
+  5. Failure (at test-optimizers.R#129): Warnings and fallbacks in degenerate cases 
+  6. Failure (at test-optimizers.R#130): Warnings and fallbacks in degenerate cases 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+```
+DONE
+Status: 1 ERROR
+```
 
 ## cda (1.5.1)
 Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
 
 ```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppArmadillo’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking whether package ‘cda’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/cda.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
-## CDM (4.2-12)
+## CDM (4.3-0)
 Maintainer: Alexander Robitzsch <a.robitzsch@bifie.at>
 
 ```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppArmadillo’
-
-Package suggested but not available for checking: ‘BIFIEsurvey’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking whether package ‘CDM’ can be installed ... [26s/26s] ERROR
+Installation failed.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/CDM.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
 ## chemosensors (0.7.8)
 Maintainer: Andrey Ziyatdinov <andrey.ziyatdinov@upc.edu>
 
 ```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
 checking dependencies in R code ... NOTE
 'library' or 'require' call to ‘doMC’ in package code.
   Please use :: or requireNamespace() instead.
   See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
+```
+DONE
+Status: 2 NOTEs
 ```
 
 ## ChemoSpec (4.0.1)
@@ -441,8 +502,7 @@ Bug reports: https://github.com/bryanhanson/ChemoSpec/issues
 
 ```
 checking package dependencies ... NOTE
-Packages suggested but not available for checking:
-  ‘speaq’ ‘clusterCrit’ ‘NbClust’ ‘js’ ‘exCon’
+Package suggested but not available for checking: ‘speaq’
 ```
 ```
 checking examples ... ERROR
@@ -467,6 +527,10 @@ Error in clupaSpectra(alignMUD) :
   You need to install package speaq to use this function
 Execution halted
 ```
+```
+DONE
+Status: 1 ERROR, 1 NOTE
+```
 
 ## classifly (0.4)
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
@@ -481,6 +545,10 @@ checking dependencies in R code ... NOTE
   Please use :: or requireNamespace() instead.
   See section 'Suggested packages' in the 'Writing R Extensions' manual.
 ```
+```
+DONE
+Status: 2 NOTEs
+```
 
 ## classify (1.3)
 Maintainer: Dr Chris Wheadon <chris.wheadon@gmail.com>
@@ -488,7 +556,8 @@ Maintainer: Dr Chris Wheadon <chris.wheadon@gmail.com>
 ```
 checking whether package ‘classify’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/classify.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/classify.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
 ## clhs (0.5-4)
@@ -496,7 +565,7 @@ Maintainer: Pierre Roudier <roudierp@landcareresearch.co.nz>
 
 __OK__
 
-## clickstream (1.1.3)
+## clickstream (1.1.4)
 Maintainer: Michael Scholz <michael.scholz@uni-passau.de>
 
 __OK__
@@ -506,10 +575,11 @@ Maintainer: Hadley Wickham <h.wickham@gmail.com>
 
 ```
 checking package dependencies ... ERROR
-Packages required but not available: ‘rggobi’ ‘RGtk2’
+Package required but not available: ‘rggobi’
 
 See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
+Status: 1 ERROR
 ```
 
 ## coefplot (1.2.0)
@@ -517,7 +587,12 @@ Maintainer: Jared P. Lander <packages@jaredlander.com>
 
 ```
 checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
 Deprecated license: BSD
+```
+```
+DONE
+Status: 1 NOTE
 ```
 
 ## confidence (1.1-0)
@@ -528,7 +603,14 @@ __OK__
 ## cpca (0.1.2)
 Maintainer: Andrey Ziyatdinov <andrey.ziyatdinov@upc.edu>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## CPMCGLM (1.1)
 Maintainer: Jeremie Riou <jeremie.riou@isped.u-bordeaux2.fr>
@@ -544,6 +626,10 @@ checking installed package size ... NOTE
   sub-directories of 1Mb or more:
     shp   5.2Mb
 ```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## d3Network (0.5.2.1)
 Maintainer: Christopher Gandrud <christopher.gandrud@gmail.com>  
@@ -557,17 +643,38 @@ Bug reports: https://github.com/Rdatatable/data.table/issues
 
 __OK__
 
-## dataRetrieval (2.2.0)
+## dataRetrieval (2.2.1)
 Maintainer: Laura DeCicco <ldecicco@usgs.gov>
 
-__OK__
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  > library(testthat)
+  > library(dataRetrieval)
+  > test_check("dataRetrieval")
+  1. Failure (at tests_imports.R#107): External importWaterML1 test --------------
+  ncol(data) == 10 isn't true
+  
+  Read 7 items
+  testthat results ================================================================
+  OK: 37 SKIPPED: 0 FAILED: 1
+  1. Failure (at tests_imports.R#107): External importWaterML1 test 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+```
+DONE
+Status: 1 ERROR
+```
 
 ## dcmr (1.0)
 Maintainer: Diane Losardo <dlosardo@amplify.com>
 
 __OK__
 
-## decctools (0.2.0)
+## decctools (0.2.1)
 Maintainer: James Keirstead <j.keirstead@imperial.ac.uk>
 
 __OK__
@@ -575,7 +682,19 @@ __OK__
 ## Deducer (0.7-7)
 Maintainer: Ian Fellows <ian@fellstat.com>
 
-__OK__
+```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  as.matrix.cor.matrix plot.cor.matrix print.contin.table
+  print.contin.tests print.contingency.tables print.cor.matrix
+  print.freq.table print.multi.test sort.data.frame summary.lm
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## demi (1.1.2)
 Maintainer: Sten Ilmjarv <sten.ilmjarv@gmail.com>
@@ -586,6 +705,7 @@ Packages required but not available: ‘affxparser’ ‘affy’ ‘oligo’
 
 See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
+Status: 1 ERROR
 ```
 
 ## dendextend (0.18.3)
@@ -598,7 +718,11 @@ Package which this enhances but not available for checking: ‘labeltodendro’
 ```
 ```
 checking Rd cross-references ... NOTE
-Packages unavailable to check Rd xrefs: ‘WGCNA’, ‘distory’, ‘moduleColor’
+Packages unavailable to check Rd xrefs: ‘WGCNA’, ‘moduleColor’, ‘distory’
+```
+```
+DONE
+Status: 2 NOTEs
 ```
 
 ## DescribeDisplay (0.2.4)
@@ -606,6 +730,7 @@ Maintainer: Di Cook <dicook@iastate.edu>
 
 ```
 checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
 Deprecated license: BSD
 ```
 ```
@@ -619,60 +744,21 @@ Package in Depends field not imported from: ‘proto’
   These packages need to be imported from (in the NAMESPACE file)
   for when this namespace is loaded but not attached.
 ```
+```
+DONE
+Status: 3 NOTEs
+```
 
-## discreteRV (1.2)
+## discreteRV (1.2.1)
 Maintainer: Eric Hare <erichare@iastate.edu>  
 Bug reports: https://github.com/erichare/discreteRV/issues
 
 __OK__
 
-## dostats (1.3.1)
+## dostats (1.3.2)
 Maintainer: Andrew Redd <Andrew.Redd@hsc.utah.edu>
 
-```
-checking R code for possible problems ... NOTE
-Table1: no visible global function definition for ‘idata.frame’
-copy_names: no visible global function definition for ‘dlply’
-depth: no visible global function definition for ‘laply’
-dseval_fork: no visible global function definition for ‘dlply’
-dseval_left.dostats.formula.bind: no visible global function definition
-  for ‘llply’
-dseval_right.dostats.formula.bind: no visible global function
-  definition for ‘llply’
-dseval_right.dostats.formula.bind: no visible global function
-  definition for ‘laply’
-dseval_right.dostats.formula.by_two_fun: no visible global function
-  definition for ‘llply’
-dseval_right.dostats.formula.nest: no visible global function
-  definition for ‘llply’
-dseval_right.dostats.formula.nest: no visible global function
-  definition for ‘laply’
-find_headers.hdf: no visible global function definition for ‘llply’
-find_headers.hdf: no visible global function definition for ‘laply’
-find_headers.list: no visible global function definition for ‘llply’
-find_headers.list: no visible global function definition for ‘laply’
-format.hdf: no visible global function definition for ‘llply’
-get_vars.dostats.formula.bind: no visible global function definition
-  for ‘llply’
-get_vars.dostats.formula.nest: no visible global function definition
-  for ‘llply’
-hdf: no visible global function definition for ‘llply’
-hdf: no visible global function definition for ‘laply’
-is_uniform: no visible global function definition for ‘laply’
-listrows: no visible global function definition for ‘mlply’
-make_pmat: no visible global function definition for ‘laply’
-make_ppath: no visible global function definition for ‘llply’
-parse_bind: no visible global function definition for ‘llply’
-parse_by_two_fun: no visible global function definition for ‘llply’
-parse_nest: no visible global function definition for ‘llply’
-rbind.hdf: no visible global function definition for ‘llply’
-rbind.hdf: no visible global function definition for ‘laply’
-rbind.hdf : <anonymous>: no visible global function definition for
-  ‘llply’
-take_names.default: no visible global function definition for ‘llply’
-trace_parents: no visible global function definition for ‘llply’
-unroll: no visible global function definition for ‘llply’
-```
+__OK__
 
 ## dropR (0.1)
 Maintainer: Matthias Bannert <bannert@kof.ethz.ch>
@@ -688,6 +774,10 @@ __OK__
 Maintainer: Jacob Montgomery <jacob.montgomery@wustl.edu>
 
 ```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
 checking dependencies in R code ... NOTE
 Packages in Depends field not imported from:
   ‘Hmisc’ ‘abind’ ‘ensembleBMA’ ‘methods’ ‘plyr’ ‘separationplot’
@@ -698,6 +788,10 @@ Packages in Depends field not imported from:
 checking R code for possible problems ... NOTE
 plot,FDatFitLogit: no visible binding for global variable ‘y’
 plot,FDatFitNormal: no visible binding for global variable ‘y’
+```
+```
+DONE
+Status: 3 NOTEs
 ```
 
 ## ecoengine (1.9.1)
@@ -713,18 +807,22 @@ Maintainer: Jared E. Knowles <jknowles@gmail.com>
 checking R code for possible problems ... NOTE
 moves_calc: no visible binding for global variable ‘id’
 ```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## EIAdata (0.0.3)
 Maintainer: Matthew Brigida <matt@complete-markets.com>
 
 __OK__
 
-## emdatr (0.2)
+## emdatr (0.3)
 Maintainer: Gopi Goteti <my.ration.shop@gmail.com>
 
 __OK__
 
-## emdbook (1.3.7)
+## emdbook (1.3.8)
 Maintainer: Ben Bolker <bolker@mcmaster.ca>
 
 __OK__
@@ -759,6 +857,10 @@ Animate : create_map: no visible global function definition for
   ‘ani.pause’
 Animate: no visible global function definition for ‘saveHTML’
 ```
+```
+DONE
+Status: 2 NOTEs
+```
 
 ## eurostat (1.0.16)
 Maintainer: Lahti Leo <louhos@googlegroups.com>  
@@ -766,31 +868,62 @@ Bug reports: https://github.com/ropengov/eurostat/issues
 
 __OK__
 
+## evolqg (0.1-5)
+Maintainer: Diogo Melo <diogro@usp.br>  
+Bug reports: https://github.com/lem-usp/evolqg/issues
+
+__OK__
+
 ## extracat (1.7-1)
 Maintainer: Alexander Pilhoefer <alexander.pilhoefer@math.uni-augsburg.de>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## ez (4.2-2)
 Maintainer: Michael A. Lawrence <mike.lwrnc@gmail.com>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## ezsim (0.5.5)
 Maintainer: TszKin Julian Chan <ctszkin@gmail.com>  
 Bug reports: TszKin Julian Chan <ctszkin@gmail.com>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
-## FAOSTAT (1.9)
+## FAOSTAT (2.0)
 Maintainer: Filippo Gheri <filippo.gheri@fao.org>
 
 ```
 checking data for non-ASCII characters ... NOTE
-  Note: found 178 marked UTF-8 strings
+  Note: found 179 marked UTF-8 strings
+```
+```
+DONE
+Status: 1 NOTE
 ```
 
-## fishmove (0.3-1)
+## fishmove (0.3-3)
 Maintainer: Johannes Radinger <jradinger@igb-berlin.de>
 
 __OK__
@@ -900,6 +1033,10 @@ at gcbd.Rnw:860, subscript out of bounds
 Execution halted
 
 ```
+```
+DONE
+Status: 4 NOTEs
+```
 
 ## gcookbook (1.0)
 Maintainer: Winston Chang <winston@stdout.org>
@@ -919,6 +1056,10 @@ Package in Depends field not imported from: ‘tools’
 checking R code for possible problems ... NOTE
 IsValidGDELT: no visible global function definition for ‘md5sum’
 ```
+```
+DONE
+Status: 2 NOTEs
+```
 
 ## gdm (1.0)
 Maintainer: Matthew C. Fitzpatrick <mfitzpatrick@al.umces.edu>
@@ -930,6 +1071,54 @@ Maintainer: Luisa Salazar Vizcaya <luisa.salazar@ispm.unibe.ch>
 
 __OK__
 
+## gemtc (0.6-2)
+Maintainer: Gert van Valkenhoef <g.h.m.van.valkenhoef@rug.nl>
+
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘BRugs’
+```
+```
+checking examples ... ERROR
+Running examples in ‘gemtc-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: mtc.hy.prior
+> ### Title: Set priors for the heterogeneity parameter
+> ### Aliases: mtc.hy.prior mtc.hy.empirical.lor
+> 
+> ### ** Examples
+> 
+> file <- system.file("extdata/luades-smoking.gemtc", package="gemtc")
+> network <- read.mtc.network(file)
+> 
+> # NOTE: the mtc.run commands below are for illustrative purposes, such a small
+> # number of iterations should obviously not be used in practice.
+> 
+> # set a uniform prior standard deviation
+> model1 <- mtc.model(network, hy.prior=mtc.hy.prior("std.dev", "dunif", 0, 2))
+> result <- mtc.run(model1, n.adapt=10, n.iter=10)
+Warning: running command 'which wine' had status 1
+
+WARNING: The locate database (/var/db/locate.database) does not exist.
+To create the database, run the following command:
+
+  sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+
+Please be aware that the database can take some time to generate; once
+the database has been created, this message will no longer appear.
+
+Warning: running command 'locate wine | grep bin/wine$' had status 1
+Error in findUnixBinary(x = "wine") : couldn't find wine binary file
+Calls: mtc.run ... mtc.sample -> as.mcmc.list -> <Anonymous> -> findUnixBinary
+Execution halted
+```
+```
+DONE
+Status: 1 ERROR, 1 NOTE
+```
+
 ## geospt (1.0-1)
 Maintainer: Al� Santacruz <amsantac@unal.edu.co>
 
@@ -940,17 +1129,25 @@ Maintainer: Alex Zvoleff <azvoleff@conservation.org>
 Bug reports: https://github.com/azvoleff/gfcanalysis/issues
 
 ```
-checking package dependencies ... ERROR
-Packages required but not available: ‘rgdal’ ‘rgeos’ ‘rasterVis’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+DONE
+Status: 1 NOTE
 ```
 
 ## GGally (0.5.0)
 Maintainer: Barret Schloerke <schloerke@gmail.com>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## ggenealogy (0.1.0)
 Maintainer: Lindsay Rutter <lrutter@iastate.edu>
@@ -961,7 +1158,54 @@ __OK__
 Maintainer: David Kahle <david.kahle@gmail.com>  
 Bug reports: https://github.com/dkahle/ggmap/issues
 
-__OK__
+```
+checking examples ... ERROR
+Running examples in ‘ggmap-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: geocode
+> ### Title: Geocode
+> ### Aliases: geocode geocodeQueryCheck
+> 
+> ### ** Examples
+> 
+> # Types of input
+> geocode('Baylor University')
+Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=Baylor+University&sensor=false
+        lon      lat
+1 -97.11844 31.54822
+> geocode('1600 Pennsylvania Avenue, Washington DC')
+Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=1600+Pennsylvania+Avenue,+Washington+DC&sensor=false
+        lon      lat
+1 -76.98168 38.87866
+> geocode('the white house')
+Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=the+white+house&sensor=false
+        lon      lat
+1 -77.03653 38.89768
+> geocode(c('baylor university', 'salvation army waco'))
+Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=baylor+university&sensor=false
+Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=salvation+army+waco&sensor=false
+        lon      lat
+1 -97.11844 31.54822
+2 -97.12858 31.54158
+> 
+> # Types of output
+> geocode('Baylor University', output = "latlona")
+        lon      lat
+1 -97.11844 31.54822
+                                                        address
+1 baylor university, 1311 south 5th street, waco, tx 76706, usa
+> geocode('Baylor University', output = "more")
+Error in data.frame(long_name = "Baylor University", short_name = "Baylor University",  : 
+  arguments imply differing number of rows: 1, 0
+Calls: geocode ... as.data.frame -> as.data.frame.list -> eval -> eval -> data.frame
+Execution halted
+```
+```
+DONE
+Status: 1 ERROR
+```
 
 ## ggparallel (0.1.1)
 Maintainer: Heike Hofmann <hofmann@iastate.edu>
@@ -1030,6 +1274,10 @@ Rd file 'ggparallel.Rd':
 
 These lines will be truncated in the PDF manual.
 ```
+```
+DONE
+Status: 5 NOTEs
+```
 
 ## ggplot2 (1.0.1)
 Maintainer: Hadley Wickham <h.wickham@gmail.com>  
@@ -1040,10 +1288,22 @@ __OK__
 ## ggsubplot (0.3.2)
 Maintainer: Garrett Grolemund <garrett@rstudio.com>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## ggswissmaps (0.0.2)
 Maintainer: Sandro Petrillo Burri <gibo.gaf@gmail.com>
+
+__OK__
+
+## ggtern (1.0.5.0)
+Maintainer: Nicholas Hamilton <nick@ggtern.com>
 
 __OK__
 
@@ -1056,6 +1316,10 @@ __OK__
 ## gpmap (0.1.1)
 Maintainer: Arne B. Gjuvsland <arne.gjuvsland@nmbu.no>
 
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
 ```
 checking dependencies in R code ... NOTE
 Packages in Depends field not imported from:
@@ -1125,6 +1389,10 @@ plot3_orig: no visible global function definition for ‘geom_line’
 plot3_orig: no visible global function definition for ‘facet_wrap’
 plot3_orig: no visible global function definition for ‘labs’
 ```
+```
+DONE
+Status: 3 NOTEs
+```
 
 ## gProfileR (0.5.3)
 Maintainer: Tambet Arak <tambet.arak@gmail.com>
@@ -1140,32 +1408,42 @@ __OK__
 Maintainer: Keaven Anderson <keaven_anderson@merck.com>
 
 ```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  plot.binomialSPRT plot.gsBinomialExact plot.gsDesign
+  plot.gsProbability plot.ssrCP print.eEvents print.gsBoundSummary
+  print.gsDesign print.gsProbability print.gsSurv print.nSurv
+  print.nSurvival summary.gsDesign summary.spendfn xtable.gsSurv
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
+```
 checking line endings in Makefiles ... NOTE
 Found the following Makefile(s) without a final LF:
   inst/unitTests/Makefile
 Some ‘make’ programs ignore lines not ending in LF.
 ```
-
-## GSIF (0.4-4)
-Maintainer: Tomislav Hengl <tom.hengl@wur.nl>
-
 ```
-checking package dependencies ... ERROR
-Packages required but not available:
-  ‘RSAGA’ ‘dismo’ ‘rgdal’ ‘aqp’ ‘plotKML’
-
-Packages suggested but not available for checking:
-  ‘soiltexture’ ‘spatstat’ ‘quantregForest’ ‘fossil’ ‘gdalUtils’
-  ‘maxlike’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+DONE
+Status: 2 NOTEs
 ```
+
+## GSIF (0.4-6)
+Maintainer: Tomislav Hengl <tom.hengl@isric.org>
+
+__OK__
 
 ## gtable (0.1.2)
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## h2o (2.8.4.4)
 Maintainer: Tom Kraljevic <tomk@0xdata.com>
@@ -1175,6 +1453,10 @@ checking installed package size ... NOTE
   installed size is 40.5Mb
   sub-directories of 1Mb or more:
     java  39.6Mb
+```
+```
+DONE
+Status: 1 NOTE
 ```
 
 ## harvestr (0.6.0)
@@ -1190,14 +1472,25 @@ __OK__
 ## hillmakeR (0.2)
 Maintainer: David Gilinson <dgilinson@reefpointgroup.com>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## HistData (0.7-5)
 Maintainer: Michael Friendly <friendly@yorku.ca>
 
 ```
 checking Rd cross-references ... NOTE
-Packages unavailable to check Rd xrefs: ‘Guerry’, ‘agridat’, ‘alr3’
+Packages unavailable to check Rd xrefs: ‘Guerry’, ‘alr3’, ‘agridat’
+```
+```
+DONE
+Status: 1 NOTE
 ```
 
 ## HiveR (0.2-28)
@@ -1210,11 +1503,10 @@ __OK__
 Maintainer: Adam Loy <loyad01@gmail.com>
 
 ```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppArmadillo’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking whether package ‘HLMdiag’ can be installed ... [29s/29s] ERROR
+Installation failed.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/HLMdiag.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
 ## hydrostats (0.2.3)
@@ -1226,7 +1518,21 @@ __OK__
 Maintainer: Daniel Caro <daniel.caro@education.ox.ac.uk>  
 Bug reports: https://github.com/eldafani/intsvy/issues
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  plot.intsvy.mean plot.intsvy.reg plot.intsvy.table
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
+```
+DONE
+Status: 2 NOTEs
+```
 
 ## IsingSampler (0.2)
 Maintainer: Sacha Epskamp <mail@sachaepskamp.com>
@@ -1237,10 +1543,25 @@ __OK__
 Maintainer: Alan Fernihough <alan.fernihough@gmail.com>
 
 ```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  print.lewbel.model
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
+```
 checking R code for possible problems ... NOTE
 clusterVCV: no visible global function definition for ‘estfun’
 covc: no visible global function definition for ‘sandwich’
 ftest: no visible global function definition for ‘vcovHC’
+```
+```
+DONE
+Status: 3 NOTEs
 ```
 
 ## JAGUAR (2.0)
@@ -1254,7 +1575,7 @@ Bug reports: http://github.com/jeroenooms/jsonlite/issues
 
 __OK__
 
-## Kernelheaping (0.2)
+## Kernelheaping (0.5)
 Maintainer: Marcus Gross <marcus.gross@fu-berlin.de>
 
 __OK__
@@ -1275,7 +1596,14 @@ __OK__
 Maintainer: Jim Hester <james.f.hester@gmail.com>  
 Bug reports: https://github.com/jimhester/knitrBootstrap/issues
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## kobe (1.3.2)
 Maintainer: Laurence Kell <laurie.kell@iccat.int>
@@ -1297,8 +1625,12 @@ checking dependencies in R code ... NOTE
   Please use :: or requireNamespace() instead.
   See section 'Suggested packages' in the 'Writing R Extensions' manual.
 ```
+```
+DONE
+Status: 2 NOTEs
+```
 
-## LakeMetabolizer (1.3.1)
+## LakeMetabolizer (1.3.3)
 Maintainer: Luke Winslow <lawinslow@gmail.com>
 
 __OK__
@@ -1307,6 +1639,10 @@ __OK__
 Maintainer: Richie Cotton <richierocks@gmail.com>
 
 ```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
 checking Rd cross-references ... NOTE
 Package unavailable to check Rd xrefs: ‘pracma’
 ```
@@ -1314,8 +1650,12 @@ Package unavailable to check Rd xrefs: ‘pracma’
 checking data for non-ASCII characters ... NOTE
   Note: found 78 marked UTF-8 strings
 ```
+```
+DONE
+Status: 3 NOTEs
+```
 
-## lfl (1.0)
+## lfl (1.1)
 Maintainer: Michal Burda <michal.burda@osu.cz>
 
 __OK__
@@ -1325,6 +1665,10 @@ Maintainer: Jason Bryer <jason@bryer.org>
 Bug reports: https://github.com/jbryer/likert/issues
 
 ```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
 checking dependencies in R code ... NOTE
 'library' or 'require' call to ‘shiny’ in package code.
   Please use :: or requireNamespace() instead.
@@ -1333,6 +1677,10 @@ checking dependencies in R code ... NOTE
 ```
 checking data for non-ASCII characters ... NOTE
   Note: found 7 marked UTF-8 strings
+```
+```
+DONE
+Status: 3 NOTEs
 ```
 
 ## lint (0.3)
@@ -1344,34 +1692,41 @@ autotest_style: no visible global function definition for ‘test_that’
 test_style: no visible global function definition for
   ‘expect_equivalent’
 ```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## lllcrc (1.2)
 Maintainer: Zach Kurtz <zkurtz@gmail.com>
 
 __OK__
 
-## lmerTest (2.0-20)
+## lmerTest (2.0-25)
 Maintainer: Alexandra Kuznetsova <alku@dtu.dk>
 
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' call to ‘pbkrtest’ in package code.
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
+__OK__
+
+## loopr (1.0.1)
+Maintainer: Brandon Taylor <Brandon.Taylor221@gmail.com>
+
+__OK__
 
 ## lsbclust (1.0.2)
 Maintainer: Pieter Schoonees <schoonees@gmail.com>
 
 __OK__
 
-## lsmeans (2.16)
+## lsmeans (2.18)
 Maintainer: Russ Lenth <russell-lenth@uiowa.edu>
 
 ```
 checking package dependencies ... NOTE
-Packages which this enhances but not available for checking:
-  ‘afex’ ‘coxme’ ‘gee’ ‘geepack’ ‘glmmADMB’
+Packages suggested but not available for checking: ‘glmmADMB’ ‘lme4.0’
+```
+```
+DONE
+Status: 1 NOTE
 ```
 
 ## lubridate (1.3.3)
@@ -1382,6 +1737,18 @@ Bug reports: https://github.com/hadley/lubridate/issues
 checking package dependencies ... NOTE
 Packages which this enhances but not available for checking: ‘its’ ‘fts’
 ```
+```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  pretty.day pretty.hour pretty.min pretty.month pretty.point
+  pretty.sec pretty.unit pretty.year
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
+```
+DONE
+Status: 2 NOTEs
+```
 
 ## marked (1.1.8)
 Maintainer: Jeff Laake <Jeff.Laake@noaa.gov>
@@ -1389,7 +1756,8 @@ Maintainer: Jeff Laake <Jeff.Laake@noaa.gov>
 ```
 checking whether package ‘marked’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/marked.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/marked.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
 ## medicalrisk (1.1)
@@ -1408,23 +1776,16 @@ Maintainer: Sean C. Anderson <sean@seananderson.ca>
 Bug reports: http://github.com/seananderson/metafolio/issues
 
 ```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppArmadillo’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking whether package ‘metafolio’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/metafolio.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
-## metafor (1.9-5)
+## metafor (1.9-7)
 Maintainer: Wolfgang Viechtbauer <wvb@metafor-project.org>
 
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘Epi’ ‘lme4’ ‘polycor’ ‘survival’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
+__OK__
 
 ## metagen (1.0)
 Maintainer: Thomas W. D. Möbius <kontakt@thomasmoebius.de>
@@ -1452,20 +1813,29 @@ Missing or unexported object: ‘kohonen::predict.kohonen’
 checking tests ... ERROR
 Running the tests in ‘tests/run-base.R’ failed.
 Last 13 lines of output:
-  makeClassifTask(data = regr.df, target = regr.target) does not match 'be a factor'. Actual value: "Error in test_check("mlr", filter = "base") : \n  Assertion on 'medv' failed: Must be of type 'factor', not 'double'\n"
+         signalCondition(e)
+     }, "'multiclass.roc.default' is not an exported object from 'namespace:pROC'", quote(NULL))
   
-  3. Failure(@test_base_SupervisedTask.R#29): SupervisedTask ---------------------
-  makeRegrTask(data = multiclass.df, target = multiclass.target) does not match 'be numeric'. Actual value: "Error in test_check("mlr", filter = "base") : \n  Assertion on 'Species' failed: Must be of type 'numeric', not 'factor'\n"
+  testthat results ================================================================
+  OK: 1068 SKIPPED: 0 FAILED: 5
+  1. Failure (at test_base_SupervisedTask.R#23): SupervisedTask 
+  2. Failure (at test_base_SupervisedTask.R#27): SupervisedTask 
+  3. Failure (at test_base_SupervisedTask.R#29): SupervisedTask 
+  4. Failure (at test_base_UnsupervisedTask.R#6): UnsupervisedTask 
+  5. Error: measures 
   
-  4. Failure(@test_base_UnsupervisedTask.R#6): UnsupervisedTask ------------------
-  makeClassifTask(data = 44) does not match 'Must be a data.frame'. Actual value: "Error in test_check("mlr", filter = "base") : \n  Assertion on 'data' failed: Must be of type 'data.frame', not 'double'\n"
-  
-  Error: Test failures
-  In addition: Warning message:
-  In lognet(x, is.sparse, ix, jx, y, weights, offset, alpha, nobs,  :
-    one multinomial or binomial class has fewer than 8  observations; dangerous ground
+  Error: testthat unit tests failed
   Execution halted
 ```
+```
+DONE
+Status: 1 ERROR, 2 NOTEs
+```
+
+## mlVAR (0.1.0)
+Maintainer: Sacha Epskamp <mail@sachaepskamp.com>
+
+__OK__
 
 ## morse (1.0.2)
 Maintainer: Philippe Ruiz <philippe.ruiz@univ-lyon1.fr>
@@ -1577,8 +1947,12 @@ repro.survplot: no visible global function definition for
 repro.survplot: no visible global function definition for
   ‘scale_x_continuous’
 ```
+```
+DONE
+Status: 2 NOTEs
+```
 
-## mosaic (0.9.2-2)
+## mosaic (0.10.0)
 Maintainer: Randall Pruim <rpruim@calvin.edu>
 
 ```
@@ -1586,38 +1960,8 @@ checking package dependencies ... NOTE
 Package which this enhances but not available for checking: ‘manipulate’
 ```
 ```
-checking installed package size ... NOTE
-  installed size is  9.4Mb
-  sub-directories of 1Mb or more:
-    R     1.8Mb
-    doc   7.0Mb
-```
-```
-checking examples ... ERROR
-Running examples in ‘mosaic-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: CIAdata
-> ### Title: Return a dataset based on the CIA World Factbook
-> ### Aliases: CIAdata
-> 
-> ### ** Examples
-> 
-> head(CIAdata())
-            Category                  Field   Name Code                 Unit
-1          Geography                   Area   area 2147                sq km
-2 People and Society             Population    pop 2119               people
-3 People and Society Population growth rate growth 2002                    %
-4 People and Society             Birth rate  birth 2054   births/1000 people
-5 People and Society             Death rate  death 2066   deaths/1000 people
-6 People and Society     Net migration rate   migr 2112 migrants/1000 people
-> gdpData <- CIAdata("pop")
-Loading required namespace: RCurl
-Error in names(table) <- c("country", name) : 
-  'names' attribute [2] must be the same length as the vector [0]
-Calls: CIAdata
-Execution halted
+DONE
+Status: 1 NOTE
 ```
 
 ## MplusAutomation (0.6-3)
@@ -1639,9 +1983,14 @@ checking R code for possible problems ... NOTE
 readModels: no visible global function definition for ‘h5dump’
 showSummaryTable: no visible global function definition for ‘showData’
 ```
+```
+DONE
+Status: 3 NOTEs
+```
 
-## mpoly (0.0.5)
-Maintainer: David Kahle <david.kahle@gmail.com>
+## mpoly (0.1.0)
+Maintainer: David Kahle <david.kahle@gmail.com>  
+Bug reports: https://github.com/dkahle/mpoly/issues
 
 __OK__
 
@@ -1649,8 +1998,16 @@ __OK__
 Maintainer: Brian A. Fannin <BFannin@RedwoodsGroup.com>
 
 ```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
 checking R code for possible problems ... NOTE
 PlotResiduals: no visible global function definition for ‘.’
+```
+```
+DONE
+Status: 2 NOTEs
 ```
 
 ## multilevelPSA (1.2.2)
@@ -1663,8 +2020,12 @@ checking dependencies in R code ... NOTE
   Please use :: or requireNamespace() instead.
   See section 'Suggested packages' in the 'Writing R Extensions' manual.
 ```
+```
+DONE
+Status: 1 NOTE
+```
 
-## MVN (3.9)
+## MVN (4.0)
 Maintainer: Selcuk Korkmaz <selcuk.korkmaz@hacettepe.edu.tr>
 
 __OK__
@@ -1673,11 +2034,10 @@ __OK__
 Maintainer: Matteo Fasiolo <matteo.fasiolo@gmail.com>
 
 ```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppArmadillo’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking whether package ‘mvnfast’ can be installed ... [18s/19s] ERROR
+Installation failed.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/mvnfast.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
 ## NAPPA (2.0.1)
@@ -1690,9 +2050,15 @@ Maintainer: James Manton <ajd.manton@googlemail.com>
 
 __OK__
 
-## nat (1.6.4)
+## nat (1.6.6)
 Maintainer: Greg Jefferis <jefferis@gmail.com>  
 Bug reports: https://github.com/jefferis/nat/issues
+
+__OK__
+
+## neotoma (1.3.0)
+Maintainer: Simon J. Goring <goring@wisc.edu>  
+Bug reports: https://github.com/ropensci/neotoma/issues
 
 __OK__
 
@@ -1704,27 +2070,45 @@ __OK__
 ## networkreporting (0.0.1)
 Maintainer: Dennis Feehan <dfeehan@princeton.edu>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## networkTomography (0.3)
 Maintainer: Alexander W Blocker <ablocker@gmail.com>
 
 ```
-checking package dependencies ... ERROR
-Package required but not available: ‘Rglpk’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking whether package ‘networkTomography’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/networkTomography.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
 ## ngramr (1.4.5)
 Maintainer: Sean Carmody <seancarmody@gmail.com>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## NlsyLinks (1.302)
 Maintainer: Will Beasley <wibeasley@hotmail.com>
 
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+Malformed Description field: should contain one or more complete sentences.
+```
 ```
 checking dependencies in R code ... NOTE
 Namespace in Imports field not imported from: ‘methods’
@@ -1737,6 +2121,15 @@ ReadCsvNlsy79Gen1: no visible binding for global variable
 ReadCsvNlsy79Gen2: no visible binding for global variable
   ‘SubjectDetails79’
 ```
+```
+DONE
+Status: 3 NOTEs
+```
+
+## NPC (1.0.0)
+Maintainer: Devin Caughey <devin.caughey@gmail.com>
+
+__OK__
 
 ## npIntFactRep (1.2)
 Maintainer: Jos Feys <jos.feys@faber.kuleuven.be>
@@ -1746,7 +2139,17 @@ __OK__
 ## npsm (0.5)
 Maintainer: John Kloke <kloke@biostat.wisc.edu>
 
-__OK__
+```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  print.fkk.test print.hogg.test print.rank.test
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## nullabor (0.3.1)
 Maintainer: Di Cook <dicook@iastate.edu>
@@ -1765,31 +2168,43 @@ okmts: no visible binding for global variable ‘okstations’
 okmts: no visible binding for global variable ‘TIME’
 totalprecip: no visible binding for global variable ‘TIME’
 ```
+```
+DONE
+Status: 1 NOTE
+```
 
-## openair (1.1-5)
-Maintainer: David Carslaw <david.carslaw@kcl.ac.uk>
+## OpasnetUtils (1.2.0)
+Maintainer: Teemu Rintala <teemu.rintala.a@gmail.com>
+
+__OK__
+
+## openair (1.5)
+Maintainer: David Carslaw <david.carslaw@york.ac.uk>  
+Bug reports: http://github.com/davidcarslaw/openair/issues
 
 ```
 checking whether package ‘openair’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/openair.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/openair.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
 ## OpenRepGrid (0.1.9)
 Maintainer: Mark Heckmann <heckmann@uni-bremen.de>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## opentraj (1.0)
 Maintainer: Thalles Silva <tsantossilva@algomau.ca>
 
-```
-checking package dependencies ... ERROR
-Packages required but not available: ‘openair’ ‘rgdal’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
+__OK__
 
 ## optiRum (0.35)
 Maintainer: Stephanie Locke <stephanie.locke@optimumcredit.co.uk>  
@@ -1806,47 +2221,41 @@ __OK__
 Maintainer: Sara Varela <svarela@paleobiogeography.org>  
 Bug reports: https://github.com/ropensci/paleobioDB/issues
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
-## paleofire (1.1.5)
+## paleofire (1.1.6)
 Maintainer: Olivier Blarquez <blarquez@gmail.com>
 
-```
-checking package dependencies ... ERROR
-Packages required but not available: ‘GCD’ ‘rgdal’
+__OK__
 
-Packages suggested but not available for checking: ‘agricolae’ ‘Imap’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## parboost (0.1.3)
+## parboost (0.1.4)
 Maintainer: Ronert Obst <ronert.obst@gmail.com>
-
-```
-checking R code for possible problems ... NOTE
-cv_subsample: no visible global function definition for ‘mstop’
-parboost: no visible global function definition for ‘boost_control’
-parboost_fit: no visible global function definition for ‘Gaussian’
-parboost_fit: no visible global function definition for ‘Binomial’
-parboost_fit: no visible global function definition for ‘Poisson’
-```
-
-## pathological (0.0-3)
-Maintainer: Richard Cotton <richierocks@gmail.com>
 
 __OK__
 
-## pedometrics (0.4-1)
+## pathological (0.0-6)
+Maintainer: Richard Cotton <richierocks@gmail.com>  
+Bug reports: https://github.com/richierocks/pathological/issues
+
+__OK__
+
+## pedometrics (0.6-2)
 Maintainer: Alessandro Samuel-Rosa <alessandrosamuelrosa@gmail.com>
 
 ```
-checking package dependencies ... ERROR
-Package required but not available: ‘spsurvey’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking Rd cross-references ... NOTE
+Packages unavailable to check Rd xrefs: ‘VecStatGraphs2D’, ‘mvtsplot’
+```
+```
+DONE
+Status: 1 NOTE
 ```
 
 ## peptider (0.2)
@@ -1865,27 +2274,16 @@ __OK__
 Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
 
 ```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppArmadillo’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking whether package ‘planar’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/planar.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
-## plotKML (0.5-0)
-Maintainer: Tomislav Hengl <tom.hengl@wur.nl>
+## plotKML (0.5-2)
+Maintainer: Tomislav Hengl <tom.hengl@isric.org>
 
-```
-checking package dependencies ... ERROR
-Packages required but not available:
-  ‘rgdal’ ‘dismo’ ‘aqp’ ‘colorRamps’ ‘RSAGA’
-
-Packages suggested but not available for checking:
-  ‘adehabitat’ ‘fossil’ ‘spcosa’ ‘spatstat’ ‘rgbif’ ‘GSIF’ ‘gdalUtils’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
+__OK__
 
 ## plotSEMM (2.0)
 Maintainer: Phil Chalmers <rphilip.chalmers@gmail.com>
@@ -1911,7 +2309,13 @@ Package required but not available: ‘impute’
 
 See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
+Status: 1 ERROR
 ```
+
+## pogit (1.0.0)
+Maintainer: Michaela Dvorzak <m.dvorzak@gmx.at>
+
+__OK__
 
 ## pointRes (1.0.2)
 Maintainer: Marieke van der Maaten-Theunissen <marieketheunissen@gmail.com>
@@ -1928,13 +2332,16 @@ __OK__
 Maintainer: Bernd Gruber <Bernd.Gruber@canberra.edu.au>
 
 ```
-checking package dependencies ... ERROR
-Packages required but not available:
-  ‘adegenet’ ‘gap’ ‘calibrate’ ‘dismo’ ‘pegas’ ‘genetics’ ‘rgdal’
-  ‘gdistance’ ‘mmod’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+checking Rd cross-references ... NOTE
+Package unavailable to check Rd xrefs: ‘ecodist’
+```
+```
+DONE
+Status: 2 NOTEs
 ```
 
 ## pqantimalarials (0.2)
@@ -1952,15 +2359,19 @@ Maintainer: Jim Hester <james.f.hester@gmail.com>
 
 __OK__
 
-## pROC (1.7.3)
+## pROC (1.8)
 Maintainer: Xavier Robin <robin@lindinglab.org>
 
 ```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘MASS’ ‘logcondens’ ‘microbenchmark’ ‘tcltk’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  ci.auc ci.coords ci.se ci.sp ci.thresholds roc.test
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
+```
+DONE
+Status: 1 NOTE
 ```
 
 ## profileR (0.2-1)
@@ -1989,6 +2400,10 @@ ggplot.profr: no visible global function definition for
 ggplot.profr: no visible global function definition for
   ‘scale_x_continuous’
 ```
+```
+DONE
+Status: 2 NOTEs
+```
 
 ## ProjectTemplate (0.6)
 Maintainer: Kirill Mueller <krlmlr+r@mailbox.org>  
@@ -1996,7 +2411,15 @@ Bug reports: https://github.com/johnmyleswhite/ProjectTemplate/issues
 
 ```
 checking package dependencies ... NOTE
-Packages suggested but not available for checking: ‘RODBC’ ‘RPostgreSQL’
+Package suggested but not available for checking: ‘RODBC’
+```
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
+DONE
+Status: 2 NOTEs
 ```
 
 ## proteomics (0.2)
@@ -2009,13 +2432,10 @@ Maintainer: Andrew J. Barbour <andy.barbour@gmail.com>
 Bug reports: https://github.com/abarbour/psd/issues
 
 ```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppArmadillo’
-
-Package suggested but not available for checking: ‘fftw’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking whether package ‘psd’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/psd.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
 ## psytabs (0.5)
@@ -2071,10 +2491,21 @@ Rd file 'normTable.Rd':
 
 These lines will be truncated in the PDF manual.
 ```
+```
+DONE
+Status: 4 NOTEs
+```
 
 ## pxR (0.40.0)
 Maintainer: Carlos J. Gil Bellosta <cgb@datanalytics.com>
 
+```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  as.px.array
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
 ```
 checking R code for possible problems ... NOTE
 read.px : get.attributes: no visible global function definition for
@@ -2083,12 +2514,37 @@ read.px: no visible global function definition for ‘str_locate_all’
 read.px: no visible global function definition for ‘str_sub’
 read.px: no visible global function definition for ‘str_length’
 ```
+```
+DONE
+Status: 2 NOTEs
+```
 
-## pxweb (0.5.5)
+## pxweb (0.5.54)
 Maintainer: Mans Magnusson <mons.magnusson@gmail.com>  
 Bug reports: https://github.com/rOpenGov/pxweb/issues
 
-__OK__
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat_get_pxweb.R’ failed.
+Last 13 lines of output:
+  3. Failure (at test-get_pxweb_metadata.R#45): baseURL 2 ------------------------
+  {
+      api_test_file <- get_pxweb_metadata(path = test)
+  } threw an error
+  
+  testthat results ================================================================
+  OK: 56 SKIPPED: 0 FAILED: 3
+  1. Failure (at test-get_pxweb_data.R#137): get_pxweb_data() 
+  2. Failure (at test-get_pxweb_data.R#146): get_pxweb_data() 
+  3. Failure (at test-get_pxweb_metadata.R#45): baseURL 2 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+```
+DONE
+Status: 1 ERROR
+```
 
 ## qgraph (1.3.1)
 Maintainer: Sacha Epskamp <mail@sachaepskamp.com>
@@ -2101,18 +2557,20 @@ Bug reports: https://github.com/ropensci/rAltmetric/issues/
 
 __OK__
 
-## RAM (1.2.0)
+## RAM (1.2.1)
 Maintainer: Wen Chen <Wen.Chen@agr.gc.ca>
 
 ```
-checking package dependencies ... ERROR
-Packages required but not available: ‘labdsv’ ‘VennDiagram’ ‘FD’
-
-Packages suggested but not available for checking:
-  ‘indicspecies’ ‘Heatplus’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘Heatplus’
+```
+```
+checking Rd cross-references ... NOTE
+Package unavailable to check Rd xrefs: ‘Heatplus’
+```
+```
+DONE
+Status: 2 NOTEs
 ```
 
 ## rapport (0.51)
@@ -2206,6 +2664,10 @@ Rd file 'rp.qqplot.Rd':
 
 These lines will be truncated in the PDF manual.
 ```
+```
+DONE
+Status: 3 NOTEs
+```
 
 ## rapportools (1.0)
 Maintainer: Gergely Daróczi <daroczig@rapporter.net>  
@@ -2224,6 +2686,10 @@ rp.desc: no visible global function definition for ‘melt.data.frame’
 rp.desc: no visible global function definition for ‘cast’
 rp.freq: no visible global function definition for ‘melt’
 ```
+```
+DONE
+Status: 2 NOTEs
+```
 
 ## rattle (3.4.1)
 Maintainer: Graham Williams <Graham.Williams@togaware.com>
@@ -2231,8 +2697,7 @@ Maintainer: Graham Williams <Graham.Williams@togaware.com>
 ```
 checking package dependencies ... NOTE
 Packages suggested but not available for checking:
-  ‘RGtk2’ ‘cairoDevice’ ‘graph’ ‘gWidgetsRGtk2’ ‘playwith’ ‘RBGL’
-  ‘rggobi’ ‘RGtk2Extras’ ‘RODBC’ ‘pkgDepTools’ ‘Rgraphviz’
+  ‘graph’ ‘RBGL’ ‘rggobi’ ‘RODBC’ ‘pkgDepTools’ ‘Rgraphviz’
 ```
 ```
 checking installed package size ... NOTE
@@ -2254,6 +2719,13 @@ checking dependencies in R code ... NOTE
   See section 'Suggested packages' in the 'Writing R Extensions' manual.
 ```
 ```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  predict.hclust predict.kmeans print.summary.nnet
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
+```
 checking R code for possible problems ... NOTE
 Found an obsolete/platform-specific call in the following functions:
   ‘openMyDevice’ ‘printPlot’ ‘savePlotToFile’
@@ -2261,6 +2733,10 @@ Found the platform-specific devices:
   ‘win.metafile’ ‘win.print’
 dev.new() is the preferred way to open a new device, in the unlikely
 event one is needed.
+```
+```
+DONE
+Status: 5 NOTEs
 ```
 
 ## rbefdata (0.3.5)
@@ -2272,14 +2748,25 @@ bef.get.categories_for: no visible binding for global variable ‘id’
 bef.portal.get.categories_for: no visible binding for global variable
   ‘id’
 ```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## rbhl (0.1.0)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/rbhl/issues
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
-## RbioRXN (1.5)
+## RbioRXN (1.5.1)
 Maintainer: Byoungnam Min <mbnmbn00@gmail.com>
 
 ```
@@ -2288,6 +2775,7 @@ Packages required but not available: ‘fmcsR’ ‘ChemmineR’ ‘KEGGREST’
 
 See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
+Status: 1 ERROR
 ```
 
 ## rbison (0.4.5)
@@ -2296,10 +2784,33 @@ Bug reports: https://github.com/ropensci/rbison/issues
 
 __OK__
 
-## rcbalance (1.4)
+## rcbalance (1.6)
 Maintainer: Samuel D. Pimentel <spi@wharton.upenn.edu>
 
 __OK__
+
+## Rcell (1.3-2)
+Maintainer: Alan Bush <abush@fbmc.fcen.uba.ar>
+
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘EBImage’
+```
+```
+checking dependencies in R code ... NOTE
+Unexported objects imported by ':::' calls:
+  ‘ggplot2:::Geom’ ‘ggplot2:::Position’ ‘ggplot2:::Stat’
+  See the note in ?`:::` about the use of this operator.
+```
+```
+checking R code for possible problems ... NOTE
+.nchar: possible error in nchar(x, type, allowNA, keepNA = FALSE):
+  unused argument (keepNA = FALSE)
+```
+```
+DONE
+Status: 3 NOTEs
+```
 
 ## rclinicaltrials (1.4.1)
 Maintainer: Michael C Sachs <sachsmc@gmail.com>
@@ -2341,6 +2852,10 @@ theme_simple: no visible global function definition for ‘theme_bw’
 theme_simple: no visible global function definition for ‘element_rect’
 theme_simple: no visible global function definition for ‘element_blank’
 ```
+```
+DONE
+Status: 2 NOTEs
+```
 
 ## rcrossref (0.3.0)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
@@ -2348,7 +2863,7 @@ Bug reports: https://github.com/ropensci/rcrossref/issues
 
 __OK__
 
-## RDML (0.8-3)
+## RDML (0.8-4)
 Maintainer: Konstantin A. Blagodatskikh <k.blag@yandex.ru>
 
 __OK__
@@ -2357,7 +2872,15 @@ __OK__
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/rdryad/issues
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## RDSTK (1.1)
 Maintainer: Ryan Elmore <rtelmore@gmail.com>
@@ -2367,7 +2890,14 @@ __OK__
 ## rebird (0.1.1)
 Maintainer: Rafael Maia <rm72@zips.uakron.edu>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## REDCapR (0.7-1)
 Maintainer: Will Beasley <wibeasley@hotmail.com>
@@ -2387,23 +2917,28 @@ checking dependencies in R code ... NOTE
 checking tests ... ERROR
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
-             else names(CURLcodeValues)[i]
-         }
-         typeName = gsub("^CURLE_", "", typeName)
-         fun = (if (asError) 
-             stop
-         else warning)
-         fun(structure(list(message = msg, call = sys.call()), class = c(typeName, "GenericCurlError", 
-             "error", "condition")))
-     }(35L, "SSL peer handshake failed, the server most likely requires a client certificate to connect", 
-         TRUE)
+  5. Error: Read, Insert, and Update 
+  6. Error: Smoke Test 
+  7. Error: Write Batch -Insert 
+  8. Error: Write Batch -Update One Field 
+  9. Error: Write Batch -Update Two Fields 
+  1. Error: Smoke Test 
+  2. Error: Write One Shot -Insert 
+  3. Error: Write One Shot -Update One Field 
+  4. Error: Write One Shot -Update Two Fields 
+  5. ...
   
-  Error: Test failures
+  Error: testthat unit tests failed
   Execution halted
 ```
+```
+DONE
+Status: 1 ERROR, 2 NOTEs
+```
 
-## RefManageR (0.8.45)
-Maintainer: Mathew W. McLean <mathew.w.mclean@gmail.com>
+## RefManageR (0.8.63)
+Maintainer: Mathew W. McLean <mathew.w.mclean@gmail.com>  
+Bug reports: https://github.com/mwmclean/RefManageR/issues
 
 ```
 checking foreign function calls ... NOTE
@@ -2411,6 +2946,10 @@ Foreign function call to a different package:
   .External("do_read_bib", ..., PACKAGE = "bibtex")
 See chapter ‘System and foreign language interfaces’ in the ‘Writing R
 Extensions’ manual.
+```
+```
+DONE
+Status: 1 NOTE
 ```
 
 ## remix (2.1)
@@ -2424,6 +2963,15 @@ Packages in Depends field not imported from:
   for when this namespace is loaded but not attached.
 ':::' call which should be '::': ‘Hmisc:::label.default’
   See the note in ?`:::` about the use of this operator.
+```
+```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  as.data.frame.correlation as.data.frame.freq as.data.frame.summarize
+  as.data.frame.summarize.by as.data.frame.survival
+  as.data.frame.tabular
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -2470,8 +3018,12 @@ their full name.
 See chapter ‘Writing R documentation files’ in the ‘Writing R
 Extensions’ manual.
 ```
+```
+DONE
+Status: 4 NOTEs
+```
 
-## repmis (0.4.2)
+## repmis (0.4.4)
 Maintainer: Christopher Gandrud <christopher.gandrud@gmail.com>  
 Bug reports: https://github.com/christophergandrud/repmis/issues
 
@@ -2480,34 +3032,123 @@ __OK__
 ## reshape (0.8.5)
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  all.vars.character as.data.frame.cast_df as.data.frame.cast_matrix
+  as.matrix.cast_df as.matrix.cast_matrix colsplit.character
+  colsplit.factor melt.array melt.cast_df melt.cast_matrix
+  melt.data.frame melt.default melt.list melt.matrix melt.table
+  print.cast_df print.cast_matrix rescaler.data.frame rescaler.default
+  rescaler.matrix str.cast_df str.cast_matrix
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
+```
+DONE
+Status: 2 NOTEs
+```
 
 ## reshape2 (1.4.1)
 Maintainer: Hadley Wickham <h.wickham@gmail.com>  
 Bug reports: https://github.com/hadley/reshape/issues
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## reshapeGUI (0.1.0)
 Maintainer: Jason Crowley <crowley.jason.s@gmail.com>
 
 ```
-checking package dependencies ... ERROR
-Package required but not available: ‘gWidgetsRGtk2’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
 ```
+```
+checking top-level files ... NOTE
+Non-standard file/directory found at top level:
+  ‘load.r’
+```
+```
+checking dependencies in R code ... NOTE
+Packages in Depends field not imported from:
+  ‘gWidgets’ ‘gWidgetsRGtk2’ ‘plyr’ ‘reshape2’
+  These packages need to be imported from (in the NAMESPACE file)
+  for when this namespace is loaded but not attached.
+```
+```
+checking R code for possible problems ... NOTE
+reshapeGUI: no visible global function definition for ‘gwindow’
+reshapeGUI: no visible global function definition for ‘gnotebook’
+reshapeGUI: no visible global function definition for ‘size<-’
+reshapeGUI: no visible global function definition for ‘ggroup’
+reshapeGUI: no visible global function definition for ‘gtable’
+reshapeGUI: no visible global function definition for ‘addSpring’
+reshapeGUI: no visible global function definition for ‘gbutton’
+reshapeGUI: no visible global function definition for ‘glabel’
+reshapeGUI: no visible global function definition for ‘gedit’
+reshapeGUI: no visible global function definition for ‘gcheckbox’
+reshapeGUI: no visible global function definition for ‘gdf’
+reshapeGUI: no visible global function definition for ‘visible<-’
+reshapeGUI: no visible global function definition for
+  ‘addHandlerClicked’
+reshapeGUI : <anonymous>: no visible global function definition for
+  ‘gmessage’
+reshapeGUI : <anonymous>: no visible global function definition for
+  ‘svalue’
+reshapeGUI : <anonymous>: no visible global function definition for
+  ‘svalue<-’
+reshapeGUI : <anonymous>: no visible global function definition for
+  ‘delete’
+reshapeGUI : <anonymous>: no visible global function definition for
+  ‘add’
+reshapeGUI : <anonymous>: no visible global function definition for
+  ‘gdf’
+reshapeGUI : <anonymous>: no visible global function definition for
+  ‘visible<-’
+reshapeGUI: no visible global function definition for
+  ‘addHandlerChanged’
+updateMeltCodeBox: no visible global function definition for ‘svalue<-’
+```
+```
+DONE
+Status: 4 NOTEs
+```
+
+## RevEcoR (0.99.2)
+Maintainer: Yang Cao <yiluheihei@gmail.com>
+
+__OK__
 
 ## rfigshare (0.3.6)
 Maintainer: Carl Boettiger <cboettig@gmail.com>  
 Bug reports: https://github.com/ropensci/rfigshare/issues
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## RForcecom (0.7)
 Maintainer: Takekatsu Hiramura <thira@plavox.info>
 
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
 ```
 checking dependencies in R code ... NOTE
 Packages in Depends field not imported from:
@@ -2673,24 +3314,16 @@ rforcecom.upsert: no visible global function definition for
   ‘getNodeSet’
 rforcecom.upsert: no visible global function definition for ‘xmlParse’
 ```
+```
+DONE
+Status: 3 NOTEs
+```
 
 ## rgauges (0.2.0)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/rgauges/issues
 
 __OK__
-
-## rgbif (0.8.0)
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
-Bug reports: https://github.com/ropensci/rgbif/issues
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘rgeos’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
 
 ## RIGHT (0.2.0)
 Maintainer: Jonghyun Bae <bnbbkr@gmail.com>  
@@ -2703,8 +3336,13 @@ Maintainer: Edmund Hart <edmund.m.hart@gmail.com>
 
 __OK__
 
-## rLakeAnalyzer (1.7.3)
+## rLakeAnalyzer (1.7.6)
 Maintainer: Luke Winslow <lawinslow@gmail.com>
+
+__OK__
+
+## rLiDAR (0.1)
+Maintainer: Carlos A. Silva <carlos_engflorestal@outlook.com>
 
 __OK__
 
@@ -2717,6 +3355,13 @@ __OK__
 Maintainer: Dmitriy Selivanov <selivanov.dmitriy@gmail.com>  
 Bug reports: https://github.com/mongosoup/rmongodb/issues
 
+```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  as.character.mongo.oid print.mongo.bson print.mongo.oid
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
 ```
 checking for GNU extensions in Makefiles ... NOTE
 GNU make is a SystemRequirements.
@@ -2734,6 +3379,10 @@ write to stdout/stderr instead of to the console, nor the system RNG.
 
 See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
 ```
+```
+DONE
+Status: 3 NOTEs
+```
 
 ## Rmonkey (0.2.11)
 Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>  
@@ -2741,7 +3390,7 @@ Bug reports: https://github.com/leeper/Rmonkey/issues
 
 __OK__
 
-## RNeXML (2.0.1)
+## RNeXML (2.0.3)
 Maintainer: Carl Boettiger <cboettig@gmail.com>  
 Bug reports: https://github.com/ropensci/RNeXML/issues
 
@@ -2750,24 +3399,15 @@ checking package dependencies ... NOTE
 Packages suggested but not available for checking: ‘rrdf’ ‘Sxslt’
 ```
 ```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls in package code:
-  ‘Sxslt’ ‘rfigshare’
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+DONE
+Status: 1 NOTE
 ```
 
 ## rnoaa (0.3.3)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: http://www.github.com/ropensci/rnoaa/issues
 
-```
-checking package dependencies ... ERROR
-Packages required but not available: ‘rgdal’ ‘rgeos’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
+__OK__
 
 ## robustvarComp (0.1-2)
 Maintainer: Claudio Agostinelli <claudio@unive.it>
@@ -2775,51 +3415,38 @@ Maintainer: Claudio Agostinelli <claudio@unive.it>
 ```
 checking whether package ‘robustvarComp’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/robustvarComp.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/robustvarComp.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
-## rplos (0.4.6)
+## rplos (0.4.7)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/rplos/issues
+
+__OK__
+
+## rprime (0.1.0)
+Maintainer: Tristan Mahr <tristan.mahr@wisc.edu>  
+Bug reports: http://github.com/tjmahr/rprime/issues
 
 __OK__
 
 ## RSA (0.9.8)
 Maintainer: Felix Schönbrodt <felix@nicebread.de>
 
-__OK__
+```
+checking whether package ‘RSA’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/RSA.Rcheck/00install.out’ for details.
+Status: 1 ERROR
+```
 
-## RSAGA (0.93-6)
+## RSAGA (0.94-1)
 Maintainer: Alexander Brenning <brenning@uwaterloo.ca>
 
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' calls to packages already attached by Depends:
-  ‘gstat’ ‘plyr’ ‘shapefiles’
-  Please remove these calls from your code.
-Packages in Depends field not imported from:
-  ‘gstat’ ‘plyr’ ‘shapefiles’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
-```
-```
-checking R code for possible problems ... NOTE
-pick.from.ascii.grid: no visible global function definition for ‘ddply’
-pick.from.ascii.grid: no visible global function definition for ‘.’
-pick.from.ascii.grid: no visible global function definition for ‘dlply’
-pick.from.points: no visible global function definition for ‘vgm’
-pick.from.points: no visible global function definition for ‘krige’
-pick.from.shapefile: no visible global function definition for
-  ‘read.shapefile’
-pick.from.shapefile: no visible global function definition for ‘add.xy’
-rsaga.get.modules: no visible global function definition for ‘llply’
-```
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘rgdal’
-```
+__OK__
 
-## rsdmx (0.4-5)
+## rsdmx (0.4-6)
 Maintainer: Emmanuel Blondel <emmanuel.blondel1@gmail.com>  
 Bug reports: https://github.com/opensdmx/rsdmx/issues
 
@@ -2830,22 +3457,30 @@ Maintainer: Randy Zwitch <rzwitch+rsitecatalyst@gmail.com>
 Bug reports: https://github.com/randyzwitch/RSiteCatalyst
 
 ```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  4: expect_output(SCAuth(Sys.getenv("USER", ""), Sys.getenv("SECRET", "")), "Authentication Succeeded.") at test-scauth.R:6
-  5: expect_that(object, prints_text(regexp, ...), info = info, label = label)
-  6: condition(object)
-  7: evaluate_promise(expr, print = TRUE)
-  8: with_sink(temp, withCallingHandlers(withVisible(code), warning = wHandler, message = mHandler))
-  9: withCallingHandlers(withVisible(code), warning = wHandler, message = mHandler)
-  10: withVisible(code)
-  11: SCAuth(Sys.getenv("USER", ""), Sys.getenv("SECRET", ""))
-  12: stop("Authentication failed due to errors")
+  2. Error: Validate GetUniqueVisitorVariable using legacy credentials 
+  3. Error: Validate GetVersionAccess using legacy credentials 
+  4. Error: Validate GetVideoSettings using legacy credentials 
+  5. Error: Validate QueueFallout using legacy credentials 
+  6. Error: Validate QueueOvertime using legacy credentials 
+  7. Error: Validate QueuePathing using legacy credentials 
+  8. Error: Validate QueueRanked using legacy credentials 
+  9. Error: Validate QueueTrended using legacy credentials 
+  1. Error: SCAuth legacy credentials work as expected 
+  2. ...
   
-  Error: Test failures
-  In addition: There were 50 or more warnings (use warnings() to see the first 50)
+  Error: testthat unit tests failed
   Execution halted
+```
+```
+DONE
+Status: 1 ERROR, 1 NOTE
 ```
 
 ## rsnps (0.1.6)
@@ -2863,6 +3498,18 @@ __OK__
 ## rspear (0.1-2)
 Maintainer: Eduard Szoecs <eduardszoecs@gmail.com>
 
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+DONE
+Status: 1 NOTE
+```
+
+## RSPS (1.0)
+Maintainer: Milan Bimali <mbimali@kumc.edu>
+
 __OK__
 
 ## RStorm (0.902)
@@ -2875,8 +3522,19 @@ Package in Depends field not imported from: ‘plyr’
   for when this namespace is loaded but not attached.
 ```
 ```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  plot.RStorm plot.Topology print.RStorm print.Topology
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
+```
 checking R code for possible problems ... NOTE
 RStorm: no visible global function definition for ‘alply’
+```
+```
+DONE
+Status: 3 NOTEs
 ```
 
 ## rsunlight (0.3.0)
@@ -2886,6 +3544,15 @@ Bug reports: https://github.com/ropengov/rsunlight/issues
 ```
 checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘rCharts’
+```
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+DONE
+Status: 2 NOTEs
 ```
 
 ## rtematres (0.2)
@@ -2904,11 +3571,17 @@ Maintainer: Edmund Hart <edmund.m.hart@gmail.com>
 Bug reports: http://github.com/ropensci/rWBclimate/issues
 
 ```
-checking package dependencies ... ERROR
-Package required but not available: ‘rgdal’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking R code for possible problems ... NOTE
+check_ISO_code: no visible binding for global variable ‘NoAm_country’
+check_ISO_code: no visible binding for global variable ‘SoAm_country’
+check_ISO_code: no visible binding for global variable ‘Oceana_country’
+check_ISO_code: no visible binding for global variable ‘Africa_country’
+check_ISO_code: no visible binding for global variable ‘Asia_country’
+check_ISO_code: no visible binding for global variable ‘Eur_country’
+```
+```
+DONE
+Status: 1 NOTE
 ```
 
 ## RXKCD (1.7-5)
@@ -2928,6 +3601,10 @@ getXKCD: no visible global function definition for ‘readPNG’
 getXKCD: no visible global function definition for ‘readJPEG’
 getXKCD: no visible global function definition for ‘writePNG’
 ```
+```
+DONE
+Status: 2 NOTEs
+```
 
 ## rYoutheria (1.0.0)
 Maintainer: Tom August <tomaug@ceh.ac.uk>  
@@ -2941,9 +3618,17 @@ Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Bug reports: https://github.com/hadley/scales/issues
 
 ```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
 checking dependencies in R code ... NOTE
 Namespace in Imports field not imported from: ‘methods’
   All declared Imports should be used.
+```
+```
+DONE
+Status: 2 NOTEs
 ```
 
 ## scholar (0.1.2)
@@ -2951,9 +3636,18 @@ Maintainer: James Keirstead <j.keirstead@imperial.ac.uk>
 
 __OK__
 
+## selfea (1.0)
+Maintainer: Lang Ho Lee <langholee@gmail.com>
+
+__OK__
+
 ## semPlot (1.0.1)
 Maintainer: Sacha Epskamp <mail@sachaepskamp.com>
 
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
 ```
 checking dependencies in R code ... NOTE
 'library' or 'require' call to ‘MplusAutomation’ in package code.
@@ -2961,9 +3655,20 @@ checking dependencies in R code ... NOTE
   See section 'Suggested packages' in the 'Writing R Extensions' manual.
 ```
 ```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  semPlotModel.S4
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
+```
 checking R code for possible problems ... NOTE
 semPlotModel.mplus.model: no visible global function definition for
   ‘readModels’
+```
+```
+DONE
+Status: 4 NOTEs
 ```
 
 ## SensusR (1.0)
@@ -2976,11 +3681,11 @@ Maintainer: Bettina Budeus <bettina.budeus@stud.uni-due.de>
 
 ```
 checking package dependencies ... ERROR
-Packages required but not available:
-  ‘Biostrings’ ‘qvalue’ ‘widgetTools’ ‘calibrate’
+Packages required but not available: ‘Biostrings’ ‘qvalue’ ‘widgetTools’
 
 See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
+Status: 1 ERROR
 ```
 
 ## SGP (1.2-0.0)
@@ -2996,6 +3701,10 @@ checking installed package size ... NOTE
   installed size is  7.8Mb
   sub-directories of 1Mb or more:
     data   6.9Mb
+```
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
 ```
 ```
 checking dependencies in R code ... NOTE
@@ -3129,24 +3838,27 @@ visualizeSGP : piecewise.transform: no visible binding for global
   variable ‘SGPstateData’
 visualizeSGP: no visible global function definition for ‘randomNames’
 ```
+```
+DONE
+Status: 5 NOTEs
+```
 
 ## sharpshootR (0.7-2)
 Maintainer: Dylan Beaudette <dylan.beaudette@ca.usda.gov>
 
-```
-checking package dependencies ... ERROR
-Packages required but not available: ‘aqp’ ‘soilDB’
-
-Packages suggested but not available for checking: ‘rgdal’ ‘spdep’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
+__OK__
 
 ## simTool (1.0.3)
 Maintainer: Marsel Scheer <scheer@freescience.de>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## smatr (3.4-3)
 Maintainer: Remko Duursma <remkoduursma@gmail.com>
@@ -3158,8 +3870,19 @@ Package in Depends field not imported from: ‘plyr’
   for when this namespace is loaded but not attached.
 ```
 ```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  fitted.sma
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
+```
 checking R code for possible problems ... NOTE
 fitted.sma: no visible global function definition for ‘join’
+```
+```
+DONE
+Status: 3 NOTEs
 ```
 
 ## snht (1.0.2)
@@ -3171,29 +3894,41 @@ __OK__
 Maintainer: Andrew Sila <a.sila@cgiar.org>
 
 ```
-checking package dependencies ... ERROR
-Package required but not available: ‘GSIF’
-
-Packages suggested but not available for checking:
-  ‘plotKML’ ‘spatstat’ ‘date’ ‘rgdal’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+checking dependencies in R code ... NOTE
+'library' or 'require' calls in package code:
+  ‘chemometrics’ ‘spatstat’
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
+```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  plot.Spectra plot.ken.sto plot.trans predict.SpectraPoints
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
 manual.
 ```
+```
+DONE
+Status: 2 NOTEs
+```
 
-## soilDB (1.5-2)
+## soilDB (1.5-4)
 Maintainer: D.E. Beaudette <dylan.beaudette@ca.usda.gov>
 
 ```
-checking package dependencies ... ERROR
-Package required but not available: ‘aqp’
-
+checking package dependencies ... NOTE
 Packages suggested but not available for checking:
-  ‘XMLSchema’ ‘SSOAP’ ‘dismo’ ‘rgdal’ ‘RODBC’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+  ‘XMLSchema’ ‘SSOAP’ ‘RODBC’
 ```
+```
+DONE
+Status: 1 NOTE
+```
+
+## solarius (0.2.3)
+Maintainer: Andrey Ziyatdinov <andrey.ziyatdinov@upc.edu>
+
+__OK__
 
 ## solr (0.1.4)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
@@ -3213,18 +3948,33 @@ Maintainer: Roger Marshall <rj.marshall@auckland.ac.nz>
 ```
 checking whether package ‘spanr’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/spanr.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/spanr.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
 ## sparseMVN (0.2.0)
 Maintainer: Michael Braun <braunm@smu.edu>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## spiders (1.0)
 Maintainer: Edward A. Roualdes <edward.roualdes@uky.edu>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## srd (1.0)
 Maintainer: Roger Marshall <rj.marshall@auckland.ac.nz>
@@ -3232,7 +3982,8 @@ Maintainer: Roger Marshall <rj.marshall@auckland.ac.nz>
 ```
 checking whether package ‘srd’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmppenE4P/check_cran103bc1a307e5d/srd.Rcheck/00install.out’ for details.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/srd.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
 ## ss3sim (0.8.2)
@@ -3250,6 +4001,10 @@ run_ss3sim: no visible global function definition for ‘%dopar%’
 run_ss3sim: no visible global function definition for ‘foreach’
 setup_parallel: no visible global function definition for
   ‘getDoParWorkers’
+```
+```
+DONE
+Status: 2 NOTEs
 ```
 
 ## SSrat (1.0)
@@ -3376,23 +4131,21 @@ Visualization.Surfaceplots : makewireframe: no visible global function
 Visualization.Surfaceplots: no visible global function definition for
   ‘grid.arrange’
 ```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## stcm (0.1.0)
 Maintainer: Chris Krogslund <ckrogslund@berkeley.edu>
 
 __OK__
 
-## strvalidator (1.4.0)
+## strvalidator (1.5.0)
 Maintainer: Oskar Hansson <oskar.hansson@fhi.no>  
 Bug reports: https://github.com/OskarHansson/strvalidator/issues
 
-```
-checking package dependencies ... ERROR
-Packages required but not available: ‘gWidgetsRGtk2’ ‘RGtk2’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
+__OK__
 
 ## surveydata (0.1-14)
 Maintainer: Andrie de Vries <apdevries@gmail.com>
@@ -3407,29 +4160,41 @@ checking dependencies in R code ... NOTE
 Unexported object imported by a ':::' call: ‘coefplot:::position_dodgev’
   See the note in ?`:::` about the use of this operator.
 ```
+```
+DONE
+Status: 1 NOTE
+```
 
-## TAM (1.6-0)
+## TAM (1.7-1)
 Maintainer: Alexander Robitzsch <a.robitzsch@bifie.at>
 
 ```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppArmadillo’
-
-Package required and available but unsuitable version: ‘CDM’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking whether package ‘TAM’ can be installed ... [35s/36s] ERROR
+Installation failed.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/TAM.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
 ## taRifx (1.0.6)
 Maintainer: Ari B. Friedman <abfriedman@gmail.com>
 
 ```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
 checking dependencies in R code ... NOTE
 'library' or 'require' calls in package code:
   ‘gdata’ ‘ggplot2’ ‘grid’ ‘lattice’ ‘xtable’
   Please use :: or requireNamespace() instead.
   See section 'Suggested packages' in the 'Writing R Extensions' manual.
+```
+```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  as.matrix.by stack.list
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
 ```
 ```
 checking R code for possible problems ... NOTE
@@ -3501,6 +4266,10 @@ xtable.summary.lme: no visible global function definition for
   ‘display<-’
 xtablelm: no visible global function definition for ‘xtable’
 ```
+```
+DONE
+Status: 4 NOTEs
+```
 
 ## taxize (0.5.2)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
@@ -3517,6 +4286,10 @@ checking installed package size ... NOTE
   sub-directories of 1Mb or more:
     data   1.1Mb
     rda    3.8Mb
+```
+```
+DONE
+Status: 1 NOTE
 ```
 
 ## timeordered (0.9.8)
@@ -3560,6 +4333,10 @@ projectDate: no visible global function definition for ‘holidayNYSE’
 projectDate: no visible global function definition for
   ‘sparse.model.matrix’
 ```
+```
+DONE
+Status: 2 NOTEs
+```
 
 ## TR8 (0.9.13)
 Maintainer: Gionata Bocci <boccigionata@gmail.com>  
@@ -3576,19 +4353,26 @@ __OK__
 Maintainer: Christian Zang <christian.zang@wzw.tum.de>
 
 ```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppArmadillo’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking whether package ‘treeclim’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/treeclim.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
 ## treecm (1.2.1)
 Maintainer: Marco Bascietto <marco.bascietto@cnr.it>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
-## TripleR (1.4)
+## TripleR (1.4.1)
 Maintainer: Felix Schönbrodt <felix.schoenbrodt@psy.lmu.de>
 
 __OK__
@@ -3597,19 +4381,31 @@ __OK__
 Maintainer: Richard Chandler <rbchan@uga.edu>
 
 ```
-checking package dependencies ... ERROR
-Package required but not available: ‘RcppArmadillo’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking whether package ‘unmarked’ can be installed ... [21s/21s] ERROR
+Installation failed.
+See ‘/private/tmp/RtmptMRFsQ/check_cran118e525d401b7/unmarked.Rcheck/00install.out’ for details.
+Status: 1 ERROR
 ```
 
 ## useful (1.1.8)
 Maintainer: Jared P. Lander <packages@jaredlander.com>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+checking use of S3 registration ... WARNING
+Registered S3 method from a standard package overwritten by 'useful':
+ method   from 
+ plot.acf stats
+```
+```
+DONE
+Status: 1 WARNING, 1 NOTE
+```
 
-## userfriendlyscience (0.2-2)
+## userfriendlyscience (0.3-0)
 Maintainer: Gjalt-Jorn Peters <gjalt-jorn@userfriendlyscience.com>
 
 __OK__
@@ -3618,40 +4414,37 @@ __OK__
 Maintainer: Matt Barry <mrb@softisms.com>  
 Bug reports: https://github.com/mrbcuda/ustyc/issues
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
-## vardpoor (0.2.8)
+## vardpoor (0.3.2)
 Maintainer: Juris Breidaks <Juris.Breidaks@csb.gov.lv>  
 Bug reports: https://github.com/CSBLatvia/vardpoor/issues/
 
 __OK__
 
-## vcdExtra (0.6-5)
+## vcdExtra (0.6-8)
 Maintainer: Michael Friendly <friendly@yorku.ca>
 
-```
-checking dependencies in R code ... NOTE
-'library' or 'require' call to ‘rgl’ in package code.
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-```
 ```
 checking Rd cross-references ... NOTE
 Package unavailable to check Rd xrefs: ‘alr3’
 ```
+```
+DONE
+Status: 1 NOTE
+```
 
-## vdmR (0.1.0)
+## vdmR (0.1.1)
 Maintainer: Tomokazu Fujino <fujino@fwu.ac.jp>
 
-```
-checking package dependencies ... ERROR
-Packages required but not available: ‘gridSVG’ ‘Rook’
-
-Package suggested but not available for checking: ‘rgeos’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
+__OK__
 
 ## vetools (1.3-28)
 Maintainer: Andrew Sajo-Castelli <asajo@usb.ve>  
@@ -3662,12 +4455,29 @@ __OK__
 ## Wats (0.2-16)
 Maintainer: Will Beasley <wibeasley@hotmail.com>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## WCE (1.0)
 Maintainer: Marie-Pierre Sylvestre <marie-pierre.sylvestre@umontreal.ca>
 
-__OK__
+```
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  knots.WCE
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## weatherData (0.4.1)
 Maintainer: Ram Narasimhan <ramnarasimhan@gmail.com>
@@ -3678,10 +4488,18 @@ getStationCode: no visible binding for global variable
   ‘USAirportWeatherStations’
 getStationCode: no visible binding for global variable ‘IntlWxStations’
 ```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## wordmatch (1.0)
 Maintainer: Amit Singh Rathore <amitplatinum@gmail.com>
 
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+```
 ```
 checking dependencies in R code ... NOTE
 Packages in Depends field not imported from:
@@ -3697,8 +4515,12 @@ wordmatch : <anonymous>: no visible global function definition for
 wordmatch: no visible global function definition for ‘melt’
 wordmatch: no visible global function definition for ‘count’
 ```
+```
+DONE
+Status: 3 NOTEs
+```
 
-## wppExplorer (1.6-1)
+## wppExplorer (1.6-2)
 Maintainer: Hana Sevcikova <hanas@uw.edu>
 
 __OK__
@@ -3706,7 +4528,14 @@ __OK__
 ## WRS2 (0.3-1)
 Maintainer: Patrick Mair <mair@fas.harvard.edu>
 
-__OK__
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Title field: should not end in a period.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## XML2R (0.0.6)
 Maintainer: Carson Sievert <sievert@iastate.edu>  

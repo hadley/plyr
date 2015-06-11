@@ -1,38 +1,19 @@
 ## Changes
 
-This is a resubmission: it fixes the failure for tests to complete on 32-bit windows. (I accidentally included tests that need an interactive environment, which I run locally.)
-
-----
-
-The initial submission included:
-
-* Fixes for R CMD check notes.
-
-* Some small backward compatible changes.
-
-* Fix an error in a C function - I suspect this is what was causing crashes
-  in the ggplot2 and failures with UBSAN, but I couldn't reliably reproduce
-  locally. The code was clearly incorrect, and the new behaviour should be
-  better.
+This works around what I believe is a PROTECTion in Rcpp: `loop_apply` was occassionally returning random data.
 
 ## Test environments
 
-* local OS X install, R 3.1.3
-* ubuntu 12.04 (on travis-ci), R 3.1.3
+* local OS X install, R 3.2.0
+* ubuntu 12.04 (on travis-ci), R 3.2.0
 * win-builder (devel and release)
 
 ## R CMD check results
 
-There were no ERRORs or WARNINGs. 
-
-There was one NOTE:
-
-* My email address has changed from <h.wickham@gmail.com> to 
-  <hadley@rstudio.com>. I'll send the confirmation from my old email
-  shortly.
+There were no ERRORs, WARNINGs or NOTEs. 
 
 ## Downstream dependencies
-I have also run R CMD check on downstream dependencies of plyr 
+I have also run R CMD check on all 312 downstream dependencies of plyr 
 (https://github.com/hadley/plyr/tree/master/revdep). I have noted ERRORs and 
 WARNINGs below - I do not believe them to be related to changes to plyr:
 
