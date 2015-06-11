@@ -135,8 +135,8 @@ test_that("multidim arrays ok", {
  })
 
 test_that("Array column names preserved", {
-  x <- data.frame(hair.color=dimnames(HairEyeColor)[[1]])
-  x$obs <- HairEyeColor[,,1]
+  x <- data.frame(hair.color = dimnames(HairEyeColor)[[1]])
+  x$obs <- unclass(HairEyeColor[,,1])
 
   xx1 <- rbind(x, x)
   xx2 <- rbind.fill(x, x)
