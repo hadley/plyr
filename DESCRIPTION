@@ -1,5 +1,5 @@
 Package: plyr
-Version: 1.8.3
+Version: 1.8.3.9000
 Title: Tools for Splitting, Applying and Combining Data
 Description: A set of tools that solves a common set of problems: you
     need to break a big problem down into manageable pieces, operate on each
