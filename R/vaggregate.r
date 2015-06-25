@@ -19,7 +19,7 @@
 #' @export
 #' @examples
 #' # Some examples of use borrowed from ?tapply
-#' n <- 17; fac <- factor(rep(1:3, length = n), levels = 1:5)
+#' n <- 17; fac <- factor(rep(1:3, length.out = n), levels = 1:5)
 #' table(fac)
 #' vaggregate(1:n, fac, sum)
 #' vaggregate(1:n, fac, sum, .default = NA_integer_)
