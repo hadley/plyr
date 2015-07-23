@@ -9,5 +9,5 @@
 #' @useDynLib plyr
 #' @keywords internal manip
 loop_apply <- function(n, f, env = parent.frame()) {
-  .Call("loop_apply", as.integer(n), f, env)
+  .Call("loop_apply", as.integer(n), f, env, PACKAGE="plyr")
 }
