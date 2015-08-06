@@ -70,7 +70,7 @@ rbind.fill.matrix <- function(...) {
 
   ## fill in the new matrix
   for (i in seq_along(rows)) {
-    rng <- seq(pos[i, 1], length = pos[i, 2])
+    rng <- seq(pos[i, 1], length.out = pos[i, 2])
     output[rng, lcols[[i]]] <- matrices[[i]]
   }
 

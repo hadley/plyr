@@ -63,7 +63,7 @@ rbind.fill <- function(...) {
 
   # Copy inputs into output
   for (i in seq_along(rows)) {
-    rng <- seq(pos[i, 1], length = pos[i, 2])
+    rng <- seq(pos[i, 1], length.out = pos[i, 2])
     df <- dfs[[i]]
 
     for (var in names(df)) {
