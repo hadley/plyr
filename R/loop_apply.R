@@ -7,7 +7,8 @@
 #' @param f function to apply to each integer
 #' @param env environment in which to evaluate function
 #' @useDynLib plyr
+#' @useDynLib plyr loop_apply_
 #' @keywords internal manip
 loop_apply <- function(n, f, env = parent.frame()) {
-  .Call("loop_apply", as.integer(n), f, env)
+  .Call(loop_apply_, as.integer(n), f, env)
 }

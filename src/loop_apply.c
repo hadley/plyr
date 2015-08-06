@@ -1,7 +1,7 @@
 #include <R.h>
 #include <Rdefines.h>
 
-SEXP loop_apply(SEXP n, SEXP f, SEXP rho) {
+SEXP loop_apply_(SEXP n, SEXP f, SEXP rho) {
   if(!isFunction(f)) error("'f' must be a function");
   if(!isEnvironment(rho)) error("'rho' should be an environment");
 
