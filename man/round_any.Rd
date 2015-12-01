@@ -7,7 +7,7 @@
 round_any(x, accuracy, f = round)
 }
 \arguments{
-\item{x}{numeric or date-time (POSIXct) vector to round}
+\item{x}{numeric vector, date-time (POSIXct) vector or table to round}
 
 \item{accuracy}{number to round to; for POSIXct objects, a number of seconds}
 
