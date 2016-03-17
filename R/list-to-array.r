@@ -12,7 +12,10 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
   n <- length(res)
 
   atomic <- sapply(res, is.atomic)
-  if (all(atomic) || all(!atomic)) {
+  is_array <- !is.null(attributes(res)) && attr(res, "split_type") == "array"
+  if(! (all(atomic) || all(!atomic)) )
+    stop("Results must have compatible types.")
+  if (all(atomic) || is.list(res) && ! is_array) {
     dlength <- unique.default(llply(res, dims))
     if (length(dlength) != 1)
       stop("Results must have the same number of dimensions.")
@@ -33,9 +36,14 @@ list_to_array <- function(res, labels = NULL, .drop = FALSE) {
 
     res <- unlist(res, use.names = FALSE, recursive = FALSE)
   } else {
-    stop("Results must have compatible types.")
+    res_index <- as.data.frame(matrix(0, 1, 0))
+    res_dim <- numeric()
+    res_labels <- NULL
+    attr(res, "split_type") <- NULL
+    attr(res, "split_labels") <- NULL
+    class(res) <- class(res)[2]
   }
-
+         
   if (is.null(labels)) {
     labels <- data.frame(X = seq_len(n))
     in_labels <- list(NULL)

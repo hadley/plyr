@@ -154,6 +154,28 @@ test_that("array reconstruction correct with missing cells", {
   expect_that(da, equals(m, check.attributes = FALSE))
 })
 
+test_that("aaply produces list array output when function outputs list", {
+  set.seed(1234)
+  # two random arrays, one 2D (i.e. a matrix) the other 3D
+  # they contain fake linear data with noise, the first
+  # with each row a set of data, the second with the first
+  # two dimensions each indexing a vector in the third dimension
+  array1 <- lapply(1:5, function(x) 1:5 + 0.5*rnorm(1:5))
+  array1 <- do.call("rbind", array1)
+  array2 <- lapply(1:25, function(x) 1:5 + 0.5*rnorm(1:5))
+  array2 <- unlist(array2)
+  dim(array2) <- c(5,5,5)
+  # like the 'ozone' dataset
+  array2 <- aperm(array2, c(2,3,1))
+
+  modFn <- function(vec) lm(y ~ x, data = data.frame(x = 1:5, y = vec))
+  
+  # tryCatch-like semantics
+  # (http://stackoverflow.com/questions/10826365/how-to-test-that-an-error-does-not-occur)
+  expect_true({mod1 <- aaply(array1, 1, modFn); TRUE})
+  expect_true({mod2 <- aaply(array2, 1:2, modFn); TRUE})
+})
+
 
 set_dimnames <- function(x, nm) {
   dimnames(x) <- nm
