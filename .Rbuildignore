@@ -8,3 +8,4 @@ NEWS\.md
 ^cran-comments\.md$
 ^revdep$
 ^\.lintr$
+^\.travis\.yml$
