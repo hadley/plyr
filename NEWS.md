@@ -21,8 +21,8 @@
   and Marek, #224 and #225)
 
 * Deprecate exotic functions `liply()` and `isplit2()`, remove unused and
-  unexported functions `dots()` and `parallel_fe()` (Thanks to Kirill Müller,
-  #242, #248)
+  unexported functions `dots()` and `parallel_fe()` (Thanks to Kirill 
+  Müller, #242, #248)
 
 * Warn on duplicate names that cause certain array functions to fail. (Thanks
   to Kirill Müller, #211)
