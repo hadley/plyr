@@ -89,12 +89,12 @@ progress_text <- function(style = 3, ...) {
 
   list(
     init = function(x) {
-      txt <<- txtProgressBar(max = x, style = style, ...)
-      setTxtProgressBar(txt, 0)
+      txt <<- utils::txtProgressBar(max = x, style = style, ...)
+      utils::setTxtProgressBar(txt, 0)
     },
     step = function() {
       n <<- n + 1
-      setTxtProgressBar(txt, n)
+      utils::setTxtProgressBar(txt, n)
     },
     term = function() close(txt)
   )

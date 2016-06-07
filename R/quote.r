@@ -50,7 +50,7 @@ is.quoted <- function(x) inherits(x, "quoted")
 #'
 #' @keywords internal
 #' @export
-print.quoted <- function(x, ...) str(x)
+print.quoted <- function(x, ...) utils::str(x)
 
 #' Compute names of quoted variables.
 #'

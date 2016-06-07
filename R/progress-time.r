@@ -13,11 +13,11 @@ progress_time <- function() {
   list(
     init = function(x) {
       txt <<- txtTimerBar(x)
-      setTxtProgressBar(txt, 0)
+      utils::setTxtProgressBar(txt, 0)
     },
     step = function() {
       n <<- n + 1
-      setTxtProgressBar(txt, n)
+      utils::setTxtProgressBar(txt, n)
     },
     term = function() close(txt)
   )
@@ -82,7 +82,7 @@ cat_line <- function(...) {
   msg <- paste(..., sep = "", collapse = "")
   gap <- max(c(0, getOption("width") - nchar(msg, "width")))
   cat("\r", msg, rep.int(" ", gap), sep = "")
-  flush.console()
+  utils::flush.console()
 }
 
 str_rep <- function(x, i) {
