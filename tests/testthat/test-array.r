@@ -187,7 +187,11 @@ test_that("no support for duplicate names (#211)", {
   }
   B <- list(X=n(1:10), Y=n(11:20), Z=n(21:30))
 
-  expect_warning(laply(B, identity), "Duplicate names")
+  if (getRversion() >= "3.4.0") {
+    expect_error(aaply(ar, 3, identity), "duplicated")
+  } else {
+    expect_warning(laply(B, identity), "Duplicate names")
+  }
 
   AB <- c('a', 'b', 'a', 'b')
   ABCD <- c('a', 'b', 'c', 'd')
