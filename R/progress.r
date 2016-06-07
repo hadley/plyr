@@ -158,12 +158,12 @@ progress_win <- function(title = "plyr progress", ...) {
 
   list(
     init = function(x) {
-      win <<- winProgressBar(max = x, title = title, ...) # nolint
-      setWinProgressBar(win, 0) # nolint
+      win <<- utils::winProgressBar(max = x, title = title, ...) # nolint
+      utils::setWinProgressBar(win, 0) # nolint
     },
     step = function() {
       n <<- n + 1
-      setWinProgressBar(win, n) # nolint
+      utils::setWinProgressBar(win, n) # nolint
     },
     term = function() close(win)
   )
