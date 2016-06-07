@@ -9,3 +9,4 @@ NEWS\.md
 ^revdep$
 ^\.lintr$
 ^\.travis\.yml$
+^codecov\.yml$

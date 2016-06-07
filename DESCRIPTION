@@ -23,7 +23,8 @@ Suggests:
     foreach,
     doParallel,
     itertools,
-    iterators
+    iterators,
+    covr
 License: MIT + file LICENSE
 LazyData: true
 RoxygenNote: 5.0.1
