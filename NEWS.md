@@ -1,5 +1,7 @@
 # Version 1.8.3.9000
 
+* Update so `R CMD check` passes cleanly on R and R-devel.
+
 # Version 1.8.3
 
 * Revert to C version of `loop_apply()` as Rcpp version was appears to be
