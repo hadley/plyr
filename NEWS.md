@@ -1,4 +1,4 @@
-# Version 1.8.3.9000
+# Version 1.8.4
 
 * Update so `R CMD check` passes cleanly on R and R-devel.
 

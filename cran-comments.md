@@ -1,30 +1,14 @@
-## Changes
-
-* Work around a PROTECTion failure in Rcpp
-* Fix a test failure on R-devel.
-
 ## Test environments
-
-* local OS X install, R 3.2.0
-* ubuntu 12.04 (on travis-ci), R 3.2.0
+* local OS X install, R 3.3.0
+* ubuntu 12.04 (on travis-ci), R 3.3.0
 * win-builder (devel and release)
 
 ## R CMD check results
 
-There were no ERRORs, WARNINGs or NOTEs. 
+0 errors | 0 warnings | 1 note
 
-## Downstream dependencies
-I have also run R CMD check on all 312 downstream dependencies of plyr 
-(https://github.com/hadley/plyr/tree/master/revdep). I have noted ERRORs below.
-Given the minimal change to plyr, I do not believe these errors to be a result
-of changes to plyr.
+* This package uses the MIT license.
 
-* caretEnsemble
-* ChemoSpec: example fails with missing suggested package
-* dataRetrieval
-* gemtc: missing system dependency
-* ggmap: existing CRAN failure
-* mlr: appears to be NAMESPACE problem
-* pxweb: appears to be web connectivity problem
-* REDCapR: auth failure
-* RSiteCatalyst: auth failure
+## Reverse dependencies
+
+I did not run the reverse dependencies since the only changes in this version were to fix minor R CMD check problems, and the prevent one of the tests from failing in R-devel (patch helpful provided by Martin Maechler.)
