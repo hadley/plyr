@@ -121,17 +121,17 @@ test_that("revalue and mapvalues accept empty vectors and NULL", {
 
 test_that("revalue and mapvalues respect warn_missing", {
   # revalue
-  expect_that(revalue("a", c("a"="A")), not(shows_message()))
-  expect_that(revalue("a", c("b"="B"), warn_missing=TRUE), shows_message())
-  expect_that(revalue("a", c("b"="B"), warn_missing=FALSE), not(shows_message()))
+  expect_message(revalue("a", c("a"="A")), NA)
+  expect_message(revalue("a", c("b"="B"), warn_missing=TRUE))
+  expect_message(revalue("a", c("b"="B"), warn_missing=FALSE), NA)
 
   # mapvalues
-  expect_that(mapvalues("a", "a", "A"), not(shows_message()))
-  expect_that(mapvalues("a", "b", "B", warn_missing=TRUE), shows_message())
-  expect_that(mapvalues("a", "b", "B", warn_missing=FALSE), not(shows_message()))
+  expect_message(mapvalues("a", "a", "A"), NA)
+  expect_message(mapvalues("a", "b", "B", warn_missing=TRUE))
+  expect_message(mapvalues("a", "b", "B", warn_missing=FALSE), NA)
 
   # mapvalues with factors
-  expect_that(mapvalues(factor("a"), "a", "A"), not(shows_message()))
-  expect_that(mapvalues(factor("a"), "b", "B", warn_missing=TRUE), shows_message())
-  expect_that(mapvalues(factor("a"), "b", "B", warn_missing=FALSE), not(shows_message()))
+  expect_message(mapvalues(factor("a"), "a", "A"), NA)
+  expect_message(mapvalues(factor("a"), "b", "B", warn_missing=TRUE))
+  expect_message(mapvalues(factor("a"), "b", "B", warn_missing=FALSE), NA)
 })

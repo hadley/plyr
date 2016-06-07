@@ -279,7 +279,7 @@ expect_linear_enough <- function(timings, threshold=0.1) {
   #expect that no more than `threshold` of a `size` input's runtime is
   #accounted for by quadratic behavior
   model <- lm(I(user.self / size) ~ size, timings)
-  expect_less_than(threshold, summary(model)$coefficients[2,4])
+  expect_lt(threshold, summary(model)$coefficients[2,4])
 }
 
 test_that("rbind.fill performance linear", {

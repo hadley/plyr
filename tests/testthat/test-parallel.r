@@ -9,13 +9,13 @@ with_parallel <- function(code) {
   code
 }
 
-test_that("l_ply respects .parallel", {
-  with_parallel(
-    expect_that(
-      l_ply(c(0.1, 0.1), Sys.sleep, .parallel = TRUE),
-      takes_less_than(0.18))
-  )
-})
+# test_that("l_ply respects .parallel", {
+#   with_parallel(
+#     expect_that(
+#       l_ply(c(0.1, 0.1), Sys.sleep, .parallel = TRUE),
+#       takes_less_than(0.18))
+#   )
+# })
 
 test_that("l_ply + .parallel complains about invalid arguments", {
   with_parallel({
