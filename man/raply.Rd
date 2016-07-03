@@ -4,7 +4,8 @@
 \alias{raply}
 \title{Replicate expression and return results in a array.}
 \usage{
-raply(.n, .expr, .progress = "none", .drop = TRUE)
+raply(.n, .expr, .progress = "none", .drop = TRUE, .parallel = FALSE,
+  .paropts = NULL)
 }
 \arguments{
 \item{.n}{number of times to evaluate the expression}
@@ -14,6 +15,16 @@ raply(.n, .expr, .progress = "none", .drop = TRUE)
 \item{.progress}{name of the progress bar to use, see \code{\link{create_progress_bar}}}
 
 \item{.drop}{should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}}
+
+\item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel
+backend provided by foreach}
+
+\item{.paropts}{a list of additional options passed into
+the \code{\link[foreach]{foreach}} function when parallel computation
+is enabled.  This is important if (for example) your code relies on
+external data or packages: use the \code{.export} and \code{.packages}
+arguments to supply them so that all cluster nodes have the correct
+environment set up for computing.}
 }
 \value{
 if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)

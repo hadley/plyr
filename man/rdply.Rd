@@ -4,7 +4,8 @@
 \alias{rdply}
 \title{Replicate expression and return results in a data frame.}
 \usage{
-rdply(.n, .expr, .progress = "none", .id = NA)
+rdply(.n, .expr, .progress = "none", .id = NA, .parallel = FALSE,
+  .paropts = NULL)
 }
 \arguments{
 \item{.n}{number of times to evaluate the expression}
@@ -17,6 +18,16 @@ rdply(.n, .expr, .progress = "none", .id = NA)
 \item{.id}{name of the index column. Pass \code{NULL} to avoid creation of
 the index column. For compatibility, omit this argument or pass \code{NA}
 to use \code{".n"} as column name.}
+
+\item{.parallel}{if \code{TRUE}, apply function in parallel, using parallel
+backend provided by foreach}
+
+\item{.paropts}{a list of additional options passed into
+the \code{\link[foreach]{foreach}} function when parallel computation
+is enabled.  This is important if (for example) your code relies on
+external data or packages: use the \code{.export} and \code{.packages}
+arguments to supply them so that all cluster nodes have the correct
+environment set up for computing.}
 }
 \value{
 a data frame
