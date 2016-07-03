@@ -20,18 +20,29 @@
 #' @examples
 #' mods <- rlply(100, lm(y ~ x, data=data.frame(x=rnorm(100), y=rnorm(100))))
 #' hist(laply(mods, function(x) summary(x)$r.squared))
-rlply <- function(.n, .expr, .progress = "none") {
+rlply <- function(.n, .expr, .progress = "none",
+                  .parallel = FALSE, .paropts = NULL) {
   res <- .rlply_worker(.n, .progress,
-                       eval.parent(substitute(function() .expr)))
+                       eval.parent(substitute(function() .expr)),
+                       .parallel = .parallel, .paropts = .paropts)
   res
 }
 
-.rlply_worker <- function(.n, .progress, .expr_wrap, .print = FALSE,
-                          .discard = FALSE) {
+.rlply_worker <- function(.n, .progress, .expr_wrap,
+                          .print = FALSE, .discard = FALSE,
+                          .parallel = FALSE, .paropts = NULL) {
   if (!is.vector(.n, "numeric") || length(.n) > 1L)
     stop(".n must be an integer vector of length 1")
   if (.n == 0L)
     return (list())
+
+  if (.parallel && (.print || .discard))
+    stop(".parallel is incompatible with .print and .discard")
+
+  if (.parallel && .progress != "none") {
+    message("Progress disabled when using parallel plyr")
+    .progress <- "none"
+  }
 
   progress <- create_progress_bar(.progress)
 
@@ -76,9 +87,19 @@ rlply <- function(.n, .expr, .progress = "none") {
     result[1L] <- list(wrap(function() fun$val)())
     progress$step()
 
-    for (i in seq.int(from = 2L, length.out = .n - 1L)) {
-      result[i] <- list(f())
-      progress$step()
+    if (.parallel) {
+      setup_parallel()
+
+      i <- seq.int(from = 2L, length.out = .n - 1L)
+      fe_call <- as.call(c(list(quote(foreach::foreach), i = i), .paropts))
+      fe <- eval(fe_call)
+
+      result[-1L] <- foreach::`%dopar%`(fe, f())
+    } else { # Non-parallel
+      for (i in seq.int(from = 2L, length.out = .n - 1L)) {
+        result[i] <- list(f())
+        progress$step()
+      }
     }
 
     result
