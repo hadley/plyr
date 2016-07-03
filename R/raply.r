@@ -14,6 +14,14 @@
 #' @param .progress name of the progress bar to use, see \code{\link{create_progress_bar}}
 #' @return if results are atomic with same type and dimensionality, a vector, matrix or array; otherwise, a list-array (a list with dimensions)
 #' @param .drop should extra dimensions of length 1 be dropped, simplifying the output.  Defaults to \code{TRUE}
+#' @param .parallel if \code{TRUE}, apply function in parallel, using parallel
+#'   backend provided by foreach
+#' @param .paropts a list of additional options passed into
+#'   the \code{\link[foreach]{foreach}} function when parallel computation
+#'   is enabled.  This is important if (for example) your code relies on
+#'   external data or packages: use the \code{.export} and \code{.packages}
+#'   arguments to supply them so that all cluster nodes have the correct
+#'   environment set up for computing.
 #' @export
 #' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
 #'   Data Analysis. Journal of Statistical Software, 40(1), 1-29.
@@ -29,8 +37,10 @@
 #' hist(raply(1000, mean(rexp(10))))
 #' hist(raply(1000, mean(rexp(100))))
 #' hist(raply(1000, mean(rexp(1000))))
-raply <- function(.n, .expr, .progress = "none", .drop = TRUE) {
+raply <- function(.n, .expr, .progress = "none", .drop = TRUE,
+                  .parallel = FALSE, .paropts = NULL) {
   res <- .rlply_worker(.n, .progress,
-                       eval.parent(substitute(function() .expr)))
+                       eval.parent(substitute(function() .expr)),
+                       .parallel = .parallel, .paropts = .paropts)
   list_to_array(res, NULL, .drop)
 }
