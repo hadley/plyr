@@ -7,9 +7,9 @@
 round_any(x, accuracy, f = round)
 }
 \arguments{
-\item{x}{numeric or date-time (POSIXct) vector to round}
+\item{x}{numeric, date (class Date), or date-time (class POSIXct) vector to round}
 
-\item{accuracy}{number to round to; for POSIXct objects, a number of seconds}
+\item{accuracy}{number to round to; for POSIXct objects, a number of seconds, for Date objects, a number of days}
 
 \item{f}{rounding function: \code{\link{floor}}, \code{\link{ceiling}} or
 \code{\link{round}}}
@@ -31,6 +31,8 @@ round_any(135, 25, ceiling)
 round_any(Sys.time() + 1:10, 5)
 round_any(Sys.time() + 1:10, 5, floor)
 round_any(Sys.time(), 3600)
+round_any(Sys.Date()+1:5, 2)
+# NB: avoid issues with rounding at 0.5 exactly
+round_any(Sys.Date()+1:5, 2.001)
 }
 \keyword{manip}
-

@@ -1,5 +1,7 @@
 # plyr 1.8.4.9000
 
+* Add a `round_any` method for `Date` objects (@jiho, #284)
+
 # Version 1.8.4
 
 * Update so `R CMD check` passes cleanly on R and R-devel.
