@@ -61,6 +61,11 @@ To apply a function for each row, use \code{\link{adply}} with
  If there are no results, then this function will return a data
  frame with zero rows and columns (\code{data.frame()}).
 }
+
+\seealso{
+\link{tapply} base package function with similar functionality;
+}
+
 \examples{
 # Summarize a dataset by two variables
 dfx <- data.frame(
