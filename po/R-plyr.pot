@@ -1,0 +1,123 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: R 2.15.1\n"
+"Report-Msgid-Bugs-To: bugs@r-project.org\n"
+"POT-Creation-Date: 2013-03-29 14:44\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+
+msgid "Length of ordering vectors don't match data frame size"
+msgstr ""
+
+msgid "Using freq as weighting variable"
+msgstr ""
+
+msgid "wt_var must be a single variable"
+msgstr ""
+
+msgid "Immutable"
+msgstr ""
+
+msgid "Row names not supported"
+msgstr ""
+
+msgid "Joining by:"
+msgstr ""
+
+msgid ","
+msgstr ""
+
+msgid "Duplicated key in y"
+msgstr ""
+
+msgid ".fun is not a function."
+msgstr ""
+
+msgid "Results must have the same number of dimensions."
+msgstr ""
+
+msgid "Results must have one or more dimensions."
+msgstr ""
+
+msgid "Results must have the same dimensions."
+msgstr ""
+
+msgid "Results must have compatible types."
+msgstr ""
+
+msgid "Results do not have equal lengths"
+msgstr ""
+
+msgid "Results must be all atomic, or all data frames"
+msgstr ""
+
+msgid "Progress disabled when using parallel plyr"
+msgstr ""
+
+msgid "with piece"
+msgstr ""
+
+msgid ":"
+msgstr ""
+
+msgid "Printing disabled for parallel processing"
+msgstr ""
+
+msgid "Progress disabled for parallel processing"
+msgstr ""
+
+msgid "Matching on:"
+msgstr ""
+
+msgid "foreach package required for parallel plyr operation"
+msgstr ""
+
+msgid "No parallel backend registered"
+msgstr ""
+
+msgid "Cannot find progress bar"
+msgstr ""
+
+msgid "envir must be either NULL, a list, or an environment."
+msgstr ""
+
+msgid "Input"
+msgstr ""
+
+msgid "is a factor and"
+msgstr ""
+
+msgid "needs to be converted first to either numeric or character."
+msgstr ""
+
+msgid "All inputs to rbind.fill must be data.frames"
+msgstr ""
+
+msgid "Matrix variable"
+msgstr ""
+
+msgid "has inconsistent widths"
+msgstr ""
+
+msgid "rbind.fill can only work with 1d arrays"
+msgstr ""
+
+msgid "x is not a factor or a character vector."
+msgstr ""
+
+msgid "`from` and `to` vectors are not the same length."
+msgstr ""
+
+msgid "`x` must be an atomic vector."
+msgstr ""
+
+msgid "The following `from` values were not present in `x`:"
+msgstr ""
+
+msgid "Invalid margin"
+msgstr ""

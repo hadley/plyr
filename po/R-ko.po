@@ -1,0 +1,137 @@
+# Korean translation for R plyr package
+# /po/R-ko.po
+# This file is distributed under the same license as the R plyr package.
+# R Development Translation Team - Korean
+# Chel Hee Lee <gnustats@korea.gnu.org>, 2013.
+# Chel Hee Lee <gnustats@gmail.com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: plyr 1.7.1.99.2\n"
+"Report-Msgid-Bugs-To: bugs@r-project.org\n"
+"POT-Creation-Date: 2013-03-29 14:37\n"
+"PO-Revision-Date: 2013-04-01 17:15+0900\n"
+"Last-Translator: Eugene Jung <muoe78@gmail.com>\n"
+"Language-Team: R Development Translation Teams (Korean) <gnustats@korea.gnu."
+"org>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.5.5\n"
+
+msgid "Length of ordering vectors don't match data frame size"
+msgstr ""
+"순위 벡터(ordering vector)의 길이가 데이터 프레임 크기와 일치하지 않습니다."
+
+msgid "Using freq as weighting variable"
+msgstr "가중치 변수로 freq를 사용하십시오."
+
+msgid "wt_var must be a single variable"
+msgstr "wt_var는 반드시 단독 변수이어야 합니다."
+
+msgid "Immutable"
+msgstr "변하지 않습니다."
+
+msgid "Row names not supported"
+msgstr "지원되지 않는 행의 이름"
+
+msgid "Joining by:"
+msgstr "다음에 의해 결합"
+
+msgid ","
+msgstr ","
+
+msgid "Duplicated key in y"
+msgstr "y에 중복된 키(key)"
+
+msgid ".fun is not a function."
+msgstr ".fun은 함수가 아닙니다."
+
+msgid "Results must have the same number of dimensions."
+msgstr "결과는 반드시 같은 수의 차원을 가져야 합니다."
+
+msgid "Results must have one or more dimensions."
+msgstr "결과는 반드시 하나 이상의 차원을 가져야 합니다."
+
+msgid "Results must have the same dimensions."
+msgstr "결과는 반드시 같은 차원을 가져야 합니다."
+
+msgid "Results must have compatible types."
+msgstr "결과는 반드시 호환형(compatible type)을 가져야 합니다."
+
+msgid "Results do not have equal lengths"
+msgstr "결과가 동일한 길이를 가지지 않습니다."
+
+msgid "Results must be all atomic, or all data frames"
+msgstr "결과는 반드시 모두 atomic이거나 데이터 프레임이어야 합니다."
+
+msgid "Progress disabled when using parallel plyr"
+msgstr "병렬적으로 plyr을 사용하는 경우 진행되지 않습니다."
+
+msgid "with piece"
+msgstr "조각과 함께"
+
+msgid ":"
+msgstr ":"
+
+msgid "Printing disabled for parallel processing"
+msgstr "병렬적으로 plyr을 사용하는 경우 출력되지 않습니다."
+
+msgid "Progress disabled for parallel processing"
+msgstr "병렬적으로 작업하는 경우 진행되지 않습니다."
+
+msgid "Matching on:"
+msgstr "다음과 같이 대응:"
+
+# foreach를 for each로 해석함
+msgid "foreach package required for parallel plyr operation"
+msgstr "병렬적으로 plyr을 운용하는 경우 각각의 팩키지가 요구됩니다."
+
+msgid "No parallel backend registered"
+msgstr "병렬적 backend가 등록되지 않았습니다."
+
+msgid "Cannot find progress bar"
+msgstr "진척도 표시를 찾을 수 없습니다."
+
+msgid "envir must be either NULL, a list, or an environment."
+msgstr ""
+"envir은 반드시 NULL, 리스트, 또는 환경(environment) 중 하나 이어야 합니다."
+
+msgid "Input"
+msgstr "입력"
+
+msgid "is a factor and"
+msgstr "요인(factor)이며 그리고"
+
+msgid "needs to be converted first to either numeric or character."
+msgstr "숫자나 문자로 먼저 변환될 필요가 있습니다."
+
+msgid "All inputs to rbind.fill must be data.frames"
+msgstr "rbind.fill에 대한 모든 입력은 data.frames이어야 합니다."
+
+msgid "Matrix variable"
+msgstr "행렬변수"
+
+msgid "has inconsistent widths"
+msgstr "일치하지 않는 넓이"
+
+msgid "rbind.fill can only work with 1d arrays"
+msgstr "rbind.fill은 오로지 1차원 배열에서만 작동합니다."
+
+msgid "x is not a factor or a character vector."
+msgstr "x가 요인(factor)이나 문자벡터가 아닙니다."
+
+msgid "`from` and `to` vectors are not the same length."
+msgstr "'~로부터'와 '~로' 벡터는 같은 길이를 가지지 않습니다."
+
+msgid "`x` must be an atomic vector."
+msgstr "'x'는 반드시 atomic 벡터이어야 합니다."
+
+msgid "The following `from` values were not present in `x`:"
+msgstr "뒤따르는 'from' 값은 'x'에 나타나지 않을 것입니다."
+
+msgid "Invalid margin"
+msgstr "유효하지 않은 한계(margin)"
