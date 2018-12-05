@@ -1,7 +1,10 @@
 # plyr
 
-[![Build Status](https://travis-ci.org/hadley/plyr.png?branch=master)](https://travis-ci.org/hadley/plyr)
-[![Coverage Status](https://img.shields.io/codecov/c/github/hadley/plyr/master.svg)](https://codecov.io/github/hadley/plyr?branch=master)
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/hadley/plyr.svg?branch=master)](https://travis-ci.org/hadley/plyr)
+[![Codecov test coverage](https://codecov.io/gh/hadley/plyr/branch/master/graph/badge.svg)](https://codecov.io/gh/hadley/plyr?branch=master)
+[![CRAN status](https://www.r-pkg.org/badges/version/plyr)](https://cran.r-project.org/package=plyr)
+<!-- badges: end -->
 
 plyr is a set of tools for a common set of problems: you need to __split__ up a big data structure into homogeneous pieces, __apply__ a function to each piece and then __combine__ all the results back together. For example, you might want to:
 
