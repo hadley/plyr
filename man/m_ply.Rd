@@ -5,7 +5,8 @@
 \title{Call function with arguments in array or data frame, discarding results.}
 \usage{
 m_ply(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none",
-  .inform = FALSE, .print = FALSE, .parallel = FALSE, .paropts = NULL)
+  .inform = FALSE, .print = FALSE, .parallel = FALSE,
+  .paropts = NULL)
 }
 \arguments{
 \item{.data}{matrix or data frame to use as source of arguments}
@@ -60,6 +61,7 @@ and \code{.fun} wrapped in \code{\link{splat}}.
   calling purely for their side effects like displaying plots or
   saving output.
 }
+
 \references{
 Hadley Wickham (2011). The Split-Apply-Combine Strategy
   for Data Analysis. Journal of Statistical Software, 40(1), 1-29.
@@ -72,5 +74,6 @@ Other multiple arguments input: \code{\link{maply}},
 Other no output: \code{\link{a_ply}}, \code{\link{d_ply}},
   \code{\link{l_ply}}
 }
+\concept{multiple arguments input}
+\concept{no output}
 \keyword{manip}
-

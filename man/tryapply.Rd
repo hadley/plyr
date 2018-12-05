@@ -19,4 +19,3 @@ Apply with built in try.
 Uses compact, lapply and tryNULL
 }
 \keyword{internal}
-

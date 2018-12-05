@@ -24,5 +24,5 @@ or all data frames.
 Other list simplification functions: \code{\link{list_to_array}},
   \code{\link{list_to_vector}}
 }
+\concept{list simplification functions}
 \keyword{internal}
-

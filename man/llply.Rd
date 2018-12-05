@@ -49,6 +49,7 @@ preserve labels and can display a progress bar.
  If there are no results, then this function will return
   a list of length 0 (\code{list()}).
 }
+
 \examples{
 llply(llply(mtcars, round), table)
 llply(baseball, summary)
@@ -70,5 +71,6 @@ Other list input: \code{\link{l_ply}}, \code{\link{laply}},
 Other list output: \code{\link{alply}},
   \code{\link{dlply}}, \code{\link{mlply}}
 }
+\concept{list input}
+\concept{list output}
 \keyword{manip}
-

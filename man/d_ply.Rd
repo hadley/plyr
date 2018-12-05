@@ -58,6 +58,7 @@ To apply a function for each row, use \code{\link{a_ply}} with
   calling purely for their side effects like displaying plots or
   saving output.
 }
+
 \references{
 Hadley Wickham (2011). The Split-Apply-Combine Strategy
   for Data Analysis. Journal of Statistical Software, 40(1), 1-29.
@@ -70,5 +71,6 @@ Other data frame input: \code{\link{daply}},
 Other no output: \code{\link{a_ply}}, \code{\link{l_ply}},
   \code{\link{m_ply}}
 }
+\concept{data frame input}
+\concept{no output}
 \keyword{manip}
-

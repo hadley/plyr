@@ -51,4 +51,3 @@ count(count(baseball, c("id", "year")), "freq")
 \code{\link{table}} for related functionality in the base package
 }
 \keyword{manip}
-

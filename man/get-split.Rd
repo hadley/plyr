@@ -17,4 +17,3 @@
 Subset splits, ensuring that labels keep matching
 }
 \keyword{internal}
-

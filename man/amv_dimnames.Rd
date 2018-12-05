@@ -18,4 +18,3 @@ null.  If a component of dimnames is omitted, \code{amv_dimnames}
 will return an integer sequence of the appropriate length.
 }
 \keyword{internal}
-

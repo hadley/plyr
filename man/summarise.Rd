@@ -35,4 +35,3 @@ ddply(baseball, "id", summarise,
  nteams = length(unique(team)))
 }
 \keyword{manip}
-

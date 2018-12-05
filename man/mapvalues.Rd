@@ -45,4 +45,3 @@ mapvalues(z, from = c(1, 5, 9), to = c(10, 50, 90))
 \code{\link{revalue}} to do the same thing but with a single
   named vector instead of two separate vectors.
 }
-

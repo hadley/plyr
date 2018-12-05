@@ -5,7 +5,8 @@
 \title{Split data frame, apply function, and return results in a data frame.}
 \usage{
 ddply(.data, .variables, .fun = NULL, ..., .progress = "none",
-  .inform = FALSE, .drop = TRUE, .parallel = FALSE, .paropts = NULL)
+  .inform = FALSE, .drop = TRUE, .parallel = FALSE,
+  .paropts = NULL)
 }
 \arguments{
 \item{.data}{data frame to be processed}
@@ -61,6 +62,7 @@ To apply a function for each row, use \code{\link{adply}} with
  If there are no results, then this function will return a data
  frame with zero rows and columns (\code{data.frame()}).
 }
+
 \examples{
 # Summarize a dataset by two variables
 dfx <- data.frame(
@@ -106,5 +108,6 @@ Other data frame input: \code{\link{d_ply}},
 Other data frame output: \code{\link{adply}},
   \code{\link{ldply}}, \code{\link{mdply}}
 }
+\concept{data frame input}
+\concept{data frame output}
 \keyword{manip}
-

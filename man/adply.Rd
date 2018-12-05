@@ -70,6 +70,7 @@ frame.
  If there are no results, then this function will return a data
  frame with zero rows and columns (\code{data.frame()}).
 }
+
 \references{
 Hadley Wickham (2011). The Split-Apply-Combine Strategy
   for Data Analysis. Journal of Statistical Software, 40(1), 1-29.
@@ -82,5 +83,6 @@ Other array input: \code{\link{a_ply}},
 Other data frame output: \code{\link{ddply}},
   \code{\link{ldply}}, \code{\link{mdply}}
 }
+\concept{array input}
+\concept{data frame output}
 \keyword{manip}
-

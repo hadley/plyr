@@ -49,4 +49,3 @@ l_ply(1:10000, identity, .progress = progress_text(char = "."))
 \code{\link{progress_none}}, \code{\link{progress_text}}, \code{\link{progress_tk}}, \code{\link{progress_win}}
 }
 \keyword{utilities}
-

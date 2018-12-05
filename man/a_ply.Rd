@@ -59,6 +59,7 @@ For each slice of an array, apply function and discard results
   calling purely for their side effects like displaying plots or
   saving output.
 }
+
 \references{
 Hadley Wickham (2011). The Split-Apply-Combine Strategy
   for Data Analysis. Journal of Statistical Software, 40(1), 1-29.
@@ -71,5 +72,6 @@ Other array input: \code{\link{aaply}},
 Other no output: \code{\link{d_ply}}, \code{\link{l_ply}},
   \code{\link{m_ply}}
 }
+\concept{array input}
+\concept{no output}
 \keyword{manip}
-

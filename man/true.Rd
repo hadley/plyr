@@ -19,4 +19,3 @@ Function that always returns true.
 \code{\link{colwise}} which uses it
 }
 \keyword{internal}
-

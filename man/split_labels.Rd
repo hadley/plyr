@@ -15,4 +15,3 @@ split_labels(splits, drop, id = plyr::id(splits, drop = TRUE))
 Create data frame giving labels for split data frame.
 }
 \keyword{internal}
-

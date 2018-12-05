@@ -19,4 +19,3 @@ An optimised version of lapply for the special case of operating on
 }
 \keyword{internal}
 \keyword{manip}
-

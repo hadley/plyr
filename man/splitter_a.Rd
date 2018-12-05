@@ -51,5 +51,5 @@ plyr:::splitter_a(ozone, 1:2)
 \seealso{
 Other splitter functions: \code{\link{splitter_d}}
 }
+\concept{splitter functions}
 \keyword{internal}
-

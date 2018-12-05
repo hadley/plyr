@@ -33,4 +33,3 @@ each(length, mean, var)(rnorm(100))
 \code{\link{summarise}} for applying summary functions to data
 }
 \keyword{manip}
-

@@ -4,7 +4,8 @@
 \alias{vaggregate}
 \title{Vector aggregate.}
 \usage{
-vaggregate(.value, .group, .fun, ..., .default = NULL, .n = nlevels(.group))
+vaggregate(.value, .group, .fun, ..., .default = NULL,
+  .n = nlevels(.group))
 }
 \arguments{
 \item{.value}{vector of values to aggregate}
@@ -50,4 +51,3 @@ y1 <- sample.int(10, 1e6, replace = TRUE)
 system.time(tapply(x, y1, mean))
 system.time(vaggregate(x, y1, mean))
 }
-

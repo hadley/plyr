@@ -5,8 +5,8 @@
 \title{Split array, apply function, and return results in an array.}
 \usage{
 aaply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
-  .progress = "none", .inform = FALSE, .drop = TRUE, .parallel = FALSE,
-  .paropts = NULL)
+  .progress = "none", .inform = FALSE, .drop = TRUE,
+  .parallel = FALSE, .paropts = NULL)
 }
 \arguments{
 \item{.data}{matrix, array or data frame to be processed}
@@ -73,6 +73,7 @@ unexpected results, see \url{https://github.com/hadley/plyr/issues/212}.
   If there are no results, then this function will return a vector of
   length 0 (\code{vector()}).
 }
+
 \examples{
 dim(ozone)
 aaply(ozone, 1, mean)
@@ -104,5 +105,6 @@ Other array input: \code{\link{a_ply}},
 Other array output: \code{\link{daply}},
   \code{\link{laply}}, \code{\link{maply}}
 }
+\concept{array input}
+\concept{array output}
 \keyword{manip}
-

@@ -38,4 +38,3 @@ system.time(mutate(baseball, avg_ab = ab / g))
   \code{\link{arrange}}.  For another somewhat different approach to
   solving the same problem, see \code{\link{within}}.
 }
-

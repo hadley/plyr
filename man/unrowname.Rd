@@ -13,4 +13,3 @@ unrowname(x)
 Strip rownames from an object
 }
 \keyword{internal}
-

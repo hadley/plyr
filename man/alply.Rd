@@ -67,6 +67,7 @@ where the results are not atomic.
  If there are no results, then this function will return
   a list of length 0 (\code{list()}).
 }
+
 \examples{
 alply(ozone, 3, quantile)
 alply(ozone, 3, function(x) table(round(x)))
@@ -83,5 +84,6 @@ Other array input: \code{\link{a_ply}},
 Other list output: \code{\link{dlply}},
   \code{\link{llply}}, \code{\link{mlply}}
 }
+\concept{array input}
+\concept{list output}
 \keyword{manip}
-

@@ -31,4 +31,3 @@ x
 # Rename column "disp" to "displacement"
 rename(mtcars, c("disp" = "displacement"))
 }
-

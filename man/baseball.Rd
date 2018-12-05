@@ -43,6 +43,7 @@ Variables:
  \item gidp, ground into double play
 }
 }
+
 \examples{
 baberuth <- subset(baseball, id == "ruthba01")
 baberuth$cyear <- baberuth$year - min(baberuth$year) + 1
@@ -67,4 +68,3 @@ models <- dlply(baseball, .(id), model)
 \url{http://www.baseball-databank.org/}
 }
 \keyword{datasets}
-

@@ -18,4 +18,3 @@ is.discrete(c("a", "b", "c"))
 is.discrete(factor(c("a", "b", "c")))
 }
 \keyword{internal}
-

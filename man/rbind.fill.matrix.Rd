@@ -4,7 +4,7 @@
 \alias{rbind.fill.matrix}
 \title{Bind matrices by row, and fill missing columns with NA.}
 \usage{
-rbind.fill.matrix(...)
+\method{rbind}{fill.matrix}(...)
 }
 \arguments{
 \item{...}{the matrices to rbind. The first argument can be a list of
@@ -44,14 +44,14 @@ rbind.fill.matrix (A, B)
 
 rbind.fill.matrix (A, 99)
 }
-\author{
-C. Beleites
-}
 \seealso{
 \code{\link[base]{rbind}}, \code{\link[base]{cbind}},
    \code{\link[plyr]{rbind.fill}}
 
 Other binding functions: \code{\link{rbind.fill}}
 }
+\author{
+C. Beleites
+}
+\concept{binding functions}
 \keyword{manip}
-

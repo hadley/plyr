@@ -10,4 +10,3 @@ id_var(x, drop = FALSE)
 Numeric id for a vector.
 }
 \keyword{internal}
-

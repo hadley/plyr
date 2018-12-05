@@ -17,4 +17,3 @@ indexed_df(data, index, vars)
 Create a indexed list, a space efficient way of indexing into a large data frame
 }
 \keyword{internal}
-

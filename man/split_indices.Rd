@@ -23,4 +23,3 @@ split_indices(sample(10, 100, rep = TRUE), 10)
 }
 \keyword{internal}
 \keyword{manip}
-

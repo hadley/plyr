@@ -25,4 +25,3 @@ returns a vector, and you want the output in rows, rather than columns.
 The \code{value} column is always created, even for empty inputs.
 }
 \keyword{manip}
-

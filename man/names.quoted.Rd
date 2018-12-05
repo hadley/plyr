@@ -12,4 +12,3 @@ otherwise converting the values to character strings.  This may create
 variable names that can only be accessed using \code{``}.
 }
 \keyword{internal}
-

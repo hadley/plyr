@@ -27,4 +27,3 @@ system.time(dlply(baseball, "id", nrow))
 system.time(dlply(idata.frame(baseball), "id", nrow))
 }
 \keyword{manip}
-

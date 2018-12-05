@@ -34,4 +34,3 @@ arrange(myCars, cyl, desc(disp))
 \code{\link{order}} for sorting function in the base package
 }
 \keyword{manip}
-

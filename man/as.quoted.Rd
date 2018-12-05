@@ -33,4 +33,3 @@ as.quoted(a ~ b + log(d))
 \seealso{
 \code{\link[=quoted]{.}}
 }
-

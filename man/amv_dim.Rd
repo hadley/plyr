@@ -13,4 +13,3 @@ amv_dim(x)
 Consistent dimensions for vectors, matrices and arrays.
 }
 \keyword{internal}
-

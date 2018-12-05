@@ -50,4 +50,3 @@ bb_longterm[1:5,]
 \code{\link{join}} to combine the columns from both x and y
  and \code{\link{match}} for the base function selecting matching items
 }
-

@@ -2,8 +2,8 @@
 % Please edit documentation in R/quote.r
 \name{.}
 \alias{.}
-\alias{is.quoted}
 \alias{quoted}
+\alias{is.quoted}
 \title{Quote variables to create a list of unevaluated expressions for later
 evaluation.}
 \usage{
@@ -51,4 +51,3 @@ ddply(mtcars, .(logcyl = log(cyl)), each(nrow, ncol))
 ddply(mtcars, .(vs + am), each(nrow, ncol))
 ddply(mtcars, .(vsam = vs + am), each(nrow, ncol))
 }
-

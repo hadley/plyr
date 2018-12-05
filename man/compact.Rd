@@ -14,4 +14,3 @@ Remove all NULL entries from a list
 }
 \keyword{internal}
 \keyword{manip}
-

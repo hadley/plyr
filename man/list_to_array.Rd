@@ -20,5 +20,5 @@ Reduce/simplify a list of homogenous objects to an array
 Other list simplification functions: \code{\link{list_to_dataframe}},
   \code{\link{list_to_vector}}
 }
+\concept{list simplification functions}
 \keyword{internal}
-

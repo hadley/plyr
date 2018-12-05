@@ -23,8 +23,8 @@ each time.
 \section{Warning}{
 Deprecated, do not use in new code.
 }
+
 \seealso{
 \code{\link{plyr-deprecated}}
 }
 \keyword{manip}
-

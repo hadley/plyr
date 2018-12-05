@@ -56,6 +56,7 @@ and \code{.fun} wrapped in \code{\link{splat}}.
  If there are no results, then this function will return
   a list of length 0 (\code{list()}).
 }
+
 \examples{
 mlply(cbind(1:4, 4:1), rep)
 mlply(cbind(1:4, times = 4:1), rep)
@@ -70,11 +71,12 @@ Hadley Wickham (2011). The Split-Apply-Combine Strategy
   \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other list output: \code{\link{alply}},
-  \code{\link{dlply}}, \code{\link{llply}}
-
 Other multiple arguments input: \code{\link{m_ply}},
   \code{\link{maply}}, \code{\link{mdply}}
-}
-\keyword{manip}
 
+Other list output: \code{\link{alply}},
+  \code{\link{dlply}}, \code{\link{llply}}
+}
+\concept{list output}
+\concept{multiple arguments input}
+\keyword{manip}

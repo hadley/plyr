@@ -18,4 +18,3 @@ a list
 Evaluates quoted variables in specified environment
 }
 \keyword{internal}
-

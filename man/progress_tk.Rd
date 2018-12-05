@@ -33,4 +33,4 @@ Other progress bars: \code{\link{progress_none}},
   \code{\link{progress_text}}, \code{\link{progress_time}},
   \code{\link{progress_win}}
 }
-
+\concept{progress bars}

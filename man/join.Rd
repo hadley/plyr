@@ -56,4 +56,3 @@ b3 <- arrange(b3, id, year, stint)
 stopifnot(all.equal(b2, b3))
 }
 \keyword{manip}
-

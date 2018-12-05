@@ -23,7 +23,7 @@
 #' @seealso \code{\link[base]{rbind}}, \code{\link[base]{cbind}},
 #'    \code{\link[plyr]{rbind.fill}}
 #' @family binding functions
-#' @export
+#' @export rbind.fill.matrix
 #' @keywords manip
 #' @examples
 #' A <- matrix (1:4, 2)

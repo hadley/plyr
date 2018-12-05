@@ -29,4 +29,3 @@ take(x, 2, 1, drop = TRUE)
 take(x, 1, 1, drop = TRUE)
 }
 \keyword{manip}
-

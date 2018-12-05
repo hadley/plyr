@@ -31,4 +31,3 @@ f2("name:")
 \author{
 Peter Meilstrup, \url{https://github.com/crowding}
 }
-

@@ -12,4 +12,3 @@ Is a formula?
 Checks if argument is a formula
 }
 \keyword{internal}
-

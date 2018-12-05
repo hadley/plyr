@@ -49,5 +49,5 @@ plyr:::splitter_d(mtcars, .(cyl3, vs), drop = FALSE)
 
 Other splitter functions: \code{\link{splitter_a}}
 }
+\concept{splitter functions}
 \keyword{internal}
-

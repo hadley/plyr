@@ -13,4 +13,3 @@ empty(df)
 Empty if it's null or it has 0 rows or columns
 }
 \keyword{internal}
-

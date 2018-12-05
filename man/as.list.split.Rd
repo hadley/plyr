@@ -15,4 +15,3 @@
 Strip off label related attributed to make a strip list as regular list
 }
 \keyword{internal}
-

@@ -19,4 +19,3 @@ combining all results together.
 dlply(mtcars, c("vs", "am"))
 dlply(mtcars, c("vs", "am"), strip_splits)
 }
-

@@ -35,4 +35,3 @@ Hadley Wickham (2011). The Split-Apply-Combine Strategy for
   \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \keyword{manip}
-

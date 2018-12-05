@@ -26,4 +26,3 @@ arrange(name_rows(df), a)
 name_rows(arrange(name_rows(df), a))
 }
 \keyword{manip}
-

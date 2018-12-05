@@ -10,4 +10,3 @@
 Display the \code{\link{str}}ucture of quoted variables
 }
 \keyword{internal}
-

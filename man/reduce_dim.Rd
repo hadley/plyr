@@ -13,4 +13,3 @@ reduce_dim(x)
 Remove extraneous dimensions
 }
 \keyword{internal}
-

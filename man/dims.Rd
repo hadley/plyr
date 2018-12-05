@@ -13,4 +13,3 @@ dims(x)
 Number of dimensions of an array or vector
 }
 \keyword{internal}
-

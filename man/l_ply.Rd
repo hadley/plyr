@@ -49,6 +49,7 @@ For each element of a list, apply function and discard results
   calling purely for their side effects like displaying plots or
   saving output.
 }
+
 \examples{
 l_ply(llply(mtcars, round), table, .print = TRUE)
 l_ply(baseball, function(x) print(summary(x)))
@@ -65,5 +66,6 @@ Other list input: \code{\link{laply}}, \code{\link{ldply}},
 Other no output: \code{\link{a_ply}}, \code{\link{d_ply}},
   \code{\link{m_ply}}
 }
+\concept{list input}
+\concept{no output}
 \keyword{manip}
-

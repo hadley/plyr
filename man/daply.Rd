@@ -5,8 +5,8 @@
 \title{Split data frame, apply function, and return results in an array.}
 \usage{
 daply(.data, .variables, .fun = NULL, ..., .progress = "none",
-  .inform = FALSE, .drop_i = TRUE, .drop_o = TRUE, .parallel = FALSE,
-  .paropts = NULL)
+  .inform = FALSE, .drop_i = TRUE, .drop_o = TRUE,
+  .parallel = FALSE, .paropts = NULL)
 }
 \arguments{
 \item{.data}{data frame to be processed}
@@ -62,6 +62,7 @@ To apply a function for each row, use \code{\link{aaply}} with
   If there are no results, then this function will return a vector of
   length 0 (\code{vector()}).
 }
+
 \examples{
 daply(baseball, .(year), nrow)
 
@@ -84,5 +85,6 @@ Other array output: \code{\link{aaply}},
 Other data frame input: \code{\link{d_ply}},
   \code{\link{ddply}}, \code{\link{dlply}}
 }
+\concept{array output}
+\concept{data frame input}
 \keyword{manip}
-

@@ -58,6 +58,7 @@ not a column.
   If there are no results, then this function will return a vector of
   length 0 (\code{vector()}).
 }
+
 \examples{
 laply(baseball, is.factor)
 # cf
@@ -74,11 +75,12 @@ Hadley Wickham (2011). The Split-Apply-Combine Strategy
   \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other array output: \code{\link{aaply}},
-  \code{\link{daply}}, \code{\link{maply}}
-
 Other list input: \code{\link{l_ply}}, \code{\link{ldply}},
   \code{\link{llply}}
-}
-\keyword{manip}
 
+Other array output: \code{\link{aaply}},
+  \code{\link{daply}}, \code{\link{maply}}
+}
+\concept{array output}
+\concept{list input}
+\keyword{manip}

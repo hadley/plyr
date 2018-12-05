@@ -36,4 +36,3 @@ revalue(y, c(a = "A", c = "C"))
 \seealso{
 \code{\link{mapvalues}} to replace values with vectors of any type
 }
-

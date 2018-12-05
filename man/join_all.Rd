@@ -32,4 +32,3 @@ dfs <- list(
 join_all(dfs)
 join_all(dfs, "x")
 }
-

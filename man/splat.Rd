@@ -28,4 +28,3 @@ splat(hp_per_cyl)(mtcars)
 f <- function(mpg, wt, ...) data.frame(mw = mpg / wt)
 ddply(mtcars, .(cyl), splat(f))
 }
-

@@ -58,17 +58,19 @@ frame.
  If there are no results, then this function will return a data
  frame with zero rows and columns (\code{data.frame()}).
 }
+
 \references{
 Hadley Wickham (2011). The Split-Apply-Combine Strategy
   for Data Analysis. Journal of Statistical Software, 40(1), 1-29.
   \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other data frame output: \code{\link{adply}},
-  \code{\link{ddply}}, \code{\link{mdply}}
-
 Other list input: \code{\link{l_ply}}, \code{\link{laply}},
   \code{\link{llply}}
-}
-\keyword{manip}
 
+Other data frame output: \code{\link{adply}},
+  \code{\link{ddply}}, \code{\link{mdply}}
+}
+\concept{data frame output}
+\concept{list input}
+\keyword{manip}
