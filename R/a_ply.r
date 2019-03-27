@@ -14,4 +14,6 @@ a_ply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE,
   l_ply(.data = pieces, .fun = .fun, ...,
     .progress = .progress, .inform = .inform, .print = .print,
     .parallel = .parallel, .paropts = .paropts)
+
+
 }
