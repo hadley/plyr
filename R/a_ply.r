@@ -15,5 +15,5 @@ a_ply <- function(.data, .margins, .fun = NULL, ..., .expand = TRUE,
     .progress = .progress, .inform = .inform, .print = .print,
     .parallel = .parallel, .paropts = .paropts)
 
-
+  print(1)
 }
