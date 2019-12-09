@@ -83,9 +83,12 @@ test_that("character or factor or list-matrices are preserved", {
 
 test_that("missing levels in factors preserved", {
   f <- addNA(factor(c("a", "b", NA)))
-  df1 <- data.frame(a = f)
-  df2 <- data.frame(b = f)
-  rbind.fill(df1, df2)
+  df1 <- data.frame(a = f, c = f)
+  df2 <- data.frame(b = f, c = f)
+  out <- rbind.fill(df1, df2)
+  expect_equal(levels(out$a), levels(f))
+  expect_equal(levels(out$b), levels(f))
+  expect_equal(levels(out$c), levels(f))
 })
 
 test_that("time zones are preserved", {
@@ -118,7 +121,7 @@ test_that("1d arrays treated as vectors", {
   df <- data.frame(x = 1)
   df$x <- array(2, 1, list(x="one"))
   df2 <- rbind.fill(df, df)
-  expect_that(is.null(dimnames(df2$x)), is_true())
+  expect_null(dimnames(df2$x))
 
   #can bind 1d array to vector
   dfV <- data.frame(x=3)

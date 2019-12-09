@@ -195,7 +195,7 @@ test_that("no support for duplicate names (#211)", {
   dimnames(ar)[1:2] <- list(AB, AB)
 
   if (getRversion() >= "3.4.0") {
-    expect_error(aaply(ar, 3, identity), "duplicated")
+    expect_warning(expect_error(aaply(ar, 3, identity), "duplicated"))
   } else {
     expect_warning(aaply(ar, 3, identity), "Duplicate names")
   }
