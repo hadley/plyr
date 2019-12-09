@@ -4,9 +4,18 @@
 \alias{alply}
 \title{Split array, apply function, and return results in a list.}
 \usage{
-alply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
-  .progress = "none", .inform = FALSE, .parallel = FALSE,
-  .paropts = NULL, .dims = FALSE)
+alply(
+  .data,
+  .margins,
+  .fun = NULL,
+  ...,
+  .expand = TRUE,
+  .progress = "none",
+  .inform = FALSE,
+  .parallel = FALSE,
+  .paropts = NULL,
+  .dims = FALSE
+)
 }
 \arguments{
 \item{.data}{matrix, array or data frame to be processed}
@@ -78,11 +87,15 @@ Hadley Wickham (2011). The Split-Apply-Combine Strategy
   \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other array input: \code{\link{a_ply}},
-  \code{\link{aaply}}, \code{\link{adply}}
+Other array input: 
+\code{\link{a_ply}()},
+\code{\link{aaply}()},
+\code{\link{adply}()}
 
-Other list output: \code{\link{dlply}},
-  \code{\link{llply}}, \code{\link{mlply}}
+Other list output: 
+\code{\link{dlply}()},
+\code{\link{llply}()},
+\code{\link{mlply}()}
 }
 \concept{array input}
 \concept{list output}

@@ -48,7 +48,8 @@ rbind.fill.matrix (A, 99)
 \code{\link[base]{rbind}}, \code{\link[base]{cbind}},
    \code{\link[plyr]{rbind.fill}}
 
-Other binding functions: \code{\link{rbind.fill}}
+Other binding functions: 
+\code{\link{rbind.fill}()}
 }
 \author{
 C. Beleites

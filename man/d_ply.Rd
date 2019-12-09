@@ -4,9 +4,18 @@
 \alias{d_ply}
 \title{Split data frame, apply function, and discard results.}
 \usage{
-d_ply(.data, .variables, .fun = NULL, ..., .progress = "none",
-  .inform = FALSE, .drop = TRUE, .print = FALSE, .parallel = FALSE,
-  .paropts = NULL)
+d_ply(
+  .data,
+  .variables,
+  .fun = NULL,
+  ...,
+  .progress = "none",
+  .inform = FALSE,
+  .drop = TRUE,
+  .print = FALSE,
+  .parallel = FALSE,
+  .paropts = NULL
+)
 }
 \arguments{
 \item{.data}{data frame to be processed}
@@ -65,11 +74,15 @@ Hadley Wickham (2011). The Split-Apply-Combine Strategy
   \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other data frame input: \code{\link{daply}},
-  \code{\link{ddply}}, \code{\link{dlply}}
+Other data frame input: 
+\code{\link{daply}()},
+\code{\link{ddply}()},
+\code{\link{dlply}()}
 
-Other no output: \code{\link{a_ply}}, \code{\link{l_ply}},
-  \code{\link{m_ply}}
+Other no output: 
+\code{\link{a_ply}()},
+\code{\link{l_ply}()},
+\code{\link{m_ply}()}
 }
 \concept{data frame input}
 \concept{no output}

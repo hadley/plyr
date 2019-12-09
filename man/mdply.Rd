@@ -4,8 +4,16 @@
 \alias{mdply}
 \title{Call function with arguments in array or data frame, returning a data frame.}
 \usage{
-mdply(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none",
-  .inform = FALSE, .parallel = FALSE, .paropts = NULL)
+mdply(
+  .data,
+  .fun = NULL,
+  ...,
+  .expand = TRUE,
+  .progress = "none",
+  .inform = FALSE,
+  .parallel = FALSE,
+  .paropts = NULL
+)
 }
 \arguments{
 \item{.data}{matrix or data frame to use as source of arguments}
@@ -76,11 +84,15 @@ Hadley Wickham (2011). The Split-Apply-Combine Strategy
   \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other multiple arguments input: \code{\link{m_ply}},
-  \code{\link{maply}}, \code{\link{mlply}}
+Other multiple arguments input: 
+\code{\link{m_ply}()},
+\code{\link{maply}()},
+\code{\link{mlply}()}
 
-Other data frame output: \code{\link{adply}},
-  \code{\link{ddply}}, \code{\link{ldply}}
+Other data frame output: 
+\code{\link{adply}()},
+\code{\link{ddply}()},
+\code{\link{ldply}()}
 }
 \concept{data frame output}
 \concept{multiple arguments input}

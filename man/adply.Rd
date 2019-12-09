@@ -4,9 +4,18 @@
 \alias{adply}
 \title{Split array, apply function, and return results in a data frame.}
 \usage{
-adply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
-  .progress = "none", .inform = FALSE, .parallel = FALSE,
-  .paropts = NULL, .id = NA)
+adply(
+  .data,
+  .margins,
+  .fun = NULL,
+  ...,
+  .expand = TRUE,
+  .progress = "none",
+  .inform = FALSE,
+  .parallel = FALSE,
+  .paropts = NULL,
+  .id = NA
+)
 }
 \arguments{
 \item{.data}{matrix, array or data frame to be processed}
@@ -77,11 +86,15 @@ Hadley Wickham (2011). The Split-Apply-Combine Strategy
   \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other array input: \code{\link{a_ply}},
-  \code{\link{aaply}}, \code{\link{alply}}
+Other array input: 
+\code{\link{a_ply}()},
+\code{\link{aaply}()},
+\code{\link{alply}()}
 
-Other data frame output: \code{\link{ddply}},
-  \code{\link{ldply}}, \code{\link{mdply}}
+Other data frame output: 
+\code{\link{ddply}()},
+\code{\link{ldply}()},
+\code{\link{mdply}()}
 }
 \concept{array input}
 \concept{data frame output}

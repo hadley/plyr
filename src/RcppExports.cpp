@@ -22,7 +22,7 @@ RcppExport SEXP loop_apply_(SEXP, SEXP, SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
     {"_plyr_split_indices", (DL_FUNC) &_plyr_split_indices, 2},
-    {"loop_apply_",         (DL_FUNC) &loop_apply_,         3},
+    {"loop_apply_", (DL_FUNC) &loop_apply_, 3},
     {NULL, NULL, 0}
 };
 

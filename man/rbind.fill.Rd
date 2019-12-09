@@ -37,7 +37,8 @@ each column is of consistent data type.
 rbind.fill(mtcars[c("mpg", "wt")], mtcars[c("wt", "cyl")])
 }
 \seealso{
-Other binding functions: \code{\link{rbind.fill.matrix}}
+Other binding functions: 
+\code{\link{rbind.fill.matrix}()}
 }
 \concept{binding functions}
 \keyword{manip}

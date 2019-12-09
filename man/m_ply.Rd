@@ -4,9 +4,17 @@
 \alias{m_ply}
 \title{Call function with arguments in array or data frame, discarding results.}
 \usage{
-m_ply(.data, .fun = NULL, ..., .expand = TRUE, .progress = "none",
-  .inform = FALSE, .print = FALSE, .parallel = FALSE,
-  .paropts = NULL)
+m_ply(
+  .data,
+  .fun = NULL,
+  ...,
+  .expand = TRUE,
+  .progress = "none",
+  .inform = FALSE,
+  .print = FALSE,
+  .parallel = FALSE,
+  .paropts = NULL
+)
 }
 \arguments{
 \item{.data}{matrix or data frame to use as source of arguments}
@@ -68,11 +76,15 @@ Hadley Wickham (2011). The Split-Apply-Combine Strategy
   \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other multiple arguments input: \code{\link{maply}},
-  \code{\link{mdply}}, \code{\link{mlply}}
+Other multiple arguments input: 
+\code{\link{maply}()},
+\code{\link{mdply}()},
+\code{\link{mlply}()}
 
-Other no output: \code{\link{a_ply}}, \code{\link{d_ply}},
-  \code{\link{l_ply}}
+Other no output: 
+\code{\link{a_ply}()},
+\code{\link{d_ply}()},
+\code{\link{l_ply}()}
 }
 \concept{multiple arguments input}
 \concept{no output}

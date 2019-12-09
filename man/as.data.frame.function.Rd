@@ -4,7 +4,7 @@
 \alias{as.data.frame.function}
 \title{Make a function return a data frame.}
 \usage{
-\method{as.data.frame}{function}(x, row.names, optional, ...)
+\method{as.data.frame}{`function`}(x, row.names, optional, ...)
 }
 \arguments{
 \item{x}{function to make return a data frame}

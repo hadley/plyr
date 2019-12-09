@@ -4,8 +4,7 @@
 \alias{list_to_dataframe}
 \title{List to data frame.}
 \usage{
-list_to_dataframe(res, labels = NULL, id_name = NULL,
-  id_as_factor = FALSE)
+list_to_dataframe(res, labels = NULL, id_name = NULL, id_as_factor = FALSE)
 }
 \arguments{
 \item{res}{list of input data}
@@ -21,8 +20,9 @@ Reduce/simplify a list of homogenous objects to a data frame. All
 or all data frames.
 }
 \seealso{
-Other list simplification functions: \code{\link{list_to_array}},
-  \code{\link{list_to_vector}}
+Other list simplification functions: 
+\code{\link{list_to_array}()},
+\code{\link{list_to_vector}()}
 }
 \concept{list simplification functions}
 \keyword{internal}

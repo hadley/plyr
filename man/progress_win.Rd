@@ -26,8 +26,10 @@ l_ply(1:100, identity, .progress = progress_win(title="Working..."))
 \seealso{
 \code{winProgressBar} for the function that powers this progress bar
 
-Other progress bars: \code{\link{progress_none}},
-  \code{\link{progress_text}}, \code{\link{progress_time}},
-  \code{\link{progress_tk}}
+Other progress bars: 
+\code{\link{progress_none}()},
+\code{\link{progress_text}()},
+\code{\link{progress_time}()},
+\code{\link{progress_tk}()}
 }
 \concept{progress bars}

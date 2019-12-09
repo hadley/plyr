@@ -4,9 +4,18 @@
 \alias{a_ply}
 \title{Split array, apply function, and discard results.}
 \usage{
-a_ply(.data, .margins, .fun = NULL, ..., .expand = TRUE,
-  .progress = "none", .inform = FALSE, .print = FALSE,
-  .parallel = FALSE, .paropts = NULL)
+a_ply(
+  .data,
+  .margins,
+  .fun = NULL,
+  ...,
+  .expand = TRUE,
+  .progress = "none",
+  .inform = FALSE,
+  .print = FALSE,
+  .parallel = FALSE,
+  .paropts = NULL
+)
 }
 \arguments{
 \item{.data}{matrix, array or data frame to be processed}
@@ -66,11 +75,15 @@ Hadley Wickham (2011). The Split-Apply-Combine Strategy
   \url{http://www.jstatsoft.org/v40/i01/}.
 }
 \seealso{
-Other array input: \code{\link{aaply}},
-  \code{\link{adply}}, \code{\link{alply}}
+Other array input: 
+\code{\link{aaply}()},
+\code{\link{adply}()},
+\code{\link{alply}()}
 
-Other no output: \code{\link{d_ply}}, \code{\link{l_ply}},
-  \code{\link{m_ply}}
+Other no output: 
+\code{\link{d_ply}()},
+\code{\link{l_ply}()},
+\code{\link{m_ply}()}
 }
 \concept{array input}
 \concept{no output}
