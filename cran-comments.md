@@ -11,4 +11,4 @@
 
 ## Reverse dependencies
 
-I did not run the reverse dependencies since the only changes in this version were to fix minor R CMD check problems, and the prevent one of the tests from failing in R-devel (patch helpful provided by Martin Maechler.)
+I did not run the reverse dependencies since the only changes in this version were to fix minor R CMD check problems, and the prevent one of the tests from failing in R-devel.
