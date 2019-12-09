@@ -61,6 +61,7 @@
 #'
 #' @docType package
 #' @importFrom Rcpp sourceCpp
+#' @useDynLib plyr, .registration = TRUE
 #' @name plyr
 # EXCLUDE COVERAGE START
 NULL

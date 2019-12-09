@@ -17,6 +17,6 @@
 #' split_indices(sample(10, 100, rep = TRUE))
 #' split_indices(sample(10, 100, rep = TRUE), 10)
 split_indices <- function(group, n = 0L) {
-    .Call('_plyr_split_indices', PACKAGE = 'plyr', group, n)
+    .Call(`_plyr_split_indices`, group, n)
 }
 
