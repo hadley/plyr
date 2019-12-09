@@ -14,9 +14,13 @@ test_that("variable classes are preserved", {
   rownames(ab2) <- NULL
 
   expect_that(ab1, equals(ab2))
-  expect_that(unname(lapply(ab1, class)),
-    equals(list("factor", "integer", "factor", "Date", c("POSIXct", "POSIXt"),
-                "matrix")))
+
+  expect_s3_class(ab1$a, "factor")
+  expect_type(ab1$b, "integer")
+  expect_s3_class(ab1$c, "factor")
+  expect_s3_class(ab1$d, "Date")
+  expect_s3_class(ab1$e, "POSIXct")
+  expect_equal(dim(ab1$f), c(6, 2))
 })
 
 test_that("same as rbind for simple cases", {

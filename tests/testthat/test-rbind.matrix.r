@@ -121,17 +121,14 @@ test_that("zero-row matrices", {
   bb <- rbind.fill.matrix(m2, m3)
   bc <- rbind.fill.matrix(m1, m2)
 
-  expect_equal(class(ba), "matrix")
-  expect_equal(nrow(ba), 0)
+  expect_equal(dim(ba), c(0, 2))
   expect_true(all(colnames(ba) %in% c("x", "y")))
 
-  expect_equal(class(bb), "matrix")
-  expect_equal(nrow(bb), 2)
+  expect_equal(dim(bb), c(2, 2))
   expect_true(all(names(bb) %in% c("x", "y", "z")))
   expect_equal(bb[,"y"], m3[,"y"])
   expect_equal(bb[,"z"], rep(as.numeric(NA), nrow(m3)))
 
-  expect_equal(class(bc), "matrix")
-  expect_equal(nrow(bc), 0)
+  expect_equal(dim(bc), c(0, 3))
   expect_true(all(colnames(bc) %in% c("x", "y", "z")))
 })
