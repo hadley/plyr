@@ -10,3 +10,4 @@ NEWS\.md
 ^\.lintr$
 ^\.travis\.yml$
 ^codecov\.yml$
+^CRAN-RELEASE$
