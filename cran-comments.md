@@ -5,9 +5,7 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* This package uses the MIT license.
+0 errors | 0 warnings | 0 note
 
 ## Reverse dependencies
 
