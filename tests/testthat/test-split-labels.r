@@ -1,7 +1,11 @@
 context("Split labels")
 
 test_that("Empty levels preserved", {
-  df <- data.frame(fac1 = letters[1:4], fac2 = LETTERS[1:4])
+  df <- data.frame(
+    fac1 = letters[1:4],
+    fac2 = LETTERS[1:4],
+    stringsAsFactors = TRUE
+  )
 
   a <- split_labels(df, FALSE)
   b <- split_labels(df[1, ], FALSE)

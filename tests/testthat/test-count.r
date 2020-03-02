@@ -53,7 +53,10 @@ test_that("count works with factors and dates", {
   n <- c(5, 10)
   gender_data <- factor(rep.int(genders, n))
 
-  expect_equal(count(gender_data), data.frame(x = genders, freq = n))
+  expect_equal(
+    count(gender_data),
+    data.frame(x = genders, freq = n, stringsAsFactors = TRUE)
+  )
 
   this_week <- seq(Sys.Date(), Sys.Date() + 6, "1 day")
   n2 <- 1:7

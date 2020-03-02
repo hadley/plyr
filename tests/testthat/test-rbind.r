@@ -1,7 +1,12 @@
 context("rbind.fill")
 
 test_that("variable classes are preserved", {
-  a <- data.frame(a = factor(letters[1:3]), b = 1:3, c = date())
+  a <- data.frame(
+    a = factor(letters[1:3]),
+    b = 1:3,
+    c = date(),
+    stringsAsFactors = TRUE
+  )
   b <- data.frame(
     a = factor(letters[3:5]),
     d = as.Date(c("2008-01-01", "2009-01-01", "2010-01-01")))
