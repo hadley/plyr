@@ -1,3 +1,5 @@
+# plyr (development version)
+
 # plyr 1.8.6
 
 * Update so `R CMD check` passes cleanly on R and R-devel.
