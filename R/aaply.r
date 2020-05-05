@@ -10,8 +10,8 @@
 #'
 #' @section Warning:
 #' Contrary to \code{\link{alply}} and \code{\link{adply}}, passing a data
-#' frame as first argument \code{aaply} may lead to unexpected results such
-#' as huge memory allocations.
+#' frame as first argument to \code{aaply} may lead to unexpected results
+#' such as huge memory allocations.
 #'
 #' @template ply
 #' @template a-
