@@ -39,7 +39,7 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
   n <- length(pieces)
   if (n == 0) return(list())
 
-  if (.parallel && !identical(.progress, "none")) {
+  if (.parallel && !identical(.progress, "none") && !identical(.progress, "progressr")) {
     message("Progress disabled when using parallel plyr")
     .progress <- "none"
   }
