@@ -27,7 +27,7 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
     pieces <- as.list(.data)
 
     # This special case can be done much faster with lapply, so do it.
-    fast_path <- .progress == "none" && !.inform && !.parallel
+    fast_path <- length(.progress) == 1 && .progress == "none" && !.inform && !.parallel
     if (fast_path) {
       return(structure(lapply(pieces, .fun, ...), dim = dim(pieces)))
     }
