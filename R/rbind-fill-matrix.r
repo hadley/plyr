@@ -24,6 +24,7 @@
 #'    \code{\link[plyr]{rbind.fill}}
 #' @family binding functions
 #' @export rbind.fill.matrix
+#' @usage rbind.fill.matrix(...)
 #' @keywords manip
 #' @examples
 #' A <- matrix (1:4, 2)
