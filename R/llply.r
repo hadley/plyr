@@ -22,12 +22,13 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
   if (is.null(.fun)) return(as.list(.data))
   if (is.character(.fun) || is.list(.fun)) .fun <- each(.fun)
   if (!is.function(.fun)) stop(".fun is not a function.")
+  no_progress <- length(.progress) == 1L && .progress == "none"
 
   if (!inherits(.data, "split")) {
     pieces <- as.list(.data)
 
     # This special case can be done much faster with lapply, so do it.
-    fast_path <- .progress == "none" && !.inform && !.parallel
+    fast_path <- no_progress && !.inform && !.parallel
     if (fast_path) {
       return(structure(lapply(pieces, .fun, ...), dim = dim(pieces)))
     }
@@ -39,7 +40,7 @@ llply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
   n <- length(pieces)
   if (n == 0) return(list())
 
-  if (.parallel && .progress != "none") {
+  if (.parallel && !no_progress) {
     message("Progress disabled when using parallel plyr")
     .progress <- "none"
   }
