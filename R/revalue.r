@@ -70,7 +70,8 @@ mapvalues <- function(x, from, to, warn_missing = TRUE) {
     stop("`from` and `to` vectors are not the same length.")
   }
   if (!is.atomic(x)) {
-    stop("`x` must be an atomic vector.")
+   if(!is.null(x))
+    stop("`x` must be an atomic vector or NULL.")
   }
 
   if (is.factor(x)) {
