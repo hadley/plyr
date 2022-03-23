@@ -8,8 +8,10 @@
 #' lowest dimensions.  This makes \code{aaply} idempotent, so that
 #' \code{aaply(input, X, identity)} is equivalent to \code{aperm(input, X)}.
 #'
-#' @section Warning:Passing a data frame as first argument may lead to
-#' unexpected results, see \url{https://github.com/hadley/plyr/issues/212}.
+#' @section Warning:
+#' Contrary to \code{\link{alply}} and \code{\link{adply}}, passing a data
+#' frame as first argument to \code{aaply} may lead to unexpected results
+#' such as huge memory allocations.
 #'
 #' @template ply
 #' @template a-
