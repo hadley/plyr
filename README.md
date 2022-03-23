@@ -1,7 +1,7 @@
 # plyr
 
 <!-- badges: start -->
-[![Lifecycle: retired](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
+[![Lifecycle: retired](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#retired)
 [![CRAN status](https://www.r-pkg.org/badges/version/plyr)](https://cran.r-project.org/package=plyr)
 [![R-CMD-check](https://github.com/hadley/plyr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hadley/plyr/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/hadley/plyr/branch/master/graph/badge.svg)](https://app.codecov.io/gh/hadley/plyr?branch=master)
@@ -24,9 +24,9 @@ It's already possible to do this with base R functions (like split and the apply
 
 Considerable effort has been put into making plyr fast and memory efficient, and in many cases plyr is as fast as, or faster than, the built-in equivalents.
 
-A detailed introduction to plyr has been published in JSS: "The Split-Apply-Combine Strategy for Data Analysis", http://www.jstatsoft.org/v40/i01/. You can find out more at http://had.co.nz/plyr/, or track development at http://github.com/hadley/plyr. You can ask questions about plyr (and data manipulation in general) on the plyr mailing list. Sign up at http://groups.google.com/group/manipulatr.
+A detailed introduction to plyr has been published in JSS: "The Split-Apply-Combine Strategy for Data Analysis", http://www.jstatsoft.org/v40/i01/. You can find out more at https://had.co.nz/plyr/, or track development at https://github.com/hadley/plyr. You can ask questions about plyr (and data manipulation in general) on the plyr mailing list. Sign up at https://groups.google.com/group/manipulatr.
 
-## Status [![Lifecycle: retired](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
+## Status [![Lifecycle: retired](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#retired)
 
-plyr is retired: this means only changes necessary to keep it on CRAN will be made. We recommend using [dplyr](http://dplyr.tidyverse.org/) (for data frames) or [purrr](http://purrr.tidyverse.org/) (for lists) instead.
+plyr is retired: this means only changes necessary to keep it on CRAN will be made. We recommend using [dplyr](https://dplyr.tidyverse.org/) (for data frames) or [purrr](https://purrr.tidyverse.org/) (for lists) instead.
 

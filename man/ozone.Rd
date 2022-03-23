@@ -12,8 +12,8 @@ ozone
 }
 \description{
 This data set is a subset of the data from the 2006 ASA Data expo
-challenge, \url{http://stat-computing.org/dataexpo/2006/}. The data are
-monthly ozone averages on a very coarse 24 by 24 grid covering Central
+challenge, \url{https://community.amstat.org/jointscsg-section/dataexpo/dataexpo2006}.
+The data are monthly ozone averages on a very coarse 24 by 24 grid covering Central
 America, from Jan 1995 to Dec 2000. The data is stored in a 3d area with
 the first two dimensions representing latitude and longitude, and the third
 representing time.
@@ -40,6 +40,6 @@ dim(coefs)
 dim(deseas)
 }
 \references{
-\url{http://stat-computing.org/dataexpo/2006/}
+\url{https://community.amstat.org/jointscsg-section/dataexpo/dataexpo2006}
 }
 \keyword{datasets}

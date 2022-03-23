@@ -16,7 +16,7 @@
 #' @export
 #' @references Hadley Wickham (2011). The Split-Apply-Combine Strategy for
 #'   Data Analysis. Journal of Statistical Software, 40(1), 1-29.
-#'   \url{http://www.jstatsoft.org/v40/i01/}.
+#'   \url{https://www.jstatsoft.org/v40/i01/}.
 #' @examples
 #' mods <- rlply(100, lm(y ~ x, data=data.frame(x=rnorm(100), y=rnorm(100))))
 #' hist(laply(mods, function(x) summary(x)$r.squared))
