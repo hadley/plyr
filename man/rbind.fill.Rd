@@ -4,7 +4,7 @@
 \alias{rbind.fill}
 \title{Combine data.frames by row, filling in missing columns.}
 \usage{
-\method{rbind}{fill}(...)
+rbind.fill(...)
 }
 \arguments{
 \item{...}{input data frames to row bind together.  The first argument can

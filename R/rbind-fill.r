@@ -24,6 +24,7 @@
 #' @family binding functions
 #' @return a single data frame
 #' @export rbind.fill
+#' @usage rbind.fill(...)
 #' @examples
 #' rbind.fill(mtcars[c("mpg", "wt")], mtcars[c("wt", "cyl")])
 rbind.fill <- function(...) {

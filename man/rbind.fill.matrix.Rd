@@ -4,7 +4,7 @@
 \alias{rbind.fill.matrix}
 \title{Bind matrices by row, and fill missing columns with NA.}
 \usage{
-\method{rbind}{fill.matrix}(...)
+rbind.fill.matrix(...)
 }
 \arguments{
 \item{...}{the matrices to rbind. The first argument can be a list of
