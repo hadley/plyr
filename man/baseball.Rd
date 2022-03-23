@@ -4,7 +4,9 @@
 \name{baseball}
 \alias{baseball}
 \title{Yearly batting records for all major league baseball players}
-\format{A 21699 x 22 data frame}
+\format{
+A 21699 x 22 data frame
+}
 \usage{
 baseball
 }
