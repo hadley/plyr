@@ -284,10 +284,10 @@ get_rbind_times <- function(...) {
   # nolint end
 }
 
-if (identical(Sys.getenv("NOT_CRAN"), "true") &&
-    !identical(Sys.getenv("TRAVIS"), "true")) {
-
 expect_linear_enough <- function(timings, threshold=0.1) {
+  skip_on_cran()
+  skip_on_os("windows")
+
   #expect that no more than `threshold` of a `size` input's runtime is
   #accounted for by quadratic behavior
   model <- lm(I(user.self / size) ~ size, timings)
@@ -316,7 +316,4 @@ test_that("NULLs silently dropped", {
   expect_equal(rbind.fill(mtcars, NULL), mtcars)
   expect_equal(rbind.fill(NULL, mtcars), mtcars)
   expect_equal(rbind.fill(NULL, NULL), NULL)
-
 })
-
-}
