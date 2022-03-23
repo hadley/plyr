@@ -4,7 +4,9 @@
 \name{ozone}
 \alias{ozone}
 \title{Monthly ozone measurements over Central America.}
-\format{A 24 x 24 x 72 numeric array}
+\format{
+A 24 x 24 x 72 numeric array
+}
 \usage{
 ozone
 }

@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // split_indices
 std::vector<std::vector<int> > split_indices(IntegerVector group, int n);
 RcppExport SEXP _plyr_split_indices(SEXP groupSEXP, SEXP nSEXP) {
