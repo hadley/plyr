@@ -148,7 +148,7 @@ progress_tk <- function(title = "plyr progress", label = "Working...", ...) {
 #' @export
 #' @family progress bars
 #' @examples
-#' if(exists("winProgressBar")) {
+#' \dontrun{
 #' l_ply(1:100, identity, .progress = "win")
 #' l_ply(1:100, identity, .progress = progress_win(title="Working..."))
 #' }
