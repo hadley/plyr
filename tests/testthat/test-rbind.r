@@ -1,7 +1,7 @@
 context("rbind.fill")
 
 test_that("variable classes are preserved", {
-  local_edition(3)
+  skip("POSIXlt behavior change")
 
   a <- data.frame(
     a = factor(letters[1:3]),
@@ -20,7 +20,7 @@ test_that("variable classes are preserved", {
   ab2$a <- factor(ab2$a, levels(ab1$a))
   rownames(ab2) <- NULL
 
-  expect_that(ab1, equals(ab2))
+  expect_equal(ab1, ab2)
 
   expect_s3_class(ab1$a, "factor")
   expect_type(ab1$b, "integer")
