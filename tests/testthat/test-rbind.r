@@ -1,6 +1,8 @@
 context("rbind.fill")
 
 test_that("variable classes are preserved", {
+  local_edition(3)
+
   a <- data.frame(
     a = factor(letters[1:3]),
     b = 1:3,
