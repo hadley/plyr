@@ -1,4 +1,8 @@
-# plyr (development version)
+# plyr 1.8.8
+
+* Breaks my package
+* Issues reporting disabled on GitHub
+* This version is ahead of GitHub main branch and I can't find it anywhere
 
 # plyr 1.8.7
 
