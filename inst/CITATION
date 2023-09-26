@@ -2,7 +2,7 @@ citHeader("To cite plyr in publications use:")
 
 citEntry(entry = "Article",
   title        = "The Split-Apply-Combine Strategy for Data Analysis",
-  author       = personList(as.person("Hadley Wickham")),
+  author       = person("Hadley", "Wickham"),
   journal      = "Journal of Statistical Software",
   year         = "2011",
   volume       = "40",
