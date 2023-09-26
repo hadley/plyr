@@ -4,4 +4,4 @@
 
 ## Reverse dependencies
 
-I did not run the reverse dependencies since the only changes in this version were to fix upcoming R CMD check problems in R-devel, and shouldn't affect user behaviour.
+I did not run the reverse dependencies since the only changes in this version were to fix R CMD check problems.
