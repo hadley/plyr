@@ -11,3 +11,4 @@ man-roxygen
 ^codecov\.yml$
 ^CRAN-RELEASE$
 ^\.github$
+^CRAN-SUBMISSION$
