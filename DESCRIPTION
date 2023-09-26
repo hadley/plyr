@@ -1,6 +1,6 @@
 Package: plyr
 Title: Tools for Splitting, Applying and Combining Data
-Version: 1.8.8
+Version: 1.8.9
 Authors@R: 
     person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre"))
 Description: A set of tools that solves a common set of problems: you need
