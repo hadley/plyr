@@ -3,6 +3,7 @@
 \docType{package}
 \name{plyr}
 \alias{plyr}
+\alias{plyr-package}
 \title{plyr: the split-apply-combine paradigm for R.}
 \description{
 The plyr package is a set of clean and consistent tools that implement the

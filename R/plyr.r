@@ -60,6 +60,7 @@
 #' }
 #'
 #' @docType package
+#' @aliases plyr-package
 #' @importFrom Rcpp sourceCpp
 #' @useDynLib plyr, .registration = TRUE
 #' @name plyr
