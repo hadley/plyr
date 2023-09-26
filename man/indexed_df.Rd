@@ -7,11 +7,11 @@
 indexed_df(data, index, vars)
 }
 \arguments{
+\item{data}{environment containing data frame}
+
 \item{index}{list of indices}
 
 \item{vars}{a character vector giving the variables used for subsetting}
-
-\item{env}{environment containing data frame}
 }
 \description{
 Create a indexed list, a space efficient way of indexing into a large data frame

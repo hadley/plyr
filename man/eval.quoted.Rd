@@ -7,9 +7,9 @@
 eval.quoted(exprs, envir = NULL, enclos = NULL, try = FALSE)
 }
 \arguments{
-\item{try}{if TRUE, return \code{NULL} if evaluation unsuccesful}
+\item{exprs}{quoted object to evaluate}
 
-\item{expr}{quoted object to evalution}
+\item{try}{if TRUE, return \code{NULL} if evaluation unsuccessful}
 }
 \value{
 a list

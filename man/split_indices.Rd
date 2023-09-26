@@ -7,11 +7,11 @@
 split_indices(group, n = 0L)
 }
 \arguments{
+\item{group}{integer indices}
+
 \item{n}{largest integer (may not appear in index). This is hint: if
 the largest value of \code{group} is bigger than \code{n}, the output
 will silently expand.}
-
-\item{index}{integer indices}
 }
 \description{
 An optimised version of split for the special case of splitting row

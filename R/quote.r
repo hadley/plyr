@@ -78,8 +78,8 @@ names.quoted <- function(x) {
 #'
 #' @return a list
 #' @keywords internal
-#' @param expr quoted object to evalution
-#' @param try if TRUE, return \code{NULL} if evaluation unsuccesful
+#' @param exprs quoted object to evaluate
+#' @param try if TRUE, return \code{NULL} if evaluation unsuccessful
 #' @export
 eval.quoted <- function(exprs, envir = NULL, enclos = NULL, try = FALSE) {
   if (is.numeric(exprs)) return(envir[exprs])

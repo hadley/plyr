@@ -7,9 +7,9 @@
 split_labels(splits, drop, id = plyr::id(splits, drop = TRUE))
 }
 \arguments{
-\item{list}{of variables to split up by}
+\item{splits}{list of variables to split up by}
 
-\item{whether}{all possible combinations should be considered, or only those present in the data}
+\item{drop}{whether all possible combinations should be considered, or only those present in the data}
 }
 \description{
 Create data frame giving labels for split data frame.

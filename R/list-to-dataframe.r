@@ -7,7 +7,7 @@
 #' @family list simplification functions
 #' @param res list of input data
 #' @param labels a data frame of labels, one row for each element of res
-#' @param idname the name of the index column, \code{NULL} for no index
+#' @param id_name the name of the index column, \code{NULL} for no index
 #'   column
 #' @keywords internal
 list_to_dataframe <- function(res, labels = NULL, id_name = NULL, id_as_factor = FALSE) {

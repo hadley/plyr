@@ -10,9 +10,9 @@ tryapply(list, fun, ...)
 \arguments{
 \item{list}{list to apply function \code{f} on}
 
-\item{...}{further arguments to \code{f}}
+\item{fun}{function}
 
-\item{f}{function}
+\item{...}{further arguments to \code{f}}
 }
 \description{
 Apply with built in try.

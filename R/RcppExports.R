@@ -6,7 +6,7 @@
 #' An optimised version of split for the special case of splitting row
 #' indices into groups, as used by \code{\link{splitter_d}}.
 #'
-#' @param index integer indices
+#' @param group integer indices
 #' @param n largest integer (may not appear in index). This is hint: if
 #'   the largest value of \code{group} is bigger than \code{n}, the output
 #'   will silently expand.

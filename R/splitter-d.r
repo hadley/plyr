@@ -65,8 +65,8 @@ splitter_d <- function(data, .variables = NULL, drop = TRUE) {
 #'
 #' Create data frame giving labels for split data frame.
 #'
-#' @param list of variables to split up by
-#' @param whether all possible combinations should be considered, or only those present in the data
+#' @param splits list of variables to split up by
+#' @param drop whether all possible combinations should be considered, or only those present in the data
 #' @keywords internal
 #' @export
 split_labels <- function(splits, drop, id = plyr::id(splits, drop = TRUE)) {

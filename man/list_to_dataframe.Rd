@@ -11,7 +11,7 @@ list_to_dataframe(res, labels = NULL, id_name = NULL, id_as_factor = FALSE)
 
 \item{labels}{a data frame of labels, one row for each element of res}
 
-\item{idname}{the name of the index column, \code{NULL} for no index
+\item{id_name}{the name of the index column, \code{NULL} for no index
 column}
 }
 \description{

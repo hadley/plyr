@@ -55,7 +55,7 @@ tryNULL <- function(expr) try_default(expr, NULL, quiet = TRUE)
 #' Uses compact, lapply and tryNULL
 #'
 #' @param list list to apply function \code{f} on
-#' @param f function
+#' @param fun function
 #' @param ... further arguments to \code{f}
 #' @keywords internal
 #' @export
