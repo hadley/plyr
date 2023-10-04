@@ -1,6 +1,4 @@
-citHeader("To cite plyr in publications use:")
-
-citEntry(entry = "Article",
+bibentry("Article",
   title        = "The Split-Apply-Combine Strategy for Data Analysis",
   author       = person("Hadley", "Wickham"),
   journal      = "Journal of Statistical Software",
