@@ -39,16 +39,16 @@ test_that("simple operations equivalent to vectorised form", {
 })
 
 test_that("array binding is correct", {
-  library(abind)
+  skip_if_not_installed("abind")
   f <- function(x) matrix(x, 2, 2)
   m2d <- lapply(1:10, f)
-  m3d <- abind(m2d, along = 0)
+  m3d <- abind::abind(m2d, along = 0)
 
   expect_that(laply(1:10, f), is_equivalent_to(m3d))
 
   f <- function(x) array(x, c(2, 2, 2))
   m3d <- lapply(1:10, f)
-  m4d <- abind(m3d, along = 0)
+  m4d <- abind::abind(m3d, along = 0)
 
   expect_that(laply(1:10, f), is_equivalent_to(m4d))
 })
