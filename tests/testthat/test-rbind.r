@@ -139,13 +139,13 @@ test_that("1d arrays treated as vectors", {
 })
 
 test_that("multidim arrays ok", {
-  library(abind)
+  skip_if_not_installed("abind")
   df <- data.frame(x = 1:3)
   df$x <- array(1:27, c(3,3,3))
 
   df2 <- rbind.fill(df, df)
-  expect_equal(dim(df2$x), dim(abind(along=1, df$x, df$x)))
-  expect_that(df2$x, is_equivalent_to(abind(along=1, df$x, df$x)))
+  expect_equal(dim(df2$x), dim(abind::abind(along=1, df$x, df$x)))
+  expect_that(df2$x, is_equivalent_to(abind::abind(along=1, df$x, df$x)))
  })
 
 test_that("Array column names preserved", {
