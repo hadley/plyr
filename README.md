@@ -4,7 +4,7 @@
 [![Lifecycle: retired](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#retired)
 [![CRAN status](https://www.r-pkg.org/badges/version/plyr)](https://cran.r-project.org/package=plyr)
 [![R-CMD-check](https://github.com/hadley/plyr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hadley/plyr/actions/workflows/R-CMD-check.yaml)
-[![Codecov test coverage](https://codecov.io/gh/hadley/plyr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/hadley/plyr?branch=main)
+[![Codecov test coverage](https://codecov.io/gh/hadley/plyr/graph/badge.svg)](https://app.codecov.io/gh/hadley/plyr)
 <!-- badges: end -->
 
 plyr is a set of tools for a common set of problems: you need to __split__ up a big data structure into homogeneous pieces, __apply__ a function to each piece and then __combine__ all the results back together. For example, you might want to:
@@ -29,4 +29,3 @@ A detailed introduction to plyr has been published in JSS: "The Split-Apply-Comb
 ## Status [![Lifecycle: retired](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#retired)
 
 plyr is retired: this means only changes necessary to keep it on CRAN will be made. We recommend using [dplyr](https://dplyr.tidyverse.org/) (for data frames) or [purrr](https://purrr.tidyverse.org/) (for lists) instead.
-
